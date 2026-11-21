@@ -5,17 +5,19 @@ import katex from 'katex';
 import 'katex/dist/katex.min.css';
 
 interface MathTextProps {
-  content: string;
+  content?: string;
+  text?: string;
   className?: string;
 }
 
-export function MathText({ content, className = '' }: MathTextProps) {
+export function MathText({ content, text, className = '' }: MathTextProps) {
   const renderedContent = useMemo(() => {
-    if (!content) return '';
+    const rawContent = content ?? text ?? '';
+    if (!rawContent) return '';
 
     // Regex to split on $$...$$ (display math) and $...$ (inline math)
     const regex = /(\$\$[\s\S]*?\$\$|\$[^\$\n]+?\$)/g;
-    const parts = content.split(regex);
+    const parts = rawContent.split(regex);
 
     return parts.map((part, index) => {
       if (part.startsWith('$$') && part.endsWith('$$')) {

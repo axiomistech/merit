@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils';
 export interface TestConfigProps {
   isOpen: boolean;
   onClose: () => void;
+  onStart?: () => void;
   examName?: string;
   subjectName: string;
   chapterName: string;
@@ -24,6 +25,7 @@ export interface TestConfigProps {
 export function TestConfigurationModal({
   isOpen,
   onClose,
+  onStart,
   examName = 'FORT NEET (UG)',
   subjectName = 'Physics',
   chapterName = 'Laws of Motion',
@@ -41,6 +43,10 @@ export function TestConfigurationModal({
   if (!isOpen) return null;
 
   const handleStart = () => {
+    if (onStart) {
+      onStart();
+      return;
+    }
     if (isPaid) {
       router.push(`/payment?item=chapter_${chapterName.toLowerCase().replace(/\s+/g, '_')}&amount=${price}`);
     } else {

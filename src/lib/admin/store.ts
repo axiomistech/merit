@@ -369,6 +369,76 @@ export function saveStoredQuestions(questions: AdminQuestionRecord[]) {
   localStorage.setItem('fort_admin_questions', JSON.stringify(questions));
 }
 
+export function getInitialTests(): AdminTestRecord[] {
+  return [
+    {
+      id: 'paper_neet_mock_01',
+      name: SAMPLE_NEET_PAPER.name,
+      slug: SAMPLE_NEET_PAPER.slug,
+      examSlug: 'neet',
+      paperType: 'mock_exam',
+      durationMinutes: SAMPLE_NEET_PAPER.durationMinutes,
+      totalQuestions: SAMPLE_NEET_PAPER.totalQuestions,
+      maxMarks: 720,
+      price: 10,
+      isFreeEligible: true,
+      status: 'published',
+      questionIds: Array.from({ length: 180 }, (_, i) => `q_neet_${i + 1}`),
+      created_at: '2026-01-01T00:00:00Z',
+    },
+    {
+      id: 'paper_neet_pyq_2025',
+      name: 'NEET 2025 Official Previous Year Paper (Shift 1)',
+      slug: 'neet-2025-pyq-official',
+      examSlug: 'neet',
+      paperType: 'previous_year',
+      durationMinutes: 200,
+      totalQuestions: 180,
+      maxMarks: 720,
+      price: 10,
+      isFreeEligible: false,
+      status: 'published',
+      questionIds: Array.from({ length: 180 }, (_, i) => `q_neet_pyq_${i + 1}`),
+      created_at: '2026-01-01T00:00:00Z',
+    },
+    {
+      id: 'paper_jee_mock_01',
+      name: 'JEE Main 2026 Full Simulation Mock 1',
+      slug: 'jee-main-2026-simulation-01',
+      examSlug: 'jee-main',
+      paperType: 'mock_exam',
+      durationMinutes: 180,
+      totalQuestions: 90,
+      maxMarks: 300,
+      price: 10,
+      isFreeEligible: true,
+      status: 'published',
+      questionIds: Array.from({ length: 90 }, (_, i) => `q_jee_${i + 1}`),
+      created_at: '2026-01-01T00:00:00Z',
+    },
+  ];
+}
+
+export function getStoredTests(): AdminTestRecord[] {
+  if (typeof window === 'undefined') return getInitialTests();
+  const stored = localStorage.getItem('fort_admin_tests');
+  if (!stored) {
+    const init = getInitialTests();
+    localStorage.setItem('fort_admin_tests', JSON.stringify(init));
+    return init;
+  }
+  try {
+    return JSON.parse(stored);
+  } catch {
+    return getInitialTests();
+  }
+}
+
+export function saveStoredTests(tests: AdminTestRecord[]) {
+  if (typeof window === 'undefined') return;
+  localStorage.setItem('fort_admin_tests', JSON.stringify(tests));
+}
+
 export function getStoredStudents(): AdminStudentRecord[] {
   if (typeof window === 'undefined') return getInitialStudents();
   const stored = localStorage.getItem('fort_admin_students');
