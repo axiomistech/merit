@@ -376,20 +376,97 @@ button, .btn {
   box-shadow: 0 12px 32px -8px rgba(32, 37, 43, 0.07), 0 4px 12px -2px rgba(32, 37, 43, 0.03);
 }
 
-/* Glassmorphism restrained */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.85);
+/* ========================================================================= */
+/* LIQUID GLASS & GLASSMORPHISM SYSTEM (OFFICIAL 3 COLORS ONLY)             */
+/* Polar White (60%) #F1F3F4 | Glacier Blue (30%) #9CC6E0 | Racing Red (10%) #E4002B */
+/* ========================================================================= */
+
+.liquid-canvas {
+  position: relative;
+  background-color: #F1F3F4;
+  overflow: hidden;
+}
+
+/* Ambient Liquid fluid orbs behind glassmorphic surfaces */
+.liquid-fluid-backdrop {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.liquid-orb-glacier {
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(156, 198, 224, 0.45) 0%, rgba(156, 198, 224, 0.05) 60%, transparent 80%);
+  filter: blur(80px);
+}
+
+.liquid-orb-red {
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(228, 0, 43, 0.25) 0%, rgba(228, 0, 43, 0.03) 60%, transparent 80%);
+  filter: blur(90px);
+}
+
+/* 1. Polar White Liquid Glass (60% Main) */
+.glass-polar {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 
+    0 24px 60px -15px rgba(32, 37, 43, 0.06),
+    0 1px 2px 0 rgba(255, 255, 255, 0.95) inset,
+    0 -1px 2px 0 rgba(0, 0, 0, 0.02) inset;
+}
+
+/* 2. Glacier Blue Liquid Glass (30% Secondary) */
+.glass-glacier {
+  background: linear-gradient(135deg, rgba(156, 198, 224, 0.5) 0%, rgba(156, 198, 224, 0.2) 100%);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 
+    0 20px 45px -10px rgba(156, 198, 224, 0.35),
+    0 1px 2px 0 rgba(255, 255, 255, 0.9) inset;
+}
+
+/* 3. Racing Red Liquid Glass (10% Accent) */
+.glass-racing-red {
+  background: linear-gradient(135deg, rgba(228, 0, 43, 0.95) 0%, rgba(200, 0, 38, 0.9) 100%);
+  backdrop-filter: blur(20px) saturate(190%);
+  -webkit-backdrop-filter: blur(20px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  color: #FFFFFF;
+  box-shadow: 
+    0 16px 36px -6px rgba(228, 0, 43, 0.35),
+    0 1px 2px 0 rgba(255, 255, 255, 0.5) inset;
+}
+
+/* Translucent Glass Pill Badge */
+.glass-pill {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 8px 24px -4px rgba(32, 37, 43, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 12px rgba(32, 37, 43, 0.03), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+/* Glassmorphism restrained */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 8px 24px -4px rgba(32, 37, 43, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.9);
 }
 
 .glass-nav {
-  background: rgba(241, 243, 244, 0.92);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid #DCE2E6;
+  background: rgba(241, 243, 244, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(220, 226, 230, 0.8);
 }
 
 /* Custom scrollbars */

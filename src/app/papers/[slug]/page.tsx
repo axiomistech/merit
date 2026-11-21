@@ -327,8 +327,15 @@ function PaperDetailContent() {
   };
 
   return (
-    <div className="bg-[#F1F3F4] text-[#20252B] min-h-screen py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto space-y-8">
+    <div className="relative min-h-screen overflow-hidden bg-[#F1F3F4] text-[#20252B] py-12 px-4 sm:px-6 lg:px-8">
+      {/* Ambient Liquid Fluid Backdrop */}
+      <div className="liquid-fluid-backdrop">
+        <div className="liquid-orb-glacier top-[-100px] right-[-80px] h-[600px] w-[600px]" />
+        <div className="liquid-orb-red top-[400px] left-[-100px] h-[550px] w-[550px]" />
+        <div className="liquid-orb-glacier bottom-[-100px] right-[10%] h-[650px] w-[650px]" />
+      </div>
+
+      <div className="relative z-10 max-w-4xl mx-auto space-y-8">
         {/* Breadcrumb Navigation */}
         <div className="flex items-center gap-2 text-xs text-[#66727D]">
           <Link href="/" className="hover:text-[#20252B]">
@@ -342,24 +349,24 @@ function PaperDetailContent() {
           <span className="font-semibold text-[#20252B] truncate">{paper.name}</span>
         </div>
 
-        {/* Paper Overview Card */}
-        <div className="rounded-3xl border border-[#DCE2E6] bg-white p-8 sm:p-10 shadow-sm space-y-6">
+        {/* Paper Overview Card (Liquid Glass) */}
+        <div className="glass-polar rounded-[38px] p-8 sm:p-12 shadow-2xl space-y-6">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <span className="px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider bg-[#F1F3F4] text-[#20252B] border border-[#DCE2E6]">
+            <span className="glass-pill px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-[#20252B]">
               {paper.examLabel} • Year {paper.year}
             </span>
 
             {hasAccess ? (
-              <span className="flex items-center gap-1.5 text-xs font-bold text-[#27835A] bg-[#E9F5EF] px-3 py-1 rounded-full">
-                <CheckCircle2 className="h-4 w-4" />
+              <span className="flex items-center gap-1.5 text-xs font-bold text-[#20252B] bg-[#9CC6E0]/30 px-3.5 py-1 rounded-full">
+                <CheckCircle2 className="h-4 w-4 text-[#E4002B]" />
                 <span>Paper Unlocked & Ready</span>
               </span>
             ) : studentSession && freePaperAvailable ? (
-              <span className="text-xs font-bold text-[#20252B] bg-[#9CC6E0]/30 px-3 py-1 rounded-full">
+              <span className="text-xs font-bold text-[#20252B] bg-[#9CC6E0]/40 px-3.5 py-1 rounded-full">
                 ✨ Free Unlock Available
               </span>
             ) : (
-              <span className="text-xs font-bold text-[#66727D] bg-[#F1F3F4] px-3 py-1 rounded-full">
+              <span className="text-xs font-bold text-[#66727D] glass-pill px-3.5 py-1 rounded-full">
                 Unlock Price: ₹10
               </span>
             )}
@@ -373,27 +380,27 @@ function PaperDetailContent() {
           </div>
 
           {/* Quick Metrics */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-[#DCE2E6]">
-            <div className="p-3.5 rounded-xl bg-[#F1F3F4]">
-              <div className="text-[10px] text-[#66727D] uppercase font-bold">Total Questions</div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-white/60">
+            <div className="p-4 rounded-2xl bg-white/60 backdrop-blur-md">
+              <div className="text-[10px] text-[#66727D] uppercase font-bold tracking-wider">Total Questions</div>
               <div className="mt-1 text-base font-bold font-mono text-[#20252B]">
                 {paper.totalQuestions} Questions
               </div>
             </div>
-            <div className="p-3.5 rounded-xl bg-[#F1F3F4]">
-              <div className="text-[10px] text-[#66727D] uppercase font-bold">Duration</div>
+            <div className="p-4 rounded-2xl bg-white/60 backdrop-blur-md">
+              <div className="text-[10px] text-[#66727D] uppercase font-bold tracking-wider">Duration</div>
               <div className="mt-1 text-base font-bold font-mono text-[#20252B]">
                 {paper.durationMinutes} Minutes
               </div>
             </div>
-            <div className="p-3.5 rounded-xl bg-[#F1F3F4]">
-              <div className="text-[10px] text-[#66727D] uppercase font-bold">Max Marks</div>
+            <div className="p-4 rounded-2xl bg-white/60 backdrop-blur-md">
+              <div className="text-[10px] text-[#66727D] uppercase font-bold tracking-wider">Max Marks</div>
               <div className="mt-1 text-base font-bold font-mono text-[#20252B]">
                 {paper.maxMarks} Marks
               </div>
             </div>
-            <div className="p-3.5 rounded-xl bg-[#F1F3F4]">
-              <div className="text-[10px] text-[#66727D] uppercase font-bold">Marking Scheme</div>
+            <div className="p-4 rounded-2xl bg-white/60 backdrop-blur-md">
+              <div className="text-[10px] text-[#66727D] uppercase font-bold tracking-wider">Marking Scheme</div>
               <div className="mt-1 text-xs font-bold font-mono text-[#20252B] truncate">
                 {paper.markingScheme}
               </div>
@@ -401,7 +408,7 @@ function PaperDetailContent() {
           </div>
 
           {/* Subject Structure Breakdown */}
-          <div className="pt-4 border-t border-[#DCE2E6] space-y-3">
+          <div className="pt-4 border-t border-white/60 space-y-3">
             <h3 className="text-xs font-bold uppercase tracking-wider text-[#66727D]">
               Subject & Section Structure
             </h3>
@@ -409,7 +416,7 @@ function PaperDetailContent() {
               {paper.sections.map((sec) => (
                 <div
                   key={sec.name}
-                  className="rounded-xl border border-[#DCE2E6] bg-[#F1F3F4] p-3 text-xs"
+                  className="rounded-2xl border border-white/70 bg-white/50 p-3.5 text-xs backdrop-blur-md"
                 >
                   <div className="font-semibold text-[#20252B]">{sec.name}</div>
                   <div className="text-[#66727D] mt-0.5">
@@ -421,14 +428,14 @@ function PaperDetailContent() {
           </div>
 
           {/* Examination Instructions */}
-          <div className="pt-4 border-t border-[#DCE2E6] space-y-3">
+          <div className="pt-4 border-t border-white/60 space-y-3">
             <h3 className="text-xs font-bold uppercase tracking-wider text-[#66727D]">
               Examination Instructions
             </h3>
             <ul className="space-y-2 text-xs text-[#66727D]">
               {paper.instructions.map((inst, idx) => (
                 <li key={idx} className="flex items-start gap-2">
-                  <span className="font-mono text-[#20252B] font-bold">•</span>
+                  <span className="font-mono text-[#E4002B] font-bold">•</span>
                   <span>{inst}</span>
                 </li>
               ))}
@@ -436,19 +443,19 @@ function PaperDetailContent() {
           </div>
 
           {/* Primary Action Button Area */}
-          <div className="pt-6 border-t border-[#DCE2E6] flex flex-wrap items-center justify-between gap-4">
+          <div className="pt-6 border-t border-white/60 flex flex-wrap items-center justify-between gap-4">
             <div>
               {!studentSession ? (
                 <span className="text-xs text-[#66727D]">
                   Sign in or create an account to unlock this paper.
                 </span>
               ) : hasAccess ? (
-                <span className="text-xs text-[#27835A] font-semibold">
+                <span className="text-xs text-[#20252B] font-semibold">
                   ✓ Entitlement active. You may attempt this paper anytime.
                 </span>
               ) : freePaperAvailable ? (
                 <span className="text-xs text-[#20252B] font-semibold">
-                  You have 1 complimentary question paper unlock available.
+                  ✨ You have 1 complimentary question paper unlock available.
                 </span>
               ) : (
                 <span className="text-xs text-[#66727D]">
@@ -463,13 +470,13 @@ function PaperDetailContent() {
                 <>
                   <Link
                     href={`/login?redirect=${encodeURIComponent(`/papers/${slug}`)}`}
-                    className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl border border-[#DCE2E6] bg-white text-[#20252B] text-xs font-semibold hover:border-[#9CC6E0] transition-colors"
+                    className="glass-pill inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-[#20252B] text-xs font-bold hover:bg-white transition-colors"
                   >
                     Sign In
                   </Link>
                   <Link
                     href={`/signup?redirect=${encodeURIComponent(`/papers/${slug}`)}`}
-                    className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-xl bg-[#E4002B] text-white text-xs font-semibold hover:bg-[#C90026] transition-colors shadow-sm"
+                    className="glass-racing-red inline-flex items-center gap-1.5 px-6 py-2.5 rounded-full text-white text-xs font-bold shadow-lg shadow-[#E4002B]/25 transition-all hover:translate-y-[-1px]"
                   >
                     <span>Register to Unlock</span>
                     <ArrowRight className="h-3.5 w-3.5" />
@@ -481,7 +488,7 @@ function PaperDetailContent() {
               {studentSession && hasAccess && (
                 <Link
                   href={`/exam/${slug}`}
-                  className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-[#27835A] text-white text-sm font-semibold hover:bg-[#1E6746] transition-colors shadow-sm"
+                  className="glass-racing-red inline-flex items-center gap-2 px-7 py-3 rounded-full text-white text-sm font-bold shadow-lg shadow-[#E4002B]/25 transition-all hover:translate-y-[-1px]"
                 >
                   <span>Start Examination</span>
                   <ArrowRight className="h-4 w-4" />
@@ -493,7 +500,7 @@ function PaperDetailContent() {
                 <button
                   type="button"
                   onClick={() => setShowFreeConfirmModal(true)}
-                  className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-[#E4002B] text-white text-sm font-semibold hover:bg-[#C90026] transition-colors shadow-sm"
+                  className="glass-racing-red inline-flex items-center gap-2 px-7 py-3 rounded-full text-white text-sm font-bold shadow-lg shadow-[#E4002B]/25 transition-all hover:translate-y-[-1px]"
                 >
                   <Sparkles className="h-4 w-4" />
                   <span>Unlock Free Paper</span>
@@ -505,7 +512,7 @@ function PaperDetailContent() {
                 <button
                   type="button"
                   onClick={() => setShowPaymentModal(true)}
-                  className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-[#E4002B] text-white text-sm font-semibold hover:bg-[#C90026] transition-colors shadow-sm"
+                  className="glass-racing-red inline-flex items-center gap-2 px-7 py-3 rounded-full text-white text-sm font-bold shadow-lg shadow-[#E4002B]/25 transition-all hover:translate-y-[-1px]"
                 >
                   <CreditCard className="h-4 w-4" />
                   <span>Unlock for ₹10</span>
@@ -518,10 +525,10 @@ function PaperDetailContent() {
 
       {/* Free Unlock Confirmation Modal */}
       {showFreeConfirmModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#20252B]/60 p-4">
-          <div className="w-full max-w-md rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-xl space-y-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#E9EEF1] text-[#20252B]">
-              <Sparkles className="h-6 w-6 text-[#20252B]" />
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm p-4">
+          <div className="glass-polar w-full max-w-md rounded-[32px] p-8 shadow-2xl space-y-4">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#9CC6E0]/30 text-[#20252B]">
+              <Sparkles className="h-6 w-6 text-[#E4002B]" />
             </div>
             <h3 className="text-lg font-bold text-[#20252B]">Use Free Paper Entitlement?</h3>
             <p className="text-xs text-[#66727D] leading-relaxed">
@@ -544,7 +551,7 @@ function PaperDetailContent() {
                 type="button"
                 disabled={isProcessingUnlock}
                 onClick={handleClaimFreePaper}
-                className="inline-flex items-center gap-1.5 rounded-xl bg-[#E4002B] px-5 py-2 text-xs font-semibold text-white hover:bg-[#C90026] disabled:opacity-50"
+                className="glass-racing-red inline-flex items-center gap-1.5 rounded-full px-6 py-2.5 text-xs font-bold text-white shadow-lg shadow-[#E4002B]/25 disabled:opacity-50"
               >
                 {isProcessingUnlock ? 'Unlocking...' : 'Confirm Free Unlock'}
               </button>
@@ -555,16 +562,16 @@ function PaperDetailContent() {
 
       {/* ₹10 Payment Modal */}
       {showPaymentModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#20252B]/60 p-4">
-          <div className="w-full max-w-md rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-xl space-y-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#E9EEF1] text-[#20252B]">
-              <CreditCard className="h-6 w-6 text-[#20252B]" />
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm p-4">
+          <div className="glass-polar w-full max-w-md rounded-[32px] p-8 shadow-2xl space-y-4">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#9CC6E0]/30 text-[#20252B]">
+              <CreditCard className="h-6 w-6 text-[#E4002B]" />
             </div>
             <h3 className="text-lg font-bold text-[#20252B]">Unlock Question Paper</h3>
             <p className="text-xs text-[#66727D] leading-relaxed">
               You are unlocking <strong>{paper.name}</strong> for <strong>₹10 (1000 paise)</strong>.
             </p>
-            <div className="rounded-xl border border-[#DCE2E6] bg-[#F1F3F4] p-3 text-xs space-y-1">
+            <div className="rounded-2xl border border-white/80 bg-white/60 p-4 text-xs space-y-1.5 backdrop-blur-md">
               <div className="flex justify-between">
                 <span className="text-[#66727D]">Candidate</span>
                 <span className="font-semibold text-[#20252B]">{studentSession?.fullName}</span>
@@ -575,9 +582,9 @@ function PaperDetailContent() {
                   {studentSession?.registrationId}
                 </span>
               </div>
-              <div className="flex justify-between border-t border-[#DCE2E6] pt-1">
+              <div className="flex justify-between border-t border-white/60 pt-1.5">
                 <span className="text-[#66727D]">Total Due</span>
-                <span className="font-mono font-bold text-[#20252B]">₹10.00</span>
+                <span className="font-mono font-bold text-[#E4002B]">₹10.00</span>
               </div>
             </div>
             <p className="text-[11px] text-[#66727D]">
@@ -596,7 +603,7 @@ function PaperDetailContent() {
                 type="button"
                 disabled={isProcessingUnlock}
                 onClick={handlePurchasePaper}
-                className="inline-flex items-center gap-1.5 rounded-xl bg-[#E4002B] px-5 py-2 text-xs font-semibold text-white hover:bg-[#C90026] disabled:opacity-50"
+                className="glass-racing-red inline-flex items-center gap-1.5 rounded-full px-6 py-2.5 text-xs font-bold text-white shadow-lg shadow-[#E4002B]/25 disabled:opacity-50"
               >
                 {isProcessingUnlock ? 'Verifying...' : 'Pay ₹10 & Unlock'}
               </button>

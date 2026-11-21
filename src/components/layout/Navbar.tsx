@@ -95,7 +95,7 @@ export function Navbar() {
   const isPapersActive = pathname?.startsWith('/papers');
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#DCE2E6] bg-[#F1F3F4]">
+    <header className="glass-nav sticky top-0 z-50 w-full">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
         {/* Left: Brand Identity */}
         <Link
@@ -158,7 +158,7 @@ export function Navbar() {
                 {/* Invisible hover bridge to eliminate gap on diagonal pointer trajectory */}
                 <div className="absolute -top-1 left-0 right-0 h-3" />
 
-                <div className="rounded-2xl border border-[#DCE2E6] bg-white p-2.5 shadow-lg shadow-black/[0.04]">
+                <div className="glass-polar rounded-[28px] p-2.5 shadow-2xl backdrop-blur-2xl">
                   <div className="px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-[#66727D]">
                     Target Curricula
                   </div>
@@ -238,7 +238,7 @@ export function Navbar() {
           {/* Start Practicing (Primary CTA) */}
           <Link
             href="/signup"
-            className="inline-flex h-11 items-center justify-center rounded-xl bg-[#E4002B] px-6 text-[15px] font-semibold text-white transition-colors duration-150 hover:bg-[#C90026] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E4002B] focus-visible:ring-offset-2 active:bg-[#B30022]"
+            className="glass-racing-red inline-flex h-11 items-center justify-center rounded-full px-6 text-sm font-bold text-white shadow-lg shadow-[#E4002B]/25 transition-all duration-150 hover:translate-y-[-1px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E4002B] focus-visible:ring-offset-2"
           >
             Start Practicing
           </Link>

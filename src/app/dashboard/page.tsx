@@ -169,214 +169,222 @@ export default function StudentDashboardPage() {
   ];
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8 space-y-10 max-w-7xl mx-auto">
-      {/* Test Setup Preflight Modal */}
-      <TestConfigurationModal
-        isOpen={configModal.isOpen}
-        onClose={() => setConfigModal({ ...configModal, isOpen: false })}
-        examName={configModal.examName}
-        subjectName={configModal.subjectName}
-        chapterName={configModal.chapterName}
-        questionCount={configModal.questionCount}
-        durationMinutes={configModal.durationMinutes}
-        isPaid={configModal.isPaid}
-        attemptRoute={configModal.attemptRoute}
-      />
-
-      {/* Greeting Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#DCE2E6] pb-6">
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
-              Student Dashboard
-            </span>
-            <span className="rounded-full bg-[#E9EEF1] px-2.5 py-0.5 font-mono text-[11px] font-bold text-[#20252B]">
-              ACTIVE SESSION
-            </span>
-          </div>
-          <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold font-sans text-[#20252B]">
-            Welcome, {candidate.fullName}
-          </h1>
-          <p className="text-xs text-[#66727D]">
-            Candidate ID: <span className="font-mono font-bold text-[#20252B]">{candidate.registrationId}</span> • Registered Account
-          </p>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <Link
-            href="/papers"
-            className="flex items-center gap-2 rounded-full bg-[#E4002B] px-6 py-2.5 text-xs font-bold text-white shadow-md shadow-[#E4002B]/20 hover:bg-[#C90026] transition-all hover:translate-y-[-1px]"
-          >
-            <FileText className="h-4 w-4" />
-            <span>Browse Question Papers</span>
-          </Link>
-        </div>
+    <div className="relative min-h-screen overflow-hidden p-4 sm:p-6 lg:p-8 space-y-10 max-w-7xl mx-auto">
+      {/* Ambient Liquid Fluid Backdrop (3 Colors Only) */}
+      <div className="liquid-fluid-backdrop">
+        <div className="liquid-orb-glacier top-[-80px] right-[-60px] h-[550px] w-[550px]" />
+        <div className="liquid-orb-red top-[350px] left-[-80px] h-[500px] w-[500px]" />
+        <div className="liquid-orb-glacier bottom-[-100px] right-[10%] h-[600px] w-[600px]" />
       </div>
 
-      {/* ==================================================================== */}
-      {/* FREE PAPER STATUS BANNER */}
-      {/* ==================================================================== */}
-      {entitlements.freePaperAvailable ? (
-        <section className="relative overflow-hidden rounded-[28px] border-2 border-[#9CC6E0] bg-white p-6 sm:p-8 shadow-soft">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-            <div className="flex items-start gap-4">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#9CC6E0]/20 text-[#20252B]">
-                <Gift className="h-6 w-6 stroke-[2.2] text-[#E4002B]" />
-              </div>
-              <div>
-                <div className="inline-flex items-center gap-1.5 rounded-full bg-[#FDEDF0] px-2.5 py-0.5 text-[10px] font-bold text-[#E4002B] uppercase tracking-wider">
-                  Complimentary Access Available
-                </div>
-                <h2 className="mt-1.5 text-lg sm:text-xl font-bold font-sans text-[#20252B]">
-                  Your preparation starts here. You have your first question paper waiting.
-                </h2>
-                <p className="mt-1 text-xs text-[#66727D] max-w-2xl leading-relaxed">
-                  Choose any examination paper from our library. Your first paper is completely free, with full CBT simulation, automatic scoring, and physical OMR sheet.
-                </p>
-              </div>
-            </div>
+      <div className="relative z-10 space-y-10">
+        {/* Test Setup Preflight Modal */}
+        <TestConfigurationModal
+          isOpen={configModal.isOpen}
+          onClose={() => setConfigModal({ ...configModal, isOpen: false })}
+          examName={configModal.examName}
+          subjectName={configModal.subjectName}
+          chapterName={configModal.chapterName}
+          questionCount={configModal.questionCount}
+          durationMinutes={configModal.durationMinutes}
+          isPaid={configModal.isPaid}
+          attemptRoute={configModal.attemptRoute}
+        />
 
+        {/* Greeting Header */}
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/60 pb-6">
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
+                Student Dashboard
+              </span>
+              <span className="glass-pill rounded-full px-3 py-0.5 font-mono text-[11px] font-bold text-[#20252B]">
+                ACTIVE SESSION
+              </span>
+            </div>
+            <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold font-sans text-[#20252B]">
+              Welcome, {candidate.fullName}
+            </h1>
+            <p className="text-xs text-[#66727D]">
+              Candidate ID: <span className="font-mono font-bold text-[#20252B]">{candidate.registrationId}</span> • Registered Account
+            </p>
+          </div>
+
+          <div className="flex items-center gap-3">
             <Link
               href="/papers"
-              className="inline-flex items-center gap-2 rounded-full bg-[#E4002B] px-6 py-3 text-xs font-bold text-white shadow-sm hover:bg-[#C90026] transition-all shrink-0"
+              className="glass-racing-red flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-bold text-white shadow-lg shadow-[#E4002B]/25 transition-all hover:translate-y-[-1px]"
             >
-              <span>Explore Question Papers</span>
-              <ArrowRight className="h-4 w-4" />
+              <FileText className="h-4 w-4" />
+              <span>Browse Question Papers</span>
             </Link>
           </div>
-        </section>
-      ) : entitlements.freePaperSlug ? (
-        <section className="rounded-[28px] border border-[#DCE2E6] bg-white p-6 sm:p-8 shadow-soft">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-            <div className="flex items-start gap-4">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#9CC6E0]/20 text-[#20252B]">
-                <CheckCircle2 className="h-6 w-6 stroke-[2.2] text-[#20252B]" />
-              </div>
-              <div>
-                <div className="text-[10px] font-bold uppercase tracking-wider text-[#20252B]">
-                  Complimentary Entitlement Active
-                </div>
-                <h2 className="mt-1 text-base sm:text-lg font-bold font-sans text-[#20252B]">
-                  Free Paper Unlocked: {entitlements.freePaperSlug}
-                </h2>
-                <p className="mt-1 text-xs text-[#66727D]">
-                  Permanent access granted. You can attempt, re-attempt, and review this paper at any time without fees.
-                </p>
-              </div>
-            </div>
-
-            <Link
-              href={`/exam/${entitlements.freePaperSlug}`}
-              className="inline-flex items-center gap-2 rounded-full bg-[#20252B] px-6 py-3 text-xs font-bold text-white shadow-sm hover:bg-[#20252B]/90 transition-all shrink-0"
-            >
-              <span>Start Examination</span>
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </section>
-      ) : null}
-
-      {/* ==================================================================== */}
-      {/* PERFORMANCE OVERVIEW (WITH HONEST EMPTY STATE) */}
-      {/* ==================================================================== */}
-      <section className="space-y-4">
-        <div className="flex items-center justify-between">
-          <h2 className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
-            My Performance Overview
-          </h2>
-          <Link href="/dashboard/analytics" className="text-xs font-bold text-[#20252B] hover:underline">
-            Detailed Analytics →
-          </Link>
         </div>
 
-        {hasAttempts ? (
-          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-            <div className="rounded-[24px] border border-[#DCE2E6] bg-white p-6 shadow-soft">
-              <div className="text-xs text-[#66727D]">Average Accuracy</div>
-              <div className="mt-2 font-mono text-3xl font-black text-[#20252B]">
-                {avgAccuracy}%
+        {/* ==================================================================== */}
+        {/* FREE PAPER STATUS BANNER (LIQUID GLASS) */}
+        {/* ==================================================================== */}
+        {entitlements.freePaperAvailable ? (
+          <section className="glass-glacier relative overflow-hidden rounded-[36px] p-6 sm:p-8 shadow-xl">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+              <div className="flex items-start gap-4">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/60 text-[#20252B] shadow-sm">
+                  <Gift className="h-6 w-6 stroke-[2.2] text-[#E4002B]" />
+                </div>
+                <div>
+                  <div className="inline-flex items-center gap-1.5 rounded-full bg-[#E4002B] px-3 py-0.5 text-[10px] font-bold text-white uppercase tracking-wider shadow-sm">
+                    Complimentary Access Available
+                  </div>
+                  <h2 className="mt-2 text-lg sm:text-xl font-bold font-sans text-[#20252B]">
+                    Your preparation starts here. You have your first question paper waiting.
+                  </h2>
+                  <p className="mt-1 text-xs text-[#20252B]/80 max-w-2xl leading-relaxed">
+                    Choose any examination paper from our library. Your first paper is completely free, with full CBT simulation, automatic scoring, and physical OMR sheet.
+                  </p>
+                </div>
               </div>
-              <div className="mt-1 text-[11px] text-[#66727D]">Calculated on evaluated mocks</div>
-            </div>
 
-            <div className="rounded-[24px] border border-[#DCE2E6] bg-white p-6 shadow-soft">
-              <div className="text-xs text-[#66727D]">Latest Mock Score</div>
-              <div className="mt-2 font-mono text-3xl font-black text-[#20252B]">
-                {latestAttempt?.totalScore ?? latestAttempt?.score ?? 0}
-                <span className="text-xs text-[#66727D] font-normal"> / {latestAttempt?.maxScore || 720}</span>
-              </div>
-              <div className="mt-1 text-[11px] text-[#20252B] font-semibold">
-                Accuracy: {latestAttempt?.accuracy ?? 0}%
-              </div>
+              <Link
+                href="/papers"
+                className="glass-racing-red inline-flex items-center gap-2 rounded-full px-7 py-3 text-xs font-bold text-white shadow-lg shadow-[#E4002B]/25 transition-all hover:translate-y-[-1px] shrink-0"
+              >
+                <span>Explore Question Papers</span>
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
+          </section>
+        ) : entitlements.freePaperSlug ? (
+          <section className="glass-polar rounded-[36px] p-6 sm:p-8 shadow-xl">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+              <div className="flex items-start gap-4">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#9CC6E0]/30 text-[#20252B]">
+                  <CheckCircle2 className="h-6 w-6 stroke-[2.2] text-[#E4002B]" />
+                </div>
+                <div>
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-[#20252B]">
+                    Complimentary Entitlement Active
+                  </div>
+                  <h2 className="mt-1 text-base sm:text-lg font-bold font-sans text-[#20252B]">
+                    Free Paper Unlocked: {entitlements.freePaperSlug}
+                  </h2>
+                  <p className="mt-1 text-xs text-[#66727D]">
+                    Permanent access granted. You can attempt, re-attempt, and review this paper at any time without fees.
+                  </p>
+                </div>
+              </div>
 
-            <div className="rounded-[24px] border border-[#DCE2E6] bg-white p-6 shadow-soft">
-              <div className="text-xs text-[#66727D]">Total Questions Attempted</div>
-              <div className="mt-2 font-mono text-3xl font-black text-[#20252B]">
-                {totalQuestionsAttempted}
-              </div>
-              <div className="mt-1 text-[11px] text-[#66727D]">Across all examination papers</div>
+              <Link
+                href={`/exam/${entitlements.freePaperSlug}`}
+                className="inline-flex items-center gap-2 rounded-full bg-[#20252B] px-6 py-3 text-xs font-bold text-white shadow-sm hover:bg-[#20252B]/90 transition-all shrink-0"
+              >
+                <span>Start Examination</span>
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
+          </section>
+        ) : null}
 
-            <div className="rounded-[24px] border border-[#DCE2E6] bg-white p-6 shadow-soft">
-              <div className="text-xs text-[#66727D]">Tests Completed</div>
-              <div className="mt-2 font-mono text-3xl font-black text-[#20252B]">
-                {attempts.length}
-              </div>
-              <div className="mt-1 text-[11px] text-[#20252B] font-semibold">Full scorecards generated</div>
-            </div>
+        {/* ==================================================================== */}
+        {/* PERFORMANCE OVERVIEW (LIQUID GLASS METRIC TILES) */}
+        {/* ==================================================================== */}
+        <section className="space-y-4">
+          <div className="flex items-center justify-between">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
+              My Performance Overview
+            </h2>
+            <Link href="/dashboard/analytics" className="text-xs font-bold text-[#20252B] hover:underline">
+              Detailed Analytics →
+            </Link>
           </div>
-        ) : (
-          <div className="space-y-4">
+
+          {hasAttempts ? (
             <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-              <div className="rounded-[24px] border border-[#DCE2E6] bg-white p-6 shadow-soft">
+              <div className="glass-polar rounded-[28px] p-6 shadow-xl">
                 <div className="text-xs text-[#66727D]">Average Accuracy</div>
-                <div className="mt-2 font-mono text-3xl font-black text-[#66727D]">--</div>
-                <div className="mt-1 text-[11px] text-[#66727D]">Awaiting first test</div>
+                <div className="mt-2 font-mono text-3xl font-black text-[#20252B]">
+                  {avgAccuracy}%
+                </div>
+                <div className="mt-1 text-[11px] text-[#66727D]">Calculated on evaluated mocks</div>
               </div>
 
-              <div className="rounded-[24px] border border-[#DCE2E6] bg-white p-6 shadow-soft">
+              <div className="glass-polar rounded-[28px] p-6 shadow-xl">
                 <div className="text-xs text-[#66727D]">Latest Mock Score</div>
-                <div className="mt-2 font-mono text-3xl font-black text-[#66727D]">--</div>
-                <div className="mt-1 text-[11px] text-[#66727D]">Awaiting first test</div>
+                <div className="mt-2 font-mono text-3xl font-black text-[#20252B]">
+                  {latestAttempt?.totalScore ?? latestAttempt?.score ?? 0}
+                  <span className="text-xs text-[#66727D] font-normal"> / {latestAttempt?.maxScore || 720}</span>
+                </div>
+                <div className="mt-1 text-[11px] text-[#20252B] font-semibold">
+                  Accuracy: {latestAttempt?.accuracy ?? 0}%
+                </div>
               </div>
 
-              <div className="rounded-[24px] border border-[#DCE2E6] bg-white p-6 shadow-soft">
-                <div className="text-xs text-[#66727D]">Questions Attempted</div>
-                <div className="mt-2 font-mono text-3xl font-black text-[#66727D]">0</div>
-                <div className="mt-1 text-[11px] text-[#66727D]">No attempts yet</div>
+              <div className="glass-polar rounded-[28px] p-6 shadow-xl">
+                <div className="text-xs text-[#66727D]">Total Questions Attempted</div>
+                <div className="mt-2 font-mono text-3xl font-black text-[#20252B]">
+                  {totalQuestionsAttempted}
+                </div>
+                <div className="mt-1 text-[11px] text-[#66727D]">Across all examination papers</div>
               </div>
 
-              <div className="rounded-[24px] border border-[#DCE2E6] bg-white p-6 shadow-soft">
+              <div className="glass-polar rounded-[28px] p-6 shadow-xl">
                 <div className="text-xs text-[#66727D]">Tests Completed</div>
-                <div className="mt-2 font-mono text-3xl font-black text-[#66727D]">0</div>
-                <div className="mt-1 text-[11px] text-[#66727D]">No tests completed</div>
+                <div className="mt-2 font-mono text-3xl font-black text-[#20252B]">
+                  {attempts.length}
+                </div>
+                <div className="mt-1 text-[11px] text-[#20252B] font-semibold">Full scorecards generated</div>
               </div>
             </div>
+          ) : (
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+                <div className="glass-polar rounded-[28px] p-6 shadow-xl">
+                  <div className="text-xs text-[#66727D]">Average Accuracy</div>
+                  <div className="mt-2 font-mono text-3xl font-black text-[#66727D]">--</div>
+                  <div className="mt-1 text-[11px] text-[#66727D]">Awaiting first test</div>
+                </div>
 
-            <div className="rounded-[24px] border border-[#DCE2E6] bg-white p-6 text-center space-y-3">
-              <div className="flex h-12 w-12 mx-auto items-center justify-center rounded-2xl bg-[#F1F3F4] text-[#66727D]">
-                <BarChart3 className="h-6 w-6 stroke-[2]" />
+                <div className="glass-polar rounded-[28px] p-6 shadow-xl">
+                  <div className="text-xs text-[#66727D]">Latest Mock Score</div>
+                  <div className="mt-2 font-mono text-3xl font-black text-[#66727D]">--</div>
+                  <div className="mt-1 text-[11px] text-[#66727D]">Awaiting first test</div>
+                </div>
+
+                <div className="glass-polar rounded-[28px] p-6 shadow-xl">
+                  <div className="text-xs text-[#66727D]">Questions Attempted</div>
+                  <div className="mt-2 font-mono text-3xl font-black text-[#66727D]">0</div>
+                  <div className="mt-1 text-[11px] text-[#66727D]">No attempts yet</div>
+                </div>
+
+                <div className="glass-polar rounded-[28px] p-6 shadow-xl">
+                  <div className="text-xs text-[#66727D]">Tests Completed</div>
+                  <div className="mt-2 font-mono text-3xl font-black text-[#66727D]">0</div>
+                  <div className="mt-1 text-[11px] text-[#66727D]">No tests completed</div>
+                </div>
               </div>
-              <h3 className="text-sm font-bold font-sans text-[#20252B]">
-                No Performance Insights Recorded
-              </h3>
-              <p className="text-xs text-[#66727D] max-w-md mx-auto leading-relaxed">
-                Your performance insights will develop as you attempt papers. Complete an examination to begin building your personal analytics.
-              </p>
-              <div className="pt-2">
-                <Link
-                  href="/papers"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#20252B] px-6 py-2.5 text-xs font-bold text-white shadow-soft hover:bg-[#20252B]/90 transition-all"
-                >
-                  <span>Unlock a Question Paper</span>
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
+
+              <div className="glass-polar rounded-[32px] p-8 text-center space-y-3 shadow-xl">
+                <div className="flex h-12 w-12 mx-auto items-center justify-center rounded-2xl bg-[#9CC6E0]/20 text-[#66727D]">
+                  <BarChart3 className="h-6 w-6 stroke-[2] text-[#20252B]" />
+                </div>
+                <h3 className="text-sm font-bold font-sans text-[#20252B]">
+                  No Performance Insights Recorded
+                </h3>
+                <p className="text-xs text-[#66727D] max-w-md mx-auto leading-relaxed">
+                  Your performance insights will develop as you attempt papers. Complete an examination to begin building your personal analytics.
+                </p>
+                <div className="pt-2">
+                  <Link
+                    href="/papers"
+                    className="glass-racing-red inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-bold text-white shadow-lg shadow-[#E4002B]/25 transition-all hover:translate-y-[-1px]"
+                  >
+                    <span>Unlock a Question Paper</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
-        )}
-      </section>
+          )}
+        </section>
 
       {/* ==================================================================== */}
       {/* CURATED QUESTION PAPERS (DISCOVERY TEASER) */}
@@ -405,15 +413,15 @@ export default function StudentDashboardPage() {
             return (
               <div
                 key={paper.id}
-                className="rounded-[24px] border border-[#DCE2E6] bg-white p-5 shadow-soft hover:border-[#9CC6E0] transition-all flex flex-col justify-between space-y-4"
+                className="glass-polar rounded-[28px] p-6 shadow-xl hover:border-[#9CC6E0] transition-all flex flex-col justify-between space-y-4"
               >
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="rounded-full bg-[#E9EEF1] px-2.5 py-0.5 text-[10px] font-bold text-[#20252B]">
+                    <span className="glass-pill rounded-full px-3 py-0.5 text-[10px] font-bold text-[#20252B]">
                       {paper.examLabel}
                     </span>
                     {paper.hasOMR && (
-                      <span className="rounded-full bg-[#9CC6E0]/20 px-2 py-0.5 text-[10px] font-bold text-[#20252B]">
+                      <span className="rounded-full bg-[#9CC6E0]/30 px-2.5 py-0.5 text-[10px] font-bold text-[#20252B]">
                         OMR SIMULATION
                       </span>
                     )}
@@ -430,7 +438,7 @@ export default function StudentDashboardPage() {
                   </div>
                 </div>
 
-                <div className="pt-2 border-t border-[#DCE2E6]/60 flex items-center justify-between">
+                <div className="pt-3 border-t border-white/60 flex items-center justify-between">
                   <span className="text-xs font-bold text-[#20252B]">
                     {isUnlocked ? (
                       <span className="text-[#20252B]">Unlocked</span>
@@ -444,7 +452,7 @@ export default function StudentDashboardPage() {
                   {isUnlocked ? (
                     <Link
                       href={`/exam/${paper.slug}`}
-                      className="inline-flex items-center gap-1.5 rounded-full bg-[#20252B] px-4 py-1.5 text-xs font-bold text-white hover:bg-[#20252B]/90 transition-all"
+                      className="inline-flex items-center gap-1.5 rounded-full bg-[#20252B] px-4 py-1.5 text-xs font-bold text-white hover:bg-[#20252B]/90 transition-all shadow-sm"
                     >
                       <span>Start Attempt</span>
                       <ArrowRight className="h-3.5 w-3.5" />
@@ -452,7 +460,7 @@ export default function StudentDashboardPage() {
                   ) : entitlements.freePaperAvailable ? (
                     <Link
                       href={`/papers/${paper.slug}`}
-                      className="inline-flex items-center gap-1.5 rounded-full bg-[#E4002B] px-4 py-1.5 text-xs font-bold text-white hover:bg-[#C90026] transition-all"
+                      className="glass-racing-red inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold text-white shadow-md shadow-[#E4002B]/20 transition-all hover:translate-y-[-1px]"
                     >
                       <span>Unlock Free</span>
                       <Gift className="h-3.5 w-3.5" />
@@ -460,7 +468,7 @@ export default function StudentDashboardPage() {
                   ) : (
                     <Link
                       href={`/papers/${paper.slug}`}
-                      className="inline-flex items-center gap-1.5 rounded-full bg-[#9CC6E0] px-4 py-1.5 text-xs font-bold text-[#20252B] hover:bg-[#86b5d4] transition-all"
+                      className="glass-glacier inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold text-[#20252B] transition-all hover:border-[#9CC6E0]"
                     >
                       <span>Unlock ₹10</span>
                       <Lock className="h-3 w-3" />
@@ -503,11 +511,11 @@ export default function StudentDashboardPage() {
           ].map((item, idx) => (
             <div
               key={idx}
-              className="rounded-[24px] border border-[#DCE2E6] bg-white p-5 shadow-soft hover:border-[#9CC6E0] transition-all flex flex-col justify-between space-y-4"
+              className="glass-polar rounded-[28px] p-6 shadow-xl hover:border-[#9CC6E0] transition-all flex flex-col justify-between space-y-4"
             >
               <div>
                 <div className="flex items-center justify-between">
-                  <span className="rounded-full bg-[#E9EEF1] px-2.5 py-0.5 text-[10px] font-bold text-[#20252B]">
+                  <span className="glass-pill rounded-full px-2.5 py-0.5 text-[10px] font-bold text-[#20252B]">
                     {item.subject}
                   </span>
                   <span className="text-[10px] text-[#66727D] font-semibold">{item.tag}</span>
@@ -533,7 +541,7 @@ export default function StudentDashboardPage() {
                     attemptRoute: '/exam/neet-demo',
                   })
                 }
-                className="w-full inline-flex items-center justify-center gap-1.5 rounded-full bg-[#E4002B] py-2 text-xs font-bold text-white shadow-soft hover:bg-[#C90026] transition-all"
+                className="glass-racing-red w-full inline-flex items-center justify-center gap-1.5 rounded-full py-2.5 text-xs font-bold text-white shadow-md shadow-[#E4002B]/20 transition-all hover:translate-y-[-1px]"
               >
                 <span>Start Practice</span>
                 <Play className="h-3 w-3 fill-current" />
@@ -546,8 +554,8 @@ export default function StudentDashboardPage() {
       {/* ==================================================================== */}
       {/* RECENT ACTIVITY (ATTEMPT HISTORY) */}
       {/* ==================================================================== */}
-      <section className="rounded-[28px] border border-[#DCE2E6] bg-white p-7 shadow-soft space-y-4">
-        <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-4">
+      <section className="glass-polar rounded-[32px] p-8 shadow-xl space-y-4">
+        <div className="flex items-center justify-between border-b border-white/60 pb-4">
           <div className="flex items-center gap-2">
             <RotateCcw className="h-5 w-5 text-[#20252B]" />
             <h3 className="text-base font-bold font-sans text-[#20252B]">
@@ -563,7 +571,7 @@ export default function StudentDashboardPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead>
-                <tr className="border-b border-[#DCE2E6] text-[#66727D]">
+                <tr className="border-b border-white/60 text-[#66727D]">
                   <th className="pb-3 font-semibold">Examination Paper</th>
                   <th className="pb-3 font-semibold">Date Completed</th>
                   <th className="pb-3 font-semibold">Score</th>
@@ -571,7 +579,7 @@ export default function StudentDashboardPage() {
                   <th className="pb-3 font-semibold text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#DCE2E6]">
+              <tbody className="divide-y divide-white/40">
                 {attempts.slice(0, 5).map((att, idx) => (
                   <tr key={att.id || idx}>
                     <td className="py-3 font-bold text-[#20252B]">
@@ -589,7 +597,7 @@ export default function StudentDashboardPage() {
                     <td className="py-3 text-right">
                       <Link
                         href={`/dashboard/results/${att.id || 'latest'}`}
-                        className="font-bold text-[#20252B] hover:underline"
+                        className="font-bold text-[#20252B] hover:text-[#E4002B] transition-colors"
                       >
                         View Result & OMR →
                       </Link>
@@ -606,7 +614,7 @@ export default function StudentDashboardPage() {
             </p>
             <Link
               href="/papers"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#20252B] hover:underline"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#20252B] hover:text-[#E4002B] transition-colors"
             >
               <span>Browse Question Papers</span>
               <ArrowRight className="h-3 w-3" />
@@ -614,6 +622,7 @@ export default function StudentDashboardPage() {
           </div>
         )}
       </section>
+    </div>
     </div>
   );
 }
