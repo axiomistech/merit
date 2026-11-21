@@ -32,44 +32,46 @@ export default function AdminQuestionPapersPage() {
     <div className="space-y-6 max-w-7xl">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-[#F5F7FB]">Question Paper Builder</h1>
-          <p className="text-xs text-[#A7B0C0]">
+          <h1 className="text-2xl font-bold text-[#263126] font-serif">Question Paper Builder</h1>
+          <p className="mt-1 text-xs text-[#73786E]">
             Assemble mock tests, manage duration, blueprints, and publication states.
           </p>
         </div>
       </div>
 
-      <div className="rounded-xl border border-[#1D2940] bg-[#0B1020] overflow-hidden">
-        <table className="w-full text-left text-xs">
-          <thead className="border-b border-[#1D2940] bg-[#11182A] text-[#A7B0C0]">
-            <tr>
-              <th className="p-4">Paper Identifier</th>
-              <th className="p-4">Name</th>
-              <th className="p-4">Exam</th>
-              <th className="p-4">Duration</th>
-              <th className="p-4">Max Marks</th>
-              <th className="p-4">Pricing</th>
-              <th className="p-4">Status</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-[#1D2940]">
-            {papers.map((p) => (
-              <tr key={p.id} className="hover:bg-[#11182A]/50">
-                <td className="p-4 font-mono text-[#6486C6]">{p.id}</td>
-                <td className="p-4 font-semibold text-[#F5F7FB]">{p.name}</td>
-                <td className="p-4">{p.exam}</td>
-                <td className="p-4 font-mono">{p.duration}</td>
-                <td className="p-4 font-mono font-bold text-[#F5F7FB]">{p.marks}</td>
-                <td className="p-4 text-[#10B981]">{p.price}</td>
-                <td className="p-4">
-                  <span className="rounded bg-[#10B981]/20 px-2 py-0.5 text-[10px] font-bold text-[#10B981] uppercase">
-                    {p.status}
-                  </span>
-                </td>
+      <div className="rounded-2xl border border-[#E6E5DE] bg-white shadow-[0_2px_8px_rgba(38,49,38,0.04)] overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-xs">
+            <thead className="border-b border-[#E6E5DE] bg-[#F7F5EF] text-[#73786E]">
+              <tr>
+                <th className="p-4 font-semibold">Paper Identifier</th>
+                <th className="p-4 font-semibold">Name</th>
+                <th className="p-4 font-semibold">Exam</th>
+                <th className="p-4 font-semibold">Duration</th>
+                <th className="p-4 font-semibold">Max Marks</th>
+                <th className="p-4 font-semibold">Pricing</th>
+                <th className="p-4 font-semibold">Status</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="divide-y divide-[#ECEAE4] text-[#2E332D]">
+              {papers.map((p) => (
+                <tr key={p.id} className="hover:bg-[#F7F5EF]/60 transition-colors">
+                  <td className="p-4 font-mono font-bold text-[#758B62]">{p.id}</td>
+                  <td className="p-4 font-semibold text-[#263126]">{p.name}</td>
+                  <td className="p-4 text-[#73786E]">{p.exam}</td>
+                  <td className="p-4 font-mono text-[#73786E]">{p.duration}</td>
+                  <td className="p-4 font-mono font-bold text-[#263126]">{p.marks}</td>
+                  <td className="p-4 text-[#758B62] font-semibold">{p.price}</td>
+                  <td className="p-4">
+                    <span className="rounded-full bg-[#E9EEE3] px-2.5 py-0.5 text-[10px] font-bold text-[#758B62] uppercase">
+                      {p.status}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

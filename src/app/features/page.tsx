@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import { Shield, Sparkles, Clock, CheckCircle2, FileText, Cpu, Database } from 'lucide-react';
 
 export const metadata = {
   title: 'Platform Features — FORT Learning',
@@ -37,21 +36,21 @@ export default function FeaturesPage() {
   ];
 
   return (
-    <div className="bg-[#0B1020] text-[#F5F7FB] min-h-screen py-20">
+    <div className="bg-[#F7F5EF] text-[#2E332D] min-h-screen py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto">
-          <h1 className="text-4xl font-extrabold sm:text-5xl">Engineered for Academic Seriousness</h1>
-          <p className="mt-4 text-base text-[#A7B0C0]">
+          <h1 className="text-4xl font-extrabold sm:text-5xl text-[#263126]">Engineered for Academic Seriousness</h1>
+          <p className="mt-4 text-base text-[#73786E]">
             Every feature on FORT Learning is designed to solve a specific challenge in high-stakes
             competitive examination preparation.
           </p>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {features.map((f, idx) => (
-            <div key={idx} className="rounded-2xl border border-[#263554] bg-[#11182A] p-6">
-              <h3 className="text-lg font-bold text-[#F5F7FB]">{f.title}</h3>
-              <p className="mt-2 text-xs leading-relaxed text-[#A7B0C0]">{f.desc}</p>
+            <div key={idx} className="rounded-2xl border border-[#E6E5DE] bg-white p-7 shadow-soft">
+              <h3 className="text-lg font-bold text-[#263126]">{f.title}</h3>
+              <p className="mt-2 text-xs leading-relaxed text-[#73786E]">{f.desc}</p>
             </div>
           ))}
         </div>

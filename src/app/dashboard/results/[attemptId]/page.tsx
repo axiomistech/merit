@@ -81,7 +81,7 @@ export default function ExamResultPage() {
 
   if (!evaluation) {
     return (
-      <div className="flex h-96 items-center justify-center text-xs text-[#A7B0C0]">
+      <div className="flex h-96 items-center justify-center text-xs text-[#73786E]">
         Loading analytical evaluation...
       </div>
     );
@@ -92,35 +92,35 @@ export default function ExamResultPage() {
   };
 
   return (
-    <div className="bg-[#0B1020] text-[#F5F7FB] min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+    <div className="bg-[#F7F5EF] text-[#2E332D] min-h-screen py-8 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl space-y-8">
         {/* Navigation Breadcrumb */}
-        <div className="flex items-center justify-between border-b border-[#263554] pb-4">
+        <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-4">
           <Link
             href="/dashboard"
-            className="flex items-center gap-2 text-xs font-semibold text-[#A7B0C0] hover:text-[#F5F7FB]"
+            className="flex items-center gap-2 text-xs font-semibold text-[#73786E] hover:text-[#263126] transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
-            <span>Return to Dashboard</span>
+            <span>Return to Candidate Dashboard</span>
           </Link>
 
           <div className="flex items-center gap-2 text-xs">
-            <span className="text-[#A7B0C0]">Attempt Hash:</span>
-            <span className="font-mono text-[#6486C6] font-bold">{attemptId}</span>
+            <span className="text-[#92958D]">Attempt Hash:</span>
+            <span className="font-mono text-[#758B62] font-bold">{attemptId}</span>
           </div>
         </div>
 
         {/* Evaluation Banner */}
-        <div className="rounded-2xl border border-[#263554] bg-[#11182A] p-6 sm:p-8">
-          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#263554] pb-6">
+        <div className="rounded-2xl border border-[#E6E5DE] bg-white p-6 sm:p-8 shadow-[0_2px_8px_rgba(38,49,38,0.04)]">
+          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#ECEAE4] pb-6">
             <div>
               <div className="flex items-center gap-2">
-                <span className="rounded bg-[#10B981]/20 px-2 py-0.5 text-xs font-bold text-[#10B981]">
+                <span className="rounded-full bg-[#E9EEE3] px-2.5 py-0.5 text-xs font-bold text-[#758B62]">
                   OFFICIAL EVALUATION
                 </span>
-                <span className="text-xs text-[#A7B0C0]">{SAMPLE_NEET_PAPER.name}</span>
+                <span className="text-xs text-[#73786E]">{SAMPLE_NEET_PAPER.name}</span>
               </div>
-              <h1 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#F5F7FB]">
+              <h1 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#263126] font-serif">
                 Examination Performance Breakdown
               </h1>
             </div>
@@ -140,55 +140,55 @@ export default function ExamResultPage() {
                     questionIdMap: {},
                   });
                 }}
-                className="flex items-center gap-1.5 rounded-lg border border-[#263554] bg-[#172033] px-3.5 py-2 text-xs font-semibold text-[#F5F7FB] hover:border-[#6486C6]"
+                className="flex items-center gap-1.5 rounded-xl border border-[#E6E5DE] bg-[#F7F5EF] px-4 py-2 text-xs font-semibold text-[#263126] hover:bg-[#E9EEE3] hover:border-[#9CAF88] transition-colors shadow-sm"
               >
-                <FileDown className="h-4 w-4 text-[#6486C6]" />
-                <span>Export OMR Sheet (PDF)</span>
+                <FileDown className="h-4 w-4 text-[#758B62]" />
+                <span>Export Vector OMR (PDF)</span>
               </button>
             </div>
           </div>
 
           {/* Primary Metric Grid */}
           <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-6">
-            <div className="rounded-xl border border-[#263554] bg-[#172033] p-4 text-center">
-              <div className="text-[11px] text-[#A7B0C0]">Total Score</div>
-              <div className="mt-1 font-mono text-2xl font-black text-[#6486C6]">
+            <div className="rounded-xl border border-[#E6E5DE] bg-[#F7F5EF] p-4 text-center">
+              <div className="text-[11px] text-[#73786E]">Total Score</div>
+              <div className="mt-1 font-mono text-2xl font-bold text-[#263126]">
                 {evaluation.totalScore}{' '}
-                <span className="text-xs text-[#7C8799]">/ {evaluation.maxScore}</span>
+                <span className="text-xs text-[#92958D]">/ {evaluation.maxScore}</span>
               </div>
             </div>
 
-            <div className="rounded-xl border border-[#263554] bg-[#172033] p-4 text-center">
-              <div className="text-[11px] text-[#A7B0C0]">Accuracy Rate</div>
-              <div className="mt-1 font-mono text-2xl font-black text-[#10B981]">
+            <div className="rounded-xl border border-[#E6E5DE] bg-[#F7F5EF] p-4 text-center">
+              <div className="text-[11px] text-[#73786E]">Accuracy Rate</div>
+              <div className="mt-1 font-mono text-2xl font-bold text-[#758B62]">
                 {evaluation.accuracy}%
               </div>
             </div>
 
-            <div className="rounded-xl border border-[#263554] bg-[#172033] p-4 text-center">
-              <div className="text-[11px] text-[#A7B0C0]">Attempt Rate</div>
-              <div className="mt-1 font-mono text-2xl font-black text-[#F5F7FB]">
+            <div className="rounded-xl border border-[#E6E5DE] bg-[#F7F5EF] p-4 text-center">
+              <div className="text-[11px] text-[#73786E]">Attempt Rate</div>
+              <div className="mt-1 font-mono text-2xl font-bold text-[#263126]">
                 {evaluation.attemptRate}%
               </div>
             </div>
 
-            <div className="rounded-xl border border-[#263554] bg-[#172033] p-4 text-center">
-              <div className="text-[11px] text-[#A7B0C0]">Correct Answers</div>
-              <div className="mt-1 font-mono text-2xl font-black text-[#10B981]">
+            <div className="rounded-xl border border-[#E6E5DE] bg-[#F7F5EF] p-4 text-center">
+              <div className="text-[11px] text-[#73786E]">Correct Answers</div>
+              <div className="mt-1 font-mono text-2xl font-bold text-[#758B62]">
                 {evaluation.correctCount}
               </div>
             </div>
 
-            <div className="rounded-xl border border-[#263554] bg-[#172033] p-4 text-center">
-              <div className="text-[11px] text-[#A7B0C0]">Incorrect (Penalized)</div>
-              <div className="mt-1 font-mono text-2xl font-black text-[#EF4444]">
+            <div className="rounded-xl border border-[#E8412C]/20 bg-[#FCE8E4] p-4 text-center">
+              <div className="text-[11px] text-[#E8412C]">Incorrect (Penalized)</div>
+              <div className="mt-1 font-mono text-2xl font-bold text-[#E8412C]">
                 {evaluation.incorrectCount}
               </div>
             </div>
 
-            <div className="rounded-xl border border-[#263554] bg-[#172033] p-4 text-center">
-              <div className="text-[11px] text-[#A7B0C0]">Time Invested</div>
-              <div className="mt-1 font-mono text-xl font-bold text-[#F5F7FB]">
+            <div className="rounded-xl border border-[#E6E5DE] bg-[#F7F5EF] p-4 text-center">
+              <div className="text-[11px] text-[#73786E]">Time Invested</div>
+              <div className="mt-1 font-mono text-xl font-bold text-[#263126]">
                 {formatTimeWithHours(evaluation.timeTakenSeconds)}
               </div>
             </div>
@@ -196,14 +196,14 @@ export default function ExamResultPage() {
         </div>
 
         {/* View Tabs */}
-        <div className="flex border-b border-[#263554] gap-4 text-xs font-bold">
+        <div className="flex border-b border-[#ECEAE4] gap-6 text-xs font-bold">
           <button
             onClick={() => setActiveTab('overview')}
             className={cn(
               'pb-3 border-b-2 transition-colors',
               activeTab === 'overview'
-                ? 'border-[#6486C6] text-[#6486C6]'
-                : 'border-transparent text-[#A7B0C0] hover:text-[#F5F7FB]'
+                ? 'border-[#9CAF88] text-[#263126]'
+                : 'border-transparent text-[#73786E] hover:text-[#263126]'
             )}
           >
             Subject Breakdown & Analytics
@@ -213,8 +213,8 @@ export default function ExamResultPage() {
             className={cn(
               'pb-3 border-b-2 transition-colors',
               activeTab === 'solutions'
-                ? 'border-[#6486C6] text-[#6486C6]'
-                : 'border-transparent text-[#A7B0C0] hover:text-[#F5F7FB]'
+                ? 'border-[#9CAF88] text-[#263126]'
+                : 'border-transparent text-[#73786E] hover:text-[#263126]'
             )}
           >
             Question-by-Question Scientific Solutions
@@ -224,8 +224,8 @@ export default function ExamResultPage() {
             className={cn(
               'pb-3 border-b-2 transition-colors',
               activeTab === 'omr'
-                ? 'border-[#6486C6] text-[#6486C6]'
-                : 'border-transparent text-[#A7B0C0] hover:text-[#F5F7FB]'
+                ? 'border-[#9CAF88] text-[#263126]'
+                : 'border-transparent text-[#73786E] hover:text-[#263126]'
             )}
           >
             Evaluated OMR Sheet
@@ -235,35 +235,35 @@ export default function ExamResultPage() {
         {/* TAB 1: SUBJECT BREAKDOWN */}
         {activeTab === 'overview' && (
           <div className="space-y-6">
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-[#6486C6]">
+            <h2 className="text-sm font-semibold uppercase tracking-wider text-[#758B62]">
               Subject Discipline Performance
             </h2>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {Object.entries(evaluation.subjectPerformance).map(([key, data]) => (
-                <div key={key} className="rounded-xl border border-[#263554] bg-[#11182A] p-5 space-y-3">
+                <div key={key} className="rounded-2xl border border-[#E6E5DE] bg-white p-5 space-y-3 shadow-[0_2px_8px_rgba(38,49,38,0.04)]">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-base font-bold text-[#F5F7FB]">{data.subjectName}</h3>
-                    <span className="font-mono text-xs font-bold text-[#6486C6]">
+                    <h3 className="text-base font-bold text-[#263126]">{data.subjectName}</h3>
+                    <span className="font-mono text-xs font-bold text-[#758B62]">
                       {data.score} / {data.maxScore}
                     </span>
                   </div>
 
-                  <div className="space-y-1 text-xs text-[#A7B0C0]">
+                  <div className="space-y-1.5 text-xs text-[#73786E] border-t border-[#ECEAE4] pt-3">
                     <div className="flex justify-between">
                       <span>Accuracy:</span>
-                      <strong className="text-[#10B981]">{data.accuracy}%</strong>
+                      <strong className="text-[#758B62] font-mono">{data.accuracy}%</strong>
                     </div>
                     <div className="flex justify-between">
                       <span>Correct / Wrong:</span>
                       <span>
-                        <strong className="text-[#10B981]">{data.correct}</strong> /{' '}
-                        <strong className="text-[#EF4444]">{data.incorrect}</strong>
+                        <strong className="text-[#758B62]">{data.correct}</strong> /{' '}
+                        <strong className="text-[#E8412C]">{data.incorrect}</strong>
                       </span>
                     </div>
                     <div className="flex justify-between">
                       <span>Unattempted:</span>
-                      <span>{data.unattempted}</span>
+                      <span className="font-mono">{data.unattempted}</span>
                     </div>
                   </div>
                 </div>
@@ -275,7 +275,7 @@ export default function ExamResultPage() {
         {/* TAB 2: QUESTION-BY-QUESTION SOLUTIONS */}
         {activeTab === 'solutions' && (
           <div className="space-y-6">
-            <div className="text-xs text-[#A7B0C0]">
+            <div className="text-xs text-[#73786E]">
               Full analytical explanations with mathematical formulas and step-by-step logic.
             </div>
 
@@ -289,26 +289,26 @@ export default function ExamResultPage() {
                 return (
                   <div
                     key={q.id}
-                    className="rounded-xl border border-[#263554] bg-[#11182A] p-6 space-y-4"
+                    className="rounded-2xl border border-[#E6E5DE] bg-white p-6 shadow-[0_2px_8px_rgba(38,49,38,0.04)] space-y-4"
                   >
-                    <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#263554] pb-3 text-xs">
+                    <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#ECEAE4] pb-3 text-xs">
                       <div className="flex items-center gap-2">
-                        <span className="font-mono font-bold text-[#F5F7FB]">Q{idx + 1}.</span>
-                        <span className="rounded bg-[#172033] px-2 py-0.5 text-[#A7B0C0]">
+                        <span className="font-mono font-bold text-[#263126]">Q{idx + 1}.</span>
+                        <span className="rounded-full bg-[#E9EEE3] px-2.5 py-0.5 text-[#263126] font-semibold">
                           {q.subjectName}
                         </span>
-                        <span className="text-[#6486C6] font-semibold">{q.conceptName}</span>
+                        <span className="text-[#758B62] font-semibold">{q.conceptName}</span>
                       </div>
 
                       <div className="flex items-center gap-3">
                         <span
                           className={cn(
-                            'rounded px-2.5 py-0.5 font-bold uppercase text-[11px]',
+                            'rounded-full px-2.5 py-0.5 font-bold uppercase text-[11px]',
                             isCorrect
-                              ? 'bg-[#10B981]/20 text-[#10B981]'
+                              ? 'bg-[#E9EEE3] text-[#758B62]'
                               : isWrong
-                              ? 'bg-[#EF4444]/20 text-[#EF4444]'
-                              : 'bg-[#172033] text-[#A7B0C0]'
+                              ? 'bg-[#FCE8E4] text-[#E8412C]'
+                              : 'bg-[#F7F5EF] text-[#73786E]'
                           )}
                         >
                           {qResult?.result || 'Unattempted'} (
@@ -320,7 +320,7 @@ export default function ExamResultPage() {
 
                         <button
                           onClick={() => toggleSolution(q.id)}
-                          className="flex items-center gap-1 text-[#6486C6] hover:underline"
+                          className="flex items-center gap-1 font-semibold text-[#758B62] hover:text-[#263126] transition-colors"
                         >
                           <span>{isExpanded ? 'Hide Solution' : 'View Solution'}</span>
                           {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
@@ -328,28 +328,28 @@ export default function ExamResultPage() {
                       </div>
                     </div>
 
-                    <div className="text-sm text-[#F5F7FB]">
+                    <div className="text-sm text-[#263126] leading-relaxed">
                       <MathText content={q.text} />
                     </div>
 
                     {/* Options list */}
-                    <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 text-xs">
+                    <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 text-xs">
                       {q.options.map((opt) => {
                         const isCorrectOption = q.answerKey?.correctOptions?.includes(opt.key);
                         return (
                           <div
                             key={opt.key}
                             className={cn(
-                              'flex items-center gap-2.5 rounded-lg border p-2.5',
+                              'flex items-center gap-2.5 rounded-xl border p-3',
                               isCorrectOption
-                                ? 'border-[#10B981] bg-[#10B981]/10 text-[#10B981]'
-                                : 'border-[#263554] bg-[#172033] text-[#A7B0C0]'
+                                ? 'border-[#9CAF88] bg-[#E9EEE3] text-[#263126]'
+                                : 'border-[#E6E5DE] bg-[#F7F5EF] text-[#73786E]'
                             )}
                           >
                             <span className="font-mono font-bold">{opt.key}.</span>
                             <MathText content={opt.text} />
                             {isCorrectOption && (
-                              <CheckCircle2 className="h-4 w-4 text-[#10B981] ml-auto" />
+                              <CheckCircle2 className="h-4 w-4 text-[#758B62] ml-auto shrink-0" />
                             )}
                           </div>
                         );
@@ -358,11 +358,11 @@ export default function ExamResultPage() {
 
                     {/* Expanded Scientific Solution */}
                     {isExpanded && q.explanation && (
-                      <div className="rounded-xl border border-[#6486C6]/30 bg-[#172033] p-4 text-xs space-y-2 animate-in fade-in">
-                        <div className="font-bold text-[#6486C6] uppercase tracking-wider text-[11px]">
-                          Concept Solution & Reference
+                      <div className="rounded-xl border border-[#9CAF88]/40 bg-[#F7F5EF] p-5 text-xs space-y-2 animate-in fade-in">
+                        <div className="font-bold text-[#758B62] uppercase tracking-wider text-[11px]">
+                          Concept Solution & Formula Reference
                         </div>
-                        <div className="leading-relaxed text-[#F5F7FB]">
+                        <div className="leading-relaxed text-[#263126]">
                           <MathText content={q.explanation.text} />
                         </div>
                       </div>

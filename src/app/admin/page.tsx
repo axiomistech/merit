@@ -11,6 +11,7 @@ import {
   ArrowUpRight,
   Shield,
   Clock,
+  ArrowRight,
 } from 'lucide-react';
 
 export default function AdminOverviewPage() {
@@ -24,9 +25,9 @@ export default function AdminOverviewPage() {
   return (
     <div className="space-y-8 max-w-7xl">
       <div>
-        <h1 className="text-2xl font-black text-[#F5F7FB]">FORT Control Command Center</h1>
-        <p className="text-xs text-[#A7B0C0]">
-          System overview, student registrations, question banks, and financial reconciliation.
+        <h1 className="text-2xl font-bold text-[#263126] font-serif">FORT Control Command Center</h1>
+        <p className="mt-1 text-xs text-[#73786E]">
+          Centralized management for candidate registrations, mathematical question banks, and financial reconciliation.
         </p>
       </div>
 
@@ -35,13 +36,16 @@ export default function AdminOverviewPage() {
         {stats.map((s, idx) => {
           const Icon = s.icon;
           return (
-            <div key={idx} className="rounded-xl border border-[#1D2940] bg-[#0B1020] p-5">
+            <div
+              key={idx}
+              className="rounded-2xl border border-[#E6E5DE] bg-white p-5 shadow-[0_2px_8px_rgba(38,49,38,0.04)]"
+            >
               <div className="flex items-center justify-between">
-                <span className="text-xs text-[#A7B0C0]">{s.label}</span>
-                <Icon className="h-4 w-4 text-[#6486C6]" />
+                <span className="text-xs text-[#73786E]">{s.label}</span>
+                <Icon className="h-4 w-4 text-[#758B62]" />
               </div>
-              <div className="mt-2 font-mono text-3xl font-black text-[#F5F7FB]">{s.value}</div>
-              <div className="mt-1 text-[11px] text-[#10B981]">{s.sub}</div>
+              <div className="mt-2 font-mono text-3xl font-bold text-[#263126]">{s.value}</div>
+              <div className="mt-1 text-[11px] font-semibold text-[#758B62]">{s.sub}</div>
             </div>
           );
         })}
@@ -49,11 +53,11 @@ export default function AdminOverviewPage() {
 
       {/* Quick Action Tables */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        <div className="rounded-xl border border-[#1D2940] bg-[#0B1020] p-6 space-y-4">
-          <div className="flex items-center justify-between border-b border-[#1D2940] pb-3">
-            <h3 className="text-sm font-bold text-[#F5F7FB]">Recent Registrations</h3>
-            <Link href="/admin/students" className="text-xs text-[#6486C6] hover:underline">
-              View All
+        <div className="rounded-2xl border border-[#E6E5DE] bg-white p-6 space-y-4 shadow-[0_2px_8px_rgba(38,49,38,0.04)]">
+          <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-3">
+            <h3 className="text-sm font-bold text-[#263126]">Recent Registrations</h3>
+            <Link href="/admin/students" className="text-xs font-semibold text-[#758B62] hover:underline">
+              View All Candidates
             </Link>
           </div>
 
@@ -63,46 +67,46 @@ export default function AdminOverviewPage() {
               { id: 'FORT-26-000002', name: 'Priya Iyer', exam: 'JEE Main', date: '12 mins ago' },
               { id: 'FORT-26-000003', name: 'Rohan Deshmukh', exam: 'UPSC CSE', date: '45 mins ago' },
             ].map((st) => (
-              <div key={st.id} className="flex items-center justify-between rounded-lg bg-[#11182A] p-3">
+              <div key={st.id} className="flex items-center justify-between rounded-xl bg-[#F7F5EF] p-3.5">
                 <div>
-                  <span className="font-mono font-bold text-[#6486C6]">{st.id}</span>
-                  <div className="font-medium text-[#F5F7FB]">{st.name}</div>
+                  <span className="font-mono font-bold text-[#758B62]">{st.id}</span>
+                  <div className="font-medium text-[#263126]">{st.name}</div>
                 </div>
                 <div className="text-right">
-                  <span className="rounded bg-[#172033] px-2 py-0.5 text-[10px] font-bold text-[#A7B0C0]">
+                  <span className="rounded-full bg-white border border-[#E6E5DE] px-2 py-0.5 text-[10px] font-bold text-[#73786E]">
                     {st.exam}
                   </span>
-                  <div className="mt-1 text-[10px] text-[#7C8799]">{st.date}</div>
+                  <div className="mt-1 text-[10px] text-[#92958D]">{st.date}</div>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="rounded-xl border border-[#1D2940] bg-[#0B1020] p-6 space-y-4">
-          <div className="flex items-center justify-between border-b border-[#1D2940] pb-3">
-            <h3 className="text-sm font-bold text-[#F5F7FB]">Pricing & Policy Status</h3>
-            <Link href="/admin/pricing" className="text-xs text-[#6486C6] hover:underline">
-              Configure
+        <div className="rounded-2xl border border-[#E6E5DE] bg-white p-6 space-y-4 shadow-[0_2px_8px_rgba(38,49,38,0.04)]">
+          <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-3">
+            <h3 className="text-sm font-bold text-[#263126]">Monetization Policy Status</h3>
+            <Link href="/admin/pricing" className="text-xs font-semibold text-[#758B62] hover:underline">
+              Configure Pricing
             </Link>
           </div>
 
-          <div className="space-y-3 text-xs text-[#A7B0C0]">
-            <div className="flex justify-between border-b border-[#1D2940] pb-2">
+          <div className="space-y-3 text-xs text-[#73786E]">
+            <div className="flex justify-between border-b border-[#ECEAE4] pb-2">
               <span>First Paper Policy:</span>
-              <strong className="text-[#10B981]">100% Free Claim Allowed</strong>
+              <strong className="text-[#758B62]">100% Free Claim Allowed</strong>
             </div>
-            <div className="flex justify-between border-b border-[#1D2940] pb-2">
+            <div className="flex justify-between border-b border-[#ECEAE4] pb-2">
               <span>Standard Paper Price:</span>
-              <strong className="font-mono text-[#F5F7FB]">₹10.00 (1000 Paise)</strong>
+              <strong className="font-mono text-[#263126]">₹10.00 (1000 Paise)</strong>
             </div>
-            <div className="flex justify-between border-b border-[#1D2940] pb-2">
-              <span>Gateway Signature Check:</span>
-              <strong className="text-[#10B981]">HMAC SHA256 Enforced</strong>
+            <div className="flex justify-between border-b border-[#ECEAE4] pb-2">
+              <span>Gateway Signature Verification:</span>
+              <strong className="text-[#758B62]">HMAC SHA256 Active</strong>
             </div>
             <div className="flex justify-between">
-              <span>Active OMR Resolution:</span>
-              <strong className="text-[#F5F7FB]">Vector 300 DPI A4</strong>
+              <span>Primary Gateway:</span>
+              <strong className="text-[#263126]">Razorpay Payments</strong>
             </div>
           </div>
         </div>

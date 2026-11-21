@@ -63,132 +63,136 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="bg-[#0B1020] text-[#F5F7FB] min-h-screen py-16 flex items-center justify-center px-4">
-      <div className="w-full max-w-md rounded-2xl border border-[#263554] bg-[#11182A] p-8 shadow-2xl">
+    <div className="bg-[#F7F5EF] text-[#2E332D] min-h-screen py-16 flex items-center justify-center px-4">
+      <div className="w-full max-w-lg rounded-2xl border border-[#E6E5DE] bg-white p-8 sm:p-10 shadow-[0_4px_24px_rgba(38,49,38,0.06)]">
         <div className="text-center">
           <Link href="/" className="inline-flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#6486C6] text-[#0B1020]">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#9CAF88] text-white">
               <Shield className="h-5 w-5 stroke-[2.5]" />
             </div>
-            <span className="font-mono text-xl font-bold tracking-wider text-[#F5F7FB]">FORT</span>
+            <span className="font-mono text-xl font-bold tracking-wider text-[#263126]">FORT</span>
           </Link>
-          <h1 className="mt-4 text-2xl font-bold text-[#F5F7FB]">Create Your Account</h1>
-          <p className="mt-1 text-xs text-[#A7B0C0]">
-            Generate your verified FORT registration ID & claim your free paper.
+          <h1 className="mt-4 text-2xl font-bold text-[#263126] font-serif">Create Candidate Account</h1>
+          <p className="mt-1 text-xs text-[#73786E]">
+            Generate your verified FORT registration ID & claim your complimentary first paper.
           </p>
+
+          <div className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-[#E9EEE3] px-3 py-1 text-xs font-semibold text-[#758B62]">
+            <CheckCircle2 className="h-3.5 w-3.5" />
+            <span>Includes 1 Free Full Mock Paper Claim</span>
+          </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="mt-8 space-y-4">
+        <form onSubmit={handleSubmit} className="mt-8 space-y-4 text-xs">
           <div>
-            <label className="block text-xs font-medium text-[#A7B0C0]">Full Name *</label>
+            <label className="block text-[#73786E] font-medium">Candidate Full Name *</label>
             <div className="relative mt-1">
-              <User className="absolute left-3 top-2.5 h-4 w-4 text-[#7C8799]" />
+              <User className="absolute left-3.5 top-3 h-4 w-4 text-[#92958D]" />
               <input
                 type="text"
                 required
                 value={formData.fullName}
                 onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                placeholder="Candidate Full Name"
-                className="w-full rounded-lg border border-[#263554] bg-[#172033] py-2 pl-9 pr-3 text-sm text-[#F5F7FB] placeholder-[#7C8799] focus:border-[#6486C6] focus:outline-none"
+                placeholder="Official candidate name"
+                className="w-full rounded-xl border border-[#E6E5DE] bg-white py-2.5 pl-10 pr-3 text-sm text-[#263126] placeholder-[#92958D] focus:border-[#9CAF88] focus:ring-1 focus:ring-[#9CAF88] focus:outline-none transition-all"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-[#A7B0C0]">Email Address *</label>
+            <label className="block text-[#73786E] font-medium">Email Address *</label>
             <div className="relative mt-1">
-              <Mail className="absolute left-3 top-2.5 h-4 w-4 text-[#7C8799]" />
+              <Mail className="absolute left-3.5 top-3 h-4 w-4 text-[#92958D]" />
               <input
                 type="email"
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 placeholder="name@example.com"
-                className="w-full rounded-lg border border-[#263554] bg-[#172033] py-2 pl-9 pr-3 text-sm text-[#F5F7FB] placeholder-[#7C8799] focus:border-[#6486C6] focus:outline-none"
+                className="w-full rounded-xl border border-[#E6E5DE] bg-white py-2.5 pl-10 pr-3 text-sm text-[#263126] placeholder-[#92958D] focus:border-[#9CAF88] focus:ring-1 focus:ring-[#9CAF88] focus:outline-none transition-all"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-[#A7B0C0]">Password *</label>
+            <label className="block text-[#73786E] font-medium">Password (Min 8 characters) *</label>
             <div className="relative mt-1">
-              <Lock className="absolute left-3 top-2.5 h-4 w-4 text-[#7C8799]" />
+              <Lock className="absolute left-3.5 top-3 h-4 w-4 text-[#92958D]" />
               <input
                 type="password"
                 required
                 minLength={8}
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                placeholder="Minimum 8 characters"
-                className="w-full rounded-lg border border-[#263554] bg-[#172033] py-2 pl-9 pr-3 text-sm text-[#F5F7FB] placeholder-[#7C8799] focus:border-[#6486C6] focus:outline-none"
+                placeholder="••••••••"
+                className="w-full rounded-xl border border-[#E6E5DE] bg-white py-2.5 pl-10 pr-3 text-sm text-[#263126] placeholder-[#92958D] focus:border-[#9CAF88] focus:ring-1 focus:ring-[#9CAF88] focus:outline-none transition-all"
               />
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
-              <label className="block text-xs font-medium text-[#A7B0C0]">Date of Birth</label>
+              <label className="block text-[#73786E] font-medium">Date of Birth</label>
               <div className="relative mt-1">
+                <Calendar className="absolute left-3.5 top-3 h-4 w-4 text-[#92958D]" />
                 <input
                   type="date"
                   value={formData.dateOfBirth}
                   onChange={(e) => setFormData({ ...formData, dateOfBirth: e.target.value })}
-                  className="w-full rounded-lg border border-[#263554] bg-[#172033] py-2 px-3 text-xs text-[#F5F7FB] focus:border-[#6486C6] focus:outline-none"
+                  className="w-full rounded-xl border border-[#E6E5DE] bg-white py-2.5 pl-10 pr-3 text-sm text-[#263126] focus:border-[#9CAF88] focus:outline-none transition-all"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#A7B0C0]">Country</label>
+              <label className="block text-[#73786E] font-medium">Country</label>
               <div className="relative mt-1">
-                <select
+                <Globe className="absolute left-3.5 top-3 h-4 w-4 text-[#92958D]" />
+                <input
+                  type="text"
                   value={formData.country}
                   onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                  className="w-full rounded-lg border border-[#263554] bg-[#172033] py-2 px-3 text-xs text-[#F5F7FB] focus:border-[#6486C6] focus:outline-none"
-                >
-                  <option value="India">India</option>
-                  <option value="United Arab Emirates">UAE</option>
-                  <option value="Singapore">Singapore</option>
-                  <option value="Other">Other</option>
-                </select>
+                  className="w-full rounded-xl border border-[#E6E5DE] bg-white py-2.5 pl-10 pr-3 text-sm text-[#263126] focus:border-[#9CAF88] focus:outline-none transition-all"
+                />
               </div>
             </div>
           </div>
 
-          <div className="flex items-start gap-2 pt-2">
-            <input
-              type="checkbox"
-              id="terms"
-              checked={formData.termsAccepted}
-              onChange={(e) => setFormData({ ...formData, termsAccepted: e.target.checked })}
-              className="mt-1 rounded border-[#263554] bg-[#172033] text-[#6486C6] focus:ring-0"
-            />
-            <label htmlFor="terms" className="text-[11px] leading-snug text-[#A7B0C0]">
-              I accept the{' '}
-              <Link href="/terms-and-conditions" className="text-[#6486C6] underline">
-                Terms & Conditions
-              </Link>{' '}
-              and acknowledge the{' '}
-              <Link href="/privacy-policy" className="text-[#6486C6] underline">
-                Privacy Policy
-              </Link>
-              .
+          <div className="pt-2">
+            <label className="flex items-start gap-2.5 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={formData.termsAccepted}
+                onChange={(e) => setFormData({ ...formData, termsAccepted: e.target.checked })}
+                className="mt-0.5 rounded border-[#E6E5DE] text-[#9CAF88] focus:ring-[#9CAF88]"
+              />
+              <span className="text-[11px] text-[#73786E] leading-relaxed">
+                I agree to the{' '}
+                <Link href="/terms-and-conditions" className="font-semibold text-[#758B62] underline">
+                  Terms & Conditions
+                </Link>{' '}
+                and{' '}
+                <Link href="/privacy-policy" className="font-semibold text-[#758B62] underline">
+                  Privacy Policy
+                </Link>
+                . I understand that examination results and OMR scores are authoritative.
+              </span>
             </label>
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-xl bg-[#6486C6] py-3 text-sm font-bold text-[#0B1020] hover:bg-[#7b9bd7] transition-all shadow-md shadow-[#6486C6]/20 disabled:opacity-50"
+            className="w-full rounded-xl bg-[#9CAF88] py-3 text-sm font-bold text-white hover:bg-[#8ea07a] transition-all shadow-sm disabled:opacity-50 mt-4"
           >
-            {loading ? 'Creating Account...' : 'Register & Continue to Onboarding'}
+            {loading ? 'Creating Candidate Record...' : 'Complete Registration & Claim Free Paper'}
           </button>
         </form>
 
-        <div className="mt-6 border-t border-[#263554] pt-4 text-center text-xs text-[#A7B0C0]">
-          Already have a FORT account?{' '}
-          <Link href="/login" className="font-semibold text-[#6486C6] hover:underline">
-            Sign In
+        <div className="mt-6 border-t border-[#ECEAE4] pt-4 text-center text-xs text-[#73786E]">
+          Already registered?{' '}
+          <Link href="/login" className="font-bold text-[#758B62] hover:underline">
+            Sign In to Dashboard
           </Link>
         </div>
       </div>

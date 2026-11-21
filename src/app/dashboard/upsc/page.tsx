@@ -38,7 +38,6 @@ export default function StudentUpscDashboardPage() {
     setEssayContent(text);
     setAutosaveStatus('saving');
 
-    // Debounced autosave
     if (typeof window !== 'undefined') {
       localStorage.setItem('fort_upsc_mains_draft', text);
       setTimeout(() => {
@@ -57,12 +56,12 @@ export default function StudentUpscDashboardPage() {
 
   return (
     <div className="p-4 sm:p-6 lg:p-8 space-y-8 max-w-7xl mx-auto">
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#263554] pb-6">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#ECEAE4] pb-6">
         <div>
-          <span className="rounded bg-[#8B5CF6]/20 px-2 py-0.5 text-xs font-bold text-[#8B5CF6]">
+          <span className="rounded-lg bg-[#E9EEE3] px-2.5 py-1 text-xs font-bold text-[#758B62]">
             FORT UPSC Civil Services
           </span>
-          <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold text-[#F5F7FB]">
+          <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold text-[#263126]">
             UPSC CSE Preparation Studio
           </h1>
         </div>
@@ -70,16 +69,20 @@ export default function StudentUpscDashboardPage() {
         <div className="flex gap-2">
           <button
             onClick={() => setActiveTab('mains')}
-            className={`rounded-lg px-4 py-2 text-xs font-bold ${
-              activeTab === 'mains' ? 'bg-[#6486C6] text-[#0B1020]' : 'bg-[#172033] text-[#A7B0C0]'
+            className={`rounded-xl px-4 py-2 text-xs font-bold transition-all ${
+              activeTab === 'mains'
+                ? 'bg-[#9CAF88] text-[#263126] shadow-soft'
+                : 'bg-white text-[#73786E] border border-[#E6E5DE]'
             }`}
           >
             Mains Answer Writing Studio
           </button>
           <button
             onClick={() => setActiveTab('prelims')}
-            className={`rounded-lg px-4 py-2 text-xs font-bold ${
-              activeTab === 'prelims' ? 'bg-[#6486C6] text-[#0B1020]' : 'bg-[#172033] text-[#A7B0C0]'
+            className={`rounded-xl px-4 py-2 text-xs font-bold transition-all ${
+              activeTab === 'prelims'
+                ? 'bg-[#9CAF88] text-[#263126] shadow-soft'
+                : 'bg-white text-[#73786E] border border-[#E6E5DE]'
             }`}
           >
             Prelims GS & CSAT Tests
@@ -91,32 +94,36 @@ export default function StudentUpscDashboardPage() {
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           {/* Answer Writing Canvas */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="rounded-xl border border-[#263554] bg-[#11182A] p-6">
-              <div className="flex items-center justify-between border-b border-[#263554] pb-3 text-xs">
-                <span className="font-bold text-[#6486C6]">{samplePrompt.paper}</span>
-                <span className="text-[#A7B0C0]">
-                  Max Marks: <strong>{samplePrompt.marks}</strong> • Limit:{' '}
-                  <strong>{samplePrompt.wordLimit} Words</strong>
+            <div className="rounded-2xl border border-[#E6E5DE] bg-white p-6 sm:p-7 shadow-soft">
+              <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-3 text-xs">
+                <span className="font-bold text-[#758B62]">{samplePrompt.paper}</span>
+                <span className="text-[#73786E]">
+                  Max Marks: <strong className="text-[#263126]">{samplePrompt.marks}</strong> • Limit:{' '}
+                  <strong className="text-[#263126]">{samplePrompt.wordLimit} Words</strong>
                 </span>
               </div>
 
-              <div className="mt-4 text-sm font-semibold leading-relaxed text-[#F5F7FB]">
+              <div className="mt-4 text-sm sm:text-base font-semibold leading-relaxed text-[#263126]">
                 {samplePrompt.question}
               </div>
             </div>
 
             {/* Editor Area */}
-            <div className="rounded-xl border border-[#263554] bg-[#11182A] p-4">
-              <div className="flex items-center justify-between border-b border-[#263554] pb-2 text-xs">
+            <div className="rounded-2xl border border-[#E6E5DE] bg-white p-6 shadow-soft space-y-3">
+              <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-3 text-xs">
                 <div className="flex items-center gap-3">
-                  <span className="font-mono text-[#F5F7FB]">
-                    Words: <strong className={wordCount > 250 ? 'text-[#EF4444]' : 'text-[#10B981]'}>{wordCount}</strong> / 250
+                  <span className="font-mono text-[#263126]">
+                    Words:{' '}
+                    <strong className={wordCount > 250 ? 'text-[#E8412C]' : 'text-[#758B62]'}>
+                      {wordCount}
+                    </strong>{' '}
+                    / 250
                   </span>
-                  <span className="text-[#7C8799]">Chars: {charCount}</span>
+                  <span className="text-[#92958D]">Chars: {charCount}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-[#10B981]" />
-                  <span className="text-[11px] text-[#A7B0C0]">
+                  <span className="h-2 w-2 rounded-full bg-[#9CAF88]" />
+                  <span className="text-[11px] text-[#73786E] font-medium">
                     {autosaveStatus === 'saving' ? 'Autosaving...' : 'Draft Saved'}
                   </span>
                 </div>
@@ -127,13 +134,13 @@ export default function StudentUpscDashboardPage() {
                 onChange={handleTextChange}
                 rows={14}
                 placeholder="Write your analytical response here. Follow introduction, body arguments with constitutional articles and landmark cases, and a forward-looking conclusion..."
-                className="mt-3 w-full resize-none rounded-lg border border-[#263554] bg-[#0B1020] p-4 text-sm text-[#F5F7FB] placeholder-[#7C8799] focus:border-[#6486C6] focus:outline-none leading-relaxed font-sans"
+                className="w-full resize-none rounded-xl border border-[#E6E5DE] bg-[#F7F5EF]/50 p-4 text-sm text-[#2E332D] placeholder-[#92958D] focus:border-[#9CAF88] focus:bg-white focus:outline-none leading-relaxed font-sans transition-all"
               />
 
-              <div className="mt-4 flex justify-end">
+              <div className="flex justify-end pt-2">
                 <button
                   onClick={handleSubmitAnswer}
-                  className="rounded-xl bg-[#6486C6] px-6 py-2.5 text-xs font-bold text-[#0B1020] hover:bg-[#7b9bd7]"
+                  className="rounded-xl bg-[#9CAF88] px-6 py-2.5 text-xs font-bold text-[#263126] hover:bg-[#8fa27a] shadow-soft"
                 >
                   Submit for Rubric Evaluation
                 </button>
@@ -142,37 +149,37 @@ export default function StudentUpscDashboardPage() {
           </div>
 
           {/* Rubric Criteria Guidelines */}
-          <div className="rounded-xl border border-[#263554] bg-[#11182A] p-6 space-y-4">
-            <h3 className="text-sm font-bold text-[#F5F7FB]">Standard UPSC Rubric Criteria</h3>
-            <p className="text-xs text-[#A7B0C0]">
-              Examiners evaluate responses against 4 structured parameters:
+          <div className="rounded-2xl border border-[#E6E5DE] bg-white p-6 shadow-soft space-y-4">
+            <h3 className="text-sm font-bold text-[#263126]">UPSC Evaluation Rubric</h3>
+            <p className="text-xs text-[#73786E]">
+              Responses are benchmarked against 4 structured dimensions:
             </p>
 
             <div className="space-y-3 text-xs">
-              <div className="rounded-lg border border-[#263554] bg-[#172033] p-3">
-                <strong className="text-[#6486C6]">1. Constitutional Accuracy (4 Marks)</strong>
-                <p className="mt-1 text-[#A7B0C0]">
+              <div className="rounded-xl border border-[#E6E5DE] bg-[#F7F5EF] p-4">
+                <strong className="text-[#758B62]">1. Constitutional Accuracy (4 Marks)</strong>
+                <p className="mt-1 text-[#73786E]">
                   Cites Articles 32, 226, 359 and the 44th Constitutional Amendment Act, 1978.
                 </p>
               </div>
 
-              <div className="rounded-lg border border-[#263554] bg-[#172033] p-3">
-                <strong className="text-[#6486C6]">2. Judicial Precedents (4 Marks)</strong>
-                <p className="mt-1 text-[#A7B0C0]">
+              <div className="rounded-xl border border-[#E6E5DE] bg-[#F7F5EF] p-4">
+                <strong className="text-[#758B62]">2. Judicial Precedents (4 Marks)</strong>
+                <p className="mt-1 text-[#73786E]">
                   Analyzes ADM Jabalpur v. Shivkant Shukla (1976) and Justice K.S. Puttaswamy (2017).
                 </p>
               </div>
 
-              <div className="rounded-lg border border-[#263554] bg-[#172033] p-3">
-                <strong className="text-[#6486C6]">3. Critical Structure & Flow (4 Marks)</strong>
-                <p className="mt-1 text-[#A7B0C0]">
+              <div className="rounded-xl border border-[#E6E5DE] bg-[#F7F5EF] p-4">
+                <strong className="text-[#758B62]">3. Critical Structure & Flow (4 Marks)</strong>
+                <p className="mt-1 text-[#73786E]">
                   Clear division between historical stance, emergency misuse, and modern safeguard.
                 </p>
               </div>
 
-              <div className="rounded-lg border border-[#263554] bg-[#172033] p-3">
-                <strong className="text-[#6486C6]">4. Concluding Vision (3 Marks)</strong>
-                <p className="mt-1 text-[#A7B0C0]">
+              <div className="rounded-xl border border-[#E6E5DE] bg-[#F7F5EF] p-4">
+                <strong className="text-[#758B62]">4. Concluding Vision (3 Marks)</strong>
+                <p className="mt-1 text-[#73786E]">
                   Balanced conclusion upholding substantive due process and rule of law.
                 </p>
               </div>
@@ -180,15 +187,15 @@ export default function StudentUpscDashboardPage() {
           </div>
         </div>
       ) : (
-        <div className="rounded-xl border border-[#263554] bg-[#11182A] p-6">
-          <h3 className="text-base font-bold text-[#F5F7FB]">UPSC Prelims General Studies Tests</h3>
-          <p className="mt-2 text-xs text-[#A7B0C0]">
+        <div className="rounded-2xl border border-[#E6E5DE] bg-white p-8 shadow-soft">
+          <h3 className="text-base font-bold text-[#263126]">UPSC Prelims General Studies Tests</h3>
+          <p className="mt-2 text-xs text-[#73786E]">
             Timed 100-question objective papers with -0.66 negative marking.
           </p>
           <div className="mt-6">
             <Link
               href="/exam/upsc-demo"
-              className="rounded-lg bg-[#6486C6] px-5 py-2.5 text-xs font-bold text-[#0B1020]"
+              className="rounded-xl bg-[#9CAF88] px-6 py-2.5 text-xs font-bold text-[#263126] shadow-soft hover:bg-[#8fa27a]"
             >
               Start Prelims Paper 01
             </Link>

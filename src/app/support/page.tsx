@@ -10,6 +10,7 @@ import {
   CheckCircle2,
   AlertCircle,
   Shield,
+  X,
 } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -55,26 +56,26 @@ export default function SupportDeskPage() {
   };
 
   return (
-    <div className="bg-[#0B1020] text-[#F5F7FB] min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div className="bg-[#F7F5EF] text-[#2E332D] min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-5xl space-y-8">
-        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#263554] pb-6">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#ECEAE4] pb-6">
           <div>
             <div className="flex items-center gap-2">
-              <span className="rounded bg-[#6486C6]/20 px-2 py-0.5 text-xs font-bold text-[#6486C6]">
+              <span className="rounded-full bg-[#E9EEE3] px-3 py-1 text-xs font-semibold text-[#758B62]">
                 SUPPORT & GRIEVANCE
               </span>
             </div>
-            <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold text-[#F5F7FB]">
+            <h1 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#263126] font-serif">
               Candidate Help & Ticket Desk
             </h1>
-            <p className="text-xs text-[#A7B0C0]">
+            <p className="mt-1 text-xs sm:text-sm text-[#73786E]">
               Direct communication line to academic evaluators and technical engineering staff.
             </p>
           </div>
 
           <button
             onClick={() => setShowCreateModal(true)}
-            className="flex items-center gap-1.5 rounded-xl bg-[#6486C6] px-4 py-2.5 text-xs font-bold text-[#0B1020] hover:bg-[#7b9bd7]"
+            className="flex items-center gap-1.5 rounded-xl bg-[#9CAF88] px-4 py-2.5 text-xs font-bold text-white hover:bg-[#8ea07a] transition-all shadow-sm"
           >
             <Plus className="h-4 w-4" />
             <span>Open Support Ticket</span>
@@ -83,38 +84,38 @@ export default function SupportDeskPage() {
 
         {/* Existing Tickets List */}
         <div className="space-y-4">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-[#6486C6]">
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-[#758B62]">
             Your Support Inquiries
           </h2>
 
-          <div className="rounded-xl border border-[#263554] bg-[#11182A] divide-y divide-[#263554] overflow-hidden">
+          <div className="rounded-2xl border border-[#E6E5DE] bg-white divide-y divide-[#ECEAE4] shadow-[0_2px_8px_rgba(38,49,38,0.04)] overflow-hidden">
             {tickets.map((t) => (
-              <div key={t.id} className="p-5 flex flex-wrap items-center justify-between gap-4">
+              <div key={t.id} className="p-5 flex flex-wrap items-center justify-between gap-4 hover:bg-[#F7F5EF]/60 transition-colors">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-xs font-bold text-[#6486C6]">{t.id}</span>
-                    <span className="rounded bg-[#172033] px-2 py-0.5 text-[10px] uppercase font-bold text-[#A7B0C0]">
+                    <span className="font-mono text-xs font-bold text-[#758B62]">{t.id}</span>
+                    <span className="rounded-full bg-[#F7F5EF] border border-[#E6E5DE] px-2 py-0.5 text-[10px] uppercase font-bold text-[#73786E]">
                       {t.category}
                     </span>
                     <span
-                      className={`rounded px-2 py-0.5 text-[10px] font-bold uppercase ${
+                      className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase ${
                         t.status === 'resolved'
-                          ? 'bg-[#10B981]/20 text-[#10B981]'
-                          : 'bg-amber-400/20 text-amber-300'
+                          ? 'bg-[#E9EEE3] text-[#758B62]'
+                          : 'bg-[#FEF3C7] text-[#92400E]'
                       }`}
                     >
                       {t.status}
                     </span>
                   </div>
-                  <h3 className="mt-2 text-sm font-bold text-[#F5F7FB]">{t.subject}</h3>
-                  <div className="mt-1 text-[11px] text-[#7C8799]">
+                  <h3 className="mt-2 text-sm font-bold text-[#263126]">{t.subject}</h3>
+                  <div className="mt-1 text-[11px] text-[#92958D]">
                     Opened on {t.createdAt} • {t.messagesCount} message(s)
                   </div>
                 </div>
 
                 <div className="text-xs">
-                  <span className="text-[#A7B0C0]">Assigned to: </span>
-                  <strong className="text-[#F5F7FB]">Academic Helpdesk</strong>
+                  <span className="text-[#73786E]">Assigned to: </span>
+                  <strong className="text-[#263126]">Academic Helpdesk</strong>
                 </div>
               </div>
             ))}
@@ -123,20 +124,26 @@ export default function SupportDeskPage() {
 
         {/* Ticket Modal */}
         {showCreateModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-            <div className="w-full max-w-lg rounded-2xl border border-[#263554] bg-[#11182A] p-6 shadow-2xl">
-              <h3 className="text-base font-bold text-[#F5F7FB]">Open Support Ticket</h3>
-              <p className="mt-1 text-xs text-[#A7B0C0]">
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#263126]/50 backdrop-blur-sm p-4">
+            <div className="w-full max-w-lg rounded-2xl border border-[#E6E5DE] bg-white p-6 sm:p-8 shadow-2xl">
+              <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-3">
+                <h3 className="text-base font-bold text-[#263126]">Open Support Ticket</h3>
+                <button onClick={() => setShowCreateModal(false)} className="text-[#92958D] hover:text-[#263126]">
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+
+              <p className="mt-2 text-xs text-[#73786E]">
                 Submit your inquiry regarding examinations, scoring, OMR, or payment transactions.
               </p>
 
               <form onSubmit={handleCreateTicket} className="mt-6 space-y-4 text-xs">
                 <div>
-                  <label className="block text-[#A7B0C0] font-medium">Category</label>
+                  <label className="block text-[#73786E] font-medium">Category</label>
                   <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                    className="mt-1 w-full rounded-lg border border-[#263554] bg-[#172033] p-2.5 text-[#F5F7FB] focus:outline-none"
+                    className="mt-1.5 w-full rounded-xl border border-[#E6E5DE] bg-white p-2.5 text-[#263126] focus:border-[#9CAF88] focus:outline-none"
                   >
                     <option value="examination">Examination & Questions</option>
                     <option value="omr">OMR Sheet & Shading</option>
@@ -148,26 +155,26 @@ export default function SupportDeskPage() {
                 </div>
 
                 <div>
-                  <label className="block text-[#A7B0C0] font-medium">Subject</label>
+                  <label className="block text-[#73786E] font-medium">Subject</label>
                   <input
                     type="text"
                     required
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
                     placeholder="Brief description of the issue"
-                    className="mt-1 w-full rounded-lg border border-[#263554] bg-[#172033] p-2.5 text-[#F5F7FB] placeholder-[#7C8799] focus:outline-none"
+                    className="mt-1.5 w-full rounded-xl border border-[#E6E5DE] bg-white p-2.5 text-[#263126] placeholder-[#92958D] focus:border-[#9CAF88] focus:outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[#A7B0C0] font-medium">Details & Explanation</label>
+                  <label className="block text-[#73786E] font-medium">Details & Explanation</label>
                   <textarea
                     rows={5}
                     required
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder="Provide full details, question number or transaction order reference..."
-                    className="mt-1 w-full rounded-lg border border-[#263554] bg-[#172033] p-2.5 text-[#F5F7FB] placeholder-[#7C8799] focus:outline-none"
+                    className="mt-1.5 w-full rounded-xl border border-[#E6E5DE] bg-white p-2.5 text-[#263126] placeholder-[#92958D] focus:border-[#9CAF88] focus:outline-none"
                   />
                 </div>
 
@@ -175,13 +182,13 @@ export default function SupportDeskPage() {
                   <button
                     type="button"
                     onClick={() => setShowCreateModal(false)}
-                    className="flex-1 rounded-xl border border-[#263554] bg-[#172033] py-2.5 font-semibold text-[#F5F7FB]"
+                    className="flex-1 rounded-xl border border-[#E6E5DE] bg-[#F7F5EF] py-2.5 font-semibold text-[#263126] hover:bg-[#E9EEE3]"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    className="flex-1 rounded-xl bg-[#6486C6] py-2.5 font-bold text-[#0B1020] hover:bg-[#7b9bd7]"
+                    className="flex-1 rounded-xl bg-[#9CAF88] py-2.5 font-bold text-white hover:bg-[#8ea07a] transition-colors shadow-sm"
                   >
                     Submit Ticket
                   </button>

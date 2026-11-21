@@ -40,83 +40,102 @@ export default function StudentProfilePage() {
   };
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8 space-y-8 max-w-3xl mx-auto">
-      <div className="border-b border-[#263554] pb-6">
-        <span className="text-xs font-semibold uppercase tracking-wider text-[#6486C6]">
+    <div className="space-y-8 max-w-3xl mx-auto">
+      {/* Header */}
+      <div className="border-b border-[#ECEAE4] pb-6">
+        <span className="text-xs font-semibold uppercase tracking-wider text-[#758B62]">
           Candidate Identity
         </span>
-        <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold text-[#F5F7FB]">
+        <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold text-[#263126] font-serif">
           Profile & Account Settings
         </h1>
-        <p className="text-xs text-[#A7B0C0]">
+        <p className="mt-1 text-xs sm:text-sm text-[#73786E]">
           Your immutable FORT Registration ID and personal contact details.
         </p>
       </div>
 
-      <form onSubmit={handleSave} className="rounded-2xl border border-[#263554] bg-[#11182A] p-6 space-y-4 text-xs">
+      <form
+        onSubmit={handleSave}
+        className="rounded-2xl border border-[#E6E5DE] bg-white p-6 sm:p-8 shadow-[0_2px_8px_rgba(38,49,38,0.04)] space-y-5 text-xs text-[#2E332D]"
+      >
         <div>
-          <label className="block text-[#A7B0C0] font-medium">FORT Registration ID (Immutable)</label>
+          <label className="block text-[#73786E] font-medium">FORT Registration ID (Immutable)</label>
           <input
             type="text"
             disabled
             value={profile.registrationId}
-            className="mt-1 w-full rounded-lg border border-[#263554] bg-[#0B1020] p-2.5 font-mono font-bold text-[#6486C6] cursor-not-allowed"
+            className="mt-1.5 w-full rounded-xl border border-[#E6E5DE] bg-[#F7F5EF] p-3 font-mono font-bold text-[#263126] cursor-not-allowed"
           />
-          <span className="text-[10px] text-[#7C8799]">
-            Assigned atomically upon registration and associated with all official test attempts.
+          <span className="mt-1 block text-[11px] text-[#92958D]">
+            Assigned atomically upon registration and associated with all official test attempts and OMR records.
           </span>
         </div>
 
         <div>
-          <label className="block text-[#A7B0C0] font-medium">Candidate Full Name</label>
+          <label className="block text-[#73786E] font-medium">Candidate Full Name</label>
           <input
             type="text"
             required
             value={profile.fullName}
             onChange={(e) => setProfile({ ...profile, fullName: e.target.value })}
-            className="mt-1 w-full rounded-lg border border-[#263554] bg-[#172033] p-2.5 text-[#F5F7FB] focus:outline-none focus:border-[#6486C6]"
+            className="mt-1.5 w-full rounded-xl border border-[#E6E5DE] bg-white p-3 text-sm text-[#263126] focus:border-[#9CAF88] focus:ring-1 focus:ring-[#9CAF88] focus:outline-none transition-all"
           />
         </div>
 
         <div>
-          <label className="block text-[#A7B0C0] font-medium">Email Address</label>
+          <label className="block text-[#73786E] font-medium">Email Address</label>
           <input
             type="email"
             disabled
             value={profile.email}
-            className="mt-1 w-full rounded-lg border border-[#263554] bg-[#0B1020] p-2.5 text-[#A7B0C0] cursor-not-allowed"
+            className="mt-1.5 w-full rounded-xl border border-[#E6E5DE] bg-[#F7F5EF] p-3 text-sm text-[#73786E] cursor-not-allowed"
           />
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div>
-            <label className="block text-[#A7B0C0] font-medium">Date of Birth</label>
+            <label className="block text-[#73786E] font-medium">Date of Birth</label>
             <input
               type="date"
               value={profile.dateOfBirth}
               onChange={(e) => setProfile({ ...profile, dateOfBirth: e.target.value })}
-              className="mt-1 w-full rounded-lg border border-[#263554] bg-[#172033] p-2.5 text-[#F5F7FB] focus:outline-none"
+              className="mt-1.5 w-full rounded-xl border border-[#E6E5DE] bg-white p-3 text-sm text-[#263126] focus:border-[#9CAF88] focus:outline-none"
             />
           </div>
 
           <div>
-            <label className="block text-[#A7B0C0] font-medium">Country</label>
+            <label className="block text-[#73786E] font-medium">Country / Jurisdiction</label>
             <input
               type="text"
               value={profile.country}
               onChange={(e) => setProfile({ ...profile, country: e.target.value })}
-              className="mt-1 w-full rounded-lg border border-[#263554] bg-[#172033] p-2.5 text-[#F5F7FB] focus:outline-none"
+              className="mt-1.5 w-full rounded-xl border border-[#E6E5DE] bg-white p-3 text-sm text-[#263126] focus:border-[#9CAF88] focus:outline-none"
             />
           </div>
         </div>
 
-        <div className="pt-4 flex justify-end">
+        <div>
+          <label className="block text-[#73786E] font-medium">Primary Examination Focus</label>
+          <select
+            value={profile.targetExam}
+            onChange={(e) => setProfile({ ...profile, targetExam: e.target.value })}
+            className="mt-1.5 w-full rounded-xl border border-[#E6E5DE] bg-white p-3 text-sm text-[#263126] focus:border-[#9CAF88] focus:outline-none"
+          >
+            <option value="FORT NEET (UG)">FORT NEET (UG) Medical</option>
+            <option value="FORT JEE Main">FORT JEE Main Engineering</option>
+            <option value="FORT JEE Advanced">FORT JEE Advanced IIT</option>
+            <option value="FORT UPSC Civil Services">FORT UPSC Civil Services</option>
+            <option value="FORT University Engineering">FORT University Engineering</option>
+          </select>
+        </div>
+
+        <div className="pt-2">
           <button
             type="submit"
-            className="flex items-center gap-1.5 rounded-xl bg-[#6486C6] px-6 py-2.5 text-xs font-bold text-[#0B1020] hover:bg-[#7b9bd7]"
+            className="inline-flex items-center gap-2 rounded-xl bg-[#9CAF88] px-6 py-3 text-xs font-bold text-white shadow-sm hover:bg-[#8ea07a] transition-all"
           >
             <Save className="h-4 w-4" />
-            <span>Save Profile</span>
+            <span>Save Profile Changes</span>
           </button>
         </div>
       </form>

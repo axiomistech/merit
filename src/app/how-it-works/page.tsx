@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle2, Layers, Cpu, BarChart3, RotateCcw } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export const metadata = {
   title: 'How It Works — FORT Learning',
@@ -38,28 +38,28 @@ export default function HowItWorksPage() {
   ];
 
   return (
-    <div className="bg-[#0B1020] text-[#F5F7FB] min-h-screen py-20">
+    <div className="bg-[#F7F5EF] text-[#2E332D] min-h-screen py-20">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h1 className="text-4xl font-extrabold sm:text-5xl">How FORT Works</h1>
-          <p className="mt-4 text-base text-[#A7B0C0] max-w-2xl mx-auto">
+          <h1 className="text-4xl font-extrabold sm:text-5xl text-[#263126]">How FORT Works</h1>
+          <p className="mt-4 text-base text-[#73786E] max-w-2xl mx-auto">
             A serious learning and examination practice infrastructure built around measurable
             accuracy, authentic simulation, and continuous feedback.
           </p>
         </div>
 
-        <div className="mt-16 space-y-8">
+        <div className="mt-16 space-y-6">
           {steps.map((s, idx) => (
             <div
               key={idx}
-              className="flex flex-col sm:flex-row items-start gap-6 rounded-2xl border border-[#263554] bg-[#11182A] p-6 sm:p-8"
+              className="flex flex-col sm:flex-row items-start gap-6 rounded-2xl border border-[#E6E5DE] bg-white p-6 sm:p-8 shadow-soft"
             >
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-[#6486C6]/20 font-mono text-xl font-bold text-[#6486C6]">
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#E9EEE3] font-mono text-xl font-bold text-[#758B62]">
                 {s.num}
               </div>
               <div>
-                <h3 className="text-xl font-bold text-[#F5F7FB]">{s.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-[#A7B0C0]">{s.desc}</p>
+                <h3 className="text-xl font-bold text-[#263126]">{s.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-[#73786E]">{s.desc}</p>
               </div>
             </div>
           ))}
@@ -68,7 +68,7 @@ export default function HowItWorksPage() {
         <div className="mt-16 text-center">
           <Link
             href="/signup"
-            className="inline-flex items-center gap-2 rounded-xl bg-[#6486C6] px-8 py-3.5 text-sm font-bold text-[#0B1020] hover:bg-[#7b9bd7]"
+            className="inline-flex items-center gap-2 rounded-xl bg-[#9CAF88] px-8 py-3.5 text-sm font-bold text-[#263126] shadow-soft hover:bg-[#8fa27a] transition-all"
           >
             <span>Begin Your Preparation</span>
             <ArrowRight className="h-4 w-4" />

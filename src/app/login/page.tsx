@@ -42,53 +42,53 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="bg-[#0B1020] text-[#F5F7FB] min-h-screen py-20 flex items-center justify-center px-4">
-      <div className="w-full max-w-md rounded-2xl border border-[#263554] bg-[#11182A] p-8 shadow-2xl">
+    <div className="bg-[#F7F5EF] text-[#2E332D] min-h-screen py-20 flex items-center justify-center px-4">
+      <div className="w-full max-w-md rounded-2xl border border-[#E6E5DE] bg-white p-8 shadow-[0_4px_24px_rgba(38,49,38,0.06)]">
         <div className="text-center">
           <Link href="/" className="inline-flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#6486C6] text-[#0B1020]">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#9CAF88] text-white">
               <Shield className="h-5 w-5 stroke-[2.5]" />
             </div>
-            <span className="font-mono text-xl font-bold tracking-wider text-[#F5F7FB]">FORT</span>
+            <span className="font-mono text-xl font-bold tracking-wider text-[#263126]">FORT</span>
           </Link>
-          <h1 className="mt-4 text-2xl font-bold text-[#F5F7FB]">Welcome Back</h1>
-          <p className="mt-1 text-xs text-[#A7B0C0]">
+          <h1 className="mt-4 text-2xl font-bold text-[#263126] font-serif">Welcome Back</h1>
+          <p className="mt-1 text-xs text-[#73786E]">
             Sign in to your candidate dashboard & practice records.
           </p>
         </div>
 
         <form onSubmit={handleLogin} className="mt-8 space-y-4">
           <div>
-            <label className="block text-xs font-medium text-[#A7B0C0]">Email Address</label>
+            <label className="block text-xs font-medium text-[#73786E]">Email Address</label>
             <div className="relative mt-1">
-              <Mail className="absolute left-3 top-2.5 h-4 w-4 text-[#7C8799]" />
+              <Mail className="absolute left-3.5 top-3 h-4 w-4 text-[#92958D]" />
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="name@example.com"
-                className="w-full rounded-lg border border-[#263554] bg-[#172033] py-2 pl-9 pr-3 text-sm text-[#F5F7FB] placeholder-[#7C8799] focus:border-[#6486C6] focus:outline-none"
+                className="w-full rounded-xl border border-[#E6E5DE] bg-white py-2.5 pl-10 pr-3 text-sm text-[#263126] placeholder-[#92958D] focus:border-[#9CAF88] focus:ring-1 focus:ring-[#9CAF88] focus:outline-none transition-all"
               />
             </div>
           </div>
 
           <div>
             <div className="flex items-center justify-between">
-              <label className="block text-xs font-medium text-[#A7B0C0]">Password</label>
-              <Link href="/forgot-password" className="text-[11px] text-[#6486C6] hover:underline">
+              <label className="block text-xs font-medium text-[#73786E]">Password</label>
+              <Link href="/contact" className="text-[11px] text-[#758B62] hover:underline">
                 Forgot password?
               </Link>
             </div>
             <div className="relative mt-1">
-              <Lock className="absolute left-3 top-2.5 h-4 w-4 text-[#7C8799]" />
+              <Lock className="absolute left-3.5 top-3 h-4 w-4 text-[#92958D]" />
               <input
                 type="password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full rounded-lg border border-[#263554] bg-[#172033] py-2 pl-9 pr-3 text-sm text-[#F5F7FB] placeholder-[#7C8799] focus:border-[#6486C6] focus:outline-none"
+                className="w-full rounded-xl border border-[#E6E5DE] bg-white py-2.5 pl-10 pr-3 text-sm text-[#263126] placeholder-[#92958D] focus:border-[#9CAF88] focus:ring-1 focus:ring-[#9CAF88] focus:outline-none transition-all"
               />
             </div>
           </div>
@@ -96,16 +96,16 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-xl bg-[#6486C6] py-3 text-sm font-bold text-[#0B1020] hover:bg-[#7b9bd7] transition-all shadow-md shadow-[#6486C6]/20 disabled:opacity-50"
+            className="w-full rounded-xl bg-[#9CAF88] py-3 text-sm font-bold text-white hover:bg-[#8ea07a] transition-all shadow-sm disabled:opacity-50"
           >
             {loading ? 'Authenticating...' : 'Sign In to Dashboard'}
           </button>
         </form>
 
-        <div className="mt-6 border-t border-[#263554] pt-4 text-center text-xs text-[#A7B0C0]">
-          Don't have an account yet?{' '}
-          <Link href="/signup" className="font-semibold text-[#6486C6] hover:underline">
-            Register now
+        <div className="mt-6 border-t border-[#ECEAE4] pt-4 text-center text-xs text-[#73786E]">
+          Don't have a FORT registration yet?{' '}
+          <Link href="/signup" className="font-bold text-[#758B62] hover:underline">
+            Register Candidate Account
           </Link>
         </div>
       </div>

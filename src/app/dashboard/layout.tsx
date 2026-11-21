@@ -19,7 +19,6 @@ import {
   X,
   ChevronRight,
   LogOut,
-  Sparkles,
   HelpCircle,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -59,37 +58,37 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     { href: '/dashboard/analytics', label: 'Mastery & Analytics', icon: BarChart3 },
     { href: '/dashboard/bookmarks', label: 'Saved Bookmarks', icon: Bookmark },
     { href: '/dashboard/history', label: 'Attempt History', icon: Clock },
-    { href: '/dashboard/purchases', label: 'Purchases & Invoices', icon: CreditCard },
+    { href: '/dashboard/purchases', label: 'Purchases & Receipts', icon: CreditCard },
     { href: '/support', label: 'Help Desk', icon: HelpCircle },
     { href: '/dashboard/profile', label: 'Profile & Settings', icon: User },
   ];
 
   return (
-    <div className="flex min-h-screen bg-[#0B1020] text-[#F5F7FB]">
-      {/* Desktop Sidebar */}
-      <aside className="hidden lg:flex lg:w-64 lg:flex-col lg:border-r lg:border-[#263554] lg:bg-[#11182A]">
+    <div className="flex min-h-screen bg-[#F7F5EF] text-[#2E332D]">
+      {/* Desktop Sidebar (Matte White with Fine Border) */}
+      <aside className="hidden lg:flex lg:w-64 lg:flex-col lg:border-r lg:border-[#E6E5DE] lg:bg-white shadow-soft">
         {/* Brand Header */}
-        <div className="flex h-16 items-center gap-2.5 border-b border-[#263554] px-6">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#6486C6] text-[#0B1020]">
+        <div className="flex h-16 items-center gap-2.5 border-b border-[#ECEAE4] px-6">
+          <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#9CAF88] text-white shadow-soft">
             <Shield className="h-4 w-4 stroke-[2.5]" />
           </div>
-          <div>
-            <span className="font-mono text-base font-bold tracking-wider text-[#F5F7FB]">FORT</span>
-            <span className="ml-1 text-[10px] font-semibold uppercase tracking-widest text-[#6486C6]">
+          <div className="flex items-baseline">
+            <span className="font-mono text-base font-black tracking-wider text-[#263126]">FORT</span>
+            <span className="ml-1 text-[10px] font-semibold uppercase tracking-widest text-[#758B62]">
               Workspace
             </span>
           </div>
         </div>
 
         {/* Candidate Badge */}
-        <div className="border-b border-[#263554] bg-[#0B1020]/50 p-4">
-          <div className="text-[11px] font-semibold uppercase tracking-wider text-[#7C8799]">
+        <div className="border-b border-[#ECEAE4] bg-[#F7F5EF]/60 p-4">
+          <div className="text-[11px] font-semibold uppercase tracking-wider text-[#92958D]">
             Candidate ID
           </div>
-          <div className="font-mono text-xs font-bold text-[#6486C6]">
+          <div className="font-mono text-xs font-bold text-[#758B62]">
             {candidate.registrationId}
           </div>
-          <div className="mt-1 truncate text-xs font-medium text-[#F5F7FB]">
+          <div className="mt-0.5 truncate text-xs font-bold text-[#263126]">
             {candidate.fullName}
           </div>
         </div>
@@ -104,13 +103,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  'flex items-center gap-3 rounded-lg px-3 py-2 text-xs font-medium transition-colors',
+                  'flex items-center gap-3 rounded-xl px-3 py-2 text-xs font-semibold transition-colors',
                   isActive
-                    ? 'bg-[#6486C6] text-[#0B1020] font-bold shadow-sm'
-                    : 'text-[#A7B0C0] hover:bg-[#172033] hover:text-[#F5F7FB]'
+                    ? 'bg-[#E9EEE3] text-[#263126] font-bold shadow-soft'
+                    : 'text-[#73786E] hover:bg-[#F0EFEA] hover:text-[#263126]'
                 )}
               >
-                <Icon className={cn('h-4 w-4 shrink-0', isActive ? 'text-[#0B1020]' : 'text-[#7C8799]')} />
+                <Icon className={cn('h-4 w-4 shrink-0', isActive ? 'text-[#758B62]' : 'text-[#92958D]')} />
                 <span>{item.label}</span>
               </Link>
             );
@@ -118,10 +117,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </nav>
 
         {/* Logout bottom */}
-        <div className="border-t border-[#263554] p-3">
+        <div className="border-t border-[#ECEAE4] p-3">
           <Link
             href="/"
-            className="flex items-center gap-2.5 rounded-lg px-3 py-2 text-xs font-medium text-[#A7B0C0] hover:bg-[#172033] hover:text-[#EF4444] transition-colors"
+            className="flex items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-semibold text-[#73786E] hover:bg-[#FCE8E4] hover:text-[#E8412C] transition-colors"
           >
             <LogOut className="h-4 w-4" />
             <span>Sign Out</span>
@@ -132,33 +131,33 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       {/* Main Workspace Area */}
       <div className="flex flex-1 flex-col overflow-hidden">
         {/* Mobile Top Bar */}
-        <header className="flex h-14 items-center justify-between border-b border-[#263554] bg-[#11182A] px-4 lg:hidden">
+        <header className="flex h-14 items-center justify-between border-b border-[#E6E5DE] bg-white px-4 lg:hidden shadow-soft">
           <div className="flex items-center gap-2">
             <button
               onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="rounded-lg p-1.5 text-[#A7B0C0] hover:bg-[#172033] hover:text-[#F5F7FB]"
+              className="rounded-lg p-1.5 text-[#73786E] hover:bg-[#F0EFEA] hover:text-[#263126]"
             >
               <Menu className="h-5 w-5" />
             </button>
-            <span className="font-mono text-sm font-bold text-[#F5F7FB]">FORT</span>
+            <span className="font-mono text-sm font-bold text-[#263126]">FORT</span>
           </div>
 
-          <span className="font-mono text-xs text-[#6486C6]">{candidate.registrationId}</span>
+          <span className="font-mono text-xs font-bold text-[#758B62]">{candidate.registrationId}</span>
         </header>
 
         {/* Mobile Sidebar Overlay */}
         {sidebarOpen && (
           <div className="fixed inset-0 z-50 flex lg:hidden">
             <div
-              className="fixed inset-0 bg-black/70 backdrop-blur-sm"
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm"
               onClick={() => setSidebarOpen(false)}
             />
-            <div className="relative flex w-64 flex-1 flex-col bg-[#11182A] p-4">
-              <div className="flex items-center justify-between border-b border-[#263554] pb-3">
-                <span className="font-mono font-bold text-[#6486C6]">{candidate.registrationId}</span>
+            <div className="relative flex w-64 flex-1 flex-col bg-white p-4 shadow-elevated">
+              <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-3">
+                <span className="font-mono font-bold text-[#758B62]">{candidate.registrationId}</span>
                 <button
                   onClick={() => setSidebarOpen(false)}
-                  className="rounded-lg p-1 text-[#A7B0C0]"
+                  className="rounded-lg p-1 text-[#73786E]"
                 >
                   <X className="h-5 w-5" />
                 </button>
@@ -169,7 +168,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     key={item.href}
                     href={item.href}
                     onClick={() => setSidebarOpen(false)}
-                    className="block rounded-lg px-3 py-2 text-xs font-medium text-[#A7B0C0] hover:bg-[#172033] hover:text-[#F5F7FB]"
+                    className="block rounded-xl px-3 py-2 text-xs font-medium text-[#73786E] hover:bg-[#F0EFEA] hover:text-[#263126]"
                   >
                     {item.label}
                   </Link>

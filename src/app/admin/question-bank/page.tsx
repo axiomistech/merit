@@ -17,8 +17,8 @@ export default function AdminQuestionBankPage() {
     <div className="space-y-6 max-w-7xl">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-black text-[#F5F7FB]">Question Bank CMS</h1>
-          <p className="text-xs text-[#A7B0C0]">
+          <h1 className="text-2xl font-bold text-[#263126] font-serif">Question Bank CMS</h1>
+          <p className="mt-1 text-xs text-[#73786E]">
             Author, version, and publish mathematical and scientific questions with KaTeX support.
           </p>
         </div>
@@ -27,7 +27,7 @@ export default function AdminQuestionBankPage() {
           <select
             value={selectedSubject}
             onChange={(e) => setSelectedSubject(e.target.value)}
-            className="rounded-xl border border-[#1D2940] bg-[#0B1020] px-3 py-2 text-xs text-[#F5F7FB] focus:outline-none"
+            className="rounded-xl border border-[#E6E5DE] bg-white px-3 py-2 text-xs text-[#263126] focus:outline-none focus:border-[#9CAF88]"
           >
             <option value="all">All Subjects</option>
             <option value="physics">Physics</option>
@@ -42,39 +42,39 @@ export default function AdminQuestionBankPage() {
         {filtered.map((q, idx) => (
           <div
             key={q.id}
-            className="rounded-xl border border-[#1D2940] bg-[#0B1020] p-6 space-y-4 hover:border-[#6486C6]/50 transition-colors"
+            className="rounded-2xl border border-[#E6E5DE] bg-white p-6 space-y-4 shadow-[0_2px_8px_rgba(38,49,38,0.04)] hover:border-[#9CAF88]/60 transition-colors"
           >
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#1D2940] pb-3 text-xs">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#ECEAE4] pb-3 text-xs">
               <div className="flex items-center gap-2">
-                <span className="font-mono font-bold text-[#6486C6]">Q{idx + 1}</span>
-                <span className="rounded bg-[#11182A] px-2 py-0.5 text-[#A7B0C0]">
+                <span className="font-mono font-bold text-[#758B62]">Q{idx + 1}</span>
+                <span className="rounded-full bg-[#E9EEE3] px-2.5 py-0.5 text-[#263126] font-semibold">
                   {q.subjectName}
                 </span>
-                <span className="text-[#F5F7FB] font-semibold">{q.conceptName}</span>
+                <span className="text-[#263126] font-semibold">{q.conceptName}</span>
               </div>
 
               <div className="flex items-center gap-2 font-mono text-[11px]">
-                <span className="rounded bg-[#10B981]/20 px-2 py-0.5 font-bold text-[#10B981]">
+                <span className="rounded-full bg-[#E9EEE3] px-2.5 py-0.5 font-bold text-[#758B62]">
                   PUBLISHED
                 </span>
-                <span className="text-[#A7B0C0]">
+                <span className="text-[#73786E]">
                   +{q.marks} / -{q.negativeMarks} Marks
                 </span>
               </div>
             </div>
 
-            <div className="text-sm text-[#F5F7FB]">
+            <div className="text-sm text-[#263126] leading-relaxed">
               <MathText content={q.text} />
             </div>
 
-            <div className="grid grid-cols-2 gap-2 text-xs">
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 text-xs">
               {q.options.map((opt) => (
                 <div
                   key={opt.key}
-                  className={`flex items-center gap-2 rounded-lg border p-2.5 ${
+                  className={`flex items-center gap-2.5 rounded-xl border p-2.5 ${
                     q.answerKey?.correctOptions?.includes(opt.key)
-                      ? 'border-[#10B981] bg-[#10B981]/10 text-[#10B981]'
-                      : 'border-[#1D2940] bg-[#11182A] text-[#A7B0C0]'
+                      ? 'border-[#9CAF88] bg-[#E9EEE3] text-[#263126]'
+                      : 'border-[#E6E5DE] bg-[#F7F5EF] text-[#73786E]'
                   }`}
                 >
                   <span className="font-mono font-bold">{opt.key}.</span>
@@ -84,8 +84,8 @@ export default function AdminQuestionBankPage() {
             </div>
 
             {q.explanation && (
-              <div className="rounded-lg bg-[#11182A] p-3 text-xs text-[#A7B0C0]">
-                <strong className="text-[#6486C6]">Explanation:</strong> {q.explanation.text}
+              <div className="rounded-xl bg-[#F7F5EF] p-4 text-xs text-[#73786E]">
+                <strong className="text-[#758B62]">Explanation:</strong> {q.explanation.text}
               </div>
             )}
           </div>

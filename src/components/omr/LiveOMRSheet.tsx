@@ -3,7 +3,7 @@
 import React, { useMemo } from 'react';
 import { AnswerState } from '@/types/exam';
 import { cn } from '@/lib/utils';
-import { FileDown, CheckCircle2, AlertCircle, HelpCircle, Eye } from 'lucide-react';
+import { FileDown } from 'lucide-react';
 import { generateOmrPdf } from '@/lib/omr/pdfGenerator';
 
 interface OMRProps {
@@ -80,67 +80,68 @@ export function LiveOMRSheet({
   return (
     <div
       className={cn(
-        'rounded-xl border border-[#263554] bg-[#11182A] text-[#F5F7FB] transition-all',
-        compact ? 'p-3 text-xs' : 'p-6 shadow-xl'
+        'rounded-2xl border border-[#E6E5DE] bg-white text-[#2E332D] shadow-card transition-all',
+        compact ? 'p-3.5 text-xs' : 'p-6 sm:p-8'
       )}
     >
       {/* Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#263554] pb-4">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#ECEAE4] pb-5">
         <div>
           <div className="flex items-center gap-2">
-            <span className="rounded bg-[#6486C6]/20 px-2 py-0.5 text-xs font-semibold uppercase tracking-wider text-[#6486C6]">
-              OMR Response Grid
+            <span className="rounded-lg bg-[#E9EEE3] px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-[#758B62]">
+              Physical-Grade OMR Grid
             </span>
             {isReadOnly && (
-              <span className="rounded bg-emerald-500/20 px-2 py-0.5 text-xs font-medium text-emerald-400">
-                Final Evaluated
+              <span className="rounded-lg bg-[#DCE5D3] px-2.5 py-1 text-[11px] font-bold text-[#263126]">
+                Evaluated
               </span>
             )}
           </div>
-          <h3 className="mt-1 text-base font-bold text-[#F5F7FB]">{paperName}</h3>
-          <p className="text-xs text-[#A7B0C0]">
-            ID: <span className="font-mono text-[#F5F7FB]">{registrationId}</span> • Attempt:{' '}
-            <span className="font-mono text-[#F5F7FB]">{attemptId}</span>
+          <h3 className="mt-2 text-base sm:text-lg font-bold text-[#263126]">{paperName}</h3>
+          <p className="text-xs text-[#73786E]">
+            Candidate ID: <span className="font-mono font-semibold text-[#263126]">{registrationId}</span> • Attempt:{' '}
+            <span className="font-mono font-semibold text-[#263126]">{attemptId}</span>
           </p>
         </div>
 
         <div className="flex items-center gap-3">
           <button
+            type="button"
             onClick={handleDownloadPdf}
-            className="flex items-center gap-1.5 rounded-lg border border-[#263554] bg-[#172033] px-3 py-1.5 text-xs font-medium text-[#F5F7FB] hover:border-[#6486C6] hover:bg-[#1D2940] transition-colors"
+            className="flex items-center gap-2 rounded-xl border border-[#E6E5DE] bg-[#F7F5EF] px-3.5 py-2 text-xs font-semibold text-[#2E332D] hover:bg-[#E9EEE3] hover:border-[#9CAF88] transition-colors shadow-soft"
             title="Download printable A4 OMR PDF"
           >
-            <FileDown className="h-4 w-4 text-[#6486C6]" />
-            <span>Download OMR (PDF)</span>
+            <FileDown className="h-4 w-4 text-[#758B62]" />
+            <span>Download A4 OMR</span>
           </button>
         </div>
       </div>
 
       {/* Mini Legend & Quick Summary */}
-      <div className="my-3 flex flex-wrap items-center justify-between gap-2 rounded-lg bg-[#0B1020]/80 p-2.5 text-xs">
+      <div className="my-4 flex flex-wrap items-center justify-between gap-3 rounded-xl bg-[#F7F5EF] p-3 text-xs border border-[#E6E5DE]">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1.5">
-            <div className="h-3 w-3 rounded-full border border-[#263554] bg-[#172033]" />
-            <span className="text-[#A7B0C0]">Unanswered ({stats.unanswered})</span>
+            <div className="h-3 w-3 rounded-full border border-[#E6E5DE] bg-white" />
+            <span className="text-[#73786E]">Blank ({stats.unanswered})</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <div className="h-3 w-3 rounded-full bg-[#6486C6]" />
-            <span className="text-[#A7B0C0]">Filled ({stats.answered})</span>
+            <div className="h-3 w-3 rounded-full bg-[#9CAF88]" />
+            <span className="text-[#263126] font-medium">Darkened ({stats.answered})</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <div className="h-3 w-3 rounded-full border border-amber-400 bg-amber-500/30" />
-            <span className="text-[#A7B0C0]">Review ({stats.marked})</span>
+            <div className="h-3 w-3 rounded-full border border-amber-400 bg-amber-100" />
+            <span className="text-[#73786E]">Review ({stats.marked})</span>
           </div>
         </div>
-        <div className="text-[11px] text-[#7C8799]">
-          Darken only one bubble per question using clicks
+        <div className="text-[11px] text-[#92958D]">
+          Click bubbles to synchronize with your answer state
         </div>
       </div>
 
       {/* Grid of OMR Bubbles */}
       <div
         className={cn(
-          'grid gap-x-6 gap-y-2 overflow-y-auto pr-1 select-none',
+          'grid gap-x-6 gap-y-2.5 overflow-y-auto pr-1 select-none',
           compact
             ? 'max-h-[380px] grid-cols-1'
             : 'max-h-[600px] grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
@@ -158,25 +159,25 @@ export function LiveOMRSheet({
               key={qNum}
               onClick={() => onJumpToQuestion && onJumpToQuestion(qNum)}
               className={cn(
-                'group flex items-center justify-between rounded-lg border px-3 py-1.5 transition-all cursor-pointer',
+                'group flex items-center justify-between rounded-xl border px-3 py-1.5 transition-all cursor-pointer',
                 isCurrent
-                  ? 'border-[#6486C6] bg-[#1D2940]'
-                  : 'border-[#263554]/60 bg-[#172033]/60 hover:border-[#6486C6]/50 hover:bg-[#1D2940]/50',
-                isMarked && 'border-amber-500/50'
+                  ? 'border-[#9CAF88] bg-[#E9EEE3]'
+                  : 'border-[#ECEAE4] bg-[#FFFFFF] hover:border-[#9CAF88]/60 hover:bg-[#F7F5EF]',
+                isMarked && 'border-amber-300 bg-amber-50/50'
               )}
             >
               {/* Question Index with status indicator */}
               <div className="flex items-center gap-1.5 font-mono text-xs">
-                <span className={cn('w-6 font-semibold', isCurrent ? 'text-[#6486C6]' : 'text-[#A7B0C0]')}>
+                <span className={cn('w-6 font-semibold', isCurrent ? 'text-[#758B62]' : 'text-[#73786E]')}>
                   {qNum.toString().padStart(2, '0')}.
                 </span>
                 {isMarked && (
-                  <span className="h-1.5 w-1.5 rounded-full bg-amber-400" title="Marked for review" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-amber-500" title="Marked for review" />
                 )}
               </div>
 
               {/* Bubbles A, B, C, D */}
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5">
                 {options.map((opt) => {
                   const isFilled = selectedOption === opt;
                   return (
@@ -193,8 +194,8 @@ export function LiveOMRSheet({
                       className={cn(
                         'flex h-6 w-6 items-center justify-center rounded-full border text-[11px] font-bold transition-all',
                         isFilled
-                          ? 'border-[#6486C6] bg-[#6486C6] text-[#0B1020] shadow-sm shadow-[#6486C6]/50'
-                          : 'border-[#263554] bg-[#0B1020] text-[#A7B0C0] hover:border-[#6486C6] hover:text-[#F5F7FB]',
+                          ? 'border-[#758B62] bg-[#9CAF88] text-white shadow-soft'
+                          : 'border-[#E6E5DE] bg-white text-[#73786E] hover:border-[#9CAF88] hover:text-[#263126]',
                         isReadOnly && 'cursor-default'
                       )}
                       title={`Select Option ${opt}`}

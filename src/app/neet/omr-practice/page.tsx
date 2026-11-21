@@ -4,13 +4,12 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { LiveOMRSheet } from '@/components/omr/LiveOMRSheet';
 import { AnswerState } from '@/types/exam';
-import { ArrowLeft, RefreshCw, Sparkles, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, RefreshCw, Sparkles } from 'lucide-react';
 
 export default function NeetOmrPracticePage() {
   const totalQuestions = 40; // 40 questions in dedicated OMR practice sandbox
   const [answers, setAnswers] = useState<Record<string, AnswerState>>({});
 
-  // Question mapping from 1..N to id
   const questionIdMap = React.useMemo(() => {
     const map: Record<number, string> = {};
     for (let i = 1; i <= totalQuestions; i++) {
@@ -26,7 +25,7 @@ export default function NeetOmrPracticePage() {
     setAnswers((prev) => {
       const existing = prev[qId];
       if (existing?.selectedOptions?.[0] === optionKey) {
-        // Clear
+        // Clear response
         const next = { ...prev };
         delete next[qId];
         return next;
@@ -50,13 +49,13 @@ export default function NeetOmrPracticePage() {
   };
 
   return (
-    <div className="bg-[#0B1020] text-[#F5F7FB] min-h-screen py-10">
+    <div className="bg-[#F7F5EF] text-[#2E332D] min-h-screen py-10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Navigation breadcrumb */}
-        <div className="flex items-center justify-between border-b border-[#263554] pb-4">
+        <div className="flex items-center justify-between border-b border-[#E6E5DE] pb-4">
           <Link
             href="/neet"
-            className="flex items-center gap-2 text-xs font-semibold text-[#A7B0C0] hover:text-[#F5F7FB]"
+            className="flex items-center gap-2 text-xs font-semibold text-[#73786E] hover:text-[#263126]"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>Back to FORT NEET</span>
@@ -65,7 +64,7 @@ export default function NeetOmrPracticePage() {
           <div className="flex items-center gap-3">
             <button
               onClick={handleReset}
-              className="flex items-center gap-1.5 rounded-lg border border-[#263554] bg-[#172033] px-3 py-1.5 text-xs text-[#A7B0C0] hover:text-[#EF4444]"
+              className="flex items-center gap-1.5 rounded-xl border border-[#E6E5DE] bg-white px-3.5 py-1.5 text-xs text-[#73786E] hover:text-[#E8412C] hover:bg-[#FCE8E4] transition-colors shadow-soft"
             >
               <RefreshCw className="h-3.5 w-3.5" />
               <span>Reset All Bubbles</span>
@@ -75,14 +74,14 @@ export default function NeetOmrPracticePage() {
 
         {/* Introduction */}
         <div className="mt-6 mb-8">
-          <div className="inline-flex items-center gap-1.5 rounded bg-[#10B981]/20 px-2 py-0.5 text-xs font-semibold text-[#10B981]">
-            <Sparkles className="h-3.5 w-3.5" />
+          <div className="inline-flex items-center gap-1.5 rounded-full bg-[#E9EEE3] px-3 py-0.5 text-xs font-semibold text-[#758B62]">
+            <Sparkles className="h-3.5 w-3.5 text-[#9CAF88]" />
             <span>Interactive OMR Simulation Sandbox</span>
           </div>
-          <h1 className="mt-2 text-2xl font-extrabold text-[#F5F7FB]">
+          <h1 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#263126]">
             NEET Physical OMR Practice Grid
           </h1>
-          <p className="mt-1 max-w-3xl text-xs text-[#A7B0C0] leading-relaxed">
+          <p className="mt-1 max-w-3xl text-xs sm:text-sm text-[#73786E] leading-relaxed">
             Practice bubble alignment and response speed before your actual examination. Click any
             bubble to darken it. Click again to clear. Export a print-ready vector A4 PDF with
             authentic candidate metadata and timing hash.

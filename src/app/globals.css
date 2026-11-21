@@ -1,31 +1,52 @@
 @import "tailwindcss";
 
-:root {
-  --background: #0B1020;
-  --foreground: #F5F7FB;
-  --card: #172033;
-  --card-foreground: #F5F7FB;
-  --popover: #11182A;
-  --popover-foreground: #F5F7FB;
-  --primary: #6486C6;
-  --primary-foreground: #0B1020;
-  --secondary: #1D2940;
-  --secondary-foreground: #F5F7FB;
-  --muted: #11182A;
-  --muted-foreground: #A7B0C0;
-  --accent: #6486C6;
-  --accent-foreground: #F5F7FB;
-  --destructive: #EF4444;
-  --destructive-foreground: #F5F7FB;
-  --border: #263554;
-  --input: #1D2940;
-  --ring: #6486C6;
-  --radius: 0.5rem;
+@layer base {
+  :root {
+    --background: #F7F5EF;
+    --foreground: #2E332D;
+    --card: #FFFFFF;
+    --card-foreground: #2E332D;
+    --popover: #FFFFFF;
+    --popover-foreground: #2E332D;
+    --primary: #9CAF88;
+    --primary-foreground: #FFFFFF;
+    --secondary: #E9EEE3;
+    --secondary-foreground: #263126;
+    --muted: #F0EFEA;
+    --muted-foreground: #73786E;
+    --accent: #9CAF88;
+    --accent-foreground: #263126;
+    --destructive: #E8412C;
+    --destructive-foreground: #FFFFFF;
+    --border: #E6E5DE;
+    --input: #FFFFFF;
+    --ring: #9CAF88;
+    --radius: 1rem;
+
+    /* Extended FORT Palette */
+    --color-offwhite: #F7F5EF;
+    --color-warm-white: #FFFFFF;
+    --color-sage: #9CAF88;
+    --color-sage-light: #E9EEE3;
+    --color-sage-soft: #DCE5D3;
+    --color-sage-deep: #758B62;
+    --color-forest: #263126;
+    --color-text-primary: #2E332D;
+    --color-text-secondary: #73786E;
+    --color-text-muted: #92958D;
+    --color-tomato: #E8412C;
+    --color-tomato-light: #FCE8E4;
+    --color-border: #E6E5DE;
+    --color-divider: #ECEAE4;
+    --color-matte-gray: #F0EFEA;
+    --color-warm-gray: #E9E6DF;
+    --color-dark-surface: #293329;
+  }
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: #F7F5EF;
+  color: #2E332D;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
@@ -37,23 +58,59 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-/* Custom scrollbars for exam palette and question bank */
+/* Subtle, soft natural shadows for tactile matte surfaces */
+.shadow-soft {
+  box-shadow: 0 2px 8px -2px rgba(46, 51, 45, 0.05), 0 1px 4px -1px rgba(46, 51, 45, 0.03);
+}
+
+.shadow-card {
+  box-shadow: 0 4px 16px -4px rgba(46, 51, 45, 0.06), 0 2px 6px -2px rgba(46, 51, 45, 0.03);
+}
+
+.shadow-elevated {
+  box-shadow: 0 12px 32px -8px rgba(46, 51, 45, 0.08), 0 4px 12px -2px rgba(46, 51, 45, 0.04);
+}
+
+/* Selective Glassmorphism (20% rule) */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 8px 24px -4px rgba(46, 51, 45, 0.05);
+}
+
+.glass-nav {
+  background: rgba(247, 245, 239, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid #E6E5DE;
+}
+
+.glass-capsule {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(230, 229, 222, 0.8);
+}
+
+/* Custom scrollbars for clean notebook feel */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0B1020;
+  background: #F7F5EF;
 }
 ::-webkit-scrollbar-thumb {
-  background: #263554;
-  border-radius: 3px;
+  background: #DCE5D3;
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #6486C6;
+  background: #9CAF88;
 }
 
-/* Print layout for OMR generation */
+/* Print layout for physical OMR */
 @media print {
   body {
     background: #FFFFFF !important;

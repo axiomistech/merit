@@ -48,14 +48,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className="min-h-screen bg-[#0B1020] text-[#F5F7FB] antialiased">
+    <html lang="en">
+      <body className="min-h-screen bg-[#F7F5EF] text-[#2E332D] antialiased selection:bg-[#DCE5D3] selection:text-[#263126]">
         <div className="flex min-h-screen flex-col">
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />
         </div>
-        <Toaster position="top-right" theme="dark" richColors />
+        <Toaster position="top-right" theme="light" richColors />
       </body>
     </html>
   );
