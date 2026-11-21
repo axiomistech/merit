@@ -139,7 +139,7 @@ export function Navbar() {
                   : 'text-[#66727D] hover:text-[#20252B]'
               )}
             >
-              <span>Examinations</span>
+              <span>Exams</span>
               <ChevronDown
                 className={cn(
                   'h-3.5 w-3.5 transition-transform duration-200 text-[#66727D]',
@@ -211,20 +211,7 @@ export function Navbar() {
             Practice
           </Link>
 
-          {/* 3. Past Papers */}
-          <Link
-            href="/papers"
-            className={cn(
-              'py-2 text-[15px] font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9CC6E0] rounded-md',
-              isPapersActive
-                ? 'text-[#20252B] font-semibold'
-                : 'text-[#66727D] hover:text-[#20252B]'
-            )}
-          >
-            Past Papers
-          </Link>
-
-          {/* 4. Leaderboard */}
+          {/* 3. Leaderboard */}
           <Link
             href="/dashboard/leaderboard"
             className={cn(
@@ -243,9 +230,10 @@ export function Navbar() {
           {/* Sign In */}
           <Link
             href="/login"
-            className="text-[15px] font-semibold text-[#20252B] hover:text-[#E4002B] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9CC6E0] rounded-md"
+            className="text-[15px] font-semibold text-[#20252B] hover:text-[#E4002B] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9CC6E0] rounded-md inline-flex items-center gap-1"
           >
-            Sign In
+            <span>Sign In</span>
+            <span className="text-xs font-mono">↗</span>
           </Link>
 
           {/* Start Practicing (Primary CTA) */}
@@ -325,22 +313,6 @@ export function Navbar() {
               </Link>
             </div>
 
-            {/* Past Papers */}
-            <div>
-              <Link
-                href="/papers"
-                onClick={() => setMobileMenuOpen(false)}
-                className={cn(
-                  'block py-2 text-base font-medium transition-colors',
-                  isPapersActive
-                    ? 'text-[#20252B] font-semibold'
-                    : 'text-[#66727D] hover:text-[#20252B]'
-                )}
-              >
-                Past Papers
-              </Link>
-            </div>
-
             {/* Leaderboard */}
             <div>
               <Link
@@ -358,21 +330,21 @@ export function Navbar() {
             </div>
 
             {/* Divider */}
-            <div className="pt-4 border-t border-[#DCE2E6] flex flex-col gap-3">
+            <div className="pt-4 border-t border-[#DCE2E6]/80 flex flex-col gap-3">
               {/* Sign In */}
               <Link
                 href="/login"
                 onClick={() => setMobileMenuOpen(false)}
                 className="block text-center text-[15px] font-semibold text-[#20252B] py-2.5 transition-colors hover:text-[#E4002B]"
               >
-                Sign In
+                Sign In ↗
               </Link>
 
               {/* Start Practicing */}
               <Link
                 href="/signup"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex h-11 w-full items-center justify-center rounded-xl bg-[#E4002B] text-[15px] font-semibold text-white transition-colors hover:bg-[#C90026]"
+                className="glass-racing-red flex h-11 w-full items-center justify-center rounded-full text-sm font-bold text-white shadow-md transition-transform hover:scale-[1.02]"
               >
                 Start Practicing
               </Link>
