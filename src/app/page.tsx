@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import {
   ArrowRight,
@@ -13,7 +13,6 @@ import {
   ChevronRight,
   Sparkles,
   Check,
-  RotateCcw,
   Shield,
   Search,
   Filter,
@@ -22,8 +21,6 @@ import {
   CheckCircle2,
   Lock,
 } from 'lucide-react';
-import { SAMPLE_NEET_QUESTIONS } from '@/data/seedData';
-import { MathText } from '@/components/ui/MathText';
 import { cn } from '@/lib/utils';
 
 interface QuestionPaperRecord {
@@ -137,23 +134,6 @@ export default function HomePage() {
       isFreeEligible: false,
     },
   ];
-
-  // --------------------------------------------------------------------------
-  // Hero Interactive Question State
-  // --------------------------------------------------------------------------
-  const sampleQuestion = SAMPLE_NEET_QUESTIONS[0];
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
-  const [showExplanation, setShowExplanation] = useState<boolean>(false);
-
-  const handleOptionSelect = (key: string) => {
-    setSelectedOption(key);
-    setShowExplanation(true);
-  };
-
-  const handleResetDemo = () => {
-    setSelectedOption(null);
-    setShowExplanation(false);
-  };
 
   // --------------------------------------------------------------------------
   // Section 04: Question Paper Discovery Search & Filters
@@ -316,115 +296,93 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* Central Physical Centerpiece with Orbital Ring & Fragment Preview */}
-          <div className="relative mt-12 flex flex-col items-center">
-            {/* Subtle Orbital Blue Accent Ring */}
-            <div className="pointer-events-none absolute top-1/2 left-1/2 h-[420px] w-full max-w-[720px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#9CC6E0]/40" />
+          {/* Central Cinematic Centerpiece: Layered Translucent Liquid Glass & Physical Fragment */}
+          <div className="relative mt-12 sm:mt-16 flex flex-col items-center">
+            {/* Ambient Liquid Glacier Underglow */}
+            <div className="pointer-events-none absolute top-1/2 left-1/2 h-[340px] w-full max-w-[620px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#9CC6E0]/30 blur-[80px]" />
 
-            {/* Subtle Flowing Red Accent Line */}
-            <div className="pointer-events-none absolute top-1/2 left-1/2 h-[260px] w-full max-w-[580px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#E4002B]/20" />
+            {/* Geometric Thin Orbital Lines */}
+            <div className="pointer-events-none absolute top-1/2 left-1/2 h-[380px] w-full max-w-[680px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#9CC6E0]/40" />
+            <div className="pointer-events-none absolute top-1/2 left-1/2 h-[260px] w-full max-w-[540px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#E4002B]/25" />
 
-            {/* Floating Translucent CBT Examination Interface Fragment */}
-            <div className="glass-panel relative z-10 w-full max-w-2xl rounded-[32px] p-6 sm:p-8 backdrop-blur-2xl shadow-xl">
-              {/* Question Header */}
+            {/* Floating Translucent Liquid Glass Exam Interface Fragment */}
+            <div className="glass-polar relative z-10 w-full max-w-xl rounded-[32px] p-6 sm:p-8 backdrop-blur-2xl shadow-2xl transition-all duration-300 hover:scale-[1.01]">
+              {/* Micro Status Bar */}
               <div className="flex items-center justify-between border-b border-[#DCE2E6]/80 pb-4">
                 <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-[#9CC6E0]" />
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#66727D]">
-                    NEET Diagnostic Simulation • Physics
+                  <span className="h-2 w-2 rounded-full bg-[#E4002B] animate-pulse" />
+                  <span className="font-mono text-[11px] font-bold tracking-wider uppercase text-[#20252B]">
+                    FORT CBT ENGINE · LIVE PREVIEW
                   </span>
                 </div>
-                <div className="glass-pill rounded-full px-3 py-1 font-mono text-[11px] font-bold text-[#20252B]">
-                  +4 / -1 Marking
-                </div>
+                <span className="glass-pill rounded-full px-3 py-1 font-mono text-[10px] font-bold text-[#66727D]">
+                  CBT · TIMED
+                </span>
               </div>
 
-              {/* Question Stem */}
-              <div className="pt-4">
-                <div className="text-[11px] font-bold uppercase tracking-wider text-[#9CC6E0]">
-                  {sampleQuestion.conceptName}
+              {/* Fragment Content: Clean Editorial Specimen */}
+              <div className="pt-5 space-y-4">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#9CC6E0]">
+                    Physics • Wave Optics & Interference
+                  </span>
+                  <span className="font-mono text-[11px] font-bold text-[#66727D]">
+                    Q. 01 / 180
+                  </span>
                 </div>
-                <div className="mt-2 text-sm sm:text-base leading-relaxed text-[#20252B]">
-                  <MathText text={sampleQuestion.text} />
-                </div>
-              </div>
 
-              {/* Interactive Options */}
-              <div className="mt-5 space-y-2.5">
-                {sampleQuestion.options.map((option) => {
-                  const isSelected = selectedOption === option.key;
-                  const isCorrect = option.key === 'B';
-                  let optionClass =
-                    'border-white/80 bg-white/60 hover:bg-[#9CC6E0]/20 hover:border-[#9CC6E0] text-[#20252B]';
+                <p className="text-sm sm:text-base font-medium text-[#20252B] leading-relaxed">
+                  In Young&apos;s double slit experiment, if the separation between the coherent slits is halved and screen distance is doubled, the fringe width will:
+                </p>
 
-                  if (selectedOption) {
-                    if (isSelected && isCorrect) {
-                      optionClass =
-                        'border-[#9CC6E0] bg-[#9CC6E0]/30 text-[#20252B] font-bold shadow-sm';
-                    } else if (isSelected && !isCorrect) {
-                      optionClass = 'border-[#E4002B] bg-[#FDEDF0] text-[#20252B] font-bold';
-                    } else if (isCorrect) {
-                      optionClass = 'border-[#9CC6E0]/60 bg-[#9CC6E0]/20 text-[#20252B]';
-                    }
-                  }
+                {/* 2 Specimen Option Badges */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+                  <div className="flex items-center justify-between rounded-2xl border border-[#9CC6E0] bg-[#9CC6E0]/25 p-3 text-xs font-bold text-[#20252B] shadow-xs">
+                    <div className="flex items-center gap-2.5">
+                      <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-white text-[11px] font-mono font-bold text-[#20252B] shadow-xs">
+                        B
+                      </span>
+                      <span>Increase 4 times</span>
+                    </div>
+                    <Check className="h-4 w-4 text-[#20252B]" />
+                  </div>
 
-                  return (
-                    <button
-                      key={option.key}
-                      type="button"
-                      onClick={() => handleOptionSelect(option.key)}
-                      className={cn(
-                        'flex w-full items-center justify-between rounded-2xl border p-3.5 text-left text-xs sm:text-sm transition-all duration-150 backdrop-blur-md',
-                        optionClass
-                      )}
-                    >
-                      <div className="flex items-center gap-3">
-                        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-xl border border-white/80 bg-white font-mono text-xs font-bold text-[#20252B] shadow-sm">
-                          {option.key}
-                        </span>
-                        <span>
-                          <MathText text={option.text} />
-                        </span>
-                      </div>
-                      {selectedOption && isCorrect && (
-                        <Check className="h-4 w-4 shrink-0 text-[#20252B]" />
-                      )}
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* Evaluation Feedback */}
-              {showExplanation ? (
-                <div className="mt-4 rounded-2xl border border-white/80 bg-white/80 p-4 text-xs backdrop-blur-md">
-                  <div className="flex items-center justify-between font-bold">
-                    <span
-                      className={
-                        selectedOption === 'B' ? 'text-[#20252B]' : 'text-[#E4002B]'
-                      }
-                    >
-                      {selectedOption === 'B'
-                        ? '✓ Correct Response (+4 Marks)'
-                        : '✗ Incorrect Response (-1 Mark)'}
+                  <div className="flex items-center gap-2.5 rounded-2xl border border-white/80 bg-white/60 p-3 text-xs font-medium text-[#66727D]">
+                    <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-white text-[11px] font-mono font-bold text-[#20252B] shadow-xs">
+                      A
                     </span>
-                    <button
-                      type="button"
-                      onClick={handleResetDemo}
-                      className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#66727D] hover:text-[#20252B]"
-                    >
-                      <RotateCcw className="h-3 w-3" />
-                      <span>Reset Demo</span>
-                    </button>
-                  </div>
-                  <div className="mt-2 text-[#66727D] leading-relaxed">
-                    <MathText text={sampleQuestion.explanation?.text || ''} />
+                    <span>Remain unchanged</span>
                   </div>
                 </div>
-              ) : (
-                <div className="mt-4 text-center text-[11px] font-medium text-[#66727D]">
-                  Tap an option above to test real-time server-grade scoring
+
+                {/* Micro Metrics Strip */}
+                <div className="grid grid-cols-3 gap-2 pt-4 border-t border-[#DCE2E6]/80 text-center">
+                  <div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#8C9BA8] block">
+                      SIMULATION
+                    </span>
+                    <span className="font-mono text-xs font-bold text-[#20252B]">
+                      180 Questions
+                    </span>
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#8C9BA8] block">
+                      DURATION
+                    </span>
+                    <span className="font-mono text-xs font-bold text-[#20252B]">
+                      200 Minutes
+                    </span>
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#8C9BA8] block">
+                      OUTPUT
+                    </span>
+                    <span className="font-mono text-xs font-bold text-[#9CC6E0]">
+                      Vector A4 OMR
+                    </span>
+                  </div>
                 </div>
-              )}
+              </div>
             </div>
           </div>
         </div>
