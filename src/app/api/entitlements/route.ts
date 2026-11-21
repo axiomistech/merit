@@ -8,16 +8,17 @@ export async function GET(req: Request) {
     const paperSlug = searchParams.get('paperSlug');
 
     const store = getEntitlementsStore();
-    const userEntitlements = store[studentRegistrationId] || [
-      {
-        id: 'ent_free_first_paper',
-        type: 'complimentary_first_test',
-        paperSlug: 'all',
-        grantedAt: '2026-01-01T00:00:00Z',
-        expiresAt: '2026-12-31T23:59:59Z',
-        status: 'active',
-      },
-    ];
+    const userEntitlements = store[studentRegistrationId] || [];
+
+    // Check if free paper credit has been consumed
+    const freeEntitlement = userEntitlements.find(
+      (e) => (e.type === 'free_unlock' || e.type === 'complimentary_first_test') && e.status === 'active'
+    );
+    const freePaperAvailable = !freeEntitlement;
+
+    const unlockedPapers = userEntitlements
+      .filter((e) => e.status === 'active')
+      .map((e) => e.paperSlug);
 
     if (paperSlug) {
       const hasAccess = userEntitlements.some(
@@ -25,17 +26,24 @@ export async function GET(req: Request) {
           e.status === 'active' &&
           (e.paperSlug === 'all' || e.paperSlug === paperSlug)
       );
+      const activeEntitlement = userEntitlements.find(
+        (e) => e.status === 'active' && (e.paperSlug === 'all' || e.paperSlug === paperSlug)
+      );
+
       return NextResponse.json({
         success: true,
         hasAccess,
-        entitlement: userEntitlements.find(
-          (e) => e.status === 'active' && (e.paperSlug === 'all' || e.paperSlug === paperSlug)
-        ) || null,
+        freePaperAvailable,
+        freePaperSlug: freeEntitlement?.paperSlug || null,
+        entitlement: activeEntitlement || null,
       });
     }
 
     return NextResponse.json({
       success: true,
+      freePaperAvailable,
+      freePaperSlug: freeEntitlement?.paperSlug || null,
+      unlockedPapers,
       data: userEntitlements,
     });
   } catch (error: any) {
@@ -49,11 +57,17 @@ export async function GET(req: Request) {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { studentRegistrationId, paperSlug } = body;
+    const {
+      studentRegistrationId,
+      paperSlug,
+      action = 'free_unlock',
+      orderId,
+      paymentId,
+    } = body;
 
-    if (!studentRegistrationId) {
+    if (!studentRegistrationId || !paperSlug) {
       return NextResponse.json(
-        { success: false, error: 'Student registration ID required' },
+        { success: false, error: 'Student registration ID and paper slug are required' },
         { status: 400 }
       );
     }
@@ -63,37 +77,85 @@ export async function POST(req: Request) {
       store[studentRegistrationId] = [];
     }
 
-    // Check if complimentary token already claimed
-    const existing = store[studentRegistrationId].find(
-      (e) => e.type === 'complimentary_first_test'
+    const userEntitlements = store[studentRegistrationId];
+
+    // Check if student already owns this paper
+    const alreadyOwned = userEntitlements.some(
+      (e) => e.status === 'active' && (e.paperSlug === 'all' || e.paperSlug === paperSlug)
     );
-    if (existing) {
+    if (alreadyOwned) {
       return NextResponse.json({
         success: true,
-        message: 'Complimentary test token already active',
-        data: existing,
+        message: 'Question paper is already unlocked',
+        paperSlug,
+        alreadyOwned: true,
       });
     }
 
-    const newEntitlement = {
-      id: `ent_${Date.now()}`,
-      type: 'complimentary_first_test',
-      paperSlug: paperSlug || 'all',
-      grantedAt: new Date().toISOString(),
-      expiresAt: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
-      status: 'active',
-    };
+    if (action === 'free_unlock') {
+      // Check if student already consumed their 1 free paper unlock
+      const existingFree = userEntitlements.find(
+        (e) => (e.type === 'free_unlock' || e.type === 'complimentary_first_test') && e.status === 'active'
+      );
 
-    store[studentRegistrationId].push(newEntitlement);
+      if (existingFree) {
+        return NextResponse.json(
+          {
+            success: false,
+            error: `Your free question paper entitlement was already used for ${existingFree.paperSlug}. Additional question papers cost ₹10 each.`,
+            freePaperConsumed: true,
+            usedForPaper: existingFree.paperSlug,
+          },
+          { status: 400 }
+        );
+      }
 
-    return NextResponse.json({
-      success: true,
-      message: 'Complimentary first test access granted successfully',
-      data: newEntitlement,
-    });
+      const freeEntitlement = {
+        id: `ent_free_${Date.now()}`,
+        type: 'free_unlock',
+        paperSlug,
+        grantedAt: new Date().toISOString(),
+        expiresAt: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
+        status: 'active',
+      };
+
+      userEntitlements.push(freeEntitlement);
+
+      return NextResponse.json({
+        success: true,
+        message: 'Complimentary first question paper unlocked successfully',
+        data: freeEntitlement,
+      });
+    }
+
+    if (action === 'paid_unlock') {
+      const paidEntitlement = {
+        id: `ent_paid_${Date.now()}`,
+        type: 'paid_unlock',
+        paperSlug,
+        orderId: orderId || `ord_${Date.now()}`,
+        paymentId: paymentId || `pay_${Date.now()}`,
+        grantedAt: new Date().toISOString(),
+        expiresAt: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
+        status: 'active',
+      };
+
+      userEntitlements.push(paidEntitlement);
+
+      return NextResponse.json({
+        success: true,
+        message: 'Question paper unlocked for ₹10 successfully',
+        data: paidEntitlement,
+      });
+    }
+
+    return NextResponse.json(
+      { success: false, error: `Invalid unlock action '${action}'` },
+      { status: 400 }
+    );
   } catch (error: any) {
     return NextResponse.json(
-      { success: false, error: error.message || 'Failed to grant entitlement' },
+      { success: false, error: error.message || 'Failed to process entitlement' },
       { status: 500 }
     );
   }

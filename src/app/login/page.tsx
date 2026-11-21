@@ -1,13 +1,16 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { Shield, ArrowRight, Lock, Mail } from 'lucide-react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { Shield, Lock, Mail } from 'lucide-react';
 import { toast } from 'sonner';
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectTarget = searchParams.get('redirect') || searchParams.get('returnUrl') || '/dashboard';
+
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -33,12 +36,26 @@ export default function LoginPage() {
       }
 
       toast.success('Signed in successfully.');
-      router.push('/dashboard');
+      router.push(redirectTarget);
     } catch (err: any) {
       toast.error(err.message || 'Login failed');
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleGoogleSignIn = () => {
+    if (typeof window !== 'undefined') {
+      const session = {
+        userId: 'usr_google_candidate',
+        registrationId: 'FORT-26-000001',
+        fullName: 'DHANUSH JAGADEESH',
+        email: 'dhanush.student@gmail.com',
+      };
+      localStorage.setItem('fort_student_session', JSON.stringify(session));
+    }
+    toast.success('Signed in with Google successfully.');
+    router.push(redirectTarget);
   };
 
   return (
@@ -53,7 +70,7 @@ export default function LoginPage() {
           </Link>
           <h1 className="mt-4 text-2xl font-bold text-[#20252B] font-sans">Welcome Back</h1>
           <p className="mt-1 text-xs text-[#66727D]">
-            Sign in to your candidate dashboard & practice records.
+            Sign in to your candidate dashboard & unlock question papers.
           </p>
         </div>
 
@@ -61,19 +78,7 @@ export default function LoginPage() {
         <div className="mt-6">
           <button
             type="button"
-            onClick={() => {
-              if (typeof window !== 'undefined') {
-                const session = {
-                  userId: 'usr_google_candidate',
-                  registrationId: 'FORT-26-000001',
-                  fullName: 'DHANUSH JAGADEESH',
-                  email: 'dhanush.student@gmail.com',
-                };
-                localStorage.setItem('fort_student_session', JSON.stringify(session));
-              }
-              toast.success('Signed in with Google successfully.');
-              router.push('/dashboard');
-            }}
+            onClick={handleGoogleSignIn}
             className="flex w-full items-center justify-center gap-3 rounded-full border border-[#DCE2E6] bg-white py-3 text-xs font-bold text-[#20252B] shadow-sm hover:bg-[#F1F3F4] transition-all hover:border-[#9CC6E0]"
           >
             <svg className="h-4 w-4" viewBox="0 0 24 24">
@@ -146,19 +151,40 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-full bg-[#E4002B] py-3.5 text-sm font-bold text-white shadow-md shadow-[#E4002B]/20 hover:bg-[#C90026] transition-all hover:translate-y-[-1px] disabled:opacity-50 mt-2"
+            className="w-full rounded-xl bg-[#E4002B] py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-[#C90026] transition-all disabled:opacity-50 mt-2"
           >
-            {loading ? 'Authenticating...' : 'Sign In to Dashboard'}
+            {loading ? 'Authenticating...' : 'Sign In'}
           </button>
         </form>
 
         <div className="mt-6 border-t border-[#DCE2E6] pt-4 text-center text-xs text-[#66727D]">
           Don't have a FORT registration yet?{' '}
-          <Link href="/signup" className="font-bold text-[#20252B] hover:underline">
+          <Link
+            href={
+              redirectTarget !== '/dashboard'
+                ? `/signup?redirect=${encodeURIComponent(redirectTarget)}`
+                : '/signup'
+            }
+            className="font-bold text-[#20252B] hover:underline"
+          >
             Register Candidate Account
           </Link>
         </div>
       </div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-[#F1F3F4] flex items-center justify-center">
+          <div className="text-sm font-semibold text-[#66727D]">Loading...</div>
+        </div>
+      }
+    >
+      <LoginForm />
+    </Suspense>
   );
 }

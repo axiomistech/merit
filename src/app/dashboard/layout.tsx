@@ -6,21 +6,16 @@ import { usePathname } from 'next/navigation';
 import {
   Shield,
   LayoutDashboard,
-  BookOpen,
   FileText,
-  Clock,
-  Bookmark,
   RotateCcw,
   BarChart3,
+  Award,
+  Bookmark,
   CreditCard,
   User,
-  Settings,
   Menu,
   X,
-  ChevronRight,
   LogOut,
-  HelpCircle,
-  Layers,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -50,14 +45,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   }, []);
 
   const navItems = [
-    { href: '/dashboard', label: 'Home', icon: LayoutDashboard },
-    { href: '/dashboard/practice', label: 'Practice', icon: Layers },
-    { href: '/dashboard/tests', label: 'Tests', icon: Clock },
-    { href: '/dashboard/exams', label: 'Exams', icon: BookOpen },
-    { href: '/dashboard/analytics', label: 'Performance', icon: BarChart3 },
+    { href: '/dashboard', label: 'Overview', icon: LayoutDashboard },
+    { href: '/dashboard/papers', label: 'My Question Papers', icon: FileText },
+    { href: '/dashboard/history', label: 'My Attempts', icon: RotateCcw },
+    { href: '/dashboard/analytics', label: 'Analytics', icon: BarChart3 },
+    { href: '/dashboard/leaderboard', label: 'Leaderboard', icon: Award },
     { href: '/dashboard/bookmarks', label: 'Bookmarks', icon: Bookmark },
-    { href: '/dashboard/history', label: 'History', icon: RotateCcw },
-    { href: '/dashboard/profile', label: 'Profile', icon: User },
+    { href: '/dashboard/purchases', label: 'Purchase History', icon: CreditCard },
+    { href: '/dashboard/profile', label: 'Profile & Settings', icon: User },
   ];
 
   return (

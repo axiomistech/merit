@@ -51,16 +51,32 @@ export async function POST(req: Request) {
       );
     }
 
-    // Grant Entitlement
+    // Grant Entitlement with Idempotency Check
     const store = getEntitlementsStore();
     const regId = studentRegistrationId || 'FORT-26-000001';
     if (!store[regId]) {
       store[regId] = [];
     }
 
+    const alreadyProcessed = store[regId].find(
+      (e) => e.orderId === razorpay_order_id || e.paymentId === razorpay_payment_id
+    );
+
+    if (alreadyProcessed) {
+      return NextResponse.json({
+        success: true,
+        message: 'Payment already verified and entitlement active (idempotent)',
+        data: {
+          paymentId: razorpay_payment_id,
+          orderId: razorpay_order_id,
+          entitlement: alreadyProcessed,
+        },
+      });
+    }
+
     const newEntitlement = {
       id: `ent_purchased_${Date.now()}`,
-      type: 'purchased_paper_token',
+      type: 'paid_unlock',
       paperSlug: paperSlug || 'all',
       orderId: razorpay_order_id,
       paymentId: razorpay_payment_id,

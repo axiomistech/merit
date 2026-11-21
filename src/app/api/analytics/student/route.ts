@@ -19,55 +19,58 @@ export async function GET(req: Request) {
     const subjectStats: Record<string, { total: number; correct: number; score: number; maxScore: number }> = {};
     const chapterStats: Record<string, { subject: string; total: number; correct: number }> = {};
 
-    if (candidateAttempts.length > 0) {
-      candidateAttempts.forEach((att: any) => {
-        const res = att.result;
-        totalQuestionsSolved += res.correctCount + (res.incorrectCount || 0);
-        totalCorrect += res.correctCount;
-        totalScoreSum += res.totalScore;
-        if (res.totalScore > bestScore) bestScore = res.totalScore;
-
-        if (res.subjectPerformance) {
-          Object.entries(res.subjectPerformance).forEach(([subSlug, s]: [string, any]) => {
-            const name = s.subjectName || subSlug;
-            if (!subjectStats[name]) {
-              subjectStats[name] = { total: 0, correct: 0, score: 0, maxScore: 0 };
-            }
-            subjectStats[name].total += (s.correct || 0) + (s.incorrect || 0) + (s.unattempted || 0);
-            subjectStats[name].correct += s.correct || 0;
-            subjectStats[name].score += s.score || 0;
-            subjectStats[name].maxScore += s.maxScore || 180;
-          });
-        }
-
-        if (res.conceptPerformance) {
-          Object.entries(res.conceptPerformance).forEach(([cKey, c]: [string, any]) => {
-            const name = c.conceptName || cKey;
-            if (!chapterStats[name]) {
-              chapterStats[name] = { subject: 'Core', total: 0, correct: 0 };
-            }
-            chapterStats[name].total += c.total || 0;
-            chapterStats[name].correct += c.correct || 0;
-          });
-        }
+    if (candidateAttempts.length === 0) {
+      return NextResponse.json({
+        success: true,
+        data: {
+          registrationId: regId,
+          metrics: {
+            totalQuestionsSolved: 0,
+            totalTestsAttempted: 0,
+            accuracy: 0,
+            averageScore: 0,
+            bestScore: 0,
+            studyStreakDays: 0,
+          },
+          subjectBreakdown: [],
+          weakAreas: [],
+          recommendations: [],
+          hasData: false,
+        },
       });
-    } else {
-      // Baseline initialization for new candidates
-      totalQuestionsSolved = 180;
-      totalCorrect = 142;
-      totalAttempts = 1;
-      totalScoreSum = 530;
-      bestScore = 530;
-
-      subjectStats['Physics'] = { total: 45, correct: 28, score: 104, maxScore: 180 };
-      subjectStats['Chemistry'] = { total: 45, correct: 36, score: 141, maxScore: 180 };
-      subjectStats['Botany'] = { total: 45, correct: 39, score: 153, maxScore: 180 };
-      subjectStats['Zoology'] = { total: 45, correct: 39, score: 153, maxScore: 180 };
-
-      chapterStats['Laws of Motion & Friction'] = { subject: 'Physics', total: 15, correct: 8 };
-      chapterStats['Work, Energy and Power'] = { subject: 'Physics', total: 12, correct: 6 };
-      chapterStats['Chemical Thermodynamics'] = { subject: 'Chemistry', total: 14, correct: 9 };
     }
+
+    candidateAttempts.forEach((att: any) => {
+      const res = att.result;
+      totalQuestionsSolved += res.correctCount + (res.incorrectCount || 0);
+      totalCorrect += res.correctCount;
+      totalScoreSum += res.totalScore;
+      if (res.totalScore > bestScore) bestScore = res.totalScore;
+
+      if (res.subjectPerformance) {
+        Object.entries(res.subjectPerformance).forEach(([subSlug, s]: [string, any]) => {
+          const name = s.subjectName || subSlug;
+          if (!subjectStats[name]) {
+            subjectStats[name] = { total: 0, correct: 0, score: 0, maxScore: 0 };
+          }
+          subjectStats[name].total += (s.correct || 0) + (s.incorrect || 0) + (s.unattempted || 0);
+          subjectStats[name].correct += s.correct || 0;
+          subjectStats[name].score += s.score || 0;
+          subjectStats[name].maxScore += s.maxScore || 180;
+        });
+      }
+
+      if (res.conceptPerformance) {
+        Object.entries(res.conceptPerformance).forEach(([cKey, c]: [string, any]) => {
+          const name = c.conceptName || cKey;
+          if (!chapterStats[name]) {
+            chapterStats[name] = { subject: 'Core', total: 0, correct: 0 };
+          }
+          chapterStats[name].total += c.total || 0;
+          chapterStats[name].correct += c.correct || 0;
+        });
+      }
+    });
 
     const accuracy = totalQuestionsSolved > 0 ? Math.round((totalCorrect / totalQuestionsSolved) * 100) : 0;
     const averageScore = totalAttempts > 0 ? Math.round(totalScoreSum / totalAttempts) : 0;

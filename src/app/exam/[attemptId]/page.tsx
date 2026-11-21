@@ -294,6 +294,33 @@ export default function ExamExecutionPage() {
     if (typeof window !== 'undefined') {
       localStorage.setItem(`fort_result_${attemptId}`, JSON.stringify(evaluation));
       localStorage.setItem('fort_latest_attempt', JSON.stringify(evaluation));
+
+      try {
+        const existingAttemptsStr = localStorage.getItem('fort_student_attempts');
+        let existingAttempts = [];
+        if (existingAttemptsStr) {
+          existingAttempts = JSON.parse(existingAttemptsStr);
+        }
+        const newAttemptRecord = {
+          id: attemptId,
+          paperName: paper.name,
+          paperSlug: attemptId,
+          totalScore: evaluation.totalScore,
+          maxScore: evaluation.maxScore,
+          accuracy: evaluation.accuracy,
+          totalQuestions: questions.length,
+          correctCount: evaluation.correctCount,
+          wrongCount: evaluation.incorrectCount,
+          unansweredCount: evaluation.unattemptedCount,
+          completedAt: new Date().toISOString(),
+          timeSpentSeconds: 12000 - secondsRemaining,
+        };
+        existingAttempts = [newAttemptRecord, ...existingAttempts.filter((a: any) => a.id !== attemptId)];
+        localStorage.setItem('fort_student_attempts', JSON.stringify(existingAttempts));
+      } catch (err) {
+        console.error('Error saving attempt to history:', err);
+      }
+
       localStorage.setItem(
         `fort_submission_meta_${attemptId}`,
         JSON.stringify({
