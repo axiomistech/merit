@@ -17,22 +17,28 @@ The entire platform is implemented with the custom **Matte Sage / Warm Ivory** d
 
 ## 2. Completed Functionality & Visual Architecture
 
-### Premium Visual System: Matte Sage / Warm Ivory
-- **Color Identity:**
-  - Off-White Canvas: `#F7F5EF` (warm, natural, eye-friendly page background)
-  - Matte White Surfaces: `#FFFFFF` (layered card and table finish with subtle natural shadows)
-  - Deep Forest Typography: `#263126` (high contrast editorial headings)
-  - Primary Body Text: `#2E332D`
-  - Secondary Text: `#73786E`
-  - Muted Text: `#92958D`
-  - Sage Green Primary: `#9CAF88` (primary CTA buttons, active tabs, progress bars, correct bubble shading)
-  - Sage Light: `#E9EEE3` (subtle badge backgrounds, active pill surfaces)
-  - Sage Soft: `#DCE5D3`
-  - Sage Deep: `#758B62` (text on light backgrounds, high contrast borders)
-  - Tomato Red (Restrained): `#E8412C` (used strictly for negative marks, incorrect answers, and critical alerts)
-  - Tomato Light: `#FCE8E4`
-  - Borders: `#E6E5DE`
-  - Dividers: `#ECEAE4`
+### Premium Visual System: Sorrel Trattoria Inspired (Sage Green, Warm Off-White & Tomato Red)
+- **Master Color Identity:**
+  - **Off-White Canvas:** `#F7F5EF` (Primary page background across all 54 routes)
+  - **Sage Green:** `#9CAF88` (Dominant container fills, section headers, badges, correct state indicators)
+  - **Tomato Red:** `#E8412C` (High-contrast rounded-full pill buttons, hand-painted editorial brush underline SVGs, urgent countdown indicators)
+  - **Deep Forest Typography:** `#263126` (Editorial serif headings and bold labels)
+  - **Supporting Palette:**
+    - Matte White Surfaces: `#FFFFFF`
+    - Primary Body Text: `#2E332D`
+    - Secondary Text: `#73786E`
+    - Muted Text: `#92958D`
+    - Sage Light: `#E9EEE3`
+    - Sage Soft: `#DCE5D3`
+    - Sage Deep: `#758B62`
+    - Tomato Light: `#FCE8E4`
+    - Border: `#E6E5DE`
+    - Divider: `#ECEAE4`
+- **Signature Visual Motifs:**
+  - **Hero Containers:** Large `rounded-[32px]` Sage Green containers (`bg-[#9CAF88]`) with crisp white typography.
+  - **Hand-Drawn Brush Underlines:** SVG-rendered Tomato Red brush curves underneath statement words.
+  - **Pill CTAs:** High-intent rounded-full buttons in Tomato Red (`bg-[#E8412C] text-white hover:bg-[#d03521] rounded-full shadow-md shadow-[#E8412C]/20 px-8 py-3.5`).
+  - **Editorial Card Layouts:** Inspired by the reference card arrangement with verified ratings (`4.9 ★★★★★`) and curriculum deep dives.
 - **Glassmorphism Layer (20% Selective):**
   - Floating navigation capsule (`glass-nav`)
   - Preparation focus badges and hero information highlights
