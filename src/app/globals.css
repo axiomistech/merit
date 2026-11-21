@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0B1020;
+  --foreground: #F5F7FB;
+  --card: #172033;
+  --card-foreground: #F5F7FB;
+  --popover: #11182A;
+  --popover-foreground: #F5F7FB;
+  --primary: #6486C6;
+  --primary-foreground: #0B1020;
+  --secondary: #1D2940;
+  --secondary-foreground: #F5F7FB;
+  --muted: #11182A;
+  --muted-foreground: #A7B0C0;
+  --accent: #6486C6;
+  --accent-foreground: #F5F7FB;
+  --destructive: #EF4444;
+  --destructive-foreground: #F5F7FB;
+  --border: #263554;
+  --input: #1D2940;
+  --ring: #6486C6;
+  --radius: 0.5rem;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tabular numerals for exam timers, scores, question indices */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom scrollbars for exam palette and question bank */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0B1020;
+}
+::-webkit-scrollbar-thumb {
+  background: #263554;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6486C6;
+}
+
+/* Print layout for OMR generation */
+@media print {
+  body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+}
