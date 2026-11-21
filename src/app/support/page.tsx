@@ -65,7 +65,7 @@ export default function SupportDeskPage() {
                 SUPPORT & GRIEVANCE
               </span>
             </div>
-            <h1 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#20252B] font-serif">
+            <h1 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#20252B] font-sans">
               Candidate Help & Ticket Desk
             </h1>
             <p className="mt-1 text-xs sm:text-sm text-[#66727D]">

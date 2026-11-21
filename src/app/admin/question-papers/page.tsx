@@ -32,7 +32,7 @@ export default function AdminQuestionPapersPage() {
     <div className="space-y-6 max-w-7xl">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[#20252B] font-serif">Question Paper Builder</h1>
+          <h1 className="text-2xl font-bold text-[#20252B] font-sans">Question Paper Builder</h1>
           <p className="mt-1 text-xs text-[#66727D]">
             Assemble mock tests, manage duration, blueprints, and publication states.
           </p>

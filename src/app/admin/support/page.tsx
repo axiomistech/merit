@@ -136,7 +136,7 @@ export default function AdminSupportPage() {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[#20252B] font-serif">Support Helpdesk & Triage</h1>
+          <h1 className="text-2xl font-bold text-[#20252B] font-sans">Support Helpdesk & Triage</h1>
           <p className="mt-1 text-xs text-[#66727D]">
             Resolve student inquiry tickets, question errors, payment claims, and OMR discrepancy reports.
           </p>

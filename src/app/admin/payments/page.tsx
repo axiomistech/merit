@@ -98,7 +98,7 @@ export default function AdminPaymentsPage() {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[#20252B] font-serif">Payment Transactions & Reconciliation</h1>
+          <h1 className="text-2xl font-bold text-[#20252B] font-sans">Payment Transactions & Reconciliation</h1>
           <p className="mt-1 text-xs text-[#66727D]">
             Cryptographically signed Razorpay payments, webhook audit timestamps, and entitlement logs.
           </p>
@@ -250,7 +250,7 @@ export default function AdminPaymentsPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm">
           <div className="w-full max-w-md rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-2xl space-y-5">
             <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-4">
-              <h3 className="text-base font-bold text-[#20252B] font-serif">Transaction Receipt</h3>
+              <h3 className="text-base font-bold text-[#20252B] font-sans">Transaction Receipt</h3>
               <button
                 onClick={() => setSelectedTxn(null)}
                 className="text-xs text-[#66727D] hover:text-[#20252B]"

@@ -445,7 +445,7 @@ export function LiveOMRSheet({
                     Signature with time (in running handwriting)
                   </div>
                   <div className="mt-1 flex items-baseline justify-between">
-                    <span className="font-serif italic font-bold text-xs text-[#20252B]">
+                    <span className="font-sans italic font-bold text-xs text-[#20252B]">
                       {studentName}
                     </span>
                     <span className="text-[7.5px] text-[#66727D]">
@@ -468,7 +468,7 @@ export function LiveOMRSheet({
                 <div className="bg-[#D7E7F2] p-1 text-center font-bold text-[9px] text-[#20252B] border-b border-[#D45D4C]">
                   MOTHER'S NAME (in running handwriting)
                 </div>
-                <div className="h-9 p-1 font-serif italic text-xs text-[#20252B]">
+                <div className="h-9 p-1 font-sans italic text-xs text-[#20252B]">
                   {motherName || ''}
                 </div>
               </div>
@@ -489,7 +489,7 @@ export function LiveOMRSheet({
                 <div className="bg-[#D7E7F2] p-1 text-center font-bold text-[9px] text-[#20252B] border-b border-[#D45D4C]">
                   FATHER'S NAME (in running handwriting)
                 </div>
-                <div className="h-9 p-1 font-serif italic text-xs text-[#20252B]">
+                <div className="h-9 p-1 font-sans italic text-xs text-[#20252B]">
                   {fatherName || ''}
                 </div>
               </div>

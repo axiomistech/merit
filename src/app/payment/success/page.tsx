@@ -10,7 +10,7 @@ export default function PaymentSuccessPage() {
           <CheckCircle2 className="h-8 w-8" />
         </div>
 
-        <h1 className="mt-4 text-2xl font-bold text-[#20252B] font-serif">Entitlement Unlocked</h1>
+        <h1 className="mt-4 text-2xl font-bold text-[#20252B] font-sans">Entitlement Unlocked</h1>
         <p className="mt-2 text-xs text-[#66727D] leading-relaxed">
           Your access to the examination paper has been confirmed and granted on the server. You may
           now commence the timed paper or download the physical vector OMR sheet.

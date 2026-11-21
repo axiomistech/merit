@@ -41,7 +41,7 @@ export default function AdminMockTestsPage() {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#DCE2E6] pb-6">
         <div>
-          <h1 className="text-2xl font-bold font-serif text-[#20252B]">
+          <h1 className="text-2xl font-bold font-sans text-[#20252B]">
             Mock Test Series Management
           </h1>
           <p className="mt-1 text-xs text-[#66727D]">
@@ -69,7 +69,7 @@ export default function AdminMockTestsPage() {
                 <span className="rounded-full bg-[#E9EEF1] px-3 py-1 font-mono text-[10px] font-bold text-[#20252B] uppercase">
                   {ser.exam} SERIES
                 </span>
-                <h3 className="mt-2 text-xl font-bold font-serif text-[#20252B]">
+                <h3 className="mt-2 text-xl font-bold font-sans text-[#20252B]">
                   {ser.title}
                 </h3>
               </div>

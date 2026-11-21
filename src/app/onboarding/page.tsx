@@ -119,7 +119,7 @@ export default function OnboardingPage() {
         {/* Section 1: Target Exam */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h2 className="text-base font-bold font-serif text-[#20252B]">
+            <h2 className="text-base font-bold font-sans text-[#20252B]">
               1. What are you preparing for?
             </h2>
             <span className="text-xs text-[#20252B] font-semibold">Primary Goal</span>
@@ -145,7 +145,7 @@ export default function OnboardingPage() {
                       : 'border-[#DCE2E6] bg-white text-[#66727D] hover:border-[#9CC6E0]/60'
                   )}
                 >
-                  <div className="font-serif text-lg font-bold">{exam.name}</div>
+                  <div className="font-sans text-lg font-bold">{exam.name}</div>
                   <div className="text-[11px] text-[#66727D] mt-0.5">{exam.sub}</div>
                   {isSelected && (
                     <CheckCircle2 className="h-4 w-4 text-[#20252B] mx-auto mt-2" />
@@ -158,7 +158,7 @@ export default function OnboardingPage() {
 
         {/* Section 2: Education Level */}
         <div className="space-y-3">
-          <h2 className="text-base font-bold font-serif text-[#20252B]">
+          <h2 className="text-base font-bold font-sans text-[#20252B]">
             2. Class & Education Level
           </h2>
           <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4">
@@ -191,7 +191,7 @@ export default function OnboardingPage() {
         {/* Section 3: Preferred Subjects */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h2 className="text-base font-bold font-serif text-[#20252B]">
+            <h2 className="text-base font-bold font-sans text-[#20252B]">
               3. Preferred Subjects
             </h2>
             <span className="text-[11px] text-[#66727D]">Select all you wish to practice</span>
@@ -223,7 +223,7 @@ export default function OnboardingPage() {
         {/* Section 4: Target Year (Optional) */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h2 className="text-base font-bold font-serif text-[#20252B]">
+            <h2 className="text-base font-bold font-sans text-[#20252B]">
               4. Target Examination Year
             </h2>
             <span className="text-[11px] text-[#66727D]">Optional</span>

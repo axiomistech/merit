@@ -38,7 +38,7 @@ export default function StudentJeeAdvancedDashboardPage() {
           <div className="inline-flex items-center gap-1.5 rounded-full bg-[#E9EEF1] px-3 py-1 text-xs font-semibold text-[#20252B]">
             <span>IIT Rigor & Partial Scoring Standard</span>
           </div>
-          <h1 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#20252B] font-serif">
+          <h1 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#20252B] font-sans">
             JEE Advanced Simulation Studio
           </h1>
           <p className="mt-1 text-xs sm:text-sm text-[#66727D]">
@@ -102,7 +102,7 @@ export default function StudentJeeAdvancedDashboardPage() {
                 <span className="font-semibold text-[#20252B]">Full Length Mock</span>
                 <span className="font-mono">{paper.duration} • {paper.marks} Marks</span>
               </div>
-              <h3 className="mt-2 text-xl font-bold text-[#20252B] font-serif">{paper.title}</h3>
+              <h3 className="mt-2 text-xl font-bold text-[#20252B] font-sans">{paper.title}</h3>
               <p className="mt-1 text-xs text-[#66727D]">{paper.subtitle}</p>
 
               <div className="mt-4 space-y-2 border-t border-[#DCE2E6] pt-4 text-xs text-[#66727D]">

@@ -76,7 +76,7 @@ export default function AdminStudentsPage() {
                 <span className="font-mono text-xs font-bold text-[#20252B]">
                   {selectedStudent.registrationId}
                 </span>
-                <h3 className="text-lg font-bold font-serif text-[#20252B]">
+                <h3 className="text-lg font-bold font-sans text-[#20252B]">
                   {selectedStudent.fullName}
                 </h3>
               </div>
@@ -145,7 +145,7 @@ export default function AdminStudentsPage() {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#DCE2E6] pb-6">
         <div>
-          <h1 className="text-2xl font-bold font-serif text-[#20252B]">
+          <h1 className="text-2xl font-bold font-sans text-[#20252B]">
             Student Management & Registrations
           </h1>
           <p className="mt-1 text-xs text-[#66727D]">

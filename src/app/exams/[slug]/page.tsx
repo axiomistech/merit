@@ -46,7 +46,7 @@ export default function PublicExamDetailPage() {
           </div>
 
           <div>
-            <h1 className="text-3xl sm:text-4xl font-bold font-serif text-[#20252B]">{exam.name}</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold font-sans text-[#20252B]">{exam.name}</h1>
             <p className="mt-2 text-sm text-[#66727D] leading-relaxed max-w-3xl">
               {exam.description}
             </p>
@@ -100,7 +100,7 @@ export default function PublicExamDetailPage() {
         {/* Subjects & Syllabus Structure */}
         <div className="rounded-[28px] border border-[#DCE2E6] bg-white p-8 sm:p-10 shadow-[0_4px_20px_rgba(38,49,38,0.04)] space-y-6">
           <div>
-            <h2 className="text-xl font-bold font-serif text-[#20252B]">Syllabus Hierarchy & Disciplines</h2>
+            <h2 className="text-xl font-bold font-sans text-[#20252B]">Syllabus Hierarchy & Disciplines</h2>
             <p className="mt-1 text-xs text-[#66727D]">
               Structured curriculum aligned with current official regulatory guidelines.
             </p>

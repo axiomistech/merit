@@ -9,7 +9,7 @@ export default function SessionExpiredPage() {
         <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-[#E9EEF1] text-[#20252B]">
           <Clock className="h-8 w-8" />
         </div>
-        <h1 className="mt-4 text-xl font-bold text-[#20252B] font-serif">Session Expired</h1>
+        <h1 className="mt-4 text-xl font-bold text-[#20252B] font-sans">Session Expired</h1>
         <p className="mt-2 text-xs text-[#66727D] leading-relaxed">
           Your secure authentication session has elapsed. Please sign in again to resume your
           timed practice and review your analytics.

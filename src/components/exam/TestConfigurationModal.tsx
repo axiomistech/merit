@@ -66,7 +66,7 @@ export function TestConfigurationModal({
               </span>
               <span className="text-xs text-[#66727D]">Session Setup</span>
             </div>
-            <h2 className="mt-1 text-2xl font-bold font-serif text-[#20252B]">
+            <h2 className="mt-1 text-2xl font-bold font-sans text-[#20252B]">
               Test Configuration
             </h2>
           </div>
@@ -84,7 +84,7 @@ export function TestConfigurationModal({
           <div className="text-xs font-semibold uppercase tracking-wider text-[#20252B]">
             Subject & Target Chapter
           </div>
-          <div className="mt-1 text-lg font-bold font-serif text-[#20252B]">
+          <div className="mt-1 text-lg font-bold font-sans text-[#20252B]">
             {subjectName} — {chapterName}
           </div>
         </div>

@@ -60,7 +60,7 @@ export default function AdminDashboardPage() {
       {/* Title & Filter Bar */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#DCE2E6] pb-6">
         <div>
-          <h1 className="text-2xl font-bold font-serif text-[#20252B]">
+          <h1 className="text-2xl font-bold font-sans text-[#20252B]">
             Command Center Overview
           </h1>
           <p className="mt-1 text-xs text-[#66727D]">
@@ -154,7 +154,7 @@ export default function AdminDashboardPage() {
         {/* Recent Student Registrations */}
         <div className="rounded-[28px] border border-[#DCE2E6] bg-white p-6 shadow-sm space-y-4">
           <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-3">
-            <h3 className="text-sm font-bold font-serif text-[#20252B]">
+            <h3 className="text-sm font-bold font-sans text-[#20252B]">
               Recent Student Registrations
             </h3>
             <Link
@@ -193,7 +193,7 @@ export default function AdminDashboardPage() {
         {/* Recent Transactions */}
         <div className="rounded-[28px] border border-[#DCE2E6] bg-white p-6 shadow-sm space-y-4">
           <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-3">
-            <h3 className="text-sm font-bold font-serif text-[#20252B]">
+            <h3 className="text-sm font-bold font-sans text-[#20252B]">
               Recent Transactions & Webhook Settlements
             </h3>
             <Link
@@ -238,7 +238,7 @@ export default function AdminDashboardPage() {
           <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-3">
             <div className="flex items-center gap-2">
               <LifeBuoy className="h-4 w-4 text-[#E4002B]" />
-              <h3 className="text-sm font-bold font-serif text-[#20252B]">
+              <h3 className="text-sm font-bold font-sans text-[#20252B]">
                 Support Tickets Requiring Attention
               </h3>
             </div>
@@ -281,7 +281,7 @@ export default function AdminDashboardPage() {
           <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-3">
             <div className="flex items-center gap-2">
               <History className="h-4 w-4 text-[#20252B]" />
-              <h3 className="text-sm font-bold font-serif text-[#20252B]">
+              <h3 className="text-sm font-bold font-sans text-[#20252B]">
                 Recent Audit Trail
               </h3>
             </div>

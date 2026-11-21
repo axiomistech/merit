@@ -42,7 +42,7 @@ export default function AdminSettingsPage() {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[#20252B] font-serif">Platform System Settings</h1>
+          <h1 className="text-2xl font-bold text-[#20252B] font-sans">Platform System Settings</h1>
           <p className="mt-1 text-xs text-[#66727D]">
             Global configuration, examination marking defaults, session limits, and maintenance controls.
           </p>

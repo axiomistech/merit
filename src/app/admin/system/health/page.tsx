@@ -38,7 +38,7 @@ export default function AdminSystemHealthPage() {
   return (
     <div className="space-y-6 max-w-4xl">
       <div>
-        <h1 className="text-2xl font-bold text-[#20252B] font-serif">System Health & Subsystem Diagnostics</h1>
+        <h1 className="text-2xl font-bold text-[#20252B] font-sans">System Health & Subsystem Diagnostics</h1>
         <p className="mt-1 text-xs text-[#66727D]">
           Live status of database connectivity, payment processing, email services, and exam engines.
         </p>

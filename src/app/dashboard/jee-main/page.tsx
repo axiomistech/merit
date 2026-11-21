@@ -41,7 +41,7 @@ export default function StudentJeeMainDashboardPage() {
           <div className="inline-flex items-center gap-1.5 rounded-full bg-[#E9EEF1] px-3 py-1 text-xs font-semibold text-[#20252B]">
             <span>NTA CBT Pattern Standard</span>
           </div>
-          <h1 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#20252B] font-serif">
+          <h1 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#20252B] font-sans">
             JEE Main CBT Practice Studio
           </h1>
           <p className="mt-1 text-xs sm:text-sm text-[#66727D]">
@@ -107,7 +107,7 @@ export default function StudentJeeMainDashboardPage() {
                 </span>
                 <span className="font-mono text-xs font-bold text-[#20252B]">{sub.mastery}% Mastery</span>
               </div>
-              <h3 className="mt-2 text-xl font-bold text-[#20252B] font-serif">{sub.name}</h3>
+              <h3 className="mt-2 text-xl font-bold text-[#20252B] font-sans">{sub.name}</h3>
               <p className="mt-1 text-xs text-[#66727D]">{sub.sections}</p>
 
               <div className="mt-4">

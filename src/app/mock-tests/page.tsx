@@ -61,7 +61,7 @@ export default function MockTestsCatalogPage() {
             <Clock className="h-3.5 w-3.5" />
             Full-Length Mock Simulations
           </div>
-          <h1 className="text-3xl sm:text-5xl font-bold font-serif text-[#20252B]">
+          <h1 className="text-3xl sm:text-5xl font-bold font-sans text-[#20252B]">
             Mock Examination Series
           </h1>
           <p className="text-sm text-[#66727D]">
@@ -89,7 +89,7 @@ export default function MockTestsCatalogPage() {
                   )}
                 </div>
 
-                <h3 className="font-bold text-lg font-serif text-[#20252B] leading-snug">
+                <h3 className="font-bold text-lg font-sans text-[#20252B] leading-snug">
                   {mock.name}
                 </h3>
                 <p className="text-xs text-[#66727D] leading-relaxed line-clamp-3">

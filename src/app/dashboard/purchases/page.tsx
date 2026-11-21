@@ -32,7 +32,7 @@ export default function StudentPurchasesPage() {
           <span className="text-xs font-semibold uppercase tracking-wider text-[#20252B]">
             Monetization & Entitlements
           </span>
-          <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold text-[#20252B] font-serif">
+          <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold text-[#20252B] font-sans">
             Purchased Papers & Receipts
           </h1>
           <p className="mt-1 text-xs sm:text-sm text-[#66727D]">

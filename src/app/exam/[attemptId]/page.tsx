@@ -372,14 +372,14 @@ export default function ExamExecutionPage() {
             )}
           >
             <Clock className="h-4 w-4 text-[#20252B]" />
-            <span className="tabular-nums font-bold">
+            <span className="tabular-nums font-semibold text-base sm:text-lg">
               {formatTimeWithHours(secondsRemaining)}
             </span>
           </div>
 
           <button
             onClick={() => setShowSubmitConfirmModal(true)}
-            className="rounded-xl border border-[#E4002B]/30 bg-white px-4 py-1.5 text-xs font-bold text-[#E4002B] hover:bg-[#FDEDF0] transition-colors"
+            className="rounded-xl border border-[#E4002B]/30 bg-white px-4 py-1.5 text-xs font-semibold tracking-[-0.01em] text-[#E4002B] hover:bg-[#FDEDF0] transition-colors"
           >
             End Test
           </button>
@@ -441,11 +441,13 @@ export default function ExamExecutionPage() {
               </div>
 
               {/* Question text with KaTeX support */}
-              <div className="rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-[0_2px_8px_rgba(38,49,38,0.04)] text-sm sm:text-base leading-relaxed text-[#20252B]">
-                <div className="mb-2 text-xs font-semibold text-[#20252B]">
+              <div className="rounded-2xl border border-[#DCE2E6] bg-white p-6 sm:p-7 shadow-[0_2px_8px_rgba(32,37,43,0.04)] text-[#20252B]">
+                <div className="mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-[#66727D]">
                   {currentQ?.conceptName}
                 </div>
-                <MathText content={currentQ?.text || ''} />
+                <div className="text-lg sm:text-[20px] font-medium leading-[1.6]">
+                  <MathText content={currentQ?.text || ''} />
+                </div>
               </div>
 
               {/* Options */}
@@ -457,15 +459,15 @@ export default function ExamExecutionPage() {
                       key={opt.key}
                       onClick={() => handleSelectOption(opt.key)}
                       className={cn(
-                        'flex items-center gap-4 rounded-xl border p-4 cursor-pointer transition-all shadow-[0_1px_4px_rgba(38,49,38,0.02)]',
+                        'flex items-center gap-4 rounded-xl border p-4 cursor-pointer transition-all shadow-[0_1px_4px_rgba(32,37,43,0.02)]',
                         isSelected
-                          ? 'border-[#9CC6E0] bg-[#E9EEF1] text-[#20252B]'
+                          ? 'border-[#9CC6E0] bg-[#9CC6E0]/20 text-[#20252B]'
                           : 'border-[#DCE2E6] bg-white text-[#20252B] hover:border-[#9CC6E0]/60'
                       )}
                     >
                       <span
                         className={cn(
-                          'flex h-7 w-7 shrink-0 items-center justify-center rounded-full border font-mono font-bold text-xs transition-colors',
+                          'flex h-7 w-7 shrink-0 items-center justify-center rounded-full border font-semibold text-xs transition-colors',
                           isSelected
                             ? 'border-[#9CC6E0] bg-[#9CC6E0] text-[#20252B]'
                             : 'border-[#DCE2E6] bg-[#F1F3F4] text-[#66727D]'
@@ -473,7 +475,7 @@ export default function ExamExecutionPage() {
                       >
                         {opt.key}
                       </span>
-                      <MathText content={opt.text} className="text-xs sm:text-sm text-[#20252B]" />
+                      <MathText content={opt.text} className="text-base font-normal leading-[1.55] text-[#20252B]" />
                     </div>
                   );
                 })}
@@ -639,7 +641,7 @@ export default function ExamExecutionPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#20252B]/50 backdrop-blur-sm p-4">
           <div className="w-full max-w-md rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-2xl">
             <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-3">
-              <h3 className="text-lg font-bold font-serif text-[#20252B]">
+              <h3 className="text-lg font-bold font-sans text-[#20252B]">
                 Are you sure you want to submit your test?
               </h3>
               <button onClick={() => setShowSubmitConfirmModal(false)} className="text-[#66727D] hover:text-[#20252B]">
@@ -690,7 +692,7 @@ export default function ExamExecutionPage() {
             </div>
 
             {/* Title & Subtitle */}
-            <h2 className="mt-5 text-2xl font-bold text-[#20252B] font-serif tracking-tight">
+            <h2 className="mt-5 text-2xl font-bold text-[#20252B] font-sans tracking-tight">
               Examination Submitted Successfully
             </h2>
             <p className="mt-2 text-sm text-[#66727D]">

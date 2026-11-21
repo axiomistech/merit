@@ -10,7 +10,7 @@ export default function ForbiddenPage() {
           <ShieldAlert className="h-8 w-8" />
         </div>
         <div className="mt-4 font-mono text-4xl font-black text-[#E4002B]">403</div>
-        <h1 className="mt-2 text-xl font-bold text-[#20252B] font-serif">Access Prohibited</h1>
+        <h1 className="mt-2 text-xl font-bold text-[#20252B] font-sans">Access Prohibited</h1>
         <p className="mt-2 text-xs text-[#66727D] leading-relaxed">
           You do not have administrative clearance to access this module. All unauthorized access
           attempts are recorded in the security audit logs.

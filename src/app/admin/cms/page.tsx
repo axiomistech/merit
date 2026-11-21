@@ -41,7 +41,7 @@ export default function AdminHomepageCMSPage() {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[#20252B] font-serif">Homepage CMS Editor</h1>
+          <h1 className="text-2xl font-bold text-[#20252B] font-sans">Homepage CMS Editor</h1>
           <p className="mt-1 text-xs text-[#66727D]">
             Edit landing page hero copy, call-to-actions, top alert strip, and featured statistics.
           </p>
@@ -90,7 +90,7 @@ export default function AdminHomepageCMSPage() {
               type="text"
               value={data.heroHeadline}
               onChange={(e) => setData({ ...data, heroHeadline: e.target.value })}
-              className="w-full rounded-xl border border-[#DCE2E6] p-2.5 text-sm font-serif font-bold text-[#20252B] focus:outline-none focus:border-[#9CC6E0]"
+              className="w-full rounded-xl border border-[#DCE2E6] p-2.5 text-sm font-sans font-bold text-[#20252B] focus:outline-none focus:border-[#9CC6E0]"
             />
           </div>
 

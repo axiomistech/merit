@@ -67,7 +67,7 @@ export default function AdminIntegrationsPage() {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[#20252B] font-serif">Service & API Integrations</h1>
+          <h1 className="text-2xl font-bold text-[#20252B] font-sans">Service & API Integrations</h1>
           <p className="mt-1 text-xs text-[#66727D]">
             Verify upstream database connections, payment webhook listeners, cloud storage, and email gateways.
           </p>

@@ -117,7 +117,7 @@ export default function AdminLeaderboardsPage() {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[#20252B] font-serif">Leaderboard Moderation & Integrity</h1>
+          <h1 className="text-2xl font-bold text-[#20252B] font-sans">Leaderboard Moderation & Integrity</h1>
           <p className="mt-1 text-xs text-[#66727D]">
             Rankings configuration, privacy masking controls, anomaly detection, and attempt disqualification.
           </p>

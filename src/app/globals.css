@@ -1,6 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
+  /* Unified Plus Jakarta Sans font family across the platform */
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-heading: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Official Brand Palette */
   --color-polar-white: #F1F3F4;
   --color-glacier-blue: #9CC6E0;
   --color-racing-red: #E4002B;
@@ -15,7 +22,7 @@
   --color-warning: #B87517;
   --color-danger: #E4002B;
 
-  /* Aliases for FORT brand token design system */
+  /* Brand Aliases */
   --color-fort-polar: #F1F3F4;
   --color-fort-glacier: #9CC6E0;
   --color-fort-red: #E4002B;
@@ -25,7 +32,50 @@
 }
 
 :root {
-  /* FORT Brand Official Palette */
+  /* ========================================================================= */
+  /* CENTRALIZED TYPOGRAPHY TOKENS (PLUS JAKARTA SANS ONLY)                   */
+  /* ========================================================================= */
+  --font-primary: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-sans: var(--font-primary);
+  --font-serif: var(--font-primary);
+
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Type Scale */
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 30px;
+  --font-size-4xl: 40px;
+  --font-size-5xl: 56px;
+  --font-size-6xl: 60px;
+
+  /* Line Heights */
+  --line-height-tight: 1.08;
+  --line-height-heading: 1.2;
+  --line-height-subheading: 1.3;
+  --line-height-body: 1.7;
+
+  /* Letter Spacing */
+  --letter-spacing-hero: -0.045em;
+  --letter-spacing-heading: -0.025em;
+  --letter-spacing-section: -0.02em;
+  --letter-spacing-card: -0.015em;
+  --letter-spacing-button: -0.01em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-label: 0.08em;
+
+  /* ========================================================================= */
+  /* FORT BRAND OFFICIAL PALETTE & THEME TOKENS                               */
+  /* ========================================================================= */
   --fort-polar-white: #F1F3F4;
   --fort-glacier-blue: #9CC6E0;
   --fort-racing-red: #E4002B;
@@ -59,10 +109,7 @@
   --fort-shadow-sm: 0 2px 8px rgba(32, 37, 43, 0.04);
   --fort-shadow-md: 0 4px 16px rgba(32, 37, 43, 0.06);
 
-  /* Typography */
-  --fort-font-primary: inherit;
-
-  /* Shadcn / Component System Mapping */
+  /* Component System Mapping */
   --background: #F1F3F4;
   --foreground: #20252B;
   --card: #FFFFFF;
@@ -84,7 +131,7 @@
   --ring: #9CC6E0;
   --radius: 0.875rem;
 
-  /* Backward Compatibility Aliases for Smooth Rendering */
+  /* Backward Compatibility Aliases */
   --color-offwhite: #F1F3F4;
   --color-warm-white: #FFFFFF;
   --color-sage: #9CC6E0;
@@ -107,36 +154,149 @@
 body {
   background-color: #F1F3F4;
   color: #20252B;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-primary);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Tabular numerals for exam timers, scores, question indices */
+/* ========================================================================= */
+/* BASE TYPOGRAPHIC STYLING & RESPONSIVE SCALING                            */
+/* ========================================================================= */
+
+h1, .text-h1 {
+  font-family: var(--font-primary);
+  font-size: clamp(32px, 4.5vw, 56px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: var(--letter-spacing-heading);
+}
+
+h2, .text-h2 {
+  font-family: var(--font-primary);
+  font-size: clamp(26px, 3.5vw, 40px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-heading);
+}
+
+h3, .text-h3 {
+  font-family: var(--font-primary);
+  font-size: clamp(22px, 2.5vw, 30px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-section);
+}
+
+h4, .text-h4 {
+  font-family: var(--font-primary);
+  font-size: clamp(19px, 2vw, 24px);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: var(--letter-spacing-card);
+}
+
+h5, .text-h5 {
+  font-family: var(--font-primary);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+h6, .text-h6 {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+p, .text-body {
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+/* Hero Typography */
+.text-hero {
+  font-family: var(--font-primary);
+  font-size: clamp(36px, 5.5vw, 60px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: var(--letter-spacing-hero);
+}
+
+/* Body Scales */
+.text-body-lg {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.text-body-sm {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.text-caption {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.text-metadata {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Uppercase Labels / Eyebrows */
+.text-eyebrow, .label-uppercase {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-label);
+}
+
+/* Examination & Question Typography */
+.text-question {
+  font-size: clamp(18px, 1.8vw, 22px);
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.text-option {
+  font-size: clamp(15px, 1.4vw, 17px);
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.text-timer {
+  font-size: clamp(18px, 1.8vw, 22px);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Tabular numerals for timers, scores, question indices */
 .tabular-nums {
   font-variant-numeric: tabular-nums;
 }
 
-/* Subtle, clean shadows */
-.shadow-soft {
-  box-shadow: 0 2px 8px -2px rgba(32, 37, 43, 0.04), 0 1px 4px -1px rgba(32, 37, 43, 0.02);
+/* Button Typography Standard */
+button, .btn {
+  font-family: var(--font-primary);
+  letter-spacing: var(--letter-spacing-button);
 }
 
-.shadow-card {
-  box-shadow: 0 4px 16px -4px rgba(32, 37, 43, 0.05), 0 2px 6px -2px rgba(32, 37, 43, 0.02);
-}
-
-.shadow-elevated {
-  box-shadow: 0 12px 32px -8px rgba(32, 37, 43, 0.07), 0 4px 12px -2px rgba(32, 37, 43, 0.03);
-}
-
-/* Button Component Standards */
 .btn-primary {
   background-color: #E4002B;
   color: #FFFFFF;
   border: none;
+  font-size: 15px;
   font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
   transition: all 0.15s ease-in-out;
 }
 .btn-primary:hover {
@@ -152,7 +312,10 @@ body {
   background-color: #9CC6E0;
   color: #20252B;
   border: none;
+  font-size: 15px;
   font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
   transition: all 0.15s ease-in-out;
 }
 .btn-secondary:hover {
@@ -163,7 +326,10 @@ body {
   background-color: #FFFFFF;
   border: 1px solid #9CC6E0;
   color: #20252B;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
   transition: all 0.15s ease-in-out;
 }
 .btn-outline:hover {
@@ -174,7 +340,9 @@ body {
   background-color: #F1F3F4;
   border: 1px solid #DCE2E6;
   color: #20252B;
+  font-size: 15px;
   font-weight: 500;
+  line-height: 1.2;
   transition: all 0.15s ease-in-out;
 }
 .btn-neutral:hover {
@@ -193,6 +361,19 @@ body {
   background-color: #9CC6E0;
   color: #20252B;
   border-radius: 14px;
+}
+
+/* Subtle, clean shadows */
+.shadow-soft {
+  box-shadow: 0 2px 8px -2px rgba(32, 37, 43, 0.04), 0 1px 4px -1px rgba(32, 37, 43, 0.02);
+}
+
+.shadow-card {
+  box-shadow: 0 4px 16px -4px rgba(32, 37, 43, 0.05), 0 2px 6px -2px rgba(32, 37, 43, 0.02);
+}
+
+.shadow-elevated {
+  box-shadow: 0 12px 32px -8px rgba(32, 37, 43, 0.07), 0 4px 12px -2px rgba(32, 37, 43, 0.03);
 }
 
 /* Glassmorphism restrained */

@@ -32,7 +32,7 @@ export default function ForgotPasswordPage() {
             </div>
             <span className="font-mono text-xl font-bold tracking-wider text-[#20252B]">FORT</span>
           </Link>
-          <h1 className="mt-4 text-2xl font-bold text-[#20252B] font-serif">Reset Password</h1>
+          <h1 className="mt-4 text-2xl font-bold text-[#20252B] font-sans">Reset Password</h1>
           <p className="mt-1 text-xs text-[#66727D]">
             Enter your registered email address to receive password recovery instructions.
           </p>

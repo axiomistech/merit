@@ -89,7 +89,7 @@ export default function SubjectPracticePage() {
         </div>
 
         <div>
-          <h1 className="text-3xl font-bold font-serif text-[#20252B] capitalize">
+          <h1 className="text-3xl font-bold font-sans text-[#20252B] capitalize">
             {subjectSlug} Chapters
           </h1>
           <p className="mt-1 text-sm text-[#66727D]">

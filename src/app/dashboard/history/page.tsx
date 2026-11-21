@@ -25,7 +25,7 @@ export default function AttemptHistoryPage() {
         <span className="text-xs font-semibold uppercase tracking-wider text-[#20252B]">
           Candidate Archive
         </span>
-        <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold text-[#20252B] font-serif">
+        <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold text-[#20252B] font-sans">
           Attempt History & Evaluated Papers
         </h1>
         <p className="mt-1 text-xs sm:text-sm text-[#66727D]">

@@ -98,7 +98,7 @@ export default function AdminRefundsPage() {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[#20252B] font-serif">Refund Management & Audit</h1>
+          <h1 className="text-2xl font-bold text-[#20252B] font-sans">Refund Management & Audit</h1>
           <p className="mt-1 text-xs text-[#66727D]">
             Inspect refund requests, process Razorpay reversals, and manage credit reconciliation.
           </p>

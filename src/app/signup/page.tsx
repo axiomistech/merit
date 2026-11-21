@@ -72,7 +72,7 @@ export default function SignupPage() {
             </div>
             <span className="font-mono text-xl font-bold tracking-wider text-[#20252B]">FORT</span>
           </Link>
-          <h1 className="mt-4 text-2xl font-bold text-[#20252B] font-serif">Create Candidate Account</h1>
+          <h1 className="mt-4 text-2xl font-bold text-[#20252B] font-sans">Create Candidate Account</h1>
           <p className="mt-1 text-xs text-[#66727D]">
             Generate your verified FORT registration ID & claim your complimentary first paper.
           </p>

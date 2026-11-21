@@ -86,7 +86,7 @@ export default function PublicPapersPage() {
             <FileText className="h-3.5 w-3.5" />
             Previous Year Question Papers (PYQ)
           </div>
-          <h1 className="text-3xl sm:text-5xl font-bold font-serif text-[#20252B] tracking-tight">
+          <h1 className="text-3xl sm:text-5xl font-bold font-sans text-[#20252B] tracking-tight">
             Official Previous Year Exam Papers
           </h1>
           <p className="text-sm sm:text-base text-[#66727D] leading-relaxed">
@@ -143,7 +143,7 @@ export default function PublicPapersPage() {
                   )}
                 </div>
 
-                <h3 className="font-bold text-lg font-serif text-[#20252B] leading-snug">
+                <h3 className="font-bold text-lg font-sans text-[#20252B] leading-snug">
                   {paper.name}
                 </h3>
                 <p className="text-xs text-[#66727D] leading-relaxed line-clamp-2">

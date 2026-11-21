@@ -136,7 +136,7 @@ export default function StudentDashboardPage() {
               ACTIVE SESSION
             </span>
           </div>
-          <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold font-serif text-[#20252B]">
+          <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold font-sans text-[#20252B]">
             Welcome, {candidate.fullName}
           </h1>
           <p className="text-xs text-[#66727D]">
@@ -168,7 +168,7 @@ export default function StudentDashboardPage() {
               <div className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
                 Continue Practicing • Active Session
               </div>
-              <h2 className="mt-1 text-lg sm:text-xl font-bold font-serif text-[#20252B]">
+              <h2 className="mt-1 text-lg sm:text-xl font-bold font-sans text-[#20252B]">
                 NEET (UG) 180-Question Diagnostic Simulation
               </h2>
               <p className="mt-1 text-xs text-[#66727D]">
@@ -196,7 +196,7 @@ export default function StudentDashboardPage() {
             <h2 className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
               Quick Practice
             </h2>
-            <p className="text-lg font-bold font-serif text-[#20252B]">
+            <p className="text-lg font-bold font-sans text-[#20252B]">
               Start Solving in Under 15 Seconds
             </p>
           </div>
@@ -226,7 +226,7 @@ export default function StudentDashboardPage() {
                   </span>
                   <span className="text-[10px] text-[#66727D] font-semibold">{item.tag}</span>
                 </div>
-                <h3 className="mt-2 text-sm font-bold font-serif text-[#20252B]">
+                <h3 className="mt-2 text-sm font-bold font-sans text-[#20252B]">
                   {item.chapter}
                 </h3>
                 <div className="mt-1 text-xs text-[#66727D]">
@@ -310,7 +310,7 @@ export default function StudentDashboardPage() {
           <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-4">
             <div className="flex items-center gap-2">
               <Clock className="h-5 w-5 text-[#20252B]" />
-              <h3 className="text-base font-bold font-serif text-[#20252B]">
+              <h3 className="text-base font-bold font-sans text-[#20252B]">
                 Full-Length Mock Tests
               </h3>
             </div>
@@ -363,7 +363,7 @@ export default function StudentDashboardPage() {
           <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-4">
             <div className="flex items-center gap-2">
               <BookOpen className="h-5 w-5 text-[#20252B]" />
-              <h3 className="text-base font-bold font-serif text-[#20252B]">
+              <h3 className="text-base font-bold font-sans text-[#20252B]">
                 Subject-Wise Preparation
               </h3>
             </div>
@@ -384,7 +384,7 @@ export default function StudentDashboardPage() {
                 href="/dashboard/practice"
                 className="rounded-2xl border border-[#DCE2E6] bg-[#F1F3F4] p-4 hover:border-[#9CC6E0] hover:bg-white transition-all block"
               >
-                <div className="text-xs font-bold text-[#20252B] font-serif">{sub.name}</div>
+                <div className="text-xs font-bold text-[#20252B] font-sans">{sub.name}</div>
                 <div className="text-[11px] text-[#66727D] mt-1">{sub.chapters} Chapters</div>
                 <div className="mt-2 text-xs font-bold text-[#20252B]">
                   Accuracy: {sub.accuracy}
@@ -403,7 +403,7 @@ export default function StudentDashboardPage() {
           <div className="flex items-center gap-2">
             <Flame className="h-5 w-5 text-[#E4002B]" />
             <div>
-              <h3 className="text-base font-bold font-serif text-[#20252B]">
+              <h3 className="text-base font-bold font-sans text-[#20252B]">
                 Recommended for You
               </h3>
               <p className="text-xs text-[#66727D]">
@@ -424,7 +424,7 @@ export default function StudentDashboardPage() {
             >
               <div>
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-[#20252B] font-serif">{rec.title}</span>
+                  <span className="text-xs font-bold text-[#20252B] font-sans">{rec.title}</span>
                   <span className="rounded-full bg-[#FDEDF0] px-2.5 py-0.5 text-[10px] font-bold text-[#E4002B]">
                     Remediation
                   </span>
@@ -453,7 +453,7 @@ export default function StudentDashboardPage() {
         <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-4">
           <div className="flex items-center gap-2">
             <RotateCcw className="h-5 w-5 text-[#20252B]" />
-            <h3 className="text-base font-bold font-serif text-[#20252B]">
+            <h3 className="text-base font-bold font-sans text-[#20252B]">
               Recent Activity
             </h3>
           </div>

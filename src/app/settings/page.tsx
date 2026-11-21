@@ -52,7 +52,7 @@ export default function StudentSettingsPage() {
     <div className="bg-[#F1F3F4] text-[#20252B] min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto space-y-6">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold font-serif text-[#20252B]">
+          <h1 className="text-2xl sm:text-3xl font-bold font-sans text-[#20252B]">
             Candidate Settings & Preferences
           </h1>
           <p className="mt-1 text-xs text-[#66727D]">

@@ -53,7 +53,7 @@ export default function FeaturesPage() {
               <span>PLATFORM ARCHITECTURE & CAPABILITIES</span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl font-bold font-serif tracking-tight leading-[1.1] text-[#20252B]">
+            <h1 className="text-4xl sm:text-6xl font-bold font-sans tracking-tight leading-[1.1] text-[#20252B]">
               Engineered for academic{' '}
               <span className="relative inline-block italic">
                 seriousness.
@@ -96,7 +96,7 @@ export default function FeaturesPage() {
               <span className="rounded-full bg-[#E9EEF1] px-3 py-1 text-xs font-bold text-[#20252B]">
                 {f.tag}
               </span>
-              <h3 className="mt-4 text-lg font-bold font-serif text-[#20252B]">{f.title}</h3>
+              <h3 className="mt-4 text-lg font-bold font-sans text-[#20252B]">{f.title}</h3>
               <p className="mt-2 text-xs leading-relaxed text-[#66727D]">{f.desc}</p>
             </div>
           ))}
@@ -104,7 +104,7 @@ export default function FeaturesPage() {
 
         {/* Bottom CTA */}
         <div className="rounded-[28px] border border-[#DCE2E6] bg-white p-8 text-center sm:p-12 shadow-sm">
-          <h2 className="text-2xl sm:text-3xl font-bold font-serif text-[#20252B]">
+          <h2 className="text-2xl sm:text-3xl font-bold font-sans text-[#20252B]">
             Start Your Structured Preparation
           </h2>
           <p className="mx-auto mt-2 max-w-xl text-sm text-[#66727D]">

@@ -40,7 +40,7 @@ export default function AdminSEOPage() {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[#20252B] font-serif">Search Engine Optimization (SEO)</h1>
+          <h1 className="text-2xl font-bold text-[#20252B] font-sans">Search Engine Optimization (SEO)</h1>
           <p className="mt-1 text-xs text-[#66727D]">
             Configure title tags, meta descriptions, social graph previews, and structured schema.
           </p>

@@ -23,7 +23,7 @@ export default function NeetLandingPage() {
               <span>NATIONAL ELIGIBILITY CUM ENTRANCE TEST (UG)</span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl font-bold font-serif tracking-tight leading-[1.1] text-[#20252B]">
+            <h1 className="text-4xl sm:text-6xl font-bold font-sans tracking-tight leading-[1.1] text-[#20252B]">
               Medical practice worth{' '}
               <span className="relative inline-block italic">
                 scoring.
@@ -71,7 +71,7 @@ export default function NeetLandingPage() {
             <div className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
               EXAMINATION BLUEPRINT
             </div>
-            <h2 className="mt-1 text-3xl font-bold font-serif text-[#20252B]">
+            <h2 className="mt-1 text-3xl font-bold font-sans text-[#20252B]">
               Standard NTA NEET (UG) Architecture
             </h2>
           </div>
@@ -85,7 +85,7 @@ export default function NeetLandingPage() {
             ].map((stat, idx) => (
               <div key={idx} className="rounded-[24px] border border-[#DCE2E6] bg-white p-6 shadow-sm">
                 <div className="text-xs font-semibold text-[#66727D]">{stat.label}</div>
-                <div className="mt-2 text-3xl font-extrabold font-serif text-[#20252B]">{stat.value}</div>
+                <div className="mt-2 text-3xl font-extrabold font-sans text-[#20252B]">{stat.value}</div>
                 <div className="mt-1 text-xs text-[#66727D]">{stat.detail}</div>
               </div>
             ))}
@@ -98,7 +98,7 @@ export default function NeetLandingPage() {
             <div className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
               DISCIPLINE PORTFOLIO
             </div>
-            <h2 className="mt-1 text-3xl font-bold font-serif text-[#20252B]">
+            <h2 className="mt-1 text-3xl font-bold font-sans text-[#20252B]">
               NCERT Core Mapping
             </h2>
           </div>
@@ -113,7 +113,7 @@ export default function NeetLandingPage() {
                   <span className="rounded-full bg-[#E9EEF1] px-3 py-1 text-[11px] font-bold text-[#20252B]">
                     45 Questions
                   </span>
-                  <h3 className="mt-4 text-xl font-bold font-serif text-[#20252B]">{sub.name}</h3>
+                  <h3 className="mt-4 text-xl font-bold font-sans text-[#20252B]">{sub.name}</h3>
                   <div className="mt-2 space-y-1 text-xs text-[#66727D]">
                     <div>{sub.chaptersCount} Chapters (Class 11 & 12)</div>
                     <div>{sub.questionCount}+ Curated Questions</div>

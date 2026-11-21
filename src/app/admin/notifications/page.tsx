@@ -103,7 +103,7 @@ export default function AdminNotificationsPage() {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[#20252B] font-serif">In-App Notification Dispatcher</h1>
+          <h1 className="text-2xl font-bold text-[#20252B] font-sans">In-App Notification Dispatcher</h1>
           <p className="mt-1 text-xs text-[#66727D]">
             Broadcast announcements, mock test alerts, and critical advisories to students in real time.
           </p>
@@ -194,7 +194,7 @@ export default function AdminNotificationsPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm overflow-y-auto">
           <div className="w-full max-w-xl rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-2xl my-8 space-y-6">
             <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-4">
-              <h3 className="text-lg font-bold text-[#20252B] font-serif">Compose In-App Notification</h3>
+              <h3 className="text-lg font-bold text-[#20252B] font-sans">Compose In-App Notification</h3>
               <button
                 onClick={() => setShowComposeModal(false)}
                 className="rounded-lg p-2 text-[#66727D] hover:bg-[#F1F3F4] transition-colors"

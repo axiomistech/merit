@@ -217,7 +217,7 @@ export default function ExamResultPage() {
                 </span>
                 <span className="text-xs text-[#66727D]">{SAMPLE_NEET_PAPER.name}</span>
               </div>
-              <h1 className="mt-2 text-3xl font-extrabold font-serif text-[#20252B]">
+              <h1 className="mt-2 text-3xl font-extrabold font-sans text-[#20252B]">
                 Test Result
               </h1>
               <p className="mt-1 text-xs text-[#66727D]">
@@ -369,7 +369,7 @@ export default function ExamResultPage() {
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {Object.entries(evaluation.subjectPerformance).map(([subKey, data]) => (
                 <div key={subKey} className="rounded-[24px] border border-[#DCE2E6] bg-white p-6 shadow-sm">
-                  <div className="text-sm font-bold text-[#20252B] font-serif">{data.subjectName}</div>
+                  <div className="text-sm font-bold text-[#20252B] font-sans">{data.subjectName}</div>
                   <div className="mt-3 text-2xl font-black font-mono text-[#20252B]">
                     {data.score}{' '}
                     <span className="text-xs text-[#66727D] font-normal">/ {data.maxScore}</span>
@@ -402,7 +402,7 @@ export default function ExamResultPage() {
                 <span className="text-xs font-bold uppercase tracking-widest text-white/80">
                   THE REPEAT CYCLE • PRACTICE → EVALUATE → IMPROVE
                 </span>
-                <h3 className="text-2xl font-bold font-serif">
+                <h3 className="text-2xl font-bold font-sans">
                   Ready to eliminate recurring errors in Electrostatics?
                 </h3>
                 <p className="text-xs text-white/90 max-w-xl">

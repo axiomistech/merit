@@ -49,7 +49,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-[#F1F3F4] text-[#20252B] antialiased selection:bg-[#9CC6E0]/40 selection:text-[#20252B]">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="min-h-screen font-sans bg-[#F1F3F4] text-[#20252B] antialiased selection:bg-[#9CC6E0]/40 selection:text-[#20252B]">
         <div className="flex min-h-screen flex-col">
           <Navbar />
           <main className="flex-1">{children}</main>

@@ -20,7 +20,7 @@ export default function JeeAdvancedLandingPage() {
               <span>IIT JOINT ENTRANCE EXAMINATION (ADVANCED)</span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl font-bold font-serif tracking-tight leading-[1.1] text-[#20252B]">
+            <h1 className="text-4xl sm:text-6xl font-bold font-sans tracking-tight leading-[1.1] text-[#20252B]">
               Mathematical & physical{' '}
               <span className="relative inline-block italic">
                 rigor.
@@ -68,7 +68,7 @@ export default function JeeAdvancedLandingPage() {
             <div className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
               EXAMINATION BLUEPRINT
             </div>
-            <h2 className="mt-1 text-3xl font-bold font-serif text-[#20252B]">
+            <h2 className="mt-1 text-3xl font-bold font-sans text-[#20252B]">
               IIT JEE Advanced Architecture
             </h2>
           </div>
@@ -93,7 +93,7 @@ export default function JeeAdvancedLandingPage() {
             ].map((stat, idx) => (
               <div key={idx} className="rounded-[24px] border border-[#DCE2E6] bg-white p-6 shadow-sm">
                 <div className="text-xs font-semibold text-[#66727D]">{stat.title}</div>
-                <div className="mt-2 text-3xl font-extrabold font-serif text-[#20252B]">{stat.value}</div>
+                <div className="mt-2 text-3xl font-extrabold font-sans text-[#20252B]">{stat.value}</div>
                 <div className="mt-1 text-xs text-[#66727D]">{stat.sub}</div>
               </div>
             ))}
@@ -106,7 +106,7 @@ export default function JeeAdvancedLandingPage() {
             <div className="inline-flex items-center gap-2 rounded-full bg-[#E9EEF1] px-3 py-1 text-xs font-bold text-[#20252B]">
               Algorithmic Scoring
             </div>
-            <h3 className="mt-4 text-lg font-bold text-[#20252B] font-serif">Multi-Correct Partial Logic</h3>
+            <h3 className="mt-4 text-lg font-bold text-[#20252B] font-sans">Multi-Correct Partial Logic</h3>
             <p className="mt-2 text-xs leading-relaxed text-[#66727D]">
               Evaluates true subsets of correct options, awarding tiered points while strictly enforcing penalties for selecting even a single incorrect option.
             </p>
@@ -116,7 +116,7 @@ export default function JeeAdvancedLandingPage() {
             <div className="inline-flex items-center gap-2 rounded-full bg-[#FDEDF0] px-3 py-1 text-xs font-bold text-[#E4002B]">
               Endurance Protocol
             </div>
-            <h3 className="mt-4 text-lg font-bold text-[#20252B] font-serif">Dual-Session Simulation</h3>
+            <h3 className="mt-4 text-lg font-bold text-[#20252B] font-sans">Dual-Session Simulation</h3>
             <p className="mt-2 text-xs leading-relaxed text-[#66727D]">
               Recreates the exact morning (09:00 - 12:00) and afternoon (14:30 - 17:30) test conditions to prepare students for mental fatigue management.
             </p>
@@ -126,7 +126,7 @@ export default function JeeAdvancedLandingPage() {
             <div className="inline-flex items-center gap-2 rounded-full bg-[#E9EEF1] px-3 py-1 text-xs font-bold text-[#20252B]">
               Root-Cause Breakdown
             </div>
-            <h3 className="mt-4 text-lg font-bold text-[#20252B] font-serif">Step-by-Step Derivations</h3>
+            <h3 className="mt-4 text-lg font-bold text-[#20252B] font-sans">Step-by-Step Derivations</h3>
             <p className="mt-2 text-xs leading-relaxed text-[#66727D]">
               Every solution includes verified mathematical derivations, free-body diagrams, and alternative shortcut verification methods.
             </p>
@@ -135,7 +135,7 @@ export default function JeeAdvancedLandingPage() {
 
         {/* CTA Banner */}
         <div className="rounded-[28px] border border-[#DCE2E6] bg-white p-8 text-center sm:p-12 shadow-sm">
-          <h2 className="text-2xl sm:text-3xl font-bold font-serif text-[#20252B]">
+          <h2 className="text-2xl sm:text-3xl font-bold font-sans text-[#20252B]">
             Ready for Advanced Conceptual Practice?
           </h2>
           <p className="mx-auto mt-2 max-w-xl text-sm text-[#66727D]">

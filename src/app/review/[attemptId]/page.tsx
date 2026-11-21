@@ -106,7 +106,7 @@ export default function DedicatedReviewPage() {
         </div>
 
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold font-serif text-[#20252B]">
+          <h1 className="text-2xl sm:text-3xl font-bold font-sans text-[#20252B]">
             Question-by-Question Solution Review
           </h1>
           <p className="mt-1 text-xs text-[#66727D]">

@@ -25,7 +25,7 @@ export default function StudentEngineeringDashboardPage() {
           <div className="inline-flex items-center gap-1.5 rounded-full bg-[#E9EEF1] px-3 py-1 text-xs font-semibold text-[#20252B]">
             <span>University Examination & GATE Foundation</span>
           </div>
-          <h1 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#20252B] font-serif">
+          <h1 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#20252B] font-sans">
             Engineering Practice Studio
           </h1>
           <p className="mt-1 text-xs sm:text-sm text-[#66727D]">
@@ -69,7 +69,7 @@ export default function StudentEngineeringDashboardPage() {
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#DCE2E6] pb-4">
           <div>
             <div className="text-[11px] font-semibold uppercase tracking-wider text-[#66727D]">Discipline Curriculum</div>
-            <h2 className="text-xl font-bold text-[#20252B] font-serif">{currentBranchData.name} Core Subjects</h2>
+            <h2 className="text-xl font-bold text-[#20252B] font-sans">{currentBranchData.name} Core Subjects</h2>
           </div>
           <span className="text-xs text-[#66727D]">Updated for AICTE Model Curriculum 2026</span>
         </div>

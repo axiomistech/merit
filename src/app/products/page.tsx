@@ -25,7 +25,7 @@ export default function PublicProductsPage() {
             <Package className="h-3.5 w-3.5" />
             Curated Examination Products & Bundles
           </div>
-          <h1 className="text-3xl sm:text-5xl font-bold font-serif text-[#20252B] tracking-tight">
+          <h1 className="text-3xl sm:text-5xl font-bold font-sans text-[#20252B] tracking-tight">
             Transparent, Student-First Pricing
           </h1>
           <p className="text-sm sm:text-base text-[#66727D] leading-relaxed">

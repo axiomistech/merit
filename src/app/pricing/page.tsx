@@ -20,7 +20,7 @@ export default function PricingPage() {
               <span>DEMOCRATIC EXAMINATION ECONOMICS</span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl font-bold font-serif tracking-tight leading-[1.1] text-[#20252B]">
+            <h1 className="text-3xl sm:text-5xl font-bold font-sans tracking-tight leading-[1.1] text-[#20252B]">
               Pricing worth{' '}
               <span className="relative inline-block italic">
                 trusting.
@@ -55,8 +55,8 @@ export default function PricingPage() {
               <span className="rounded-full bg-[#E9EEF1] px-3 py-1 text-xs font-bold text-[#20252B]">
                 COMPLIMENTARY CLAIM
               </span>
-              <h3 className="mt-4 text-2xl font-bold font-serif text-[#20252B]">First Question Paper</h3>
-              <div className="mt-2 text-4xl font-extrabold font-serif text-[#20252B]">₹0</div>
+              <h3 className="mt-4 text-2xl font-bold font-sans text-[#20252B]">First Question Paper</h3>
+              <div className="mt-2 text-4xl font-extrabold font-sans text-[#20252B]">₹0</div>
               <p className="mt-2 text-xs text-[#66727D]">
                 Granted atomically to every newly registered and verified candidate profile.
               </p>
@@ -98,8 +98,8 @@ export default function PricingPage() {
               <span className="rounded-full bg-[#E9EEF1] px-3 py-1 text-xs font-bold text-[#20252B]">
                 PAY-PER-ATTEMPT
               </span>
-              <h3 className="mt-4 text-2xl font-bold font-serif text-[#20252B]">Subsequent Papers</h3>
-              <div className="mt-2 text-4xl font-extrabold font-serif text-[#20252B]">
+              <h3 className="mt-4 text-2xl font-bold font-sans text-[#20252B]">Subsequent Papers</h3>
+              <div className="mt-2 text-4xl font-extrabold font-sans text-[#20252B]">
                 ₹10 <span className="text-xs font-normal font-sans text-[#66727D]">/ paper</span>
               </div>
               <p className="mt-2 text-xs text-[#66727D]">

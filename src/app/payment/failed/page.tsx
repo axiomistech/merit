@@ -10,7 +10,7 @@ export default function PaymentFailedPage() {
           <XCircle className="h-8 w-8" />
         </div>
 
-        <h1 className="mt-4 text-2xl font-bold text-[#20252B] font-serif">Payment Incomplete</h1>
+        <h1 className="mt-4 text-2xl font-bold text-[#20252B] font-sans">Payment Incomplete</h1>
         <p className="mt-2 text-xs text-[#66727D] leading-relaxed">
           The payment transaction was cancelled or could not be settled by your issuing bank. No
           amount was deducted.

@@ -39,7 +39,7 @@ export default function PaymentCheckoutPage() {
             <Lock className="h-3.5 w-3.5" />
             <span>256-Bit Encrypted Entitlement Authorization</span>
           </div>
-          <h1 className="mt-4 text-2xl font-bold text-[#20252B] font-serif">Unlock Question Paper</h1>
+          <h1 className="mt-4 text-2xl font-bold text-[#20252B] font-sans">Unlock Question Paper</h1>
           <p className="mt-1 text-xs text-[#66727D]">
             FORT NEET (UG) All India Full Mock Examination - 01
           </p>

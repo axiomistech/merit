@@ -29,7 +29,7 @@ export default function ExamPracticePage() {
         </div>
 
         <div>
-          <h1 className="text-3xl font-bold font-serif text-[#20252B]">
+          <h1 className="text-3xl font-bold font-sans text-[#20252B]">
             {exam.name} Practice Hub
           </h1>
           <p className="mt-1 text-sm text-[#66727D]">
@@ -48,7 +48,7 @@ export default function ExamPracticePage() {
                   <span>DISCIPLINE 0{idx + 1}</span>
                   <span className="font-bold text-[#9CC6E0]">Active Curriculum</span>
                 </div>
-                <h3 className="text-xl font-bold font-serif text-[#20252B]">{sub.name}</h3>
+                <h3 className="text-xl font-bold font-sans text-[#20252B]">{sub.name}</h3>
                 <p className="mt-1 text-xs text-[#66727D] leading-relaxed">
                   Rigorous practice problems with KaTeX solutions, instant 15-second standard feedback, and diagnostic velocity telemetry.
                 </p>

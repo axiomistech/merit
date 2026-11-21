@@ -13,7 +13,7 @@ export default function ExamsHubPage() {
         <span className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
           Curricula Directory
         </span>
-        <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold font-serif text-[#20252B]">
+        <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold font-sans text-[#20252B]">
           Supported Competitive Examinations
         </h1>
         <p className="text-xs text-[#66727D]">
@@ -37,7 +37,7 @@ export default function ExamsHubPage() {
                 </span>
               </div>
 
-              <h3 className="mt-4 text-xl font-bold font-serif text-[#20252B]">
+              <h3 className="mt-4 text-xl font-bold font-sans text-[#20252B]">
                 {exam.name}
               </h3>
               <p className="mt-2 text-xs text-[#66727D] leading-relaxed">

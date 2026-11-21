@@ -29,7 +29,7 @@ export default function AdminAnalyticsPage() {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[#20252B] font-serif">Platform Performance Analytics</h1>
+          <h1 className="text-2xl font-bold text-[#20252B] font-sans">Platform Performance Analytics</h1>
           <p className="mt-1 text-xs text-[#66727D]">
             Real-time candidate telemetry, exam distribution ratios, cognitive velocity, and revenue attribution.
           </p>

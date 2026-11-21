@@ -48,7 +48,7 @@ export default function HowItWorksPage() {
               <span>THE FIVE-STAGE METHODOLOGY</span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl font-bold font-serif tracking-tight leading-[1.1] text-[#20252B]">
+            <h1 className="text-4xl sm:text-6xl font-bold font-sans tracking-tight leading-[1.1] text-[#20252B]">
               Preparation worth{' '}
               <span className="relative inline-block italic">
                 trusting.
@@ -95,7 +95,7 @@ export default function HowItWorksPage() {
                 {s.num}
               </div>
               <div>
-                <h3 className="text-xl font-bold font-serif text-[#20252B]">{s.title}</h3>
+                <h3 className="text-xl font-bold font-sans text-[#20252B]">{s.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-[#66727D]">{s.desc}</p>
               </div>
             </div>
@@ -104,7 +104,7 @@ export default function HowItWorksPage() {
 
         {/* Bottom CTA */}
         <div className="rounded-[28px] border border-[#DCE2E6] bg-white p-8 text-center sm:p-12 shadow-sm">
-          <h2 className="text-2xl sm:text-3xl font-bold font-serif text-[#20252B]">
+          <h2 className="text-2xl sm:text-3xl font-bold font-sans text-[#20252B]">
             Start Your First Free Mock Now
           </h2>
           <p className="mx-auto mt-2 max-w-xl text-sm text-[#66727D]">

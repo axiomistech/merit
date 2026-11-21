@@ -102,7 +102,7 @@ export default function AdminOMRPage() {
       {/* Page Header */}
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[#20252B] font-serif">OMR Answer Sheet Management</h1>
+          <h1 className="text-2xl font-bold text-[#20252B] font-sans">OMR Answer Sheet Management</h1>
           <p className="mt-1 text-xs text-[#66727D]">
             Optical mark verification studio, NEET 180-Q A4 template manager, and ambiguous bubble resolution queue.
           </p>
@@ -416,7 +416,7 @@ export default function AdminOMRPage() {
           <div className="w-full max-w-4xl rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-2xl my-8 space-y-6">
             <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-4">
               <div>
-                <h3 className="text-lg font-bold text-[#20252B] font-serif">
+                <h3 className="text-lg font-bold text-[#20252B] font-sans">
                   OMR Verification Studio — {selectedRecord.candidateName}
                 </h3>
                 <div className="flex items-center gap-3 text-xs text-[#66727D] mt-0.5">

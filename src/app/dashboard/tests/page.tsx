@@ -116,7 +116,7 @@ export default function TestsHubPage() {
           <span className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
             Timed Examination Center
           </span>
-          <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold font-serif text-[#20252B]">
+          <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold font-sans text-[#20252B]">
             Mock Tests & Timed Simulations
           </h1>
           <p className="text-xs text-[#66727D]">
@@ -165,7 +165,7 @@ export default function TestsHubPage() {
                 </span>
               </div>
 
-              <h3 className="mt-4 text-xl font-bold font-serif text-[#20252B]">
+              <h3 className="mt-4 text-xl font-bold font-sans text-[#20252B]">
                 {test.title}
               </h3>
 

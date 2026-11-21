@@ -146,7 +146,7 @@ export default function AdminExamsPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 overflow-y-auto">
           <div className="w-full max-w-lg rounded-[28px] border border-[#DCE2E6] bg-white p-6 sm:p-8 shadow-2xl my-8">
             <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-3">
-              <h3 className="text-lg font-bold font-serif text-[#20252B]">
+              <h3 className="text-lg font-bold font-sans text-[#20252B]">
                 {editingExam ? 'Edit Examination' : 'Create Examination Program'}
               </h3>
               <button onClick={() => setShowModal(false)} className="text-[#66727D]">
@@ -295,7 +295,7 @@ export default function AdminExamsPage() {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#DCE2E6] pb-6">
         <div>
-          <h1 className="text-2xl font-bold font-serif text-[#20252B]">
+          <h1 className="text-2xl font-bold font-sans text-[#20252B]">
             Examination Management
           </h1>
           <p className="mt-1 text-xs text-[#66727D]">
@@ -364,7 +364,7 @@ export default function AdminExamsPage() {
                 </span>
               </div>
 
-              <h3 className="mt-4 text-lg font-bold font-serif text-[#20252B]">
+              <h3 className="mt-4 text-lg font-bold font-sans text-[#20252B]">
                 {exam.name}
               </h3>
               <p className="mt-1 text-xs text-[#66727D] line-clamp-2">

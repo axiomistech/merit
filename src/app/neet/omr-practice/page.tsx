@@ -78,7 +78,7 @@ export default function NeetOmrPracticePage() {
             <Sparkles className="h-3.5 w-3.5 text-[#9CC6E0]" />
             <span>Exact 180-Question Physical NEET OMR Replica</span>
           </div>
-          <h1 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#20252B] font-serif">
+          <h1 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#20252B] font-sans">
             NEET Physical OMR Practice Arena
           </h1>
           <p className="mt-1 max-w-3xl text-xs sm:text-sm text-[#66727D] leading-relaxed">

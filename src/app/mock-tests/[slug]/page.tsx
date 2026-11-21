@@ -39,7 +39,7 @@ export default function MockTestDetailPage() {
           </div>
 
           <div>
-            <h1 className="text-2xl sm:text-3xl font-bold font-serif text-[#20252B]">
+            <h1 className="text-2xl sm:text-3xl font-bold font-sans text-[#20252B]">
               {SAMPLE_NEET_PAPER.name}
             </h1>
             <p className="mt-2 text-sm text-[#66727D] leading-relaxed">

@@ -37,7 +37,7 @@ export default function PublicExamsPage() {
             <BookOpen className="h-3.5 w-3.5" />
             Curated Examination Catalogs
           </div>
-          <h1 className="text-3xl sm:text-5xl font-bold font-serif text-[#20252B] tracking-tight">
+          <h1 className="text-3xl sm:text-5xl font-bold font-sans text-[#20252B] tracking-tight">
             Discover Your Target Examination
           </h1>
           <p className="text-sm sm:text-base text-[#66727D] leading-relaxed">
@@ -98,7 +98,7 @@ export default function PublicExamsPage() {
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-bold font-serif text-[#20252B]">{exam.name}</h3>
+                  <h3 className="text-xl font-bold font-sans text-[#20252B]">{exam.name}</h3>
                   <p className="mt-1.5 text-xs text-[#66727D] leading-relaxed line-clamp-3">
                     {exam.description}
                   </p>

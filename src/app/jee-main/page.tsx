@@ -21,7 +21,7 @@ export default function JeeMainLandingPage() {
               <span>JOINT ENTRANCE EXAMINATION (MAIN) • NTA CBT</span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl font-bold font-serif tracking-tight leading-[1.1] text-[#20252B]">
+            <h1 className="text-4xl sm:text-6xl font-bold font-sans tracking-tight leading-[1.1] text-[#20252B]">
               Engineering problem{' '}
               <span className="relative inline-block italic">
                 solving.
@@ -69,7 +69,7 @@ export default function JeeMainLandingPage() {
             <div className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
               EXAMINATION BLUEPRINT
             </div>
-            <h2 className="mt-1 text-3xl font-bold font-serif text-[#20252B]">
+            <h2 className="mt-1 text-3xl font-bold font-sans text-[#20252B]">
               Standard NTA JEE Main Pattern
             </h2>
           </div>
@@ -94,7 +94,7 @@ export default function JeeMainLandingPage() {
             ].map((stat, idx) => (
               <div key={idx} className="rounded-[24px] border border-[#DCE2E6] bg-white p-6 shadow-sm">
                 <div className="text-xs font-semibold text-[#66727D]">{stat.title}</div>
-                <div className="mt-2 text-3xl font-extrabold font-serif text-[#20252B]">{stat.value}</div>
+                <div className="mt-2 text-3xl font-extrabold font-sans text-[#20252B]">{stat.value}</div>
                 <div className="mt-1 text-xs text-[#66727D]">{stat.sub}</div>
               </div>
             ))}
@@ -107,7 +107,7 @@ export default function JeeMainLandingPage() {
             <div className="inline-flex items-center gap-2 rounded-full bg-[#E9EEF1] px-3 py-1 text-xs font-bold text-[#20252B]">
               Section A • Single Choice MCQs
             </div>
-            <h3 className="mt-4 text-xl font-bold text-[#20252B] font-serif">
+            <h3 className="mt-4 text-xl font-bold text-[#20252B] font-sans">
               20 Mandatory Questions per Discipline
             </h3>
             <p className="mt-2 text-sm text-[#66727D] leading-relaxed">
@@ -129,7 +129,7 @@ export default function JeeMainLandingPage() {
             <div className="inline-flex items-center gap-2 rounded-full bg-[#FDEDF0] px-3 py-1 text-xs font-bold text-[#E4002B]">
               Section B • Numerical Value (NVQ)
             </div>
-            <h3 className="mt-4 text-xl font-bold text-[#20252B] font-serif">
+            <h3 className="mt-4 text-xl font-bold text-[#20252B] font-sans">
               Numerical Response with Server Validation
             </h3>
             <p className="mt-2 text-sm text-[#66727D] leading-relaxed">
@@ -150,7 +150,7 @@ export default function JeeMainLandingPage() {
 
         {/* Call to action */}
         <div className="rounded-[28px] border border-[#DCE2E6] bg-white p-8 text-center sm:p-12 shadow-sm">
-          <h2 className="text-2xl sm:text-3xl font-bold font-serif text-[#20252B]">
+          <h2 className="text-2xl sm:text-3xl font-bold font-sans text-[#20252B]">
             Benchmark Your JEE Main Standing Today
           </h2>
           <p className="mx-auto mt-2 max-w-xl text-sm text-[#66727D]">

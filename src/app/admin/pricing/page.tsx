@@ -47,7 +47,7 @@ export default function AdminPricingPage() {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[#20252B] font-serif">Pricing & Entitlement Configuration</h1>
+          <h1 className="text-2xl font-bold text-[#20252B] font-sans">Pricing & Entitlement Configuration</h1>
           <p className="mt-1 text-xs text-[#66727D]">
             Centralized policy controls for per-paper pricing, complimentary first attempts, volume bundle discounts, and evaluation surcharges.
           </p>

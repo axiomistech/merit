@@ -171,7 +171,7 @@ export default function PracticeHubPage() {
               15-SECOND START
             </span>
           </div>
-          <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold font-serif text-[#20252B]">
+          <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold font-sans text-[#20252B]">
             Select Practice: Exam → Subject → Chapter
           </h1>
           <p className="text-xs text-[#66727D]">
@@ -232,7 +232,7 @@ export default function PracticeHubPage() {
                       <BookOpen className="h-5 w-5" />
                     </div>
                     <div>
-                      <h3 className="text-sm font-bold text-[#20252B] font-serif">
+                      <h3 className="text-sm font-bold text-[#20252B] font-sans">
                         {sub.subjectName}
                       </h3>
                       <p className="text-[11px] text-[#66727D]">
@@ -257,7 +257,7 @@ export default function PracticeHubPage() {
             <span className="text-[10px] font-bold uppercase tracking-widest text-white/80">
               FAST-TRACK MOCK
             </span>
-            <h4 className="text-lg font-bold font-serif leading-snug">
+            <h4 className="text-lg font-bold font-sans leading-snug">
               Simulate Full 180-Question Mock Paper
             </h4>
             <p className="text-xs text-white/90">
@@ -329,7 +329,7 @@ export default function PracticeHubPage() {
                             )}
                           </div>
 
-                          <h5 className="mt-2 text-sm font-bold text-[#20252B] font-serif leading-snug">
+                          <h5 className="mt-2 text-sm font-bold text-[#20252B] font-sans leading-snug">
                             {chapter.name}
                           </h5>
 

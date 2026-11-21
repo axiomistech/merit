@@ -210,7 +210,7 @@ export default function AdminSyllabusPage() {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#DCE2E6] pb-6">
         <div>
-          <h1 className="text-2xl font-bold font-serif text-[#20252B]">
+          <h1 className="text-2xl font-bold font-sans text-[#20252B]">
             Syllabus Architecture & Hierarchies
           </h1>
           <p className="mt-1 text-xs text-[#66727D]">

@@ -51,7 +51,7 @@ export default function LoginPage() {
             </div>
             <span className="font-mono text-xl font-bold tracking-wider text-[#20252B]">FORT</span>
           </Link>
-          <h1 className="mt-4 text-2xl font-bold text-[#20252B] font-serif">Welcome Back</h1>
+          <h1 className="mt-4 text-2xl font-bold text-[#20252B] font-sans">Welcome Back</h1>
           <p className="mt-1 text-xs text-[#66727D]">
             Sign in to your candidate dashboard & practice records.
           </p>

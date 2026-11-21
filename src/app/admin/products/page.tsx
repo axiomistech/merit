@@ -197,7 +197,7 @@ export default function AdminProductsPage() {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[#20252B] font-serif">Products & Paper Packs</h1>
+          <h1 className="text-2xl font-bold text-[#20252B] font-sans">Products & Paper Packs</h1>
           <p className="mt-1 text-xs text-[#66727D]">
             Manage test series bundles, individual paper tokens, validity duration, and catalog pricing.
           </p>
@@ -313,7 +313,7 @@ export default function AdminProductsPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm overflow-y-auto">
           <div className="w-full max-w-2xl rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-2xl my-8 space-y-6">
             <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-4">
-              <h3 className="text-lg font-bold text-[#20252B] font-serif">
+              <h3 className="text-lg font-bold text-[#20252B] font-sans">
                 {editingProduct ? 'Edit Product Pack' : 'Create New Product Pack'}
               </h3>
               <button

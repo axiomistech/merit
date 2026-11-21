@@ -20,7 +20,7 @@ export default function UpscLandingPage() {
               <span>UNION PUBLIC SERVICE COMMISSION • CIVIL SERVICES (CSE)</span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl font-bold font-serif tracking-tight leading-[1.1] text-[#20252B]">
+            <h1 className="text-4xl sm:text-6xl font-bold font-sans tracking-tight leading-[1.1] text-[#20252B]">
               Analytical depth &{' '}
               <span className="relative inline-block italic">
                 articulation.
@@ -68,7 +68,7 @@ export default function UpscLandingPage() {
             <div className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
               EXAMINATION BLUEPRINT
             </div>
-            <h2 className="mt-1 text-3xl font-bold font-serif text-[#20252B]">
+            <h2 className="mt-1 text-3xl font-bold font-sans text-[#20252B]">
               Dual-Stage Civil Services Preparation
             </h2>
           </div>
@@ -82,7 +82,7 @@ export default function UpscLandingPage() {
             ].map((stat, idx) => (
               <div key={idx} className="rounded-[24px] border border-[#DCE2E6] bg-white p-6 shadow-sm">
                 <div className="text-xs font-semibold text-[#66727D]">{stat.label}</div>
-                <div className="mt-2 text-3xl font-extrabold font-serif text-[#20252B]">{stat.value}</div>
+                <div className="mt-2 text-3xl font-extrabold font-sans text-[#20252B]">{stat.value}</div>
                 <div className="mt-1 text-xs text-[#66727D]">{stat.detail}</div>
               </div>
             ))}
@@ -95,7 +95,7 @@ export default function UpscLandingPage() {
             <div className="inline-flex items-center gap-2 rounded-full bg-[#E9EEF1] px-3 py-1 text-xs font-bold text-[#20252B]">
               Stage 1 • Prelims Examination
             </div>
-            <h3 className="mt-4 text-xl font-bold text-[#20252B] font-serif">General Studies & CSAT Precision</h3>
+            <h3 className="mt-4 text-xl font-bold text-[#20252B] font-sans">General Studies & CSAT Precision</h3>
             <p className="mt-2 text-sm text-[#66727D] leading-relaxed">
               Master the elimination technique across multi-statement questions (Statements I & II correct, Pair Matching, Assertion-Reasoning). Detailed historical cutoff analytics.
             </p>
@@ -115,7 +115,7 @@ export default function UpscLandingPage() {
             <div className="inline-flex items-center gap-2 rounded-full bg-[#FDEDF0] px-3 py-1 text-xs font-bold text-[#E4002B]">
               Stage 2 • Mains Studio
             </div>
-            <h3 className="mt-4 text-xl font-bold text-[#20252B] font-serif">Descriptive Answer Writing Studio</h3>
+            <h3 className="mt-4 text-xl font-bold text-[#20252B] font-sans">Descriptive Answer Writing Studio</h3>
             <p className="mt-2 text-sm text-[#66727D] leading-relaxed">
               Craft 150-word and 250-word structured answers with live word counter indicators, markdown support for subheadings and bullet points, and automatic cloud draft persistence.
             </p>
@@ -134,7 +134,7 @@ export default function UpscLandingPage() {
 
         {/* CTA Banner */}
         <div className="rounded-[28px] border border-[#DCE2E6] bg-white p-8 text-center sm:p-12 shadow-sm">
-          <h2 className="text-2xl sm:text-3xl font-bold font-serif text-[#20252B]">
+          <h2 className="text-2xl sm:text-3xl font-bold font-sans text-[#20252B]">
             Begin Your Civil Services Journey
           </h2>
           <p className="mx-auto mt-2 max-w-xl text-sm text-[#66727D]">

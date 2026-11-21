@@ -58,16 +58,16 @@ export default function HomePage() {
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center">
             {/* Left Content (7 Cols) */}
             <div className="lg:col-span-7 space-y-6">
-              {/* Overline with line */}
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#20252B]/80">
+              {/* Eyebrow with line */}
+              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.08em] text-[#20252B]/80">
                 <span className="h-px w-6 bg-[#20252B]/40" />
                 <span>EXAMINATION INFRASTRUCTURE • DIGITAL SIMULATION</span>
               </div>
 
-              {/* Editorial Serif Statement Headline with Racing Red Brush Underline */}
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold font-serif tracking-tight leading-[1.08] text-[#20252B]">
+              {/* Plus Jakarta Sans Hero Headline with Racing Red Brush Underline */}
+              <h1 className="text-4xl sm:text-5xl lg:text-[60px] font-extrabold tracking-[-0.045em] leading-[1.08] text-[#20252B]">
                 Preparation worth{' '}
-                <span className="relative inline-block italic">
+                <span className="relative inline-block italic font-bold">
                   mastering.
                   <svg
                     className="absolute -bottom-2 left-0 w-full text-[#E4002B] overflow-visible"
@@ -86,8 +86,8 @@ export default function HomePage() {
                 </span>
               </h1>
 
-              {/* Subtitle */}
-              <p className="max-w-xl text-base sm:text-lg leading-relaxed text-[#20252B]/90 font-medium">
+              {/* Hero Subtitle */}
+              <p className="max-w-xl text-base sm:text-lg leading-[1.65] text-[#20252B]/90 font-normal">
                 Engineered from first principles. Real 180-question physical OMR sheets, server-authoritative timers, and transparent ₹10 economics. Walk-ins welcome if you are brave.
               </p>
 
@@ -95,13 +95,13 @@ export default function HomePage() {
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <Link
                   href="/signup"
-                  className="rounded-xl bg-[#E4002B] px-8 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#E4002B]/30 hover:bg-[#C90026] transition-all hover:translate-y-[-1px]"
+                  className="rounded-xl bg-[#E4002B] px-8 py-3.5 text-base font-semibold tracking-[-0.01em] text-white shadow-lg shadow-[#E4002B]/30 hover:bg-[#C90026] transition-all hover:translate-y-[-1px]"
                 >
                   Start Practicing
                 </Link>
                 <Link
                   href="#exams"
-                  className="rounded-xl border border-[#20252B]/20 bg-white/80 backdrop-blur-sm px-8 py-3.5 text-sm font-semibold text-[#20252B] hover:bg-white transition-all shadow-sm"
+                  className="rounded-xl border border-[#20252B]/20 bg-white/80 backdrop-blur-sm px-8 py-3.5 text-base font-semibold tracking-[-0.01em] text-[#20252B] hover:bg-white transition-all shadow-sm"
                 >
                   Explore Exams
                 </Link>
@@ -178,13 +178,13 @@ export default function HomePage() {
       {/* ==================================================================== */}
       <section id="exams" className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <div className="text-xs font-bold uppercase tracking-wider text-[#66727D]">
+          <div className="text-xs font-semibold uppercase tracking-[0.08em] text-[#66727D]">
             CURRICULA
           </div>
-          <h2 className="mt-1 text-3xl font-extrabold font-serif text-[#20252B] sm:text-4xl">
+          <h2 className="mt-1 text-3xl sm:text-[40px] font-bold tracking-[-0.025em] leading-[1.2] text-[#20252B]">
             The syllabus, short and deep.
           </h2>
-          <p className="mt-1 text-sm text-[#66727D]">
+          <p className="mt-1 text-base text-[#66727D] leading-[1.7]">
             Five distinct competitive programs built around concepts, timed simulations, and real scoring rules.
           </p>
         </div>
@@ -199,7 +199,7 @@ export default function HomePage() {
                 </span>
                 <span className="font-mono text-xs font-bold text-[#20252B]">₹0 Free</span>
               </div>
-              <h3 className="mt-4 text-xl font-bold font-serif text-[#20252B]">NEET (UG) Medical</h3>
+              <h3 className="mt-4 text-xl font-bold font-sans text-[#20252B]">NEET (UG) Medical</h3>
               <p className="mt-1 text-xs text-[#66727D] leading-relaxed">
                 Physics, Chemistry, Botany, Zoology. Exact 180 questions with +4 / -1 scoring and live physical OMR grid.
               </p>
@@ -222,7 +222,7 @@ export default function HomePage() {
                 </span>
                 <span className="font-mono text-xs font-bold text-[#20252B]">₹10 / mock</span>
               </div>
-              <h3 className="mt-4 text-xl font-bold font-serif text-[#20252B]">JEE Main Engineering</h3>
+              <h3 className="mt-4 text-xl font-bold font-sans text-[#20252B]">JEE Main Engineering</h3>
               <p className="mt-1 text-xs text-[#66727D] leading-relaxed">
                 Physics, Chemistry, Mathematics. Section A (MCQs) + Section B (Numerical value questions with tolerances).
               </p>
@@ -245,7 +245,7 @@ export default function HomePage() {
                 </span>
                 <span className="font-mono text-xs font-bold text-[#20252B]">₹10 / mock</span>
               </div>
-              <h3 className="mt-4 text-xl font-bold font-serif text-[#20252B]">JEE Advanced IIT</h3>
+              <h3 className="mt-4 text-xl font-bold font-sans text-[#20252B]">JEE Advanced IIT</h3>
               <p className="mt-1 text-xs text-[#66727D] leading-relaxed">
                 Multi-correct options (+4/+3/+2/+1/-2), matrix matching, and stem questions. Strict partial marking engine.
               </p>
@@ -263,7 +263,7 @@ export default function HomePage() {
           <div className="rounded-[24px] border border-[#DCE2E6] bg-white p-6 flex flex-col justify-between shadow-sm">
             <div>
               <div className="flex items-baseline gap-2">
-                <span className="text-4xl font-extrabold font-serif text-[#20252B]">4.9</span>
+                <span className="text-4xl font-extrabold font-sans text-[#20252B]">4.9</span>
                 <div className="flex text-[#E4002B]">
                   {'★★★★★'.split('').map((s, i) => (
                     <span key={i} className="text-sm">★</span>
@@ -289,13 +289,13 @@ export default function HomePage() {
       {/* ==================================================================== */}
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
-          <div className="text-xs font-bold uppercase tracking-wider text-[#66727D]">
+          <div className="text-xs font-semibold uppercase tracking-[0.08em] text-[#66727D]">
             THE PROBLEM IN COMPETITIVE PREPARATION
           </div>
-          <h2 className="mt-2 text-3xl font-extrabold font-serif text-[#20252B] sm:text-4xl">
+          <h2 className="mt-2 text-3xl sm:text-[40px] font-bold tracking-[-0.025em] leading-[1.2] text-[#20252B]">
             Students solve thousands of questions without knowing where marks are actually lost.
           </h2>
-          <p className="mt-2 text-sm text-[#66727D]">
+          <p className="mt-2 text-base text-[#66727D] leading-[1.7]">
             Solving question banks without atomic concept tagging, server timing, and penalty diagnostics creates an illusion of competence.
           </p>
         </div>
@@ -349,16 +349,16 @@ export default function HomePage() {
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center">
             {/* Left 6 cols */}
             <div className="lg:col-span-6 space-y-5">
-              <div className="inline-flex items-center gap-1.5 rounded-full bg-[#9CC6E0]/25 px-3 py-1 text-xs font-semibold text-[#20252B]">
+              <div className="inline-flex items-center gap-1.5 rounded-full bg-[#9CC6E0]/25 px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-[#20252B]">
                 <Sparkles className="h-3.5 w-3.5" />
                 <span>Physical-Grade Simulation</span>
               </div>
 
-              <h2 className="text-3xl font-extrabold font-serif text-[#20252B] sm:text-4xl">
+              <h2 className="text-3xl sm:text-[40px] font-bold tracking-[-0.025em] leading-[1.2] text-[#20252B]">
                 The exact NEET OMR sheet. Darkened in real time.
               </h2>
 
-              <p className="text-sm leading-relaxed text-[#66727D]">
+              <p className="text-base leading-[1.7] text-[#66727D]">
                 Replicated directly from the physical NTA NEET answer sheet. 180 questions across 4 columns of 45, Roll No. digit bubble grid, Test Booklet Code, and Code 39 barcode. Darkens immediately as you solve questions.
               </p>
 
@@ -391,7 +391,7 @@ export default function HomePage() {
             {/* Right 6 cols: Live Interactive Mini OMR Grid */}
             <div className="lg:col-span-6 rounded-[24px] border border-[#DCE2E6] bg-[#F1F3F4] p-6 shadow-inner space-y-4">
               <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-3">
-                <div className="font-serif font-bold text-sm text-[#20252B]">
+                <div className="font-sans font-bold text-sm text-[#20252B]">
                   NEET OMR SIMULATOR PREVIEW
                 </div>
                 <span className="font-mono text-xs font-bold text-[#20252B]">
@@ -447,13 +447,13 @@ export default function HomePage() {
         <div className="rounded-[32px] bg-[#20252B] text-white p-8 sm:p-14 shadow-xl">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-8 space-y-4">
-              <span className="rounded-full bg-[#9CC6E0] px-3.5 py-1 text-xs font-bold text-[#20252B] uppercase tracking-wider">
+              <span className="rounded-full bg-[#9CC6E0] px-3.5 py-1 text-xs font-semibold text-[#20252B] uppercase tracking-[0.08em]">
                 Democratic Monetization
               </span>
-              <h2 className="text-3xl font-extrabold font-serif sm:text-4xl text-white">
+              <h2 className="text-3xl sm:text-[40px] font-bold tracking-[-0.025em] leading-[1.2] text-white">
                 First full simulation free. ₹10 per paper thereafter.
               </h2>
-              <p className="max-w-2xl text-sm leading-relaxed text-white/80">
+              <p className="max-w-2xl text-base leading-[1.7] text-white/85 font-normal">
                 No ₹40,000 upfront annual coaching fees. No locked subscription contracts. Every student gets their first full-length paper complimentary, then pays a flat ₹10 (1000 paise) via UPI or Cards per subsequent simulation.
               </p>
             </div>
@@ -461,7 +461,7 @@ export default function HomePage() {
             <div className="lg:col-span-4 text-center lg:text-right">
               <Link
                 href="/signup"
-                className="inline-flex items-center gap-2 rounded-xl bg-[#E4002B] px-8 py-4 text-sm font-bold text-white shadow-lg shadow-[#E4002B]/30 hover:bg-[#C90026] transition-all hover:translate-y-[-1px]"
+                className="inline-flex items-center gap-2 rounded-xl bg-[#E4002B] px-8 py-4 text-base font-semibold tracking-[-0.01em] text-white shadow-lg shadow-[#E4002B]/30 hover:bg-[#C90026] transition-all hover:translate-y-[-1px]"
               >
                 <span>Claim Free Paper</span>
                 <ArrowRight className="h-4 w-4" />

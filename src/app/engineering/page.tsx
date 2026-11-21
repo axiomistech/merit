@@ -27,7 +27,7 @@ export default function EngineeringLandingPage() {
               <span>UNIVERSITY ACADEMIC INFRASTRUCTURE • SEMESTER SYLLABI</span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl font-bold font-serif tracking-tight leading-[1.1] text-[#20252B]">
+            <h1 className="text-4xl sm:text-6xl font-bold font-sans tracking-tight leading-[1.1] text-[#20252B]">
               University exam{' '}
               <span className="relative inline-block italic">
                 mastery.
@@ -75,7 +75,7 @@ export default function EngineeringLandingPage() {
             <div className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
               SUPPORTED REGIMES
             </div>
-            <h2 className="mt-1 text-3xl font-bold font-serif text-[#20252B]">
+            <h2 className="mt-1 text-3xl font-bold font-sans text-[#20252B]">
               University Regimes & Autonomous Colleges
             </h2>
           </div>
@@ -89,7 +89,7 @@ export default function EngineeringLandingPage() {
                   </span>
                   <span className="text-xs text-[#66727D]">{uni.location}</span>
                 </div>
-                <h3 className="mt-4 text-xl font-bold text-[#20252B] font-serif">{uni.name}</h3>
+                <h3 className="mt-4 text-xl font-bold text-[#20252B] font-sans">{uni.name}</h3>
                 <div className="mt-4 rounded-xl bg-[#F1F3F4] p-3 text-xs text-[#20252B]">
                   <span className="font-semibold text-[#20252B]">Active Streams:</span> {uni.branches}
                 </div>
@@ -104,7 +104,7 @@ export default function EngineeringLandingPage() {
             <div className="h-10 w-10 rounded-xl bg-[#E9EEF1] flex items-center justify-center text-[#20252B] mb-4">
               <Layers className="h-5 w-5" />
             </div>
-            <h3 className="text-lg font-bold text-[#20252B] font-serif">Unit-by-Unit Question Banks</h3>
+            <h3 className="text-lg font-bold text-[#20252B] font-sans">Unit-by-Unit Question Banks</h3>
             <p className="mt-2 text-xs leading-relaxed text-[#66727D]">
               Aligned with 5-unit university syllabi. Practice Part A (2-mark definitions) and Part B (13/16-mark analytical derivations) separately.
             </p>
@@ -114,7 +114,7 @@ export default function EngineeringLandingPage() {
             <div className="h-10 w-10 rounded-xl bg-[#FDEDF0] flex items-center justify-center text-[#E4002B] mb-4">
               <BookOpen className="h-5 w-5" />
             </div>
-            <h3 className="text-lg font-bold text-[#20252B] font-serif">Previous Years Question Papers</h3>
+            <h3 className="text-lg font-bold text-[#20252B] font-sans">Previous Years Question Papers</h3>
             <p className="mt-2 text-xs leading-relaxed text-[#66727D]">
               10+ semesters of solved question papers with model handwritten answer diagrams, standard equations, and step marking schemes.
             </p>
@@ -124,7 +124,7 @@ export default function EngineeringLandingPage() {
             <div className="h-10 w-10 rounded-xl bg-[#E9EEF1] flex items-center justify-center text-[#20252B] mb-4">
               <GraduationCap className="h-5 w-5" />
             </div>
-            <h3 className="text-lg font-bold text-[#20252B] font-serif">Autonomous Scheme Support</h3>
+            <h3 className="text-lg font-bold text-[#20252B] font-sans">Autonomous Scheme Support</h3>
             <p className="mt-2 text-xs leading-relaxed text-[#66727D]">
               Autonomous colleges can upload custom subject credit matrices, elective tracks, and internal assessment formats.
             </p>
@@ -133,7 +133,7 @@ export default function EngineeringLandingPage() {
 
         {/* CTA Banner */}
         <div className="rounded-[28px] border border-[#DCE2E6] bg-white p-8 text-center sm:p-12 shadow-sm">
-          <h2 className="text-2xl sm:text-3xl font-bold font-serif text-[#20252B]">
+          <h2 className="text-2xl sm:text-3xl font-bold font-sans text-[#20252B]">
             Ace Your Semester Finals
           </h2>
           <p className="mx-auto mt-2 max-w-xl text-sm text-[#66727D]">

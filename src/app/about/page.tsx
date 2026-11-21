@@ -24,7 +24,7 @@ export default function AboutPage() {
             <Shield className="h-3.5 w-3.5" />
             About FORT Learning
           </div>
-          <h1 className="text-3xl sm:text-5xl font-bold font-serif text-[#20252B] tracking-tight">
+          <h1 className="text-3xl sm:text-5xl font-bold font-sans text-[#20252B] tracking-tight">
             Knowledge. Built Strong.
           </h1>
           <p className="text-sm sm:text-base text-[#66727D] leading-relaxed">
@@ -34,7 +34,7 @@ export default function AboutPage() {
 
         {/* The 6-Stage Pedagogy */}
         <div className="rounded-[28px] border border-[#DCE2E6] bg-white p-8 sm:p-10 shadow-[0_4px_20px_rgba(38,49,38,0.04)] space-y-6">
-          <h2 className="text-2xl font-bold font-serif text-[#20252B]">Our Core Pedagogy</h2>
+          <h2 className="text-2xl font-bold font-sans text-[#20252B]">Our Core Pedagogy</h2>
           <p className="text-xs text-[#66727D] leading-relaxed">
             We reject superficial question dumping and generic percentage scores. FORT guides candidates through a structured cognitive loop designed to systematically eliminate conceptual vulnerabilities:
           </p>
@@ -59,7 +59,7 @@ export default function AboutPage() {
 
         {/* Architectural Principles */}
         <div className="rounded-[28px] border border-[#DCE2E6] bg-white p-8 sm:p-10 shadow-[0_4px_20px_rgba(38,49,38,0.04)] space-y-6">
-          <h2 className="text-2xl font-bold font-serif text-[#20252B]">Engineering & Integrity Principles</h2>
+          <h2 className="text-2xl font-bold font-sans text-[#20252B]">Engineering & Integrity Principles</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-[#52584E]">
             <div className="flex items-start gap-3 p-4 rounded-xl border border-[#DCE2E6]">
               <CheckCircle2 className="h-4 w-4 text-[#9CC6E0] shrink-0 mt-0.5" />

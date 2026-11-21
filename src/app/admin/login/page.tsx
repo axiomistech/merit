@@ -59,7 +59,7 @@ export default function AdminLoginPage() {
           <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-2xl bg-[#20252B] text-white">
             <Shield className="h-5 w-5 stroke-[2.5]" />
           </div>
-          <h1 className="mt-4 text-2xl font-bold font-serif text-[#20252B]">
+          <h1 className="mt-4 text-2xl font-bold font-sans text-[#20252B]">
             FORT Control Command
           </h1>
           <p className="mt-1 text-xs text-[#66727D]">

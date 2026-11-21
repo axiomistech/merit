@@ -38,7 +38,7 @@ export default function PublicPaperDetailPage() {
           </div>
 
           <div>
-            <h1 className="text-2xl sm:text-3xl font-bold font-serif text-[#20252B]">
+            <h1 className="text-2xl sm:text-3xl font-bold font-sans text-[#20252B]">
               NEET (UG) 2025 Official Question Paper
             </h1>
             <p className="mt-2 text-sm text-[#66727D] leading-relaxed">
