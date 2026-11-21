@@ -60,7 +60,7 @@ export default function RootLayout({
       <body className="min-h-screen font-sans bg-[#F1F3F4] text-[#20252B] antialiased selection:bg-[#9CC6E0]/40 selection:text-[#20252B]">
         <div className="flex min-h-screen flex-col">
           <Navbar />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1 pt-20 sm:pt-24">{children}</main>
           <Footer />
         </div>
         <Toaster position="top-right" theme="light" richColors />
