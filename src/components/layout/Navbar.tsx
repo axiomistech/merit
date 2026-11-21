@@ -12,18 +12,58 @@ export function Navbar() {
   const [examsDropdownOpen, setExamsDropdownOpen] = useState(false);
   const [mobileExamsOpen, setMobileExamsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const pathname = usePathname();
+
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+    setExamsDropdownOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    timeoutRef.current = setTimeout(() => {
+      setExamsDropdownOpen(false);
+    }, 150);
+  };
+
+  const handleToggleClick = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+    setExamsDropdownOpen((prev) => !prev);
+  };
+
+  const closeDropdownImmediately = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+    setExamsDropdownOpen(false);
+  };
+
+  const handleBlur = (e: React.FocusEvent) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(e.relatedTarget as Node)) {
+      closeDropdownImmediately();
+    }
+  };
 
   // Close dropdown on click outside or escape key
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setExamsDropdownOpen(false);
+        closeDropdownImmediately();
       }
     }
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === 'Escape') {
-        setExamsDropdownOpen(false);
+        closeDropdownImmediately();
         setMobileMenuOpen(false);
       }
     }
@@ -32,13 +72,16 @@ export function Navbar() {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('keydown', handleKeyDown);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
     };
   }, []);
 
   // Close menus on route change
   useEffect(() => {
     setMobileMenuOpen(false);
-    setExamsDropdownOpen(false);
+    closeDropdownImmediately();
     setMobileExamsOpen(false);
   }, [pathname]);
 
@@ -80,12 +123,13 @@ export function Navbar() {
           <div
             ref={dropdownRef}
             className="relative"
-            onMouseEnter={() => setExamsDropdownOpen(true)}
-            onMouseLeave={() => setExamsDropdownOpen(false)}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            onBlur={handleBlur}
           >
             <button
               type="button"
-              onClick={() => setExamsDropdownOpen((prev) => !prev)}
+              onClick={handleToggleClick}
               aria-expanded={examsDropdownOpen}
               aria-haspopup="true"
               className={cn(
@@ -107,43 +151,48 @@ export function Navbar() {
 
             {examsDropdownOpen && (
               <div
-                className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-80 rounded-2xl border border-[#DCE2E6] bg-white p-2.5 shadow-lg shadow-black/[0.04] animate-in fade-in zoom-in-95 duration-150 z-50"
+                className="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-80 z-50 animate-in fade-in zoom-in-95 duration-150"
                 role="menu"
                 aria-label="Examinations menu"
               >
-                <div className="px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-[#66727D]">
-                  Target Curricula
-                </div>
-                <div className="space-y-1">
-                  {EXAMINATIONS.map((exam) => {
-                    const isActive = pathname === `/${exam.slug}`;
-                    return (
-                      <Link
-                        key={exam.slug}
-                        href={`/${exam.slug}`}
-                        onClick={() => setExamsDropdownOpen(false)}
-                        role="menuitem"
-                        className={cn(
-                          'flex items-start gap-3 rounded-xl p-2.5 transition-colors duration-150',
-                          isActive
-                            ? 'bg-[#E9EEF1] text-[#20252B]'
-                            : 'hover:bg-[#F1F3F4] text-[#20252B]'
-                        )}
-                      >
-                        <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#9CC6E0]/30 text-xs font-bold text-[#20252B]">
-                          {exam.shortName.slice(0, 2)}
-                        </div>
-                        <div className="min-w-0 flex-1">
-                          <div className="text-sm font-semibold text-[#20252B] truncate">
-                            {exam.name}
+                {/* Invisible hover bridge to eliminate gap on diagonal pointer trajectory */}
+                <div className="absolute -top-1 left-0 right-0 h-3" />
+
+                <div className="rounded-2xl border border-[#DCE2E6] bg-white p-2.5 shadow-lg shadow-black/[0.04]">
+                  <div className="px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-[#66727D]">
+                    Target Curricula
+                  </div>
+                  <div className="space-y-1">
+                    {EXAMINATIONS.map((exam) => {
+                      const isActive = pathname === `/${exam.slug}`;
+                      return (
+                        <Link
+                          key={exam.slug}
+                          href={`/${exam.slug}`}
+                          onClick={closeDropdownImmediately}
+                          role="menuitem"
+                          className={cn(
+                            'flex items-start gap-3 rounded-xl p-2.5 transition-colors duration-150',
+                            isActive
+                              ? 'bg-[#E9EEF1] text-[#20252B]'
+                              : 'hover:bg-[#F1F3F4] text-[#20252B]'
+                          )}
+                        >
+                          <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#9CC6E0]/30 text-xs font-bold text-[#20252B]">
+                            {exam.shortName.slice(0, 2)}
                           </div>
-                          <div className="line-clamp-1 text-xs text-[#66727D]">
-                            {exam.tagline}
+                          <div className="min-w-0 flex-1">
+                            <div className="text-sm font-semibold text-[#20252B] truncate">
+                              {exam.name}
+                            </div>
+                            <div className="line-clamp-1 text-xs text-[#66727D]">
+                              {exam.tagline}
+                            </div>
                           </div>
-                        </div>
-                      </Link>
-                    );
-                  })}
+                        </Link>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
             )}
