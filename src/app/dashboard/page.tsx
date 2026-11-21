@@ -110,7 +110,7 @@ export default function StudentDashboardPage() {
         <div className="flex items-center gap-3">
           <Link
             href="/exam/neet-demo"
-            className="flex items-center gap-2 rounded-xl bg-[#9CAF88] px-5 py-2.5 text-xs font-bold text-[#263126] shadow-soft hover:bg-[#8fa27a] transition-all"
+            className="flex items-center gap-2 rounded-full bg-[#E8412C] px-6 py-2.5 text-xs font-bold text-white shadow-md shadow-[#E8412C]/20 hover:bg-[#d03521] transition-all hover:translate-y-[-1px]"
           >
             <Sparkles className="h-4 w-4" />
             <span>Launch Free Paper</span>
@@ -139,7 +139,7 @@ export default function StudentDashboardPage() {
 
         <Link
           href="/dashboard/neet"
-          className="rounded-xl bg-[#9CAF88] px-5 py-2.5 text-xs font-bold text-[#263126] shadow-soft hover:bg-[#8fa27a] transition-all shrink-0"
+          className="rounded-full bg-[#E8412C] px-6 py-2.5 text-xs font-bold text-white shadow-md shadow-[#E8412C]/20 hover:bg-[#d03521] transition-all shrink-0"
         >
           Practice Concept
         </Link>
@@ -192,7 +192,7 @@ export default function StudentDashboardPage() {
             <div className="mt-6 flex gap-2">
               <Link
                 href="/exam/neet-demo"
-                className="flex-1 rounded-xl bg-[#9CAF88] py-2.5 text-center text-xs font-bold text-[#263126] shadow-soft hover:bg-[#8fa27a]"
+                className="flex-1 rounded-full bg-[#E8412C] py-2.5 text-center text-xs font-bold text-white shadow-md shadow-[#E8412C]/20 hover:bg-[#d03521] transition-all"
               >
                 Simulate Paper
               </Link>

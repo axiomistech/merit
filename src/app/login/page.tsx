@@ -43,7 +43,7 @@ export default function LoginPage() {
 
   return (
     <div className="bg-[#F7F5EF] text-[#2E332D] min-h-screen py-20 flex items-center justify-center px-4">
-      <div className="w-full max-w-md rounded-2xl border border-[#E6E5DE] bg-white p-8 shadow-[0_4px_24px_rgba(38,49,38,0.06)]">
+      <div className="w-full max-w-md rounded-[28px] border border-[#E6E5DE] bg-white p-8 sm:p-10 shadow-[0_8px_30px_rgba(38,49,38,0.06)]">
         <div className="text-center">
           <Link href="/" className="inline-flex items-center gap-2">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#9CAF88] text-white">
@@ -96,7 +96,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-xl bg-[#9CAF88] py-3 text-sm font-bold text-white hover:bg-[#8ea07a] transition-all shadow-sm disabled:opacity-50"
+            className="w-full rounded-full bg-[#E8412C] py-3.5 text-sm font-bold text-white shadow-md shadow-[#E8412C]/20 hover:bg-[#d03521] transition-all hover:translate-y-[-1px] disabled:opacity-50 mt-2"
           >
             {loading ? 'Authenticating...' : 'Sign In to Dashboard'}
           </button>
