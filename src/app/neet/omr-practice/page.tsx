@@ -7,7 +7,7 @@ import { AnswerState } from '@/types/exam';
 import { ArrowLeft, RefreshCw, Sparkles } from 'lucide-react';
 
 export default function NeetOmrPracticePage() {
-  const totalQuestions = 40; // 40 questions in dedicated OMR practice sandbox
+  const totalQuestions = 180; // Full 180 questions in NEET OMR practice sandbox
   const [answers, setAnswers] = useState<Record<string, AnswerState>>({});
 
   const questionIdMap = React.useMemo(() => {
@@ -67,7 +67,7 @@ export default function NeetOmrPracticePage() {
               className="flex items-center gap-1.5 rounded-xl border border-[#E6E5DE] bg-white px-3.5 py-1.5 text-xs text-[#73786E] hover:text-[#E8412C] hover:bg-[#FCE8E4] transition-colors shadow-soft"
             >
               <RefreshCw className="h-3.5 w-3.5" />
-              <span>Reset All Bubbles</span>
+              <span>Reset All 180 Bubbles</span>
             </button>
           </div>
         </div>
@@ -76,15 +76,15 @@ export default function NeetOmrPracticePage() {
         <div className="mt-6 mb-8">
           <div className="inline-flex items-center gap-1.5 rounded-full bg-[#E9EEE3] px-3 py-0.5 text-xs font-semibold text-[#758B62]">
             <Sparkles className="h-3.5 w-3.5 text-[#9CAF88]" />
-            <span>Interactive OMR Simulation Sandbox</span>
+            <span>Exact 180-Question Physical NEET OMR Replica</span>
           </div>
-          <h1 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#263126]">
-            NEET Physical OMR Practice Grid
+          <h1 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#263126] font-serif">
+            NEET Physical OMR Practice Arena
           </h1>
           <p className="mt-1 max-w-3xl text-xs sm:text-sm text-[#73786E] leading-relaxed">
-            Practice bubble alignment and response speed before your actual examination. Click any
+            Practice bubble alignment and response speed on the exact 180-question NEET answer sheet. Click any
             bubble to darken it. Click again to clear. Export a print-ready vector A4 PDF with
-            authentic candidate metadata and timing hash.
+            candidate metadata and Code 39 barcode.
           </p>
         </div>
 
@@ -94,11 +94,11 @@ export default function NeetOmrPracticePage() {
           answers={answers}
           questionIdMap={questionIdMap}
           onSelectOption={handleSelectOption}
-          studentName="Aspirant Candidate"
+          studentName="DHANUSH JAGADEESH"
           registrationId="FORT-26-000001"
           examName="FORT NEET (UG)"
           paperName="OMR Speed & Shading Drill"
-          attemptId="DRILL-OMR-01"
+          attemptId="ATT-2026-OMR-PRACTICE"
         />
       </div>
     </div>

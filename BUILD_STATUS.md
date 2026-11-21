@@ -118,17 +118,43 @@ The entire platform is implemented with the custom **Matte Sage / Warm Ivory** d
 
 ---
 
-### Phase 5: Examination Engine & Live OMR (Signature Feature)
-- **Active Exam Runner (`/exam/[attemptId]`):**
-  - Server-authoritative countdown timer with critical alert (< 5 mins remaining)
-  - 5-state question palette: Answered, Unanswered, Marked for Review, Answered & Marked, Not Visited
-  - Bidirectional Live OMR Grid (`src/components/omr/LiveOMRSheet.tsx`):
-    - Darkening a bubble selects the option; selecting an option darkens the bubble
-    - Clearing a response erases bubble shading instantly
-  - Vector A4 PDF Generator (`src/lib/omr/pdfGenerator.ts`):
-    - High-resolution print-ready 300 DPI vector PDF
-    - Formatted for physical ballpoint pen practice with candidate attempt hash and barcode metadata
-  - Exam confirmation and submission modal with attempt seal
+### Phase 5: Examination Engine & Exact NEET 180-Question Physical OMR (Signature Feature)
+- **Exact NEET Physical OMR Architecture (`src/components/omr/LiveOMRSheet.tsx`):**
+  - Designed directly from the master visual reference with exact proportions, timing marks, and thin reddish borders (`#D45D4C`).
+  - **Left Identification Column:**
+    - `ROLL No.` box with 10 digit boxes and 10x10 digit bubble grid (0-9) automatically darkened according to candidate's roll number.
+    - `TEST BOOKLET No.` box with 7 digit boxes and 7x10 digit bubble grid (0-9) with darkened circles.
+    - `Test Booklet Code` box (e.g. Code `A` with darkened circle).
+    - `Answer Sheet No.` with Code 39 vector barcode, alignment L-marks, and printed candidate ID (`FORT-26-XXXXXX`).
+  - **Exact 180-Question Answer Grid (4 Columns of 45):**
+    - Column 1: Questions 001 to 045 (Physics)
+    - Column 2: Questions 046 to 090 (Chemistry)
+    - Column 3: Questions 091 to 135 (Botany)
+    - Column 4: Questions 136 to 180 (Zoology)
+    - 4 answer bubbles labeled `1`, `2`, `3`, `4`.
+    - Unanswered: white circle with thin reddish outline.
+    - Answered: completely filled solid black graphite circle.
+    - Bidirectional live synchronization: answering questions darkens OMR bubbles; clicking bubbles selects options; clearing blanks the row.
+  - **Bottom Declaration & Verification:**
+    - Candidate declaration text
+    - Dynamic cursive signature representation + authoritative timestamp
+    - Candidate full registered name
+    - Mother's name and father's name fields
+    - Left hand thumb impression area
+    - Invigilator signature slots (1 & 2)
+    - Calibration timing track along borders.
+- **Section 25 Mandatory: Automatic OMR PDF Download on Exam Submission:**
+  - `src/lib/omr/pdfGenerator.ts`: Vector A4 print-ready PDF generated via jsPDF containing all 180 questions, darkened bubbles, barcode, and candidate identity.
+  - Upon submission confirmation in `/exam/[attemptId]`, the browser automatically triggers download of `FORT_NEET_OMR_<REGISTRATION_ID>_<ATTEMPT_ID>.pdf`.
+  - Displays the exact Submission Success Modal Card matching the user's reference:
+    - Top green checkmark circle
+    - "Examination Submitted Successfully"
+    - "Your responses have been recorded and your answer sheet is ready."
+    - Document preview card: "NEET OMR Answer Sheet", "A4 PDF • 180 questions • Personalized"
+    - Primary CTA: "↓ Download OMR PDF" (reliable fallback if browser blocks auto-download)
+    - Subtext: "Your download should start automatically."
+    - Footer links: "View Results" and "Review Answers".
+  - Permanent access to the submitted 180-question OMR sheet on `/dashboard/results/[attemptId]`.
 
 ---
 
@@ -206,5 +232,6 @@ The entire platform is implemented with the custom **Matte Sage / Warm Ivory** d
 | :--- | :--- | :--- |
 | **Vitest Scoring Engine** | **PASSED (3/3)** | Verified NEET (+4/-1), JEE Main numerical tolerances, and JEE Advanced partial marking (+4/+3/+2/+1/-2) |
 | **Vitest Analytics Engine** | **PASSED (2/2)** | Verified mastery volume-weighting and weak concept remediation queue prioritization |
+| **Vitest OMR Engine** | **PASSED (4/4)** | Verified 180 questions (4 columns of 45), A->1/B->2/C->3/D->4 mapping, Code 39 barcode, and A4 vector PDF generation |
 | **TypeScript Typecheck (`tsc --noEmit`)** | **PASSED (0 Errors)** | Clean compilation across all types, components, and pages |
 | **Production Build (`next build --webpack`)** | **PASSED (54/54 Routes)** | All 54 routes compiled and optimized statically and dynamically |

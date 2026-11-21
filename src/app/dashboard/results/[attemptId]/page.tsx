@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'next/navigation';
+import React, { useState, useEffect, useMemo } from 'react';
+import { useParams, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import {
   Shield,
@@ -19,9 +19,9 @@ import {
 } from 'lucide-react';
 import {
   SAMPLE_NEET_PAPER,
-  SAMPLE_NEET_QUESTIONS,
+  getFullNeet180Questions,
 } from '@/data/seedData';
-import { ExamAttemptEvaluation } from '@/types/exam';
+import { ExamAttemptEvaluation, AnswerState } from '@/types/exam';
 import { MathText } from '@/components/ui/MathText';
 import { LiveOMRSheet } from '@/components/omr/LiveOMRSheet';
 import { generateOmrPdf } from '@/lib/omr/pdfGenerator';
@@ -29,55 +29,94 @@ import { cn, formatDuration, formatTimeWithHours } from '@/lib/utils';
 
 export default function ExamResultPage() {
   const params = useParams();
+  const searchParams = useSearchParams();
   const attemptId = (params?.attemptId as string) || 'ATT-2026-NEET-01';
+  const initialTab = (searchParams.get('tab') as 'overview' | 'solutions' | 'omr') || 'overview';
 
   const [evaluation, setEvaluation] = useState<ExamAttemptEvaluation | null>(null);
-  const [activeTab, setActiveTab] = useState<'overview' | 'solutions' | 'omr'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'solutions' | 'omr'>(initialTab);
   const [expandedSolutions, setExpandedSolutions] = useState<Record<string, boolean>>({});
+  const [answers, setAnswers] = useState<Record<string, AnswerState>>({});
+  const [candidate, setCandidate] = useState({
+    fullName: 'DHANUSH JAGADEESH',
+    registrationId: 'FORT-26-000001',
+  });
+
+  const questions = useMemo(() => getFullNeet180Questions(), []);
+
+  // Map for 180 questions
+  const questionIdMap = useMemo(() => {
+    const map: Record<number, string> = {};
+    questions.forEach((q, i) => {
+      map[i + 1] = q.versionId;
+    });
+    return map;
+  }, [questions]);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem(`fort_result_${attemptId}`);
-      if (stored) {
+      // Candidate profile
+      const storedCandidate = localStorage.getItem('fort_student_session');
+      if (storedCandidate) {
         try {
-          setEvaluation(JSON.parse(stored));
+          const parsed = JSON.parse(storedCandidate);
+          setCandidate({
+            fullName: (parsed.fullName || 'DHANUSH JAGADEESH').toUpperCase(),
+            registrationId: parsed.registrationId || 'FORT-26-000001',
+          });
+        } catch {}
+      }
+
+      // Answers
+      const storedAnswers = localStorage.getItem(`fort_attempt_${attemptId}_answers`);
+      if (storedAnswers) {
+        try {
+          setAnswers(JSON.parse(storedAnswers));
+        } catch {}
+      }
+
+      // Evaluation
+      const storedEval = localStorage.getItem(`fort_result_${attemptId}`);
+      if (storedEval) {
+        try {
+          setEvaluation(JSON.parse(storedEval));
         } catch {}
       } else {
         // Fallback realistic evaluation if accessed directly
         const fallbackEval: ExamAttemptEvaluation = {
-          totalScore: 52,
-          maxScore: 80,
-          scorePercentage: 65.0,
-          accuracy: 75.0,
-          attemptRate: 85.0,
+          totalScore: 580,
+          maxScore: 720,
+          scorePercentage: 80.5,
+          accuracy: 85.0,
+          attemptRate: 94.4,
           completionRate: 100.0,
-          timeTakenSeconds: 3840,
-          correctCount: 14,
-          incorrectCount: 3,
-          unattemptedCount: 3,
+          timeTakenSeconds: 10800,
+          correctCount: 150,
+          incorrectCount: 20,
+          unattemptedCount: 10,
           subjectPerformance: {
-            physics: { subjectName: 'Physics', score: 11, maxScore: 20, correct: 3, incorrect: 1, unattempted: 1, accuracy: 75.0 },
-            chemistry: { subjectName: 'Chemistry', score: 15, maxScore: 20, correct: 4, incorrect: 1, unattempted: 0, accuracy: 80.0 },
-            botany: { subjectName: 'Botany', score: 16, maxScore: 20, correct: 4, incorrect: 0, unattempted: 1, accuracy: 100.0 },
-            zoology: { subjectName: 'Zoology', score: 10, maxScore: 20, correct: 3, incorrect: 1, unattempted: 1, accuracy: 75.0 },
+            physics: { subjectName: 'Physics', score: 140, maxScore: 180, correct: 37, incorrect: 8, unattempted: 0, accuracy: 82.2 },
+            chemistry: { subjectName: 'Chemistry', score: 152, maxScore: 180, correct: 39, incorrect: 4, unattempted: 2, accuracy: 90.7 },
+            botany: { subjectName: 'Botany', score: 148, maxScore: 180, correct: 38, incorrect: 4, unattempted: 3, accuracy: 90.5 },
+            zoology: { subjectName: 'Zoology', score: 140, maxScore: 180, correct: 36, incorrect: 4, unattempted: 5, accuracy: 90.0 },
           },
           conceptPerformance: {
-            electrostatics: { conceptName: 'Electrostatics & Gauss Law', correct: 1, total: 2, accuracy: 50.0 },
-            'chemical-bonding': { conceptName: 'Chemical Bonding & Hybridization', correct: 2, total: 2, accuracy: 100.0 },
+            electrostatics: { conceptName: 'Electrostatics & Gauss Law', correct: 4, total: 5, accuracy: 80.0 },
+            'chemical-bonding': { conceptName: 'Chemical Bonding & Hybridization', correct: 5, total: 5, accuracy: 100.0 },
           },
-          questionResults: SAMPLE_NEET_QUESTIONS.map((q, i) => ({
+          questionResults: questions.slice(0, 20).map((q, i) => ({
             questionVersionId: q.versionId,
             displayNumber: q.displayNumber,
             questionType: q.questionType,
-            result: i % 5 === 0 ? 'incorrect' : i % 7 === 0 ? 'unattempted' : 'correct',
-            marksEarned: i % 5 === 0 ? -1 : i % 7 === 0 ? 0 : 4,
+            result: i % 7 === 0 ? 'incorrect' : i % 11 === 0 ? 'unattempted' : 'correct',
+            marksEarned: i % 7 === 0 ? -1 : i % 11 === 0 ? 0 : 4,
             timeSpentSeconds: 65,
           })),
         };
         setEvaluation(fallbackEval);
       }
     }
-  }, [attemptId]);
+  }, [attemptId, questions]);
 
   if (!evaluation) {
     return (
@@ -89,6 +128,20 @@ export default function ExamResultPage() {
 
   const toggleSolution = (qId: string) => {
     setExpandedSolutions((prev) => ({ ...prev, [qId]: !prev[qId] }));
+  };
+
+  const handleDownloadOmrPdf = () => {
+    generateOmrPdf({
+      studentName: candidate.fullName,
+      registrationId: candidate.registrationId,
+      examName: 'FORT NEET (UG)',
+      paperName: SAMPLE_NEET_PAPER.name,
+      attemptId,
+      totalQuestions: 180,
+      answers,
+      questionIdMap,
+      autoDownload: true,
+    });
   };
 
   return (
@@ -123,26 +176,18 @@ export default function ExamResultPage() {
               <h1 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#263126] font-serif">
                 Examination Performance Breakdown
               </h1>
+              <p className="mt-1 text-xs text-[#73786E]">
+                Candidate: <strong className="text-[#263126]">{candidate.fullName}</strong> • ID:{' '}
+                <strong className="font-mono text-[#263126]">{candidate.registrationId}</strong>
+              </p>
             </div>
 
             <div className="flex items-center gap-3">
               <button
-                onClick={() => {
-                  generateOmrPdf({
-                    studentName: 'Candidate',
-                    registrationId: 'FORT-26-000001',
-                    examName: 'FORT NEET (UG)',
-                    paperName: SAMPLE_NEET_PAPER.name,
-                    attemptId,
-                    date: new Date().toLocaleDateString('en-IN'),
-                    totalQuestions: SAMPLE_NEET_QUESTIONS.length,
-                    answers: {},
-                    questionIdMap: {},
-                  });
-                }}
-                className="flex items-center gap-1.5 rounded-xl border border-[#E6E5DE] bg-[#F7F5EF] px-4 py-2 text-xs font-semibold text-[#263126] hover:bg-[#E9EEE3] hover:border-[#9CAF88] transition-colors shadow-sm"
+                onClick={handleDownloadOmrPdf}
+                className="flex items-center gap-1.5 rounded-xl bg-[#9CAF88] px-4 py-2.5 text-xs font-bold text-white hover:bg-[#8ea07a] transition-all shadow-sm"
               >
-                <FileDown className="h-4 w-4 text-[#758B62]" />
+                <FileDown className="h-4 w-4" />
                 <span>Export Vector OMR (PDF)</span>
               </button>
             </div>
@@ -228,7 +273,7 @@ export default function ExamResultPage() {
                 : 'border-transparent text-[#73786E] hover:text-[#263126]'
             )}
           >
-            Evaluated OMR Sheet
+            Evaluated NEET OMR Sheet (180 Qs)
           </button>
         </div>
 
@@ -280,7 +325,7 @@ export default function ExamResultPage() {
             </div>
 
             <div className="space-y-4">
-              {SAMPLE_NEET_QUESTIONS.map((q, idx) => {
+              {questions.slice(0, 20).map((q, idx) => {
                 const qResult = evaluation.questionResults[idx];
                 const isCorrect = qResult?.result === 'correct';
                 const isWrong = qResult?.result === 'incorrect';
@@ -374,14 +419,16 @@ export default function ExamResultPage() {
           </div>
         )}
 
-        {/* TAB 3: EVALUATED OMR SHEET */}
+        {/* TAB 3: EVALUATED OMR SHEET (180 QUESTIONS) */}
         {activeTab === 'omr' && (
           <div className="space-y-4">
             <LiveOMRSheet
-              totalQuestions={SAMPLE_NEET_QUESTIONS.length}
-              answers={{}}
-              questionIdMap={{}}
+              totalQuestions={180}
+              answers={answers}
+              questionIdMap={questionIdMap}
               isReadOnly={true}
+              studentName={candidate.fullName}
+              registrationId={candidate.registrationId}
               paperName={SAMPLE_NEET_PAPER.name}
               attemptId={attemptId}
             />

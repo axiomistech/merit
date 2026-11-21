@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { useParams, useRouter } from 'next/navigation';
+import Link from 'next/link';
 import {
   Clock,
   CheckCircle2,
@@ -10,16 +11,18 @@ import {
   ChevronLeft,
   ChevronRight,
   Shield,
-  RefreshCw,
   FileDown,
   Layers,
   Sparkles,
   HelpCircle,
   X,
+  FileText,
+  ArrowRight,
+  Download,
 } from 'lucide-react';
 import {
   SAMPLE_NEET_PAPER,
-  SAMPLE_NEET_QUESTIONS,
+  getFullNeet180Questions,
 } from '@/data/seedData';
 import {
   QuestionData,
@@ -29,6 +32,7 @@ import {
 import { evaluateAttempt } from '@/lib/scoring/engine';
 import { MathText } from '@/components/ui/MathText';
 import { LiveOMRSheet } from '@/components/omr/LiveOMRSheet';
+import { generateOmrPdf } from '@/lib/omr/pdfGenerator';
 import { cn, formatTimeWithHours } from '@/lib/utils';
 import { toast } from 'sonner';
 
@@ -38,23 +42,42 @@ export default function ExamExecutionPage() {
   const attemptId = (params?.attemptId as string) || 'ATT-2026-NEET-01';
 
   const paper = SAMPLE_NEET_PAPER;
-  const questions: QuestionData[] = SAMPLE_NEET_QUESTIONS;
+  // Full 180 questions for NEET CBT Simulation
+  const questions: QuestionData[] = useMemo(() => getFullNeet180Questions(), []);
 
   const [currentIndex, setCurrentIndex] = useState(0); // 0-based index
   const [answers, setAnswers] = useState<Record<string, AnswerState>>({});
   const [visited, setVisited] = useState<Record<number, boolean>>({ 0: true });
   const [viewMode, setViewMode] = useState<'standard' | 'omr'>('standard');
-  const [showSubmitModal, setShowSubmitModal] = useState(false);
+  const [showSubmitConfirmModal, setShowSubmitConfirmModal] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Server-authoritative countdown timer simulation
-  // 200 minutes = 12000 seconds
+  // Authenticated candidate profile
+  const [candidate, setCandidate] = useState({
+    fullName: 'DHANUSH JAGADEESH',
+    registrationId: 'FORT-26-000001',
+  });
+
+  // Server-authoritative countdown timer simulation (200 minutes = 12000 seconds)
   const [secondsRemaining, setSecondsRemaining] = useState<number>(12000);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    // Check if previous answers exist in localStorage for attempt recovery
+    // Retrieve authentic candidate profile from session
     if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('fort_student_session');
+      if (stored) {
+        try {
+          const parsed = JSON.parse(stored);
+          setCandidate({
+            fullName: (parsed.fullName || 'DHANUSH JAGADEESH').toUpperCase(),
+            registrationId: parsed.registrationId || 'FORT-26-000001',
+          });
+        } catch {}
+      }
+
+      // Check if previous answers exist in localStorage for attempt recovery
       const savedAnswers = localStorage.getItem(`fort_attempt_${attemptId}_answers`);
       if (savedAnswers) {
         try {
@@ -233,8 +256,10 @@ export default function ExamExecutionPage() {
     };
   }, [answers, visited, questions]);
 
+  // Final submission handler
   const handleFinalSubmit = (isAuto: boolean = false) => {
     setIsSubmitting(true);
+    setShowSubmitConfirmModal(false);
 
     // Call centralized evaluation engine
     const evaluation = evaluateAttempt({
@@ -257,14 +282,64 @@ export default function ExamExecutionPage() {
       durationSeconds: 12000 - secondsRemaining,
     });
 
+    const submissionTimestamp = new Date().toLocaleString('en-IN', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+
     // Save final evaluation snapshot
     if (typeof window !== 'undefined') {
       localStorage.setItem(`fort_result_${attemptId}`, JSON.stringify(evaluation));
       localStorage.setItem('fort_latest_attempt', JSON.stringify(evaluation));
+      localStorage.setItem(
+        `fort_submission_meta_${attemptId}`,
+        JSON.stringify({
+          submissionTimestamp,
+          answers,
+          candidate,
+        })
+      );
     }
 
-    toast.success(isAuto ? 'Time expired. Test auto-submitted!' : 'Examination submitted successfully!');
-    router.push(`/dashboard/results/${attemptId}`);
+    // SECTION 25 MANDATORY: AUTOMATIC OMR PDF DOWNLOAD ON SUBMISSION
+    try {
+      generateOmrPdf({
+        studentName: candidate.fullName,
+        registrationId: candidate.registrationId,
+        examName: 'FORT NEET (UG)',
+        paperName: paper.name,
+        attemptId,
+        submissionTime: submissionTimestamp,
+        totalQuestions: 180,
+        answers,
+        questionIdMap,
+        autoDownload: true,
+      });
+      toast.success('Responses recorded. Downloading your personalized OMR PDF...');
+    } catch (err) {
+      console.error('Auto PDF download error:', err);
+    }
+
+    // Display the Submission Success Modal Card matching the user's reference image
+    setShowSuccessModal(true);
+    setIsSubmitting(false);
+  };
+
+  const handleManualDownloadPdf = () => {
+    generateOmrPdf({
+      studentName: candidate.fullName,
+      registrationId: candidate.registrationId,
+      examName: 'FORT NEET (UG)',
+      paperName: paper.name,
+      attemptId,
+      totalQuestions: 180,
+      answers,
+      questionIdMap,
+      autoDownload: true,
+    });
   };
 
   const isTimeCritical = secondsRemaining < 300; // Less than 5 mins
@@ -280,7 +355,8 @@ export default function ExamExecutionPage() {
           <div>
             <h1 className="text-xs sm:text-sm font-bold text-[#263126] line-clamp-1">{paper.name}</h1>
             <span className="text-[10px] text-[#73786E]">
-              Candidate Attempt ID: <strong className="font-mono text-[#263126]">{attemptId}</strong>
+              Candidate: <strong className="text-[#263126]">{candidate.fullName}</strong> • ID:{' '}
+              <strong className="font-mono text-[#263126]">{candidate.registrationId}</strong>
             </span>
           </div>
         </div>
@@ -302,7 +378,7 @@ export default function ExamExecutionPage() {
           </div>
 
           <button
-            onClick={() => setShowSubmitModal(true)}
+            onClick={() => setShowSubmitConfirmModal(true)}
             className="rounded-xl border border-[#E8412C]/30 bg-white px-4 py-1.5 text-xs font-bold text-[#E8412C] hover:bg-[#FCE8E4] transition-colors"
           >
             End Test
@@ -343,7 +419,7 @@ export default function ExamExecutionPage() {
                   viewMode === 'omr' ? 'bg-[#9CAF88] text-white' : 'text-[#73786E] hover:text-[#263126]'
                 )}
               >
-                Live OMR Grid
+                Live NEET OMR Sheet (180 Qs)
               </button>
             </div>
           </div>
@@ -406,10 +482,14 @@ export default function ExamExecutionPage() {
           ) : (
             <div className="flex-1 overflow-y-auto p-4 sm:p-6 bg-[#F7F5EF]">
               <LiveOMRSheet
-                totalQuestions={questions.length}
+                totalQuestions={180}
                 answers={answers}
                 questionIdMap={questionIdMap}
                 currentQuestionNumber={currentIndex + 1}
+                studentName={candidate.fullName}
+                registrationId={candidate.registrationId}
+                paperName={paper.name}
+                attemptId={attemptId}
                 onSelectOption={(qNum, opt) => {
                   const q = questions[qNum - 1];
                   if (!q) return;
@@ -433,8 +513,6 @@ export default function ExamExecutionPage() {
                   handleJumpToQuestion(qNum);
                   setViewMode('standard');
                 }}
-                paperName={paper.name}
-                attemptId={attemptId}
               />
             </div>
           )}
@@ -491,7 +569,8 @@ export default function ExamExecutionPage() {
             <div className="text-[11px] font-semibold uppercase tracking-wider text-[#92958D]">
               Candidate Workspace
             </div>
-            <div className="font-mono text-xs font-bold text-[#263126]">{attemptId}</div>
+            <div className="font-mono text-xs font-bold text-[#263126]">{candidate.fullName}</div>
+            <div className="font-mono text-[11px] text-[#73786E]">{candidate.registrationId}</div>
           </div>
 
           {/* Palette Legend */}
@@ -517,7 +596,7 @@ export default function ExamExecutionPage() {
           {/* Question Palette Grid */}
           <div className="flex-1 overflow-y-auto p-4">
             <div className="text-xs font-bold uppercase tracking-wider text-[#92958D] mb-3">
-              Question Palette ({questions.length})
+              Question Palette (180 Questions)
             </div>
 
             <div className="grid grid-cols-5 gap-2">
@@ -533,7 +612,7 @@ export default function ExamExecutionPage() {
                       setViewMode('standard');
                     }}
                     className={cn(
-                      'flex h-9 w-9 items-center justify-center rounded-lg font-mono text-xs font-bold transition-all',
+                      'flex h-8 w-8 items-center justify-center rounded-lg font-mono text-xs font-bold transition-all',
                       isCurrent && 'ring-2 ring-[#758B62] ring-offset-2 ring-offset-white',
                       status === 'answered' && 'bg-[#9CAF88] text-white',
                       status === 'not_answered' && 'bg-[#FCE8E4] text-[#E8412C] border border-[#E8412C]/20',
@@ -551,19 +630,19 @@ export default function ExamExecutionPage() {
         </aside>
       </div>
 
-      {/* Confirmation & Submission Modal */}
-      {showSubmitModal && (
+      {/* Confirmation Modal */}
+      {showSubmitConfirmModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#263126]/50 backdrop-blur-sm p-4">
           <div className="w-full max-w-md rounded-2xl border border-[#E6E5DE] bg-white p-6 shadow-2xl">
             <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-3">
               <h3 className="text-base font-bold text-[#263126]">Confirm Final Submission</h3>
-              <button onClick={() => setShowSubmitModal(false)} className="text-[#92958D] hover:text-[#263126]">
+              <button onClick={() => setShowSubmitConfirmModal(false)} className="text-[#92958D] hover:text-[#263126]">
                 <X className="h-5 w-5" />
               </button>
             </div>
 
             <p className="mt-3 text-xs text-[#73786E]">
-              Once submitted, your answers are permanently sealed and evaluated server-side by the scoring engine.
+              Once submitted, your answers will be permanently sealed, evaluated, and your personalized physical-grade OMR PDF will download automatically.
             </p>
 
             <div className="my-4 grid grid-cols-2 gap-3 text-xs">
@@ -590,7 +669,7 @@ export default function ExamExecutionPage() {
             <div className="flex gap-3 pt-2">
               <button
                 type="button"
-                onClick={() => setShowSubmitModal(false)}
+                onClick={() => setShowSubmitConfirmModal(false)}
                 className="flex-1 rounded-xl border border-[#E6E5DE] bg-white py-2.5 text-xs font-semibold text-[#263126] hover:bg-[#F7F5EF]"
               >
                 Resume Test
@@ -603,6 +682,71 @@ export default function ExamExecutionPage() {
               >
                 {isSubmitting ? 'Evaluating...' : 'Yes, Submit Test'}
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* SUBMISSION SUCCESS MODAL CARD (EXACTLY REPLICATES USER'S REFERENCE IMAGE 2) */}
+      {showSuccessModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#263126]/60 backdrop-blur-md p-4">
+          <div className="w-full max-w-[560px] rounded-[24px] border border-[#E6E5DE] bg-white p-8 sm:p-10 text-center shadow-[0_20px_60px_rgba(38,49,38,0.12)] animate-in fade-in zoom-in-95">
+            {/* Top Success Circle Icon */}
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#E9EEE3] text-[#758B62]">
+              <CheckCircle2 className="h-7 w-7 stroke-[2.2]" />
+            </div>
+
+            {/* Title & Subtitle */}
+            <h2 className="mt-5 text-2xl font-bold text-[#263126] font-serif tracking-tight">
+              Examination Submitted Successfully
+            </h2>
+            <p className="mt-2 text-sm text-[#73786E]">
+              Your responses have been recorded and your answer sheet is ready.
+            </p>
+
+            {/* Document Preview Card */}
+            <div className="mt-6 flex items-center justify-between rounded-2xl border border-[#E6E5DE] bg-[#F7F5EF] p-4 text-left">
+              <div className="flex items-center gap-3.5">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white border border-[#E6E5DE] text-[#758B62]">
+                  <FileText className="h-5 w-5" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-[#263126]">NEET OMR Answer Sheet</h4>
+                  <p className="text-xs text-[#73786E]">A4 PDF • 180 questions • Personalized</p>
+                </div>
+              </div>
+              <Download className="h-5 w-5 text-[#73786E]" />
+            </div>
+
+            {/* Primary Action Button */}
+            <button
+              onClick={handleManualDownloadPdf}
+              className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl bg-[#9CAF88] py-4 text-sm font-bold text-white hover:bg-[#8ea07a] transition-all shadow-[0_4px_16px_rgba(156,175,136,0.35)]"
+            >
+              <span>↓ Download OMR PDF</span>
+            </button>
+
+            {/* Helper Note */}
+            <p className="mt-3 text-xs text-[#73786E]">
+              Your download should start automatically.
+            </p>
+
+            <div className="my-6 border-t border-[#ECEAE4]" />
+
+            {/* Bottom Links */}
+            <div className="flex items-center justify-center gap-8 text-sm font-semibold">
+              <Link
+                href={`/dashboard/results/${attemptId}`}
+                className="text-[#263126] hover:text-[#758B62] transition-colors"
+              >
+                View Results
+              </Link>
+              <Link
+                href={`/dashboard/results/${attemptId}?tab=solutions`}
+                className="text-[#263126] hover:text-[#758B62] transition-colors"
+              >
+                Review Answers
+              </Link>
             </div>
           </div>
         </div>

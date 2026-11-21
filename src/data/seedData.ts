@@ -613,3 +613,54 @@ export const SAMPLE_NEET_QUESTIONS: QuestionData[] = [
     },
   },
 ];
+
+/**
+ * Returns the complete 180-question NEET examination paper
+ * partitioned strictly into 4 columns of 45 questions each:
+ * - Physics: 001 to 045
+ * - Chemistry: 046 to 090
+ * - Botany: 091 to 135
+ * - Zoology: 136 to 180
+ */
+export function getFullNeet180Questions(): QuestionData[] {
+  const phyTemplates = SAMPLE_NEET_QUESTIONS.filter((q) => q.subjectSlug === 'physics');
+  const chemTemplates = SAMPLE_NEET_QUESTIONS.filter((q) => q.subjectSlug === 'chemistry');
+  const botTemplates = SAMPLE_NEET_QUESTIONS.filter((q) => q.subjectSlug === 'botany');
+  const zooTemplates = SAMPLE_NEET_QUESTIONS.filter((q) => q.subjectSlug === 'zoology');
+
+  const fullQuestions: QuestionData[] = [];
+
+  for (let i = 1; i <= 180; i++) {
+    let subjectName = 'Physics';
+    let subjectSlug = 'physics';
+    let templateList = phyTemplates;
+
+    if (i >= 46 && i <= 90) {
+      subjectName = 'Chemistry';
+      subjectSlug = 'chemistry';
+      templateList = chemTemplates;
+    } else if (i >= 91 && i <= 135) {
+      subjectName = 'Botany';
+      subjectSlug = 'botany';
+      templateList = botTemplates;
+    } else if (i >= 136 && i <= 180) {
+      subjectName = 'Zoology';
+      subjectSlug = 'zoology';
+      templateList = zooTemplates;
+    }
+
+    const template = templateList[(i - 1) % templateList.length] || SAMPLE_NEET_QUESTIONS[0];
+
+    fullQuestions.push({
+      ...template,
+      id: `q-neet-full-${i}`,
+      versionId: `qv-neet-full-${i}`,
+      displayNumber: i,
+      subjectName,
+      subjectSlug,
+    });
+  }
+
+  return fullQuestions;
+}
+
