@@ -143,13 +143,22 @@ export default function StudentLeaderboardPage() {
   const currentUserEntry = entries.find((e) => e.isCurrentUser);
 
   return (
-    <div className="space-y-8 max-w-7xl mx-auto">
+    <div className="liquid-canvas min-h-screen py-6 px-4 sm:px-6 lg:px-8 space-y-8 max-w-7xl mx-auto relative">
+      {/* Ambient Liquid Fluid Orbs */}
+      <div className="liquid-fluid-backdrop">
+        <div className="liquid-orb-glacier top-10 right-1/4 h-80 w-80 opacity-55" />
+        <div className="liquid-orb-red bottom-10 left-1/3 h-72 w-72 opacity-20" />
+      </div>
+
       {/* Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#DCE2E6] pb-6">
+      <div className="relative z-10 flex flex-wrap items-center justify-between gap-4 border-b border-[#DCE2E6]/80 pb-6">
         <div>
-          <span className="text-xs font-semibold uppercase tracking-wider text-[#66727D]">
-            All-India Academic Standing
-          </span>
+          <div className="glass-pill inline-flex items-center gap-1.5 px-3 py-1 rounded-full mb-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#E4002B]" />
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#66727D]">
+              All-India Academic Standing
+            </span>
+          </div>
           <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold text-[#20252B] font-sans">
             Examination Leaderboard
           </h1>
@@ -160,7 +169,7 @@ export default function StudentLeaderboardPage() {
 
         <Link
           href="/papers"
-          className="inline-flex items-center gap-2 rounded-xl bg-[#20252B] px-5 py-2.5 text-xs font-semibold text-white shadow-sm hover:bg-[#343D46] transition-colors"
+          className="glass-racing-red inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-bold text-white shadow-md transition-transform hover:scale-[1.02]"
         >
           <span>Attempt Paper & Compete</span>
           <ArrowRight className="h-3.5 w-3.5" />
@@ -169,15 +178,15 @@ export default function StudentLeaderboardPage() {
 
       {/* Current Candidate Position Card */}
       {currentUserEntry ? (
-        <div className="rounded-2xl border-2 border-[#9CC6E0] bg-[#E9F5EF] p-5 shadow-sm flex flex-wrap items-center justify-between gap-4">
+        <div className="relative z-10 glass-polar rounded-[32px] border-2 border-[#9CC6E0] p-6 shadow-sm flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white border border-[#DCE2E6] font-mono text-xl font-bold text-[#20252B]">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#9CC6E0]/20 border border-[#9CC6E0]/40 font-mono text-xl font-bold text-[#20252B]">
               #{currentUserEntry.rank}
             </div>
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-sm font-bold text-[#20252B]">{currentUserEntry.displayName}</span>
-                <span className="rounded-full bg-[#27835A] px-2 py-0.5 text-[10px] font-bold text-white uppercase">
+                <span className="rounded-full bg-[#E4002B] px-2.5 py-0.5 text-[10px] font-bold text-white uppercase tracking-wider">
                   You
                 </span>
               </div>
@@ -203,7 +212,7 @@ export default function StudentLeaderboardPage() {
           </div>
         </div>
       ) : (
-        <div className="rounded-2xl border border-[#DCE2E6] bg-white p-5 shadow-sm flex flex-wrap items-center justify-between gap-4">
+        <div className="relative z-10 glass-polar rounded-[32px] p-6 shadow-sm flex flex-wrap items-center justify-between gap-4">
           <div>
             <h3 className="text-sm font-bold text-[#20252B]">Your rank is waiting</h3>
             <p className="text-xs text-[#66727D] mt-0.5">
@@ -212,7 +221,7 @@ export default function StudentLeaderboardPage() {
           </div>
           <Link
             href="/papers"
-            className="inline-flex items-center gap-1.5 rounded-xl bg-[#E4002B] px-4 py-2 text-xs font-semibold text-white hover:bg-[#C90026] transition-colors"
+            className="glass-racing-red inline-flex items-center gap-1.5 rounded-full px-5 py-2.5 text-xs font-bold text-white shadow-sm transition-transform hover:scale-[1.02]"
           >
             <span>Unlock Free Paper</span>
             <ArrowRight className="h-3 w-3" />
@@ -221,7 +230,7 @@ export default function StudentLeaderboardPage() {
       )}
 
       {/* Filters */}
-      <div className="flex flex-wrap items-center justify-between gap-4 rounded-xl border border-[#DCE2E6] bg-white p-3">
+      <div className="relative z-10 flex flex-wrap items-center justify-between gap-4 glass-polar rounded-[24px] p-3">
         <div className="flex items-center gap-1.5 text-xs">
           <span className="text-[#66727D] font-medium mr-1">Curriculum:</span>
           {[
@@ -234,10 +243,10 @@ export default function StudentLeaderboardPage() {
               type="button"
               onClick={() => setExamFilter(tab.value)}
               className={cn(
-                'px-3 py-1.5 rounded-lg font-semibold transition-colors duration-150',
+                'px-3.5 py-1.5 rounded-full font-semibold transition-all duration-150',
                 examFilter === tab.value
-                  ? 'bg-[#20252B] text-white'
-                  : 'bg-[#F1F3F4] text-[#66727D] hover:text-[#20252B]'
+                  ? 'bg-[#20252B] text-white shadow-sm'
+                  : 'bg-white/60 text-[#66727D] hover:text-[#20252B]'
               )}
             >
               {tab.label}
@@ -253,10 +262,10 @@ export default function StudentLeaderboardPage() {
               type="button"
               onClick={() => setTimeFilter(t as any)}
               className={cn(
-                'px-2.5 py-1 rounded-md capitalize font-semibold transition-colors',
+                'px-3 py-1 rounded-full capitalize font-semibold transition-all',
                 timeFilter === t
-                  ? 'bg-[#20252B] text-white'
-                  : 'bg-[#F1F3F4] text-[#66727D] hover:text-[#20252B]'
+                  ? 'bg-[#20252B] text-white shadow-sm'
+                  : 'bg-white/60 text-[#66727D] hover:text-[#20252B]'
               )}
             >
               {t === 'all' ? 'All Time' : t}
@@ -266,10 +275,10 @@ export default function StudentLeaderboardPage() {
       </div>
 
       {/* Leaderboard Table */}
-      <div className="rounded-2xl border border-[#DCE2E6] bg-white shadow-sm overflow-hidden">
+      <div className="relative z-10 glass-polar rounded-[32px] shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="border-b border-[#DCE2E6] bg-[#F1F3F4] text-[#66727D]">
+            <thead className="border-b border-[#DCE2E6] bg-[#F1F3F4]/80 text-[#66727D]">
               <tr>
                 <th className="p-4 font-semibold w-16 text-center">Rank</th>
                 <th className="p-4 font-semibold">Candidate</th>
@@ -280,13 +289,13 @@ export default function StudentLeaderboardPage() {
                 <th className="p-4 font-semibold text-right">Attempt Date</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#DCE2E6] text-[#20252B]">
+            <tbody className="divide-y divide-[#DCE2E6]/80 text-[#20252B]">
               {filtered.map((item) => (
                 <tr
                   key={item.registrationId}
                   className={cn(
                     'transition-colors duration-150',
-                    item.isCurrentUser ? 'bg-[#9CC6E0]/15 font-semibold' : 'hover:bg-[#F1F3F4]/50'
+                    item.isCurrentUser ? 'bg-[#9CC6E0]/20 font-semibold' : 'hover:bg-white/60'
                   )}
                 >
                   <td className="p-4 text-center font-mono font-bold">
@@ -310,7 +319,7 @@ export default function StudentLeaderboardPage() {
                     <div className="font-bold text-[#20252B] flex items-center gap-1.5">
                       <span>{item.displayName}</span>
                       {item.isCurrentUser && (
-                        <span className="rounded bg-[#27835A] px-1.5 py-0.2 text-[9px] font-bold text-white uppercase">
+                        <span className="rounded-full bg-[#E4002B] px-2 py-0.5 text-[9px] font-bold text-white uppercase tracking-wider">
                           You
                         </span>
                       )}

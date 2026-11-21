@@ -68,13 +68,22 @@ export default function StudentPurchasesPage() {
   }, []);
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8 space-y-8 max-w-7xl mx-auto">
+    <div className="liquid-canvas min-h-screen py-6 px-4 sm:px-6 lg:px-8 space-y-8 max-w-7xl mx-auto relative">
+      {/* Ambient Liquid Fluid Orbs */}
+      <div className="liquid-fluid-backdrop">
+        <div className="liquid-orb-glacier top-10 right-1/4 h-80 w-80 opacity-55" />
+        <div className="liquid-orb-red bottom-10 left-1/4 h-72 w-72 opacity-20" />
+      </div>
+
       {/* Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#DCE2E6] pb-6">
+      <div className="relative z-10 flex flex-wrap items-center justify-between gap-4 border-b border-[#DCE2E6]/80 pb-6">
         <div>
-          <span className="text-xs font-semibold uppercase tracking-wider text-[#20252B]">
-            Monetization & Entitlements
-          </span>
+          <div className="glass-pill inline-flex items-center gap-1.5 px-3 py-1 rounded-full mb-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#E4002B]" />
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#66727D]">
+              Monetization & Entitlements
+            </span>
+          </div>
           <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold text-[#20252B] font-sans">
             Purchased Papers & Receipts
           </h1>
@@ -85,7 +94,7 @@ export default function StudentPurchasesPage() {
 
         <Link
           href="/papers"
-          className="inline-flex items-center gap-2 rounded-full bg-[#E4002B] px-6 py-2.5 text-xs font-bold text-white shadow-soft hover:bg-[#C90026] transition-all"
+          className="glass-racing-red inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-bold text-white shadow-md transition-transform hover:scale-[1.02]"
         >
           <FileText className="h-4 w-4" />
           <span>Browse Question Papers</span>
@@ -93,8 +102,8 @@ export default function StudentPurchasesPage() {
       </div>
 
       {!loading && purchases.length === 0 ? (
-        <div className="rounded-[28px] border border-[#DCE2E6] bg-white p-12 text-center shadow-soft space-y-4">
-          <div className="flex h-14 w-14 mx-auto items-center justify-center rounded-2xl bg-[#F1F3F4] text-[#66727D]">
+        <div className="relative z-10 glass-polar rounded-[32px] p-12 text-center space-y-4">
+          <div className="flex h-14 w-14 mx-auto items-center justify-center rounded-2xl bg-[#9CC6E0]/20 text-[#20252B]">
             <Receipt className="h-7 w-7" />
           </div>
           <div className="space-y-1">
@@ -108,7 +117,7 @@ export default function StudentPurchasesPage() {
           <div className="pt-2">
             <Link
               href="/papers"
-              className="inline-flex items-center gap-2 rounded-full bg-[#20252B] px-6 py-2.5 text-xs font-bold text-white shadow-soft hover:bg-[#20252B]/90 transition-all"
+              className="glass-polar inline-flex items-center gap-2 rounded-full px-7 py-3 text-xs font-bold text-[#20252B] transition-all hover:border-[#9CC6E0]"
             >
               <span>Explore Question Papers</span>
               <ArrowRight className="h-4 w-4" />
@@ -116,10 +125,10 @@ export default function StudentPurchasesPage() {
           </div>
         </div>
       ) : (
-        <div className="rounded-[24px] border border-[#DCE2E6] bg-white shadow-soft overflow-hidden">
+        <div className="relative z-10 glass-polar rounded-[32px] shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="border-b border-[#DCE2E6] bg-[#F1F3F4] text-[#66727D]">
+              <thead className="border-b border-[#DCE2E6] bg-[#F1F3F4]/80 text-[#66727D]">
                 <tr>
                   <th className="p-4 font-semibold">Transaction ID</th>
                   <th className="p-4 font-semibold">Question Paper</th>
@@ -130,16 +139,16 @@ export default function StudentPurchasesPage() {
                   <th className="p-4 font-semibold text-right">Access</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#DCE2E6] text-[#20252B]">
+              <tbody className="divide-y divide-[#DCE2E6]/80 text-[#20252B]">
                 {purchases.map((tx) => (
-                  <tr key={tx.id} className="hover:bg-[#F1F3F4]/60 transition-colors">
+                  <tr key={tx.id} className="hover:bg-white/60 transition-colors">
                     <td className="p-4 font-mono font-bold text-[#20252B]">{tx.id}</td>
                     <td className="p-4 font-semibold text-[#20252B]">{tx.paperName}</td>
                     <td className="p-4 text-[#66727D]">{tx.date}</td>
                     <td className="p-4 font-mono font-bold text-[#20252B]">{tx.amount}</td>
                     <td className="p-4 text-[#66727D]">{tx.type}</td>
                     <td className="p-4">
-                      <span className="rounded-full bg-[#E9EEF1] px-2.5 py-0.5 font-bold text-[#20252B]">
+                      <span className="rounded-full bg-[#9CC6E0]/20 border border-[#9CC6E0]/40 px-3 py-1 font-bold text-[#20252B] text-[11px]">
                         {tx.status}
                       </span>
                     </td>

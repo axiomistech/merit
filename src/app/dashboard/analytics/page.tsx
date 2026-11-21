@@ -161,12 +161,21 @@ export default function StudentAnalyticsPage() {
   }, []);
 
   return (
-    <div className="space-y-8 max-w-7xl mx-auto">
+    <div className="liquid-canvas min-h-screen py-6 px-4 sm:px-6 lg:px-8 space-y-8 max-w-7xl mx-auto relative">
+      {/* Ambient Liquid Fluid Orbs */}
+      <div className="liquid-fluid-backdrop">
+        <div className="liquid-orb-glacier top-10 left-1/4 h-80 w-80 opacity-60" />
+        <div className="liquid-orb-red bottom-20 right-1/4 h-72 w-72 opacity-25" />
+      </div>
+
       {/* Header */}
-      <div className="border-b border-[#DCE2E6] pb-6">
-        <span className="text-xs font-semibold uppercase tracking-wider text-[#66727D]">
-          Diagnostic Intelligence
-        </span>
+      <div className="relative z-10 border-b border-[#DCE2E6]/80 pb-6">
+        <div className="glass-pill inline-flex items-center gap-1.5 px-3 py-1 rounded-full mb-2">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#E4002B]" />
+          <span className="text-[11px] font-bold uppercase tracking-wider text-[#66727D]">
+            Diagnostic Intelligence
+          </span>
+        </div>
         <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold text-[#20252B] font-sans">
           Speed, Accuracy & Mastery Analytics
         </h1>
@@ -177,8 +186,8 @@ export default function StudentAnalyticsPage() {
 
       {/* Honest Empty State when No Attempts Exist */}
       {!analyticsData.hasData ? (
-        <div className="rounded-3xl border border-[#DCE2E6] bg-white p-12 text-center max-w-2xl mx-auto space-y-4 shadow-sm">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#E9EEF1] text-[#20252B]">
+        <div className="relative z-10 glass-polar rounded-[32px] p-12 text-center max-w-2xl mx-auto space-y-4">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#9CC6E0]/20 text-[#20252B]">
             <BarChart3 className="h-7 w-7 stroke-[2.2]" />
           </div>
           <h2 className="text-xl font-bold text-[#20252B]">
@@ -191,7 +200,7 @@ export default function StudentAnalyticsPage() {
           <div className="pt-3">
             <Link
               href="/papers"
-              className="inline-flex items-center gap-2 rounded-xl bg-[#E4002B] px-7 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#C90026] transition-colors"
+              className="glass-racing-red inline-flex items-center gap-2 rounded-full px-8 py-3 text-sm font-bold text-white shadow-lg transition-transform hover:scale-[1.02]"
             >
               <span>Unlock Question Paper</span>
               <ArrowRight className="h-4 w-4" />
@@ -200,48 +209,48 @@ export default function StudentAnalyticsPage() {
         </div>
       ) : (
         /* Real Calculated Analytics Content */
-        <div className="space-y-8">
+        <div className="relative z-10 space-y-8">
           {/* Top-Level Summary KPIs */}
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-2xl border border-[#DCE2E6] bg-white p-5 shadow-sm">
+            <div className="glass-polar rounded-[28px] p-6 transition-all hover:border-[#9CC6E0]">
               <div className="flex items-center justify-between text-xs text-[#66727D]">
-                <span>Papers Attempted</span>
+                <span className="font-semibold uppercase tracking-wider text-[11px]">Papers Attempted</span>
                 <Clock className="h-4 w-4 text-[#20252B]" />
               </div>
-              <div className="mt-2 font-mono text-3xl font-bold text-[#20252B]">
+              <div className="mt-2 font-mono text-3xl font-black text-[#20252B]">
                 {analyticsData.metrics.totalTestsAttempted}
               </div>
               <p className="mt-1 text-[11px] text-[#66727D]">Verified completed examinations</p>
             </div>
 
-            <div className="rounded-2xl border border-[#DCE2E6] bg-white p-5 shadow-sm">
+            <div className="glass-polar rounded-[28px] p-6 transition-all hover:border-[#9CC6E0]">
               <div className="flex items-center justify-between text-xs text-[#66727D]">
-                <span>Questions Answered</span>
+                <span className="font-semibold uppercase tracking-wider text-[11px]">Questions Answered</span>
                 <Target className="h-4 w-4 text-[#20252B]" />
               </div>
-              <div className="mt-2 font-mono text-3xl font-bold text-[#20252B]">
+              <div className="mt-2 font-mono text-3xl font-black text-[#20252B]">
                 {analyticsData.metrics.totalQuestionsSolved}
               </div>
               <p className="mt-1 text-[11px] text-[#66727D]">Active question responses</p>
             </div>
 
-            <div className="rounded-2xl border border-[#DCE2E6] bg-white p-5 shadow-sm">
+            <div className="glass-polar rounded-[28px] p-6 transition-all hover:border-[#9CC6E0]">
               <div className="flex items-center justify-between text-xs text-[#66727D]">
-                <span>Overall Accuracy</span>
-                <CheckCircle2 className="h-4 w-4 text-[#27835A]" />
+                <span className="font-semibold uppercase tracking-wider text-[11px]">Overall Accuracy</span>
+                <CheckCircle2 className="h-4 w-4 text-[#9CC6E0]" />
               </div>
-              <div className="mt-2 font-mono text-3xl font-bold text-[#20252B]">
+              <div className="mt-2 font-mono text-3xl font-black text-[#20252B]">
                 {analyticsData.metrics.accuracy}%
               </div>
               <p className="mt-1 text-[11px] text-[#66727D]">Correct answered / total answered</p>
             </div>
 
-            <div className="rounded-2xl border border-[#DCE2E6] bg-white p-5 shadow-sm">
+            <div className="glass-polar rounded-[28px] p-6 transition-all hover:border-[#9CC6E0]">
               <div className="flex items-center justify-between text-xs text-[#66727D]">
-                <span>Average Score</span>
+                <span className="font-semibold uppercase tracking-wider text-[11px]">Average Score</span>
                 <Award className="h-4 w-4 text-[#20252B]" />
               </div>
-              <div className="mt-2 font-mono text-3xl font-bold text-[#20252B]">
+              <div className="mt-2 font-mono text-3xl font-black text-[#20252B]">
                 {analyticsData.metrics.averageScore}
               </div>
               <p className="mt-1 text-[11px] text-[#66727D]">
@@ -251,21 +260,21 @@ export default function StudentAnalyticsPage() {
           </div>
 
           {/* Speed vs Accuracy Profile */}
-          <div className="rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-sm space-y-3">
+          <div className="glass-polar rounded-[32px] p-6 sm:p-8 space-y-4">
             <h2 className="text-base font-bold text-[#20252B]">Speed vs. Accuracy Profile</h2>
             <p className="text-xs text-[#66727D]">
               Calibrated against question complexity and server-synchronized timers.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-              <div className="rounded-xl border border-[#DCE2E6] bg-[#F1F3F4] p-4 text-xs space-y-2">
-                <div className="font-semibold text-[#20252B]">Solving Profile: Balanced & Methodical</div>
+              <div className="rounded-2xl border border-[#DCE2E6]/80 bg-[#F1F3F4]/60 p-5 text-xs space-y-2">
+                <div className="font-bold text-[#20252B]">Solving Profile: Balanced & Methodical</div>
                 <p className="text-[#66727D] leading-relaxed">
                   Average response pace is approximately 68 seconds per question. Time is distributed
                   evenly across foundational concepts without excessive dwelling on single problems.
                 </p>
               </div>
-              <div className="rounded-xl border border-[#DCE2E6] bg-[#F1F3F4] p-4 text-xs space-y-2">
-                <div className="font-semibold text-[#20252B]">Unattempted Control</div>
+              <div className="rounded-2xl border border-[#DCE2E6]/80 bg-[#F1F3F4]/60 p-5 text-xs space-y-2">
+                <div className="font-bold text-[#20252B]">Unattempted Control</div>
                 <p className="text-[#66727D] leading-relaxed">
                   Negative mark risk is contained by leaving low-confidence questions unattempted
                   rather than accumulating -1 mark penalties through random guesses.
@@ -276,11 +285,11 @@ export default function StudentAnalyticsPage() {
 
           {/* Subject Breakdown */}
           {analyticsData.subjectBreakdown.length > 0 && (
-            <div className="rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-sm space-y-4">
+            <div className="glass-polar rounded-[32px] p-6 sm:p-8 space-y-4">
               <h2 className="text-base font-bold text-[#20252B]">Subject Performance Breakdown</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {analyticsData.subjectBreakdown.map((sub) => (
-                  <div key={sub.subject} className="rounded-xl border border-[#DCE2E6] bg-[#F1F3F4] p-4 space-y-2">
+                  <div key={sub.subject} className="rounded-2xl border border-[#DCE2E6]/80 bg-[#F1F3F4]/60 p-5 space-y-3">
                     <div className="flex justify-between items-center text-xs">
                       <span className="font-bold text-[#20252B]">{sub.subject}</span>
                       <span className="font-mono font-bold text-[#20252B]">{sub.accuracy}%</span>
@@ -303,7 +312,7 @@ export default function StudentAnalyticsPage() {
 
           {/* Concepts that Need Attention */}
           {analyticsData.weakAreas.length > 0 && (
-            <div className="rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-sm space-y-4">
+            <div className="glass-polar rounded-[32px] p-6 sm:p-8 space-y-4">
               <div className="flex items-center gap-2">
                 <AlertTriangle className="h-4 w-4 text-[#E4002B]" />
                 <h2 className="text-base font-bold text-[#20252B]">Concepts That Need Attention</h2>
@@ -315,7 +324,7 @@ export default function StudentAnalyticsPage() {
                 {analyticsData.weakAreas.map((w, idx) => (
                   <div
                     key={idx}
-                    className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#DCE2E6] bg-[#F1F3F4] p-4 text-xs"
+                    className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#E4002B]/20 bg-[#FDEDF0]/50 p-4 text-xs"
                   >
                     <div>
                       <div className="font-bold text-[#20252B]">{w.chapter}</div>
@@ -324,10 +333,10 @@ export default function StudentAnalyticsPage() {
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="rounded-md bg-[#FDEDF0] px-2.5 py-1 font-mono font-bold text-[#E4002B]">
+                      <span className="rounded-full bg-[#E4002B] px-3 py-1 font-mono font-bold text-white text-[11px]">
                         {w.accuracy}% Accuracy
                       </span>
-                      <span className="rounded-md bg-white border border-[#DCE2E6] px-2.5 py-1 font-semibold text-[#66727D]">
+                      <span className="glass-pill px-3 py-1 font-semibold text-[#66727D]">
                         Needs Attention
                       </span>
                     </div>
@@ -339,7 +348,7 @@ export default function StudentAnalyticsPage() {
 
           {/* Actionable Recommendations */}
           {analyticsData.recommendations.length > 0 && (
-            <div className="rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-sm space-y-4">
+            <div className="glass-polar rounded-[32px] p-6 sm:p-8 space-y-4">
               <div className="flex items-center gap-2">
                 <Sparkles className="h-4 w-4 text-[#20252B]" />
                 <h2 className="text-base font-bold text-[#20252B]">Personalized Recommendations</h2>
@@ -348,11 +357,11 @@ export default function StudentAnalyticsPage() {
                 {analyticsData.recommendations.map((rec, idx) => (
                   <div
                     key={idx}
-                    className="rounded-xl border border-[#DCE2E6] bg-[#F1F3F4] p-4 text-xs space-y-2"
+                    className="rounded-2xl border border-[#DCE2E6]/80 bg-[#F1F3F4]/60 p-5 text-xs space-y-2"
                   >
                     <div className="font-bold text-[#20252B]">{rec.title}</div>
                     <p className="text-[#66727D] leading-relaxed">{rec.reason}</p>
-                    <div className="pt-1 flex items-center justify-between">
+                    <div className="pt-2 flex items-center justify-between">
                       <span className="text-[11px] text-[#20252B] font-medium">
                         {rec.recommendedAction}
                       </span>

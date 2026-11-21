@@ -554,7 +554,7 @@ export default function ExamExecutionPage() {
                 className={cn(
                   'rounded-xl border px-3 py-2 text-xs font-semibold transition-colors',
                   currentAnswer?.markedForReview
-                    ? 'border-[#FDE68A] bg-[#FEF3C7] text-[#92400E]'
+                    ? 'border-[#9CC6E0] bg-[#9CC6E0]/30 text-[#20252B]'
                     : 'border-[#DCE2E6] bg-[#F1F3F4] text-[#66727D] hover:text-[#20252B]'
                 )}
               >
@@ -613,11 +613,11 @@ export default function ExamExecutionPage() {
               <span className="text-[#66727D]">Visited, Not Ans ({stats.notAnswered})</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <div className="h-3 w-3 rounded-full bg-[#FBBF24]" />
+              <div className="h-3 w-3 rounded-full bg-[#9CC6E0]" />
               <span className="text-[#66727D]">Marked Review ({stats.marked})</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <div className="h-3 w-3 rounded-full bg-[#8B5CF6]" />
+              <div className="h-3 w-3 rounded-full bg-[#9CC6E0] ring-1 ring-[#E4002B]" />
               <span className="text-[#66727D]">Ans & Review ({stats.answeredAndMarked})</span>
             </div>
             <div className="flex items-center gap-1.5 col-span-2">
@@ -649,8 +649,8 @@ export default function ExamExecutionPage() {
                       isCurrent && 'ring-2 ring-[#20252B] ring-offset-2 ring-offset-white',
                       status === 'answered' && 'bg-[#E4002B] text-white shadow-sm',
                       status === 'not_answered' && 'bg-white text-[#20252B] border-2 border-[#E4002B]',
-                      status === 'marked_for_review' && 'bg-[#FBBF24] text-[#20252B]',
-                      status === 'answered_and_marked_for_review' && 'bg-[#8B5CF6] text-white',
+                      status === 'marked_for_review' && 'bg-[#9CC6E0] text-[#20252B]',
+                      status === 'answered_and_marked_for_review' && 'bg-[#9CC6E0] text-[#20252B] ring-2 ring-[#E4002B]',
                       status === 'not_visited' && 'bg-[#E9EEF1] text-[#66727D] border border-[#DCE2E6] hover:border-[#9CC6E0]'
                     )}
                   >

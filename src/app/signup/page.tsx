@@ -70,22 +70,28 @@ function SignupForm() {
   };
 
   return (
-    <div className="bg-[#F1F3F4] text-[#20252B] min-h-screen py-16 flex items-center justify-center px-4">
-      <div className="w-full max-w-lg rounded-[28px] border border-[#DCE2E6] bg-white p-8 sm:p-10 shadow-[0_8px_30px_rgba(38,49,38,0.06)]">
+    <div className="liquid-canvas text-[#20252B] min-h-screen py-16 flex items-center justify-center px-4 relative">
+      {/* Ambient Liquid Fluid Orbs */}
+      <div className="liquid-fluid-backdrop">
+        <div className="liquid-orb-glacier top-16 left-1/3 h-80 w-80 opacity-55" />
+        <div className="liquid-orb-red bottom-16 right-1/3 h-72 w-72 opacity-20" />
+      </div>
+
+      <div className="relative z-10 w-full max-w-lg glass-polar rounded-[36px] p-8 sm:p-10 shadow-sm">
         <div className="text-center">
           <Link href="/" className="inline-flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#9CC6E0] text-[#20252B]">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#9CC6E0] text-[#20252B] shadow-sm">
               <Shield className="h-5 w-5 stroke-[2.5]" />
             </div>
-            <span className="font-mono text-xl font-bold tracking-wider text-[#20252B]">FORT</span>
+            <span className="font-mono text-xl font-black tracking-wider text-[#20252B]">FORT</span>
           </Link>
-          <h1 className="mt-4 text-2xl font-bold text-[#20252B] font-sans">Create Candidate Account</h1>
+          <h1 className="mt-4 text-2xl font-black text-[#20252B] font-sans">Create Candidate Account</h1>
           <p className="mt-1 text-xs text-[#66727D]">
             Generate your verified FORT registration ID & claim your complimentary first paper.
           </p>
 
-          <div className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-[#E9EEF1] px-3 py-1 text-xs font-semibold text-[#20252B]">
-            <CheckCircle2 className="h-3.5 w-3.5 text-[#27835A]" />
+          <div className="glass-pill mt-4 inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold text-[#20252B]">
+            <CheckCircle2 className="h-3.5 w-3.5 text-[#9CC6E0]" />
             <span>1st Full Question Paper Unlock Included Free</span>
           </div>
         </div>
@@ -190,7 +196,7 @@ function SignupForm() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-xl bg-[#E4002B] py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-[#C90026] transition-all disabled:opacity-50 mt-4"
+            className="glass-racing-red w-full rounded-full py-3.5 text-sm font-bold text-white shadow-md transition-transform hover:scale-[1.02] disabled:opacity-50 mt-4"
           >
             {loading ? 'Creating Candidate Record...' : 'Complete Registration & Claim Free Paper'}
           </button>

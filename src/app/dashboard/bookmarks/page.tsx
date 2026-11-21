@@ -25,12 +25,21 @@ export default function BookmarksPage() {
   }, []);
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8 space-y-8 max-w-7xl mx-auto">
+    <div className="liquid-canvas min-h-screen py-6 px-4 sm:px-6 lg:px-8 space-y-8 max-w-7xl mx-auto relative text-[#20252B]">
+      {/* Ambient Liquid Fluid Orbs */}
+      <div className="liquid-fluid-backdrop">
+        <div className="liquid-orb-glacier top-10 right-1/4 h-80 w-80 opacity-55" />
+        <div className="liquid-orb-red bottom-10 left-1/4 h-72 w-72 opacity-20" />
+      </div>
+
       {/* Header */}
-      <div className="border-b border-[#DCE2E6] pb-6">
-        <span className="text-xs font-semibold uppercase tracking-wider text-[#20252B]">
-          Curated Revision
-        </span>
+      <div className="relative z-10 border-b border-[#DCE2E6]/80 pb-6">
+        <div className="glass-pill inline-flex items-center gap-1.5 px-3 py-1 rounded-full mb-2">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#E4002B]" />
+          <span className="text-[11px] font-bold uppercase tracking-wider text-[#66727D]">
+            Curated Revision
+          </span>
+        </div>
         <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold text-[#20252B] font-sans">
           Saved Question Bookmarks
         </h1>
@@ -40,8 +49,8 @@ export default function BookmarksPage() {
       </div>
 
       {!loading && bookmarked.length === 0 ? (
-        <div className="rounded-[28px] border border-[#DCE2E6] bg-white p-12 text-center shadow-soft space-y-4">
-          <div className="flex h-14 w-14 mx-auto items-center justify-center rounded-2xl bg-[#F1F3F4] text-[#66727D]">
+        <div className="relative z-10 glass-polar rounded-[32px] p-12 text-center space-y-4">
+          <div className="flex h-14 w-14 mx-auto items-center justify-center rounded-2xl bg-[#9CC6E0]/20 text-[#20252B]">
             <Bookmark className="h-7 w-7" />
           </div>
           <div className="space-y-1">
@@ -55,7 +64,7 @@ export default function BookmarksPage() {
           <div className="pt-2">
             <Link
               href="/papers"
-              className="inline-flex items-center gap-2 rounded-full bg-[#E4002B] px-6 py-2.5 text-xs font-bold text-white shadow-soft hover:bg-[#C90026] transition-all"
+              className="glass-racing-red inline-flex items-center gap-2 rounded-full px-7 py-3 text-xs font-bold text-white shadow-md transition-transform hover:scale-[1.02]"
             >
               <FileText className="h-4 w-4" />
               <span>Browse Question Papers</span>
@@ -63,16 +72,16 @@ export default function BookmarksPage() {
           </div>
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className="relative z-10 space-y-4">
           {bookmarked.map((q, idx) => (
             <div
               key={q.id || idx}
-              className="rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-soft space-y-4"
+              className="glass-polar rounded-[28px] p-6 shadow-sm space-y-4"
             >
               <div className="flex items-center justify-between text-xs">
                 <span className="font-semibold text-[#20252B]">{q.conceptName || 'Question Bookmark'}</span>
                 {q.subjectName && (
-                  <span className="rounded-full bg-[#E9EEF1] px-2.5 py-0.5 text-[#20252B] uppercase font-bold text-[10px]">
+                  <span className="glass-pill px-3 py-0.5 text-[#20252B] uppercase font-bold text-[10px]">
                     {q.subjectName}
                   </span>
                 )}
@@ -82,7 +91,7 @@ export default function BookmarksPage() {
                 <MathText content={q.text || ''} />
               </div>
 
-              <div className="border-t border-[#DCE2E6] pt-3 flex flex-wrap items-center justify-between gap-3 text-xs">
+              <div className="border-t border-[#DCE2E6]/80 pt-3 flex flex-wrap items-center justify-between gap-3 text-xs">
                 <span className="text-[#66727D]">Saved for conceptual review</span>
                 {q.paperSlug && (
                   <Link

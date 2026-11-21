@@ -18,8 +18,8 @@
   --color-border-subtle: #DCE2E6;
   --color-surface-muted: #E9EEF1;
 
-  --color-success: #27835A;
-  --color-warning: #B87517;
+  --color-success: #9CC6E0;
+  --color-warning: #9CC6E0;
   --color-danger: #E4002B;
 
   /* Brand Aliases */
@@ -94,8 +94,8 @@
   --fort-surface-muted: #E9EEF1;
 
   /* Semantic */
-  --fort-success: #27835A;
-  --fort-warning: #B87517;
+  --fort-success: #9CC6E0;
+  --fort-warning: #9CC6E0;
   --fort-error: #E4002B;
   --fort-danger: #E4002B;
 

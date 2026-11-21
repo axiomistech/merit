@@ -40,12 +40,21 @@ export default function StudentProfilePage() {
   };
 
   return (
-    <div className="space-y-8 max-w-3xl mx-auto">
+    <div className="liquid-canvas min-h-screen py-6 px-4 sm:px-6 lg:px-8 space-y-8 max-w-3xl mx-auto relative text-[#20252B]">
+      {/* Ambient Liquid Fluid Orbs */}
+      <div className="liquid-fluid-backdrop">
+        <div className="liquid-orb-glacier top-10 right-1/4 h-80 w-80 opacity-55" />
+        <div className="liquid-orb-red bottom-10 left-1/4 h-72 w-72 opacity-20" />
+      </div>
+
       {/* Header */}
-      <div className="border-b border-[#DCE2E6] pb-6">
-        <span className="text-xs font-semibold uppercase tracking-wider text-[#20252B]">
-          Candidate Identity
-        </span>
+      <div className="relative z-10 border-b border-[#DCE2E6]/80 pb-6">
+        <div className="glass-pill inline-flex items-center gap-1.5 px-3 py-1 rounded-full mb-2">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#E4002B]" />
+          <span className="text-[11px] font-bold uppercase tracking-wider text-[#66727D]">
+            Candidate Identity
+          </span>
+        </div>
         <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold text-[#20252B] font-sans">
           Profile & Account Settings
         </h1>
@@ -56,7 +65,7 @@ export default function StudentProfilePage() {
 
       <form
         onSubmit={handleSave}
-        className="rounded-2xl border border-[#DCE2E6] bg-white p-6 sm:p-8 shadow-[0_2px_8px_rgba(38,49,38,0.04)] space-y-5 text-xs text-[#20252B]"
+        className="relative z-10 glass-polar rounded-[32px] p-6 sm:p-8 shadow-sm space-y-5 text-xs text-[#20252B]"
       >
         <div>
           <label className="block text-[#66727D] font-medium">FORT Registration ID (Immutable)</label>
@@ -64,7 +73,7 @@ export default function StudentProfilePage() {
             type="text"
             disabled
             value={profile.registrationId}
-            className="mt-1.5 w-full rounded-xl border border-[#DCE2E6] bg-[#F1F3F4] p-3 font-mono font-bold text-[#20252B] cursor-not-allowed"
+            className="mt-1.5 w-full rounded-2xl border border-[#DCE2E6]/80 bg-[#F1F3F4]/60 p-3.5 font-mono font-bold text-[#20252B] cursor-not-allowed"
           />
           <span className="mt-1 block text-[11px] text-[#66727D]">
             Assigned atomically upon registration and associated with all official test attempts and OMR records.
@@ -78,7 +87,7 @@ export default function StudentProfilePage() {
             required
             value={profile.fullName}
             onChange={(e) => setProfile({ ...profile, fullName: e.target.value })}
-            className="mt-1.5 w-full rounded-xl border border-[#DCE2E6] bg-white p-3 text-sm text-[#20252B] focus:border-[#9CC6E0] focus:ring-1 focus:ring-[#9CC6E0] focus:outline-none transition-all"
+            className="mt-1.5 w-full rounded-2xl border border-[#DCE2E6]/80 bg-white/80 p-3.5 text-sm text-[#20252B] focus:border-[#9CC6E0] focus:ring-1 focus:ring-[#9CC6E0] focus:outline-none transition-all"
           />
         </div>
 
@@ -88,7 +97,7 @@ export default function StudentProfilePage() {
             type="email"
             disabled
             value={profile.email}
-            className="mt-1.5 w-full rounded-xl border border-[#DCE2E6] bg-[#F1F3F4] p-3 text-sm text-[#66727D] cursor-not-allowed"
+            className="mt-1.5 w-full rounded-2xl border border-[#DCE2E6]/80 bg-[#F1F3F4]/60 p-3.5 text-sm text-[#66727D] cursor-not-allowed"
           />
         </div>
 
@@ -99,7 +108,7 @@ export default function StudentProfilePage() {
               type="date"
               value={profile.dateOfBirth}
               onChange={(e) => setProfile({ ...profile, dateOfBirth: e.target.value })}
-              className="mt-1.5 w-full rounded-xl border border-[#DCE2E6] bg-white p-3 text-sm text-[#20252B] focus:border-[#9CC6E0] focus:outline-none"
+              className="mt-1.5 w-full rounded-2xl border border-[#DCE2E6]/80 bg-white/80 p-3.5 text-sm text-[#20252B] focus:border-[#9CC6E0] focus:outline-none"
             />
           </div>
 
@@ -109,7 +118,7 @@ export default function StudentProfilePage() {
               type="text"
               value={profile.country}
               onChange={(e) => setProfile({ ...profile, country: e.target.value })}
-              className="mt-1.5 w-full rounded-xl border border-[#DCE2E6] bg-white p-3 text-sm text-[#20252B] focus:border-[#9CC6E0] focus:outline-none"
+              className="mt-1.5 w-full rounded-2xl border border-[#DCE2E6]/80 bg-white/80 p-3.5 text-sm text-[#20252B] focus:border-[#9CC6E0] focus:outline-none"
             />
           </div>
         </div>
@@ -119,7 +128,7 @@ export default function StudentProfilePage() {
           <select
             value={profile.targetExam}
             onChange={(e) => setProfile({ ...profile, targetExam: e.target.value })}
-            className="mt-1.5 w-full rounded-xl border border-[#DCE2E6] bg-white p-3 text-sm text-[#20252B] focus:border-[#9CC6E0] focus:outline-none"
+            className="mt-1.5 w-full rounded-2xl border border-[#DCE2E6]/80 bg-white/80 p-3.5 text-sm text-[#20252B] focus:border-[#9CC6E0] focus:outline-none"
           >
             <option value="FORT NEET (UG)">FORT NEET (UG) Medical</option>
             <option value="FORT JEE Main">FORT JEE Main Engineering</option>
@@ -132,7 +141,7 @@ export default function StudentProfilePage() {
         <div className="pt-2">
           <button
             type="submit"
-            className="inline-flex items-center gap-2 rounded-xl bg-[#9CC6E0] px-6 py-3 text-xs font-bold text-[#20252B] shadow-sm hover:bg-[#C90026] transition-all"
+            className="glass-racing-red inline-flex items-center gap-2 rounded-full px-7 py-3 text-xs font-bold text-white shadow-md transition-transform hover:scale-[1.02]"
           >
             <Save className="h-4 w-4" />
             <span>Save Profile Changes</span>

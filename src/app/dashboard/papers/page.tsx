@@ -169,13 +169,22 @@ export default function MyQuestionPapersPage() {
   const unlockedCount = papers.filter((p) => p.isUnlocked).length;
 
   return (
-    <div className="space-y-8 max-w-7xl mx-auto">
+    <div className="liquid-canvas min-h-screen py-6 px-4 sm:px-6 lg:px-8 space-y-8 max-w-7xl mx-auto relative">
+      {/* Ambient Liquid Fluid Orbs */}
+      <div className="liquid-fluid-backdrop">
+        <div className="liquid-orb-glacier top-12 left-1/4 h-80 w-80 opacity-55" />
+        <div className="liquid-orb-red bottom-10 right-1/4 h-72 w-72 opacity-20" />
+      </div>
+
       {/* Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#DCE2E6] pb-6">
+      <div className="relative z-10 flex flex-wrap items-center justify-between gap-4 border-b border-[#DCE2E6]/80 pb-6">
         <div>
-          <span className="text-xs font-semibold uppercase tracking-wider text-[#66727D]">
-            Candidate Library
-          </span>
+          <div className="glass-pill inline-flex items-center gap-1.5 px-3 py-1 rounded-full mb-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#E4002B]" />
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#66727D]">
+              Candidate Library
+            </span>
+          </div>
           <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold text-[#20252B] font-sans">
             My Question Papers
           </h1>
@@ -186,7 +195,7 @@ export default function MyQuestionPapersPage() {
 
         <Link
           href="/papers"
-          className="inline-flex items-center gap-2 rounded-xl bg-[#20252B] px-5 py-2.5 text-xs font-semibold text-white shadow-sm hover:bg-[#343D46] transition-colors"
+          className="glass-polar inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-bold text-[#20252B] transition-all hover:border-[#9CC6E0]"
         >
           <span>Explore All Papers</span>
           <ArrowRight className="h-3.5 w-3.5" />
@@ -194,9 +203,9 @@ export default function MyQuestionPapersPage() {
       </div>
 
       {/* Tabs & Filters */}
-      <div className="flex flex-wrap items-center justify-between gap-4">
+      <div className="relative z-10 flex flex-wrap items-center justify-between gap-4">
         {/* Navigation Tabs */}
-        <div className="flex items-center gap-1.5 rounded-xl border border-[#DCE2E6] bg-white p-1">
+        <div className="glass-polar flex items-center gap-1.5 rounded-full p-1.5 shadow-sm">
           {[
             { label: 'All Papers', value: 'all' },
             { label: `Unlocked (${unlockedCount})`, value: 'unlocked' },
@@ -207,9 +216,9 @@ export default function MyQuestionPapersPage() {
               type="button"
               onClick={() => setActiveTab(tab.value as any)}
               className={cn(
-                'px-4 py-1.5 text-xs font-semibold rounded-lg transition-colors duration-150',
+                'px-4 py-1.5 text-xs font-bold rounded-full transition-all duration-150',
                 activeTab === tab.value
-                  ? 'bg-[#20252B] text-white'
+                  ? 'bg-[#20252B] text-white shadow-sm'
                   : 'text-[#66727D] hover:text-[#20252B]'
               )}
             >
@@ -220,17 +229,17 @@ export default function MyQuestionPapersPage() {
 
         {/* Exam Filter */}
         <div className="flex items-center gap-1.5 text-xs">
-          <span className="text-[#66727D] font-medium">Exam:</span>
+          <span className="text-[#66727D] font-medium mr-1">Exam:</span>
           {['all', 'NEET', 'JEE'].map((ex) => (
             <button
               key={ex}
               type="button"
               onClick={() => setExamFilter(ex)}
               className={cn(
-                'px-2.5 py-1 rounded-md border text-xs font-semibold transition-colors',
+                'px-3 py-1 rounded-full text-xs font-bold transition-all',
                 examFilter === ex
-                  ? 'bg-[#20252B] text-white border-[#20252B]'
-                  : 'bg-white text-[#66727D] border-[#DCE2E6] hover:bg-[#F1F3F4]'
+                  ? 'bg-[#20252B] text-white shadow-sm'
+                  : 'glass-pill text-[#66727D] hover:text-[#20252B]'
               )}
             >
               {ex === 'all' ? 'All' : ex}
@@ -241,8 +250,8 @@ export default function MyQuestionPapersPage() {
 
       {/* Empty State */}
       {filtered.length === 0 ? (
-        <div className="rounded-2xl border border-[#DCE2E6] bg-white p-12 text-center max-w-xl mx-auto space-y-4">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-[#E9EEF1] text-[#20252B]">
+        <div className="relative z-10 glass-polar rounded-[32px] p-12 text-center max-w-xl mx-auto space-y-4">
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-[#9CC6E0]/20 text-[#20252B]">
             <FileText className="h-6 w-6" />
           </div>
           <h3 className="text-base font-bold text-[#20252B]">Your question papers will appear here</h3>
@@ -254,7 +263,7 @@ export default function MyQuestionPapersPage() {
           <div className="pt-2">
             <Link
               href="/papers"
-              className="inline-flex items-center gap-2 rounded-xl bg-[#E4002B] px-6 py-2.5 text-xs font-semibold text-white hover:bg-[#C90026] transition-colors"
+              className="glass-racing-red inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-bold text-white shadow-sm transition-transform hover:scale-[1.02]"
             >
               <span>Explore Question Papers</span>
               <ArrowRight className="h-3.5 w-3.5" />
@@ -263,25 +272,25 @@ export default function MyQuestionPapersPage() {
         </div>
       ) : (
         /* Paper Cards Grid */
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((paper) => (
             <div
               key={paper.id}
-              className="rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-sm flex flex-col justify-between space-y-5 hover:border-[#9CC6E0] transition-colors duration-150"
+              className="glass-polar rounded-[32px] p-6 shadow-sm flex flex-col justify-between space-y-5 transition-all duration-200 hover:border-[#9CC6E0] hover:scale-[1.01]"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="px-2.5 py-0.5 rounded-md text-[11px] font-bold uppercase tracking-wider bg-[#F1F3F4] text-[#20252B] border border-[#DCE2E6]">
+                  <span className="glass-pill px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-[#20252B]">
                     {paper.exam} • {paper.year}
                   </span>
 
                   {paper.isUnlocked ? (
-                    <span className="flex items-center gap-1 text-[11px] font-bold text-[#27835A] bg-[#E9F5EF] px-2.5 py-0.5 rounded-full">
-                      <CheckCircle2 className="h-3.5 w-3.5" />
+                    <span className="flex items-center gap-1.5 text-[11px] font-bold text-[#20252B] bg-[#9CC6E0]/25 border border-[#9CC6E0]/40 px-3 py-1 rounded-full">
+                      <CheckCircle2 className="h-3.5 w-3.5 text-[#20252B]" />
                       <span>Unlocked</span>
                     </span>
                   ) : (
-                    <span className="flex items-center gap-1 text-[11px] font-semibold text-[#66727D] bg-[#F1F3F4] px-2.5 py-0.5 rounded-full">
+                    <span className="flex items-center gap-1 text-[11px] font-semibold text-[#66727D] bg-white/60 px-3 py-1 rounded-full border border-[#DCE2E6]/60">
                       <Lock className="h-3 w-3" />
                       <span>Locked (₹10)</span>
                     </span>
@@ -292,7 +301,7 @@ export default function MyQuestionPapersPage() {
                   {paper.name}
                 </h3>
 
-                <div className="grid grid-cols-3 gap-2 pt-2 border-t border-[#DCE2E6] text-xs">
+                <div className="grid grid-cols-3 gap-2 pt-3 border-t border-[#DCE2E6]/80 text-xs">
                   <div>
                     <span className="text-[10px] text-[#66727D] uppercase font-bold block">
                       Questions
@@ -320,7 +329,7 @@ export default function MyQuestionPapersPage() {
                 </div>
 
                 {paper.hasAttempt && (
-                  <div className="rounded-xl border border-[#DCE2E6] bg-[#F1F3F4] p-2.5 text-xs flex items-center justify-between">
+                  <div className="rounded-2xl border border-[#DCE2E6]/80 bg-[#F1F3F4]/60 p-3 text-xs flex items-center justify-between">
                     <span className="text-[#66727D]">Last Score:</span>
                     <span className="font-mono font-bold text-[#20252B]">
                       {paper.score} / {paper.maxMarks} ({paper.accuracy}%)
@@ -329,7 +338,7 @@ export default function MyQuestionPapersPage() {
                 )}
               </div>
 
-              <div className="pt-4 border-t border-[#DCE2E6] flex items-center justify-between">
+              <div className="pt-4 border-t border-[#DCE2E6]/80 flex items-center justify-between">
                 <Link
                   href={`/papers/${paper.slug}`}
                   className="text-xs font-semibold text-[#66727D] hover:text-[#20252B] transition-colors"
@@ -340,7 +349,7 @@ export default function MyQuestionPapersPage() {
                 {paper.isUnlocked ? (
                   <Link
                     href={`/exam/${paper.slug}`}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#27835A] text-white text-xs font-semibold hover:bg-[#1E6746] transition-colors shadow-sm"
+                    className="glass-racing-red inline-flex items-center gap-1.5 px-5 py-2 rounded-full text-white text-xs font-bold shadow-md transition-transform hover:scale-[1.02]"
                   >
                     <span>{paper.hasAttempt ? 'Re-attempt' : 'Start Attempt'}</span>
                     <ArrowRight className="h-3.5 w-3.5" />
@@ -348,7 +357,7 @@ export default function MyQuestionPapersPage() {
                 ) : (
                   <Link
                     href={`/papers/${paper.slug}`}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#E4002B] text-white text-xs font-semibold hover:bg-[#C90026] transition-colors shadow-sm"
+                    className="glass-racing-red inline-flex items-center gap-1.5 px-5 py-2 rounded-full text-white text-xs font-bold shadow-md transition-transform hover:scale-[1.02]"
                   >
                     <span>Unlock Paper</span>
                     <ArrowRight className="h-3.5 w-3.5" />

@@ -223,6 +223,19 @@ export function Navbar() {
           >
             Past Papers
           </Link>
+
+          {/* 4. Leaderboard */}
+          <Link
+            href="/dashboard/leaderboard"
+            className={cn(
+              'py-2 text-[15px] font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9CC6E0] rounded-md',
+              pathname === '/dashboard/leaderboard'
+                ? 'text-[#20252B] font-semibold'
+                : 'text-[#66727D] hover:text-[#20252B]'
+            )}
+          >
+            Leaderboard
+          </Link>
         </nav>
 
         {/* Right: Account & Action (Desktop) */}
@@ -325,6 +338,22 @@ export function Navbar() {
                 )}
               >
                 Past Papers
+              </Link>
+            </div>
+
+            {/* Leaderboard */}
+            <div>
+              <Link
+                href="/dashboard/leaderboard"
+                onClick={() => setMobileMenuOpen(false)}
+                className={cn(
+                  'block py-2 text-base font-medium transition-colors',
+                  pathname === '/dashboard/leaderboard'
+                    ? 'text-[#20252B] font-semibold'
+                    : 'text-[#66727D] hover:text-[#20252B]'
+                )}
+              >
+                Leaderboard
               </Link>
             </div>
 

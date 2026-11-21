@@ -146,7 +146,13 @@ export default function PracticeHubPage() {
   };
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8 space-y-8 max-w-7xl mx-auto">
+    <div className="liquid-canvas min-h-screen py-6 px-4 sm:px-6 lg:px-8 space-y-8 max-w-7xl mx-auto relative text-[#20252B]">
+      {/* Ambient Liquid Fluid Orbs */}
+      <div className="liquid-fluid-backdrop">
+        <div className="liquid-orb-glacier top-10 left-1/4 h-80 w-80 opacity-55" />
+        <div className="liquid-orb-red bottom-10 right-1/4 h-72 w-72 opacity-20" />
+      </div>
+
       {/* Configuration Pre-Flight Modal */}
       <TestConfigurationModal
         isOpen={configModal.isOpen}
@@ -161,26 +167,26 @@ export default function PracticeHubPage() {
       />
 
       {/* Page Title & Speed Standard Notice */}
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#DCE2E6] pb-6">
+      <div className="relative z-10 flex flex-wrap items-center justify-between gap-4 border-b border-[#DCE2E6]/80 pb-6">
         <div>
           <div className="flex items-center gap-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
+            <span className="glass-pill px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider text-[#66727D]">
               Instant Practice Explorer
             </span>
-            <span className="rounded-full bg-[#E9EEF1] px-2 py-0.5 font-mono text-[10px] font-bold text-[#20252B]">
+            <span className="glass-pill rounded-full px-3 py-1 font-mono text-[10px] font-bold text-[#E4002B]">
               15-SECOND START
             </span>
           </div>
-          <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold font-sans text-[#20252B]">
+          <h1 className="mt-2 text-2xl sm:text-3xl font-extrabold font-sans text-[#20252B]">
             Select Practice: Exam → Subject → Chapter
           </h1>
-          <p className="text-xs text-[#66727D]">
+          <p className="mt-1 text-xs sm:text-sm text-[#66727D]">
             Target high-yield chapters, topic drills, or full previous-year question sets in under 15 seconds.
           </p>
         </div>
 
         {/* Exam Switcher Pills */}
-        <div className="flex items-center gap-2 rounded-full border border-[#DCE2E6] bg-white p-1 shadow-sm">
+        <div className="glass-polar flex items-center gap-1.5 rounded-full p-1.5 shadow-sm">
           {(['neet', 'jee', 'upsc', 'engineering'] as const).map((ex) => (
             <button
               key={ex}
@@ -188,7 +194,7 @@ export default function PracticeHubPage() {
               className={cn(
                 'rounded-full px-4 py-1.5 text-xs font-bold uppercase transition-all',
                 selectedExam === ex
-                  ? 'bg-[#9CC6E0] text-[#20252B] shadow-sm'
+                  ? 'bg-[#20252B] text-white shadow-sm'
                   : 'text-[#66727D] hover:text-[#20252B]'
               )}
             >
@@ -199,7 +205,7 @@ export default function PracticeHubPage() {
       </div>
 
       {/* 2-Column Explorer: Left Subjects, Right Chapters */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
+      <div className="relative z-10 grid grid-cols-1 gap-6 lg:grid-cols-12">
         {/* Left Column: Subjects (4 Cols) */}
         <div className="lg:col-span-4 space-y-3">
           <div className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
@@ -216,16 +222,16 @@ export default function PracticeHubPage() {
                   key={sub.subjectName}
                   onClick={() => setSelectedSubjectIndex(idx)}
                   className={cn(
-                    'flex items-center justify-between rounded-2xl border p-4 cursor-pointer transition-all',
+                    'flex items-center justify-between rounded-[24px] p-4 cursor-pointer transition-all duration-200',
                     isSelected
-                      ? 'border-[#9CC6E0] bg-white shadow-md ring-1 ring-[#9CC6E0]'
-                      : 'border-[#DCE2E6] bg-[#F1F3F4] hover:bg-white text-[#66727D]'
+                      ? 'glass-polar border-2 border-[#9CC6E0] shadow-md scale-[1.01]'
+                      : 'border border-[#DCE2E6]/80 bg-[#F1F3F4]/60 hover:bg-white/80 text-[#66727D]'
                   )}
                 >
                   <div className="flex items-center gap-3">
                     <div
                       className={cn(
-                        'flex h-10 w-10 items-center justify-center rounded-xl transition-colors',
+                        'flex h-10 w-10 items-center justify-center rounded-2xl transition-colors',
                         isSelected ? 'bg-[#9CC6E0] text-[#20252B]' : 'bg-[#E9EEF1] text-[#20252B]'
                       )}
                     >
@@ -253,19 +259,19 @@ export default function PracticeHubPage() {
           </div>
 
           {/* Quick Mock Shortcut Card */}
-          <div className="rounded-[24px] bg-[#9CC6E0] p-6 text-[#20252B] shadow-md mt-6 space-y-3">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-white/80">
+          <div className="glass-glacier rounded-[28px] p-6 text-[#20252B] shadow-sm mt-6 space-y-3">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-[#20252B]/70">
               FAST-TRACK MOCK
             </span>
             <h4 className="text-lg font-bold font-sans leading-snug">
               Simulate Full 180-Question Mock Paper
             </h4>
-            <p className="text-xs text-white/90">
+            <p className="text-xs text-[#20252B]/80 leading-relaxed">
               Server-authoritative timer with instant A4 vector OMR sheet generation.
             </p>
             <Link
               href="/exam/neet-demo"
-              className="inline-flex items-center gap-2 rounded-full bg-[#E4002B] px-5 py-2.5 text-xs font-bold text-white shadow-md shadow-[#E4002B]/30 hover:bg-[#C90026] transition-all"
+              className="glass-racing-red inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-bold text-white shadow-md transition-transform hover:scale-[1.02]"
             >
               <span>Launch Mock Test</span>
               <Play className="h-3.5 w-3.5 fill-current" />
@@ -282,13 +288,13 @@ export default function PracticeHubPage() {
 
             {/* Quick Search filter */}
             <div className="relative">
-              <Search className="absolute left-3 top-2.5 h-3.5 w-3.5 text-[#66727D]" />
+              <Search className="absolute left-3.5 top-2.5 h-3.5 w-3.5 text-[#66727D]" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Filter chapters..."
-                className="rounded-full border border-[#DCE2E6] bg-white py-1.5 pl-8 pr-3 text-xs text-[#20252B] focus:border-[#9CC6E0] focus:outline-none"
+                className="glass-pill rounded-full py-1.5 pl-9 pr-4 text-xs text-[#20252B] focus:border-[#9CC6E0] focus:outline-none"
               />
             </div>
           </div>
@@ -305,7 +311,7 @@ export default function PracticeHubPage() {
               return (
                 <div key={unit.unitName} className="space-y-3">
                   <div className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#20252B]" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#E4002B]" />
                     <h4 className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
                       Unit: {unit.unitName}
                     </h4>
@@ -315,11 +321,11 @@ export default function PracticeHubPage() {
                     {filteredChapters.map((chapter) => (
                       <div
                         key={chapter.id}
-                        className="rounded-2xl border border-[#DCE2E6] bg-white p-5 shadow-sm hover:border-[#9CC6E0] transition-all flex flex-col justify-between space-y-4"
+                        className="glass-polar rounded-[28px] p-5 shadow-sm transition-all duration-200 hover:border-[#9CC6E0] hover:scale-[1.01] flex flex-col justify-between space-y-4"
                       >
                         <div>
                           <div className="flex items-center justify-between">
-                            <span className="rounded-full bg-[#E9EEF1] px-2.5 py-0.5 text-[10px] font-bold text-[#20252B]">
+                            <span className="glass-pill px-2.5 py-0.5 text-[10px] font-bold text-[#20252B]">
                               {chapter.level}
                             </span>
                             {chapter.hasPyqs && (
@@ -344,14 +350,14 @@ export default function PracticeHubPage() {
                         </div>
 
                         {/* Direct 1-Click Launch Button */}
-                        <div className="pt-2 border-t border-[#DCE2E6] flex items-center justify-between">
+                        <div className="pt-3 border-t border-[#DCE2E6]/80 flex items-center justify-between">
                           <span className="text-[11px] text-[#20252B] font-semibold">
                             Free Practice
                           </span>
 
                           <button
                             onClick={() => handleLaunchConfig(currentSubject.subjectName, chapter)}
-                            className="inline-flex items-center gap-1.5 rounded-full bg-[#E4002B] px-4 py-1.5 text-xs font-bold text-white shadow-sm hover:bg-[#C90026] transition-all hover:translate-y-[-1px]"
+                            className="glass-racing-red inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold text-white shadow-sm transition-transform hover:scale-[1.02]"
                           >
                             <span>Configure & Start</span>
                             <Play className="h-3 w-3 fill-current" />

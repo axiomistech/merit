@@ -262,7 +262,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             </Link>
 
             <div className="flex items-center gap-2 border-l border-[#DCE2E6] pl-4">
-              <span className="h-2 w-2 rounded-full bg-[#27835A] animate-pulse" />
+              <span className="h-2 w-2 rounded-full bg-[#9CC6E0] animate-pulse" />
               <span className="font-mono text-[11px] font-bold text-[#20252B]">
                 SYSTEM HEALTHY
               </span>

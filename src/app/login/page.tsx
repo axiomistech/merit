@@ -59,16 +59,22 @@ function LoginForm() {
   };
 
   return (
-    <div className="bg-[#F1F3F4] text-[#20252B] min-h-screen py-20 flex items-center justify-center px-4">
-      <div className="w-full max-w-md rounded-[28px] border border-[#DCE2E6] bg-white p-8 sm:p-10 shadow-[0_8px_30px_rgba(38,49,38,0.06)]">
+    <div className="liquid-canvas text-[#20252B] min-h-screen py-20 flex items-center justify-center px-4 relative">
+      {/* Ambient Liquid Fluid Orbs */}
+      <div className="liquid-fluid-backdrop">
+        <div className="liquid-orb-glacier top-16 left-1/3 h-80 w-80 opacity-55" />
+        <div className="liquid-orb-red bottom-16 right-1/3 h-72 w-72 opacity-20" />
+      </div>
+
+      <div className="relative z-10 w-full max-w-md glass-polar rounded-[36px] p-8 sm:p-10 shadow-sm">
         <div className="text-center">
           <Link href="/" className="inline-flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#9CC6E0] text-[#20252B]">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#9CC6E0] text-[#20252B] shadow-sm">
               <Shield className="h-5 w-5 stroke-[2.5]" />
             </div>
-            <span className="font-mono text-xl font-bold tracking-wider text-[#20252B]">FORT</span>
+            <span className="font-mono text-xl font-black tracking-wider text-[#20252B]">FORT</span>
           </Link>
-          <h1 className="mt-4 text-2xl font-bold text-[#20252B] font-sans">Welcome Back</h1>
+          <h1 className="mt-4 text-2xl font-black text-[#20252B] font-sans">Welcome Back</h1>
           <p className="mt-1 text-xs text-[#66727D]">
             Sign in to your candidate dashboard & unlock question papers.
           </p>
@@ -79,7 +85,7 @@ function LoginForm() {
           <button
             type="button"
             onClick={handleGoogleSignIn}
-            className="flex w-full items-center justify-center gap-3 rounded-full border border-[#DCE2E6] bg-white py-3 text-xs font-bold text-[#20252B] shadow-sm hover:bg-[#F1F3F4] transition-all hover:border-[#9CC6E0]"
+            className="flex w-full items-center justify-center gap-3 rounded-full border border-[#DCE2E6]/80 bg-white/80 py-3 text-xs font-bold text-[#20252B] shadow-sm hover:bg-white transition-all hover:border-[#9CC6E0]"
           >
             <svg className="h-4 w-4" viewBox="0 0 24 24">
               <path
@@ -104,9 +110,9 @@ function LoginForm() {
 
           <div className="relative my-6 text-center">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-[#DCE2E6]" />
+              <div className="w-full border-t border-[#DCE2E6]/80" />
             </div>
-            <span className="relative bg-white px-3 text-[11px] font-semibold text-[#66727D]">
+            <span className="relative glass-pill px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#66727D]">
               or continue with email
             </span>
           </div>
@@ -116,14 +122,14 @@ function LoginForm() {
           <div>
             <label className="block text-xs font-medium text-[#66727D]">Email Address</label>
             <div className="relative mt-1">
-              <Mail className="absolute left-3.5 top-3 h-4 w-4 text-[#66727D]" />
+              <Mail className="absolute left-3.5 top-3.5 h-4 w-4 text-[#66727D]" />
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="name@example.com"
-                className="w-full rounded-xl border border-[#DCE2E6] bg-white py-2.5 pl-10 pr-3 text-sm text-[#20252B] placeholder-[#66727D] focus:border-[#9CC6E0] focus:ring-1 focus:ring-[#9CC6E0] focus:outline-none transition-all"
+                className="w-full rounded-2xl border border-[#DCE2E6]/80 bg-white/80 py-3 pl-10 pr-3 text-sm text-[#20252B] placeholder-[#66727D] focus:border-[#9CC6E0] focus:ring-1 focus:ring-[#9CC6E0] focus:outline-none transition-all"
               />
             </div>
           </div>
@@ -136,14 +142,14 @@ function LoginForm() {
               </Link>
             </div>
             <div className="relative mt-1">
-              <Lock className="absolute left-3.5 top-3 h-4 w-4 text-[#66727D]" />
+              <Lock className="absolute left-3.5 top-3.5 h-4 w-4 text-[#66727D]" />
               <input
                 type="password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full rounded-xl border border-[#DCE2E6] bg-white py-2.5 pl-10 pr-3 text-sm text-[#20252B] placeholder-[#66727D] focus:border-[#9CC6E0] focus:ring-1 focus:ring-[#9CC6E0] focus:outline-none transition-all"
+                className="w-full rounded-2xl border border-[#DCE2E6]/80 bg-white/80 py-3 pl-10 pr-3 text-sm text-[#20252B] placeholder-[#66727D] focus:border-[#9CC6E0] focus:ring-1 focus:ring-[#9CC6E0] focus:outline-none transition-all"
               />
             </div>
           </div>
@@ -151,13 +157,13 @@ function LoginForm() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-xl bg-[#E4002B] py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-[#C90026] transition-all disabled:opacity-50 mt-2"
+            className="glass-racing-red w-full rounded-full py-3.5 text-sm font-bold text-white shadow-md transition-transform hover:scale-[1.02] disabled:opacity-50 mt-2"
           >
             {loading ? 'Authenticating...' : 'Sign In'}
           </button>
         </form>
 
-        <div className="mt-6 border-t border-[#DCE2E6] pt-4 text-center text-xs text-[#66727D]">
+        <div className="mt-6 border-t border-[#DCE2E6]/80 pt-4 text-center text-xs text-[#66727D]">
           Don't have a FORT registration yet?{' '}
           <Link
             href={

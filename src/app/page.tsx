@@ -137,13 +137,15 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Dual-Tone Large Headline & Micro-Tracked Subtitle */}
+          {/* Dual-Tone Large Editorial Headline & Supporting Copy */}
           <div className="relative mt-10 text-center sm:mt-14">
             <h1 className="text-4xl font-black tracking-tight text-[#20252B] sm:text-6xl lg:text-7xl">
-              Made to <span className="text-[#E4002B]">fly.</span>
+              Your preparation.
+              <br />
+              Your next <span className="text-[#E4002B]">breakthrough.</span>
             </h1>
-            <p className="mt-3 font-sans text-sm font-semibold tracking-wide text-[#66727D] sm:text-base">
-              4K camera. 34 minutes. 249 g.
+            <p className="mt-4 font-sans text-sm font-semibold tracking-wide text-[#66727D] sm:text-base max-w-2xl mx-auto">
+              Practice smarter. Understand where you stand. Prepare for the exams that shape your future.
             </p>
           </div>
 
@@ -270,12 +272,32 @@ export default function HomePage() {
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
-                href="/signup"
+                href="#examinations"
                 className="glass-polar inline-flex h-12 items-center justify-center gap-2 rounded-full px-8 text-sm font-bold text-[#20252B] transition-all hover:border-[#9CC6E0]"
               >
-                <span>Claim Free First Paper</span>
-                <Gift className="h-4 w-4 text-[#E4002B]" />
+                <span>Explore Exams</span>
+                <ChevronRight className="h-4 w-4" />
               </Link>
+            </div>
+
+            {/* Supported Examination Categories (Typographic Identity) */}
+            <div className="relative z-10 mt-8 flex flex-wrap items-center justify-center gap-3">
+              {[
+                { name: 'NEET', slug: 'neet', desc: 'Medical' },
+                { name: 'JEE Main', slug: 'jee-main', desc: 'Engineering' },
+                { name: 'JEE Advanced', slug: 'jee-advanced', desc: 'IIT Entrance' },
+                { name: 'UPSC', slug: 'upsc', desc: 'Civil Services' },
+                { name: 'Engineering', slug: 'engineering', desc: 'University' },
+              ].map((cat) => (
+                <Link
+                  key={cat.slug}
+                  href={`#${cat.slug}`}
+                  className="glass-pill flex items-center gap-2 rounded-full px-4 py-1.5 transition-all hover:border-[#9CC6E0] hover:bg-white/80"
+                >
+                  <span className="font-mono text-xs font-bold text-[#20252B]">{cat.name}</span>
+                  <span className="text-[10px] text-[#66727D] font-medium">• {cat.desc}</span>
+                </Link>
+              ))}
             </div>
           </div>
 
@@ -284,28 +306,28 @@ export default function HomePage() {
             <div className="grid grid-cols-3 divide-x divide-[#DCE2E6]/80 text-center">
               <div className="px-2 sm:px-6">
                 <div className="font-mono text-2xl font-black text-[#20252B] sm:text-4xl">
-                  34<span className="text-xs sm:text-sm font-semibold text-[#66727D] ml-1">min</span>
+                  200<span className="text-xs sm:text-sm font-semibold text-[#66727D] ml-1">min</span>
                 </div>
                 <div className="mt-1 text-[10px] font-bold uppercase tracking-[0.25em] text-[#8C9BA8]">
-                  FLIGHT
+                  TIMED CBT
                 </div>
               </div>
 
               <div className="px-2 sm:px-6">
                 <div className="font-mono text-2xl font-black text-[#20252B] sm:text-4xl">
-                  249<span className="text-xs sm:text-sm font-semibold text-[#66727D] ml-1">g</span>
+                  180<span className="text-xs sm:text-sm font-semibold text-[#66727D] ml-1">Qs</span>
                 </div>
                 <div className="mt-1 text-[10px] font-bold uppercase tracking-[0.25em] text-[#8C9BA8]">
-                  WEIGHT
+                  SIMULATION
                 </div>
               </div>
 
               <div className="px-2 sm:px-6">
-                <div className="font-mono text-2xl font-black text-[#20252B] sm:text-4xl">
-                  4K<span className="text-xs sm:text-sm font-semibold text-[#66727D] ml-1">60</span>
+                <div className="font-mono text-2xl font-black text-[#E4002B] sm:text-4xl">
+                  ₹0<span className="text-xs sm:text-sm font-semibold text-[#66727D] ml-1">Free</span>
                 </div>
                 <div className="mt-1 text-[10px] font-bold uppercase tracking-[0.25em] text-[#8C9BA8]">
-                  VIDEO
+                  FIRST PAPER
                 </div>
               </div>
             </div>
@@ -424,6 +446,7 @@ export default function HomePage() {
           {exams.map((exam) => (
             <div
               key={exam.slug}
+              id={exam.slug}
               className="glass-polar group flex flex-col justify-between rounded-[32px] p-6 transition-all duration-200 hover:border-[#9CC6E0] hover:scale-[1.01]"
             >
               <div>

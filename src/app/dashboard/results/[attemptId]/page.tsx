@@ -187,10 +187,16 @@ export default function ExamResultPage() {
   });
 
   return (
-    <div className="bg-[#F1F3F4] text-[#20252B] min-h-screen py-8 px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl space-y-8">
+    <div className="liquid-canvas min-h-screen py-8 px-4 sm:px-6 lg:px-8 relative text-[#20252B]">
+      {/* Ambient Liquid Fluid Orbs */}
+      <div className="liquid-fluid-backdrop">
+        <div className="liquid-orb-glacier top-10 right-1/4 h-80 w-80 opacity-50" />
+        <div className="liquid-orb-red bottom-20 left-1/4 h-72 w-72 opacity-20" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl space-y-8">
         {/* Navigation Breadcrumb */}
-        <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-4">
+        <div className="flex items-center justify-between border-b border-[#DCE2E6]/80 pb-4">
           <Link
             href="/dashboard"
             className="flex items-center gap-2 text-xs font-semibold text-[#66727D] hover:text-[#20252B] transition-colors"
@@ -199,7 +205,7 @@ export default function ExamResultPage() {
             <span>Return to Candidate Dashboard</span>
           </Link>
 
-          <div className="flex items-center gap-2 text-xs">
+          <div className="glass-pill flex items-center gap-2 px-3 py-1 rounded-full text-xs">
             <span className="text-[#66727D]">Attempt Hash:</span>
             <span className="font-mono text-[#20252B] font-bold">{attemptId}</span>
           </div>
@@ -208,11 +214,11 @@ export default function ExamResultPage() {
         {/* ================================================================ */}
         {/* SECTION 9: EXACT TEST RESULT SCOREBOARD (MATCHING USER FLOW) */}
         {/* ================================================================ */}
-        <div className="rounded-[32px] border border-[#DCE2E6] bg-white p-6 sm:p-10 shadow-sm space-y-8">
-          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#DCE2E6] pb-6">
+        <div className="glass-polar rounded-[32px] p-6 sm:p-10 shadow-sm space-y-8">
+          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#DCE2E6]/80 pb-6">
             <div>
               <div className="flex items-center gap-2">
-                <span className="rounded-full bg-[#E9EEF1] px-2.5 py-0.5 text-xs font-bold text-[#20252B]">
+                <span className="glass-pill rounded-full px-3 py-1 text-xs font-bold text-[#20252B]">
                   OFFICIAL EVALUATION
                 </span>
                 <span className="text-xs text-[#66727D]">{SAMPLE_NEET_PAPER.name}</span>
@@ -228,7 +234,7 @@ export default function ExamResultPage() {
 
             <button
               onClick={handleDownloadOmrPdf}
-              className="flex items-center gap-2 rounded-full bg-[#9CC6E0] px-5 py-2.5 text-xs font-bold text-[#20252B] hover:bg-[#C90026] transition-all shadow-sm"
+              className="glass-racing-red flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-bold text-white shadow-md transition-transform hover:scale-[1.02]"
             >
               <FileDown className="h-4 w-4" />
               <span>Export Vector OMR (PDF)</span>
@@ -397,22 +403,22 @@ export default function ExamResultPage() {
             </div>
 
             {/* Repeat & Improve Cycle CTA */}
-            <div className="rounded-[28px] bg-[#9CC6E0] p-8 text-[#20252B] shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div className="glass-glacier rounded-[32px] p-8 text-[#20252B] shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
               <div className="space-y-2">
-                <span className="text-xs font-bold uppercase tracking-widest text-white/80">
+                <span className="text-xs font-bold uppercase tracking-widest text-[#20252B]/70">
                   THE REPEAT CYCLE • PRACTICE → EVALUATE → IMPROVE
                 </span>
                 <h3 className="text-2xl font-bold font-sans">
                   Ready to eliminate recurring errors in Electrostatics?
                 </h3>
-                <p className="text-xs text-white/90 max-w-xl">
+                <p className="text-xs text-[#20252B]/80 max-w-xl">
                   Target your weakest topic with a focused 15-question concept drill before your next full mock simulation.
                 </p>
               </div>
 
               <Link
                 href="/dashboard/practice"
-                className="rounded-full bg-[#E4002B] px-8 py-3.5 text-xs font-bold text-white shadow-lg shadow-[#E4002B]/30 hover:bg-[#C90026] transition-all hover:translate-y-[-1px] shrink-0"
+                className="glass-racing-red rounded-full px-8 py-3.5 text-xs font-bold text-white shadow-lg transition-transform hover:scale-[1.02] shrink-0"
               >
                 Practice Weak Topic Now
               </Link>
