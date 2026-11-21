@@ -1,0 +1,198 @@
+import { AdminRole, AdminPermission, AdminUser } from '@/types/admin';
+
+export const ALL_PERMISSIONS: AdminPermission[] = [
+  'dashboard.view',
+  'analytics.view',
+  'students.view',
+  'students.manage',
+  'exams.view',
+  'exams.manage',
+  'syllabus.manage',
+  'questions.view',
+  'questions.create',
+  'questions.edit',
+  'questions.review',
+  'questions.publish',
+  'tests.create',
+  'tests.edit',
+  'tests.publish',
+  'omr.manage',
+  'evaluations.manage',
+  'payments.view',
+  'payments.manage',
+  'refunds.manage',
+  'coupons.manage',
+  'notifications.manage',
+  'cms.manage',
+  'support.manage',
+  'admins.manage',
+  'settings.manage',
+  'audit_logs.view',
+];
+
+export const ROLE_DEFAULT_PERMISSIONS: Record<AdminRole, AdminPermission[]> = {
+  super_admin: ALL_PERMISSIONS,
+  content_admin: [
+    'dashboard.view',
+    'exams.view',
+    'exams.manage',
+    'syllabus.manage',
+    'questions.view',
+    'questions.create',
+    'questions.edit',
+    'questions.review',
+    'questions.publish',
+    'tests.create',
+    'tests.edit',
+    'tests.publish',
+    'cms.manage',
+  ],
+  evaluator: [
+    'dashboard.view',
+    'evaluations.manage',
+    'questions.view',
+    'tests.edit',
+  ],
+  support_admin: [
+    'dashboard.view',
+    'students.view',
+    'students.manage',
+    'support.manage',
+    'payments.view',
+  ],
+  finance_admin: [
+    'dashboard.view',
+    'analytics.view',
+    'payments.view',
+    'payments.manage',
+    'refunds.manage',
+    'coupons.manage',
+  ],
+};
+
+export const INITIAL_ADMIN_USERS: AdminUser[] = [
+  {
+    id: 'adm_01',
+    name: 'Dhanush Jagadeesh',
+    email: 'admin@fortlearning.com',
+    role: 'super_admin',
+    status: 'active',
+    created_at: '2026-01-01T00:00:00Z',
+    last_login: new Date().toISOString(),
+    permissions: ALL_PERMISSIONS,
+  },
+  {
+    id: 'adm_02',
+    name: 'Academic Curriculum Lead',
+    email: 'content@fortlearning.com',
+    role: 'content_admin',
+    status: 'active',
+    created_at: '2026-01-05T00:00:00Z',
+    last_login: new Date().toISOString(),
+    permissions: ROLE_DEFAULT_PERMISSIONS.content_admin,
+  },
+  {
+    id: 'adm_03',
+    name: 'Senior Answer Evaluator',
+    email: 'evaluator@fortlearning.com',
+    role: 'evaluator',
+    status: 'active',
+    created_at: '2026-01-10T00:00:00Z',
+    last_login: new Date().toISOString(),
+    permissions: ROLE_DEFAULT_PERMISSIONS.evaluator,
+  },
+  {
+    id: 'adm_04',
+    name: 'Candidate Support Desk',
+    email: 'support@fortlearning.com',
+    role: 'support_admin',
+    status: 'active',
+    created_at: '2026-01-12T00:00:00Z',
+    last_login: new Date().toISOString(),
+    permissions: ROLE_DEFAULT_PERMISSIONS.support_admin,
+  },
+  {
+    id: 'adm_05',
+    name: 'Financial Controller',
+    email: 'finance@fortlearning.com',
+    role: 'finance_admin',
+    status: 'active',
+    created_at: '2026-01-15T00:00:00Z',
+    last_login: new Date().toISOString(),
+    permissions: ROLE_DEFAULT_PERMISSIONS.finance_admin,
+  },
+];
+
+export function getAdminSession(): AdminUser | null {
+  if (typeof window === 'undefined') return null;
+  const stored = localStorage.getItem('fort_admin_session');
+  if (!stored) {
+    // Default fallback to Super Admin for seamless development experience
+    const defaultUser = INITIAL_ADMIN_USERS[0];
+    localStorage.setItem('fort_admin_session', JSON.stringify(defaultUser));
+    return defaultUser;
+  }
+  try {
+    return JSON.parse(stored);
+  } catch {
+    return null;
+  }
+}
+
+export function hasPermission(user: AdminUser | null, permission: AdminPermission): boolean {
+  if (!user) return false;
+  if (user.role === 'super_admin') return true;
+  return user.permissions?.includes(permission) || false;
+}
+
+export function logAdminAction(
+  actionOrObj:
+    | string
+    | {
+        action: string;
+        resource_type: string;
+        resource_id?: string;
+        change_summary: string;
+        metadata?: any;
+      },
+  resourceType: string = '',
+  resourceId?: string,
+  summary: string = ''
+) {
+  if (typeof window === 'undefined') return;
+  const user = getAdminSession();
+  const logs = JSON.parse(localStorage.getItem('fort_admin_audit_logs') || '[]');
+
+  let action: string;
+  let resType: string;
+  let resId: string | undefined;
+  let changeSummary: string;
+
+  if (typeof actionOrObj === 'object') {
+    action = actionOrObj.action;
+    resType = actionOrObj.resource_type;
+    resId = actionOrObj.resource_id;
+    changeSummary = actionOrObj.change_summary;
+  } else {
+    action = actionOrObj;
+    resType = resourceType;
+    resId = resourceId;
+    changeSummary = summary;
+  }
+
+  const entry = {
+    id: `log_${Date.now().toString(36)}`,
+    actor_name: user?.name || 'System Admin',
+    actor_email: user?.email || 'admin@fortlearning.com',
+    actor_role: user?.role || 'super_admin',
+    action,
+    resource_type: resType,
+    resource_id: resId,
+    change_summary: changeSummary,
+    created_at: new Date().toISOString(),
+    ip_address: '127.0.0.1 (Loopback)',
+  };
+  logs.unshift(entry);
+  // Keep last 200 logs
+  localStorage.setItem('fort_admin_audit_logs', JSON.stringify(logs.slice(0, 200)));
+}

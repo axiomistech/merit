@@ -1,33 +1,648 @@
 'use client';
 
-import React, { useState } from 'react';
-import { BookOpen, Plus, Search, Filter, CheckCircle2 } from 'lucide-react';
-import { SAMPLE_NEET_QUESTIONS } from '@/data/seedData';
+import React, { useState, useEffect } from 'react';
+import {
+  FileText,
+  Plus,
+  Search,
+  Filter,
+  CheckCircle2,
+  XCircle,
+  Eye,
+  Upload,
+  Download,
+  AlertTriangle,
+  X,
+  Edit2,
+  Archive,
+  Sparkles,
+  HelpCircle,
+} from 'lucide-react';
+import {
+  getStoredQuestions,
+  saveStoredQuestions,
+  AdminQuestionRecord,
+} from '@/lib/admin/store';
+import { logAdminAction } from '@/lib/admin/auth';
 import { MathText } from '@/components/ui/MathText';
+import { toast } from 'sonner';
 
 export default function AdminQuestionBankPage() {
-  const [questions, setQuestions] = useState(SAMPLE_NEET_QUESTIONS);
-  const [selectedSubject, setSelectedSubject] = useState('all');
+  const [questions, setQuestions] = useState<AdminQuestionRecord[]>([]);
+  const [search, setSearch] = useState('');
+  const [filterSubject, setFilterSubject] = useState('all');
+  const [filterDifficulty, setFilterDifficulty] = useState('all');
+  const [filterStatus, setFilterStatus] = useState('all');
 
-  const filtered = selectedSubject === 'all'
-    ? questions
-    : questions.filter((q) => q.subjectSlug === selectedSubject);
+  const [showCreateModal, setShowCreateModal] = useState(false);
+  const [showImportModal, setShowImportModal] = useState(false);
+  const [editingQuestion, setEditingQuestion] = useState<AdminQuestionRecord | null>(null);
+  const [showPreview, setShowPreview] = useState(false);
+  const [duplicateWarning, setDuplicateWarning] = useState<string | null>(null);
+
+  // Question Form State
+  const [formData, setFormData] = useState<{
+    text: string;
+    examSlug: string;
+    subjectSlug: string;
+    subjectName: string;
+    conceptName: string;
+    questionType: AdminQuestionRecord['questionType'];
+    difficulty: AdminQuestionRecord['difficulty'];
+    marks: number;
+    negativeMarks: number;
+    status: AdminQuestionRecord['status'];
+    options: { key: string; text: string }[];
+    correctOption: string;
+    explanationText: string;
+  }>({
+    text: '',
+    examSlug: 'neet',
+    subjectSlug: 'physics',
+    subjectName: 'Physics',
+    conceptName: 'Laws of Motion & Friction',
+    questionType: 'single_correct',
+    difficulty: 'medium',
+    marks: 4,
+    negativeMarks: -1,
+    status: 'published',
+    options: [
+      { key: 'A', text: '' },
+      { key: 'B', text: '' },
+      { key: 'C', text: '' },
+      { key: 'D', text: '' },
+    ],
+    correctOption: 'B',
+    explanationText: '',
+  });
+
+  // Bulk Import State
+  const [importStep, setImportStep] = useState<1 | 2 | 3>(1);
+  const [importJsonText, setImportJsonText] = useState('');
+  const [parsedImportRows, setParsedImportRows] = useState<any[]>([]);
+  const [importValidationErrors, setImportValidationErrors] = useState<string[]>([]);
+
+  useEffect(() => {
+    setQuestions(getStoredQuestions());
+  }, []);
+
+  const handleOpenCreate = () => {
+    setEditingQuestion(null);
+    setDuplicateWarning(null);
+    setFormData({
+      text: '',
+      examSlug: 'neet',
+      subjectSlug: 'physics',
+      subjectName: 'Physics',
+      conceptName: 'Laws of Motion & Friction',
+      questionType: 'single_correct',
+      difficulty: 'medium',
+      marks: 4,
+      negativeMarks: -1,
+      status: 'published',
+      options: [
+        { key: 'A', text: '' },
+        { key: 'B', text: '' },
+        { key: 'C', text: '' },
+        { key: 'D', text: '' },
+      ],
+      correctOption: 'B',
+      explanationText: '',
+    });
+    setShowCreateModal(true);
+  };
+
+  const handleOpenEdit = (q: AdminQuestionRecord) => {
+    setEditingQuestion(q);
+    setDuplicateWarning(null);
+    setFormData({
+      text: q.text,
+      examSlug: q.examSlug,
+      subjectSlug: q.subjectSlug,
+      subjectName: q.subjectName,
+      conceptName: q.conceptName,
+      questionType: q.questionType,
+      difficulty: q.difficulty,
+      marks: q.marks,
+      negativeMarks: q.negativeMarks,
+      status: q.status,
+      options: q.options || [
+        { key: 'A', text: '' },
+        { key: 'B', text: '' },
+        { key: 'C', text: '' },
+        { key: 'D', text: '' },
+      ],
+      correctOption: q.answerKey?.correctOptions?.[0] || 'B',
+      explanationText: q.explanation?.text || '',
+    });
+    setShowCreateModal(true);
+  };
+
+  // Duplicate Check logic
+  const handleTextChange = (text: string) => {
+    setFormData({ ...formData, text });
+    const normalized = text.toLowerCase().replace(/[^a-z0-9]/g, '');
+    if (normalized.length > 20) {
+      const match = questions.find(
+        (q) =>
+          q.id !== editingQuestion?.id &&
+          q.text.toLowerCase().replace(/[^a-z0-9]/g, '').includes(normalized.slice(0, 40))
+      );
+      if (match) {
+        setDuplicateWarning(`Potential duplicate detected: Matches Question #${match.id.slice(0, 8)}`);
+      } else {
+        setDuplicateWarning(null);
+      }
+    } else {
+      setDuplicateWarning(null);
+    }
+  };
+
+  const handleSaveQuestion = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.text) return;
+
+    let updated: AdminQuestionRecord[];
+    if (editingQuestion) {
+      updated = questions.map((q) =>
+        q.id === editingQuestion.id
+          ? {
+              ...q,
+              text: formData.text,
+              examSlug: formData.examSlug,
+              subjectSlug: formData.subjectSlug,
+              subjectName: formData.subjectName,
+              conceptName: formData.conceptName,
+              questionType: formData.questionType,
+              difficulty: formData.difficulty,
+              marks: formData.marks,
+              negativeMarks: formData.negativeMarks,
+              status: formData.status,
+              options: formData.options,
+              answerKey: { correctOptions: [formData.correctOption] },
+              explanation: { text: formData.explanationText },
+              updated_at: new Date().toISOString(),
+            }
+          : q
+      );
+      logAdminAction('edit_question', 'question', editingQuestion.id, `Modified question text & options in ${formData.subjectName}`);
+      toast.success('Question updated successfully with revision recorded.');
+    } else {
+      const newQ: AdminQuestionRecord = {
+        id: `q_${Date.now().toString(36)}`,
+        versionId: `qv_${Date.now().toString(36)}`,
+        examSlug: formData.examSlug,
+        subjectSlug: formData.subjectSlug,
+        subjectName: formData.subjectName,
+        chapterSlug: formData.conceptName.toLowerCase().replace(/\s+/g, '-'),
+        conceptSlug: formData.conceptName.toLowerCase().replace(/\s+/g, '-'),
+        conceptName: formData.conceptName,
+        questionType: formData.questionType,
+        difficulty: formData.difficulty,
+        marks: formData.marks,
+        negativeMarks: formData.negativeMarks,
+        status: formData.status,
+        text: formData.text,
+        options: formData.options,
+        answerKey: { correctOptions: [formData.correctOption] },
+        explanation: { text: formData.explanationText },
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      };
+      updated = [newQ, ...questions];
+      logAdminAction('create_question', 'question', newQ.id, `Created question in ${formData.subjectName}`);
+      toast.success('New question authored and published to question bank.');
+    }
+
+    setQuestions(updated);
+    saveStoredQuestions(updated);
+    setShowCreateModal(false);
+  };
+
+  // Bulk Import Handlers
+  const handleValidateImport = () => {
+    try {
+      const rows = JSON.parse(importJsonText);
+      if (!Array.isArray(rows)) {
+        throw new Error('Root JSON must be an array of questions');
+      }
+
+      const errors: string[] = [];
+      rows.forEach((r, idx) => {
+        if (!r.text) errors.push(`Row ${idx + 1}: Missing question statement text`);
+        if (!r.options || r.options.length < 2) errors.push(`Row ${idx + 1}: Options must have at least 2 choices`);
+        if (!r.correctOption) errors.push(`Row ${idx + 1}: Missing correct answer option`);
+      });
+
+      setImportValidationErrors(errors);
+      setParsedImportRows(rows);
+      setImportStep(2);
+    } catch (err: any) {
+      toast.error(err.message || 'Invalid JSON format');
+    }
+  };
+
+  const handleConfirmImport = () => {
+    const newItems: AdminQuestionRecord[] = parsedImportRows.map((r, idx) => ({
+      id: `q_imp_${Date.now().toString(36)}_${idx}`,
+      versionId: `qv_imp_${Date.now().toString(36)}_${idx}`,
+      examSlug: r.examSlug || 'neet',
+      subjectSlug: r.subjectSlug || 'physics',
+      subjectName: r.subjectName || 'Physics',
+      chapterSlug: 'general',
+      conceptSlug: 'general',
+      conceptName: r.conceptName || 'General Practice',
+      questionType: r.questionType || 'single_correct',
+      difficulty: r.difficulty || 'medium',
+      marks: r.marks || 4,
+      negativeMarks: r.negativeMarks || -1,
+      status: 'published',
+      text: r.text,
+      options: r.options.map((opt: any, oIdx: number) => ({
+        key: opt.key || String.fromCharCode(65 + oIdx),
+        text: opt.text || opt,
+      })),
+      answerKey: { correctOptions: [r.correctOption || 'A'] },
+      explanation: { text: r.explanation || 'Direct scientific formula application.' },
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    }));
+
+    const updated = [...newItems, ...questions];
+    setQuestions(updated);
+    saveStoredQuestions(updated);
+    logAdminAction('bulk_import_questions', 'question_bank', `${newItems.length}_questions`, `Imported ${newItems.length} questions from JSON payload`);
+    toast.success(`Successfully imported ${newItems.length} questions into Question Bank!`);
+    setShowImportModal(false);
+    setImportStep(1);
+    setImportJsonText('');
+  };
+
+  const filtered = questions.filter((q) => {
+    const matchSearch =
+      q.text.toLowerCase().includes(search.toLowerCase()) ||
+      q.conceptName.toLowerCase().includes(search.toLowerCase()) ||
+      q.id.toLowerCase().includes(search.toLowerCase());
+    const matchSub = filterSubject === 'all' || q.subjectSlug === filterSubject;
+    const matchDiff = filterDifficulty === 'all' || q.difficulty === filterDifficulty;
+    const matchStatus = filterStatus === 'all' || q.status === filterStatus;
+    return matchSearch && matchSub && matchDiff && matchStatus;
+  });
 
   return (
-    <div className="space-y-6 max-w-7xl">
-      <div className="flex flex-wrap items-center justify-between gap-4">
+    <div className="space-y-6 max-w-7xl mx-auto">
+      {/* Create / Edit Question Modal */}
+      {showCreateModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 overflow-y-auto">
+          <div className="w-full max-w-2xl rounded-[28px] border border-[#E6E5DE] bg-white p-6 sm:p-8 shadow-2xl my-8 space-y-4">
+            <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-3">
+              <h3 className="text-lg font-bold font-serif text-[#263126]">
+                {editingQuestion ? 'Edit Question Record' : 'Author New Mathematical Question'}
+              </h3>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setShowPreview(!showPreview)}
+                  className={`rounded-full px-3 py-1 text-xs font-semibold border transition-all ${
+                    showPreview ? 'bg-[#263126] text-white' : 'border-[#E6E5DE] bg-white text-[#73786E]'
+                  }`}
+                >
+                  <Eye className="h-3.5 w-3.5 inline mr-1" />
+                  <span>{showPreview ? 'Editor' : 'Live Preview'}</span>
+                </button>
+                <button onClick={() => setShowCreateModal(false)} className="text-[#92958D]">
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+            </div>
+
+            {duplicateWarning && (
+              <div className="rounded-xl bg-[#FEF3C7] border border-[#FDE68A] p-3 flex items-center gap-2 text-xs text-[#92400E]">
+                <AlertTriangle className="h-4 w-4 shrink-0" />
+                <span>{duplicateWarning}</span>
+              </div>
+            )}
+
+            {showPreview ? (
+              <div className="rounded-2xl bg-[#F7F5EF] p-6 border border-[#E6E5DE] space-y-4">
+                <div className="text-xs font-bold text-[#758B62] uppercase tracking-wider">
+                  Live Student KaTeX Preview
+                </div>
+                <div className="text-sm text-[#263126]">
+                  <MathText content={formData.text || 'Question statement will render here...'} />
+                </div>
+                <div className="grid grid-cols-2 gap-2 text-xs">
+                  {formData.options.map((opt) => (
+                    <div
+                      key={opt.key}
+                      className={`rounded-xl border p-2.5 flex items-center gap-2 ${
+                        opt.key === formData.correctOption
+                          ? 'border-[#758B62] bg-[#E9EEE3] font-bold text-[#263126]'
+                          : 'border-[#E6E5DE] bg-white text-[#73786E]'
+                      }`}
+                    >
+                      <span className="font-mono">{opt.key}.</span>
+                      <MathText content={opt.text || `Option ${opt.key}`} />
+                    </div>
+                  ))}
+                </div>
+                {formData.explanationText && (
+                  <div className="rounded-xl bg-white p-3 border border-[#E6E5DE] text-xs space-y-1">
+                    <span className="font-bold text-[#758B62]">Solution:</span>
+                    <div className="text-[#263126]">
+                      <MathText content={formData.explanationText} />
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <form onSubmit={handleSaveQuestion} className="space-y-4 text-xs">
+                <div>
+                  <label className="block text-[#73786E] font-medium">
+                    Question Statement (Supports KaTeX equations: e.g. $F = ma$)
+                  </label>
+                  <textarea
+                    rows={3}
+                    required
+                    value={formData.text}
+                    onChange={(e) => handleTextChange(e.target.value)}
+                    placeholder="Enter question statement with standard markdown or LaTeX math..."
+                    className="mt-1 w-full rounded-xl border border-[#E6E5DE] bg-white p-2.5 text-xs text-[#263126] focus:border-[#263126] focus:outline-none"
+                  />
+                </div>
+
+                <div className="grid grid-cols-3 gap-3">
+                  <div>
+                    <label className="block text-[#73786E] font-medium">Subject</label>
+                    <select
+                      value={formData.subjectSlug}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          subjectSlug: e.target.value,
+                          subjectName: e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1),
+                        })
+                      }
+                      className="mt-1 w-full rounded-xl border border-[#E6E5DE] bg-white p-2.5 text-xs text-[#263126]"
+                    >
+                      <option value="physics">Physics</option>
+                      <option value="chemistry">Chemistry</option>
+                      <option value="botany">Botany</option>
+                      <option value="zoology">Zoology</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-[#73786E] font-medium">Difficulty</label>
+                    <select
+                      value={formData.difficulty}
+                      onChange={(e) => setFormData({ ...formData, difficulty: e.target.value as any })}
+                      className="mt-1 w-full rounded-xl border border-[#E6E5DE] bg-white p-2.5 text-xs text-[#263126]"
+                    >
+                      <option value="easy">Easy (+4 / -1)</option>
+                      <option value="medium">Medium</option>
+                      <option value="hard">Hard</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-[#73786E] font-medium">Concept / Topic</label>
+                    <input
+                      type="text"
+                      value={formData.conceptName}
+                      onChange={(e) => setFormData({ ...formData, conceptName: e.target.value })}
+                      className="mt-1 w-full rounded-xl border border-[#E6E5DE] bg-white p-2.5 text-xs text-[#263126]"
+                    />
+                  </div>
+                </div>
+
+                {/* 4 Choices */}
+                <div className="space-y-2">
+                  <label className="block text-[#73786E] font-medium">Four Answer Choices</label>
+                  <div className="grid grid-cols-2 gap-2">
+                    {formData.options.map((opt, idx) => (
+                      <div key={opt.key} className="flex items-center gap-2">
+                        <span className="font-mono font-bold text-xs text-[#263126]">{opt.key}:</span>
+                        <input
+                          type="text"
+                          required
+                          value={opt.text}
+                          onChange={(e) => {
+                            const next = [...formData.options];
+                            next[idx].text = e.target.value;
+                            setFormData({ ...formData, options: next });
+                          }}
+                          placeholder={`Option ${opt.key} text`}
+                          className="flex-1 rounded-xl border border-[#E6E5DE] bg-white p-2 text-xs text-[#263126]"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-[#73786E] font-medium">Correct Option</label>
+                    <select
+                      value={formData.correctOption}
+                      onChange={(e) => setFormData({ ...formData, correctOption: e.target.value })}
+                      className="mt-1 w-full rounded-xl border border-[#E6E5DE] bg-white p-2.5 text-xs text-[#263126] font-bold"
+                    >
+                      <option value="A">Option A</option>
+                      <option value="B">Option B</option>
+                      <option value="C">Option C</option>
+                      <option value="D">Option D</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-[#73786E] font-medium">Publication Status</label>
+                    <select
+                      value={formData.status}
+                      onChange={(e) => setFormData({ ...formData, status: e.target.value as any })}
+                      className="mt-1 w-full rounded-xl border border-[#E6E5DE] bg-white p-2.5 text-xs text-[#263126]"
+                    >
+                      <option value="published">Published</option>
+                      <option value="pending_review">Pending Review</option>
+                      <option value="draft">Draft</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-[#73786E] font-medium">Detailed Explanation</label>
+                  <textarea
+                    rows={2}
+                    value={formData.explanationText}
+                    onChange={(e) => setFormData({ ...formData, explanationText: e.target.value })}
+                    placeholder="Step-by-step scientific solution..."
+                    className="mt-1 w-full rounded-xl border border-[#E6E5DE] bg-white p-2.5 text-xs text-[#263126]"
+                  />
+                </div>
+
+                <div className="pt-2 flex gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setShowCreateModal(false)}
+                    className="flex-1 rounded-full border border-[#E6E5DE] py-2.5 font-semibold text-[#263126]"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="flex-1 rounded-full bg-[#263126] py-2.5 font-bold text-white shadow-sm"
+                  >
+                    {editingQuestion ? 'Save Revision' : 'Publish Question'}
+                  </button>
+                </div>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Bulk Import Modal */}
+      {showImportModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 overflow-y-auto">
+          <div className="w-full max-w-xl rounded-[28px] border border-[#E6E5DE] bg-white p-6 sm:p-8 shadow-2xl my-8 space-y-4">
+            <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-3">
+              <h3 className="text-lg font-bold font-serif text-[#263126]">
+                Bulk Question Import (JSON / CSV)
+              </h3>
+              <button onClick={() => setShowImportModal(false)} className="text-[#92958D]">
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            {importStep === 1 && (
+              <div className="space-y-4 text-xs">
+                <p className="text-[#73786E]">
+                  Paste structured JSON array of questions. Every record is checked for question text, minimum 2 choices, valid correct keys, and marks.
+                </p>
+
+                <textarea
+                  rows={8}
+                  value={importJsonText}
+                  onChange={(e) => setImportJsonText(e.target.value)}
+                  placeholder={`[\n  {\n    "text": "What is the unit of electric flux?",\n    "subjectSlug": "physics",\n    "options": ["V·m", "N/C", "J/s", "T·m²"],\n    "correctOption": "A",\n    "marks": 4\n  }\n]`}
+                  className="w-full rounded-2xl border border-[#E6E5DE] bg-[#F7F5EF] p-4 font-mono text-xs text-[#263126] focus:border-[#263126] focus:outline-none"
+                />
+
+                <div className="flex gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setShowImportModal(false)}
+                    className="flex-1 rounded-full border border-[#E6E5DE] py-2.5 font-semibold text-[#263126]"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleValidateImport}
+                    className="flex-1 rounded-full bg-[#263126] py-2.5 font-bold text-white shadow-sm"
+                  >
+                    Validate Schema →
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {importStep === 2 && (
+              <div className="space-y-4 text-xs">
+                <div className="flex items-center justify-between">
+                  <span className="font-bold text-[#263126]">
+                    Validation Summary: {parsedImportRows.length} questions parsed
+                  </span>
+                  <span
+                    className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold ${
+                      importValidationErrors.length === 0
+                        ? 'bg-[#E9EEE3] text-[#758B62]'
+                        : 'bg-[#FCE8E4] text-[#E8412C]'
+                    }`}
+                  >
+                    {importValidationErrors.length === 0 ? 'Passed Schema Validation' : `${importValidationErrors.length} Errors`}
+                  </span>
+                </div>
+
+                {importValidationErrors.length > 0 ? (
+                  <div className="rounded-2xl bg-[#FCE8E4] p-4 text-xs text-[#E8412C] space-y-1 max-h-40 overflow-y-auto">
+                    {importValidationErrors.map((err, idx) => (
+                      <div key={idx}>• {err}</div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="rounded-2xl bg-[#E9EEE3] p-4 text-xs text-[#758B62] space-y-1">
+                    ✓ All rows conform to FORT question database schemas. Ready to import.
+                  </div>
+                )}
+
+                <div className="flex gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setImportStep(1)}
+                    className="flex-1 rounded-full border border-[#E6E5DE] py-2.5 font-semibold text-[#263126]"
+                  >
+                    Back
+                  </button>
+                  <button
+                    type="button"
+                    disabled={importValidationErrors.length > 0}
+                    onClick={handleConfirmImport}
+                    className="flex-1 rounded-full bg-[#263126] py-2.5 font-bold text-white shadow-sm disabled:opacity-50"
+                  >
+                    Confirm Import
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Header */}
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#ECEAE4] pb-6">
         <div>
-          <h1 className="text-2xl font-bold text-[#263126] font-serif">Question Bank CMS</h1>
+          <h1 className="text-2xl font-bold font-serif text-[#263126]">
+            Question Bank CMS & Repository
+          </h1>
           <p className="mt-1 text-xs text-[#73786E]">
-            Author, version, and publish mathematical and scientific questions with KaTeX support.
+            KaTeX mathematical equation rendering, multi-type options, duplicate detection, and bulk import.
           </p>
         </div>
 
         <div className="flex items-center gap-3">
+          <button
+            onClick={() => setShowImportModal(true)}
+            className="inline-flex items-center gap-2 rounded-full border border-[#E6E5DE] bg-white px-5 py-2.5 text-xs font-semibold text-[#263126] hover:bg-[#F7F5EF] transition-all"
+          >
+            <Upload className="h-4 w-4" />
+            <span>Bulk Import</span>
+          </button>
+          <button
+            onClick={handleOpenCreate}
+            className="inline-flex items-center gap-2 rounded-full bg-[#263126] px-5 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-black transition-all"
+          >
+            <Plus className="h-4 w-4" />
+            <span>Author Question</span>
+          </button>
+        </div>
+      </div>
+
+      {/* Search & Filters */}
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <div className="relative max-w-sm flex-1">
+          <Search className="absolute left-3.5 top-3 h-4 w-4 text-[#92958D]" />
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search questions by text or concept..."
+            className="w-full rounded-full border border-[#E6E5DE] bg-white py-2 pl-10 pr-4 text-xs text-[#263126] focus:border-[#263126] focus:outline-none"
+          />
+        </div>
+
+        <div className="flex items-center gap-2 text-xs">
           <select
-            value={selectedSubject}
-            onChange={(e) => setSelectedSubject(e.target.value)}
-            className="rounded-xl border border-[#E6E5DE] bg-white px-3 py-2 text-xs text-[#263126] focus:outline-none focus:border-[#9CAF88]"
+            value={filterSubject}
+            onChange={(e) => setFilterSubject(e.target.value)}
+            className="rounded-full border border-[#E6E5DE] bg-white px-3 py-1.5 text-xs text-[#263126]"
           >
             <option value="all">All Subjects</option>
             <option value="physics">Physics</option>
@@ -35,31 +650,48 @@ export default function AdminQuestionBankPage() {
             <option value="botany">Botany</option>
             <option value="zoology">Zoology</option>
           </select>
+
+          <select
+            value={filterDifficulty}
+            onChange={(e) => setFilterDifficulty(e.target.value)}
+            className="rounded-full border border-[#E6E5DE] bg-white px-3 py-1.5 text-xs text-[#263126]"
+          >
+            <option value="all">All Difficulties</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
         </div>
       </div>
 
+      {/* Questions Listing */}
       <div className="space-y-4">
         {filtered.map((q, idx) => (
           <div
             key={q.id}
-            className="rounded-2xl border border-[#E6E5DE] bg-white p-6 space-y-4 shadow-[0_2px_8px_rgba(38,49,38,0.04)] hover:border-[#9CAF88]/60 transition-colors"
+            className="rounded-[24px] border border-[#E6E5DE] bg-white p-6 shadow-sm hover:border-[#263126] transition-all space-y-4"
           >
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#ECEAE4] pb-3 text-xs">
               <div className="flex items-center gap-2">
-                <span className="font-mono font-bold text-[#758B62]">Q{idx + 1}</span>
-                <span className="rounded-full bg-[#E9EEE3] px-2.5 py-0.5 text-[#263126] font-semibold">
+                <span className="font-mono font-bold text-[#758B62]">Q{idx + 1}.</span>
+                <span className="rounded-full bg-[#E9EEE3] px-2.5 py-0.5 font-bold text-[#263126]">
                   {q.subjectName}
                 </span>
-                <span className="text-[#263126] font-semibold">{q.conceptName}</span>
+                <span className="text-[#758B62] font-semibold">{q.conceptName}</span>
+                <span className="text-[#92958D]">({q.difficulty})</span>
               </div>
 
-              <div className="flex items-center gap-2 font-mono text-[11px]">
-                <span className="rounded-full bg-[#E9EEE3] px-2.5 py-0.5 font-bold text-[#758B62]">
-                  PUBLISHED
+              <div className="flex items-center gap-3">
+                <span className="rounded-full bg-[#E9EEE3] px-2.5 py-0.5 font-mono text-[10px] font-bold text-[#758B62] uppercase">
+                  {q.status}
                 </span>
-                <span className="text-[#73786E]">
-                  +{q.marks} / -{q.negativeMarks} Marks
-                </span>
+                <button
+                  onClick={() => handleOpenEdit(q)}
+                  className="rounded-full p-1.5 text-[#73786E] hover:bg-[#F0EFEA] hover:text-[#263126]"
+                  title="Edit Question"
+                >
+                  <Edit2 className="h-4 w-4" />
+                </button>
               </div>
             </div>
 
@@ -67,27 +699,27 @@ export default function AdminQuestionBankPage() {
               <MathText content={q.text} />
             </div>
 
-            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 text-xs">
-              {q.options.map((opt) => (
-                <div
-                  key={opt.key}
-                  className={`flex items-center gap-2.5 rounded-xl border p-2.5 ${
-                    q.answerKey?.correctOptions?.includes(opt.key)
-                      ? 'border-[#9CAF88] bg-[#E9EEE3] text-[#263126]'
-                      : 'border-[#E6E5DE] bg-[#F7F5EF] text-[#73786E]'
-                  }`}
-                >
-                  <span className="font-mono font-bold">{opt.key}.</span>
-                  <MathText content={opt.text} />
-                </div>
-              ))}
+            <div className="grid grid-cols-2 gap-2 text-xs">
+              {q.options?.map((opt) => {
+                const isCorrect = q.answerKey?.correctOptions?.includes(opt.key);
+                return (
+                  <div
+                    key={opt.key}
+                    className={`rounded-xl border p-2.5 flex items-center gap-2 ${
+                      isCorrect
+                        ? 'border-[#758B62] bg-[#E9EEE3] font-bold text-[#263126]'
+                        : 'border-[#E6E5DE] bg-[#F7F5EF] text-[#73786E]'
+                    }`}
+                  >
+                    <span className="font-mono">{opt.key}.</span>
+                    <MathText content={opt.text} />
+                    {isCorrect && (
+                      <CheckCircle2 className="h-3.5 w-3.5 text-[#758B62] ml-auto shrink-0" />
+                    )}
+                  </div>
+                );
+              })}
             </div>
-
-            {q.explanation && (
-              <div className="rounded-xl bg-[#F7F5EF] p-4 text-xs text-[#73786E]">
-                <strong className="text-[#758B62]">Explanation:</strong> {q.explanation.text}
-              </div>
-            )}
           </div>
         ))}
       </div>
