@@ -76,45 +76,45 @@ export default function AdminUsersPage() {
       {/* Invite Modal */}
       {showInviteModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-          <div className="w-full max-w-md rounded-[28px] border border-[#E6E5DE] bg-white p-6 sm:p-8 shadow-2xl">
-            <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-3">
-              <h3 className="text-lg font-bold font-serif text-[#263126]">Invite Administrator</h3>
-              <button onClick={() => setShowInviteModal(false)} className="text-[#92958D]">
+          <div className="w-full max-w-md rounded-[28px] border border-[#DCE2E6] bg-white p-6 sm:p-8 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-3">
+              <h3 className="text-lg font-bold font-serif text-[#20252B]">Invite Administrator</h3>
+              <button onClick={() => setShowInviteModal(false)} className="text-[#66727D]">
                 <X className="h-5 w-5" />
               </button>
             </div>
 
             <form onSubmit={handleCreateAdmin} className="mt-4 space-y-4 text-xs">
               <div>
-                <label className="block text-[#73786E] font-medium">Full Name</label>
+                <label className="block text-[#66727D] font-medium">Full Name</label>
                 <input
                   type="text"
                   required
                   value={newAdmin.name}
                   onChange={(e) => setNewAdmin({ ...newAdmin, name: e.target.value })}
                   placeholder="e.g. Dr. Ramesh Kumar"
-                  className="mt-1 w-full rounded-xl border border-[#E6E5DE] bg-white p-2.5 text-xs text-[#263126] focus:border-[#263126] focus:outline-none"
+                  className="mt-1 w-full rounded-xl border border-[#DCE2E6] bg-white p-2.5 text-xs text-[#20252B] focus:border-[#20252B] focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-[#73786E] font-medium">Official Email Address</label>
+                <label className="block text-[#66727D] font-medium">Official Email Address</label>
                 <input
                   type="email"
                   required
                   value={newAdmin.email}
                   onChange={(e) => setNewAdmin({ ...newAdmin, email: e.target.value })}
                   placeholder="name@fortlearning.com"
-                  className="mt-1 w-full rounded-xl border border-[#E6E5DE] bg-white p-2.5 text-xs text-[#263126] focus:border-[#263126] focus:outline-none"
+                  className="mt-1 w-full rounded-xl border border-[#DCE2E6] bg-white p-2.5 text-xs text-[#20252B] focus:border-[#20252B] focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-[#73786E] font-medium">Assigned Role</label>
+                <label className="block text-[#66727D] font-medium">Assigned Role</label>
                 <select
                   value={newAdmin.role}
                   onChange={(e) => setNewAdmin({ ...newAdmin, role: e.target.value as any })}
-                  className="mt-1 w-full rounded-xl border border-[#E6E5DE] bg-white p-2.5 text-xs text-[#263126] focus:border-[#263126] focus:outline-none"
+                  className="mt-1 w-full rounded-xl border border-[#DCE2E6] bg-white p-2.5 text-xs text-[#20252B] focus:border-[#20252B] focus:outline-none"
                 >
                   <option value="content_admin">Content Admin (Academic & Questions)</option>
                   <option value="evaluator">Evaluator (Descriptive Submissions)</option>
@@ -128,13 +128,13 @@ export default function AdminUsersPage() {
                 <button
                   type="button"
                   onClick={() => setShowInviteModal(false)}
-                  className="flex-1 rounded-full border border-[#E6E5DE] py-2.5 font-semibold text-[#263126]"
+                  className="flex-1 rounded-full border border-[#DCE2E6] py-2.5 font-semibold text-[#20252B]"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 rounded-full bg-[#263126] py-2.5 font-bold text-white shadow-sm"
+                  className="flex-1 rounded-full bg-[#20252B] py-2.5 font-bold text-white shadow-sm"
                 >
                   Send Invitation
                 </button>
@@ -145,12 +145,12 @@ export default function AdminUsersPage() {
       )}
 
       {/* Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#ECEAE4] pb-6">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#DCE2E6] pb-6">
         <div>
-          <h1 className="text-2xl font-bold font-serif text-[#263126]">
+          <h1 className="text-2xl font-bold font-serif text-[#20252B]">
             Admin Users & Role-Based Access Control
           </h1>
-          <p className="mt-1 text-xs text-[#73786E]">
+          <p className="mt-1 text-xs text-[#66727D]">
             Granular permission management across Super Admin, Content Admin, Evaluator, Support, and Finance roles.
           </p>
         </div>
@@ -158,7 +158,7 @@ export default function AdminUsersPage() {
         <div className="flex items-center gap-3">
           <button
             onClick={() => setShowInviteModal(true)}
-            className="inline-flex items-center gap-2 rounded-full bg-[#263126] px-5 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-black transition-all"
+            className="inline-flex items-center gap-2 rounded-full bg-[#20252B] px-5 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-black transition-all"
           >
             <Plus className="h-4 w-4" />
             <span>Invite Administrator</span>
@@ -168,21 +168,21 @@ export default function AdminUsersPage() {
 
       {/* Search Bar */}
       <div className="relative max-w-sm">
-        <Search className="absolute left-3.5 top-3 h-4 w-4 text-[#92958D]" />
+        <Search className="absolute left-3.5 top-3 h-4 w-4 text-[#66727D]" />
         <input
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search by name, email, or role..."
-          className="w-full rounded-full border border-[#E6E5DE] bg-white py-2 pl-10 pr-4 text-xs text-[#263126] focus:border-[#263126] focus:outline-none"
+          className="w-full rounded-full border border-[#DCE2E6] bg-white py-2 pl-10 pr-4 text-xs text-[#20252B] focus:border-[#20252B] focus:outline-none"
         />
       </div>
 
       {/* Admin Users Table */}
-      <div className="rounded-[28px] border border-[#E6E5DE] bg-white shadow-sm overflow-hidden">
+      <div className="rounded-[28px] border border-[#DCE2E6] bg-white shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="border-b border-[#ECEAE4] bg-[#F7F5EF] text-[#73786E]">
+            <thead className="border-b border-[#DCE2E6] bg-[#F1F3F4] text-[#66727D]">
               <tr>
                 <th className="py-3.5 px-6 font-semibold">Administrator</th>
                 <th className="py-3.5 px-6 font-semibold">Assigned Role</th>
@@ -192,15 +192,15 @@ export default function AdminUsersPage() {
                 <th className="py-3.5 px-6 font-semibold text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#ECEAE4]">
+            <tbody className="divide-y divide-[#DCE2E6]">
               {filtered.map((u) => (
-                <tr key={u.id} className="hover:bg-[#F7F5EF]/50 transition-colors">
+                <tr key={u.id} className="hover:bg-[#F1F3F4]/50 transition-colors">
                   <td className="py-4 px-6">
-                    <div className="font-bold text-[#263126]">{u.name}</div>
-                    <div className="text-[11px] text-[#73786E]">{u.email}</div>
+                    <div className="font-bold text-[#20252B]">{u.name}</div>
+                    <div className="text-[11px] text-[#66727D]">{u.email}</div>
                   </td>
                   <td className="py-4 px-6">
-                    <span className="rounded-full bg-[#E9EEE3] px-3 py-1 font-mono text-[10px] font-bold text-[#758B62] uppercase">
+                    <span className="rounded-full bg-[#E9EEF1] px-3 py-1 font-mono text-[10px] font-bold text-[#20252B] uppercase">
                       {u.role.replace('_', ' ')}
                     </span>
                   </td>
@@ -208,20 +208,20 @@ export default function AdminUsersPage() {
                     <span
                       className={`rounded-full px-2.5 py-0.5 font-bold uppercase text-[10px] ${
                         u.status === 'active'
-                          ? 'bg-[#E9EEE3] text-[#758B62]'
-                          : 'bg-[#FCE8E4] text-[#E8412C]'
+                          ? 'bg-[#E9EEF1] text-[#20252B]'
+                          : 'bg-[#FDEDF0] text-[#E4002B]'
                       }`}
                     >
                       {u.status}
                     </span>
                   </td>
-                  <td className="py-4 px-6 text-[#73786E]">
-                    <span className="font-mono font-bold text-[#263126]">
+                  <td className="py-4 px-6 text-[#66727D]">
+                    <span className="font-mono font-bold text-[#20252B]">
                       {u.permissions?.length || 0}
                     </span>{' '}
                     grants assigned
                   </td>
-                  <td className="py-4 px-6 text-[#73786E]">
+                  <td className="py-4 px-6 text-[#66727D]">
                     {u.last_login ? u.last_login.split('T')[0] : 'Never'}
                   </td>
                   <td className="py-4 px-6 text-right">
@@ -229,13 +229,13 @@ export default function AdminUsersPage() {
                       <button
                         onClick={() => handleToggleStatus(u.id)}
                         className={`font-semibold hover:underline ${
-                          u.status === 'active' ? 'text-[#E8412C]' : 'text-[#758B62]'
+                          u.status === 'active' ? 'text-[#E4002B]' : 'text-[#20252B]'
                         }`}
                       >
                         {u.status === 'active' ? 'Suspend' : 'Activate'}
                       </button>
                     ) : (
-                      <span className="text-[10px] text-[#92958D]">Locked (Super)</span>
+                      <span className="text-[10px] text-[#66727D]">Locked (Super)</span>
                     )}
                   </td>
                 </tr>

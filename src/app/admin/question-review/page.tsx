@@ -70,18 +70,18 @@ export default function AdminQuestionReviewPage() {
   return (
     <div className="space-y-6 max-w-7xl mx-auto">
       {/* Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#ECEAE4] pb-6">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#DCE2E6] pb-6">
         <div>
-          <h1 className="text-2xl font-bold font-serif text-[#263126]">
+          <h1 className="text-2xl font-bold font-serif text-[#20252B]">
             Question Review & Quality Assurance Queue
           </h1>
-          <p className="mt-1 text-xs text-[#73786E]">
+          <p className="mt-1 text-xs text-[#66727D]">
             Review flagged questions, student grievance reports, and ambiguous scientific solution discrepancies.
           </p>
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="rounded-full bg-[#E9EEE3] px-3 py-1 font-mono text-xs font-bold text-[#758B62]">
+          <span className="rounded-full bg-[#E9EEF1] px-3 py-1 font-mono text-xs font-bold text-[#20252B]">
             {items.filter((i) => i.status === 'pending').length} Pending Review
           </span>
         </div>
@@ -92,15 +92,15 @@ export default function AdminQuestionReviewPage() {
         {items.map((item) => (
           <div
             key={item.id}
-            className="rounded-[28px] border border-[#E6E5DE] bg-white p-6 sm:p-7 shadow-sm space-y-4"
+            className="rounded-[28px] border border-[#DCE2E6] bg-white p-6 sm:p-7 shadow-sm space-y-4"
           >
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#ECEAE4] pb-3 text-xs">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#DCE2E6] pb-3 text-xs">
               <div className="flex items-center gap-2">
-                <span className="font-mono font-bold text-[#263126]">{item.questionId}</span>
-                <span className="rounded-full bg-[#E9EEE3] px-2.5 py-0.5 font-bold text-[#758B62]">
+                <span className="font-mono font-bold text-[#20252B]">{item.questionId}</span>
+                <span className="rounded-full bg-[#E9EEF1] px-2.5 py-0.5 font-bold text-[#20252B]">
                   {item.subjectName}
                 </span>
-                <span className="text-[#73786E] font-medium">{item.conceptName}</span>
+                <span className="text-[#66727D] font-medium">{item.conceptName}</span>
               </div>
 
               <div className="flex items-center gap-3">
@@ -109,18 +109,18 @@ export default function AdminQuestionReviewPage() {
                     item.status === 'pending'
                       ? 'bg-[#FEF3C7] text-[#92400E]'
                       : item.status === 'resolved'
-                      ? 'bg-[#E9EEE3] text-[#758B62]'
-                      : 'bg-[#F0EFEA] text-[#73786E]'
+                      ? 'bg-[#E9EEF1] text-[#20252B]'
+                      : 'bg-[#F1F3F4] text-[#66727D]'
                   }`}
                 >
                   {item.status}
                 </span>
-                <span className="text-[11px] text-[#92958D]">{item.timestamp}</span>
+                <span className="text-[11px] text-[#66727D]">{item.timestamp}</span>
               </div>
             </div>
 
             {/* Question Text */}
-            <div className="text-xs text-[#263126] leading-relaxed bg-[#F7F5EF] p-4 rounded-2xl border border-[#E6E5DE]">
+            <div className="text-xs text-[#20252B] leading-relaxed bg-[#F1F3F4] p-4 rounded-2xl border border-[#DCE2E6]">
               <MathText content={item.questionText} />
             </div>
 
@@ -141,13 +141,13 @@ export default function AdminQuestionReviewPage() {
               <div className="pt-2 flex items-center justify-end gap-3 text-xs">
                 <button
                   onClick={() => handleRejectReport(item.id, item.questionId)}
-                  className="rounded-full border border-[#E6E5DE] px-5 py-2 font-semibold text-[#73786E] hover:bg-[#F7F5EF]"
+                  className="rounded-full border border-[#DCE2E6] px-5 py-2 font-semibold text-[#66727D] hover:bg-[#F1F3F4]"
                 >
                   Dismiss Report
                 </button>
                 <button
                   onClick={() => handleApprove(item.id, item.questionId)}
-                  className="rounded-full bg-[#263126] px-5 py-2 font-bold text-white shadow-sm hover:bg-black"
+                  className="rounded-full bg-[#20252B] px-5 py-2 font-bold text-white shadow-sm hover:bg-black"
                 >
                   Confirm & Update Solution
                 </button>

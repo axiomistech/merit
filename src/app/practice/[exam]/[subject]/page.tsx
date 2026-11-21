@@ -78,21 +78,21 @@ export default function SubjectPracticePage() {
   };
 
   return (
-    <div className="bg-[#F7F5EF] text-[#2E332D] min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div className="bg-[#F1F3F4] text-[#20252B] min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto space-y-8">
-        <div className="flex items-center gap-2 text-xs text-[#73786E]">
-          <Link href="/practice" className="hover:text-[#263126]">Practice</Link>
+        <div className="flex items-center gap-2 text-xs text-[#66727D]">
+          <Link href="/practice" className="hover:text-[#20252B]">Practice</Link>
           <ChevronRight className="h-3.5 w-3.5" />
-          <Link href={`/practice/${examSlug}`} className="hover:text-[#263126] uppercase">{examSlug}</Link>
+          <Link href={`/practice/${examSlug}`} className="hover:text-[#20252B] uppercase">{examSlug}</Link>
           <ChevronRight className="h-3.5 w-3.5" />
-          <span className="font-semibold text-[#263126] capitalize">{subjectSlug}</span>
+          <span className="font-semibold text-[#20252B] capitalize">{subjectSlug}</span>
         </div>
 
         <div>
-          <h1 className="text-3xl font-bold font-serif text-[#263126] capitalize">
+          <h1 className="text-3xl font-bold font-serif text-[#20252B] capitalize">
             {subjectSlug} Chapters
           </h1>
-          <p className="mt-1 text-sm text-[#73786E]">
+          <p className="mt-1 text-sm text-[#66727D]">
             Practice concept by concept with KaTeX mathematical rendering and authentic 15-second timer standards.
           </p>
         </div>
@@ -101,37 +101,37 @@ export default function SubjectPracticePage() {
           {chapters.map((chap) => (
             <div
               key={chap.slug}
-              className="rounded-[24px] border border-[#E6E5DE] bg-white p-6 shadow-[0_4px_20px_rgba(38,49,38,0.04)] flex flex-col justify-between space-y-4 hover:border-[#9CAF88] transition-all"
+              className="rounded-[24px] border border-[#DCE2E6] bg-white p-6 shadow-[0_4px_20px_rgba(38,49,38,0.04)] flex flex-col justify-between space-y-4 hover:border-[#9CC6E0] transition-all"
             >
               <div>
                 <div className="flex items-center justify-between text-xs mb-2">
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-[#F7F5EF] text-[#52584E] border border-[#E6E5DE]">
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-[#F1F3F4] text-[#52584E] border border-[#DCE2E6]">
                     {chap.level}
                   </span>
-                  <span className="text-[#73786E] font-mono text-[11px]">{chap.questions} Questions</span>
+                  <span className="text-[#66727D] font-mono text-[11px]">{chap.questions} Questions</span>
                 </div>
-                <h3 className="font-bold text-base text-[#263126]">{chap.name}</h3>
+                <h3 className="font-bold text-base text-[#20252B]">{chap.name}</h3>
 
-                <div className="mt-3 space-y-1 text-xs text-[#73786E]">
+                <div className="mt-3 space-y-1 text-xs text-[#66727D]">
                   {chap.topics.map((t, idx) => (
                     <div key={idx} className="flex items-center gap-1.5 text-[11px]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#9CAF88]" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#9CC6E0]" />
                       <span>{t}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-[#ECEAE4] flex items-center justify-between">
+              <div className="pt-3 border-t border-[#DCE2E6] flex items-center justify-between">
                 <Link
                   href={`/practice/${examSlug}/${subjectSlug}/${chap.slug}`}
-                  className="text-xs font-semibold text-[#52584E] hover:text-[#263126]"
+                  className="text-xs font-semibold text-[#52584E] hover:text-[#20252B]"
                 >
                   Topic View
                 </Link>
                 <button
                   onClick={() => handleOpenTestModal(chap)}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#263126] text-white text-xs font-semibold hover:bg-[#344034] transition-colors"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#20252B] text-white text-xs font-semibold hover:bg-[#344034] transition-colors"
                 >
                   <Play className="h-3 w-3 fill-current" />
                   Start Test

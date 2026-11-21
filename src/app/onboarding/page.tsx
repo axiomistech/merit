@@ -96,22 +96,22 @@ export default function OnboardingPage() {
   };
 
   return (
-    <div className="bg-[#F7F5EF] text-[#2E332D] min-h-screen py-12 px-4 flex items-center justify-center">
-      <div className="w-full max-w-2xl rounded-[32px] border border-[#E6E5DE] bg-white p-6 sm:p-10 shadow-[0_8px_30px_rgba(38,49,38,0.06)] space-y-8">
+    <div className="bg-[#F1F3F4] text-[#20252B] min-h-screen py-12 px-4 flex items-center justify-center">
+      <div className="w-full max-w-2xl rounded-[32px] border border-[#DCE2E6] bg-white p-6 sm:p-10 shadow-[0_8px_30px_rgba(38,49,38,0.06)] space-y-8">
         {/* Brand & Progress Header */}
-        <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-6">
+        <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-6">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#9CAF88] text-white">
+            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#9CC6E0] text-[#20252B]">
               <Shield className="h-5 w-5 stroke-[2.5]" />
             </div>
             <div>
-              <div className="font-mono text-sm font-bold text-[#263126]">
+              <div className="font-mono text-sm font-bold text-[#20252B]">
                 {candidate.registrationId}
               </div>
-              <p className="text-xs text-[#73786E]">Personalizing for {candidate.fullName}</p>
+              <p className="text-xs text-[#66727D]">Personalizing for {candidate.fullName}</p>
             </div>
           </div>
-          <span className="rounded-full bg-[#E9EEE3] px-3 py-1 font-mono text-xs font-bold text-[#758B62]">
+          <span className="rounded-full bg-[#E9EEF1] px-3 py-1 font-mono text-xs font-bold text-[#20252B]">
             QUICK ONBOARDING
           </span>
         </div>
@@ -119,10 +119,10 @@ export default function OnboardingPage() {
         {/* Section 1: Target Exam */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h2 className="text-base font-bold font-serif text-[#263126]">
+            <h2 className="text-base font-bold font-serif text-[#20252B]">
               1. What are you preparing for?
             </h2>
-            <span className="text-xs text-[#758B62] font-semibold">Primary Goal</span>
+            <span className="text-xs text-[#20252B] font-semibold">Primary Goal</span>
           </div>
 
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -141,14 +141,14 @@ export default function OnboardingPage() {
                   className={cn(
                     'rounded-2xl border p-4 text-center transition-all',
                     isSelected
-                      ? 'border-[#9CAF88] bg-[#E9EEE3] text-[#263126] shadow-sm'
-                      : 'border-[#E6E5DE] bg-white text-[#73786E] hover:border-[#9CAF88]/60'
+                      ? 'border-[#9CC6E0] bg-[#E9EEF1] text-[#20252B] shadow-sm'
+                      : 'border-[#DCE2E6] bg-white text-[#66727D] hover:border-[#9CC6E0]/60'
                   )}
                 >
                   <div className="font-serif text-lg font-bold">{exam.name}</div>
-                  <div className="text-[11px] text-[#73786E] mt-0.5">{exam.sub}</div>
+                  <div className="text-[11px] text-[#66727D] mt-0.5">{exam.sub}</div>
                   {isSelected && (
-                    <CheckCircle2 className="h-4 w-4 text-[#758B62] mx-auto mt-2" />
+                    <CheckCircle2 className="h-4 w-4 text-[#20252B] mx-auto mt-2" />
                   )}
                 </button>
               );
@@ -158,7 +158,7 @@ export default function OnboardingPage() {
 
         {/* Section 2: Education Level */}
         <div className="space-y-3">
-          <h2 className="text-base font-bold font-serif text-[#263126]">
+          <h2 className="text-base font-bold font-serif text-[#20252B]">
             2. Class & Education Level
           </h2>
           <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4">
@@ -177,8 +177,8 @@ export default function OnboardingPage() {
                   className={cn(
                     'rounded-xl border py-2.5 px-3 text-xs font-semibold transition-all',
                     isSelected
-                      ? 'border-[#9CAF88] bg-[#E9EEE3] text-[#263126] font-bold'
-                      : 'border-[#E6E5DE] bg-white text-[#73786E] hover:border-[#9CAF88]'
+                      ? 'border-[#9CC6E0] bg-[#E9EEF1] text-[#20252B] font-bold'
+                      : 'border-[#DCE2E6] bg-white text-[#66727D] hover:border-[#9CC6E0]'
                   )}
                 >
                   {lvl.label}
@@ -191,10 +191,10 @@ export default function OnboardingPage() {
         {/* Section 3: Preferred Subjects */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h2 className="text-base font-bold font-serif text-[#263126]">
+            <h2 className="text-base font-bold font-serif text-[#20252B]">
               3. Preferred Subjects
             </h2>
-            <span className="text-[11px] text-[#92958D]">Select all you wish to practice</span>
+            <span className="text-[11px] text-[#66727D]">Select all you wish to practice</span>
           </div>
 
           <div className="flex flex-wrap gap-2">
@@ -208,8 +208,8 @@ export default function OnboardingPage() {
                   className={cn(
                     'rounded-full border px-4 py-2 text-xs font-semibold transition-all flex items-center gap-1.5',
                     isSelected
-                      ? 'border-[#9CAF88] bg-[#9CAF88] text-white shadow-sm'
-                      : 'border-[#E6E5DE] bg-white text-[#73786E] hover:border-[#9CAF88]'
+                      ? 'border-[#9CC6E0] bg-[#9CC6E0] text-[#20252B] shadow-sm'
+                      : 'border-[#DCE2E6] bg-white text-[#66727D] hover:border-[#9CC6E0]'
                   )}
                 >
                   {isSelected && <CheckCircle2 className="h-3.5 w-3.5" />}
@@ -223,10 +223,10 @@ export default function OnboardingPage() {
         {/* Section 4: Target Year (Optional) */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h2 className="text-base font-bold font-serif text-[#263126]">
+            <h2 className="text-base font-bold font-serif text-[#20252B]">
               4. Target Examination Year
             </h2>
-            <span className="text-[11px] text-[#92958D]">Optional</span>
+            <span className="text-[11px] text-[#66727D]">Optional</span>
           </div>
 
           <div className="grid grid-cols-3 gap-3">
@@ -240,8 +240,8 @@ export default function OnboardingPage() {
                   className={cn(
                     'rounded-xl border py-2.5 font-mono text-xs font-bold transition-all',
                     isSelected
-                      ? 'border-[#9CAF88] bg-[#E9EEE3] text-[#263126]'
-                      : 'border-[#E6E5DE] bg-white text-[#73786E] hover:border-[#9CAF88]'
+                      ? 'border-[#9CC6E0] bg-[#E9EEF1] text-[#20252B]'
+                      : 'border-[#DCE2E6] bg-white text-[#66727D] hover:border-[#9CC6E0]'
                   )}
                 >
                   {yr}
@@ -252,11 +252,11 @@ export default function OnboardingPage() {
         </div>
 
         {/* Final CTA */}
-        <div className="pt-4 border-t border-[#ECEAE4]">
+        <div className="pt-4 border-t border-[#DCE2E6]">
           <button
             type="button"
             onClick={handleFinishOnboarding}
-            className="flex w-full items-center justify-center gap-2 rounded-full bg-[#E8412C] py-4 text-sm font-bold text-white shadow-lg shadow-[#E8412C]/25 hover:bg-[#d03521] transition-all hover:translate-y-[-1px]"
+            className="flex w-full items-center justify-center gap-2 rounded-full bg-[#E4002B] py-4 text-sm font-bold text-white shadow-lg shadow-[#E4002B]/25 hover:bg-[#C90026] transition-all hover:translate-y-[-1px]"
           >
             <span>Start Solving Questions</span>
             <ArrowRight className="h-4 w-4" />

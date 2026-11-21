@@ -7,17 +7,17 @@ export const metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="bg-[#F7F5EF] text-[#2E332D] min-h-screen py-20">
+    <div className="bg-[#F1F3F4] text-[#20252B] min-h-screen py-20">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl border border-[#E6E5DE] bg-white p-8 sm:p-12 shadow-card">
-          <h1 className="text-3xl font-extrabold sm:text-4xl text-[#263126]">Privacy Policy</h1>
-          <p className="mt-2 text-xs text-[#92958D]">
+        <div className="rounded-3xl border border-[#DCE2E6] bg-white p-8 sm:p-12 shadow-card">
+          <h1 className="text-3xl font-extrabold sm:text-4xl text-[#20252B]">Privacy Policy</h1>
+          <p className="mt-2 text-xs text-[#66727D]">
             Effective Date: January 1, 2026 • Last Updated: November 2026
           </p>
 
-          <div className="mt-8 space-y-6 text-xs sm:text-sm leading-relaxed text-[#73786E]">
+          <div className="mt-8 space-y-6 text-xs sm:text-sm leading-relaxed text-[#66727D]">
             <section>
-              <h2 className="text-base font-bold text-[#263126]">1. Introduction & Overview</h2>
+              <h2 className="text-base font-bold text-[#20252B]">1. Introduction & Overview</h2>
               <p className="mt-2">
                 FORT Learning ("we", "our", or "us"), operating at FORTLEARNING.COM, is committed to
                 protecting the personal information and academic data of our candidates and users.
@@ -27,7 +27,7 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#263126]">2. Information We Collect</h2>
+              <h2 className="text-base font-bold text-[#20252B]">2. Information We Collect</h2>
               <p className="mt-2">
                 We collect information strictly necessary to provide authentic examination practice
                 and performance analysis:
@@ -41,7 +41,7 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#263126]">3. Atomic Registration Identifier</h2>
+              <h2 className="text-base font-bold text-[#20252B]">3. Atomic Registration Identifier</h2>
               <p className="mt-2">
                 Upon account creation, the platform generates a unique, immutable registration number
                 (e.g., FORT-26-XXXXXX) using an atomic database sequence. This identifier is used to
@@ -51,7 +51,7 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#263126]">4. Data Protection & Security</h2>
+              <h2 className="text-base font-bold text-[#20252B]">4. Data Protection & Security</h2>
               <p className="mt-2">
                 We enforce PostgreSQL Row Level Security (RLS) on all user-facing database tables.
                 Candidates can only read and modify their own attempts, bookmarks, and purchases.
@@ -60,7 +60,7 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#263126]">5. Account Deletion & Rights</h2>
+              <h2 className="text-base font-bold text-[#20252B]">5. Account Deletion & Rights</h2>
               <p className="mt-2">
                 Candidates possess the right to export their attempt history or request complete
                 account deletion. Deletion requests permanently erase personal profiles, past attempts,

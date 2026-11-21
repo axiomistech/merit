@@ -12,14 +12,14 @@ export default function BookmarksPage() {
   return (
     <div className="space-y-8 max-w-7xl mx-auto">
       {/* Header */}
-      <div className="border-b border-[#ECEAE4] pb-6">
-        <span className="text-xs font-semibold uppercase tracking-wider text-[#758B62]">
+      <div className="border-b border-[#DCE2E6] pb-6">
+        <span className="text-xs font-semibold uppercase tracking-wider text-[#20252B]">
           Curated Revision
         </span>
-        <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold text-[#263126] font-serif">
+        <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold text-[#20252B] font-serif">
           Saved Question Bookmarks
         </h1>
-        <p className="mt-1 text-xs sm:text-sm text-[#73786E]">
+        <p className="mt-1 text-xs sm:text-sm text-[#66727D]">
           Questions flagged during practice sessions or timed simulations for focused conceptual review.
         </p>
       </div>
@@ -28,24 +28,24 @@ export default function BookmarksPage() {
         {bookmarked.map((q) => (
           <div
             key={q.id}
-            className="rounded-2xl border border-[#E6E5DE] bg-white p-6 shadow-[0_2px_8px_rgba(38,49,38,0.04)] space-y-4"
+            className="rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-[0_2px_8px_rgba(38,49,38,0.04)] space-y-4"
           >
             <div className="flex items-center justify-between text-xs">
-              <span className="font-semibold text-[#758B62]">{q.conceptName}</span>
-              <span className="rounded-full bg-[#E9EEE3] px-2.5 py-0.5 text-[#263126] uppercase font-bold text-[10px]">
+              <span className="font-semibold text-[#20252B]">{q.conceptName}</span>
+              <span className="rounded-full bg-[#E9EEF1] px-2.5 py-0.5 text-[#20252B] uppercase font-bold text-[10px]">
                 {q.subjectName}
               </span>
             </div>
 
-            <div className="text-sm text-[#2E332D] leading-relaxed">
+            <div className="text-sm text-[#20252B] leading-relaxed">
               <MathText content={q.text} />
             </div>
 
-            <div className="border-t border-[#ECEAE4] pt-3 flex flex-wrap items-center justify-between gap-3 text-xs">
-              <span className="text-[#92958D]">Saved for conceptual review</span>
+            <div className="border-t border-[#DCE2E6] pt-3 flex flex-wrap items-center justify-between gap-3 text-xs">
+              <span className="text-[#66727D]">Saved for conceptual review</span>
               <Link
                 href="/exam/neet-demo"
-                className="inline-flex items-center gap-1.5 font-bold text-[#758B62] hover:text-[#263126] transition-colors"
+                className="inline-flex items-center gap-1.5 font-bold text-[#20252B] hover:text-[#20252B] transition-colors"
               >
                 <span>Re-attempt Question</span>
                 <ArrowRight className="h-3.5 w-3.5" />

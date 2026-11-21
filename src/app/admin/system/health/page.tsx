@@ -38,8 +38,8 @@ export default function AdminSystemHealthPage() {
   return (
     <div className="space-y-6 max-w-4xl">
       <div>
-        <h1 className="text-2xl font-bold text-[#263126] font-serif">System Health & Subsystem Diagnostics</h1>
-        <p className="mt-1 text-xs text-[#73786E]">
+        <h1 className="text-2xl font-bold text-[#20252B] font-serif">System Health & Subsystem Diagnostics</h1>
+        <p className="mt-1 text-xs text-[#66727D]">
           Live status of database connectivity, payment processing, email services, and exam engines.
         </p>
       </div>
@@ -50,23 +50,23 @@ export default function AdminSystemHealthPage() {
           return (
             <div
               key={idx}
-              className="flex items-start justify-between rounded-2xl border border-[#E6E5DE] bg-white p-5 shadow-[0_2px_8px_rgba(38,49,38,0.04)]"
+              className="flex items-start justify-between rounded-2xl border border-[#DCE2E6] bg-white p-5 shadow-[0_2px_8px_rgba(38,49,38,0.04)]"
             >
               <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#E9EEE3] text-[#758B62]">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#E9EEF1] text-[#20252B]">
                   <Icon className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-[#263126]">{sub.name}</h3>
-                  <p className="mt-1 text-xs text-[#73786E]">{sub.detail}</p>
+                  <h3 className="text-sm font-bold text-[#20252B]">{sub.name}</h3>
+                  <p className="mt-1 text-xs text-[#66727D]">{sub.detail}</p>
                 </div>
               </div>
 
               <div className="text-right">
-                <span className="rounded-full bg-[#E9EEE3] px-2.5 py-0.5 text-[10px] font-bold text-[#758B62] uppercase">
+                <span className="rounded-full bg-[#E9EEF1] px-2.5 py-0.5 text-[10px] font-bold text-[#20252B] uppercase">
                   {sub.status}
                 </span>
-                <div className="mt-1 font-mono text-[10px] text-[#92958D]">{sub.latency}</div>
+                <div className="mt-1 font-mono text-[10px] text-[#66727D]">{sub.latency}</div>
               </div>
             </div>
           );

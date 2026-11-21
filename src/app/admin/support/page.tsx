@@ -136,8 +136,8 @@ export default function AdminSupportPage() {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[#263126] font-serif">Support Helpdesk & Triage</h1>
-          <p className="mt-1 text-xs text-[#73786E]">
+          <h1 className="text-2xl font-bold text-[#20252B] font-serif">Support Helpdesk & Triage</h1>
+          <p className="mt-1 text-xs text-[#66727D]">
             Resolve student inquiry tickets, question errors, payment claims, and OMR discrepancy reports.
           </p>
         </div>
@@ -145,49 +145,49 @@ export default function AdminSupportPage() {
 
       {/* Metrics */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="rounded-2xl border border-[#E6E5DE] bg-white p-5 shadow-[0_2px_8px_rgba(38,49,38,0.04)]">
-          <div className="text-[11px] font-semibold text-[#73786E] uppercase tracking-wider">Open Tickets</div>
-          <div className="mt-1 text-2xl font-bold font-mono text-[#E8412C]">
+        <div className="rounded-2xl border border-[#DCE2E6] bg-white p-5 shadow-[0_2px_8px_rgba(38,49,38,0.04)]">
+          <div className="text-[11px] font-semibold text-[#66727D] uppercase tracking-wider">Open Tickets</div>
+          <div className="mt-1 text-2xl font-bold font-mono text-[#E4002B]">
             {tickets.filter((t) => t.status === 'open' || t.status === 'new').length}
           </div>
-          <div className="text-[10px] text-[#73786E] mt-0.5">Require initial triage</div>
+          <div className="text-[10px] text-[#66727D] mt-0.5">Require initial triage</div>
         </div>
 
-        <div className="rounded-2xl border border-[#E6E5DE] bg-white p-5 shadow-[0_2px_8px_rgba(38,49,38,0.04)]">
-          <div className="text-[11px] font-semibold text-[#73786E] uppercase tracking-wider">In Progress</div>
-          <div className="mt-1 text-2xl font-bold font-mono text-[#263126]">
+        <div className="rounded-2xl border border-[#DCE2E6] bg-white p-5 shadow-[0_2px_8px_rgba(38,49,38,0.04)]">
+          <div className="text-[11px] font-semibold text-[#66727D] uppercase tracking-wider">In Progress</div>
+          <div className="mt-1 text-2xl font-bold font-mono text-[#20252B]">
             {tickets.filter((t) => t.status === 'in_progress').length}
           </div>
-          <div className="text-[10px] text-[#73786E] mt-0.5">Under staff evaluation</div>
+          <div className="text-[10px] text-[#66727D] mt-0.5">Under staff evaluation</div>
         </div>
 
-        <div className="rounded-2xl border border-[#E6E5DE] bg-white p-5 shadow-[0_2px_8px_rgba(38,49,38,0.04)]">
-          <div className="text-[11px] font-semibold text-[#73786E] uppercase tracking-wider">Avg Response Time</div>
-          <div className="mt-1 text-2xl font-bold font-mono text-[#263126]">18 mins</div>
-          <div className="text-[10px] text-[#73786E] mt-0.5">Within 2h SLA standard</div>
+        <div className="rounded-2xl border border-[#DCE2E6] bg-white p-5 shadow-[0_2px_8px_rgba(38,49,38,0.04)]">
+          <div className="text-[11px] font-semibold text-[#66727D] uppercase tracking-wider">Avg Response Time</div>
+          <div className="mt-1 text-2xl font-bold font-mono text-[#20252B]">18 mins</div>
+          <div className="text-[10px] text-[#66727D] mt-0.5">Within 2h SLA standard</div>
         </div>
 
-        <div className="rounded-2xl border border-[#E6E5DE] bg-white p-5 shadow-[0_2px_8px_rgba(38,49,38,0.04)]">
-          <div className="text-[11px] font-semibold text-[#73786E] uppercase tracking-wider">Resolution Rate</div>
+        <div className="rounded-2xl border border-[#DCE2E6] bg-white p-5 shadow-[0_2px_8px_rgba(38,49,38,0.04)]">
+          <div className="text-[11px] font-semibold text-[#66727D] uppercase tracking-wider">Resolution Rate</div>
           <div className="mt-1 text-2xl font-bold font-mono text-[#3B4C30]">96.4%</div>
-          <div className="text-[10px] text-[#73786E] mt-0.5">Candidate satisfaction</div>
+          <div className="text-[10px] text-[#66727D] mt-0.5">Candidate satisfaction</div>
         </div>
       </div>
 
       {/* Filters */}
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#E6E5DE] bg-white p-4 shadow-[0_2px_8px_rgba(38,49,38,0.04)]">
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#DCE2E6] bg-white p-4 shadow-[0_2px_8px_rgba(38,49,38,0.04)]">
         <div className="relative flex-1 min-w-[260px]">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[#73786E]" />
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[#66727D]" />
           <input
             type="text"
             placeholder="Search ticket #, student name, registration ID, or subject..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full rounded-xl border border-[#E6E5DE] bg-[#F7F5EF] pl-10 pr-4 py-2 text-xs text-[#263126] placeholder-[#A3A89E] focus:outline-none focus:border-[#9CAF88]"
+            className="w-full rounded-xl border border-[#DCE2E6] bg-[#F1F3F4] pl-10 pr-4 py-2 text-xs text-[#20252B] placeholder-[#A3A89E] focus:outline-none focus:border-[#9CC6E0]"
           />
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-xs text-[#73786E]">Status:</span>
+          <span className="text-xs text-[#66727D]">Status:</span>
           {['all', 'new', 'open', 'in_progress', 'resolved'].map((st) => (
             <button
               key={st}
@@ -195,8 +195,8 @@ export default function AdminSupportPage() {
               className={cn(
                 'px-3 py-1.5 text-xs font-medium rounded-lg border capitalize transition-colors',
                 statusFilter === st
-                  ? 'bg-[#263126] text-white border-[#263126]'
-                  : 'bg-white text-[#52584E] border-[#E6E5DE] hover:bg-[#F7F5EF]'
+                  ? 'bg-[#20252B] text-white border-[#20252B]'
+                  : 'bg-white text-[#52584E] border-[#DCE2E6] hover:bg-[#F1F3F4]'
               )}
             >
               {st}
@@ -206,10 +206,10 @@ export default function AdminSupportPage() {
       </div>
 
       {/* Tickets Table */}
-      <div className="rounded-2xl border border-[#E6E5DE] bg-white shadow-[0_2px_8px_rgba(38,49,38,0.04)] overflow-hidden">
+      <div className="rounded-2xl border border-[#DCE2E6] bg-white shadow-[0_2px_8px_rgba(38,49,38,0.04)] overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="border-b border-[#E6E5DE] bg-[#F7F5EF] text-[#73786E]">
+            <thead className="border-b border-[#DCE2E6] bg-[#F1F3F4] text-[#66727D]">
               <tr>
                 <th className="p-4 font-semibold">Ticket #</th>
                 <th className="p-4 font-semibold">Student & ID</th>
@@ -220,17 +220,17 @@ export default function AdminSupportPage() {
                 <th className="p-4 font-semibold text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#ECEAE4]">
+            <tbody className="divide-y divide-[#DCE2E6]">
               {filteredTickets.map((t) => (
-                <tr key={t.id} className="hover:bg-[#F7F5EF]/60 transition-colors">
-                  <td className="p-4 font-mono font-bold text-[#263126]">{t.ticket_number}</td>
+                <tr key={t.id} className="hover:bg-[#F1F3F4]/60 transition-colors">
+                  <td className="p-4 font-mono font-bold text-[#20252B]">{t.ticket_number}</td>
                   <td className="p-4">
-                    <div className="font-semibold text-[#263126]">{t.student_name}</div>
-                    <div className="font-mono text-[10px] text-[#73786E]">{t.student_registration_id}</div>
+                    <div className="font-semibold text-[#20252B]">{t.student_name}</div>
+                    <div className="font-mono text-[10px] text-[#66727D]">{t.student_registration_id}</div>
                   </td>
                   <td className="p-4 max-w-sm">
-                    <div className="font-semibold text-[#263126] truncate">{t.subject}</div>
-                    <div className="text-[10px] font-mono uppercase text-[#73786E] mt-0.5">
+                    <div className="font-semibold text-[#20252B] truncate">{t.subject}</div>
+                    <div className="text-[10px] font-mono uppercase text-[#66727D] mt-0.5">
                       {t.category.replace('_', ' ')}
                     </div>
                   </td>
@@ -238,10 +238,10 @@ export default function AdminSupportPage() {
                     <span
                       className={cn(
                         'inline-block px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider',
-                        t.priority === 'urgent' && 'bg-[#E8412C]/15 text-[#E8412C]',
+                        t.priority === 'urgent' && 'bg-[#E4002B]/15 text-[#E4002B]',
                         t.priority === 'high' && 'bg-amber-100 text-amber-800',
-                        t.priority === 'normal' && 'bg-[#9CAF88]/20 text-[#3B4C30]',
-                        t.priority === 'low' && 'bg-[#73786E]/15 text-[#73786E]'
+                        t.priority === 'normal' && 'bg-[#9CC6E0]/20 text-[#3B4C30]',
+                        t.priority === 'low' && 'bg-[#66727D]/15 text-[#66727D]'
                       )}
                     >
                       {t.priority}
@@ -251,7 +251,7 @@ export default function AdminSupportPage() {
                     <span
                       className={cn(
                         'inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider',
-                        t.status === 'resolved' && 'bg-[#9CAF88]/20 text-[#3B4C30]',
+                        t.status === 'resolved' && 'bg-[#9CC6E0]/20 text-[#3B4C30]',
                         t.status === 'in_progress' && 'bg-blue-100 text-blue-800',
                         t.status === 'waiting_for_student' && 'bg-purple-100 text-purple-800',
                         (t.status === 'new' || t.status === 'open') && 'bg-amber-100 text-amber-800'
@@ -260,13 +260,13 @@ export default function AdminSupportPage() {
                       {t.status.replace('_', ' ')}
                     </span>
                   </td>
-                  <td className="p-4 font-mono text-[11px] text-[#73786E]">
+                  <td className="p-4 font-mono text-[11px] text-[#66727D]">
                     {t.updated_at.split('T')[0]}
                   </td>
                   <td className="p-4 text-right">
                     <button
                       onClick={() => handleOpenTicket(t)}
-                      className="px-3 py-1.5 rounded-lg border border-[#E6E5DE] text-xs font-semibold text-[#263126] hover:bg-[#F7F5EF] transition-colors"
+                      className="px-3 py-1.5 rounded-lg border border-[#DCE2E6] text-xs font-semibold text-[#20252B] hover:bg-[#F1F3F4] transition-colors"
                     >
                       Open Ticket
                     </button>
@@ -275,7 +275,7 @@ export default function AdminSupportPage() {
               ))}
               {filteredTickets.length === 0 && (
                 <tr>
-                  <td colSpan={7} className="p-12 text-center text-[#73786E]">
+                  <td colSpan={7} className="p-12 text-center text-[#66727D]">
                     No tickets found matching criteria.
                   </td>
                 </tr>
@@ -288,33 +288,33 @@ export default function AdminSupportPage() {
       {/* Ticket Drawer Modal */}
       {selectedTicket && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm overflow-y-auto">
-          <div className="w-full max-w-3xl rounded-2xl border border-[#E6E5DE] bg-white p-6 shadow-2xl my-8 space-y-5">
-            <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-4">
+          <div className="w-full max-w-3xl rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-2xl my-8 space-y-5">
+            <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-4">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="font-mono font-bold text-sm text-[#263126]">
+                  <span className="font-mono font-bold text-sm text-[#20252B]">
                     {selectedTicket.ticket_number}
                   </span>
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-[#F7F5EF] text-[#52584E] border border-[#E6E5DE]">
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-[#F1F3F4] text-[#52584E] border border-[#DCE2E6]">
                     {selectedTicket.category.replace('_', ' ')}
                   </span>
                 </div>
-                <h3 className="text-base font-bold text-[#263126] mt-1">{selectedTicket.subject}</h3>
-                <div className="text-xs text-[#73786E]">
+                <h3 className="text-base font-bold text-[#20252B] mt-1">{selectedTicket.subject}</h3>
+                <div className="text-xs text-[#66727D]">
                   From: {selectedTicket.student_name} ({selectedTicket.student_registration_id}) — {selectedTicket.student_email}
                 </div>
               </div>
               <button
                 onClick={() => setSelectedTicket(null)}
-                className="rounded-lg p-2 text-[#73786E] hover:bg-[#F7F5EF] transition-colors"
+                className="rounded-lg p-2 text-[#66727D] hover:bg-[#F1F3F4] transition-colors"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
 
             {/* Description */}
-            <div className="rounded-xl border border-[#E6E5DE] bg-[#F7F5EF]/50 p-4 text-xs text-[#263126] leading-relaxed">
-              <div className="font-semibold text-[#73786E] text-[10px] uppercase mb-1">Candidate Inquiry:</div>
+            <div className="rounded-xl border border-[#DCE2E6] bg-[#F1F3F4]/50 p-4 text-xs text-[#20252B] leading-relaxed">
+              <div className="font-semibold text-[#66727D] text-[10px] uppercase mb-1">Candidate Inquiry:</div>
               {selectedTicket.description}
             </div>
 
@@ -334,20 +334,20 @@ export default function AdminSupportPage() {
             )}
 
             {/* Staff Reply Box */}
-            <div className="space-y-3 pt-2 border-t border-[#ECEAE4]">
+            <div className="space-y-3 pt-2 border-t border-[#DCE2E6]">
               <div>
-                <label className="block text-xs font-bold text-[#263126] mb-1">Reply to Student</label>
+                <label className="block text-xs font-bold text-[#20252B] mb-1">Reply to Student</label>
                 <textarea
                   rows={3}
                   placeholder="Type official response sent to candidate's registered email..."
                   value={replyText}
                   onChange={(e) => setReplyText(e.target.value)}
-                  className="w-full rounded-xl border border-[#E6E5DE] p-2.5 text-xs text-[#263126] focus:outline-none focus:border-[#9CAF88]"
+                  className="w-full rounded-xl border border-[#DCE2E6] p-2.5 text-xs text-[#20252B] focus:outline-none focus:border-[#9CC6E0]"
                 />
                 <div className="flex justify-end mt-1.5">
                   <button
                     onClick={handleSendReply}
-                    className="flex items-center gap-1.5 px-3 py-1.5 bg-[#263126] text-white text-xs font-semibold rounded-lg hover:bg-[#344034] transition-colors"
+                    className="flex items-center gap-1.5 px-3 py-1.5 bg-[#20252B] text-white text-xs font-semibold rounded-lg hover:bg-[#344034] transition-colors"
                   >
                     <Send className="h-3 w-3" />
                     Send Email Reply
@@ -356,8 +356,8 @@ export default function AdminSupportPage() {
               </div>
 
               {/* Add Staff Note */}
-              <div className="pt-2 border-t border-[#ECEAE4]">
-                <label className="block text-[11px] font-bold text-[#73786E] mb-1">
+              <div className="pt-2 border-t border-[#DCE2E6]">
+                <label className="block text-[11px] font-bold text-[#66727D] mb-1">
                   Add Internal Staff Note
                 </label>
                 <div className="flex gap-2">
@@ -366,11 +366,11 @@ export default function AdminSupportPage() {
                     placeholder="e.g. Verified transaction id on Razorpay portal. Resolved."
                     value={internalNoteText}
                     onChange={(e) => setInternalNoteText(e.target.value)}
-                    className="flex-1 rounded-xl border border-[#E6E5DE] p-2 text-xs text-[#263126] focus:outline-none focus:border-[#9CAF88]"
+                    className="flex-1 rounded-xl border border-[#DCE2E6] p-2 text-xs text-[#20252B] focus:outline-none focus:border-[#9CC6E0]"
                   />
                   <button
                     onClick={handleAddInternalNote}
-                    className="px-3 py-1.5 rounded-xl border border-[#E6E5DE] text-xs font-semibold text-[#263126] hover:bg-[#F7F5EF] transition-colors"
+                    className="px-3 py-1.5 rounded-xl border border-[#DCE2E6] text-xs font-semibold text-[#20252B] hover:bg-[#F1F3F4] transition-colors"
                   >
                     Save Note
                   </button>
@@ -379,11 +379,11 @@ export default function AdminSupportPage() {
             </div>
 
             {/* Modal Actions */}
-            <div className="flex items-center justify-between border-t border-[#ECEAE4] pt-4">
+            <div className="flex items-center justify-between border-t border-[#DCE2E6] pt-4">
               <button
                 type="button"
                 onClick={() => setSelectedTicket(null)}
-                className="px-4 py-2 text-xs font-semibold text-[#52584E] hover:text-[#263126]"
+                className="px-4 py-2 text-xs font-semibold text-[#52584E] hover:text-[#20252B]"
               >
                 Close
               </button>
@@ -391,7 +391,7 @@ export default function AdminSupportPage() {
                 <button
                   type="button"
                   onClick={() => handleResolveTicket(selectedTicket.id)}
-                  className="flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-[#9CAF88] rounded-xl hover:bg-[#8ea07a] transition-colors"
+                  className="flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-[#E4002B] rounded-xl hover:bg-[#C90026] transition-colors"
                 >
                   <CheckCircle2 className="h-4 w-4" />
                   Mark Ticket as Resolved

@@ -161,26 +161,26 @@ export default function PracticeHubPage() {
       />
 
       {/* Page Title & Speed Standard Notice */}
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#ECEAE4] pb-6">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#DCE2E6] pb-6">
         <div>
           <div className="flex items-center gap-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#758B62]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
               Instant Practice Explorer
             </span>
-            <span className="rounded-full bg-[#E9EEE3] px-2 py-0.5 font-mono text-[10px] font-bold text-[#758B62]">
+            <span className="rounded-full bg-[#E9EEF1] px-2 py-0.5 font-mono text-[10px] font-bold text-[#20252B]">
               15-SECOND START
             </span>
           </div>
-          <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold font-serif text-[#263126]">
+          <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold font-serif text-[#20252B]">
             Select Practice: Exam → Subject → Chapter
           </h1>
-          <p className="text-xs text-[#73786E]">
+          <p className="text-xs text-[#66727D]">
             Target high-yield chapters, topic drills, or full previous-year question sets in under 15 seconds.
           </p>
         </div>
 
         {/* Exam Switcher Pills */}
-        <div className="flex items-center gap-2 rounded-full border border-[#E6E5DE] bg-white p-1 shadow-sm">
+        <div className="flex items-center gap-2 rounded-full border border-[#DCE2E6] bg-white p-1 shadow-sm">
           {(['neet', 'jee', 'upsc', 'engineering'] as const).map((ex) => (
             <button
               key={ex}
@@ -188,8 +188,8 @@ export default function PracticeHubPage() {
               className={cn(
                 'rounded-full px-4 py-1.5 text-xs font-bold uppercase transition-all',
                 selectedExam === ex
-                  ? 'bg-[#9CAF88] text-white shadow-sm'
-                  : 'text-[#73786E] hover:text-[#263126]'
+                  ? 'bg-[#9CC6E0] text-[#20252B] shadow-sm'
+                  : 'text-[#66727D] hover:text-[#20252B]'
               )}
             >
               {ex}
@@ -202,7 +202,7 @@ export default function PracticeHubPage() {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
         {/* Left Column: Subjects (4 Cols) */}
         <div className="lg:col-span-4 space-y-3">
-          <div className="text-xs font-bold uppercase tracking-wider text-[#758B62]">
+          <div className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
             1. Select Discipline
           </div>
 
@@ -218,24 +218,24 @@ export default function PracticeHubPage() {
                   className={cn(
                     'flex items-center justify-between rounded-2xl border p-4 cursor-pointer transition-all',
                     isSelected
-                      ? 'border-[#9CAF88] bg-white shadow-md ring-1 ring-[#9CAF88]'
-                      : 'border-[#E6E5DE] bg-[#F7F5EF] hover:bg-white text-[#73786E]'
+                      ? 'border-[#9CC6E0] bg-white shadow-md ring-1 ring-[#9CC6E0]'
+                      : 'border-[#DCE2E6] bg-[#F1F3F4] hover:bg-white text-[#66727D]'
                   )}
                 >
                   <div className="flex items-center gap-3">
                     <div
                       className={cn(
                         'flex h-10 w-10 items-center justify-center rounded-xl transition-colors',
-                        isSelected ? 'bg-[#9CAF88] text-white' : 'bg-[#E9EEE3] text-[#758B62]'
+                        isSelected ? 'bg-[#9CC6E0] text-[#20252B]' : 'bg-[#E9EEF1] text-[#20252B]'
                       )}
                     >
                       <BookOpen className="h-5 w-5" />
                     </div>
                     <div>
-                      <h3 className="text-sm font-bold text-[#263126] font-serif">
+                      <h3 className="text-sm font-bold text-[#20252B] font-serif">
                         {sub.subjectName}
                       </h3>
-                      <p className="text-[11px] text-[#73786E]">
+                      <p className="text-[11px] text-[#66727D]">
                         {sub.units.length} Units • {totalChapters} Chapters
                       </p>
                     </div>
@@ -244,7 +244,7 @@ export default function PracticeHubPage() {
                   <ChevronRight
                     className={cn(
                       'h-4 w-4 transition-transform',
-                      isSelected ? 'text-[#758B62] translate-x-1' : 'text-[#92958D]'
+                      isSelected ? 'text-[#20252B] translate-x-1' : 'text-[#66727D]'
                     )}
                   />
                 </div>
@@ -253,7 +253,7 @@ export default function PracticeHubPage() {
           </div>
 
           {/* Quick Mock Shortcut Card */}
-          <div className="rounded-[24px] bg-[#9CAF88] p-6 text-white shadow-md mt-6 space-y-3">
+          <div className="rounded-[24px] bg-[#9CC6E0] p-6 text-[#20252B] shadow-md mt-6 space-y-3">
             <span className="text-[10px] font-bold uppercase tracking-widest text-white/80">
               FAST-TRACK MOCK
             </span>
@@ -265,7 +265,7 @@ export default function PracticeHubPage() {
             </p>
             <Link
               href="/exam/neet-demo"
-              className="inline-flex items-center gap-2 rounded-full bg-[#E8412C] px-5 py-2.5 text-xs font-bold text-white shadow-md shadow-[#E8412C]/30 hover:bg-[#d03521] transition-all"
+              className="inline-flex items-center gap-2 rounded-full bg-[#E4002B] px-5 py-2.5 text-xs font-bold text-white shadow-md shadow-[#E4002B]/30 hover:bg-[#C90026] transition-all"
             >
               <span>Launch Mock Test</span>
               <Play className="h-3.5 w-3.5 fill-current" />
@@ -276,19 +276,19 @@ export default function PracticeHubPage() {
         {/* Right Column: Units & Chapters Drill-Down (8 Cols) */}
         <div className="lg:col-span-8 space-y-6">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <div className="text-xs font-bold uppercase tracking-wider text-[#758B62]">
+            <div className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
               2. Select Chapter in {currentSubject.subjectName}
             </div>
 
             {/* Quick Search filter */}
             <div className="relative">
-              <Search className="absolute left-3 top-2.5 h-3.5 w-3.5 text-[#92958D]" />
+              <Search className="absolute left-3 top-2.5 h-3.5 w-3.5 text-[#66727D]" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Filter chapters..."
-                className="rounded-full border border-[#E6E5DE] bg-white py-1.5 pl-8 pr-3 text-xs text-[#263126] focus:border-[#9CAF88] focus:outline-none"
+                className="rounded-full border border-[#DCE2E6] bg-white py-1.5 pl-8 pr-3 text-xs text-[#20252B] focus:border-[#9CC6E0] focus:outline-none"
               />
             </div>
           </div>
@@ -305,8 +305,8 @@ export default function PracticeHubPage() {
               return (
                 <div key={unit.unitName} className="space-y-3">
                   <div className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#758B62]" />
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-[#263126]">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#20252B]" />
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
                       Unit: {unit.unitName}
                     </h4>
                   </div>
@@ -315,25 +315,25 @@ export default function PracticeHubPage() {
                     {filteredChapters.map((chapter) => (
                       <div
                         key={chapter.id}
-                        className="rounded-2xl border border-[#E6E5DE] bg-white p-5 shadow-sm hover:border-[#9CAF88] transition-all flex flex-col justify-between space-y-4"
+                        className="rounded-2xl border border-[#DCE2E6] bg-white p-5 shadow-sm hover:border-[#9CC6E0] transition-all flex flex-col justify-between space-y-4"
                       >
                         <div>
                           <div className="flex items-center justify-between">
-                            <span className="rounded-full bg-[#E9EEE3] px-2.5 py-0.5 text-[10px] font-bold text-[#758B62]">
+                            <span className="rounded-full bg-[#E9EEF1] px-2.5 py-0.5 text-[10px] font-bold text-[#20252B]">
                               {chapter.level}
                             </span>
                             {chapter.hasPyqs && (
-                              <span className="text-[10px] font-semibold text-[#92958D]">
+                              <span className="text-[10px] font-semibold text-[#66727D]">
                                 Includes PYQs
                               </span>
                             )}
                           </div>
 
-                          <h5 className="mt-2 text-sm font-bold text-[#263126] font-serif leading-snug">
+                          <h5 className="mt-2 text-sm font-bold text-[#20252B] font-serif leading-snug">
                             {chapter.name}
                           </h5>
 
-                          <div className="mt-2 flex items-center gap-3 text-xs text-[#73786E]">
+                          <div className="mt-2 flex items-center gap-3 text-xs text-[#66727D]">
                             <span>{chapter.questionCount} Questions</span>
                             <span>•</span>
                             <span className="flex items-center gap-1">
@@ -344,14 +344,14 @@ export default function PracticeHubPage() {
                         </div>
 
                         {/* Direct 1-Click Launch Button */}
-                        <div className="pt-2 border-t border-[#ECEAE4] flex items-center justify-between">
-                          <span className="text-[11px] text-[#758B62] font-semibold">
+                        <div className="pt-2 border-t border-[#DCE2E6] flex items-center justify-between">
+                          <span className="text-[11px] text-[#20252B] font-semibold">
                             Free Practice
                           </span>
 
                           <button
                             onClick={() => handleLaunchConfig(currentSubject.subjectName, chapter)}
-                            className="inline-flex items-center gap-1.5 rounded-full bg-[#E8412C] px-4 py-1.5 text-xs font-bold text-white shadow-sm hover:bg-[#d03521] transition-all hover:translate-y-[-1px]"
+                            className="inline-flex items-center gap-1.5 rounded-full bg-[#E4002B] px-4 py-1.5 text-xs font-bold text-white shadow-sm hover:bg-[#C90026] transition-all hover:translate-y-[-1px]"
                           >
                             <span>Configure & Start</span>
                             <Play className="h-3 w-3 fill-current" />

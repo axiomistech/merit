@@ -49,8 +49,8 @@ export function generateOmrPdf(input: GenerateOmrPdfInput): jsPDF {
 
   // Color constants matching the reference
   const redBorder = [212, 93, 76]; // #D45D4C - Thin reddish border
-  const sageHeader = [220, 229, 211]; // #DCE5D3 - Light sage section headers
-  const darkForest = [38, 49, 38]; // #263126 - Text
+  const sageHeader = [220, 229, 211]; // #D7E7F2 - Light sage section headers
+  const darkForest = [38, 49, 38]; // #20252B - Text
   const graphiteBlack = [17, 17, 17]; // #111111 - Filled bubble graphite fill
 
   // Formatted numeric roll number (10 digits)

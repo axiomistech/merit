@@ -46,31 +46,31 @@ export default function HomePage() {
   };
 
   return (
-    <div className="relative overflow-hidden bg-[#F7F5EF] text-[#2E332D]">
+    <div className="relative overflow-hidden bg-[#F1F3F4] text-[#20252B]">
       {/* ==================================================================== */}
-      {/* SECTION 1: HERO CONTAINER (EXACT SORREL TRATTORIA DESIGN LANGUAGE) */}
+      {/* SECTION 1: HERO CONTAINER (POLAR WHITE + GLACIER BLUE + RACING RED) */}
       {/* ==================================================================== */}
-      <section className="mx-auto max-w-7xl px-4 pt-6 pb-14 sm:px-6 lg:px-8">
-        <div className="relative rounded-[32px] bg-[#9CAF88] p-8 sm:p-12 lg:p-16 text-white shadow-[0_12px_40px_rgba(156,175,136,0.3)] overflow-hidden">
+      <section className="mx-auto max-w-7xl px-4 pt-6 pb-12 sm:px-6 lg:px-8">
+        <div className="relative rounded-[32px] bg-[#9CC6E0] p-8 sm:p-12 lg:p-16 text-[#20252B] shadow-[0_12px_40px_rgba(156,198,224,0.35)] overflow-hidden">
           {/* Subtle ambient lighting */}
-          <div className="pointer-events-none absolute -right-20 -top-20 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
+          <div className="pointer-events-none absolute -right-20 -top-20 h-96 w-96 rounded-full bg-white/25 blur-3xl" />
 
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center">
             {/* Left Content (7 Cols) */}
             <div className="lg:col-span-7 space-y-6">
               {/* Overline with line */}
-              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-white/90">
-                <span className="h-px w-6 bg-white/60" />
-                <span>EXAMINATION INFRASTRUCTURE • BROOKLYN & BENGALURU</span>
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#20252B]/80">
+                <span className="h-px w-6 bg-[#20252B]/40" />
+                <span>EXAMINATION INFRASTRUCTURE • DIGITAL SIMULATION</span>
               </div>
 
-              {/* Editorial Serif Statement Headline with Tomato Red Brush Underline */}
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold font-serif tracking-tight leading-[1.08] text-white">
+              {/* Editorial Serif Statement Headline with Racing Red Brush Underline */}
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold font-serif tracking-tight leading-[1.08] text-[#20252B]">
                 Preparation worth{' '}
                 <span className="relative inline-block italic">
                   mastering.
                   <svg
-                    className="absolute -bottom-2 left-0 w-full text-[#E8412C] overflow-visible"
+                    className="absolute -bottom-2 left-0 w-full text-[#E4002B] overflow-visible"
                     viewBox="0 0 100 12"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -87,37 +87,37 @@ export default function HomePage() {
               </h1>
 
               {/* Subtitle */}
-              <p className="max-w-xl text-base sm:text-lg leading-relaxed text-white/90 font-medium">
+              <p className="max-w-xl text-base sm:text-lg leading-relaxed text-[#20252B]/90 font-medium">
                 Engineered from first principles. Real 180-question physical OMR sheets, server-authoritative timers, and transparent ₹10 economics. Walk-ins welcome if you are brave.
               </p>
 
-              {/* CTAs matching the user flow */}
+              {/* CTAs matching the brand balance: Red Primary CTA, White Outline Secondary */}
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <Link
                   href="/signup"
-                  className="rounded-full bg-[#E8412C] px-8 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#E8412C]/30 hover:bg-[#d03521] transition-all hover:translate-y-[-1px]"
+                  className="rounded-xl bg-[#E4002B] px-8 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#E4002B]/30 hover:bg-[#C90026] transition-all hover:translate-y-[-1px]"
                 >
                   Start Practicing
                 </Link>
                 <Link
                   href="#exams"
-                  className="rounded-full border border-white/60 bg-white/10 backdrop-blur-sm px-8 py-3.5 text-sm font-semibold text-white hover:bg-white/20 transition-all"
+                  className="rounded-xl border border-[#20252B]/20 bg-white/80 backdrop-blur-sm px-8 py-3.5 text-sm font-semibold text-[#20252B] hover:bg-white transition-all shadow-sm"
                 >
                   Explore Exams
                 </Link>
               </div>
             </div>
 
-            {/* Right Simulation Widget (5 Cols - Floating White Card matching reference) */}
+            {/* Right Simulation Widget (5 Cols - Floating Pure White Card) */}
             <div className="lg:col-span-5">
-              <div className="rounded-[28px] bg-white p-6 sm:p-7 text-[#263126] shadow-[0_20px_50px_rgba(38,49,38,0.2)] border border-white/80 space-y-5">
+              <div className="rounded-[28px] bg-white p-6 sm:p-7 text-[#20252B] shadow-[0_20px_50px_rgba(32,37,43,0.12)] border border-[#DCE2E6] space-y-5">
                 {/* Header */}
-                <div className="flex items-center justify-between text-xs font-semibold border-b border-[#ECEAE4] pb-4">
+                <div className="flex items-center justify-between text-xs font-semibold border-b border-[#DCE2E6] pb-4">
                   <div>
-                    <h3 className="text-base font-bold text-[#263126]">Tonight's Session</h3>
-                    <p className="text-[11px] text-[#73786E]">FORT Candidate #FORT-26-000001</p>
+                    <h3 className="text-base font-bold text-[#20252B]">Tonight's Session</h3>
+                    <p className="text-[11px] text-[#66727D]">FORT Candidate #FORT-26-000001</p>
                   </div>
-                  <div className="rounded-full bg-[#F7F5EF] border border-[#E6E5DE] px-3 py-1 text-[11px] text-[#73786E]">
+                  <div className="rounded-full bg-[#F1F3F4] border border-[#DCE2E6] px-3 py-1 text-[11px] text-[#66727D]">
                     Party of 1 • Solo Mock
                   </div>
                 </div>
@@ -139,10 +139,10 @@ export default function HomePage() {
                       className={cn(
                         'rounded-xl border p-2 flex flex-col items-center justify-center transition-all',
                         slot.current
-                          ? 'border-[#9CAF88] bg-[#E9EEE3] font-bold text-[#263126]'
+                          ? 'border-[#9CC6E0] bg-[#9CC6E0]/30 font-bold text-[#20252B]'
                           : slot.filled
-                          ? 'border-[#E6E5DE] bg-[#F7F5EF] text-[#92958D]'
-                          : 'border-[#E6E5DE] bg-white text-[#73786E]'
+                          ? 'border-[#DCE2E6] bg-[#F1F3F4] text-[#66727D]'
+                          : 'border-[#DCE2E6] bg-white text-[#20252B]'
                       )}
                     >
                       <span className="font-mono text-[11px] font-bold">{slot.time}</span>
@@ -153,15 +153,15 @@ export default function HomePage() {
                   ))}
                 </div>
 
-                {/* Summary Row with Tomato Red Action Pill */}
+                {/* Summary Row with Racing Red Action Pill */}
                 <div className="flex items-center justify-between pt-2">
-                  <div className="text-xs text-[#73786E]">
-                    <strong className="text-[#263126]">36 parties ahead</strong> in mock queue
+                  <div className="text-xs text-[#66727D]">
+                    <strong className="text-[#20252B]">36 parties ahead</strong> in mock queue
                   </div>
 
                   <Link
                     href="/exam/neet-demo"
-                    className="inline-flex items-center gap-1.5 rounded-full bg-[#E8412C] px-5 py-2 text-xs font-bold text-white shadow-md shadow-[#E8412C]/20 hover:bg-[#d03521] transition-all"
+                    className="inline-flex items-center gap-1.5 rounded-xl bg-[#E4002B] px-5 py-2 text-xs font-bold text-white shadow-md shadow-[#E4002B]/20 hover:bg-[#C90026] transition-all"
                   >
                     <Clock className="h-3.5 w-3.5" />
                     <span>Waitlist • 200 min</span>
@@ -174,39 +174,39 @@ export default function HomePage() {
       </section>
 
       {/* ==================================================================== */}
-      {/* SECTION 2: THE SYLLABUS, SHORT AND DEEP (MATCHING "THE MENU, SHORT & LOUD") */}
+      {/* SECTION 2: THE SYLLABUS, SHORT AND DEEP */}
       {/* ==================================================================== */}
-      <section id="exams" className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <section id="exams" className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <div className="text-xs font-bold uppercase tracking-wider text-[#758B62]">
+          <div className="text-xs font-bold uppercase tracking-wider text-[#66727D]">
             CURRICULA
           </div>
-          <h2 className="mt-1 text-3xl font-extrabold font-serif text-[#263126] sm:text-4xl">
+          <h2 className="mt-1 text-3xl font-extrabold font-serif text-[#20252B] sm:text-4xl">
             The syllabus, short and deep.
           </h2>
-          <p className="mt-1 text-sm text-[#73786E]">
+          <p className="mt-1 text-sm text-[#66727D]">
             Five distinct competitive programs built around concepts, timed simulations, and real scoring rules.
           </p>
         </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {/* Card 1: NEET (UG) */}
-          <div className="group rounded-[24px] border border-[#E6E5DE] bg-white p-6 shadow-sm hover:border-[#9CAF88] transition-all flex flex-col justify-between">
+          <div className="group rounded-[24px] border border-[#DCE2E6] bg-white p-6 shadow-sm hover:border-[#9CC6E0] transition-all flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between">
-                <span className="rounded-full bg-[#E8412C] px-3 py-1 text-[10px] font-bold text-white uppercase tracking-wider">
+                <span className="rounded-full bg-[#E4002B] px-3 py-1 text-[10px] font-bold text-white uppercase tracking-wider">
                   Most Attempted
                 </span>
-                <span className="font-mono text-xs font-bold text-[#263126]">₹0 Free</span>
+                <span className="font-mono text-xs font-bold text-[#20252B]">₹0 Free</span>
               </div>
-              <h3 className="mt-4 text-xl font-bold font-serif text-[#263126]">NEET (UG) Medical</h3>
-              <p className="mt-1 text-xs text-[#73786E] leading-relaxed">
+              <h3 className="mt-4 text-xl font-bold font-serif text-[#20252B]">NEET (UG) Medical</h3>
+              <p className="mt-1 text-xs text-[#66727D] leading-relaxed">
                 Physics, Chemistry, Botany, Zoology. Exact 180 questions with +4 / -1 scoring and live physical OMR grid.
               </p>
             </div>
             <Link
               href="/neet"
-              className="mt-6 flex items-center justify-between text-xs font-bold text-[#758B62] group-hover:text-[#263126]"
+              className="mt-6 flex items-center justify-between text-xs font-bold text-[#20252B] group-hover:text-[#E4002B] transition-colors"
             >
               <span>Explore NEET Blueprint</span>
               <ArrowRight className="h-4 w-4" />
@@ -214,22 +214,22 @@ export default function HomePage() {
           </div>
 
           {/* Card 2: JEE Main */}
-          <div className="group rounded-[24px] border border-[#E6E5DE] bg-white p-6 shadow-sm hover:border-[#9CAF88] transition-all flex flex-col justify-between">
+          <div className="group rounded-[24px] border border-[#DCE2E6] bg-white p-6 shadow-sm hover:border-[#9CC6E0] transition-all flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between">
-                <span className="rounded-full bg-[#E8412C] px-3 py-1 text-[10px] font-bold text-white uppercase tracking-wider">
+                <span className="rounded-full bg-[#9CC6E0]/30 px-3 py-1 text-[10px] font-bold text-[#20252B] uppercase tracking-wider">
                   Popular
                 </span>
-                <span className="font-mono text-xs font-bold text-[#263126]">₹10 / mock</span>
+                <span className="font-mono text-xs font-bold text-[#20252B]">₹10 / mock</span>
               </div>
-              <h3 className="mt-4 text-xl font-bold font-serif text-[#263126]">JEE Main Engineering</h3>
-              <p className="mt-1 text-xs text-[#73786E] leading-relaxed">
+              <h3 className="mt-4 text-xl font-bold font-serif text-[#20252B]">JEE Main Engineering</h3>
+              <p className="mt-1 text-xs text-[#66727D] leading-relaxed">
                 Physics, Chemistry, Mathematics. Section A (MCQs) + Section B (Numerical value questions with tolerances).
               </p>
             </div>
             <Link
               href="/jee-main"
-              className="mt-6 flex items-center justify-between text-xs font-bold text-[#758B62] group-hover:text-[#263126]"
+              className="mt-6 flex items-center justify-between text-xs font-bold text-[#20252B] group-hover:text-[#E4002B] transition-colors"
             >
               <span>Explore JEE Main CBT</span>
               <ArrowRight className="h-4 w-4" />
@@ -237,47 +237,47 @@ export default function HomePage() {
           </div>
 
           {/* Card 3: JEE Advanced */}
-          <div className="group rounded-[24px] border border-[#E6E5DE] bg-white p-6 shadow-sm hover:border-[#9CAF88] transition-all flex flex-col justify-between">
+          <div className="group rounded-[24px] border border-[#DCE2E6] bg-white p-6 shadow-sm hover:border-[#9CC6E0] transition-all flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between">
-                <span className="rounded-full bg-[#E9EEE3] px-3 py-1 text-[10px] font-bold text-[#758B62] uppercase tracking-wider">
+                <span className="rounded-full bg-[#9CC6E0]/30 px-3 py-1 text-[10px] font-bold text-[#20252B] uppercase tracking-wider">
                   Partial Marking
                 </span>
-                <span className="font-mono text-xs font-bold text-[#263126]">₹10 / mock</span>
+                <span className="font-mono text-xs font-bold text-[#20252B]">₹10 / mock</span>
               </div>
-              <h3 className="mt-4 text-xl font-bold font-serif text-[#263126]">JEE Advanced IIT</h3>
-              <p className="mt-1 text-xs text-[#73786E] leading-relaxed">
+              <h3 className="mt-4 text-xl font-bold font-serif text-[#20252B]">JEE Advanced IIT</h3>
+              <p className="mt-1 text-xs text-[#66727D] leading-relaxed">
                 Multi-correct options (+4/+3/+2/+1/-2), matrix matching, and stem questions. Strict partial marking engine.
               </p>
             </div>
             <Link
               href="/jee-advanced"
-              className="mt-6 flex items-center justify-between text-xs font-bold text-[#758B62] group-hover:text-[#263126]"
+              className="mt-6 flex items-center justify-between text-xs font-bold text-[#20252B] group-hover:text-[#E4002B] transition-colors"
             >
               <span>Explore IIT Rigor</span>
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 
-          {/* Card 4: Verified Rating Card (Matching "4.8 ★★★★★" block in Sorrel Trattoria) */}
-          <div className="rounded-[24px] border border-[#E6E5DE] bg-[#F7F5EF] p-6 flex flex-col justify-between">
+          {/* Card 4: Verified Rating Card */}
+          <div className="rounded-[24px] border border-[#DCE2E6] bg-white p-6 flex flex-col justify-between shadow-sm">
             <div>
               <div className="flex items-baseline gap-2">
-                <span className="text-4xl font-extrabold font-serif text-[#263126]">4.9</span>
-                <div className="flex text-[#E8412C]">
+                <span className="text-4xl font-extrabold font-serif text-[#20252B]">4.9</span>
+                <div className="flex text-[#E4002B]">
                   {'★★★★★'.split('').map((s, i) => (
                     <span key={i} className="text-sm">★</span>
                   ))}
                 </div>
               </div>
-              <div className="mt-1 text-xs font-semibold text-[#73786E]">
+              <div className="mt-1 text-xs font-semibold text-[#66727D]">
                 3,890 Evaluated Test Attempts
               </div>
-              <p className="mt-3 text-xs text-[#73786E] leading-relaxed">
+              <p className="mt-3 text-xs text-[#66727D] leading-relaxed">
                 Zero fabricated rankings. Server-side timestamps and immutable scorecards recorded across every candidate attempt.
               </p>
             </div>
-            <div className="mt-6 pt-3 border-t border-[#E6E5DE] text-[11px] font-mono text-[#758B62]">
+            <div className="mt-6 pt-3 border-t border-[#DCE2E6] text-[11px] font-mono text-[#66727D]">
               FORT Central Scoring Engine v2.0
             </div>
           </div>
@@ -289,13 +289,13 @@ export default function HomePage() {
       {/* ==================================================================== */}
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
-          <div className="text-xs font-bold uppercase tracking-wider text-[#758B62]">
+          <div className="text-xs font-bold uppercase tracking-wider text-[#66727D]">
             THE PROBLEM IN COMPETITIVE PREPARATION
           </div>
-          <h2 className="mt-2 text-3xl font-extrabold font-serif text-[#263126] sm:text-4xl">
+          <h2 className="mt-2 text-3xl font-extrabold font-serif text-[#20252B] sm:text-4xl">
             Students solve thousands of questions without knowing where marks are actually lost.
           </h2>
-          <p className="mt-2 text-sm text-[#73786E]">
+          <p className="mt-2 text-sm text-[#66727D]">
             Solving question banks without atomic concept tagging, server timing, and penalty diagnostics creates an illusion of competence.
           </p>
         </div>
@@ -329,13 +329,13 @@ export default function HomePage() {
           ].map((prob, idx) => (
             <div
               key={idx}
-              className="rounded-[24px] border border-[#E6E5DE] bg-white p-6 shadow-sm space-y-3"
+              className="rounded-[24px] border border-[#DCE2E6] bg-white p-6 shadow-sm space-y-3"
             >
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#FCE8E4] text-[#E8412C]">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#FDEDF0] text-[#E4002B]">
                 <AlertTriangle className="h-4 w-4" />
               </div>
-              <h3 className="text-base font-bold text-[#263126]">{prob.title}</h3>
-              <p className="text-xs leading-relaxed text-[#73786E]">{prob.desc}</p>
+              <h3 className="text-base font-bold text-[#20252B]">{prob.title}</h3>
+              <p className="text-xs leading-relaxed text-[#66727D]">{prob.desc}</p>
             </div>
           ))}
         </div>
@@ -345,34 +345,34 @@ export default function HomePage() {
       {/* SECTION 4: REAL INTERACTIVE OMR SIMULATION SHOWCASE */}
       {/* ==================================================================== */}
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="rounded-[32px] border border-[#E6E5DE] bg-white p-8 sm:p-12 shadow-sm">
+        <div className="rounded-[32px] border border-[#DCE2E6] bg-white p-8 sm:p-12 shadow-sm">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center">
             {/* Left 6 cols */}
             <div className="lg:col-span-6 space-y-5">
-              <div className="inline-flex items-center gap-1.5 rounded-full bg-[#E9EEE3] px-3 py-1 text-xs font-semibold text-[#758B62]">
+              <div className="inline-flex items-center gap-1.5 rounded-full bg-[#9CC6E0]/25 px-3 py-1 text-xs font-semibold text-[#20252B]">
                 <Sparkles className="h-3.5 w-3.5" />
                 <span>Physical-Grade Simulation</span>
               </div>
 
-              <h2 className="text-3xl font-extrabold font-serif text-[#263126] sm:text-4xl">
+              <h2 className="text-3xl font-extrabold font-serif text-[#20252B] sm:text-4xl">
                 The exact NEET OMR sheet. Darkened in real time.
               </h2>
 
-              <p className="text-sm leading-relaxed text-[#73786E]">
+              <p className="text-sm leading-relaxed text-[#66727D]">
                 Replicated directly from the physical NTA NEET answer sheet. 180 questions across 4 columns of 45, Roll No. digit bubble grid, Test Booklet Code, and Code 39 barcode. Darkens immediately as you solve questions.
               </p>
 
-              <div className="space-y-2 text-xs text-[#263126]">
+              <div className="space-y-2 text-xs text-[#20252B]">
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-[#758B62]" />
+                  <CheckCircle2 className="h-4 w-4 text-[#27835A]" />
                   <span>Bidirectional sync: darkens bubbles automatically upon question selection</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-[#758B62]" />
+                  <CheckCircle2 className="h-4 w-4 text-[#27835A]" />
                   <span>Automatic A4 vector PDF download upon exam submission</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-[#758B62]" />
+                  <CheckCircle2 className="h-4 w-4 text-[#27835A]" />
                   <span>Personalized with your official FORT Registration Number</span>
                 </div>
               </div>
@@ -380,7 +380,7 @@ export default function HomePage() {
               <div className="pt-2">
                 <Link
                   href="/neet/omr-practice"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#E8412C] px-7 py-3 text-xs font-bold text-white shadow-md shadow-[#E8412C]/20 hover:bg-[#d03521] transition-all"
+                  className="inline-flex items-center gap-2 rounded-xl bg-[#E4002B] px-7 py-3 text-xs font-bold text-white shadow-md shadow-[#E4002B]/20 hover:bg-[#C90026] transition-all"
                 >
                   <span>Open Full 180-Question Sheet</span>
                   <ArrowRight className="h-4 w-4" />
@@ -389,12 +389,12 @@ export default function HomePage() {
             </div>
 
             {/* Right 6 cols: Live Interactive Mini OMR Grid */}
-            <div className="lg:col-span-6 rounded-[24px] border border-[#D45D4C] bg-[#F7F5EF] p-6 shadow-inner space-y-4">
-              <div className="flex items-center justify-between border-b border-[#D45D4C]/30 pb-3">
-                <div className="font-serif font-bold text-sm text-[#263126]">
+            <div className="lg:col-span-6 rounded-[24px] border border-[#DCE2E6] bg-[#F1F3F4] p-6 shadow-inner space-y-4">
+              <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-3">
+                <div className="font-serif font-bold text-sm text-[#20252B]">
                   NEET OMR SIMULATOR PREVIEW
                 </div>
-                <span className="font-mono text-xs font-bold text-[#758B62]">
+                <span className="font-mono text-xs font-bold text-[#20252B]">
                   FORT-26-000001
                 </span>
               </div>
@@ -403,9 +403,9 @@ export default function HomePage() {
                 {[1, 2, 3, 4, 5].map((qNum) => (
                   <div
                     key={qNum}
-                    className="flex items-center justify-between bg-white rounded-xl border border-[#D45D4C]/40 px-4 py-2"
+                    className="flex items-center justify-between bg-white rounded-xl border border-[#DCE2E6] px-4 py-2"
                   >
-                    <span className="font-mono font-bold text-[#263126] w-8">
+                    <span className="font-mono font-bold text-[#20252B] w-8">
                       {qNum.toString().padStart(3, '0')}
                     </span>
                     <div className="flex items-center gap-2">
@@ -419,8 +419,8 @@ export default function HomePage() {
                             className={cn(
                               'w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold border transition-all',
                               isFilled
-                                ? 'bg-black border-black text-white shadow-sm'
-                                : 'border-[#D45D4C] text-[#D45D4C] bg-white hover:bg-[#FCE8E4]'
+                                ? 'bg-[#20252B] border-[#20252B] text-white shadow-sm'
+                                : 'border-[#9CC6E0] text-[#20252B] bg-white hover:bg-[#9CC6E0]/20'
                             )}
                           >
                             {!isFilled && (optIdx + 1)}
@@ -432,7 +432,7 @@ export default function HomePage() {
                 ))}
               </div>
 
-              <div className="text-center text-[11px] text-[#73786E] pt-1">
+              <div className="text-center text-[11px] text-[#66727D] pt-1">
                 Click any bubble above to test real-time graphite darkening
               </div>
             </div>
@@ -444,13 +444,13 @@ export default function HomePage() {
       {/* SECTION 5: TRANSPARENT ₹10 PRICING */}
       {/* ==================================================================== */}
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="rounded-[32px] bg-[#263126] text-white p-8 sm:p-14 shadow-xl">
+        <div className="rounded-[32px] bg-[#20252B] text-white p-8 sm:p-14 shadow-xl">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-8 space-y-4">
-              <span className="rounded-full bg-[#9CAF88] px-3.5 py-1 text-xs font-bold text-[#263126] uppercase tracking-wider">
+              <span className="rounded-full bg-[#9CC6E0] px-3.5 py-1 text-xs font-bold text-[#20252B] uppercase tracking-wider">
                 Democratic Monetization
               </span>
-              <h2 className="text-3xl font-extrabold font-serif sm:text-4xl">
+              <h2 className="text-3xl font-extrabold font-serif sm:text-4xl text-white">
                 First full simulation free. ₹10 per paper thereafter.
               </h2>
               <p className="max-w-2xl text-sm leading-relaxed text-white/80">
@@ -461,7 +461,7 @@ export default function HomePage() {
             <div className="lg:col-span-4 text-center lg:text-right">
               <Link
                 href="/signup"
-                className="inline-flex items-center gap-2 rounded-full bg-[#E8412C] px-8 py-4 text-sm font-bold text-white shadow-lg shadow-[#E8412C]/30 hover:bg-[#d03521] transition-all hover:translate-y-[-1px]"
+                className="inline-flex items-center gap-2 rounded-xl bg-[#E4002B] px-8 py-4 text-sm font-bold text-white shadow-lg shadow-[#E4002B]/30 hover:bg-[#C90026] transition-all hover:translate-y-[-1px]"
               >
                 <span>Claim Free Paper</span>
                 <ArrowRight className="h-4 w-4" />

@@ -91,31 +91,31 @@ export default function DedicatedReviewPage() {
   };
 
   return (
-    <div className="bg-[#F7F5EF] text-[#2E332D] min-h-screen py-10 px-4 sm:px-6 lg:px-8">
+    <div className="bg-[#F1F3F4] text-[#20252B] min-h-screen py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto space-y-6">
         {/* Navigation & Header */}
         <div className="flex flex-wrap items-center justify-between gap-4">
           <Link
             href={`/dashboard/results/${attemptId}`}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#52584E] hover:text-[#263126] transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#52584E] hover:text-[#20252B] transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to Result Analytics
           </Link>
-          <div className="text-xs font-mono text-[#73786E]">Attempt ID: {attemptId}</div>
+          <div className="text-xs font-mono text-[#66727D]">Attempt ID: {attemptId}</div>
         </div>
 
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold font-serif text-[#263126]">
+          <h1 className="text-2xl sm:text-3xl font-bold font-serif text-[#20252B]">
             Question-by-Question Solution Review
           </h1>
-          <p className="mt-1 text-xs text-[#73786E]">
+          <p className="mt-1 text-xs text-[#66727D]">
             Inspect detailed step-by-step KaTeX solutions, examine incorrect options, and review marks awarded.
           </p>
         </div>
 
         {/* Filter Pills */}
-        <div className="flex flex-wrap items-center gap-2 rounded-2xl border border-[#E6E5DE] bg-white p-3 shadow-[0_2px_8px_rgba(38,49,38,0.04)]">
+        <div className="flex flex-wrap items-center gap-2 rounded-2xl border border-[#DCE2E6] bg-white p-3 shadow-[0_2px_8px_rgba(38,49,38,0.04)]">
           {[
             { id: 'all', label: `All Questions (${questionsWithReview.length})` },
             { id: 'incorrect', label: `Incorrect (${questionsWithReview.filter((q) => q.isWrong).length})` },
@@ -128,8 +128,8 @@ export default function DedicatedReviewPage() {
               className={cn(
                 'px-3.5 py-1.5 text-xs font-semibold rounded-xl border transition-colors',
                 filter === tab.id
-                  ? 'bg-[#263126] text-white border-[#263126]'
-                  : 'bg-white text-[#52584E] border-[#E6E5DE] hover:bg-[#F7F5EF]'
+                  ? 'bg-[#20252B] text-white border-[#20252B]'
+                  : 'bg-white text-[#52584E] border-[#DCE2E6] hover:bg-[#F1F3F4]'
               )}
             >
               {tab.label}
@@ -142,14 +142,14 @@ export default function DedicatedReviewPage() {
           {filteredQuestions.map((q) => (
             <div
               key={q.versionId}
-              className="rounded-2xl border border-[#E6E5DE] bg-white p-6 shadow-[0_2px_8px_rgba(38,49,38,0.04)] space-y-4"
+              className="rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-[0_2px_8px_rgba(38,49,38,0.04)] space-y-4"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="font-mono font-bold text-sm text-[#263126]">
+                  <span className="font-mono font-bold text-sm text-[#20252B]">
                     Q.{q.displayNumber}
                   </span>
-                  <span className="text-[10px] font-semibold uppercase px-2 py-0.5 rounded bg-[#F7F5EF] text-[#52584E] border border-[#E6E5DE]">
+                  <span className="text-[10px] font-semibold uppercase px-2 py-0.5 rounded bg-[#F1F3F4] text-[#52584E] border border-[#DCE2E6]">
                     {q.subjectName} • {q.conceptName}
                   </span>
                 </div>
@@ -157,9 +157,9 @@ export default function DedicatedReviewPage() {
                   <span
                     className={cn(
                       'px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider',
-                      q.isCorrect && 'bg-[#9CAF88]/20 text-[#3B4C30]',
-                      q.isWrong && 'bg-[#E8412C]/15 text-[#E8412C]',
-                      q.isUnanswered && 'bg-[#73786E]/15 text-[#73786E]'
+                      q.isCorrect && 'bg-[#9CC6E0]/20 text-[#3B4C30]',
+                      q.isWrong && 'bg-[#E4002B]/15 text-[#E4002B]',
+                      q.isUnanswered && 'bg-[#66727D]/15 text-[#66727D]'
                     )}
                   >
                     {q.isCorrect ? '+4 Marks' : q.isWrong ? '-1 Mark' : '0 Marks'}
@@ -169,8 +169,8 @@ export default function DedicatedReviewPage() {
                     className={cn(
                       'p-1.5 rounded-lg border transition-colors',
                       bookmarked[q.versionId]
-                        ? 'border-[#9CAF88] bg-[#9CAF88]/20 text-[#3B4C30]'
-                        : 'border-[#E6E5DE] text-[#73786E] hover:bg-[#F7F5EF]'
+                        ? 'border-[#9CC6E0] bg-[#9CC6E0]/20 text-[#3B4C30]'
+                        : 'border-[#DCE2E6] text-[#66727D] hover:bg-[#F1F3F4]'
                     )}
                   >
                     <Bookmark className="h-3.5 w-3.5" />
@@ -179,7 +179,7 @@ export default function DedicatedReviewPage() {
               </div>
 
               {/* Question Text */}
-              <div className="text-xs text-[#263126] leading-relaxed">
+              <div className="text-xs text-[#20252B] leading-relaxed">
                 <MathText text={q.text} />
               </div>
 
@@ -193,8 +193,8 @@ export default function DedicatedReviewPage() {
                       className={cn(
                         'flex items-center gap-2 p-2.5 rounded-xl border text-xs transition-colors',
                         isCorrectOpt
-                          ? 'border-[#9CAF88] bg-[#9CAF88]/10 text-[#263126] font-semibold'
-                          : 'border-[#E6E5DE] bg-[#F7F5EF]/40 text-[#52584E]'
+                          ? 'border-[#9CC6E0] bg-[#9CC6E0]/10 text-[#20252B] font-semibold'
+                          : 'border-[#DCE2E6] bg-[#F1F3F4]/40 text-[#52584E]'
                       )}
                     >
                       <span className="font-bold font-mono w-4">{opt.key}.</span>
@@ -208,7 +208,7 @@ export default function DedicatedReviewPage() {
               </div>
 
               {/* Explanation Dropdown */}
-              <div className="pt-2 border-t border-[#ECEAE4]">
+              <div className="pt-2 border-t border-[#DCE2E6]">
                 <button
                   onClick={() => toggleSolution(q.versionId)}
                   className="text-xs font-semibold text-[#3B4C30] hover:underline"
@@ -216,8 +216,8 @@ export default function DedicatedReviewPage() {
                   {expandedSolutions[q.versionId] ? 'Hide Solution Explanation' : 'View Step-by-Step KaTeX Explanation'}
                 </button>
                 {expandedSolutions[q.versionId] && (
-                  <div className="mt-2.5 rounded-xl border border-[#E6E5DE] bg-[#F7F5EF] p-4 text-xs text-[#263126] leading-relaxed">
-                    <div className="font-bold text-[10px] uppercase text-[#73786E] mb-1">Detailed Solution:</div>
+                  <div className="mt-2.5 rounded-xl border border-[#DCE2E6] bg-[#F1F3F4] p-4 text-xs text-[#20252B] leading-relaxed">
+                    <div className="font-bold text-[10px] uppercase text-[#66727D] mb-1">Detailed Solution:</div>
                     <MathText text={q.explanation?.text || 'Standard pedagogical step-by-step solution.'} />
                   </div>
                 )}
@@ -226,7 +226,7 @@ export default function DedicatedReviewPage() {
           ))}
 
           {filteredQuestions.length === 0 && (
-            <div className="rounded-2xl border border-[#E6E5DE] bg-white p-12 text-center text-xs text-[#73786E]">
+            <div className="rounded-2xl border border-[#DCE2E6] bg-white p-12 text-center text-xs text-[#66727D]">
               No questions found matching this filter criteria.
             </div>
           )}

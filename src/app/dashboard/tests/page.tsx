@@ -111,21 +111,21 @@ export default function TestsHubPage() {
       />
 
       {/* Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#ECEAE4] pb-6">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#DCE2E6] pb-6">
         <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-[#758B62]">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
             Timed Examination Center
           </span>
-          <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold font-serif text-[#263126]">
+          <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold font-serif text-[#20252B]">
             Mock Tests & Timed Simulations
           </h1>
-          <p className="text-xs text-[#73786E]">
+          <p className="text-xs text-[#66727D]">
             Full-length simulations with server-authoritative countdown timers, automatic submissions, and instant vector OMR sheets.
           </p>
         </div>
 
         {/* Filter Pills */}
-        <div className="flex items-center gap-2 rounded-full border border-[#E6E5DE] bg-white p-1 text-xs font-semibold shadow-sm">
+        <div className="flex items-center gap-2 rounded-full border border-[#DCE2E6] bg-white p-1 text-xs font-semibold shadow-sm">
           {[
             { id: 'all', label: 'All Tests' },
             { id: 'full_mocks', label: 'Full Mocks' },
@@ -138,8 +138,8 @@ export default function TestsHubPage() {
               className={cn(
                 'rounded-full px-4 py-1.5 transition-all',
                 activeFilter === f.id
-                  ? 'bg-[#9CAF88] text-white font-bold shadow-sm'
-                  : 'text-[#73786E] hover:text-[#263126]'
+                  ? 'bg-[#9CC6E0] text-[#20252B] font-bold shadow-sm'
+                  : 'text-[#66727D] hover:text-[#20252B]'
               )}
             >
               {f.label}
@@ -153,42 +153,42 @@ export default function TestsHubPage() {
         {filteredTests.map((test) => (
           <div
             key={test.id}
-            className="rounded-[28px] border border-[#E6E5DE] bg-white p-7 shadow-sm hover:border-[#9CAF88] transition-all flex flex-col justify-between space-y-6"
+            className="rounded-[28px] border border-[#DCE2E6] bg-white p-7 shadow-sm hover:border-[#9CC6E0] transition-all flex flex-col justify-between space-y-6"
           >
             <div>
               <div className="flex items-center justify-between">
-                <span className="rounded-full bg-[#E9EEE3] px-3 py-1 text-xs font-bold text-[#758B62]">
+                <span className="rounded-full bg-[#E9EEF1] px-3 py-1 text-xs font-bold text-[#20252B]">
                   {test.tag}
                 </span>
-                <span className="font-mono text-xs font-semibold text-[#92958D]">
+                <span className="font-mono text-xs font-semibold text-[#66727D]">
                   {test.exam}
                 </span>
               </div>
 
-              <h3 className="mt-4 text-xl font-bold font-serif text-[#263126]">
+              <h3 className="mt-4 text-xl font-bold font-serif text-[#20252B]">
                 {test.title}
               </h3>
 
-              <div className="mt-4 grid grid-cols-3 gap-2 rounded-2xl bg-[#F7F5EF] p-4 text-center text-xs">
+              <div className="mt-4 grid grid-cols-3 gap-2 rounded-2xl bg-[#F1F3F4] p-4 text-center text-xs">
                 <div>
-                  <div className="text-[11px] text-[#73786E]">Questions</div>
-                  <div className="font-mono font-bold text-[#263126]">{test.questions}</div>
+                  <div className="text-[11px] text-[#66727D]">Questions</div>
+                  <div className="font-mono font-bold text-[#20252B]">{test.questions}</div>
                 </div>
                 <div>
-                  <div className="text-[11px] text-[#73786E]">Duration</div>
-                  <div className="font-mono font-bold text-[#263126]">{test.duration} mins</div>
+                  <div className="text-[11px] text-[#66727D]">Duration</div>
+                  <div className="font-mono font-bold text-[#20252B]">{test.duration} mins</div>
                 </div>
                 <div>
-                  <div className="text-[11px] text-[#73786E]">Maximum Marks</div>
-                  <div className="font-mono font-bold text-[#758B62]">{test.marks}</div>
+                  <div className="text-[11px] text-[#66727D]">Maximum Marks</div>
+                  <div className="font-mono font-bold text-[#20252B]">{test.marks}</div>
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center justify-between pt-4 border-t border-[#ECEAE4]">
-              <div className="text-xs text-[#73786E]">
+            <div className="flex items-center justify-between pt-4 border-t border-[#DCE2E6]">
+              <div className="text-xs text-[#66727D]">
                 <span>OMR Sheet: </span>
-                <strong className={test.hasOmr ? 'text-[#758B62]' : 'text-[#92958D]'}>
+                <strong className={test.hasOmr ? 'text-[#20252B]' : 'text-[#66727D]'}>
                   {test.hasOmr ? 'A4 Vector PDF' : 'CBT Digital Grid'}
                 </strong>
               </div>
@@ -206,7 +206,7 @@ export default function TestsHubPage() {
                     attemptRoute: test.route,
                   })
                 }
-                className="inline-flex items-center gap-2 rounded-full bg-[#E8412C] px-6 py-2.5 text-xs font-bold text-white shadow-md shadow-[#E8412C]/20 hover:bg-[#d03521] transition-all hover:translate-y-[-1px]"
+                className="inline-flex items-center gap-2 rounded-full bg-[#E4002B] px-6 py-2.5 text-xs font-bold text-white shadow-md shadow-[#E4002B]/20 hover:bg-[#C90026] transition-all hover:translate-y-[-1px]"
               >
                 <span>Launch Mock</span>
                 <Play className="h-3.5 w-3.5 fill-current" />

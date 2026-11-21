@@ -49,7 +49,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-[#F7F5EF] text-[#2E332D] antialiased selection:bg-[#DCE5D3] selection:text-[#263126]">
+      <body className="min-h-screen bg-[#F1F3F4] text-[#20252B] antialiased selection:bg-[#9CC6E0]/40 selection:text-[#20252B]">
         <div className="flex min-h-screen flex-col">
           <Navbar />
           <main className="flex-1">{children}</main>

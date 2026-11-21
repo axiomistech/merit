@@ -157,18 +157,18 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   ];
 
   return (
-    <div className="flex h-screen bg-[#F7F5EF] text-[#2E332D] overflow-hidden">
+    <div className="flex h-screen bg-[#F1F3F4] text-[#20252B] overflow-hidden">
       {/* Desktop Fixed Sidebar */}
-      <aside className="hidden lg:flex lg:w-72 lg:flex-col lg:border-r lg:border-[#E6E5DE] lg:bg-white shrink-0">
+      <aside className="hidden lg:flex lg:w-72 lg:flex-col lg:border-r lg:border-[#DCE2E6] lg:bg-white shrink-0">
         {/* Brand Header */}
-        <div className="flex h-16 items-center justify-between border-b border-[#ECEAE4] px-6">
+        <div className="flex h-16 items-center justify-between border-b border-[#DCE2E6] px-6">
           <Link href="/admin" className="flex items-center gap-2.5">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#263126] text-white">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#9CC6E0] text-[#20252B]">
               <Shield className="h-4 w-4 stroke-[2.5]" />
             </div>
             <div>
-              <span className="font-mono text-base font-bold tracking-wider text-[#263126]">FORT</span>
-              <span className="ml-1.5 rounded-full bg-[#E9EEE3] px-2 py-0.5 text-[9px] font-bold text-[#758B62] uppercase">
+              <span className="font-mono text-base font-bold tracking-wider text-[#20252B]">FORT</span>
+              <span className="ml-1.5 rounded-full bg-[#9CC6E0]/20 px-2 py-0.5 text-[9px] font-bold text-[#20252B] uppercase">
                 Control
               </span>
             </div>
@@ -179,7 +179,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <nav className="flex-1 overflow-y-auto px-4 py-4 space-y-6">
           {navGroups.map((group) => (
             <div key={group.title} className="space-y-1">
-              <div className="px-3 text-[10px] font-bold uppercase tracking-widest text-[#92958D]">
+              <div className="px-3 text-[10px] font-bold uppercase tracking-widest text-[#66727D]">
                 {group.title}
               </div>
               <div className="space-y-0.5">
@@ -193,11 +193,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                       className={cn(
                         'flex items-center gap-3 rounded-xl px-3 py-2 text-xs font-medium transition-all',
                         isActive
-                          ? 'bg-[#263126] text-white font-bold shadow-sm'
-                          : 'text-[#73786E] hover:bg-[#F7F5EF] hover:text-[#263126]'
+                          ? 'bg-[#9CC6E0]/25 text-[#20252B] font-bold border-l-2 border-[#E4002B]'
+                          : 'text-[#66727D] hover:bg-[#F1F3F4] hover:text-[#20252B]'
                       )}
                     >
-                      <Icon className={cn('h-4 w-4 shrink-0', isActive ? 'text-white' : 'text-[#92958D]')} />
+                      <Icon className={cn('h-4 w-4 shrink-0', isActive ? 'text-[#20252B]' : 'text-[#66727D]')} />
                       <span>{item.label}</span>
                     </Link>
                   );
@@ -208,19 +208,19 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </nav>
 
         {/* Bottom User Profile */}
-        <div className="border-t border-[#ECEAE4] p-4 bg-[#F7F5EF]/50">
+        <div className="border-t border-[#DCE2E6] p-4 bg-[#F1F3F4]">
           <div className="flex items-center justify-between">
             <div className="truncate">
-              <div className="truncate font-semibold text-xs text-[#263126]">
+              <div className="truncate font-semibold text-xs text-[#20252B]">
                 {currentUser?.name || 'Admin User'}
               </div>
-              <div className="font-mono text-[10px] text-[#758B62] uppercase">
+              <div className="font-mono text-[10px] text-[#66727D] uppercase">
                 {currentUser?.role?.replace('_', ' ') || 'SUPER ADMIN'}
               </div>
             </div>
             <button
               onClick={handleLogout}
-              className="rounded-lg p-1.5 text-[#92958D] hover:bg-[#FCE8E4] hover:text-[#E8412C] transition-colors"
+              className="rounded-lg p-1.5 text-[#66727D] hover:bg-[#FDEDF0] hover:text-[#E4002B] transition-colors"
               title="Sign Out"
             >
               <LogOut className="h-4 w-4" />
@@ -232,20 +232,20 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {/* Main Content Area */}
       <div className="flex flex-1 flex-col overflow-hidden">
         {/* Top Header Bar */}
-        <header className="flex h-16 shrink-0 items-center justify-between border-b border-[#E6E5DE] bg-white px-4 sm:px-8">
+        <header className="flex h-16 shrink-0 items-center justify-between border-b border-[#DCE2E6] bg-white px-4 sm:px-8">
           <div className="flex items-center gap-3">
             <button
               onClick={() => setSidebarOpen(true)}
-              className="lg:hidden rounded-lg p-1.5 text-[#73786E] hover:bg-[#F0EFEA]"
+              className="lg:hidden rounded-lg p-1.5 text-[#66727D] hover:bg-[#F1F3F4]"
             >
               <Menu className="h-5 w-5" />
             </button>
 
             {/* Breadcrumb / Title indication */}
-            <div className="hidden sm:flex items-center gap-2 text-xs text-[#73786E]">
-              <span className="font-semibold text-[#263126]">Console</span>
+            <div className="hidden sm:flex items-center gap-2 text-xs text-[#66727D]">
+              <span className="font-semibold text-[#20252B]">Console</span>
               <span>/</span>
-              <span className="font-mono uppercase text-[#758B62]">
+              <span className="font-mono uppercase text-[#20252B]">
                 {pathname.split('/')[2] || 'Overview'}
               </span>
             </div>
@@ -255,15 +255,15 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <Link
               href="/dashboard"
               target="_blank"
-              className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-[#E6E5DE] bg-white px-3.5 py-1.5 text-xs font-semibold text-[#263126] hover:bg-[#F7F5EF] transition-colors"
+              className="hidden sm:inline-flex items-center gap-1.5 rounded-xl border border-[#DCE2E6] bg-white px-3.5 py-1.5 text-xs font-semibold text-[#20252B] hover:bg-[#F1F3F4] transition-colors"
             >
               <span>Student Portal</span>
-              <ExternalLink className="h-3 w-3 text-[#92958D]" />
+              <ExternalLink className="h-3 w-3 text-[#66727D]" />
             </Link>
 
-            <div className="flex items-center gap-2 border-l border-[#ECEAE4] pl-4">
-              <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="font-mono text-[11px] font-bold text-[#263126]">
+            <div className="flex items-center gap-2 border-l border-[#DCE2E6] pl-4">
+              <span className="h-2 w-2 rounded-full bg-[#27835A] animate-pulse" />
+              <span className="font-mono text-[11px] font-bold text-[#20252B]">
                 SYSTEM HEALTHY
               </span>
             </div>
@@ -278,11 +278,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               onClick={() => setSidebarOpen(false)}
             />
             <div className="relative flex w-72 flex-1 flex-col bg-white shadow-2xl">
-              <div className="flex h-16 items-center justify-between border-b border-[#ECEAE4] px-6">
-                <span className="font-mono font-bold text-[#263126]">FORT CONTROL</span>
+              <div className="flex h-16 items-center justify-between border-b border-[#DCE2E6] px-6">
+                <span className="font-mono font-bold text-[#20252B]">FORT CONTROL</span>
                 <button
                   onClick={() => setSidebarOpen(false)}
-                  className="rounded-lg p-1 text-[#92958D]"
+                  className="rounded-lg p-1 text-[#66727D]"
                 >
                   <X className="h-5 w-5" />
                 </button>
@@ -290,7 +290,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               <nav className="flex-1 overflow-y-auto p-4 space-y-4">
                 {navGroups.map((group) => (
                   <div key={group.title} className="space-y-1">
-                    <div className="text-[10px] font-bold uppercase text-[#92958D]">
+                    <div className="text-[10px] font-bold uppercase text-[#66727D]">
                       {group.title}
                     </div>
                     {group.items.map((item) => (
@@ -301,8 +301,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                         className={cn(
                           'block rounded-xl px-3 py-2 text-xs font-medium',
                           pathname === item.href
-                            ? 'bg-[#263126] text-white font-bold'
-                            : 'text-[#73786E] hover:bg-[#F7F5EF]'
+                            ? 'bg-[#9CC6E0]/25 text-[#20252B] font-bold border-l-2 border-[#E4002B]'
+                            : 'text-[#66727D] hover:bg-[#F1F3F4]'
                         )}
                       >
                         {item.label}

@@ -140,13 +140,13 @@ export default function AdminSyllabusPage() {
             <div key={node.id} className="space-y-1">
               <div
                 style={{ paddingLeft: `${depth * 20 + 12}px` }}
-                className="flex items-center justify-between rounded-xl py-2 pr-3 hover:bg-[#F7F5EF] transition-colors border border-transparent hover:border-[#E6E5DE] text-xs"
+                className="flex items-center justify-between rounded-xl py-2 pr-3 hover:bg-[#F1F3F4] transition-colors border border-transparent hover:border-[#DCE2E6] text-xs"
               >
                 <div className="flex items-center gap-2">
                   {hasChildren ? (
                     <button
                       onClick={() => toggleExpand(node.id)}
-                      className="p-1 text-[#73786E] hover:text-[#263126]"
+                      className="p-1 text-[#66727D] hover:text-[#20252B]"
                     >
                       {isExpanded ? <ChevronDown className="h-3.5 w-3.5" /> : <ChevronRight className="h-3.5 w-3.5" />}
                     </button>
@@ -157,21 +157,21 @@ export default function AdminSyllabusPage() {
                   <span
                     className={`rounded-full px-2 py-0.5 font-mono text-[9px] font-bold uppercase ${
                       node.nodeType === 'subject'
-                        ? 'bg-[#263126] text-white'
+                        ? 'bg-[#20252B] text-white'
                         : node.nodeType === 'unit'
-                        ? 'bg-[#E9EEE3] text-[#758B62]'
+                        ? 'bg-[#E9EEF1] text-[#20252B]'
                         : node.nodeType === 'chapter'
-                        ? 'bg-[#F0EFEA] text-[#263126]'
-                        : 'border border-[#E6E5DE] bg-white text-[#73786E]'
+                        ? 'bg-[#F1F3F4] text-[#20252B]'
+                        : 'border border-[#DCE2E6] bg-white text-[#66727D]'
                     }`}
                   >
                     {node.nodeType}
                   </span>
 
-                  <span className="font-semibold text-[#263126]">{node.name}</span>
+                  <span className="font-semibold text-[#20252B]">{node.name}</span>
                 </div>
 
-                <div className="flex items-center gap-4 text-[#73786E]">
+                <div className="flex items-center gap-4 text-[#66727D]">
                   <span className="font-mono text-[11px]">
                     {node.questionCount} Questions
                   </span>
@@ -184,7 +184,7 @@ export default function AdminSyllabusPage() {
                           node.nodeType === 'subject' ? 'unit' : node.nodeType === 'unit' ? 'chapter' : 'topic'
                         )
                       }
-                      className="rounded-full p-1 text-[#758B62] hover:bg-[#E9EEE3]"
+                      className="rounded-full p-1 text-[#20252B] hover:bg-[#E9EEF1]"
                       title="Add Child Node"
                     >
                       <Plus className="h-3.5 w-3.5" />
@@ -208,18 +208,18 @@ export default function AdminSyllabusPage() {
   return (
     <div className="space-y-6 max-w-7xl mx-auto">
       {/* Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#ECEAE4] pb-6">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#DCE2E6] pb-6">
         <div>
-          <h1 className="text-2xl font-bold font-serif text-[#263126]">
+          <h1 className="text-2xl font-bold font-serif text-[#20252B]">
             Syllabus Architecture & Hierarchies
           </h1>
-          <p className="mt-1 text-xs text-[#73786E]">
+          <p className="mt-1 text-xs text-[#66727D]">
             Hierarchical Exam → Subject → Unit → Chapter → Topic tree with stable relational keys protecting historical attempts.
           </p>
         </div>
 
         {/* Exam Tabs */}
-        <div className="flex items-center gap-1.5 rounded-full border border-[#E6E5DE] bg-white p-1 text-xs font-semibold shadow-sm">
+        <div className="flex items-center gap-1.5 rounded-full border border-[#DCE2E6] bg-white p-1 text-xs font-semibold shadow-sm">
           {[
             { id: 'neet', label: 'NEET' },
             { id: 'jee-main', label: 'JEE Main' },
@@ -231,8 +231,8 @@ export default function AdminSyllabusPage() {
               onClick={() => setSelectedExam(ex.id as any)}
               className={`rounded-full px-4 py-1.5 transition-all ${
                 selectedExam === ex.id
-                  ? 'bg-[#263126] text-white font-bold shadow-sm'
-                  : 'text-[#73786E] hover:text-[#263126]'
+                  ? 'bg-[#20252B] text-white font-bold shadow-sm'
+                  : 'text-[#66727D] hover:text-[#20252B]'
               }`}
             >
               {ex.label}
@@ -242,20 +242,20 @@ export default function AdminSyllabusPage() {
       </div>
 
       {/* Safety Notice */}
-      <div className="rounded-2xl border border-[#9CAF88]/30 bg-[#E9EEE3]/60 p-4 flex items-center gap-3 text-xs text-[#263126]">
-        <ShieldCheck className="h-5 w-5 text-[#758B62] shrink-0" />
+      <div className="rounded-2xl border border-[#9CC6E0]/30 bg-[#E9EEF1]/60 p-4 flex items-center gap-3 text-xs text-[#20252B]">
+        <ShieldCheck className="h-5 w-5 text-[#20252B] shrink-0" />
         <span>
           <strong>Referential Integrity Active:</strong> Syllabus changes preserve question linkages, test versions, and historical candidate attempts using immutable relational UUIDs.
         </span>
       </div>
 
       {/* Syllabus Tree Container */}
-      <div className="rounded-[28px] border border-[#E6E5DE] bg-white p-6 sm:p-8 shadow-sm space-y-4">
-        <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-3 text-xs">
-          <span className="font-bold text-[#73786E] uppercase tracking-wider text-[11px]">
+      <div className="rounded-[28px] border border-[#DCE2E6] bg-white p-6 sm:p-8 shadow-sm space-y-4">
+        <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-3 text-xs">
+          <span className="font-bold text-[#66727D] uppercase tracking-wider text-[11px]">
             Curriculum Hierarchy Structure
           </span>
-          <span className="font-mono text-[#758B62] font-semibold">
+          <span className="font-mono text-[#20252B] font-semibold">
             {selectedExam.toUpperCase()} Master Node
           </span>
         </div>

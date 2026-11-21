@@ -179,14 +179,14 @@ export default function AdminAnnouncementsPage() {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[#263126] font-serif">Platform Announcements & Banners</h1>
-          <p className="mt-1 text-xs text-[#73786E]">
+          <h1 className="text-2xl font-bold text-[#20252B] font-serif">Platform Announcements & Banners</h1>
+          <p className="mt-1 text-xs text-[#66727D]">
             Broadcast top alert strips, dashboard cards, and exam notices with scheduling controls.
           </p>
         </div>
         <button
           onClick={handleOpenCreate}
-          className="flex items-center gap-2 rounded-xl bg-[#263126] px-4 py-2.5 text-xs font-semibold text-white hover:bg-[#344034] transition-colors"
+          className="flex items-center gap-2 rounded-xl bg-[#20252B] px-4 py-2.5 text-xs font-semibold text-white hover:bg-[#344034] transition-colors"
         >
           <Plus className="h-4 w-4" />
           Create Announcement
@@ -198,50 +198,50 @@ export default function AdminAnnouncementsPage() {
         {filteredAnnouncements.map((b) => (
           <div
             key={b.id}
-            className="rounded-2xl border border-[#E6E5DE] bg-white p-5 shadow-[0_2px_8px_rgba(38,49,38,0.04)] flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-[#9CAF88] transition-all"
+            className="rounded-2xl border border-[#DCE2E6] bg-white p-5 shadow-[0_2px_8px_rgba(38,49,38,0.04)] flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-[#9CC6E0] transition-all"
           >
             <div className="space-y-2 max-w-2xl">
               <div className="flex items-center gap-2">
                 <span
                   className={cn(
                     'px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider',
-                    b.bannerType === 'alert' && 'bg-[#E8412C]/15 text-[#E8412C]',
+                    b.bannerType === 'alert' && 'bg-[#E4002B]/15 text-[#E4002B]',
                     b.bannerType === 'warning' && 'bg-amber-100 text-amber-800',
-                    b.bannerType === 'success' && 'bg-[#9CAF88]/20 text-[#3B4C30]',
-                    b.bannerType === 'info' && 'bg-[#263126]/10 text-[#263126]'
+                    b.bannerType === 'success' && 'bg-[#9CC6E0]/20 text-[#3B4C30]',
+                    b.bannerType === 'info' && 'bg-[#20252B]/10 text-[#20252B]'
                   )}
                 >
                   {b.badgeText || b.bannerType}
                 </span>
-                <span className="text-[11px] font-semibold text-[#52584E] bg-[#F7F5EF] px-2 py-0.5 rounded border border-[#E6E5DE]">
+                <span className="text-[11px] font-semibold text-[#52584E] bg-[#F1F3F4] px-2 py-0.5 rounded border border-[#DCE2E6]">
                   Target: {b.targetExam.toUpperCase()}
                 </span>
-                <span className="text-[11px] text-[#73786E] font-mono">
+                <span className="text-[11px] text-[#66727D] font-mono">
                   Placement: {b.placement.replace('_', ' ')}
                 </span>
               </div>
-              <h3 className="font-bold text-sm text-[#263126]">{b.title}</h3>
-              <p className="text-xs text-[#73786E] leading-relaxed">{b.content}</p>
-              <div className="text-[10px] text-[#73786E] font-mono">
+              <h3 className="font-bold text-sm text-[#20252B]">{b.title}</h3>
+              <p className="text-xs text-[#66727D] leading-relaxed">{b.content}</p>
+              <div className="text-[10px] text-[#66727D] font-mono">
                 Active: {b.startDate.split('T')[0]} to {b.endDate.split('T')[0]}
               </div>
             </div>
 
-            <div className="flex items-center justify-between md:justify-end gap-2 shrink-0 pt-2 md:pt-0 border-t md:border-t-0 border-[#ECEAE4]">
+            <div className="flex items-center justify-between md:justify-end gap-2 shrink-0 pt-2 md:pt-0 border-t md:border-t-0 border-[#DCE2E6]">
               <button
                 onClick={() => handleToggleActive(b)}
                 className={cn(
                   'px-3 py-1.5 rounded-lg border text-xs font-semibold transition-colors',
                   b.isActive
-                    ? 'bg-[#9CAF88]/20 text-[#3B4C30] border-[#9CAF88]/30'
-                    : 'bg-[#73786E]/15 text-[#73786E] border-[#E6E5DE]'
+                    ? 'bg-[#9CC6E0]/20 text-[#3B4C30] border-[#9CC6E0]/30'
+                    : 'bg-[#66727D]/15 text-[#66727D] border-[#DCE2E6]'
                 )}
               >
                 {b.isActive ? 'Active' : 'Inactive'}
               </button>
               <button
                 onClick={() => handleOpenEdit(b)}
-                className="p-1.5 rounded-lg border border-[#E6E5DE] text-[#52584E] hover:bg-[#F7F5EF] transition-colors"
+                className="p-1.5 rounded-lg border border-[#DCE2E6] text-[#52584E] hover:bg-[#F1F3F4] transition-colors"
               >
                 <Edit className="h-3.5 w-3.5" />
               </button>
@@ -253,14 +253,14 @@ export default function AdminAnnouncementsPage() {
       {/* Modal */}
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm overflow-y-auto">
-          <div className="w-full max-w-xl rounded-2xl border border-[#E6E5DE] bg-white p-6 shadow-2xl my-8 space-y-6">
-            <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-4">
-              <h3 className="text-lg font-bold text-[#263126] font-serif">
+          <div className="w-full max-w-xl rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-2xl my-8 space-y-6">
+            <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-4">
+              <h3 className="text-lg font-bold text-[#20252B] font-serif">
                 {editingBanner ? 'Edit Announcement' : 'Create New Announcement'}
               </h3>
               <button
                 onClick={() => setShowModal(false)}
-                className="rounded-lg p-2 text-[#73786E] hover:bg-[#F7F5EF] transition-colors"
+                className="rounded-lg p-2 text-[#66727D] hover:bg-[#F1F3F4] transition-colors"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -269,23 +269,23 @@ export default function AdminAnnouncementsPage() {
             <form onSubmit={handleSaveBanner} className="space-y-4 text-xs">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-semibold text-[#263126] mb-1">Badge Text</label>
+                  <label className="block font-semibold text-[#20252B] mb-1">Badge Text</label>
                   <input
                     type="text"
                     placeholder="e.g. Important, Offer, Alert"
                     value={formData.badgeText}
                     onChange={(e) => setFormData({ ...formData, badgeText: e.target.value })}
-                    className="w-full rounded-xl border border-[#E6E5DE] p-2.5 text-xs text-[#263126] focus:outline-none focus:border-[#9CAF88]"
+                    className="w-full rounded-xl border border-[#DCE2E6] p-2.5 text-xs text-[#20252B] focus:outline-none focus:border-[#9CC6E0]"
                   />
                 </div>
                 <div>
-                  <label className="block font-semibold text-[#263126] mb-1">Banner Type</label>
+                  <label className="block font-semibold text-[#20252B] mb-1">Banner Type</label>
                   <select
                     value={formData.bannerType}
                     onChange={(e) =>
                       setFormData({ ...formData, bannerType: e.target.value as any })
                     }
-                    className="w-full rounded-xl border border-[#E6E5DE] p-2.5 text-xs text-[#263126] focus:outline-none focus:border-[#9CAF88]"
+                    className="w-full rounded-xl border border-[#DCE2E6] p-2.5 text-xs text-[#20252B] focus:outline-none focus:border-[#9CC6E0]"
                   >
                     <option value="info">Info (Charcoal)</option>
                     <option value="success">Success (Sage Green)</option>
@@ -296,38 +296,38 @@ export default function AdminAnnouncementsPage() {
               </div>
 
               <div>
-                <label className="block font-semibold text-[#263126] mb-1">Headline</label>
+                <label className="block font-semibold text-[#20252B] mb-1">Headline</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. Official NEET 2026 Bulletin Released"
                   value={formData.title}
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  className="w-full rounded-xl border border-[#E6E5DE] p-2.5 text-xs text-[#263126] focus:outline-none focus:border-[#9CAF88]"
+                  className="w-full rounded-xl border border-[#DCE2E6] p-2.5 text-xs text-[#20252B] focus:outline-none focus:border-[#9CC6E0]"
                 />
               </div>
 
               <div>
-                <label className="block font-semibold text-[#263126] mb-1">Banner Message</label>
+                <label className="block font-semibold text-[#20252B] mb-1">Banner Message</label>
                 <textarea
                   rows={3}
                   required
                   placeholder="Full text rendered inside the banner..."
                   value={formData.content}
                   onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                  className="w-full rounded-xl border border-[#E6E5DE] p-2.5 text-xs text-[#263126] focus:outline-none focus:border-[#9CAF88]"
+                  className="w-full rounded-xl border border-[#DCE2E6] p-2.5 text-xs text-[#20252B] focus:outline-none focus:border-[#9CC6E0]"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-semibold text-[#263126] mb-1">Placement</label>
+                  <label className="block font-semibold text-[#20252B] mb-1">Placement</label>
                   <select
                     value={formData.placement}
                     onChange={(e) =>
                       setFormData({ ...formData, placement: e.target.value as any })
                     }
-                    className="w-full rounded-xl border border-[#E6E5DE] p-2.5 text-xs text-[#263126] focus:outline-none focus:border-[#9CAF88]"
+                    className="w-full rounded-xl border border-[#DCE2E6] p-2.5 text-xs text-[#20252B] focus:outline-none focus:border-[#9CC6E0]"
                   >
                     <option value="header_top">Header Top (Global Strip)</option>
                     <option value="dashboard_top">Student Dashboard Top</option>
@@ -335,13 +335,13 @@ export default function AdminAnnouncementsPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block font-semibold text-[#263126] mb-1">Target Exam</label>
+                  <label className="block font-semibold text-[#20252B] mb-1">Target Exam</label>
                   <select
                     value={formData.targetExam}
                     onChange={(e) =>
                       setFormData({ ...formData, targetExam: e.target.value as any })
                     }
-                    className="w-full rounded-xl border border-[#E6E5DE] p-2.5 text-xs text-[#263126] focus:outline-none focus:border-[#9CAF88]"
+                    className="w-full rounded-xl border border-[#DCE2E6] p-2.5 text-xs text-[#20252B] focus:outline-none focus:border-[#9CC6E0]"
                   >
                     <option value="all">All Exams</option>
                     <option value="neet">NEET Only</option>
@@ -353,38 +353,38 @@ export default function AdminAnnouncementsPage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-semibold text-[#263126] mb-1">Start Date</label>
+                  <label className="block font-semibold text-[#20252B] mb-1">Start Date</label>
                   <input
                     type="date"
                     required
                     value={formData.startDate}
                     onChange={(e) => setFormData({ ...formData, startDate: e.target.value })}
-                    className="w-full rounded-xl border border-[#E6E5DE] p-2.5 text-xs text-[#263126] focus:outline-none focus:border-[#9CAF88]"
+                    className="w-full rounded-xl border border-[#DCE2E6] p-2.5 text-xs text-[#20252B] focus:outline-none focus:border-[#9CC6E0]"
                   />
                 </div>
                 <div>
-                  <label className="block font-semibold text-[#263126] mb-1">End Date</label>
+                  <label className="block font-semibold text-[#20252B] mb-1">End Date</label>
                   <input
                     type="date"
                     required
                     value={formData.endDate}
                     onChange={(e) => setFormData({ ...formData, endDate: e.target.value })}
-                    className="w-full rounded-xl border border-[#E6E5DE] p-2.5 text-xs text-[#263126] focus:outline-none focus:border-[#9CAF88]"
+                    className="w-full rounded-xl border border-[#DCE2E6] p-2.5 text-xs text-[#20252B] focus:outline-none focus:border-[#9CC6E0]"
                   />
                 </div>
               </div>
 
-              <div className="flex items-center justify-between border-t border-[#ECEAE4] pt-4">
+              <div className="flex items-center justify-between border-t border-[#DCE2E6] pt-4">
                 <button
                   type="button"
                   onClick={() => setShowModal(false)}
-                  className="px-4 py-2 text-xs font-semibold text-[#52584E] hover:text-[#263126]"
+                  className="px-4 py-2 text-xs font-semibold text-[#52584E] hover:text-[#20252B]"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 text-xs font-semibold text-white bg-[#263126] rounded-xl hover:bg-[#344034] transition-colors"
+                  className="px-4 py-2 text-xs font-semibold text-white bg-[#20252B] rounded-xl hover:bg-[#344034] transition-colors"
                 >
                   {editingBanner ? 'Save Changes' : 'Publish Banner'}
                 </button>

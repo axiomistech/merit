@@ -70,49 +70,49 @@ export default function AdminStudentsPage() {
       {/* Student Profile Drawer / Modal */}
       {selectedStudent && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 overflow-y-auto">
-          <div className="w-full max-w-lg rounded-[28px] border border-[#E6E5DE] bg-white p-6 sm:p-8 shadow-2xl my-8 space-y-4 text-xs">
-            <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-3">
+          <div className="w-full max-w-lg rounded-[28px] border border-[#DCE2E6] bg-white p-6 sm:p-8 shadow-2xl my-8 space-y-4 text-xs">
+            <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-3">
               <div>
-                <span className="font-mono text-xs font-bold text-[#758B62]">
+                <span className="font-mono text-xs font-bold text-[#20252B]">
                   {selectedStudent.registrationId}
                 </span>
-                <h3 className="text-lg font-bold font-serif text-[#263126]">
+                <h3 className="text-lg font-bold font-serif text-[#20252B]">
                   {selectedStudent.fullName}
                 </h3>
               </div>
-              <button onClick={() => setSelectedStudent(null)} className="text-[#92958D]">
+              <button onClick={() => setSelectedStudent(null)} className="text-[#66727D]">
                 <X className="h-5 w-5" />
               </button>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 bg-[#F7F5EF] p-4 rounded-2xl border border-[#E6E5DE]">
+            <div className="grid grid-cols-2 gap-3 bg-[#F1F3F4] p-4 rounded-2xl border border-[#DCE2E6]">
               <div>
-                <span className="text-[#73786E]">Email:</span>
-                <div className="font-semibold text-[#263126]">{selectedStudent.email}</div>
+                <span className="text-[#66727D]">Email:</span>
+                <div className="font-semibold text-[#20252B]">{selectedStudent.email}</div>
               </div>
               <div>
-                <span className="text-[#73786E]">Target Exam:</span>
-                <div className="font-semibold text-[#263126]">{selectedStudent.targetExam}</div>
+                <span className="text-[#66727D]">Target Exam:</span>
+                <div className="font-semibold text-[#20252B]">{selectedStudent.targetExam}</div>
               </div>
               <div>
-                <span className="text-[#73786E]">Tests Attempted:</span>
-                <div className="font-mono font-bold text-[#263126]">{selectedStudent.testsAttempted}</div>
+                <span className="text-[#66727D]">Tests Attempted:</span>
+                <div className="font-mono font-bold text-[#20252B]">{selectedStudent.testsAttempted}</div>
               </div>
               <div>
-                <span className="text-[#73786E]">Purchases:</span>
-                <div className="font-mono font-bold text-[#758B62]">₹{selectedStudent.totalPurchases}</div>
+                <span className="text-[#66727D]">Purchases:</span>
+                <div className="font-mono font-bold text-[#20252B]">₹{selectedStudent.totalPurchases}</div>
               </div>
             </div>
 
             <div className="space-y-2">
-              <span className="font-bold text-[#263126]">Administrative Notes:</span>
-              <div className="rounded-xl bg-[#F0EFEA] p-3 text-[11px] space-y-1">
+              <span className="font-bold text-[#20252B]">Administrative Notes:</span>
+              <div className="rounded-xl bg-[#F1F3F4] p-3 text-[11px] space-y-1">
                 {selectedStudent.administrativeNotes && selectedStudent.administrativeNotes.length > 0 ? (
                   selectedStudent.administrativeNotes.map((n, i) => (
                     <div key={i}>• {n}</div>
                   ))
                 ) : (
-                  <div className="text-[#92958D]">No administrative notes recorded yet.</div>
+                  <div className="text-[#66727D]">No administrative notes recorded yet.</div>
                 )}
               </div>
             </div>
@@ -121,7 +121,7 @@ export default function AdminStudentsPage() {
               <button
                 type="button"
                 onClick={() => handleGrantAccess(selectedStudent)}
-                className="flex-1 rounded-full border border-[#263126] py-2.5 font-bold text-[#263126] hover:bg-[#F7F5EF]"
+                className="flex-1 rounded-full border border-[#20252B] py-2.5 font-bold text-[#20252B] hover:bg-[#F1F3F4]"
               >
                 Grant Access
               </button>
@@ -132,7 +132,7 @@ export default function AdminStudentsPage() {
                   setSelectedStudent(null);
                 }}
                 className={`flex-1 rounded-full py-2.5 font-bold text-white shadow-sm ${
-                  selectedStudent.accountStatus === 'active' ? 'bg-[#E8412C]' : 'bg-[#758B62]'
+                  selectedStudent.accountStatus === 'active' ? 'bg-[#E4002B]' : 'bg-[#20252B]'
                 }`}
               >
                 {selectedStudent.accountStatus === 'active' ? 'Suspend Student' : 'Reactivate'}
@@ -143,18 +143,18 @@ export default function AdminStudentsPage() {
       )}
 
       {/* Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#ECEAE4] pb-6">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#DCE2E6] pb-6">
         <div>
-          <h1 className="text-2xl font-bold font-serif text-[#263126]">
+          <h1 className="text-2xl font-bold font-serif text-[#20252B]">
             Student Management & Registrations
           </h1>
-          <p className="mt-1 text-xs text-[#73786E]">
+          <p className="mt-1 text-xs text-[#66727D]">
             Directory of verified candidates with atomic registration numbers, purchase histories, and attempt telemetry.
           </p>
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="rounded-full bg-[#E9EEE3] px-3.5 py-1 font-mono text-xs font-bold text-[#758B62]">
+          <span className="rounded-full bg-[#E9EEF1] px-3.5 py-1 font-mono text-xs font-bold text-[#20252B]">
             {students.length} Candidates Enrolled
           </span>
         </div>
@@ -163,13 +163,13 @@ export default function AdminStudentsPage() {
       {/* Search & Filters */}
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div className="relative max-w-sm flex-1">
-          <Search className="absolute left-3.5 top-3 h-4 w-4 text-[#92958D]" />
+          <Search className="absolute left-3.5 top-3 h-4 w-4 text-[#66727D]" />
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by FORT ID, Name, or Email..."
-            className="w-full rounded-full border border-[#E6E5DE] bg-white py-2 pl-10 pr-4 text-xs text-[#263126] focus:border-[#263126] focus:outline-none"
+            className="w-full rounded-full border border-[#DCE2E6] bg-white py-2 pl-10 pr-4 text-xs text-[#20252B] focus:border-[#20252B] focus:outline-none"
           />
         </div>
 
@@ -177,7 +177,7 @@ export default function AdminStudentsPage() {
           <select
             value={filterExam}
             onChange={(e) => setFilterExam(e.target.value)}
-            className="rounded-full border border-[#E6E5DE] bg-white px-3 py-1.5 text-xs text-[#263126]"
+            className="rounded-full border border-[#DCE2E6] bg-white px-3 py-1.5 text-xs text-[#20252B]"
           >
             <option value="all">All Exams</option>
             <option value="neet">NEET</option>
@@ -188,7 +188,7 @@ export default function AdminStudentsPage() {
           <select
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
-            className="rounded-full border border-[#E6E5DE] bg-white px-3 py-1.5 text-xs text-[#263126]"
+            className="rounded-full border border-[#DCE2E6] bg-white px-3 py-1.5 text-xs text-[#20252B]"
           >
             <option value="all">All Statuses</option>
             <option value="active">Active</option>
@@ -198,10 +198,10 @@ export default function AdminStudentsPage() {
       </div>
 
       {/* Students Table */}
-      <div className="rounded-[28px] border border-[#E6E5DE] bg-white shadow-sm overflow-hidden">
+      <div className="rounded-[28px] border border-[#DCE2E6] bg-white shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="border-b border-[#ECEAE4] bg-[#F7F5EF] text-[#73786E]">
+            <thead className="border-b border-[#DCE2E6] bg-[#F1F3F4] text-[#66727D]">
               <tr>
                 <th className="py-3.5 px-6 font-semibold">Candidate ID</th>
                 <th className="py-3.5 px-6 font-semibold">Name & Email</th>
@@ -212,33 +212,33 @@ export default function AdminStudentsPage() {
                 <th className="py-3.5 px-6 font-semibold text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#ECEAE4]">
+            <tbody className="divide-y divide-[#DCE2E6]">
               {filtered.map((s) => (
-                <tr key={s.id} className="hover:bg-[#F7F5EF]/50 transition-colors">
-                  <td className="py-4 px-6 font-mono font-bold text-[#758B62]">
+                <tr key={s.id} className="hover:bg-[#F1F3F4]/50 transition-colors">
+                  <td className="py-4 px-6 font-mono font-bold text-[#20252B]">
                     {s.registrationId}
                   </td>
                   <td className="py-4 px-6">
-                    <div className="font-bold text-[#263126]">{s.fullName}</div>
-                    <div className="text-[11px] text-[#73786E]">{s.email}</div>
+                    <div className="font-bold text-[#20252B]">{s.fullName}</div>
+                    <div className="text-[11px] text-[#66727D]">{s.email}</div>
                   </td>
                   <td className="py-4 px-6">
-                    <span className="rounded-full bg-white border border-[#E6E5DE] px-2.5 py-0.5 text-[10px] font-bold text-[#263126]">
+                    <span className="rounded-full bg-white border border-[#DCE2E6] px-2.5 py-0.5 text-[10px] font-bold text-[#20252B]">
                       {s.targetExam}
                     </span>
                   </td>
-                  <td className="py-4 px-6 font-mono font-bold text-[#263126]">
+                  <td className="py-4 px-6 font-mono font-bold text-[#20252B]">
                     {s.testsAttempted}
                   </td>
-                  <td className="py-4 px-6 font-mono font-bold text-[#758B62]">
+                  <td className="py-4 px-6 font-mono font-bold text-[#20252B]">
                     ₹{s.totalPurchases}
                   </td>
                   <td className="py-4 px-6">
                     <span
                       className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase ${
                         s.accountStatus === 'active'
-                          ? 'bg-[#E9EEE3] text-[#758B62]'
-                          : 'bg-[#FCE8E4] text-[#E8412C]'
+                          ? 'bg-[#E9EEF1] text-[#20252B]'
+                          : 'bg-[#FDEDF0] text-[#E4002B]'
                       }`}
                     >
                       {s.accountStatus}
@@ -247,7 +247,7 @@ export default function AdminStudentsPage() {
                   <td className="py-4 px-6 text-right">
                     <button
                       onClick={() => setSelectedStudent(s)}
-                      className="font-bold text-[#758B62] hover:underline"
+                      className="font-bold text-[#20252B] hover:underline"
                     >
                       View Profile →
                     </button>

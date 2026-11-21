@@ -63,21 +63,21 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="bg-[#F7F5EF] text-[#2E332D] min-h-screen py-16 flex items-center justify-center px-4">
-      <div className="w-full max-w-lg rounded-[28px] border border-[#E6E5DE] bg-white p-8 sm:p-10 shadow-[0_8px_30px_rgba(38,49,38,0.06)]">
+    <div className="bg-[#F1F3F4] text-[#20252B] min-h-screen py-16 flex items-center justify-center px-4">
+      <div className="w-full max-w-lg rounded-[28px] border border-[#DCE2E6] bg-white p-8 sm:p-10 shadow-[0_8px_30px_rgba(38,49,38,0.06)]">
         <div className="text-center">
           <Link href="/" className="inline-flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#9CAF88] text-white">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#9CC6E0] text-[#20252B]">
               <Shield className="h-5 w-5 stroke-[2.5]" />
             </div>
-            <span className="font-mono text-xl font-bold tracking-wider text-[#263126]">FORT</span>
+            <span className="font-mono text-xl font-bold tracking-wider text-[#20252B]">FORT</span>
           </Link>
-          <h1 className="mt-4 text-2xl font-bold text-[#263126] font-serif">Create Candidate Account</h1>
-          <p className="mt-1 text-xs text-[#73786E]">
+          <h1 className="mt-4 text-2xl font-bold text-[#20252B] font-serif">Create Candidate Account</h1>
+          <p className="mt-1 text-xs text-[#66727D]">
             Generate your verified FORT registration ID & claim your complimentary first paper.
           </p>
 
-          <div className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-[#E9EEE3] px-3 py-1 text-xs font-semibold text-[#758B62]">
+          <div className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-[#E9EEF1] px-3 py-1 text-xs font-semibold text-[#20252B]">
             <CheckCircle2 className="h-3.5 w-3.5" />
             <span>Includes 1 Free Full Mock Paper Claim</span>
           </div>
@@ -100,7 +100,7 @@ export default function SignupPage() {
               toast.success('Account created with Google! Moving to personalization...');
               router.push('/onboarding');
             }}
-            className="flex w-full items-center justify-center gap-3 rounded-full border border-[#E6E5DE] bg-white py-3 text-xs font-bold text-[#263126] shadow-sm hover:bg-[#F7F5EF] transition-all hover:border-[#9CAF88]"
+            className="flex w-full items-center justify-center gap-3 rounded-full border border-[#DCE2E6] bg-white py-3 text-xs font-bold text-[#20252B] shadow-sm hover:bg-[#F1F3F4] transition-all hover:border-[#9CC6E0]"
           >
             <svg className="h-4 w-4" viewBox="0 0 24 24">
               <path
@@ -125,9 +125,9 @@ export default function SignupPage() {
 
           <div className="relative my-6 text-center">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-[#ECEAE4]" />
+              <div className="w-full border-t border-[#DCE2E6]" />
             </div>
-            <span className="relative bg-white px-3 text-[11px] font-semibold text-[#92958D]">
+            <span className="relative bg-white px-3 text-[11px] font-semibold text-[#66727D]">
               or register with email
             </span>
           </div>
@@ -135,39 +135,39 @@ export default function SignupPage() {
 
         <form onSubmit={handleSubmit} className="space-y-4 text-xs">
           <div>
-            <label className="block text-[#73786E] font-medium">Candidate Full Name *</label>
+            <label className="block text-[#66727D] font-medium">Candidate Full Name *</label>
             <div className="relative mt-1">
-              <User className="absolute left-3.5 top-3 h-4 w-4 text-[#92958D]" />
+              <User className="absolute left-3.5 top-3 h-4 w-4 text-[#66727D]" />
               <input
                 type="text"
                 required
                 value={formData.fullName}
                 onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                 placeholder="Official candidate name"
-                className="w-full rounded-xl border border-[#E6E5DE] bg-white py-2.5 pl-10 pr-3 text-sm text-[#263126] placeholder-[#92958D] focus:border-[#9CAF88] focus:ring-1 focus:ring-[#9CAF88] focus:outline-none transition-all"
+                className="w-full rounded-xl border border-[#DCE2E6] bg-white py-2.5 pl-10 pr-3 text-sm text-[#20252B] placeholder-[#66727D] focus:border-[#9CC6E0] focus:ring-1 focus:ring-[#9CC6E0] focus:outline-none transition-all"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-[#73786E] font-medium">Email Address *</label>
+            <label className="block text-[#66727D] font-medium">Email Address *</label>
             <div className="relative mt-1">
-              <Mail className="absolute left-3.5 top-3 h-4 w-4 text-[#92958D]" />
+              <Mail className="absolute left-3.5 top-3 h-4 w-4 text-[#66727D]" />
               <input
                 type="email"
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 placeholder="name@example.com"
-                className="w-full rounded-xl border border-[#E6E5DE] bg-white py-2.5 pl-10 pr-3 text-sm text-[#263126] placeholder-[#92958D] focus:border-[#9CAF88] focus:ring-1 focus:ring-[#9CAF88] focus:outline-none transition-all"
+                className="w-full rounded-xl border border-[#DCE2E6] bg-white py-2.5 pl-10 pr-3 text-sm text-[#20252B] placeholder-[#66727D] focus:border-[#9CC6E0] focus:ring-1 focus:ring-[#9CC6E0] focus:outline-none transition-all"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-[#73786E] font-medium">Password (Min 8 characters) *</label>
+            <label className="block text-[#66727D] font-medium">Password (Min 8 characters) *</label>
             <div className="relative mt-1">
-              <Lock className="absolute left-3.5 top-3 h-4 w-4 text-[#92958D]" />
+              <Lock className="absolute left-3.5 top-3 h-4 w-4 text-[#66727D]" />
               <input
                 type="password"
                 required
@@ -175,34 +175,34 @@ export default function SignupPage() {
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                 placeholder="••••••••"
-                className="w-full rounded-xl border border-[#E6E5DE] bg-white py-2.5 pl-10 pr-3 text-sm text-[#263126] placeholder-[#92958D] focus:border-[#9CAF88] focus:ring-1 focus:ring-[#9CAF88] focus:outline-none transition-all"
+                className="w-full rounded-xl border border-[#DCE2E6] bg-white py-2.5 pl-10 pr-3 text-sm text-[#20252B] placeholder-[#66727D] focus:border-[#9CC6E0] focus:ring-1 focus:ring-[#9CC6E0] focus:outline-none transition-all"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
-              <label className="block text-[#73786E] font-medium">Date of Birth</label>
+              <label className="block text-[#66727D] font-medium">Date of Birth</label>
               <div className="relative mt-1">
-                <Calendar className="absolute left-3.5 top-3 h-4 w-4 text-[#92958D]" />
+                <Calendar className="absolute left-3.5 top-3 h-4 w-4 text-[#66727D]" />
                 <input
                   type="date"
                   value={formData.dateOfBirth}
                   onChange={(e) => setFormData({ ...formData, dateOfBirth: e.target.value })}
-                  className="w-full rounded-xl border border-[#E6E5DE] bg-white py-2.5 pl-10 pr-3 text-sm text-[#263126] focus:border-[#9CAF88] focus:outline-none transition-all"
+                  className="w-full rounded-xl border border-[#DCE2E6] bg-white py-2.5 pl-10 pr-3 text-sm text-[#20252B] focus:border-[#9CC6E0] focus:outline-none transition-all"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-[#73786E] font-medium">Country</label>
+              <label className="block text-[#66727D] font-medium">Country</label>
               <div className="relative mt-1">
-                <Globe className="absolute left-3.5 top-3 h-4 w-4 text-[#92958D]" />
+                <Globe className="absolute left-3.5 top-3 h-4 w-4 text-[#66727D]" />
                 <input
                   type="text"
                   value={formData.country}
                   onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                  className="w-full rounded-xl border border-[#E6E5DE] bg-white py-2.5 pl-10 pr-3 text-sm text-[#263126] focus:border-[#9CAF88] focus:outline-none transition-all"
+                  className="w-full rounded-xl border border-[#DCE2E6] bg-white py-2.5 pl-10 pr-3 text-sm text-[#20252B] focus:border-[#9CC6E0] focus:outline-none transition-all"
                 />
               </div>
             </div>
@@ -214,15 +214,15 @@ export default function SignupPage() {
                 type="checkbox"
                 checked={formData.termsAccepted}
                 onChange={(e) => setFormData({ ...formData, termsAccepted: e.target.checked })}
-                className="mt-0.5 rounded border-[#E6E5DE] text-[#9CAF88] focus:ring-[#9CAF88]"
+                className="mt-0.5 rounded border-[#DCE2E6] text-[#9CC6E0] focus:ring-[#9CC6E0]"
               />
-              <span className="text-[11px] text-[#73786E] leading-relaxed">
+              <span className="text-[11px] text-[#66727D] leading-relaxed">
                 I agree to the{' '}
-                <Link href="/terms-and-conditions" className="font-semibold text-[#758B62] underline">
+                <Link href="/terms-and-conditions" className="font-semibold text-[#20252B] underline">
                   Terms & Conditions
                 </Link>{' '}
                 and{' '}
-                <Link href="/privacy-policy" className="font-semibold text-[#758B62] underline">
+                <Link href="/privacy-policy" className="font-semibold text-[#20252B] underline">
                   Privacy Policy
                 </Link>
                 . I understand that examination results and OMR scores are authoritative.
@@ -233,15 +233,15 @@ export default function SignupPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-full bg-[#E8412C] py-3.5 text-sm font-bold text-white shadow-md shadow-[#E8412C]/20 hover:bg-[#d03521] transition-all hover:translate-y-[-1px] disabled:opacity-50 mt-4"
+            className="w-full rounded-full bg-[#E4002B] py-3.5 text-sm font-bold text-white shadow-md shadow-[#E4002B]/20 hover:bg-[#C90026] transition-all hover:translate-y-[-1px] disabled:opacity-50 mt-4"
           >
             {loading ? 'Creating Candidate Record...' : 'Complete Registration & Claim Free Paper'}
           </button>
         </form>
 
-        <div className="mt-6 border-t border-[#ECEAE4] pt-4 text-center text-xs text-[#73786E]">
+        <div className="mt-6 border-t border-[#DCE2E6] pt-4 text-center text-xs text-[#66727D]">
           Already registered?{' '}
-          <Link href="/login" className="font-bold text-[#758B62] hover:underline">
+          <Link href="/login" className="font-bold text-[#20252B] hover:underline">
             Sign In to Dashboard
           </Link>
         </div>

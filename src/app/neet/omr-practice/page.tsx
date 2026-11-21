@@ -49,13 +49,13 @@ export default function NeetOmrPracticePage() {
   };
 
   return (
-    <div className="bg-[#F7F5EF] text-[#2E332D] min-h-screen py-10">
+    <div className="bg-[#F1F3F4] text-[#20252B] min-h-screen py-10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Navigation breadcrumb */}
-        <div className="flex items-center justify-between border-b border-[#E6E5DE] pb-4">
+        <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-4">
           <Link
             href="/neet"
-            className="flex items-center gap-2 text-xs font-semibold text-[#73786E] hover:text-[#263126]"
+            className="flex items-center gap-2 text-xs font-semibold text-[#66727D] hover:text-[#20252B]"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>Back to FORT NEET</span>
@@ -64,7 +64,7 @@ export default function NeetOmrPracticePage() {
           <div className="flex items-center gap-3">
             <button
               onClick={handleReset}
-              className="flex items-center gap-1.5 rounded-xl border border-[#E6E5DE] bg-white px-3.5 py-1.5 text-xs text-[#73786E] hover:text-[#E8412C] hover:bg-[#FCE8E4] transition-colors shadow-soft"
+              className="flex items-center gap-1.5 rounded-xl border border-[#DCE2E6] bg-white px-3.5 py-1.5 text-xs text-[#66727D] hover:text-[#E4002B] hover:bg-[#FDEDF0] transition-colors shadow-soft"
             >
               <RefreshCw className="h-3.5 w-3.5" />
               <span>Reset All 180 Bubbles</span>
@@ -74,14 +74,14 @@ export default function NeetOmrPracticePage() {
 
         {/* Introduction */}
         <div className="mt-6 mb-8">
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-[#E9EEE3] px-3 py-0.5 text-xs font-semibold text-[#758B62]">
-            <Sparkles className="h-3.5 w-3.5 text-[#9CAF88]" />
+          <div className="inline-flex items-center gap-1.5 rounded-full bg-[#E9EEF1] px-3 py-0.5 text-xs font-semibold text-[#20252B]">
+            <Sparkles className="h-3.5 w-3.5 text-[#9CC6E0]" />
             <span>Exact 180-Question Physical NEET OMR Replica</span>
           </div>
-          <h1 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#263126] font-serif">
+          <h1 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#20252B] font-serif">
             NEET Physical OMR Practice Arena
           </h1>
-          <p className="mt-1 max-w-3xl text-xs sm:text-sm text-[#73786E] leading-relaxed">
+          <p className="mt-1 max-w-3xl text-xs sm:text-sm text-[#66727D] leading-relaxed">
             Practice bubble alignment and response speed on the exact 180-question NEET answer sheet. Click any
             bubble to darken it. Click again to clear. Export a print-ready vector A4 PDF with
             candidate metadata and Code 39 barcode.

@@ -294,9 +294,9 @@ export default function AdminQuestionBankPage() {
       {/* Create / Edit Question Modal */}
       {showCreateModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 overflow-y-auto">
-          <div className="w-full max-w-2xl rounded-[28px] border border-[#E6E5DE] bg-white p-6 sm:p-8 shadow-2xl my-8 space-y-4">
-            <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-3">
-              <h3 className="text-lg font-bold font-serif text-[#263126]">
+          <div className="w-full max-w-2xl rounded-[28px] border border-[#DCE2E6] bg-white p-6 sm:p-8 shadow-2xl my-8 space-y-4">
+            <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-3">
+              <h3 className="text-lg font-bold font-serif text-[#20252B]">
                 {editingQuestion ? 'Edit Question Record' : 'Author New Mathematical Question'}
               </h3>
               <div className="flex items-center gap-2">
@@ -304,13 +304,13 @@ export default function AdminQuestionBankPage() {
                   type="button"
                   onClick={() => setShowPreview(!showPreview)}
                   className={`rounded-full px-3 py-1 text-xs font-semibold border transition-all ${
-                    showPreview ? 'bg-[#263126] text-white' : 'border-[#E6E5DE] bg-white text-[#73786E]'
+                    showPreview ? 'bg-[#20252B] text-white' : 'border-[#DCE2E6] bg-white text-[#66727D]'
                   }`}
                 >
                   <Eye className="h-3.5 w-3.5 inline mr-1" />
                   <span>{showPreview ? 'Editor' : 'Live Preview'}</span>
                 </button>
-                <button onClick={() => setShowCreateModal(false)} className="text-[#92958D]">
+                <button onClick={() => setShowCreateModal(false)} className="text-[#66727D]">
                   <X className="h-5 w-5" />
                 </button>
               </div>
@@ -324,11 +324,11 @@ export default function AdminQuestionBankPage() {
             )}
 
             {showPreview ? (
-              <div className="rounded-2xl bg-[#F7F5EF] p-6 border border-[#E6E5DE] space-y-4">
-                <div className="text-xs font-bold text-[#758B62] uppercase tracking-wider">
+              <div className="rounded-2xl bg-[#F1F3F4] p-6 border border-[#DCE2E6] space-y-4">
+                <div className="text-xs font-bold text-[#20252B] uppercase tracking-wider">
                   Live Student KaTeX Preview
                 </div>
-                <div className="text-sm text-[#263126]">
+                <div className="text-sm text-[#20252B]">
                   <MathText content={formData.text || 'Question statement will render here...'} />
                 </div>
                 <div className="grid grid-cols-2 gap-2 text-xs">
@@ -337,8 +337,8 @@ export default function AdminQuestionBankPage() {
                       key={opt.key}
                       className={`rounded-xl border p-2.5 flex items-center gap-2 ${
                         opt.key === formData.correctOption
-                          ? 'border-[#758B62] bg-[#E9EEE3] font-bold text-[#263126]'
-                          : 'border-[#E6E5DE] bg-white text-[#73786E]'
+                          ? 'border-[#20252B] bg-[#E9EEF1] font-bold text-[#20252B]'
+                          : 'border-[#DCE2E6] bg-white text-[#66727D]'
                       }`}
                     >
                       <span className="font-mono">{opt.key}.</span>
@@ -347,9 +347,9 @@ export default function AdminQuestionBankPage() {
                   ))}
                 </div>
                 {formData.explanationText && (
-                  <div className="rounded-xl bg-white p-3 border border-[#E6E5DE] text-xs space-y-1">
-                    <span className="font-bold text-[#758B62]">Solution:</span>
-                    <div className="text-[#263126]">
+                  <div className="rounded-xl bg-white p-3 border border-[#DCE2E6] text-xs space-y-1">
+                    <span className="font-bold text-[#20252B]">Solution:</span>
+                    <div className="text-[#20252B]">
                       <MathText content={formData.explanationText} />
                     </div>
                   </div>
@@ -358,7 +358,7 @@ export default function AdminQuestionBankPage() {
             ) : (
               <form onSubmit={handleSaveQuestion} className="space-y-4 text-xs">
                 <div>
-                  <label className="block text-[#73786E] font-medium">
+                  <label className="block text-[#66727D] font-medium">
                     Question Statement (Supports KaTeX equations: e.g. $F = ma$)
                   </label>
                   <textarea
@@ -367,13 +367,13 @@ export default function AdminQuestionBankPage() {
                     value={formData.text}
                     onChange={(e) => handleTextChange(e.target.value)}
                     placeholder="Enter question statement with standard markdown or LaTeX math..."
-                    className="mt-1 w-full rounded-xl border border-[#E6E5DE] bg-white p-2.5 text-xs text-[#263126] focus:border-[#263126] focus:outline-none"
+                    className="mt-1 w-full rounded-xl border border-[#DCE2E6] bg-white p-2.5 text-xs text-[#20252B] focus:border-[#20252B] focus:outline-none"
                   />
                 </div>
 
                 <div className="grid grid-cols-3 gap-3">
                   <div>
-                    <label className="block text-[#73786E] font-medium">Subject</label>
+                    <label className="block text-[#66727D] font-medium">Subject</label>
                     <select
                       value={formData.subjectSlug}
                       onChange={(e) =>
@@ -383,7 +383,7 @@ export default function AdminQuestionBankPage() {
                           subjectName: e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1),
                         })
                       }
-                      className="mt-1 w-full rounded-xl border border-[#E6E5DE] bg-white p-2.5 text-xs text-[#263126]"
+                      className="mt-1 w-full rounded-xl border border-[#DCE2E6] bg-white p-2.5 text-xs text-[#20252B]"
                     >
                       <option value="physics">Physics</option>
                       <option value="chemistry">Chemistry</option>
@@ -392,11 +392,11 @@ export default function AdminQuestionBankPage() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-[#73786E] font-medium">Difficulty</label>
+                    <label className="block text-[#66727D] font-medium">Difficulty</label>
                     <select
                       value={formData.difficulty}
                       onChange={(e) => setFormData({ ...formData, difficulty: e.target.value as any })}
-                      className="mt-1 w-full rounded-xl border border-[#E6E5DE] bg-white p-2.5 text-xs text-[#263126]"
+                      className="mt-1 w-full rounded-xl border border-[#DCE2E6] bg-white p-2.5 text-xs text-[#20252B]"
                     >
                       <option value="easy">Easy (+4 / -1)</option>
                       <option value="medium">Medium</option>
@@ -404,23 +404,23 @@ export default function AdminQuestionBankPage() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-[#73786E] font-medium">Concept / Topic</label>
+                    <label className="block text-[#66727D] font-medium">Concept / Topic</label>
                     <input
                       type="text"
                       value={formData.conceptName}
                       onChange={(e) => setFormData({ ...formData, conceptName: e.target.value })}
-                      className="mt-1 w-full rounded-xl border border-[#E6E5DE] bg-white p-2.5 text-xs text-[#263126]"
+                      className="mt-1 w-full rounded-xl border border-[#DCE2E6] bg-white p-2.5 text-xs text-[#20252B]"
                     />
                   </div>
                 </div>
 
                 {/* 4 Choices */}
                 <div className="space-y-2">
-                  <label className="block text-[#73786E] font-medium">Four Answer Choices</label>
+                  <label className="block text-[#66727D] font-medium">Four Answer Choices</label>
                   <div className="grid grid-cols-2 gap-2">
                     {formData.options.map((opt, idx) => (
                       <div key={opt.key} className="flex items-center gap-2">
-                        <span className="font-mono font-bold text-xs text-[#263126]">{opt.key}:</span>
+                        <span className="font-mono font-bold text-xs text-[#20252B]">{opt.key}:</span>
                         <input
                           type="text"
                           required
@@ -431,7 +431,7 @@ export default function AdminQuestionBankPage() {
                             setFormData({ ...formData, options: next });
                           }}
                           placeholder={`Option ${opt.key} text`}
-                          className="flex-1 rounded-xl border border-[#E6E5DE] bg-white p-2 text-xs text-[#263126]"
+                          className="flex-1 rounded-xl border border-[#DCE2E6] bg-white p-2 text-xs text-[#20252B]"
                         />
                       </div>
                     ))}
@@ -440,11 +440,11 @@ export default function AdminQuestionBankPage() {
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-[#73786E] font-medium">Correct Option</label>
+                    <label className="block text-[#66727D] font-medium">Correct Option</label>
                     <select
                       value={formData.correctOption}
                       onChange={(e) => setFormData({ ...formData, correctOption: e.target.value })}
-                      className="mt-1 w-full rounded-xl border border-[#E6E5DE] bg-white p-2.5 text-xs text-[#263126] font-bold"
+                      className="mt-1 w-full rounded-xl border border-[#DCE2E6] bg-white p-2.5 text-xs text-[#20252B] font-bold"
                     >
                       <option value="A">Option A</option>
                       <option value="B">Option B</option>
@@ -453,11 +453,11 @@ export default function AdminQuestionBankPage() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-[#73786E] font-medium">Publication Status</label>
+                    <label className="block text-[#66727D] font-medium">Publication Status</label>
                     <select
                       value={formData.status}
                       onChange={(e) => setFormData({ ...formData, status: e.target.value as any })}
-                      className="mt-1 w-full rounded-xl border border-[#E6E5DE] bg-white p-2.5 text-xs text-[#263126]"
+                      className="mt-1 w-full rounded-xl border border-[#DCE2E6] bg-white p-2.5 text-xs text-[#20252B]"
                     >
                       <option value="published">Published</option>
                       <option value="pending_review">Pending Review</option>
@@ -467,13 +467,13 @@ export default function AdminQuestionBankPage() {
                 </div>
 
                 <div>
-                  <label className="block text-[#73786E] font-medium">Detailed Explanation</label>
+                  <label className="block text-[#66727D] font-medium">Detailed Explanation</label>
                   <textarea
                     rows={2}
                     value={formData.explanationText}
                     onChange={(e) => setFormData({ ...formData, explanationText: e.target.value })}
                     placeholder="Step-by-step scientific solution..."
-                    className="mt-1 w-full rounded-xl border border-[#E6E5DE] bg-white p-2.5 text-xs text-[#263126]"
+                    className="mt-1 w-full rounded-xl border border-[#DCE2E6] bg-white p-2.5 text-xs text-[#20252B]"
                   />
                 </div>
 
@@ -481,13 +481,13 @@ export default function AdminQuestionBankPage() {
                   <button
                     type="button"
                     onClick={() => setShowCreateModal(false)}
-                    className="flex-1 rounded-full border border-[#E6E5DE] py-2.5 font-semibold text-[#263126]"
+                    className="flex-1 rounded-full border border-[#DCE2E6] py-2.5 font-semibold text-[#20252B]"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    className="flex-1 rounded-full bg-[#263126] py-2.5 font-bold text-white shadow-sm"
+                    className="flex-1 rounded-full bg-[#20252B] py-2.5 font-bold text-white shadow-sm"
                   >
                     {editingQuestion ? 'Save Revision' : 'Publish Question'}
                   </button>
@@ -501,19 +501,19 @@ export default function AdminQuestionBankPage() {
       {/* Bulk Import Modal */}
       {showImportModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 overflow-y-auto">
-          <div className="w-full max-w-xl rounded-[28px] border border-[#E6E5DE] bg-white p-6 sm:p-8 shadow-2xl my-8 space-y-4">
-            <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-3">
-              <h3 className="text-lg font-bold font-serif text-[#263126]">
+          <div className="w-full max-w-xl rounded-[28px] border border-[#DCE2E6] bg-white p-6 sm:p-8 shadow-2xl my-8 space-y-4">
+            <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-3">
+              <h3 className="text-lg font-bold font-serif text-[#20252B]">
                 Bulk Question Import (JSON / CSV)
               </h3>
-              <button onClick={() => setShowImportModal(false)} className="text-[#92958D]">
+              <button onClick={() => setShowImportModal(false)} className="text-[#66727D]">
                 <X className="h-5 w-5" />
               </button>
             </div>
 
             {importStep === 1 && (
               <div className="space-y-4 text-xs">
-                <p className="text-[#73786E]">
+                <p className="text-[#66727D]">
                   Paste structured JSON array of questions. Every record is checked for question text, minimum 2 choices, valid correct keys, and marks.
                 </p>
 
@@ -522,21 +522,21 @@ export default function AdminQuestionBankPage() {
                   value={importJsonText}
                   onChange={(e) => setImportJsonText(e.target.value)}
                   placeholder={`[\n  {\n    "text": "What is the unit of electric flux?",\n    "subjectSlug": "physics",\n    "options": ["V·m", "N/C", "J/s", "T·m²"],\n    "correctOption": "A",\n    "marks": 4\n  }\n]`}
-                  className="w-full rounded-2xl border border-[#E6E5DE] bg-[#F7F5EF] p-4 font-mono text-xs text-[#263126] focus:border-[#263126] focus:outline-none"
+                  className="w-full rounded-2xl border border-[#DCE2E6] bg-[#F1F3F4] p-4 font-mono text-xs text-[#20252B] focus:border-[#20252B] focus:outline-none"
                 />
 
                 <div className="flex gap-3">
                   <button
                     type="button"
                     onClick={() => setShowImportModal(false)}
-                    className="flex-1 rounded-full border border-[#E6E5DE] py-2.5 font-semibold text-[#263126]"
+                    className="flex-1 rounded-full border border-[#DCE2E6] py-2.5 font-semibold text-[#20252B]"
                   >
                     Cancel
                   </button>
                   <button
                     type="button"
                     onClick={handleValidateImport}
-                    className="flex-1 rounded-full bg-[#263126] py-2.5 font-bold text-white shadow-sm"
+                    className="flex-1 rounded-full bg-[#20252B] py-2.5 font-bold text-white shadow-sm"
                   >
                     Validate Schema →
                   </button>
@@ -547,14 +547,14 @@ export default function AdminQuestionBankPage() {
             {importStep === 2 && (
               <div className="space-y-4 text-xs">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-[#263126]">
+                  <span className="font-bold text-[#20252B]">
                     Validation Summary: {parsedImportRows.length} questions parsed
                   </span>
                   <span
                     className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold ${
                       importValidationErrors.length === 0
-                        ? 'bg-[#E9EEE3] text-[#758B62]'
-                        : 'bg-[#FCE8E4] text-[#E8412C]'
+                        ? 'bg-[#E9EEF1] text-[#20252B]'
+                        : 'bg-[#FDEDF0] text-[#E4002B]'
                     }`}
                   >
                     {importValidationErrors.length === 0 ? 'Passed Schema Validation' : `${importValidationErrors.length} Errors`}
@@ -562,13 +562,13 @@ export default function AdminQuestionBankPage() {
                 </div>
 
                 {importValidationErrors.length > 0 ? (
-                  <div className="rounded-2xl bg-[#FCE8E4] p-4 text-xs text-[#E8412C] space-y-1 max-h-40 overflow-y-auto">
+                  <div className="rounded-2xl bg-[#FDEDF0] p-4 text-xs text-[#E4002B] space-y-1 max-h-40 overflow-y-auto">
                     {importValidationErrors.map((err, idx) => (
                       <div key={idx}>• {err}</div>
                     ))}
                   </div>
                 ) : (
-                  <div className="rounded-2xl bg-[#E9EEE3] p-4 text-xs text-[#758B62] space-y-1">
+                  <div className="rounded-2xl bg-[#E9EEF1] p-4 text-xs text-[#20252B] space-y-1">
                     ✓ All rows conform to FORT question database schemas. Ready to import.
                   </div>
                 )}
@@ -577,7 +577,7 @@ export default function AdminQuestionBankPage() {
                   <button
                     type="button"
                     onClick={() => setImportStep(1)}
-                    className="flex-1 rounded-full border border-[#E6E5DE] py-2.5 font-semibold text-[#263126]"
+                    className="flex-1 rounded-full border border-[#DCE2E6] py-2.5 font-semibold text-[#20252B]"
                   >
                     Back
                   </button>
@@ -585,7 +585,7 @@ export default function AdminQuestionBankPage() {
                     type="button"
                     disabled={importValidationErrors.length > 0}
                     onClick={handleConfirmImport}
-                    className="flex-1 rounded-full bg-[#263126] py-2.5 font-bold text-white shadow-sm disabled:opacity-50"
+                    className="flex-1 rounded-full bg-[#20252B] py-2.5 font-bold text-white shadow-sm disabled:opacity-50"
                   >
                     Confirm Import
                   </button>
@@ -597,12 +597,12 @@ export default function AdminQuestionBankPage() {
       )}
 
       {/* Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#ECEAE4] pb-6">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#DCE2E6] pb-6">
         <div>
-          <h1 className="text-2xl font-bold font-serif text-[#263126]">
+          <h1 className="text-2xl font-bold font-serif text-[#20252B]">
             Question Bank CMS & Repository
           </h1>
-          <p className="mt-1 text-xs text-[#73786E]">
+          <p className="mt-1 text-xs text-[#66727D]">
             KaTeX mathematical equation rendering, multi-type options, duplicate detection, and bulk import.
           </p>
         </div>
@@ -610,14 +610,14 @@ export default function AdminQuestionBankPage() {
         <div className="flex items-center gap-3">
           <button
             onClick={() => setShowImportModal(true)}
-            className="inline-flex items-center gap-2 rounded-full border border-[#E6E5DE] bg-white px-5 py-2.5 text-xs font-semibold text-[#263126] hover:bg-[#F7F5EF] transition-all"
+            className="inline-flex items-center gap-2 rounded-full border border-[#DCE2E6] bg-white px-5 py-2.5 text-xs font-semibold text-[#20252B] hover:bg-[#F1F3F4] transition-all"
           >
             <Upload className="h-4 w-4" />
             <span>Bulk Import</span>
           </button>
           <button
             onClick={handleOpenCreate}
-            className="inline-flex items-center gap-2 rounded-full bg-[#263126] px-5 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-black transition-all"
+            className="inline-flex items-center gap-2 rounded-full bg-[#20252B] px-5 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-black transition-all"
           >
             <Plus className="h-4 w-4" />
             <span>Author Question</span>
@@ -628,13 +628,13 @@ export default function AdminQuestionBankPage() {
       {/* Search & Filters */}
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div className="relative max-w-sm flex-1">
-          <Search className="absolute left-3.5 top-3 h-4 w-4 text-[#92958D]" />
+          <Search className="absolute left-3.5 top-3 h-4 w-4 text-[#66727D]" />
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search questions by text or concept..."
-            className="w-full rounded-full border border-[#E6E5DE] bg-white py-2 pl-10 pr-4 text-xs text-[#263126] focus:border-[#263126] focus:outline-none"
+            className="w-full rounded-full border border-[#DCE2E6] bg-white py-2 pl-10 pr-4 text-xs text-[#20252B] focus:border-[#20252B] focus:outline-none"
           />
         </div>
 
@@ -642,7 +642,7 @@ export default function AdminQuestionBankPage() {
           <select
             value={filterSubject}
             onChange={(e) => setFilterSubject(e.target.value)}
-            className="rounded-full border border-[#E6E5DE] bg-white px-3 py-1.5 text-xs text-[#263126]"
+            className="rounded-full border border-[#DCE2E6] bg-white px-3 py-1.5 text-xs text-[#20252B]"
           >
             <option value="all">All Subjects</option>
             <option value="physics">Physics</option>
@@ -654,7 +654,7 @@ export default function AdminQuestionBankPage() {
           <select
             value={filterDifficulty}
             onChange={(e) => setFilterDifficulty(e.target.value)}
-            className="rounded-full border border-[#E6E5DE] bg-white px-3 py-1.5 text-xs text-[#263126]"
+            className="rounded-full border border-[#DCE2E6] bg-white px-3 py-1.5 text-xs text-[#20252B]"
           >
             <option value="all">All Difficulties</option>
             <option value="easy">Easy</option>
@@ -669,25 +669,25 @@ export default function AdminQuestionBankPage() {
         {filtered.map((q, idx) => (
           <div
             key={q.id}
-            className="rounded-[24px] border border-[#E6E5DE] bg-white p-6 shadow-sm hover:border-[#263126] transition-all space-y-4"
+            className="rounded-[24px] border border-[#DCE2E6] bg-white p-6 shadow-sm hover:border-[#20252B] transition-all space-y-4"
           >
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#ECEAE4] pb-3 text-xs">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#DCE2E6] pb-3 text-xs">
               <div className="flex items-center gap-2">
-                <span className="font-mono font-bold text-[#758B62]">Q{idx + 1}.</span>
-                <span className="rounded-full bg-[#E9EEE3] px-2.5 py-0.5 font-bold text-[#263126]">
+                <span className="font-mono font-bold text-[#20252B]">Q{idx + 1}.</span>
+                <span className="rounded-full bg-[#E9EEF1] px-2.5 py-0.5 font-bold text-[#20252B]">
                   {q.subjectName}
                 </span>
-                <span className="text-[#758B62] font-semibold">{q.conceptName}</span>
-                <span className="text-[#92958D]">({q.difficulty})</span>
+                <span className="text-[#20252B] font-semibold">{q.conceptName}</span>
+                <span className="text-[#66727D]">({q.difficulty})</span>
               </div>
 
               <div className="flex items-center gap-3">
-                <span className="rounded-full bg-[#E9EEE3] px-2.5 py-0.5 font-mono text-[10px] font-bold text-[#758B62] uppercase">
+                <span className="rounded-full bg-[#E9EEF1] px-2.5 py-0.5 font-mono text-[10px] font-bold text-[#20252B] uppercase">
                   {q.status}
                 </span>
                 <button
                   onClick={() => handleOpenEdit(q)}
-                  className="rounded-full p-1.5 text-[#73786E] hover:bg-[#F0EFEA] hover:text-[#263126]"
+                  className="rounded-full p-1.5 text-[#66727D] hover:bg-[#F1F3F4] hover:text-[#20252B]"
                   title="Edit Question"
                 >
                   <Edit2 className="h-4 w-4" />
@@ -695,7 +695,7 @@ export default function AdminQuestionBankPage() {
               </div>
             </div>
 
-            <div className="text-sm text-[#263126] leading-relaxed">
+            <div className="text-sm text-[#20252B] leading-relaxed">
               <MathText content={q.text} />
             </div>
 
@@ -707,14 +707,14 @@ export default function AdminQuestionBankPage() {
                     key={opt.key}
                     className={`rounded-xl border p-2.5 flex items-center gap-2 ${
                       isCorrect
-                        ? 'border-[#758B62] bg-[#E9EEE3] font-bold text-[#263126]'
-                        : 'border-[#E6E5DE] bg-[#F7F5EF] text-[#73786E]'
+                        ? 'border-[#20252B] bg-[#E9EEF1] font-bold text-[#20252B]'
+                        : 'border-[#DCE2E6] bg-[#F1F3F4] text-[#66727D]'
                     }`}
                   >
                     <span className="font-mono">{opt.key}.</span>
                     <MathText content={opt.text} />
                     {isCorrect && (
-                      <CheckCircle2 className="h-3.5 w-3.5 text-[#758B62] ml-auto shrink-0" />
+                      <CheckCircle2 className="h-3.5 w-3.5 text-[#20252B] ml-auto shrink-0" />
                     )}
                   </div>
                 );

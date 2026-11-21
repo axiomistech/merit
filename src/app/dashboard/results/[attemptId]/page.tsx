@@ -137,7 +137,7 @@ export default function ExamResultPage() {
 
   if (!evaluation) {
     return (
-      <div className="flex h-96 items-center justify-center text-xs text-[#73786E]">
+      <div className="flex h-96 items-center justify-center text-xs text-[#66727D]">
         Loading analytical evaluation...
       </div>
     );
@@ -187,48 +187,48 @@ export default function ExamResultPage() {
   });
 
   return (
-    <div className="bg-[#F7F5EF] text-[#2E332D] min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+    <div className="bg-[#F1F3F4] text-[#20252B] min-h-screen py-8 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl space-y-8">
         {/* Navigation Breadcrumb */}
-        <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-4">
+        <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-4">
           <Link
             href="/dashboard"
-            className="flex items-center gap-2 text-xs font-semibold text-[#73786E] hover:text-[#263126] transition-colors"
+            className="flex items-center gap-2 text-xs font-semibold text-[#66727D] hover:text-[#20252B] transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>Return to Candidate Dashboard</span>
           </Link>
 
           <div className="flex items-center gap-2 text-xs">
-            <span className="text-[#92958D]">Attempt Hash:</span>
-            <span className="font-mono text-[#758B62] font-bold">{attemptId}</span>
+            <span className="text-[#66727D]">Attempt Hash:</span>
+            <span className="font-mono text-[#20252B] font-bold">{attemptId}</span>
           </div>
         </div>
 
         {/* ================================================================ */}
         {/* SECTION 9: EXACT TEST RESULT SCOREBOARD (MATCHING USER FLOW) */}
         {/* ================================================================ */}
-        <div className="rounded-[32px] border border-[#E6E5DE] bg-white p-6 sm:p-10 shadow-sm space-y-8">
-          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#ECEAE4] pb-6">
+        <div className="rounded-[32px] border border-[#DCE2E6] bg-white p-6 sm:p-10 shadow-sm space-y-8">
+          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#DCE2E6] pb-6">
             <div>
               <div className="flex items-center gap-2">
-                <span className="rounded-full bg-[#E9EEE3] px-2.5 py-0.5 text-xs font-bold text-[#758B62]">
+                <span className="rounded-full bg-[#E9EEF1] px-2.5 py-0.5 text-xs font-bold text-[#20252B]">
                   OFFICIAL EVALUATION
                 </span>
-                <span className="text-xs text-[#73786E]">{SAMPLE_NEET_PAPER.name}</span>
+                <span className="text-xs text-[#66727D]">{SAMPLE_NEET_PAPER.name}</span>
               </div>
-              <h1 className="mt-2 text-3xl font-extrabold font-serif text-[#263126]">
+              <h1 className="mt-2 text-3xl font-extrabold font-serif text-[#20252B]">
                 Test Result
               </h1>
-              <p className="mt-1 text-xs text-[#73786E]">
-                Candidate: <strong className="text-[#263126]">{candidate.fullName}</strong> • ID:{' '}
-                <strong className="font-mono text-[#263126]">{candidate.registrationId}</strong>
+              <p className="mt-1 text-xs text-[#66727D]">
+                Candidate: <strong className="text-[#20252B]">{candidate.fullName}</strong> • ID:{' '}
+                <strong className="font-mono text-[#20252B]">{candidate.registrationId}</strong>
               </p>
             </div>
 
             <button
               onClick={handleDownloadOmrPdf}
-              className="flex items-center gap-2 rounded-full bg-[#9CAF88] px-5 py-2.5 text-xs font-bold text-white hover:bg-[#8ea07a] transition-all shadow-sm"
+              className="flex items-center gap-2 rounded-full bg-[#9CC6E0] px-5 py-2.5 text-xs font-bold text-[#20252B] hover:bg-[#C90026] transition-all shadow-sm"
             >
               <FileDown className="h-4 w-4" />
               <span>Export Vector OMR (PDF)</span>
@@ -238,99 +238,99 @@ export default function ExamResultPage() {
           {/* Primary Big Metrics (Accuracy, Score, Correct, Wrong, Skipped) */}
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-5">
             {/* Accuracy */}
-            <div className="rounded-[24px] border border-[#E6E5DE] bg-[#F7F5EF] p-5 text-center">
-              <div className="text-xs font-semibold text-[#73786E]">Accuracy</div>
-              <div className="mt-2 font-mono text-4xl font-black text-[#758B62]">
+            <div className="rounded-[24px] border border-[#DCE2E6] bg-[#F1F3F4] p-5 text-center">
+              <div className="text-xs font-semibold text-[#66727D]">Accuracy</div>
+              <div className="mt-2 font-mono text-4xl font-black text-[#20252B]">
                 {evaluation.accuracy}%
               </div>
-              <div className="mt-1 text-[11px] text-[#92958D]">Correct / Attempted</div>
+              <div className="mt-1 text-[11px] text-[#66727D]">Correct / Attempted</div>
             </div>
 
             {/* Score */}
-            <div className="rounded-[24px] border border-[#E6E5DE] bg-[#F7F5EF] p-5 text-center">
-              <div className="text-xs font-semibold text-[#73786E]">Score</div>
-              <div className="mt-2 font-mono text-3xl sm:text-4xl font-black text-[#263126]">
+            <div className="rounded-[24px] border border-[#DCE2E6] bg-[#F1F3F4] p-5 text-center">
+              <div className="text-xs font-semibold text-[#66727D]">Score</div>
+              <div className="mt-2 font-mono text-3xl sm:text-4xl font-black text-[#20252B]">
                 {evaluation.totalScore}
-                <span className="text-xs text-[#92958D] font-normal"> / {evaluation.maxScore}</span>
+                <span className="text-xs text-[#66727D] font-normal"> / {evaluation.maxScore}</span>
               </div>
-              <div className="mt-1 text-[11px] text-[#92958D]">Net marks earned</div>
+              <div className="mt-1 text-[11px] text-[#66727D]">Net marks earned</div>
             </div>
 
             {/* Correct */}
-            <div className="rounded-[24px] border border-[#9CAF88]/30 bg-[#E9EEE3]/60 p-5 text-center">
-              <div className="text-xs font-semibold text-[#758B62]">Correct</div>
-              <div className="mt-2 font-mono text-4xl font-black text-[#758B62]">
+            <div className="rounded-[24px] border border-[#9CC6E0]/30 bg-[#E9EEF1]/60 p-5 text-center">
+              <div className="text-xs font-semibold text-[#20252B]">Correct</div>
+              <div className="mt-2 font-mono text-4xl font-black text-[#20252B]">
                 {evaluation.correctCount}
               </div>
-              <div className="mt-1 text-[11px] text-[#758B62]">+{evaluation.correctCount * 4} Marks</div>
+              <div className="mt-1 text-[11px] text-[#20252B]">+{evaluation.correctCount * 4} Marks</div>
             </div>
 
             {/* Wrong */}
-            <div className="rounded-[24px] border border-[#E8412C]/20 bg-[#FCE8E4] p-5 text-center">
-              <div className="text-xs font-semibold text-[#E8412C]">Wrong</div>
-              <div className="mt-2 font-mono text-4xl font-black text-[#E8412C]">
+            <div className="rounded-[24px] border border-[#E4002B]/20 bg-[#FDEDF0] p-5 text-center">
+              <div className="text-xs font-semibold text-[#E4002B]">Wrong</div>
+              <div className="mt-2 font-mono text-4xl font-black text-[#E4002B]">
                 {evaluation.incorrectCount}
               </div>
-              <div className="mt-1 text-[11px] text-[#E8412C]">-{evaluation.incorrectCount} Marks (Penalty)</div>
+              <div className="mt-1 text-[11px] text-[#E4002B]">-{evaluation.incorrectCount} Marks (Penalty)</div>
             </div>
 
             {/* Skipped */}
-            <div className="rounded-[24px] border border-[#E6E5DE] bg-[#F7F5EF] p-5 text-center col-span-2 sm:col-span-1">
-              <div className="text-xs font-semibold text-[#73786E]">Skipped</div>
-              <div className="mt-2 font-mono text-4xl font-black text-[#92958D]">
+            <div className="rounded-[24px] border border-[#DCE2E6] bg-[#F1F3F4] p-5 text-center col-span-2 sm:col-span-1">
+              <div className="text-xs font-semibold text-[#66727D]">Skipped</div>
+              <div className="mt-2 font-mono text-4xl font-black text-[#66727D]">
                 {evaluation.unattemptedCount}
               </div>
-              <div className="mt-1 text-[11px] text-[#92958D]">0 Marks change</div>
+              <div className="mt-1 text-[11px] text-[#66727D]">0 Marks change</div>
             </div>
           </div>
 
           {/* Additional Analytics Row: Time Spent, Avg Time, Strongest, Weakest, Percentile */}
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 pt-4 border-t border-[#ECEAE4] text-xs">
-            <div className="rounded-2xl border border-[#E6E5DE] bg-white p-4">
-              <div className="text-[#73786E]">Time Invested & Pacing</div>
-              <div className="mt-1 text-base font-bold text-[#263126]">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 pt-4 border-t border-[#DCE2E6] text-xs">
+            <div className="rounded-2xl border border-[#DCE2E6] bg-white p-4">
+              <div className="text-[#66727D]">Time Invested & Pacing</div>
+              <div className="mt-1 text-base font-bold text-[#20252B]">
                 {formatTimeWithHours(evaluation.timeTakenSeconds)}
               </div>
-              <div className="text-[11px] text-[#92958D]">
+              <div className="text-[11px] text-[#66727D]">
                 Avg {Math.round(evaluation.timeTakenSeconds / Math.max(1, evaluation.correctCount + evaluation.incorrectCount))}s / question
               </div>
             </div>
 
-            <div className="rounded-2xl border border-[#E6E5DE] bg-white p-4">
-              <div className="text-[#73786E]">Strongest Topic</div>
-              <div className="mt-1 text-base font-bold text-[#758B62]">
+            <div className="rounded-2xl border border-[#DCE2E6] bg-white p-4">
+              <div className="text-[#66727D]">Strongest Topic</div>
+              <div className="mt-1 text-base font-bold text-[#20252B]">
                 Chemical Bonding
               </div>
-              <div className="text-[11px] text-[#73786E]">100% Accuracy (5/5)</div>
+              <div className="text-[11px] text-[#66727D]">100% Accuracy (5/5)</div>
             </div>
 
-            <div className="rounded-2xl border border-[#E8412C]/20 bg-[#FCE8E4]/50 p-4">
-              <div className="text-[#E8412C] font-semibold">Weakest Topic (Remediation)</div>
-              <div className="mt-1 text-base font-bold text-[#E8412C]">
+            <div className="rounded-2xl border border-[#E4002B]/20 bg-[#FDEDF0]/50 p-4">
+              <div className="text-[#E4002B] font-semibold">Weakest Topic (Remediation)</div>
+              <div className="mt-1 text-base font-bold text-[#E4002B]">
                 Electrostatics & Gauss Law
               </div>
-              <div className="text-[11px] text-[#73786E]">40% Accuracy (2/5)</div>
+              <div className="text-[11px] text-[#66727D]">40% Accuracy (2/5)</div>
             </div>
 
-            <div className="rounded-2xl border border-[#E6E5DE] bg-white p-4">
-              <div className="text-[#73786E]">Percentile Projection</div>
-              <div className="mt-1 text-base font-bold text-[#263126]">
+            <div className="rounded-2xl border border-[#DCE2E6] bg-white p-4">
+              <div className="text-[#66727D]">Percentile Projection</div>
+              <div className="mt-1 text-base font-bold text-[#20252B]">
                 98.4th Percentile
               </div>
-              <div className="text-[11px] text-[#758B62] font-semibold">Projected AIR ~1,420</div>
+              <div className="text-[11px] text-[#20252B] font-semibold">Projected AIR ~1,420</div>
             </div>
           </div>
         </div>
 
         {/* View Tabs */}
-        <div className="flex border-b border-[#ECEAE4] gap-8 text-xs font-bold">
+        <div className="flex border-b border-[#DCE2E6] gap-8 text-xs font-bold">
           <button
             onClick={() => setActiveTab('overview')}
             className={cn(
               'pb-3 border-b-2 transition-colors',
               activeTab === 'overview'
-                ? 'border-[#9CAF88] text-[#263126]'
-                : 'border-transparent text-[#73786E] hover:text-[#263126]'
+                ? 'border-[#9CC6E0] text-[#20252B]'
+                : 'border-transparent text-[#66727D] hover:text-[#20252B]'
             )}
           >
             Subject & Concept Breakdown
@@ -340,8 +340,8 @@ export default function ExamResultPage() {
             className={cn(
               'pb-3 border-b-2 transition-colors',
               activeTab === 'solutions'
-                ? 'border-[#9CAF88] text-[#263126]'
-                : 'border-transparent text-[#73786E] hover:text-[#263126]'
+                ? 'border-[#9CC6E0] text-[#20252B]'
+                : 'border-transparent text-[#66727D] hover:text-[#20252B]'
             )}
           >
             Review Answers & Solutions
@@ -351,8 +351,8 @@ export default function ExamResultPage() {
             className={cn(
               'pb-3 border-b-2 transition-colors',
               activeTab === 'omr'
-                ? 'border-[#9CAF88] text-[#263126]'
-                : 'border-transparent text-[#73786E] hover:text-[#263126]'
+                ? 'border-[#9CC6E0] text-[#20252B]'
+                : 'border-transparent text-[#66727D] hover:text-[#20252B]'
             )}
           >
             Physical OMR Sheet (180 Questions)
@@ -362,29 +362,29 @@ export default function ExamResultPage() {
         {/* TAB 1: OVERVIEW */}
         {activeTab === 'overview' && (
           <div className="space-y-6">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[#758B62]">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
               Discipline Performance Grid
             </h3>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {Object.entries(evaluation.subjectPerformance).map(([subKey, data]) => (
-                <div key={subKey} className="rounded-[24px] border border-[#E6E5DE] bg-white p-6 shadow-sm">
-                  <div className="text-sm font-bold text-[#263126] font-serif">{data.subjectName}</div>
-                  <div className="mt-3 text-2xl font-black font-mono text-[#263126]">
+                <div key={subKey} className="rounded-[24px] border border-[#DCE2E6] bg-white p-6 shadow-sm">
+                  <div className="text-sm font-bold text-[#20252B] font-serif">{data.subjectName}</div>
+                  <div className="mt-3 text-2xl font-black font-mono text-[#20252B]">
                     {data.score}{' '}
-                    <span className="text-xs text-[#92958D] font-normal">/ {data.maxScore}</span>
+                    <span className="text-xs text-[#66727D] font-normal">/ {data.maxScore}</span>
                   </div>
 
-                  <div className="mt-4 space-y-1.5 border-t border-[#ECEAE4] pt-3 text-xs text-[#73786E]">
+                  <div className="mt-4 space-y-1.5 border-t border-[#DCE2E6] pt-3 text-xs text-[#66727D]">
                     <div className="flex justify-between">
                       <span>Accuracy:</span>
-                      <strong className="text-[#758B62] font-mono">{data.accuracy}%</strong>
+                      <strong className="text-[#20252B] font-mono">{data.accuracy}%</strong>
                     </div>
                     <div className="flex justify-between">
                       <span>Correct / Wrong:</span>
                       <span>
-                        <strong className="text-[#758B62]">{data.correct}</strong> /{' '}
-                        <strong className="text-[#E8412C]">{data.incorrect}</strong>
+                        <strong className="text-[#20252B]">{data.correct}</strong> /{' '}
+                        <strong className="text-[#E4002B]">{data.incorrect}</strong>
                       </span>
                     </div>
                     <div className="flex justify-between">
@@ -397,7 +397,7 @@ export default function ExamResultPage() {
             </div>
 
             {/* Repeat & Improve Cycle CTA */}
-            <div className="rounded-[28px] bg-[#9CAF88] p-8 text-white shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div className="rounded-[28px] bg-[#9CC6E0] p-8 text-[#20252B] shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
               <div className="space-y-2">
                 <span className="text-xs font-bold uppercase tracking-widest text-white/80">
                   THE REPEAT CYCLE • PRACTICE → EVALUATE → IMPROVE
@@ -412,7 +412,7 @@ export default function ExamResultPage() {
 
               <Link
                 href="/dashboard/practice"
-                className="rounded-full bg-[#E8412C] px-8 py-3.5 text-xs font-bold text-white shadow-lg shadow-[#E8412C]/30 hover:bg-[#d03521] transition-all hover:translate-y-[-1px] shrink-0"
+                className="rounded-full bg-[#E4002B] px-8 py-3.5 text-xs font-bold text-white shadow-lg shadow-[#E4002B]/30 hover:bg-[#C90026] transition-all hover:translate-y-[-1px] shrink-0"
               >
                 Practice Weak Topic Now
               </Link>
@@ -426,10 +426,10 @@ export default function ExamResultPage() {
         {activeTab === 'solutions' && (
           <div className="space-y-6">
             {/* Filter Options */}
-            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#ECEAE4] pb-4">
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#DCE2E6] pb-4">
               <div className="flex items-center gap-2">
-                <span className="text-xs font-bold text-[#73786E]">Filter Questions:</span>
-                <div className="flex items-center gap-1.5 rounded-full border border-[#E6E5DE] bg-white p-1 text-xs font-semibold shadow-sm">
+                <span className="text-xs font-bold text-[#66727D]">Filter Questions:</span>
+                <div className="flex items-center gap-1.5 rounded-full border border-[#DCE2E6] bg-white p-1 text-xs font-semibold shadow-sm">
                   {[
                     { id: 'all', label: 'All', count: displayQuestions.length },
                     { id: 'incorrect', label: 'Incorrect', count: evaluation.incorrectCount },
@@ -442,8 +442,8 @@ export default function ExamResultPage() {
                       className={cn(
                         'rounded-full px-3.5 py-1 transition-all',
                         reviewFilter === flt.id
-                          ? 'bg-[#9CAF88] text-white font-bold shadow-sm'
-                          : 'text-[#73786E] hover:text-[#263126]'
+                          ? 'bg-[#9CC6E0] text-[#20252B] font-bold shadow-sm'
+                          : 'text-[#66727D] hover:text-[#20252B]'
                       )}
                     >
                       <span>{flt.label}</span>
@@ -453,7 +453,7 @@ export default function ExamResultPage() {
                 </div>
               </div>
 
-              <span className="text-xs text-[#92958D]">
+              <span className="text-xs text-[#66727D]">
                 Showing {filteredQuestions.length} questions
               </span>
             </div>
@@ -473,16 +473,16 @@ export default function ExamResultPage() {
                 return (
                   <div
                     key={q.id}
-                    className="rounded-[24px] border border-[#E6E5DE] bg-white p-6 sm:p-7 shadow-sm space-y-5"
+                    className="rounded-[24px] border border-[#DCE2E6] bg-white p-6 sm:p-7 shadow-sm space-y-5"
                   >
                     {/* Header */}
-                    <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#ECEAE4] pb-4 text-xs">
+                    <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#DCE2E6] pb-4 text-xs">
                       <div className="flex items-center gap-2">
-                        <span className="font-mono font-bold text-sm text-[#263126]">Q{idx + 1}.</span>
-                        <span className="rounded-full bg-[#E9EEE3] px-2.5 py-0.5 text-[#263126] font-semibold">
+                        <span className="font-mono font-bold text-sm text-[#20252B]">Q{idx + 1}.</span>
+                        <span className="rounded-full bg-[#E9EEF1] px-2.5 py-0.5 text-[#20252B] font-semibold">
                           {q.subjectName}
                         </span>
-                        <span className="text-[#758B62] font-semibold">{q.conceptName}</span>
+                        <span className="text-[#20252B] font-semibold">{q.conceptName}</span>
                       </div>
 
                       <div className="flex items-center gap-2 sm:gap-4">
@@ -491,10 +491,10 @@ export default function ExamResultPage() {
                           className={cn(
                             'rounded-full px-3 py-1 font-bold uppercase text-[10px]',
                             isCorrect
-                              ? 'bg-[#E9EEE3] text-[#758B62]'
+                              ? 'bg-[#E9EEF1] text-[#20252B]'
                               : isWrong
-                              ? 'bg-[#FCE8E4] text-[#E8412C]'
-                              : 'bg-[#F7F5EF] text-[#73786E]'
+                              ? 'bg-[#FDEDF0] text-[#E4002B]'
+                              : 'bg-[#F1F3F4] text-[#66727D]'
                           )}
                         >
                           {isCorrect ? 'Correct (+4)' : isWrong ? 'Incorrect (-1)' : 'Unanswered (0)'}
@@ -506,8 +506,8 @@ export default function ExamResultPage() {
                           className={cn(
                             'rounded-full p-2 transition-colors',
                             isBookmarked
-                              ? 'bg-[#E9EEE3] text-[#758B62]'
-                              : 'text-[#92958D] hover:bg-[#F0EFEA] hover:text-[#263126]'
+                              ? 'bg-[#E9EEF1] text-[#20252B]'
+                              : 'text-[#66727D] hover:bg-[#F1F3F4] hover:text-[#20252B]'
                           )}
                           title="Bookmark Question"
                         >
@@ -517,7 +517,7 @@ export default function ExamResultPage() {
                         {/* Report Error */}
                         <button
                           onClick={() => handleReportError(idx + 1)}
-                          className="rounded-full p-2 text-[#92958D] hover:bg-[#FCE8E4] hover:text-[#E8412C] transition-colors"
+                          className="rounded-full p-2 text-[#66727D] hover:bg-[#FDEDF0] hover:text-[#E4002B] transition-colors"
                           title="Report Error"
                         >
                           <Flag className="h-4 w-4" />
@@ -526,7 +526,7 @@ export default function ExamResultPage() {
                         {/* Expand Solution Button */}
                         <button
                           onClick={() => toggleSolution(q.id)}
-                          className="flex items-center gap-1 font-semibold text-[#758B62] hover:text-[#263126] transition-colors pl-2"
+                          className="flex items-center gap-1 font-semibold text-[#20252B] hover:text-[#20252B] transition-colors pl-2"
                         >
                           <span>{isExpanded ? 'Hide' : 'Explain'}</span>
                           {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
@@ -535,21 +535,21 @@ export default function ExamResultPage() {
                     </div>
 
                     {/* Question Text */}
-                    <div className="text-sm text-[#263126] leading-relaxed">
+                    <div className="text-sm text-[#20252B] leading-relaxed">
                       <MathText content={q.text} />
                     </div>
 
                     {/* Comparison Pill: Candidate selection vs Correct Answer */}
                     <div className="flex flex-wrap items-center gap-4 text-xs">
-                      <div className="rounded-xl bg-[#F7F5EF] px-3.5 py-1.5 border border-[#E6E5DE]">
-                        <span className="text-[#73786E]">Your Answer: </span>
-                        <strong className={cn('font-mono font-bold', isCorrect ? 'text-[#758B62]' : 'text-[#E8412C]')}>
+                      <div className="rounded-xl bg-[#F1F3F4] px-3.5 py-1.5 border border-[#DCE2E6]">
+                        <span className="text-[#66727D]">Your Answer: </span>
+                        <strong className={cn('font-mono font-bold', isCorrect ? 'text-[#20252B]' : 'text-[#E4002B]')}>
                           Option {studentAnswer}
                         </strong>
                       </div>
-                      <div className="rounded-xl bg-[#E9EEE3] px-3.5 py-1.5 border border-[#9CAF88]/30">
-                        <span className="text-[#758B62]">Correct Answer: </span>
-                        <strong className="font-mono font-bold text-[#758B62]">
+                      <div className="rounded-xl bg-[#E9EEF1] px-3.5 py-1.5 border border-[#9CC6E0]/30">
+                        <span className="text-[#20252B]">Correct Answer: </span>
+                        <strong className="font-mono font-bold text-[#20252B]">
                           Option {correctAnswer}
                         </strong>
                       </div>
@@ -567,19 +567,19 @@ export default function ExamResultPage() {
                             className={cn(
                               'flex items-center gap-2.5 rounded-xl border p-3 transition-colors',
                               isCorrectOption
-                                ? 'border-[#9CAF88] bg-[#E9EEE3] text-[#263126]'
+                                ? 'border-[#9CC6E0] bg-[#E9EEF1] text-[#20252B]'
                                 : isStudentChoice && !isCorrectOption
-                                ? 'border-[#E8412C] bg-[#FCE8E4] text-[#E8412C]'
-                                : 'border-[#E6E5DE] bg-[#F7F5EF] text-[#73786E]'
+                                ? 'border-[#E4002B] bg-[#FDEDF0] text-[#E4002B]'
+                                : 'border-[#DCE2E6] bg-[#F1F3F4] text-[#66727D]'
                             )}
                           >
                             <span className="font-mono font-bold">{opt.key}.</span>
                             <MathText content={opt.text} />
                             {isCorrectOption && (
-                              <CheckCircle2 className="h-4 w-4 text-[#758B62] ml-auto shrink-0" />
+                              <CheckCircle2 className="h-4 w-4 text-[#20252B] ml-auto shrink-0" />
                             )}
                             {isStudentChoice && !isCorrectOption && (
-                              <XCircle className="h-4 w-4 text-[#E8412C] ml-auto shrink-0" />
+                              <XCircle className="h-4 w-4 text-[#E4002B] ml-auto shrink-0" />
                             )}
                           </div>
                         );
@@ -588,22 +588,22 @@ export default function ExamResultPage() {
 
                     {/* Detailed Explanation & Why Other Options are Wrong */}
                     {isExpanded && q.explanation && (
-                      <div className="rounded-2xl border border-[#9CAF88]/40 bg-[#F7F5EF] p-6 text-xs space-y-4 animate-in fade-in">
+                      <div className="rounded-2xl border border-[#9CC6E0]/40 bg-[#F1F3F4] p-6 text-xs space-y-4 animate-in fade-in">
                         <div>
-                          <div className="font-bold text-[#758B62] uppercase tracking-wider text-[11px]">
+                          <div className="font-bold text-[#20252B] uppercase tracking-wider text-[11px]">
                             Detailed Scientific Explanation
                           </div>
-                          <div className="mt-1 leading-relaxed text-[#263126]">
+                          <div className="mt-1 leading-relaxed text-[#20252B]">
                             <MathText content={q.explanation.text} />
                           </div>
                         </div>
 
                         {/* Why Other Options are Wrong */}
-                        <div className="pt-3 border-t border-[#ECEAE4]">
-                          <div className="font-bold text-[#263126] uppercase tracking-wider text-[11px]">
+                        <div className="pt-3 border-t border-[#DCE2E6]">
+                          <div className="font-bold text-[#20252B] uppercase tracking-wider text-[11px]">
                             Why other options are wrong:
                           </div>
-                          <p className="mt-1 text-[#73786E] leading-relaxed">
+                          <p className="mt-1 text-[#66727D] leading-relaxed">
                             Distractor options incorporate typical sign errors (forgetting the direction of friction), unit conversions (converting cm to meters), or utilizing the scalar formula rather than the vector dot product.
                           </p>
                         </div>

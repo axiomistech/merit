@@ -345,18 +345,18 @@ export default function ExamExecutionPage() {
   const isTimeCritical = secondsRemaining < 300; // Less than 5 mins
 
   return (
-    <div className="flex h-screen flex-col bg-[#F7F5EF] text-[#2E332D] overflow-hidden select-none">
+    <div className="flex h-screen flex-col bg-[#F1F3F4] text-[#20252B] overflow-hidden select-none">
       {/* Top Authoritative Bar */}
-      <header className="flex h-14 shrink-0 items-center justify-between border-b border-[#E6E5DE] bg-white px-4 sm:px-6 shadow-sm">
+      <header className="flex h-14 shrink-0 items-center justify-between border-b border-[#DCE2E6] bg-white px-4 sm:px-6 shadow-sm">
         <div className="flex items-center gap-3">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#9CAF88] text-white">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#9CC6E0] text-[#20252B]">
             <Shield className="h-4 w-4 stroke-[2.5]" />
           </div>
           <div>
-            <h1 className="text-xs sm:text-sm font-bold text-[#263126] line-clamp-1">{paper.name}</h1>
-            <span className="text-[10px] text-[#73786E]">
-              Candidate: <strong className="text-[#263126]">{candidate.fullName}</strong> • ID:{' '}
-              <strong className="font-mono text-[#263126]">{candidate.registrationId}</strong>
+            <h1 className="text-xs sm:text-sm font-bold text-[#20252B] line-clamp-1">{paper.name}</h1>
+            <span className="text-[10px] text-[#66727D]">
+              Candidate: <strong className="text-[#20252B]">{candidate.fullName}</strong> • ID:{' '}
+              <strong className="font-mono text-[#20252B]">{candidate.registrationId}</strong>
             </span>
           </div>
         </div>
@@ -367,11 +367,11 @@ export default function ExamExecutionPage() {
             className={cn(
               'flex items-center gap-2 rounded-xl border px-3 py-1.5 font-mono text-xs transition-colors',
               isTimeCritical
-                ? 'border-[#E8412C] bg-[#FCE8E4] text-[#E8412C] animate-pulse font-bold'
-                : 'border-[#E6E5DE] bg-[#F7F5EF] text-[#263126]'
+                ? 'border-[#E4002B] bg-[#FDEDF0] text-[#E4002B] animate-pulse font-bold'
+                : 'border-[#DCE2E6] bg-[#F1F3F4] text-[#20252B]'
             )}
           >
-            <Clock className="h-4 w-4 text-[#758B62]" />
+            <Clock className="h-4 w-4 text-[#20252B]" />
             <span className="tabular-nums font-bold">
               {formatTimeWithHours(secondsRemaining)}
             </span>
@@ -379,7 +379,7 @@ export default function ExamExecutionPage() {
 
           <button
             onClick={() => setShowSubmitConfirmModal(true)}
-            className="rounded-xl border border-[#E8412C]/30 bg-white px-4 py-1.5 text-xs font-bold text-[#E8412C] hover:bg-[#FCE8E4] transition-colors"
+            className="rounded-xl border border-[#E4002B]/30 bg-white px-4 py-1.5 text-xs font-bold text-[#E4002B] hover:bg-[#FDEDF0] transition-colors"
           >
             End Test
           </button>
@@ -391,13 +391,13 @@ export default function ExamExecutionPage() {
         {/* Left/Center: Question or OMR Area */}
         <div className="flex flex-1 flex-col overflow-hidden">
           {/* Section Tabs & View Mode Switcher */}
-          <div className="flex items-center justify-between border-b border-[#E6E5DE] bg-white px-4 py-2 text-xs">
+          <div className="flex items-center justify-between border-b border-[#DCE2E6] bg-white px-4 py-2 text-xs">
             <div className="flex items-center gap-2">
-              <span className="font-semibold text-[#73786E]">Section:</span>
-              <span className="rounded-full bg-[#E9EEE3] px-2.5 py-0.5 font-bold text-[#758B62]">
+              <span className="font-semibold text-[#66727D]">Section:</span>
+              <span className="rounded-full bg-[#E9EEF1] px-2.5 py-0.5 font-bold text-[#20252B]">
                 {currentQ?.subjectName}
               </span>
-              <span className="text-[11px] text-[#92958D]">
+              <span className="text-[11px] text-[#66727D]">
                 (Question {currentIndex + 1} of {questions.length})
               </span>
             </div>
@@ -407,7 +407,7 @@ export default function ExamExecutionPage() {
                 onClick={() => setViewMode('standard')}
                 className={cn(
                   'rounded-lg px-3 py-1 font-semibold transition-colors',
-                  viewMode === 'standard' ? 'bg-[#9CAF88] text-white' : 'text-[#73786E] hover:text-[#263126]'
+                  viewMode === 'standard' ? 'bg-[#9CC6E0] text-[#20252B]' : 'text-[#66727D] hover:text-[#20252B]'
                 )}
               >
                 Question View
@@ -416,7 +416,7 @@ export default function ExamExecutionPage() {
                 onClick={() => setViewMode('omr')}
                 className={cn(
                   'rounded-lg px-3 py-1 font-semibold transition-colors',
-                  viewMode === 'omr' ? 'bg-[#9CAF88] text-white' : 'text-[#73786E] hover:text-[#263126]'
+                  viewMode === 'omr' ? 'bg-[#9CC6E0] text-[#20252B]' : 'text-[#66727D] hover:text-[#20252B]'
                 )}
               >
                 Live NEET OMR Sheet (180 Qs)
@@ -428,21 +428,21 @@ export default function ExamExecutionPage() {
           {viewMode === 'standard' ? (
             <div className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 space-y-6">
               {/* Question metadata */}
-              <div className="flex items-center justify-between text-xs text-[#73786E]">
+              <div className="flex items-center justify-between text-xs text-[#66727D]">
                 <span>
                   Question Type:{' '}
-                  <strong className="text-[#263126] uppercase">
+                  <strong className="text-[#20252B] uppercase">
                     {currentQ?.questionType.replace('_', ' ')}
                   </strong>
                 </span>
-                <span className="font-mono text-[#758B62] font-bold">
+                <span className="font-mono text-[#20252B] font-bold">
                   +{currentQ?.marks} / -{currentQ?.negativeMarks} Marks
                 </span>
               </div>
 
               {/* Question text with KaTeX support */}
-              <div className="rounded-2xl border border-[#E6E5DE] bg-white p-6 shadow-[0_2px_8px_rgba(38,49,38,0.04)] text-sm sm:text-base leading-relaxed text-[#263126]">
-                <div className="mb-2 text-xs font-semibold text-[#758B62]">
+              <div className="rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-[0_2px_8px_rgba(38,49,38,0.04)] text-sm sm:text-base leading-relaxed text-[#20252B]">
+                <div className="mb-2 text-xs font-semibold text-[#20252B]">
                   {currentQ?.conceptName}
                 </div>
                 <MathText content={currentQ?.text || ''} />
@@ -459,28 +459,28 @@ export default function ExamExecutionPage() {
                       className={cn(
                         'flex items-center gap-4 rounded-xl border p-4 cursor-pointer transition-all shadow-[0_1px_4px_rgba(38,49,38,0.02)]',
                         isSelected
-                          ? 'border-[#9CAF88] bg-[#E9EEE3] text-[#263126]'
-                          : 'border-[#E6E5DE] bg-white text-[#2E332D] hover:border-[#9CAF88]/60'
+                          ? 'border-[#9CC6E0] bg-[#E9EEF1] text-[#20252B]'
+                          : 'border-[#DCE2E6] bg-white text-[#20252B] hover:border-[#9CC6E0]/60'
                       )}
                     >
                       <span
                         className={cn(
                           'flex h-7 w-7 shrink-0 items-center justify-center rounded-full border font-mono font-bold text-xs transition-colors',
                           isSelected
-                            ? 'border-[#9CAF88] bg-[#9CAF88] text-white'
-                            : 'border-[#E6E5DE] bg-[#F7F5EF] text-[#73786E]'
+                            ? 'border-[#9CC6E0] bg-[#9CC6E0] text-[#20252B]'
+                            : 'border-[#DCE2E6] bg-[#F1F3F4] text-[#66727D]'
                         )}
                       >
                         {opt.key}
                       </span>
-                      <MathText content={opt.text} className="text-xs sm:text-sm text-[#263126]" />
+                      <MathText content={opt.text} className="text-xs sm:text-sm text-[#20252B]" />
                     </div>
                   );
                 })}
               </div>
             </div>
           ) : (
-            <div className="flex-1 overflow-y-auto p-4 sm:p-6 bg-[#F7F5EF]">
+            <div className="flex-1 overflow-y-auto p-4 sm:p-6 bg-[#F1F3F4]">
               <LiveOMRSheet
                 totalQuestions={180}
                 answers={answers}
@@ -518,7 +518,7 @@ export default function ExamExecutionPage() {
           )}
 
           {/* Bottom Action Footer */}
-          <footer className="flex h-16 shrink-0 items-center justify-between border-t border-[#E6E5DE] bg-white px-4 sm:px-6">
+          <footer className="flex h-16 shrink-0 items-center justify-between border-t border-[#DCE2E6] bg-white px-4 sm:px-6">
             <div className="flex items-center gap-2">
               <button
                 onClick={handleToggleMarkForReview}
@@ -526,7 +526,7 @@ export default function ExamExecutionPage() {
                   'rounded-xl border px-3 py-2 text-xs font-semibold transition-colors',
                   currentAnswer?.markedForReview
                     ? 'border-[#FDE68A] bg-[#FEF3C7] text-[#92400E]'
-                    : 'border-[#E6E5DE] bg-[#F7F5EF] text-[#73786E] hover:text-[#263126]'
+                    : 'border-[#DCE2E6] bg-[#F1F3F4] text-[#66727D] hover:text-[#20252B]'
                 )}
               >
                 {currentAnswer?.markedForReview ? 'Unmark Review' : 'Mark for Review'}
@@ -535,7 +535,7 @@ export default function ExamExecutionPage() {
               <button
                 onClick={handleClearResponse}
                 disabled={!currentAnswer?.isAnswered}
-                className="rounded-xl border border-[#E6E5DE] bg-white px-3 py-2 text-xs text-[#92958D] hover:text-[#E8412C] disabled:opacity-30"
+                className="rounded-xl border border-[#DCE2E6] bg-white px-3 py-2 text-xs text-[#66727D] hover:text-[#E4002B] disabled:opacity-30"
               >
                 Clear Response
               </button>
@@ -545,7 +545,7 @@ export default function ExamExecutionPage() {
               <button
                 onClick={handlePrevious}
                 disabled={currentIndex === 0}
-                className="flex items-center gap-1 rounded-xl border border-[#E6E5DE] bg-white px-3 py-2 text-xs font-semibold text-[#263126] hover:bg-[#F7F5EF] disabled:opacity-30 transition-colors"
+                className="flex items-center gap-1 rounded-xl border border-[#DCE2E6] bg-white px-3 py-2 text-xs font-semibold text-[#20252B] hover:bg-[#F1F3F4] disabled:opacity-30 transition-colors"
               >
                 <ChevronLeft className="h-4 w-4" />
                 <span>Previous</span>
@@ -553,7 +553,7 @@ export default function ExamExecutionPage() {
 
               <button
                 onClick={handleNext}
-                className="flex items-center gap-1 rounded-xl bg-[#9CAF88] px-5 py-2 text-xs font-bold text-white hover:bg-[#8ea07a] shadow-sm transition-colors"
+                className="flex items-center gap-1 rounded-xl bg-[#E4002B] px-5 py-2 text-xs font-bold text-white hover:bg-[#C90026] shadow-sm shadow-[#E4002B]/20 transition-colors"
               >
                 <span>Save & Next</span>
                 <ChevronRight className="h-4 w-4" />
@@ -563,43 +563,43 @@ export default function ExamExecutionPage() {
         </div>
 
         {/* Right: Question Palette Drawer */}
-        <aside className="hidden lg:flex lg:w-80 lg:flex-col lg:border-l lg:border-[#E6E5DE] lg:bg-white">
+        <aside className="hidden lg:flex lg:w-80 lg:flex-col lg:border-l lg:border-[#DCE2E6] lg:bg-white">
           {/* Candidate badge */}
-          <div className="border-b border-[#E6E5DE] bg-[#F7F5EF] p-4">
-            <div className="text-[11px] font-semibold uppercase tracking-wider text-[#92958D]">
+          <div className="border-b border-[#DCE2E6] bg-[#F1F3F4] p-4">
+            <div className="text-[11px] font-semibold uppercase tracking-wider text-[#66727D]">
               Candidate Workspace
             </div>
-            <div className="font-mono text-xs font-bold text-[#263126]">{candidate.fullName}</div>
-            <div className="font-mono text-[11px] text-[#73786E]">{candidate.registrationId}</div>
+            <div className="font-mono text-xs font-bold text-[#20252B]">{candidate.fullName}</div>
+            <div className="font-mono text-[11px] text-[#66727D]">{candidate.registrationId}</div>
           </div>
 
           {/* Palette Legend matching User Flow Specification */}
-          <div className="grid grid-cols-2 gap-2 border-b border-[#E6E5DE] p-3 text-[11px]">
+          <div className="grid grid-cols-2 gap-2 border-b border-[#DCE2E6] p-3 text-[11px]">
             <div className="flex items-center gap-1.5">
-              <div className="h-3 w-3 rounded-full bg-[#E8412C]" />
-              <span className="text-[#73786E]">Answered ({stats.answered})</span>
+              <div className="h-3 w-3 rounded-full bg-[#E4002B]" />
+              <span className="text-[#66727D]">Answered ({stats.answered})</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <div className="h-3 w-3 rounded-full border-2 border-[#E8412C] bg-white" />
-              <span className="text-[#73786E]">Visited, Not Ans ({stats.notAnswered})</span>
+              <div className="h-3 w-3 rounded-full border-2 border-[#E4002B] bg-white" />
+              <span className="text-[#66727D]">Visited, Not Ans ({stats.notAnswered})</span>
             </div>
             <div className="flex items-center gap-1.5">
               <div className="h-3 w-3 rounded-full bg-[#FBBF24]" />
-              <span className="text-[#73786E]">Marked Review ({stats.marked})</span>
+              <span className="text-[#66727D]">Marked Review ({stats.marked})</span>
             </div>
             <div className="flex items-center gap-1.5">
               <div className="h-3 w-3 rounded-full bg-[#8B5CF6]" />
-              <span className="text-[#73786E]">Ans & Review ({stats.answeredAndMarked})</span>
+              <span className="text-[#66727D]">Ans & Review ({stats.answeredAndMarked})</span>
             </div>
             <div className="flex items-center gap-1.5 col-span-2">
-              <div className="h-3 w-3 rounded-full bg-[#E9E6DF] border border-[#E6E5DE]" />
-              <span className="text-[#73786E]">Not Visited ({stats.notVisited})</span>
+              <div className="h-3 w-3 rounded-full bg-[#E9EEF1] border border-[#DCE2E6]" />
+              <span className="text-[#66727D]">Not Visited ({stats.notVisited})</span>
             </div>
           </div>
 
           {/* Question Palette Grid */}
           <div className="flex-1 overflow-y-auto p-4">
-            <div className="text-xs font-bold uppercase tracking-wider text-[#92958D] mb-3">
+            <div className="text-xs font-bold uppercase tracking-wider text-[#66727D] mb-3">
               Question Palette (180 Questions)
             </div>
 
@@ -617,12 +617,12 @@ export default function ExamExecutionPage() {
                     }}
                     className={cn(
                       'flex h-8 w-8 items-center justify-center rounded-lg font-mono text-xs font-bold transition-all',
-                      isCurrent && 'ring-2 ring-[#263126] ring-offset-2 ring-offset-white',
-                      status === 'answered' && 'bg-[#E8412C] text-white shadow-sm',
-                      status === 'not_answered' && 'bg-white text-[#263126] border-2 border-[#E8412C]',
-                      status === 'marked_for_review' && 'bg-[#FBBF24] text-[#263126]',
+                      isCurrent && 'ring-2 ring-[#20252B] ring-offset-2 ring-offset-white',
+                      status === 'answered' && 'bg-[#E4002B] text-white shadow-sm',
+                      status === 'not_answered' && 'bg-white text-[#20252B] border-2 border-[#E4002B]',
+                      status === 'marked_for_review' && 'bg-[#FBBF24] text-[#20252B]',
                       status === 'answered_and_marked_for_review' && 'bg-[#8B5CF6] text-white',
-                      status === 'not_visited' && 'bg-[#E9E6DF] text-[#73786E] border border-[#E6E5DE] hover:border-[#9CAF88]'
+                      status === 'not_visited' && 'bg-[#E9EEF1] text-[#66727D] border border-[#DCE2E6] hover:border-[#9CC6E0]'
                     )}
                   >
                     {idx + 1}
@@ -636,26 +636,26 @@ export default function ExamExecutionPage() {
 
       {/* Confirmation Modal */}
       {showSubmitConfirmModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#263126]/50 backdrop-blur-sm p-4">
-          <div className="w-full max-w-md rounded-2xl border border-[#E6E5DE] bg-white p-6 shadow-2xl">
-            <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-3">
-              <h3 className="text-lg font-bold font-serif text-[#263126]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#20252B]/50 backdrop-blur-sm p-4">
+          <div className="w-full max-w-md rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-3">
+              <h3 className="text-lg font-bold font-serif text-[#20252B]">
                 Are you sure you want to submit your test?
               </h3>
-              <button onClick={() => setShowSubmitConfirmModal(false)} className="text-[#92958D] hover:text-[#263126]">
+              <button onClick={() => setShowSubmitConfirmModal(false)} className="text-[#66727D] hover:text-[#20252B]">
                 <X className="h-5 w-5" />
               </button>
             </div>
 
-            <div className="my-5 rounded-2xl bg-[#F7F5EF] p-4 border border-[#E6E5DE] space-y-2 text-sm">
-              <p className="font-semibold text-[#E8412C]">
+            <div className="my-5 rounded-2xl bg-[#F1F3F4] p-4 border border-[#DCE2E6] space-y-2 text-sm">
+              <p className="font-semibold text-[#E4002B]">
                 {stats.notAnswered + stats.notVisited} questions unanswered.
               </p>
               <p className="font-semibold text-[#B45309]">
                 {stats.marked + stats.answeredAndMarked} questions marked for review.
               </p>
-              <p className="text-xs text-[#73786E] pt-1">
-                Total Answered: <strong className="text-[#758B62]">{stats.answered}</strong> / {questions.length} questions.
+              <p className="text-xs text-[#66727D] pt-1">
+                Total Answered: <strong className="text-[#20252B]">{stats.answered}</strong> / {questions.length} questions.
               </p>
             </div>
 
@@ -663,7 +663,7 @@ export default function ExamExecutionPage() {
               <button
                 type="button"
                 onClick={() => setShowSubmitConfirmModal(false)}
-                className="flex-1 rounded-full border border-[#E6E5DE] bg-white py-3 text-xs font-bold text-[#263126] hover:bg-[#F7F5EF] transition-all"
+                className="flex-1 rounded-full border border-[#DCE2E6] bg-white py-3 text-xs font-bold text-[#20252B] hover:bg-[#F1F3F4] transition-all"
               >
                 Continue Test
               </button>
@@ -671,7 +671,7 @@ export default function ExamExecutionPage() {
                 type="button"
                 disabled={isSubmitting}
                 onClick={() => handleFinalSubmit(false)}
-                className="flex-1 rounded-full bg-[#E8412C] py-3 text-xs font-bold text-white shadow-md shadow-[#E8412C]/20 hover:bg-[#d03521] disabled:opacity-50 transition-all hover:translate-y-[-1px]"
+                className="flex-1 rounded-full bg-[#E4002B] py-3 text-xs font-bold text-white shadow-md shadow-[#E4002B]/20 hover:bg-[#C90026] disabled:opacity-50 transition-all hover:translate-y-[-1px]"
               >
                 {isSubmitting ? 'Evaluating...' : 'Submit Test'}
               </button>
@@ -682,61 +682,61 @@ export default function ExamExecutionPage() {
 
       {/* SUBMISSION SUCCESS MODAL CARD (EXACTLY REPLICATES USER'S REFERENCE IMAGE 2) */}
       {showSuccessModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#263126]/60 backdrop-blur-md p-4">
-          <div className="w-full max-w-[560px] rounded-[24px] border border-[#E6E5DE] bg-white p-8 sm:p-10 text-center shadow-[0_20px_60px_rgba(38,49,38,0.12)] animate-in fade-in zoom-in-95">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#20252B]/60 backdrop-blur-md p-4">
+          <div className="w-full max-w-[560px] rounded-[24px] border border-[#DCE2E6] bg-white p-8 sm:p-10 text-center shadow-[0_20px_60px_rgba(38,49,38,0.12)] animate-in fade-in zoom-in-95">
             {/* Top Success Circle Icon */}
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#E9EEE3] text-[#758B62]">
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#E9EEF1] text-[#20252B]">
               <CheckCircle2 className="h-7 w-7 stroke-[2.2]" />
             </div>
 
             {/* Title & Subtitle */}
-            <h2 className="mt-5 text-2xl font-bold text-[#263126] font-serif tracking-tight">
+            <h2 className="mt-5 text-2xl font-bold text-[#20252B] font-serif tracking-tight">
               Examination Submitted Successfully
             </h2>
-            <p className="mt-2 text-sm text-[#73786E]">
+            <p className="mt-2 text-sm text-[#66727D]">
               Your responses have been recorded and your answer sheet is ready.
             </p>
 
             {/* Document Preview Card */}
-            <div className="mt-6 flex items-center justify-between rounded-2xl border border-[#E6E5DE] bg-[#F7F5EF] p-4 text-left">
+            <div className="mt-6 flex items-center justify-between rounded-2xl border border-[#DCE2E6] bg-[#F1F3F4] p-4 text-left">
               <div className="flex items-center gap-3.5">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white border border-[#E6E5DE] text-[#758B62]">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white border border-[#DCE2E6] text-[#20252B]">
                   <FileText className="h-5 w-5" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-[#263126]">NEET OMR Answer Sheet</h4>
-                  <p className="text-xs text-[#73786E]">A4 PDF • 180 questions • Personalized</p>
+                  <h4 className="text-sm font-bold text-[#20252B]">NEET OMR Answer Sheet</h4>
+                  <p className="text-xs text-[#66727D]">A4 PDF • 180 questions • Personalized</p>
                 </div>
               </div>
-              <Download className="h-5 w-5 text-[#73786E]" />
+              <Download className="h-5 w-5 text-[#66727D]" />
             </div>
 
             {/* Primary Action Button */}
             <button
               onClick={handleManualDownloadPdf}
-              className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl bg-[#9CAF88] py-4 text-sm font-bold text-white hover:bg-[#8ea07a] transition-all shadow-[0_4px_16px_rgba(156,175,136,0.35)]"
+              className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl bg-[#E4002B] py-4 text-sm font-bold text-white hover:bg-[#C90026] transition-all shadow-[0_4px_16px_rgba(228,0,43,0.25)]"
             >
               <span>↓ Download OMR PDF</span>
             </button>
 
             {/* Helper Note */}
-            <p className="mt-3 text-xs text-[#73786E]">
+            <p className="mt-3 text-xs text-[#66727D]">
               Your download should start automatically.
             </p>
 
-            <div className="my-6 border-t border-[#ECEAE4]" />
+            <div className="my-6 border-t border-[#DCE2E6]" />
 
             {/* Bottom Links */}
             <div className="flex items-center justify-center gap-8 text-sm font-semibold">
               <Link
                 href={`/dashboard/results/${attemptId}`}
-                className="text-[#263126] hover:text-[#758B62] transition-colors"
+                className="text-[#20252B] hover:text-[#20252B] transition-colors"
               >
                 View Results
               </Link>
               <Link
                 href={`/dashboard/results/${attemptId}?tab=solutions`}
-                className="text-[#263126] hover:text-[#758B62] transition-colors"
+                className="text-[#20252B] hover:text-[#20252B] transition-colors"
               >
                 Review Answers
               </Link>

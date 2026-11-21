@@ -42,84 +42,84 @@ export default function StudentProfilePage() {
   return (
     <div className="space-y-8 max-w-3xl mx-auto">
       {/* Header */}
-      <div className="border-b border-[#ECEAE4] pb-6">
-        <span className="text-xs font-semibold uppercase tracking-wider text-[#758B62]">
+      <div className="border-b border-[#DCE2E6] pb-6">
+        <span className="text-xs font-semibold uppercase tracking-wider text-[#20252B]">
           Candidate Identity
         </span>
-        <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold text-[#263126] font-serif">
+        <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold text-[#20252B] font-serif">
           Profile & Account Settings
         </h1>
-        <p className="mt-1 text-xs sm:text-sm text-[#73786E]">
+        <p className="mt-1 text-xs sm:text-sm text-[#66727D]">
           Your immutable FORT Registration ID and personal contact details.
         </p>
       </div>
 
       <form
         onSubmit={handleSave}
-        className="rounded-2xl border border-[#E6E5DE] bg-white p-6 sm:p-8 shadow-[0_2px_8px_rgba(38,49,38,0.04)] space-y-5 text-xs text-[#2E332D]"
+        className="rounded-2xl border border-[#DCE2E6] bg-white p-6 sm:p-8 shadow-[0_2px_8px_rgba(38,49,38,0.04)] space-y-5 text-xs text-[#20252B]"
       >
         <div>
-          <label className="block text-[#73786E] font-medium">FORT Registration ID (Immutable)</label>
+          <label className="block text-[#66727D] font-medium">FORT Registration ID (Immutable)</label>
           <input
             type="text"
             disabled
             value={profile.registrationId}
-            className="mt-1.5 w-full rounded-xl border border-[#E6E5DE] bg-[#F7F5EF] p-3 font-mono font-bold text-[#263126] cursor-not-allowed"
+            className="mt-1.5 w-full rounded-xl border border-[#DCE2E6] bg-[#F1F3F4] p-3 font-mono font-bold text-[#20252B] cursor-not-allowed"
           />
-          <span className="mt-1 block text-[11px] text-[#92958D]">
+          <span className="mt-1 block text-[11px] text-[#66727D]">
             Assigned atomically upon registration and associated with all official test attempts and OMR records.
           </span>
         </div>
 
         <div>
-          <label className="block text-[#73786E] font-medium">Candidate Full Name</label>
+          <label className="block text-[#66727D] font-medium">Candidate Full Name</label>
           <input
             type="text"
             required
             value={profile.fullName}
             onChange={(e) => setProfile({ ...profile, fullName: e.target.value })}
-            className="mt-1.5 w-full rounded-xl border border-[#E6E5DE] bg-white p-3 text-sm text-[#263126] focus:border-[#9CAF88] focus:ring-1 focus:ring-[#9CAF88] focus:outline-none transition-all"
+            className="mt-1.5 w-full rounded-xl border border-[#DCE2E6] bg-white p-3 text-sm text-[#20252B] focus:border-[#9CC6E0] focus:ring-1 focus:ring-[#9CC6E0] focus:outline-none transition-all"
           />
         </div>
 
         <div>
-          <label className="block text-[#73786E] font-medium">Email Address</label>
+          <label className="block text-[#66727D] font-medium">Email Address</label>
           <input
             type="email"
             disabled
             value={profile.email}
-            className="mt-1.5 w-full rounded-xl border border-[#E6E5DE] bg-[#F7F5EF] p-3 text-sm text-[#73786E] cursor-not-allowed"
+            className="mt-1.5 w-full rounded-xl border border-[#DCE2E6] bg-[#F1F3F4] p-3 text-sm text-[#66727D] cursor-not-allowed"
           />
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div>
-            <label className="block text-[#73786E] font-medium">Date of Birth</label>
+            <label className="block text-[#66727D] font-medium">Date of Birth</label>
             <input
               type="date"
               value={profile.dateOfBirth}
               onChange={(e) => setProfile({ ...profile, dateOfBirth: e.target.value })}
-              className="mt-1.5 w-full rounded-xl border border-[#E6E5DE] bg-white p-3 text-sm text-[#263126] focus:border-[#9CAF88] focus:outline-none"
+              className="mt-1.5 w-full rounded-xl border border-[#DCE2E6] bg-white p-3 text-sm text-[#20252B] focus:border-[#9CC6E0] focus:outline-none"
             />
           </div>
 
           <div>
-            <label className="block text-[#73786E] font-medium">Country / Jurisdiction</label>
+            <label className="block text-[#66727D] font-medium">Country / Jurisdiction</label>
             <input
               type="text"
               value={profile.country}
               onChange={(e) => setProfile({ ...profile, country: e.target.value })}
-              className="mt-1.5 w-full rounded-xl border border-[#E6E5DE] bg-white p-3 text-sm text-[#263126] focus:border-[#9CAF88] focus:outline-none"
+              className="mt-1.5 w-full rounded-xl border border-[#DCE2E6] bg-white p-3 text-sm text-[#20252B] focus:border-[#9CC6E0] focus:outline-none"
             />
           </div>
         </div>
 
         <div>
-          <label className="block text-[#73786E] font-medium">Primary Examination Focus</label>
+          <label className="block text-[#66727D] font-medium">Primary Examination Focus</label>
           <select
             value={profile.targetExam}
             onChange={(e) => setProfile({ ...profile, targetExam: e.target.value })}
-            className="mt-1.5 w-full rounded-xl border border-[#E6E5DE] bg-white p-3 text-sm text-[#263126] focus:border-[#9CAF88] focus:outline-none"
+            className="mt-1.5 w-full rounded-xl border border-[#DCE2E6] bg-white p-3 text-sm text-[#20252B] focus:border-[#9CC6E0] focus:outline-none"
           >
             <option value="FORT NEET (UG)">FORT NEET (UG) Medical</option>
             <option value="FORT JEE Main">FORT JEE Main Engineering</option>
@@ -132,7 +132,7 @@ export default function StudentProfilePage() {
         <div className="pt-2">
           <button
             type="submit"
-            className="inline-flex items-center gap-2 rounded-xl bg-[#9CAF88] px-6 py-3 text-xs font-bold text-white shadow-sm hover:bg-[#8ea07a] transition-all"
+            className="inline-flex items-center gap-2 rounded-xl bg-[#9CC6E0] px-6 py-3 text-xs font-bold text-[#20252B] shadow-sm hover:bg-[#C90026] transition-all"
           >
             <Save className="h-4 w-4" />
             <span>Save Profile Changes</span>

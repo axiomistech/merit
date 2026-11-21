@@ -49,69 +49,69 @@ export default function StudentSettingsPage() {
   };
 
   return (
-    <div className="bg-[#F7F5EF] text-[#2E332D] min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div className="bg-[#F1F3F4] text-[#20252B] min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto space-y-6">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold font-serif text-[#263126]">
+          <h1 className="text-2xl sm:text-3xl font-bold font-serif text-[#20252B]">
             Candidate Settings & Preferences
           </h1>
-          <p className="mt-1 text-xs text-[#73786E]">
+          <p className="mt-1 text-xs text-[#66727D]">
             Manage your personal profile, examination targets, and notification subscriptions.
           </p>
         </div>
 
         <form onSubmit={handleSave} className="space-y-6">
-          <div className="rounded-2xl border border-[#E6E5DE] bg-white p-6 shadow-[0_2px_8px_rgba(38,49,38,0.04)] space-y-4 text-xs">
-            <h2 className="text-sm font-bold text-[#263126] flex items-center gap-2">
-              <User className="h-4 w-4 text-[#9CAF88]" />
+          <div className="rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-[0_2px_8px_rgba(38,49,38,0.04)] space-y-4 text-xs">
+            <h2 className="text-sm font-bold text-[#20252B] flex items-center gap-2">
+              <User className="h-4 w-4 text-[#9CC6E0]" />
               Personal Identification
             </h2>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block font-semibold text-[#263126] mb-1">Registration ID</label>
+                <label className="block font-semibold text-[#20252B] mb-1">Registration ID</label>
                 <input
                   type="text"
                   disabled
                   value={profile.registrationId}
-                  className="w-full rounded-xl border border-[#E6E5DE] bg-[#F7F5EF] p-2.5 font-mono font-bold text-[#73786E]"
+                  className="w-full rounded-xl border border-[#DCE2E6] bg-[#F1F3F4] p-2.5 font-mono font-bold text-[#66727D]"
                 />
               </div>
               <div>
-                <label className="block font-semibold text-[#263126] mb-1">Full Legal Name</label>
+                <label className="block font-semibold text-[#20252B] mb-1">Full Legal Name</label>
                 <input
                   type="text"
                   value={profile.fullName}
                   onChange={(e) => setProfile({ ...profile, fullName: e.target.value })}
-                  className="w-full rounded-xl border border-[#E6E5DE] p-2.5 text-[#263126] focus:outline-none focus:border-[#9CAF88]"
+                  className="w-full rounded-xl border border-[#DCE2E6] p-2.5 text-[#20252B] focus:outline-none focus:border-[#9CC6E0]"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block font-semibold text-[#263126] mb-1">Registered Email</label>
+              <label className="block font-semibold text-[#20252B] mb-1">Registered Email</label>
               <input
                 type="email"
                 disabled
                 value={profile.email}
-                className="w-full rounded-xl border border-[#E6E5DE] bg-[#F7F5EF] p-2.5 font-mono text-[#73786E]"
+                className="w-full rounded-xl border border-[#DCE2E6] bg-[#F1F3F4] p-2.5 font-mono text-[#66727D]"
               />
             </div>
           </div>
 
-          <div className="rounded-2xl border border-[#E6E5DE] bg-white p-6 shadow-[0_2px_8px_rgba(38,49,38,0.04)] space-y-4 text-xs">
-            <h2 className="text-sm font-bold text-[#263126] flex items-center gap-2">
-              <Shield className="h-4 w-4 text-[#9CAF88]" />
+          <div className="rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-[0_2px_8px_rgba(38,49,38,0.04)] space-y-4 text-xs">
+            <h2 className="text-sm font-bold text-[#20252B] flex items-center gap-2">
+              <Shield className="h-4 w-4 text-[#9CC6E0]" />
               Examination Targets
             </h2>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block font-semibold text-[#263126] mb-1">Primary Target Exam</label>
+                <label className="block font-semibold text-[#20252B] mb-1">Primary Target Exam</label>
                 <select
                   value={profile.targetExam}
                   onChange={(e) => setProfile({ ...profile, targetExam: e.target.value })}
-                  className="w-full rounded-xl border border-[#E6E5DE] p-2.5 text-[#263126] focus:outline-none focus:border-[#9CAF88]"
+                  className="w-full rounded-xl border border-[#DCE2E6] p-2.5 text-[#20252B] focus:outline-none focus:border-[#9CC6E0]"
                 >
                   <option value="neet">NEET (UG) Medical</option>
                   <option value="jee">JEE Main / Advanced</option>
@@ -120,11 +120,11 @@ export default function StudentSettingsPage() {
                 </select>
               </div>
               <div>
-                <label className="block font-semibold text-[#263126] mb-1">Target Examination Year</label>
+                <label className="block font-semibold text-[#20252B] mb-1">Target Examination Year</label>
                 <select
                   value={profile.targetYear}
                   onChange={(e) => setProfile({ ...profile, targetYear: Number(e.target.value) })}
-                  className="w-full rounded-xl border border-[#E6E5DE] p-2.5 text-[#263126] focus:outline-none focus:border-[#9CAF88]"
+                  className="w-full rounded-xl border border-[#DCE2E6] p-2.5 text-[#20252B] focus:outline-none focus:border-[#9CC6E0]"
                 >
                   <option value={2026}>2026 (Upcoming)</option>
                   <option value={2027}>2027 (Long-term)</option>
@@ -132,16 +132,16 @@ export default function StudentSettingsPage() {
               </div>
             </div>
 
-            <div className="flex items-center justify-between pt-2 border-t border-[#ECEAE4]">
+            <div className="flex items-center justify-between pt-2 border-t border-[#DCE2E6]">
               <div>
-                <div className="font-semibold text-[#263126]">Weekly Performance Digests</div>
-                <div className="text-[11px] text-[#73786E]">Receive diagnostic reports and weak-chapter suggestions</div>
+                <div className="font-semibold text-[#20252B]">Weekly Performance Digests</div>
+                <div className="text-[11px] text-[#66727D]">Receive diagnostic reports and weak-chapter suggestions</div>
               </div>
               <input
                 type="checkbox"
                 checked={profile.emailNotifications}
                 onChange={(e) => setProfile({ ...profile, emailNotifications: e.target.checked })}
-                className="h-4 w-4 rounded border-[#E6E5DE] text-[#263126] focus:ring-[#9CAF88]"
+                className="h-4 w-4 rounded border-[#DCE2E6] text-[#20252B] focus:ring-[#9CC6E0]"
               />
             </div>
           </div>
@@ -149,7 +149,7 @@ export default function StudentSettingsPage() {
           <div className="flex justify-end">
             <button
               type="submit"
-              className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#263126] text-white text-xs font-semibold hover:bg-[#344034] transition-colors shadow-sm"
+              className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#20252B] text-white text-xs font-semibold hover:bg-[#344034] transition-colors shadow-sm"
             >
               <Save className="h-4 w-4" />
               Save Preferences

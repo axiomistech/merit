@@ -197,14 +197,14 @@ export default function AdminProductsPage() {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[#263126] font-serif">Products & Paper Packs</h1>
-          <p className="mt-1 text-xs text-[#73786E]">
+          <h1 className="text-2xl font-bold text-[#20252B] font-serif">Products & Paper Packs</h1>
+          <p className="mt-1 text-xs text-[#66727D]">
             Manage test series bundles, individual paper tokens, validity duration, and catalog pricing.
           </p>
         </div>
         <button
           onClick={handleOpenCreate}
-          className="flex items-center gap-2 rounded-xl bg-[#263126] px-4 py-2.5 text-xs font-semibold text-white hover:bg-[#344034] transition-colors"
+          className="flex items-center gap-2 rounded-xl bg-[#20252B] px-4 py-2.5 text-xs font-semibold text-white hover:bg-[#344034] transition-colors"
         >
           <Plus className="h-4 w-4" />
           Create Product Pack
@@ -212,19 +212,19 @@ export default function AdminProductsPage() {
       </div>
 
       {/* Filters */}
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#E6E5DE] bg-white p-4 shadow-[0_2px_8px_rgba(38,49,38,0.04)]">
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#DCE2E6] bg-white p-4 shadow-[0_2px_8px_rgba(38,49,38,0.04)]">
         <div className="relative flex-1 min-w-[260px]">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[#73786E]" />
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[#66727D]" />
           <input
             type="text"
             placeholder="Search products by title or slug..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full rounded-xl border border-[#E6E5DE] bg-[#F7F5EF] pl-10 pr-4 py-2 text-xs text-[#263126] placeholder-[#A3A89E] focus:outline-none focus:border-[#9CAF88]"
+            className="w-full rounded-xl border border-[#DCE2E6] bg-[#F1F3F4] pl-10 pr-4 py-2 text-xs text-[#20252B] placeholder-[#A3A89E] focus:outline-none focus:border-[#9CC6E0]"
           />
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-xs text-[#73786E]">Exam:</span>
+          <span className="text-xs text-[#66727D]">Exam:</span>
           {['all', 'neet', 'jee-main', 'jee-advanced', 'upsc-cse'].map((ex) => (
             <button
               key={ex}
@@ -232,8 +232,8 @@ export default function AdminProductsPage() {
               className={cn(
                 'px-3 py-1.5 text-xs font-medium rounded-lg border uppercase transition-colors',
                 examFilter === ex
-                  ? 'bg-[#263126] text-white border-[#263126]'
-                  : 'bg-white text-[#52584E] border-[#E6E5DE] hover:bg-[#F7F5EF]'
+                  ? 'bg-[#20252B] text-white border-[#20252B]'
+                  : 'bg-white text-[#52584E] border-[#DCE2E6] hover:bg-[#F1F3F4]'
               )}
             >
               {ex}
@@ -247,58 +247,58 @@ export default function AdminProductsPage() {
         {filteredProducts.map((p) => (
           <div
             key={p.id}
-            className="rounded-2xl border border-[#E6E5DE] bg-white p-6 shadow-[0_2px_8px_rgba(38,49,38,0.04)] flex flex-col justify-between space-y-4 hover:border-[#9CAF88] transition-all"
+            className="rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-[0_2px_8px_rgba(38,49,38,0.04)] flex flex-col justify-between space-y-4 hover:border-[#9CC6E0] transition-all"
           >
             <div>
               <div className="flex items-center justify-between gap-2 mb-2">
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#F7F5EF] text-[#52584E] border border-[#E6E5DE]">
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#F1F3F4] text-[#52584E] border border-[#DCE2E6]">
                   {p.paperType.replace('_', ' ')}
                 </span>
                 <span
                   className={cn(
                     'text-[10px] font-bold uppercase px-2 py-0.5 rounded-full',
-                    p.status === 'active' ? 'bg-[#9CAF88]/20 text-[#3B4C30]' : 'bg-[#73786E]/15 text-[#73786E]'
+                    p.status === 'active' ? 'bg-[#9CC6E0]/20 text-[#3B4C30]' : 'bg-[#66727D]/15 text-[#66727D]'
                   )}
                 >
                   {p.status}
                 </span>
               </div>
-              <h3 className="font-bold text-base text-[#263126] leading-snug">{p.title}</h3>
-              <p className="mt-1 text-xs text-[#73786E] line-clamp-2">{p.description}</p>
+              <h3 className="font-bold text-base text-[#20252B] leading-snug">{p.title}</h3>
+              <p className="mt-1 text-xs text-[#66727D] line-clamp-2">{p.description}</p>
 
               <div className="mt-4 flex items-baseline gap-2">
-                <span className="text-2xl font-bold font-mono text-[#263126]">₹{p.price}</span>
+                <span className="text-2xl font-bold font-mono text-[#20252B]">₹{p.price}</span>
                 {p.originalPrice && (
                   <span className="text-xs text-[#A3A89E] line-through font-mono">₹{p.originalPrice}</span>
                 )}
-                <span className="text-[11px] text-[#73786E] ml-auto">
+                <span className="text-[11px] text-[#66727D] ml-auto">
                   {p.includedPapersCount} Paper{p.includedPapersCount > 1 ? 's' : ''}
                 </span>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-[#ECEAE4] space-y-1.5 text-xs text-[#52584E]">
+              <div className="mt-4 pt-3 border-t border-[#DCE2E6] space-y-1.5 text-xs text-[#52584E]">
                 <div className="flex items-center gap-1.5 text-[11px]">
-                  <Clock className="h-3.5 w-3.5 text-[#73786E]" />
+                  <Clock className="h-3.5 w-3.5 text-[#66727D]" />
                   <span>{p.accessValidityDays} days validity from purchase</span>
                 </div>
                 <div className="flex items-center gap-1.5 text-[11px]">
-                  <TrendingUp className="h-3.5 w-3.5 text-[#9CAF88]" />
+                  <TrendingUp className="h-3.5 w-3.5 text-[#9CC6E0]" />
                   <span><strong>{p.salesCount}</strong> students enrolled</span>
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center justify-between pt-3 border-t border-[#ECEAE4]">
+            <div className="flex items-center justify-between pt-3 border-t border-[#DCE2E6]">
               <button
                 onClick={() => handleToggleStatus(p)}
-                className="text-xs font-semibold text-[#73786E] hover:text-[#263126]"
+                className="text-xs font-semibold text-[#66727D] hover:text-[#20252B]"
               >
                 {p.status === 'active' ? 'Deactivate' : 'Activate'}
               </button>
               <div className="flex items-center gap-1.5">
                 <button
                   onClick={() => handleOpenEdit(p)}
-                  className="p-1.5 rounded-lg border border-[#E6E5DE] text-[#52584E] hover:bg-[#F7F5EF] transition-colors"
+                  className="p-1.5 rounded-lg border border-[#DCE2E6] text-[#52584E] hover:bg-[#F1F3F4] transition-colors"
                 >
                   <Edit className="h-3.5 w-3.5" />
                 </button>
@@ -311,14 +311,14 @@ export default function AdminProductsPage() {
       {/* Create / Edit Modal */}
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm overflow-y-auto">
-          <div className="w-full max-w-2xl rounded-2xl border border-[#E6E5DE] bg-white p-6 shadow-2xl my-8 space-y-6">
-            <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-4">
-              <h3 className="text-lg font-bold text-[#263126] font-serif">
+          <div className="w-full max-w-2xl rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-2xl my-8 space-y-6">
+            <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-4">
+              <h3 className="text-lg font-bold text-[#20252B] font-serif">
                 {editingProduct ? 'Edit Product Pack' : 'Create New Product Pack'}
               </h3>
               <button
                 onClick={() => setShowModal(false)}
-                className="rounded-lg p-2 text-[#73786E] hover:bg-[#F7F5EF] transition-colors"
+                className="rounded-lg p-2 text-[#66727D] hover:bg-[#F1F3F4] transition-colors"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -326,35 +326,35 @@ export default function AdminProductsPage() {
 
             <form onSubmit={handleSaveProduct} className="space-y-4 text-xs">
               <div>
-                <label className="block font-semibold text-[#263126] mb-1">Product Title</label>
+                <label className="block font-semibold text-[#20252B] mb-1">Product Title</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. NEET 2026 Ultimate Mock Series (10 Papers)"
                   value={formData.title}
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  className="w-full rounded-xl border border-[#E6E5DE] p-2.5 text-xs text-[#263126] focus:outline-none focus:border-[#9CAF88]"
+                  className="w-full rounded-xl border border-[#DCE2E6] p-2.5 text-xs text-[#20252B] focus:outline-none focus:border-[#9CC6E0]"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-semibold text-[#263126] mb-1">URL Slug</label>
+                  <label className="block font-semibold text-[#20252B] mb-1">URL Slug</label>
                   <input
                     type="text"
                     required
                     placeholder="e.g. neet-2026-ultimate-mock-series"
                     value={formData.slug}
                     onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
-                    className="w-full rounded-xl border border-[#E6E5DE] p-2.5 text-xs font-mono text-[#263126] focus:outline-none focus:border-[#9CAF88]"
+                    className="w-full rounded-xl border border-[#DCE2E6] p-2.5 text-xs font-mono text-[#20252B] focus:outline-none focus:border-[#9CC6E0]"
                   />
                 </div>
                 <div>
-                  <label className="block font-semibold text-[#263126] mb-1">Exam</label>
+                  <label className="block font-semibold text-[#20252B] mb-1">Exam</label>
                   <select
                     value={formData.examSlug}
                     onChange={(e) => setFormData({ ...formData, examSlug: e.target.value })}
-                    className="w-full rounded-xl border border-[#E6E5DE] p-2.5 text-xs text-[#263126] focus:outline-none focus:border-[#9CAF88]"
+                    className="w-full rounded-xl border border-[#DCE2E6] p-2.5 text-xs text-[#20252B] focus:outline-none focus:border-[#9CC6E0]"
                   >
                     <option value="neet">NEET (UG)</option>
                     <option value="jee-main">JEE Main</option>
@@ -367,69 +367,69 @@ export default function AdminProductsPage() {
 
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block font-semibold text-[#263126] mb-1">Price (INR ₹)</label>
+                  <label className="block font-semibold text-[#20252B] mb-1">Price (INR ₹)</label>
                   <input
                     type="number"
                     required
                     min={0}
                     value={formData.price}
                     onChange={(e) => setFormData({ ...formData, price: Number(e.target.value) })}
-                    className="w-full rounded-xl border border-[#E6E5DE] p-2.5 text-xs font-mono text-[#263126] focus:outline-none focus:border-[#9CAF88]"
+                    className="w-full rounded-xl border border-[#DCE2E6] p-2.5 text-xs font-mono text-[#20252B] focus:outline-none focus:border-[#9CC6E0]"
                   />
                 </div>
                 <div>
-                  <label className="block font-semibold text-[#263126] mb-1">Original Price (₹)</label>
+                  <label className="block font-semibold text-[#20252B] mb-1">Original Price (₹)</label>
                   <input
                     type="number"
                     min={0}
                     value={formData.originalPrice}
                     onChange={(e) => setFormData({ ...formData, originalPrice: Number(e.target.value) })}
-                    className="w-full rounded-xl border border-[#E6E5DE] p-2.5 text-xs font-mono text-[#263126] focus:outline-none focus:border-[#9CAF88]"
+                    className="w-full rounded-xl border border-[#DCE2E6] p-2.5 text-xs font-mono text-[#20252B] focus:outline-none focus:border-[#9CC6E0]"
                   />
                 </div>
                 <div>
-                  <label className="block font-semibold text-[#263126] mb-1">Included Papers</label>
+                  <label className="block font-semibold text-[#20252B] mb-1">Included Papers</label>
                   <input
                     type="number"
                     min={1}
                     value={formData.includedPapersCount}
                     onChange={(e) => setFormData({ ...formData, includedPapersCount: Number(e.target.value) })}
-                    className="w-full rounded-xl border border-[#E6E5DE] p-2.5 text-xs font-mono text-[#263126] focus:outline-none focus:border-[#9CAF88]"
+                    className="w-full rounded-xl border border-[#DCE2E6] p-2.5 text-xs font-mono text-[#20252B] focus:outline-none focus:border-[#9CC6E0]"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block font-semibold text-[#263126] mb-1">Description</label>
+                <label className="block font-semibold text-[#20252B] mb-1">Description</label>
                 <textarea
                   rows={2}
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  className="w-full rounded-xl border border-[#E6E5DE] p-2.5 text-xs text-[#263126] focus:outline-none focus:border-[#9CAF88]"
+                  className="w-full rounded-xl border border-[#DCE2E6] p-2.5 text-xs text-[#20252B] focus:outline-none focus:border-[#9CC6E0]"
                 />
               </div>
 
               <div>
-                <label className="block font-semibold text-[#263126] mb-1">Included Features (1 per line)</label>
+                <label className="block font-semibold text-[#20252B] mb-1">Included Features (1 per line)</label>
                 <textarea
                   rows={3}
                   value={formData.featuresString}
                   onChange={(e) => setFormData({ ...formData, featuresString: e.target.value })}
-                  className="w-full rounded-xl border border-[#E6E5DE] p-2.5 text-xs text-[#263126] focus:outline-none focus:border-[#9CAF88]"
+                  className="w-full rounded-xl border border-[#DCE2E6] p-2.5 text-xs text-[#20252B] focus:outline-none focus:border-[#9CC6E0]"
                 />
               </div>
 
-              <div className="flex items-center justify-between border-t border-[#ECEAE4] pt-4">
+              <div className="flex items-center justify-between border-t border-[#DCE2E6] pt-4">
                 <button
                   type="button"
                   onClick={() => setShowModal(false)}
-                  className="px-4 py-2 text-xs font-semibold text-[#52584E] hover:text-[#263126]"
+                  className="px-4 py-2 text-xs font-semibold text-[#52584E] hover:text-[#20252B]"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 text-xs font-semibold text-white bg-[#263126] rounded-xl hover:bg-[#344034] transition-colors"
+                  className="px-4 py-2 text-xs font-semibold text-white bg-[#20252B] rounded-xl hover:bg-[#344034] transition-colors"
                 >
                   {editingProduct ? 'Save Changes' : 'Publish Product Pack'}
                 </button>

@@ -7,17 +7,17 @@ export const metadata = {
 
 export default function TermsAndConditionsPage() {
   return (
-    <div className="bg-[#F7F5EF] text-[#2E332D] min-h-screen py-20">
+    <div className="bg-[#F1F3F4] text-[#20252B] min-h-screen py-20">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl border border-[#E6E5DE] bg-white p-8 sm:p-12 shadow-card">
-          <h1 className="text-3xl font-extrabold sm:text-4xl text-[#263126]">Terms and Conditions</h1>
-          <p className="mt-2 text-xs text-[#92958D]">
+        <div className="rounded-3xl border border-[#DCE2E6] bg-white p-8 sm:p-12 shadow-card">
+          <h1 className="text-3xl font-extrabold sm:text-4xl text-[#20252B]">Terms and Conditions</h1>
+          <p className="mt-2 text-xs text-[#66727D]">
             Effective Date: January 1, 2026 • Last Updated: November 2026
           </p>
 
-          <div className="mt-8 space-y-6 text-xs sm:text-sm leading-relaxed text-[#73786E]">
+          <div className="mt-8 space-y-6 text-xs sm:text-sm leading-relaxed text-[#66727D]">
             <section>
-              <h2 className="text-base font-bold text-[#263126]">1. Acceptance of Terms</h2>
+              <h2 className="text-base font-bold text-[#20252B]">1. Acceptance of Terms</h2>
               <p className="mt-2">
                 By accessing FORT Learning (FORTLEARNING.COM), creating an account, or attempting an
                 examination paper, you agree to be bound by these Terms and Conditions. If you do not
@@ -26,7 +26,7 @@ export default function TermsAndConditionsPage() {
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#263126]">2. Digital Entitlements & Pricing</h2>
+              <h2 className="text-base font-bold text-[#20252B]">2. Digital Entitlements & Pricing</h2>
               <p className="mt-2">
                 Registered candidates are provided one complimentary full question paper. Subsequent
                 papers require individual entitlement purchases priced at ₹10 (or configured
@@ -36,7 +36,7 @@ export default function TermsAndConditionsPage() {
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#263126]">3. Academic Integrity & Prohibited Conduct</h2>
+              <h2 className="text-base font-bold text-[#20252B]">3. Academic Integrity & Prohibited Conduct</h2>
               <p className="mt-2">
                 Users shall not attempt to reverse engineer question banks, automate bot submissions,
                 forge payment signatures, or bypass server-side deadline timers. Accounts engaged in
@@ -45,7 +45,7 @@ export default function TermsAndConditionsPage() {
             </section>
 
             <section>
-              <h2 className="text-base font-bold text-[#263126]">4. Intellectual Property</h2>
+              <h2 className="text-base font-bold text-[#20252B]">4. Intellectual Property</h2>
               <p className="mt-2">
                 All question formulations, concept hierarchies, software engines, and OMR layout
                 algorithms are the intellectual property of FORT Learning.

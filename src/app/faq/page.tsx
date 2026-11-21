@@ -59,11 +59,11 @@ export default function FaqPage() {
   ];
 
   return (
-    <div className="bg-[#F7F5EF] text-[#2E332D] min-h-screen py-20">
+    <div className="bg-[#F1F3F4] text-[#20252B] min-h-screen py-20">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h1 className="text-4xl font-extrabold sm:text-5xl text-[#263126]">Frequently Asked Questions</h1>
-          <p className="mt-4 text-base text-[#73786E]">
+          <h1 className="text-4xl font-extrabold sm:text-5xl text-[#20252B]">Frequently Asked Questions</h1>
+          <p className="mt-4 text-base text-[#66727D]">
             Everything you need to know about FORT Learning, examination simulations, and pricing.
           </p>
         </div>
@@ -71,14 +71,14 @@ export default function FaqPage() {
         <div className="mt-16 space-y-12">
           {faqs.map((sec, idx) => (
             <div key={idx} className="space-y-4">
-              <h2 className="text-xs font-bold uppercase tracking-wider text-[#758B62]">
+              <h2 className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
                 {sec.cat}
               </h2>
               <div className="space-y-4">
                 {sec.items.map((item, i) => (
-                  <div key={i} className="rounded-2xl border border-[#E6E5DE] bg-white p-6 shadow-soft">
-                    <h3 className="text-base font-bold text-[#263126]">{item.q}</h3>
-                    <p className="mt-2 text-xs leading-relaxed text-[#73786E]">{item.a}</p>
+                  <div key={i} className="rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-soft">
+                    <h3 className="text-base font-bold text-[#20252B]">{item.q}</h3>
+                    <p className="mt-2 text-xs leading-relaxed text-[#66727D]">{item.a}</p>
                   </div>
                 ))}
               </div>
