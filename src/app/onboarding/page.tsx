@@ -5,36 +5,33 @@ import { useRouter } from 'next/navigation';
 import {
   Shield,
   ArrowRight,
-  ArrowLeft,
   CheckCircle2,
   GraduationCap,
   Sparkles,
+  BookOpen,
   Calendar,
   Layers,
-  Award,
 } from 'lucide-react';
-import { EXAMINATIONS } from '@/data/seedData';
 import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
 
 export default function OnboardingPage() {
   const router = useRouter();
-  const [step, setStep] = useState(1);
-  const [candidate, setCandidate] = useState<{
-    fullName: string;
-    registrationId: string;
-  }>({
+
+  const [candidate, setCandidate] = useState({
     fullName: 'Candidate',
     registrationId: 'FORT-26-000001',
   });
 
-  const [selectedExams, setSelectedExams] = useState<string[]>(['neet']);
-  const [targetYear, setTargetYear] = useState<number>(2026);
-  const [studyPreferences, setStudyPreferences] = useState<string[]>([
-    'timed_simulation',
-    'live_omr',
+  const [targetExam, setTargetExam] = useState<string>('neet');
+  const [educationLevel, setEducationLevel] = useState<string>('class_12');
+  const [selectedSubjects, setSelectedSubjects] = useState<string[]>([
+    'Physics',
+    'Chemistry',
+    'Botany',
+    'Zoology',
   ]);
-  const [preparationStage, setPreparationStage] = useState<string>('intermediate');
+  const [targetYear, setTargetYear] = useState<number>(2026);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -51,9 +48,25 @@ export default function OnboardingPage() {
     }
   }, []);
 
-  const toggleExam = (slug: string) => {
-    setSelectedExams((prev) =>
-      prev.includes(slug) ? (prev.length > 1 ? prev.filter((s) => s !== slug) : prev) : [...prev, slug]
+  // Update default subjects when target exam changes
+  const handleExamChange = (examSlug: string) => {
+    setTargetExam(examSlug);
+    if (examSlug === 'neet') {
+      setSelectedSubjects(['Physics', 'Chemistry', 'Botany', 'Zoology']);
+    } else if (examSlug === 'jee') {
+      setSelectedSubjects(['Physics', 'Chemistry', 'Mathematics']);
+    } else if (examSlug === 'upsc') {
+      setSelectedSubjects(['General Studies I', 'CSAT GS-II', 'Current Affairs', 'Mains Essay']);
+    } else if (examSlug === 'engineering') {
+      setSelectedSubjects(['Data Structures', 'Circuit Theory', 'Engineering Math', 'Thermodynamics']);
+    }
+  };
+
+  const toggleSubject = (sub: string) => {
+    setSelectedSubjects((prev) =>
+      prev.includes(sub)
+        ? (prev.length > 1 ? prev.filter((s) => s !== sub) : prev)
+        : [...prev, sub]
     );
   };
 
@@ -62,236 +75,192 @@ export default function OnboardingPage() {
       localStorage.setItem(
         'fort_onboarding_data',
         JSON.stringify({
-          selectedExams,
+          fullName: candidate.fullName,
+          targetExam,
+          educationLevel,
+          selectedSubjects,
           targetYear,
-          studyPreferences,
-          preparationStage,
           completedAt: new Date().toISOString(),
         })
       );
     }
-    toast.success('Onboarding complete! Welcome to your preparation workspace.');
+    toast.success('Profile personalized! Welcome to FORT Learning.');
     router.push('/dashboard');
   };
 
+  const availableSubjectsMap: Record<string, string[]> = {
+    neet: ['Physics', 'Chemistry', 'Botany', 'Zoology'],
+    jee: ['Physics', 'Chemistry', 'Mathematics'],
+    upsc: ['General Studies I', 'CSAT GS-II', 'Current Affairs', 'Mains Essay'],
+    engineering: ['Data Structures', 'Circuit Theory', 'Engineering Math', 'Thermodynamics'],
+  };
+
   return (
-    <div className="bg-[#F7F5EF] text-[#2E332D] min-h-screen py-16 px-4">
-      <div className="mx-auto max-w-2xl rounded-2xl border border-[#E6E5DE] bg-white p-6 sm:p-10 shadow-[0_4px_24px_rgba(38,49,38,0.06)]">
-        {/* Progress header */}
+    <div className="bg-[#F7F5EF] text-[#2E332D] min-h-screen py-12 px-4 flex items-center justify-center">
+      <div className="w-full max-w-2xl rounded-[32px] border border-[#E6E5DE] bg-white p-6 sm:p-10 shadow-[0_8px_30px_rgba(38,49,38,0.06)] space-y-8">
+        {/* Brand & Progress Header */}
         <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-6">
           <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#9CAF88] text-white">
+            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#9CAF88] text-white">
               <Shield className="h-5 w-5 stroke-[2.5]" />
             </div>
             <div>
-              <span className="font-mono text-sm font-bold text-[#263126]">
+              <div className="font-mono text-sm font-bold text-[#263126]">
                 {candidate.registrationId}
-              </span>
-              <p className="text-xs text-[#73786E]">{candidate.fullName}</p>
+              </div>
+              <p className="text-xs text-[#73786E]">Personalizing for {candidate.fullName}</p>
             </div>
           </div>
-          <div className="text-xs font-mono font-bold text-[#758B62]">Step {step} of 4</div>
+          <span className="rounded-full bg-[#E9EEE3] px-3 py-1 font-mono text-xs font-bold text-[#758B62]">
+            QUICK ONBOARDING
+          </span>
         </div>
 
-        {/* Step Indicator Bar */}
-        <div className="my-6 grid grid-cols-4 gap-2">
-          {[1, 2, 3, 4].map((i) => (
-            <div
-              key={i}
-              className={cn(
-                'h-1.5 rounded-full transition-colors',
-                i <= step ? 'bg-[#9CAF88]' : 'bg-[#E9E6DF]'
-              )}
-            />
-          ))}
+        {/* Section 1: Target Exam */}
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <h2 className="text-base font-bold font-serif text-[#263126]">
+              1. What are you preparing for?
+            </h2>
+            <span className="text-xs text-[#758B62] font-semibold">Primary Goal</span>
+          </div>
+
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {[
+              { id: 'neet', name: 'NEET', sub: 'Medical (UG)' },
+              { id: 'jee', name: 'JEE', sub: 'Main & Adv' },
+              { id: 'upsc', name: 'UPSC', sub: 'Civil Services' },
+              { id: 'engineering', name: 'Engineering', sub: 'Semester Syllabi' },
+            ].map((exam) => {
+              const isSelected = targetExam === exam.id;
+              return (
+                <button
+                  key={exam.id}
+                  type="button"
+                  onClick={() => handleExamChange(exam.id)}
+                  className={cn(
+                    'rounded-2xl border p-4 text-center transition-all',
+                    isSelected
+                      ? 'border-[#9CAF88] bg-[#E9EEE3] text-[#263126] shadow-sm'
+                      : 'border-[#E6E5DE] bg-white text-[#73786E] hover:border-[#9CAF88]/60'
+                  )}
+                >
+                  <div className="font-serif text-lg font-bold">{exam.name}</div>
+                  <div className="text-[11px] text-[#73786E] mt-0.5">{exam.sub}</div>
+                  {isSelected && (
+                    <CheckCircle2 className="h-4 w-4 text-[#758B62] mx-auto mt-2" />
+                  )}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
-        {/* STEP 1: EXAM TARGET SELECTION */}
-        {step === 1 && (
-          <div className="space-y-6">
-            <div>
-              <h2 className="text-xl font-bold text-[#263126] font-serif">
-                Select Your Examination Target
-              </h2>
-              <p className="mt-1 text-xs text-[#73786E]">
-                We personalize your question banks, scoring engines, and OMR configurations accordingly.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-              {EXAMINATIONS.map((exam) => {
-                const isSelected = selectedExams.includes(exam.slug);
-                return (
-                  <div
-                    key={exam.slug}
-                    onClick={() => toggleExam(exam.slug)}
-                    className={cn(
-                      'flex items-center justify-between rounded-xl border p-4 cursor-pointer transition-all',
-                      isSelected
-                        ? 'border-[#9CAF88] bg-[#E9EEE3] text-[#263126]'
-                        : 'border-[#E6E5DE] bg-white text-[#73786E] hover:border-[#9CAF88]/60'
-                    )}
-                  >
-                    <div>
-                      <div className="text-xs font-bold text-[#263126]">{exam.name}</div>
-                      <div className="text-[11px] text-[#73786E]">{exam.tagline}</div>
-                    </div>
-                    {isSelected && <CheckCircle2 className="h-4 w-4 text-[#758B62]" />}
-                  </div>
-                );
-              })}
-            </div>
+        {/* Section 2: Education Level */}
+        <div className="space-y-3">
+          <h2 className="text-base font-bold font-serif text-[#263126]">
+            2. Class & Education Level
+          </h2>
+          <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4">
+            {[
+              { id: 'class_11', label: 'Class 11' },
+              { id: 'class_12', label: 'Class 12' },
+              { id: 'dropper', label: 'Repeater / Dropper' },
+              { id: 'college', label: 'College / Graduate' },
+            ].map((lvl) => {
+              const isSelected = educationLevel === lvl.id;
+              return (
+                <button
+                  key={lvl.id}
+                  type="button"
+                  onClick={() => setEducationLevel(lvl.id)}
+                  className={cn(
+                    'rounded-xl border py-2.5 px-3 text-xs font-semibold transition-all',
+                    isSelected
+                      ? 'border-[#9CAF88] bg-[#E9EEE3] text-[#263126] font-bold'
+                      : 'border-[#E6E5DE] bg-white text-[#73786E] hover:border-[#9CAF88]'
+                  )}
+                >
+                  {lvl.label}
+                </button>
+              );
+            })}
           </div>
-        )}
+        </div>
 
-        {/* STEP 2: TARGET YEAR */}
-        {step === 2 && (
-          <div className="space-y-6">
-            <div>
-              <h2 className="text-xl font-bold text-[#263126] font-serif">Select Target Examination Year</h2>
-              <p className="mt-1 text-xs text-[#73786E]">
-                This calibrates your countdown timers and revision pace.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-3 gap-3">
-              {[2025, 2026, 2027].map((yr) => {
-                const isSelected = targetYear === yr;
-                return (
-                  <button
-                    key={yr}
-                    type="button"
-                    onClick={() => setTargetYear(yr)}
-                    className={cn(
-                      'rounded-xl border p-4 text-center font-mono font-bold transition-all text-sm',
-                      isSelected
-                        ? 'border-[#9CAF88] bg-[#E9EEE3] text-[#263126]'
-                        : 'border-[#E6E5DE] bg-white text-[#73786E] hover:border-[#9CAF88]'
-                    )}
-                  >
-                    {yr}
-                  </button>
-                );
-              })}
-            </div>
+        {/* Section 3: Preferred Subjects */}
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <h2 className="text-base font-bold font-serif text-[#263126]">
+              3. Preferred Subjects
+            </h2>
+            <span className="text-[11px] text-[#92958D]">Select all you wish to practice</span>
           </div>
-        )}
 
-        {/* STEP 3: PREPARATION STAGE */}
-        {step === 3 && (
-          <div className="space-y-6">
-            <div>
-              <h2 className="text-xl font-bold text-[#263126] font-serif">Current Preparation Stage</h2>
-              <p className="mt-1 text-xs text-[#73786E]">
-                Helps recommend single-topic drills vs. full 3-hour timed simulations.
-              </p>
-            </div>
-
-            <div className="space-y-3">
-              {[
-                { id: 'foundational', title: 'Foundational Phase', desc: 'Focusing on conceptual theory and topical question drills.' },
-                { id: 'intermediate', title: 'Syllabus Revision', desc: 'Covered majority of syllabus, actively practicing mixed questions.' },
-                { id: 'advanced', title: 'Intense Simulation', desc: 'Full length mock tests under strict timed and negative marking conditions.' },
-              ].map((stg) => {
-                const isSelected = preparationStage === stg.id;
-                return (
-                  <div
-                    key={stg.id}
-                    onClick={() => setPreparationStage(stg.id)}
-                    className={cn(
-                      'rounded-xl border p-4 cursor-pointer transition-all',
-                      isSelected
-                        ? 'border-[#9CAF88] bg-[#E9EEE3] text-[#263126]'
-                        : 'border-[#E6E5DE] bg-white text-[#73786E] hover:border-[#9CAF88]/60'
-                    )}
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="text-sm font-bold text-[#263126]">{stg.title}</div>
-                      {isSelected && <CheckCircle2 className="h-4 w-4 text-[#758B62]" />}
-                    </div>
-                    <p className="mt-1 text-xs text-[#73786E]">{stg.desc}</p>
-                  </div>
-                );
-              })}
-            </div>
+          <div className="flex flex-wrap gap-2">
+            {(availableSubjectsMap[targetExam] || []).map((sub) => {
+              const isSelected = selectedSubjects.includes(sub);
+              return (
+                <button
+                  key={sub}
+                  type="button"
+                  onClick={() => toggleSubject(sub)}
+                  className={cn(
+                    'rounded-full border px-4 py-2 text-xs font-semibold transition-all flex items-center gap-1.5',
+                    isSelected
+                      ? 'border-[#9CAF88] bg-[#9CAF88] text-white shadow-sm'
+                      : 'border-[#E6E5DE] bg-white text-[#73786E] hover:border-[#9CAF88]'
+                  )}
+                >
+                  {isSelected && <CheckCircle2 className="h-3.5 w-3.5" />}
+                  <span>{sub}</span>
+                </button>
+              );
+            })}
           </div>
-        )}
+        </div>
 
-        {/* STEP 4: STUDY PREFERENCES */}
-        {step === 4 && (
-          <div className="space-y-6">
-            <div>
-              <h2 className="text-xl font-bold text-[#263126] font-serif">Practice Mode Preferences</h2>
-              <p className="mt-1 text-xs text-[#73786E]">
-                Select the interfaces you plan to utilize during your preparation.
-              </p>
-            </div>
-
-            <div className="space-y-3">
-              {[
-                { id: 'timed_simulation', title: 'CBT Timed Simulation', desc: 'Browser-based computer testing with server countdown and answer palette.' },
-                { id: 'live_omr', title: 'Live Physical OMR Sheet', desc: 'Real-time grid bubble darkening with vector A4 PDF export for physical printing.' },
-                { id: 'step_solutions', title: 'Step-by-Step Derivation & Rubric', desc: 'Deep mathematical explanations and rubric scoring breakdown.' },
-              ].map((pref) => {
-                const isSelected = studyPreferences.includes(pref.id);
-                return (
-                  <div
-                    key={pref.id}
-                    onClick={() => {
-                      setStudyPreferences((prev) =>
-                        prev.includes(pref.id) ? prev.filter((p) => p !== pref.id) : [...prev, pref.id]
-                      );
-                    }}
-                    className={cn(
-                      'rounded-xl border p-4 cursor-pointer transition-all',
-                      isSelected
-                        ? 'border-[#9CAF88] bg-[#E9EEE3] text-[#263126]'
-                        : 'border-[#E6E5DE] bg-white text-[#73786E] hover:border-[#9CAF88]/60'
-                    )}
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="text-sm font-bold text-[#263126]">{pref.title}</div>
-                      {isSelected && <CheckCircle2 className="h-4 w-4 text-[#758B62]" />}
-                    </div>
-                    <p className="mt-1 text-xs text-[#73786E]">{pref.desc}</p>
-                  </div>
-                );
-              })}
-            </div>
+        {/* Section 4: Target Year (Optional) */}
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <h2 className="text-base font-bold font-serif text-[#263126]">
+              4. Target Examination Year
+            </h2>
+            <span className="text-[11px] text-[#92958D]">Optional</span>
           </div>
-        )}
 
-        {/* Step Navigation Controls */}
-        <div className="mt-8 flex items-center justify-between border-t border-[#ECEAE4] pt-6">
+          <div className="grid grid-cols-3 gap-3">
+            {[2025, 2026, 2027].map((yr) => {
+              const isSelected = targetYear === yr;
+              return (
+                <button
+                  key={yr}
+                  type="button"
+                  onClick={() => setTargetYear(yr)}
+                  className={cn(
+                    'rounded-xl border py-2.5 font-mono text-xs font-bold transition-all',
+                    isSelected
+                      ? 'border-[#9CAF88] bg-[#E9EEE3] text-[#263126]'
+                      : 'border-[#E6E5DE] bg-white text-[#73786E] hover:border-[#9CAF88]'
+                  )}
+                >
+                  {yr}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Final CTA */}
+        <div className="pt-4 border-t border-[#ECEAE4]">
           <button
             type="button"
-            disabled={step === 1}
-            onClick={() => setStep((s) => s - 1)}
-            className="inline-flex items-center gap-1.5 rounded-xl border border-[#E6E5DE] bg-white px-4 py-2 text-xs font-semibold text-[#73786E] hover:bg-[#F7F5EF] disabled:opacity-40 transition-colors"
+            onClick={handleFinishOnboarding}
+            className="flex w-full items-center justify-center gap-2 rounded-full bg-[#E8412C] py-4 text-sm font-bold text-white shadow-lg shadow-[#E8412C]/25 hover:bg-[#d03521] transition-all hover:translate-y-[-1px]"
           >
-            <ArrowLeft className="h-4 w-4" />
-            <span>Previous</span>
+            <span>Start Solving Questions</span>
+            <ArrowRight className="h-4 w-4" />
           </button>
-
-          {step < 4 ? (
-            <button
-              type="button"
-              onClick={() => setStep((s) => s + 1)}
-              className="inline-flex items-center gap-1.5 rounded-xl bg-[#9CAF88] px-5 py-2.5 text-xs font-bold text-white hover:bg-[#8ea07a] shadow-sm transition-all"
-            >
-              <span>Continue</span>
-              <ArrowRight className="h-4 w-4" />
-            </button>
-          ) : (
-            <button
-              type="button"
-              onClick={handleFinishOnboarding}
-              className="inline-flex items-center gap-1.5 rounded-xl bg-[#9CAF88] px-6 py-2.5 text-xs font-bold text-white hover:bg-[#8ea07a] shadow-sm transition-all"
-            >
-              <span>Launch Candidate Dashboard</span>
-              <ArrowRight className="h-4 w-4" />
-            </button>
-          )}
         </div>
       </div>
     </div>

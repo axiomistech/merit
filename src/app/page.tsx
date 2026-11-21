@@ -91,19 +91,19 @@ export default function HomePage() {
                 Engineered from first principles. Real 180-question physical OMR sheets, server-authoritative timers, and transparent ₹10 economics. Walk-ins welcome if you are brave.
               </p>
 
-              {/* CTAs matching the reference */}
+              {/* CTAs matching the user flow */}
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <Link
                   href="/signup"
                   className="rounded-full bg-[#E8412C] px-8 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#E8412C]/30 hover:bg-[#d03521] transition-all hover:translate-y-[-1px]"
                 >
-                  Start free simulation
+                  Start Practicing
                 </Link>
                 <Link
-                  href="/neet/omr-practice"
+                  href="#exams"
                   className="rounded-full border border-white/60 bg-white/10 backdrop-blur-sm px-8 py-3.5 text-sm font-semibold text-white hover:bg-white/20 transition-all"
                 >
-                  See the OMR sheet
+                  Explore Exams
                 </Link>
               </div>
             </div>
@@ -176,7 +176,7 @@ export default function HomePage() {
       {/* ==================================================================== */}
       {/* SECTION 2: THE SYLLABUS, SHORT AND DEEP (MATCHING "THE MENU, SHORT & LOUD") */}
       {/* ==================================================================== */}
-      <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <section id="exams" className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="mb-8">
           <div className="text-xs font-bold uppercase tracking-wider text-[#758B62]">
             CURRICULA

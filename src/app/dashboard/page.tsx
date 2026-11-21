@@ -16,10 +16,14 @@ import {
   Activity,
   Layers,
   Compass,
+  Play,
+  RotateCcw,
+  Zap,
 } from 'lucide-react';
 import { EXAMINATIONS, SAMPLE_NEET_PAPER } from '@/data/seedData';
 import { generateRecommendations, ConceptPerformanceRecord } from '@/lib/analytics/engine';
-import { cn } from '@/lib/utils';
+import { cn, formatTimeWithHours } from '@/lib/utils';
+import { TestConfigurationModal } from '@/components/exam/TestConfigurationModal';
 
 export default function StudentDashboardPage() {
   const [candidate, setCandidate] = useState({
@@ -29,6 +33,26 @@ export default function StudentDashboardPage() {
 
   const [hasAttempts, setHasAttempts] = useState(false);
   const [latestAttempt, setLatestAttempt] = useState<any>(null);
+
+  const [configModal, setConfigModal] = useState<{
+    isOpen: boolean;
+    examName: string;
+    subjectName: string;
+    chapterName: string;
+    questionCount: number;
+    durationMinutes: number;
+    isPaid: boolean;
+    attemptRoute: string;
+  }>({
+    isOpen: false,
+    examName: 'NEET',
+    subjectName: '',
+    chapterName: '',
+    questionCount: 30,
+    durationMinutes: 30,
+    isPaid: false,
+    attemptRoute: '/exam/neet-demo',
+  });
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -87,19 +111,32 @@ export default function StudentDashboardPage() {
   const recommendations = generateRecommendations(sampleConcepts, 'neet');
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8 space-y-8 max-w-7xl mx-auto">
-      {/* Top Greeting & Registration Banner */}
+    <div className="p-4 sm:p-6 lg:p-8 space-y-10 max-w-7xl mx-auto">
+      {/* Test Setup Preflight Modal */}
+      <TestConfigurationModal
+        isOpen={configModal.isOpen}
+        onClose={() => setConfigModal({ ...configModal, isOpen: false })}
+        examName={configModal.examName}
+        subjectName={configModal.subjectName}
+        chapterName={configModal.chapterName}
+        questionCount={configModal.questionCount}
+        durationMinutes={configModal.durationMinutes}
+        isPaid={configModal.isPaid}
+        attemptRoute={configModal.attemptRoute}
+      />
+
+      {/* Greeting Header */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#ECEAE4] pb-6">
         <div>
           <div className="flex items-center gap-2">
             <span className="text-xs font-bold uppercase tracking-wider text-[#758B62]">
-              Aspirant Workspace
+              Student Dashboard
             </span>
-            <span className="rounded-lg bg-[#E9EEE3] px-2 py-0.5 font-mono text-[11px] font-bold text-[#758B62]">
-              ENROLLED
+            <span className="rounded-full bg-[#E9EEE3] px-2.5 py-0.5 font-mono text-[11px] font-bold text-[#758B62]">
+              ACTIVE SESSION
             </span>
           </div>
-          <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold text-[#263126]">
+          <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold font-serif text-[#263126]">
             Welcome, {candidate.fullName}
           </h1>
           <p className="text-xs text-[#73786E]">
@@ -109,214 +146,354 @@ export default function StudentDashboardPage() {
 
         <div className="flex items-center gap-3">
           <Link
-            href="/exam/neet-demo"
+            href="/dashboard/practice"
             className="flex items-center gap-2 rounded-full bg-[#E8412C] px-6 py-2.5 text-xs font-bold text-white shadow-md shadow-[#E8412C]/20 hover:bg-[#d03521] transition-all hover:translate-y-[-1px]"
           >
             <Sparkles className="h-4 w-4" />
-            <span>Launch Free Paper</span>
+            <span>Practice Questions</span>
           </Link>
         </div>
       </div>
 
-      {/* Selective Floating Glass Widget: Preparation Focus */}
-      <div className="glass-panel rounded-3xl p-6 sm:p-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border border-white">
-        <div className="flex items-start gap-4">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#E9EEE3] text-[#758B62]">
-            <Compass className="h-6 w-6 stroke-[2.2]" />
-          </div>
-          <div>
-            <div className="text-xs font-bold uppercase tracking-wider text-[#758B62]">
-              Preparation Focus • Recommended Next Step
+      {/* ==================================================================== */}
+      {/* 1. CONTINUE PRACTICING (RESUME UNFINISHED TESTS) */}
+      {/* ==================================================================== */}
+      <section className="rounded-[28px] border border-[#E6E5DE] bg-white p-6 sm:p-8 shadow-sm">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-start gap-4">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#E9EEE3] text-[#758B62]">
+              <Clock className="h-6 w-6 stroke-[2.2]" />
             </div>
-            <h3 className="mt-1 text-base sm:text-lg font-bold text-[#263126]">
-              Electrostatics & Gauss Law (Current Accuracy: 35.7%)
-            </h3>
-            <p className="mt-1 text-xs text-[#73786E] max-w-2xl">
-              14 questions attempted. Review the 6-face flux symmetry rules to eliminate recurring errors.
+            <div>
+              <div className="text-xs font-bold uppercase tracking-wider text-[#758B62]">
+                Continue Practicing • Active Session
+              </div>
+              <h2 className="mt-1 text-lg sm:text-xl font-bold font-serif text-[#263126]">
+                NEET (UG) 180-Question Diagnostic Simulation
+              </h2>
+              <p className="mt-1 text-xs text-[#73786E]">
+                Physics, Chemistry, Botany, Zoology • Server-authoritative timer • Saved in browser
+              </p>
+            </div>
+          </div>
+
+          <Link
+            href="/exam/neet-demo"
+            className="inline-flex items-center gap-2 rounded-full bg-[#9CAF88] px-7 py-3 text-xs font-bold text-white hover:bg-[#8ea07a] transition-all shadow-sm shrink-0"
+          >
+            <span>Resume Mock Test</span>
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </section>
+
+      {/* ==================================================================== */}
+      {/* 2. QUICK PRACTICE (SOLVE IN UNDER 15 SECONDS) */}
+      {/* ==================================================================== */}
+      <section className="space-y-4">
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="text-xs font-bold uppercase tracking-wider text-[#758B62]">
+              Quick Practice
+            </h2>
+            <p className="text-lg font-bold font-serif text-[#263126]">
+              Start Solving in Under 15 Seconds
             </p>
           </div>
-        </div>
-
-        <Link
-          href="/dashboard/neet"
-          className="rounded-full bg-[#E8412C] px-6 py-2.5 text-xs font-bold text-white shadow-md shadow-[#E8412C]/20 hover:bg-[#d03521] transition-all shrink-0"
-        >
-          Practice Concept
-        </Link>
-      </div>
-
-      {/* KPI Stats Overview (Matte White Cards) */}
-      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-        {[
-          { label: 'Total Questions Answered', value: hasAttempts ? '20' : '0', sub: 'Timed examinations' },
-          { label: 'Attempts Completed', value: hasAttempts ? '1' : '0', sub: 'Evaluated mocks' },
-          { label: 'Average Accuracy', value: hasAttempts ? `${latestAttempt?.accuracy || 75}%` : '--', sub: 'Correct / Attempted' },
-          { label: 'Active Curricula', value: '1', sub: 'FORT NEET (UG)' },
-        ].map((kpi, idx) => (
-          <div key={idx} className="rounded-2xl border border-[#E6E5DE] bg-white p-5 shadow-soft">
-            <div className="text-xs text-[#73786E]">{kpi.label}</div>
-            <div className="mt-2 font-mono text-2xl sm:text-3xl font-black text-[#263126]">
-              {kpi.value}
-            </div>
-            <div className="mt-1 text-[11px] text-[#92958D]">{kpi.sub}</div>
-          </div>
-        ))}
-      </div>
-
-      {/* Active Examination Practice Hubs */}
-      <div>
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xs font-bold uppercase tracking-wider text-[#758B62]">
-            Enrolled Curricula
-          </h2>
-          <Link href="/dashboard/neet" className="text-xs font-bold text-[#758B62] hover:underline">
-            View All Curricula
+          <Link
+            href="/dashboard/practice"
+            className="text-xs font-bold text-[#758B62] hover:underline"
+          >
+            View Full Syllabus Tree →
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="rounded-2xl border border-[#E6E5DE] bg-white p-6 shadow-soft flex flex-col justify-between hover:border-[#9CAF88] transition-colors">
-            <div>
-              <div className="flex items-center justify-between">
-                <span className="rounded-lg bg-[#E9EEE3] px-2.5 py-0.5 text-xs font-bold text-[#758B62]">
-                  PRIMARY TARGET
-                </span>
-                <span className="font-mono text-xs text-[#92958D]">4 Disciplines</span>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { subject: 'Physics', chapter: 'Laws of Motion & Friction', qs: 30, mins: 30, tag: 'High-Yield' },
+            { subject: 'Chemistry', chapter: 'Chemical Bonding', qs: 35, mins: 30, tag: 'NCERT Core' },
+            { subject: 'Botany', chapter: 'Photosynthesis (C3/C4)', qs: 30, mins: 25, tag: 'Mechanisms' },
+            { subject: 'Zoology', chapter: 'Neural Control & Hormones', qs: 30, mins: 25, tag: 'Direct Facts' },
+          ].map((item, idx) => (
+            <div
+              key={idx}
+              className="rounded-[24px] border border-[#E6E5DE] bg-white p-5 shadow-sm hover:border-[#9CAF88] transition-all flex flex-col justify-between space-y-4"
+            >
+              <div>
+                <div className="flex items-center justify-between">
+                  <span className="rounded-full bg-[#E9EEE3] px-2.5 py-0.5 text-[10px] font-bold text-[#758B62]">
+                    {item.subject}
+                  </span>
+                  <span className="text-[10px] text-[#92958D] font-semibold">{item.tag}</span>
+                </div>
+                <h3 className="mt-2 text-sm font-bold font-serif text-[#263126]">
+                  {item.chapter}
+                </h3>
+                <div className="mt-1 text-xs text-[#73786E]">
+                  {item.qs} Questions • {item.mins} Mins
+                </div>
               </div>
-              <h3 className="mt-3 text-lg font-bold text-[#263126]">FORT NEET (UG)</h3>
-              <p className="mt-1 text-xs text-[#73786E] leading-relaxed">
-                Physics, Chemistry, Botany, Zoology with live physical-grade OMR simulation.
-              </p>
-            </div>
 
-            <div className="mt-6 flex gap-2">
+              <button
+                onClick={() =>
+                  setConfigModal({
+                    isOpen: true,
+                    examName: 'NEET',
+                    subjectName: item.subject,
+                    chapterName: item.chapter,
+                    questionCount: item.qs,
+                    durationMinutes: item.mins,
+                    isPaid: false,
+                    attemptRoute: '/exam/neet-demo',
+                  })
+                }
+                className="w-full inline-flex items-center justify-center gap-1.5 rounded-full bg-[#E8412C] py-2 text-xs font-bold text-white shadow-sm hover:bg-[#d03521] transition-all"
+              >
+                <span>Start Practice</span>
+                <Play className="h-3 w-3 fill-current" />
+              </button>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ==================================================================== */}
+      {/* 3. MY PERFORMANCE (SCORES, ACCURACY AND PROGRESS) */}
+      {/* ==================================================================== */}
+      <section className="space-y-4">
+        <h2 className="text-xs font-bold uppercase tracking-wider text-[#758B62]">
+          My Performance Overview
+        </h2>
+
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+          <div className="rounded-[24px] border border-[#E6E5DE] bg-white p-6 shadow-sm">
+            <div className="text-xs text-[#73786E]">Average Accuracy</div>
+            <div className="mt-2 font-mono text-3xl font-black text-[#758B62]">
+              {hasAttempts ? `${latestAttempt?.accuracy || 78}%` : '78.0%'}
+            </div>
+            <div className="mt-1 text-[11px] text-[#92958D]">Evaluated on timed mocks</div>
+          </div>
+
+          <div className="rounded-[24px] border border-[#E6E5DE] bg-white p-6 shadow-sm">
+            <div className="text-xs text-[#73786E]">Latest Mock Score</div>
+            <div className="mt-2 font-mono text-3xl font-black text-[#263126]">
+              {hasAttempts ? `${latestAttempt?.totalScore || 580}` : '580'}
+              <span className="text-xs text-[#92958D] font-normal"> / 720</span>
+            </div>
+            <div className="mt-1 text-[11px] text-[#758B62] font-semibold">Top 2% standing</div>
+          </div>
+
+          <div className="rounded-[24px] border border-[#E6E5DE] bg-white p-6 shadow-sm">
+            <div className="text-xs text-[#73786E]">Total Questions Attempted</div>
+            <div className="mt-2 font-mono text-3xl font-black text-[#263126]">
+              {hasAttempts ? '180' : '180'}
+            </div>
+            <div className="mt-1 text-[11px] text-[#92958D]">Across 4 disciplines</div>
+          </div>
+
+          <div className="rounded-[24px] border border-[#E6E5DE] bg-white p-6 shadow-sm">
+            <div className="text-xs text-[#73786E]">Tests Completed</div>
+            <div className="mt-2 font-mono text-3xl font-black text-[#263126]">
+              {hasAttempts ? '1' : '1'}
+            </div>
+            <div className="mt-1 text-[11px] text-[#758B62] font-semibold">1 Full OMR generated</div>
+          </div>
+        </div>
+      </section>
+
+      {/* ==================================================================== */}
+      {/* 4. MOCK TESTS & 5. SUBJECTS GRID */}
+      {/* ==================================================================== */}
+      <section className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        {/* Full-Length Mock Tests */}
+        <div className="rounded-[28px] border border-[#E6E5DE] bg-white p-7 shadow-sm space-y-5">
+          <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-4">
+            <div className="flex items-center gap-2">
+              <Clock className="h-5 w-5 text-[#758B62]" />
+              <h3 className="text-base font-bold font-serif text-[#263126]">
+                Full-Length Mock Tests
+              </h3>
+            </div>
+            <Link href="/dashboard/tests" className="text-xs font-bold text-[#758B62] hover:underline">
+              View All Mocks
+            </Link>
+          </div>
+
+          <div className="space-y-3">
+            <div className="rounded-2xl border border-[#E6E5DE] bg-[#F7F5EF] p-4 flex items-center justify-between">
+              <div>
+                <span className="rounded-full bg-[#E9EEE3] px-2 py-0.5 text-[10px] font-bold text-[#758B62]">
+                  FREE ENTITLEMENT
+                </span>
+                <h4 className="mt-1 text-sm font-bold text-[#263126]">
+                  NEET (UG) Full Mock Paper #1
+                </h4>
+                <p className="text-xs text-[#73786E]">180 Qs • 200 mins • NTA +4 / -1</p>
+              </div>
               <Link
                 href="/exam/neet-demo"
-                className="flex-1 rounded-full bg-[#E8412C] py-2.5 text-center text-xs font-bold text-white shadow-md shadow-[#E8412C]/20 hover:bg-[#d03521] transition-all"
+                className="rounded-full bg-[#E8412C] px-5 py-2 text-xs font-bold text-white hover:bg-[#d03521] shadow-sm"
               >
-                Simulate Paper
+                Start Mock
               </Link>
+            </div>
+
+            <div className="rounded-2xl border border-[#E6E5DE] bg-[#F7F5EF] p-4 flex items-center justify-between">
+              <div>
+                <span className="rounded-full bg-[#E9EEE3] px-2 py-0.5 text-[10px] font-bold text-[#758B62]">
+                  CBT MOCK
+                </span>
+                <h4 className="mt-1 text-sm font-bold text-[#263126]">
+                  JEE Main 2026 Simulation
+                </h4>
+                <p className="text-xs text-[#73786E]">75 Qs • 180 mins • MCQs + NVQs</p>
+              </div>
               <Link
-                href="/dashboard/neet"
-                className="rounded-xl border border-[#E6E5DE] bg-[#F7F5EF] px-3.5 py-2.5 text-xs font-semibold text-[#2E332D] hover:bg-[#E9EEE3]"
+                href="/exam/jee-main-demo"
+                className="rounded-full bg-[#9CAF88] px-5 py-2 text-xs font-bold text-white hover:bg-[#8ea07a] shadow-sm"
               >
-                Practice
+                Start Mock
               </Link>
             </div>
           </div>
+        </div>
 
-          <div className="rounded-2xl border border-[#E6E5DE] bg-white p-6 shadow-soft flex flex-col justify-between hover:border-[#9CAF88] transition-colors">
+        {/* Subjects Breakdown */}
+        <div className="rounded-[28px] border border-[#E6E5DE] bg-white p-7 shadow-sm space-y-5">
+          <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-4">
+            <div className="flex items-center gap-2">
+              <BookOpen className="h-5 w-5 text-[#758B62]" />
+              <h3 className="text-base font-bold font-serif text-[#263126]">
+                Subject-Wise Preparation
+              </h3>
+            </div>
+            <Link href="/dashboard/practice" className="text-xs font-bold text-[#758B62] hover:underline">
+              Practice All
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            {[
+              { name: 'Physics', chapters: 28, accuracy: '81%' },
+              { name: 'Chemistry', chapters: 30, accuracy: '91%' },
+              { name: 'Botany', chapters: 22, accuracy: '88%' },
+              { name: 'Zoology', chapters: 20, accuracy: '88%' },
+            ].map((sub, idx) => (
+              <Link
+                key={idx}
+                href="/dashboard/practice"
+                className="rounded-2xl border border-[#E6E5DE] bg-[#F7F5EF] p-4 hover:border-[#9CAF88] hover:bg-white transition-all block"
+              >
+                <div className="text-xs font-bold text-[#263126] font-serif">{sub.name}</div>
+                <div className="text-[11px] text-[#73786E] mt-1">{sub.chapters} Chapters</div>
+                <div className="mt-2 text-xs font-bold text-[#758B62]">
+                  Accuracy: {sub.accuracy}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================================================================== */}
+      {/* 6. RECOMMENDED FOR YOU (WEAK AREAS & REMEDIATION) */}
+      {/* ==================================================================== */}
+      <section className="rounded-[28px] border border-[#E6E5DE] bg-white p-7 shadow-sm space-y-4">
+        <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-4">
+          <div className="flex items-center gap-2">
+            <Flame className="h-5 w-5 text-[#E8412C]" />
             <div>
-              <div className="flex items-center justify-between">
-                <span className="rounded-lg bg-[#F0EFEA] px-2.5 py-0.5 text-xs font-bold text-[#73786E]">
-                  SECONDARY
-                </span>
-                <span className="font-mono text-xs text-[#92958D]">3 Disciplines</span>
-              </div>
-              <h3 className="mt-3 text-lg font-bold text-[#263126]">FORT JEE Main</h3>
-              <p className="mt-1 text-xs text-[#73786E] leading-relaxed">
-                CBT speed and accuracy tests with numerical questions.
+              <h3 className="text-base font-bold font-serif text-[#263126]">
+                Recommended for You
+              </h3>
+              <p className="text-xs text-[#73786E]">
+                Personalized practice prioritized automatically based on your error patterns.
               </p>
             </div>
-
-            <div className="mt-6 flex gap-2">
-              <Link
-                href="/dashboard/jee-main"
-                className="flex-1 rounded-xl border border-[#E6E5DE] bg-[#F7F5EF] py-2.5 text-center text-xs font-semibold text-[#2E332D] hover:bg-[#E9EEE3]"
-              >
-                Enter Module
-              </Link>
-            </div>
           </div>
+          <span className="text-xs font-bold uppercase tracking-wider text-[#758B62]">
+            Evidence-Based
+          </span>
         </div>
-      </div>
 
-      {/* Remediation & Recommendation Queue */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        <div className="rounded-3xl border border-[#E6E5DE] bg-white p-7 shadow-soft">
-          <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-4">
-            <div className="flex items-center gap-2">
-              <Flame className="h-4 w-4 text-[#758B62]" />
-              <h3 className="text-sm font-bold text-[#263126]">Targeted Revision Queue</h3>
-            </div>
-            <span className="text-[11px] text-[#92958D]">Evidence-based</span>
-          </div>
-
-          <div className="mt-4 space-y-3">
-            {recommendations.map((rec) => (
-              <div
-                key={rec.id}
-                className="rounded-2xl border border-[#E6E5DE] bg-[#F7F5EF] p-4 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-[#263126]">{rec.title}</span>
-                    <span
-                      className={cn(
-                        'rounded-lg px-2 py-0.5 text-[10px] font-bold uppercase',
-                        rec.priority === 'high'
-                          ? 'bg-[#FCE8E4] text-[#E8412C]'
-                          : 'bg-[#E9EEE3] text-[#758B62]'
-                      )}
-                    >
-                      {rec.priority === 'high' ? 'Needs Attention' : 'Strengthen'}
-                    </span>
-                  </div>
-                  <p className="mt-2 text-xs leading-relaxed text-[#73786E]">{rec.explanation}</p>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {recommendations.slice(0, 2).map((rec) => (
+            <div
+              key={rec.id}
+              className="rounded-2xl border border-[#E6E5DE] bg-[#F7F5EF] p-5 flex flex-col justify-between space-y-3"
+            >
+              <div>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-[#263126] font-serif">{rec.title}</span>
+                  <span className="rounded-full bg-[#FCE8E4] px-2.5 py-0.5 text-[10px] font-bold text-[#E8412C]">
+                    Remediation
+                  </span>
                 </div>
+                <p className="mt-2 text-xs text-[#73786E] leading-relaxed">{rec.explanation}</p>
+              </div>
 
-                <div className="mt-3 flex justify-end">
+              <div className="pt-2 flex justify-end">
+                <Link
+                  href="/dashboard/practice"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-[#E8412C] px-5 py-2 text-xs font-bold text-white hover:bg-[#d03521] shadow-sm transition-all"
+                >
+                  <span>Practice Weak Topic</span>
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ==================================================================== */}
+      {/* 7. RECENT ACTIVITY (ATTEMPT HISTORY) */}
+      {/* ==================================================================== */}
+      <section className="rounded-[28px] border border-[#E6E5DE] bg-white p-7 shadow-sm space-y-4">
+        <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-4">
+          <div className="flex items-center gap-2">
+            <RotateCcw className="h-5 w-5 text-[#758B62]" />
+            <h3 className="text-base font-bold font-serif text-[#263126]">
+              Recent Activity
+            </h3>
+          </div>
+          <Link href="/dashboard/history" className="text-xs font-bold text-[#758B62] hover:underline">
+            View All History
+          </Link>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-xs">
+            <thead>
+              <tr className="border-b border-[#ECEAE4] text-[#92958D]">
+                <th className="pb-3 font-semibold">Examination Paper</th>
+                <th className="pb-3 font-semibold">Date Completed</th>
+                <th className="pb-3 font-semibold">Score</th>
+                <th className="pb-3 font-semibold">Accuracy</th>
+                <th className="pb-3 font-semibold text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-[#ECEAE4]">
+              <tr>
+                <td className="py-3 font-bold text-[#263126]">
+                  NEET (UG) 180-Question Diagnostic Paper #1
+                </td>
+                <td className="py-3 text-[#73786E]">Today, 18:30</td>
+                <td className="py-3 font-mono font-bold text-[#263126]">580 / 720</td>
+                <td className="py-3 font-mono font-bold text-[#758B62]">78.0%</td>
+                <td className="py-3 text-right">
                   <Link
-                    href="/dashboard/neet"
-                    className="text-xs font-bold text-[#758B62] hover:underline flex items-center gap-1"
+                    href="/dashboard/results/ATT-2026-NEET-01"
+                    className="font-bold text-[#758B62] hover:underline"
                   >
-                    <span>Practice Concept</span>
-                    <ArrowRight className="h-3 w-3" />
+                    View Result & OMR →
                   </Link>
-                </div>
-              </div>
-            ))}
-          </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-
-        {/* Concept Mastery Radar / Breakdown */}
-        <div className="rounded-3xl border border-[#E6E5DE] bg-white p-7 shadow-soft">
-          <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-4">
-            <div className="flex items-center gap-2">
-              <Activity className="h-4 w-4 text-[#758B62]" />
-              <h3 className="text-sm font-bold text-[#263126]">Concept Mastery Health</h3>
-            </div>
-            <span className="text-[11px] text-[#92958D]">Accuracy Calibrated</span>
-          </div>
-
-          <div className="mt-5 space-y-4">
-            {sampleConcepts.map((c) => (
-              <div key={c.conceptId} className="space-y-1.5">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="font-semibold text-[#263126]">{c.conceptName}</span>
-                  <span className="font-mono font-bold text-[#758B62]">{c.accuracy}%</span>
-                </div>
-                <div className="h-2 w-full rounded-full bg-[#E9E6DF]">
-                  <div
-                    className={cn(
-                      'h-2 rounded-full transition-all',
-                      c.accuracy >= 75
-                        ? 'bg-[#9CAF88]'
-                        : c.accuracy >= 50
-                        ? 'bg-[#DCE5D3]'
-                        : 'bg-[#E8412C]'
-                    )}
-                    style={{ width: `${c.accuracy}%` }}
-                  />
-                </div>
-                <div className="text-[11px] text-[#92958D]">
-                  {c.totalAttempts} questions attempted • {c.correctCount} correct
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      </section>
     </div>
   );
 }

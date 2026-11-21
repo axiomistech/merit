@@ -20,6 +20,7 @@ import {
   ChevronRight,
   LogOut,
   HelpCircle,
+  Layers,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -49,18 +50,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   }, []);
 
   const navItems = [
-    { href: '/dashboard', label: 'Overview', icon: LayoutDashboard },
-    { href: '/dashboard/neet', label: 'NEET Practice', icon: BookOpen },
-    { href: '/dashboard/jee-main', label: 'JEE Main', icon: BookOpen },
-    { href: '/dashboard/jee-advanced', label: 'JEE Advanced', icon: BookOpen },
-    { href: '/dashboard/upsc', label: 'UPSC CSE', icon: BookOpen },
-    { href: '/dashboard/engineering', label: 'Engineering', icon: BookOpen },
-    { href: '/dashboard/analytics', label: 'Mastery & Analytics', icon: BarChart3 },
-    { href: '/dashboard/bookmarks', label: 'Saved Bookmarks', icon: Bookmark },
-    { href: '/dashboard/history', label: 'Attempt History', icon: Clock },
-    { href: '/dashboard/purchases', label: 'Purchases & Receipts', icon: CreditCard },
-    { href: '/support', label: 'Help Desk', icon: HelpCircle },
-    { href: '/dashboard/profile', label: 'Profile & Settings', icon: User },
+    { href: '/dashboard', label: 'Home', icon: LayoutDashboard },
+    { href: '/dashboard/practice', label: 'Practice', icon: Layers },
+    { href: '/dashboard/tests', label: 'Tests', icon: Clock },
+    { href: '/dashboard/exams', label: 'Exams', icon: BookOpen },
+    { href: '/dashboard/analytics', label: 'Performance', icon: BarChart3 },
+    { href: '/dashboard/bookmarks', label: 'Bookmarks', icon: Bookmark },
+    { href: '/dashboard/history', label: 'History', icon: RotateCcw },
+    { href: '/dashboard/profile', label: 'Profile', icon: User },
   ];
 
   return (

@@ -573,22 +573,26 @@ export default function ExamExecutionPage() {
             <div className="font-mono text-[11px] text-[#73786E]">{candidate.registrationId}</div>
           </div>
 
-          {/* Palette Legend */}
+          {/* Palette Legend matching User Flow Specification */}
           <div className="grid grid-cols-2 gap-2 border-b border-[#E6E5DE] p-3 text-[11px]">
             <div className="flex items-center gap-1.5">
-              <div className="h-3 w-3 rounded-full bg-[#9CAF88]" />
+              <div className="h-3 w-3 rounded-full bg-[#E8412C]" />
               <span className="text-[#73786E]">Answered ({stats.answered})</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <div className="h-3 w-3 rounded-full bg-[#E8412C]" />
-              <span className="text-[#73786E]">Unanswered ({stats.notAnswered})</span>
+              <div className="h-3 w-3 rounded-full border-2 border-[#E8412C] bg-white" />
+              <span className="text-[#73786E]">Visited, Not Ans ({stats.notAnswered})</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <div className="h-3 w-3 rounded-full bg-amber-400" />
-              <span className="text-[#73786E]">Review ({stats.marked})</span>
+              <div className="h-3 w-3 rounded-full bg-[#FBBF24]" />
+              <span className="text-[#73786E]">Marked Review ({stats.marked})</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <div className="h-3 w-3 rounded-full border border-[#E6E5DE] bg-white" />
+              <div className="h-3 w-3 rounded-full bg-[#8B5CF6]" />
+              <span className="text-[#73786E]">Ans & Review ({stats.answeredAndMarked})</span>
+            </div>
+            <div className="flex items-center gap-1.5 col-span-2">
+              <div className="h-3 w-3 rounded-full bg-[#E9E6DF] border border-[#E6E5DE]" />
               <span className="text-[#73786E]">Not Visited ({stats.notVisited})</span>
             </div>
           </div>
@@ -613,12 +617,12 @@ export default function ExamExecutionPage() {
                     }}
                     className={cn(
                       'flex h-8 w-8 items-center justify-center rounded-lg font-mono text-xs font-bold transition-all',
-                      isCurrent && 'ring-2 ring-[#758B62] ring-offset-2 ring-offset-white',
-                      status === 'answered' && 'bg-[#9CAF88] text-white',
-                      status === 'not_answered' && 'bg-[#FCE8E4] text-[#E8412C] border border-[#E8412C]/20',
-                      status === 'marked_for_review' && 'bg-amber-400 text-[#263126]',
-                      status === 'answered_and_marked_for_review' && 'bg-amber-400 text-[#263126] border-2 border-[#9CAF88]',
-                      status === 'not_visited' && 'border border-[#E6E5DE] bg-white text-[#92958D] hover:border-[#9CAF88]'
+                      isCurrent && 'ring-2 ring-[#263126] ring-offset-2 ring-offset-white',
+                      status === 'answered' && 'bg-[#E8412C] text-white shadow-sm',
+                      status === 'not_answered' && 'bg-white text-[#263126] border-2 border-[#E8412C]',
+                      status === 'marked_for_review' && 'bg-[#FBBF24] text-[#263126]',
+                      status === 'answered_and_marked_for_review' && 'bg-[#8B5CF6] text-white',
+                      status === 'not_visited' && 'bg-[#E9E6DF] text-[#73786E] border border-[#E6E5DE] hover:border-[#9CAF88]'
                     )}
                   >
                     {idx + 1}
@@ -635,52 +639,41 @@ export default function ExamExecutionPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#263126]/50 backdrop-blur-sm p-4">
           <div className="w-full max-w-md rounded-2xl border border-[#E6E5DE] bg-white p-6 shadow-2xl">
             <div className="flex items-center justify-between border-b border-[#ECEAE4] pb-3">
-              <h3 className="text-base font-bold text-[#263126]">Confirm Final Submission</h3>
+              <h3 className="text-lg font-bold font-serif text-[#263126]">
+                Are you sure you want to submit your test?
+              </h3>
               <button onClick={() => setShowSubmitConfirmModal(false)} className="text-[#92958D] hover:text-[#263126]">
                 <X className="h-5 w-5" />
               </button>
             </div>
 
-            <p className="mt-3 text-xs text-[#73786E]">
-              Once submitted, your answers will be permanently sealed, evaluated, and your personalized physical-grade OMR PDF will download automatically.
-            </p>
-
-            <div className="my-4 grid grid-cols-2 gap-3 text-xs">
-              <div className="rounded-xl bg-[#F7F5EF] p-3 text-center border border-[#E6E5DE]">
-                <div className="text-[11px] text-[#73786E]">Answered</div>
-                <div className="text-xl font-bold text-[#758B62]">{stats.answered}</div>
-              </div>
-              <div className="rounded-xl bg-[#FCE8E4] p-3 text-center border border-[#E8412C]/20">
-                <div className="text-[11px] text-[#E8412C]">Unanswered</div>
-                <div className="text-xl font-bold text-[#E8412C]">{stats.notAnswered + stats.notVisited}</div>
-              </div>
-              <div className="rounded-xl bg-[#FEF3C7] p-3 text-center border border-[#FDE68A]">
-                <div className="text-[11px] text-[#92400E]">Marked for Review</div>
-                <div className="text-xl font-bold text-[#92400E]">{stats.marked}</div>
-              </div>
-              <div className="rounded-xl bg-[#F7F5EF] p-3 text-center border border-[#E6E5DE]">
-                <div className="text-[11px] text-[#73786E]">Time Remaining</div>
-                <div className="text-base font-bold font-mono text-[#263126]">
-                  {formatTimeWithHours(secondsRemaining)}
-                </div>
-              </div>
+            <div className="my-5 rounded-2xl bg-[#F7F5EF] p-4 border border-[#E6E5DE] space-y-2 text-sm">
+              <p className="font-semibold text-[#E8412C]">
+                {stats.notAnswered + stats.notVisited} questions unanswered.
+              </p>
+              <p className="font-semibold text-[#B45309]">
+                {stats.marked + stats.answeredAndMarked} questions marked for review.
+              </p>
+              <p className="text-xs text-[#73786E] pt-1">
+                Total Answered: <strong className="text-[#758B62]">{stats.answered}</strong> / {questions.length} questions.
+              </p>
             </div>
 
             <div className="flex gap-3 pt-2">
               <button
                 type="button"
                 onClick={() => setShowSubmitConfirmModal(false)}
-                className="flex-1 rounded-xl border border-[#E6E5DE] bg-white py-2.5 text-xs font-semibold text-[#263126] hover:bg-[#F7F5EF]"
+                className="flex-1 rounded-full border border-[#E6E5DE] bg-white py-3 text-xs font-bold text-[#263126] hover:bg-[#F7F5EF] transition-all"
               >
-                Resume Test
+                Continue Test
               </button>
               <button
                 type="button"
                 disabled={isSubmitting}
                 onClick={() => handleFinalSubmit(false)}
-                className="flex-1 rounded-xl bg-[#9CAF88] py-2.5 text-xs font-bold text-white hover:bg-[#8ea07a] disabled:opacity-50 transition-colors shadow-sm"
+                className="flex-1 rounded-full bg-[#E8412C] py-3 text-xs font-bold text-white shadow-md shadow-[#E8412C]/20 hover:bg-[#d03521] disabled:opacity-50 transition-all hover:translate-y-[-1px]"
               >
-                {isSubmitting ? 'Evaluating...' : 'Yes, Submit Test'}
+                {isSubmitting ? 'Evaluating...' : 'Submit Test'}
               </button>
             </div>
           </div>
