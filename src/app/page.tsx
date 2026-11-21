@@ -12,7 +12,6 @@ import {
   Award,
   ChevronRight,
   Sparkles,
-  Check,
   Shield,
   Search,
   Filter,
@@ -294,96 +293,6 @@ export default function HomePage() {
                 <span className="font-mono text-xs font-bold text-[#20252B]">{cat.name}</span>
               </Link>
             ))}
-          </div>
-
-          {/* Central Cinematic Centerpiece: Layered Translucent Liquid Glass & Physical Fragment */}
-          <div className="relative mt-12 sm:mt-16 flex flex-col items-center">
-            {/* Ambient Liquid Glacier Underglow */}
-            <div className="pointer-events-none absolute top-1/2 left-1/2 h-[340px] w-full max-w-[620px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#9CC6E0]/30 blur-[80px]" />
-
-            {/* Geometric Thin Orbital Lines */}
-            <div className="pointer-events-none absolute top-1/2 left-1/2 h-[380px] w-full max-w-[680px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#9CC6E0]/40" />
-            <div className="pointer-events-none absolute top-1/2 left-1/2 h-[260px] w-full max-w-[540px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#E4002B]/25" />
-
-            {/* Floating Translucent Liquid Glass Exam Interface Fragment */}
-            <div className="glass-polar relative z-10 w-full max-w-xl rounded-[32px] p-6 sm:p-8 backdrop-blur-2xl shadow-2xl transition-all duration-300 hover:scale-[1.01]">
-              {/* Micro Status Bar */}
-              <div className="flex items-center justify-between border-b border-[#DCE2E6]/80 pb-4">
-                <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-[#E4002B] animate-pulse" />
-                  <span className="font-mono text-[11px] font-bold tracking-wider uppercase text-[#20252B]">
-                    FORT CBT ENGINE · LIVE PREVIEW
-                  </span>
-                </div>
-                <span className="glass-pill rounded-full px-3 py-1 font-mono text-[10px] font-bold text-[#66727D]">
-                  CBT · TIMED
-                </span>
-              </div>
-
-              {/* Fragment Content: Clean Editorial Specimen */}
-              <div className="pt-5 space-y-4">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#9CC6E0]">
-                    Physics • Wave Optics & Interference
-                  </span>
-                  <span className="font-mono text-[11px] font-bold text-[#66727D]">
-                    Q. 01 / 180
-                  </span>
-                </div>
-
-                <p className="text-sm sm:text-base font-medium text-[#20252B] leading-relaxed">
-                  In Young&apos;s double slit experiment, if the separation between the coherent slits is halved and screen distance is doubled, the fringe width will:
-                </p>
-
-                {/* 2 Specimen Option Badges */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
-                  <div className="flex items-center justify-between rounded-2xl border border-[#9CC6E0] bg-[#9CC6E0]/25 p-3 text-xs font-bold text-[#20252B] shadow-xs">
-                    <div className="flex items-center gap-2.5">
-                      <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-white text-[11px] font-mono font-bold text-[#20252B] shadow-xs">
-                        B
-                      </span>
-                      <span>Increase 4 times</span>
-                    </div>
-                    <Check className="h-4 w-4 text-[#20252B]" />
-                  </div>
-
-                  <div className="flex items-center gap-2.5 rounded-2xl border border-white/80 bg-white/60 p-3 text-xs font-medium text-[#66727D]">
-                    <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-white text-[11px] font-mono font-bold text-[#20252B] shadow-xs">
-                      A
-                    </span>
-                    <span>Remain unchanged</span>
-                  </div>
-                </div>
-
-                {/* Micro Metrics Strip */}
-                <div className="grid grid-cols-3 gap-2 pt-4 border-t border-[#DCE2E6]/80 text-center">
-                  <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#8C9BA8] block">
-                      SIMULATION
-                    </span>
-                    <span className="font-mono text-xs font-bold text-[#20252B]">
-                      180 Questions
-                    </span>
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#8C9BA8] block">
-                      DURATION
-                    </span>
-                    <span className="font-mono text-xs font-bold text-[#20252B]">
-                      200 Minutes
-                    </span>
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#8C9BA8] block">
-                      OUTPUT
-                    </span>
-                    <span className="font-mono text-xs font-bold text-[#9CC6E0]">
-                      Vector A4 OMR
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
