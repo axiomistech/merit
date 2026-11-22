@@ -72,7 +72,7 @@ export default function AttemptHistoryPage() {
           </div>
           <div className="pt-2">
             <Link
-              href="/papers"
+              href="/dashboard/qp-prep"
               className="glass-racing-red inline-flex items-center gap-2 rounded-full px-7 py-3 text-xs font-bold text-white shadow-md transition-transform hover:scale-[1.02]"
             >
               <FileText className="h-4 w-4" />

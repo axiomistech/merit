@@ -279,7 +279,7 @@ export default function AdminOMRPage() {
           {/* Master sheet miniature schematic */}
           <div className="max-w-3xl mx-auto border-2 border-[#C97A7E] rounded-xl p-5 bg-[#FAF9F5] shadow-sm font-mono text-[11px] text-[#20252B] space-y-4">
             <div className="flex items-center justify-between border-b border-[#C97A7E] pb-3">
-              <div className="font-bold text-sm tracking-wider">FORT Learning — NEET OMR ANSWER SHEET</div>
+              <div className="font-bold text-sm tracking-wider">MERITWISE — NEET OMR ANSWER SHEET</div>
               <div className="text-[10px] text-[#66727D]">Standard A4 (210mm × 297mm) Vector Output</div>
             </div>
 
@@ -326,7 +326,7 @@ export default function AdminOMRPage() {
                 <div className="border-t border-[#C97A7E] pt-3 text-center">
                   <div className="font-bold text-[10px] text-[#66727D]">BARCODE SERIAL</div>
                   <div className="bg-[#20252B] text-white font-mono text-[9px] py-1 px-3 rounded inline-block mt-1">
-                    |||||||| |||||| |||||||| FORT-26-XXXX
+                    |||||||| |||||| |||||||| MW-26-XXXX
                   </div>
                 </div>
               </div>

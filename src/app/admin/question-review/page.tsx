@@ -35,7 +35,7 @@ export default function AdminQuestionReviewPage() {
       subjectName: 'Physics',
       conceptName: 'Ray Optics & Mirrors',
       questionText: 'A concave mirror of focal length $f = 20\\text{ cm}$ produces an image twice the height of the object. Calculate the possible object distances $u$.',
-      reportedBy: 'priya.iyer@example.com (FORT-26-000003)',
+      reportedBy: 'priya.iyer@example.com (MW-26-000003)',
       issueCategory: 'reported_by_student',
       reason: 'Candidate suspects sign convention in real vs virtual magnification cases should explicitly state both $u = -10\\text{ cm}$ and $u = -30\\text{ cm}$.',
       timestamp: 'Today, 14:20',

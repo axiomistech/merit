@@ -372,7 +372,7 @@ export default function AdminCouponsPage() {
                   <input
                     type="text"
                     required
-                    placeholder="e.g. FORTNEET50"
+                    placeholder="e.g. MERIT50"
                     value={formData.code}
                     onChange={(e) => setFormData({ ...formData, code: e.target.value.toUpperCase() })}
                     className="w-full rounded-xl border border-[#DCE2E6] p-2.5 text-xs font-mono font-bold tracking-wider text-[#20252B] focus:outline-none focus:border-[#9CC6E0]"

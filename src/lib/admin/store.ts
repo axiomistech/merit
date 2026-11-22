@@ -1,6 +1,6 @@
 'use client';
 
-import { EXAMINATIONS, SAMPLE_NEET_QUESTIONS, SAMPLE_NEET_PAPER } from '@/data/seedData';
+import { EXAMINATIONS } from '@/data/seedData';
 import {
   AdminRole,
   AdminPermission,
@@ -15,6 +15,7 @@ import {
   AnnouncementBanner,
   EmailCampaign,
   CMSHomepageData,
+  TutorialVideoConfig,
   CMSStaticPage,
   CMSFAQItem,
   PlatformSEOSettings,
@@ -29,7 +30,7 @@ export interface AdminExamRecord {
   slug: string;
   name: string;
   shortName: string;
-  category: 'medical' | 'engineering' | 'civil_services' | 'university';
+  category: 'medical' | 'engineering' | 'civil_services' | 'postgraduate' | 'university';
   description: string;
   tagline: string;
   subjectsCount: number;
@@ -111,7 +112,7 @@ export interface AdminTransactionRecord {
 
 // Initial seed generators
 export function getInitialExams(): AdminExamRecord[] {
-  return EXAMINATIONS.map((e, idx) => ({
+  return EXAMINATIONS.map((e) => ({
     id: `exam_${e.slug}`,
     slug: e.slug,
     name: e.name,
@@ -120,8 +121,8 @@ export function getInitialExams(): AdminExamRecord[] {
     description: e.description,
     tagline: e.tagline,
     subjectsCount: e.subjects.length,
-    questionsCount: e.slug === 'neet' ? 2450 : 1800,
-    publishedTestsCount: e.slug === 'neet' ? 4 : 2,
+    questionsCount: 0,
+    publishedTestsCount: 0,
     status: 'published',
     defaultDurationMinutes: e.slug === 'neet' ? 200 : 180,
     defaultMarks: e.slug === 'neet' ? 720 : 300,
@@ -131,34 +132,15 @@ export function getInitialExams(): AdminExamRecord[] {
 }
 
 export function getInitialQuestions(): AdminQuestionRecord[] {
-  return SAMPLE_NEET_QUESTIONS.map((q) => ({
-    id: q.id,
-    versionId: q.versionId,
-    examSlug: 'neet',
-    subjectSlug: q.subjectSlug,
-    subjectName: q.subjectName,
-    chapterSlug: q.subjectSlug === 'physics' ? 'laws-of-motion' : 'chemical-bonding',
-    conceptSlug: q.conceptSlug || '',
-    conceptName: q.conceptName || '',
-    questionType: q.questionType as any,
-    difficulty: q.difficulty,
-    marks: q.marks,
-    negativeMarks: q.negativeMarks,
-    status: 'published',
-    text: q.text,
-    options: q.options,
-    answerKey: q.answerKey || { correctOptions: ['B'] },
-    explanation: q.explanation,
-    created_at: '2026-01-01T00:00:00Z',
-    updated_at: '2026-01-01T00:00:00Z',
-  }));
+  // STRICT RULE: No simulated, fabricated, or seed questions. Empty by default.
+  return [];
 }
 
 export function getInitialStudents(): AdminStudentRecord[] {
   return [
     {
       id: 'usr_001',
-      registrationId: 'FORT-26-000001',
+      registrationId: 'MW-26-000001',
       fullName: 'DHANUSH JAGADEESH',
       email: 'dhanush.student@gmail.com',
       accountStatus: 'active',
@@ -171,7 +153,7 @@ export function getInitialStudents(): AdminStudentRecord[] {
     },
     {
       id: 'usr_002',
-      registrationId: 'FORT-26-000002',
+      registrationId: 'MW-26-000002',
       fullName: 'Aarav Sharma',
       email: 'aarav.sharma@example.com',
       accountStatus: 'active',
@@ -183,7 +165,7 @@ export function getInitialStudents(): AdminStudentRecord[] {
     },
     {
       id: 'usr_003',
-      registrationId: 'FORT-26-000003',
+      registrationId: 'MW-26-000003',
       fullName: 'Priya Iyer',
       email: 'priya.iyer@example.com',
       accountStatus: 'active',
@@ -195,7 +177,7 @@ export function getInitialStudents(): AdminStudentRecord[] {
     },
     {
       id: 'usr_004',
-      registrationId: 'FORT-26-000004',
+      registrationId: 'MW-26-000004',
       fullName: 'Rohan Deshmukh',
       email: 'rohan.d@example.com',
       accountStatus: 'active',
@@ -298,7 +280,7 @@ export function getInitialSupportTickets(): SupportTicketItem[] {
       ticket_number: 'TCK-26-001',
       student_name: 'DHANUSH JAGADEESH',
       student_email: 'dhanush.student@gmail.com',
-      student_registration_id: 'FORT-26-000001',
+      student_registration_id: 'MW-26-000001',
       category: 'omr',
       subject: 'Inquiry regarding vector PDF barcode clarity on printout',
       description: 'Printing on standard home inkjet; wanted to confirm if the Code 39 barcode alignment is verified for physical scanning.',
@@ -314,7 +296,7 @@ export function getInitialSupportTickets(): SupportTicketItem[] {
       ticket_number: 'TCK-26-002',
       student_name: 'Priya Iyer',
       student_email: 'priya.iyer@example.com',
-      student_registration_id: 'FORT-26-000003',
+      student_registration_id: 'MW-26-000003',
       category: 'question_error',
       subject: 'Discrepancy in Optics focal length sign convention',
       description: 'In Q14 of NEET Diagnostic, please verify if the convex mirror radius of curvature is positive.',
@@ -370,53 +352,8 @@ export function saveStoredQuestions(questions: AdminQuestionRecord[]) {
 }
 
 export function getInitialTests(): AdminTestRecord[] {
-  return [
-    {
-      id: 'paper_neet_mock_01',
-      name: SAMPLE_NEET_PAPER.name,
-      slug: SAMPLE_NEET_PAPER.slug,
-      examSlug: 'neet',
-      paperType: 'mock_exam',
-      durationMinutes: SAMPLE_NEET_PAPER.durationMinutes,
-      totalQuestions: SAMPLE_NEET_PAPER.totalQuestions,
-      maxMarks: 720,
-      price: 10,
-      isFreeEligible: true,
-      status: 'published',
-      questionIds: Array.from({ length: 180 }, (_, i) => `q_neet_${i + 1}`),
-      created_at: '2026-01-01T00:00:00Z',
-    },
-    {
-      id: 'paper_neet_pyq_2025',
-      name: 'NEET 2025 Official Previous Year Paper (Shift 1)',
-      slug: 'neet-2025-pyq-official',
-      examSlug: 'neet',
-      paperType: 'previous_year',
-      durationMinutes: 200,
-      totalQuestions: 180,
-      maxMarks: 720,
-      price: 10,
-      isFreeEligible: false,
-      status: 'published',
-      questionIds: Array.from({ length: 180 }, (_, i) => `q_neet_pyq_${i + 1}`),
-      created_at: '2026-01-01T00:00:00Z',
-    },
-    {
-      id: 'paper_jee_mock_01',
-      name: 'JEE Main 2026 Full Simulation Mock 1',
-      slug: 'jee-main-2026-simulation-01',
-      examSlug: 'jee-main',
-      paperType: 'mock_exam',
-      durationMinutes: 180,
-      totalQuestions: 90,
-      maxMarks: 300,
-      price: 10,
-      isFreeEligible: true,
-      status: 'published',
-      questionIds: Array.from({ length: 90 }, (_, i) => `q_jee_${i + 1}`),
-      created_at: '2026-01-01T00:00:00Z',
-    },
-  ];
+  // STRICT RULE: No simulated, fabricated, or seed examination papers. Empty by default.
+  return [];
 }
 
 export function getStoredTests(): AdminTestRecord[] {
@@ -576,7 +513,7 @@ export function getInitialProducts(): ProductPackage[] {
       slug: 'standard-paper-token',
       examSlug: 'all',
       paperType: 'single_paper',
-      description: 'Standard pay-per-test access for any mock or custom test paper across FORT Learning.',
+      description: 'Standard pay-per-test access for any mock or custom test paper across MERITWISE.',
       price: 10,
       originalPrice: 20,
       includedPapersCount: 1,
@@ -740,7 +677,7 @@ export function getInitialNotifications(): InAppNotification[] {
     {
       id: 'notif_002',
       title: 'Scheduled System Maintenance Notice',
-      message: 'FORT Learning will undergo scheduled infrastructure upgrades on Nov 24, 02:00-04:00 AM IST. Examination attempts will be paused during this window.',
+      message: 'MERITWISE will undergo scheduled infrastructure upgrades on Nov 24, 02:00-04:00 AM IST. Examination attempts will be paused during this window.',
       targetAudience: 'all_students',
       priority: 'normal',
       actionUrl: '/help',
@@ -825,7 +762,7 @@ export function getInitialCampaigns(): EmailCampaign[] {
     {
       id: 'camp_01',
       name: 'Weekly Diagnostic Performance Digest',
-      subject: 'Your FORT Weekly Progress & Weak Area Breakdown',
+      subject: 'Your MERITWISE Weekly Progress & Weak Area Breakdown',
       previewText: 'Review your physics accuracy and recommended practice chapters this week.',
       targetSegment: 'Active Candidates (Last 7 Days)',
       recipientsCount: 3200,
@@ -887,6 +824,19 @@ export function getInitialCMSHomepage(): CMSHomepageData {
       testsLabel: 'Full Mocks Completed',
       testsValue: '28,000+',
     },
+    tutorialVideo: {
+      id: 'vid_default_walkthrough',
+      enabled: true,
+      videoUrl: '/api/videos/meritwise-platform-walkthrough.mp4',
+      storageKey: 'tutorial-videos/meritwise-platform-walkthrough.mp4',
+      fileName: 'meritwise-platform-walkthrough.mp4',
+      title: 'MERITWISE Platform Walkthrough & Tutorial',
+      subtitle: 'See how Meritwise works in action.',
+      description: 'Complete platform demonstration: Timed examination simulation, physical-grade vector OMR response sheets, and diagnostic analytics.',
+      mimeType: 'video/mp4',
+      sizeBytes: 23552,
+      updated_at: new Date().toISOString(),
+    },
   };
 }
 
@@ -906,6 +856,29 @@ export function saveStoredCMSHomepage(data: CMSHomepageData) {
   localStorage.setItem('fort_admin_cms_homepage', JSON.stringify(data));
 }
 
+export function getStoredTutorialVideo(): TutorialVideoConfig {
+  const hp = getStoredCMSHomepage();
+  return hp.tutorialVideo || {
+    id: 'vid_default_walkthrough',
+    enabled: true,
+    videoUrl: '/api/videos/meritwise-platform-walkthrough.mp4',
+    storageKey: 'tutorial-videos/meritwise-platform-walkthrough.mp4',
+    fileName: 'meritwise-platform-walkthrough.mp4',
+    title: 'MERITWISE Platform Walkthrough & Tutorial',
+    subtitle: 'See how Meritwise works in action.',
+    description: 'Complete platform demonstration: Timed examination simulation, physical-grade vector OMR response sheets, and diagnostic analytics.',
+    mimeType: 'video/mp4',
+    sizeBytes: 23552,
+    updated_at: new Date().toISOString(),
+  };
+}
+
+export function saveStoredTutorialVideo(video: TutorialVideoConfig) {
+  const hp = getStoredCMSHomepage();
+  hp.tutorialVideo = video;
+  saveStoredCMSHomepage(hp);
+}
+
 // ---------------- CMS PAGES ----------------
 export function getInitialCMSPages(): CMSStaticPage[] {
   return [
@@ -916,7 +889,7 @@ export function getInitialCMSPages(): CMSStaticPage[] {
       category: 'legal',
       lastUpdated: '2026-11-01',
       status: 'published',
-      contentMarkdown: '# Terms of Service\n\nWelcome to FORT Learning. By accessing or using our services, you agree to be bound by these terms...',
+      contentMarkdown: '# Terms of Service\n\nWelcome to MERITWISE. By accessing or using our services, you agree to be bound by these terms...',
     },
     {
       id: 'page_privacy',
@@ -925,7 +898,7 @@ export function getInitialCMSPages(): CMSStaticPage[] {
       category: 'legal',
       lastUpdated: '2026-11-01',
       status: 'published',
-      contentMarkdown: '# Privacy Policy\n\nYour privacy is paramount. FORT Learning safeguards candidate information, test records, and payment credentials...',
+      contentMarkdown: '# Privacy Policy\n\nYour privacy is paramount. MERITWISE safeguards candidate information, test records, and payment credentials...',
     },
     {
       id: 'page_refund',
@@ -970,8 +943,8 @@ export function getInitialCMSFAQs(): CMSFAQItem[] {
     {
       id: 'faq_01',
       category: 'general',
-      question: 'What is FORT Learning and how is it different from traditional test series?',
-      answer: 'FORT Learning combines authentic examination simulations (including authentic printable A4 NEET OMR answer sheets) with deep cognitive diagnostic analytics. Rather than generic percentage scores, we break down speed, accuracy, and sub-concept mastery.',
+      question: 'What is MERITWISE and how is it different from traditional test series?',
+      answer: 'MERITWISE combines authentic examination simulations (including authentic printable A4 NEET OMR answer sheets) with deep cognitive diagnostic analytics. Rather than generic percentage scores, we break down speed, accuracy, and sub-concept mastery.',
       sortOrder: 1,
       isPublished: true,
     },
@@ -987,7 +960,7 @@ export function getInitialCMSFAQs(): CMSFAQItem[] {
       id: 'faq_03',
       category: 'omr',
       question: 'How does the authentic printable NEET OMR sheet work?',
-      answer: 'During or after your mock examination attempt, FORT generates a personalized A4 OMR sheet populated with your Candidate Name, Roll Number, Test Booklet Code, and darkened response bubbles. You can print it or download it as a high-resolution vector PDF.',
+      answer: 'During or after your mock examination attempt, MERITWISE generates a personalized A4 OMR sheet populated with your Candidate Name, Roll Number, Test Booklet Code, and darkened response bubbles. You can print it or download it as a high-resolution vector PDF.',
       sortOrder: 3,
       isPublished: true,
     },
@@ -1021,9 +994,9 @@ export function saveStoredCMSFAQs(faqs: CMSFAQItem[]) {
 // ---------------- SEO SETTINGS ----------------
 export function getInitialSEO(): PlatformSEOSettings {
   return {
-    metaTitle: 'FORT Learning — Knowledge. Built Strong. | NEET, JEE & UPSC Examination Practice',
+    metaTitle: 'MERITWISE — Knowledge. Built Strong. | NEET, JEE & UPSC Examination Practice',
     metaDescription: 'Authentic examination practice and simulated test series for NEET, JEE Main, JEE Advanced, and UPSC CSE. Personalized OMR sheets, chapter diagnostics, and timed test engines.',
-    metaKeywords: 'NEET test series, JEE mock exam, UPSC answer writing, NEET OMR sheet download, online mock test, FORT learning',
+    metaKeywords: 'NEET test series, JEE mock exam, UPSC answer writing, NEET OMR sheet download, online mock test, MERITWISE learning',
     ogImageUrl: 'https://fortlearning.com/og-image.png',
     twitterHandle: '@fortlearning',
     canonicalBaseUrl: 'https://fortlearning.com',
@@ -1050,12 +1023,12 @@ export function saveStoredSEO(seo: PlatformSEOSettings) {
 // ---------------- SYSTEM SETTINGS ----------------
 export function getInitialSettings(): PlatformSystemSettings {
   return {
-    siteName: 'FORT Learning',
+    siteName: 'MERITWISE',
     brandTagline: 'Knowledge. Built Strong.',
     supportEmail: 'support@fortlearning.com',
     defaultCurrency: 'INR (₹)',
     maintenanceMode: false,
-    maintenanceNotice: 'FORT Learning is undergoing scheduled maintenance. Services will resume shortly.',
+    maintenanceNotice: 'MERITWISE is undergoing scheduled maintenance. Services will resume shortly.',
     allowNewRegistrations: true,
     sessionTimeoutMinutes: 120,
     globalNegativeMarkingDefault: -1,
@@ -1157,7 +1130,7 @@ export function getInitialOMRRecords(): OMRVerificationItem[] {
   return [
     {
       id: 'omr_rec_001',
-      candidateRegistrationId: 'FORT-26-000001',
+      candidateRegistrationId: 'MW-26-000001',
       candidateName: 'Aarav Sharma',
       testPaperName: 'NEET 2026 All-India Full Mock #1',
       rollNumberEntered: '1029384756',
@@ -1178,7 +1151,7 @@ export function getInitialOMRRecords(): OMRVerificationItem[] {
     },
     {
       id: 'omr_rec_002',
-      candidateRegistrationId: 'FORT-26-000002',
+      candidateRegistrationId: 'MW-26-000002',
       candidateName: 'Priya Iyer',
       testPaperName: 'NEET 2026 All-India Full Mock #1',
       rollNumberEntered: '1029384757',

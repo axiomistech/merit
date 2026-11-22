@@ -21,10 +21,6 @@ import {
   Download,
 } from 'lucide-react';
 import {
-  SAMPLE_NEET_PAPER,
-  getFullNeet180Questions,
-} from '@/data/seedData';
-import {
   QuestionData,
   AnswerState,
   QuestionPaletteStatus,
@@ -42,15 +38,10 @@ export default function ExamExecutionPage() {
   const router = useRouter();
   const attemptId = (params?.attemptId as string) || 'ATT-2026-NEET-01';
 
-  const paper = SAMPLE_NEET_PAPER;
-  // Initialize questions without answer keys to prevent client inspection during active exam
-  const [questions, setQuestions] = useState<QuestionData[]>(() =>
-    getFullNeet180Questions().map((q) => ({
-      ...q,
-      answerKey: undefined as any,
-      explanation: undefined as any,
-    }))
-  );
+  const [paperName, setPaperName] = useState<string>('Examination Paper');
+  const [questions, setQuestions] = useState<QuestionData[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
 
   const [currentIndex, setCurrentIndex] = useState(0); // 0-based index
   const [answers, setAnswers] = useState<Record<string, AnswerState>>({});
@@ -64,7 +55,7 @@ export default function ExamExecutionPage() {
   // Authenticated candidate profile
   const [candidate, setCandidate] = useState({
     fullName: 'DHANUSH JAGADEESH',
-    registrationId: 'FORT-26-000001',
+    registrationId: 'MW-26-000001',
   });
 
   // Server-authoritative countdown timer simulation (200 minutes = 12000 seconds)
@@ -75,13 +66,14 @@ export default function ExamExecutionPage() {
   useEffect(() => {
     // Retrieve authentic candidate profile from session
     if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem('fort_student_session');
+      const stored =
+        localStorage.getItem('merit_student_session') || localStorage.getItem('fort_student_session');
       if (stored) {
         try {
           const parsed = JSON.parse(stored);
           setCandidate({
             fullName: (parsed.fullName || 'DHANUSH JAGADEESH').toUpperCase(),
-            registrationId: parsed.registrationId || 'FORT-26-000001',
+            registrationId: parsed.registrationId || 'MW-26-000001',
           });
         } catch {}
       }
@@ -99,11 +91,16 @@ export default function ExamExecutionPage() {
     fetch(`/api/test-attempts/${attemptId}`)
       .then((r) => r.json())
       .then((res) => {
+        setIsLoading(false);
         if (res.success && res.data) {
           const attemptData = res.data;
+          setPaperName(attemptData.paperName || 'Examination Paper');
+
           // Set sanitized questions without answer keys
           if (attemptData.questions && attemptData.questions.length > 0) {
             setQuestions(attemptData.questions);
+          } else {
+            setLoadError('This paper does not contain any published questions.');
           }
 
           // If attempt has already been submitted, redirect to verified result
@@ -136,10 +133,13 @@ export default function ExamExecutionPage() {
           }
 
           setSyncStatus('synced');
+        } else {
+          setLoadError(res.error || 'Examination attempt not found.');
         }
       })
       .catch((err) => {
-        console.warn('Network offline or backend unreachable, using local recovery buffer:', err);
+        setIsLoading(false);
+        setLoadError('Unable to connect to examination server.');
         setSyncStatus('offline');
       });
 
@@ -378,7 +378,7 @@ export default function ExamExecutionPage() {
     // Fallback scoring if offline
     if (!evaluation) {
       evaluation = evaluateAttempt({
-        questions: getFullNeet180Questions().map((q) => ({
+        questions: questions.map((q) => ({
           questionVersionId: q.versionId,
           displayNumber: q.displayNumber,
           questionType: q.questionType,
@@ -419,7 +419,7 @@ export default function ExamExecutionPage() {
         }
         const newAttemptRecord = {
           id: attemptId,
-          paperName: paper.name,
+          paperName,
           paperSlug: attemptId,
           totalScore: evaluation.totalScore,
           maxScore: evaluation.maxScore,
@@ -452,11 +452,11 @@ export default function ExamExecutionPage() {
       generateOmrPdf({
         studentName: candidate.fullName,
         registrationId: candidate.registrationId,
-        examName: 'FORT NEET (UG)',
-        paperName: paper.name,
+        examName: 'MERITWISE Examination',
+        paperName,
         attemptId,
         submissionTime: submissionTimestamp,
-        totalQuestions: 180,
+        totalQuestions: questions.length,
         answers,
         questionIdMap,
         autoDownload: true,
@@ -475,10 +475,10 @@ export default function ExamExecutionPage() {
     generateOmrPdf({
       studentName: candidate.fullName,
       registrationId: candidate.registrationId,
-      examName: 'FORT NEET (UG)',
-      paperName: paper.name,
+      examName: 'MERITWISE Examination',
+      paperName,
       attemptId,
-      totalQuestions: 180,
+      totalQuestions: questions.length,
       answers,
       questionIdMap,
       autoDownload: true,
@@ -486,6 +486,44 @@ export default function ExamExecutionPage() {
   };
 
   const isTimeCritical = secondsRemaining < 300; // Less than 5 mins
+
+  if (isLoading) {
+    return (
+      <div className="flex h-screen items-center justify-center bg-[#F1F3F4] text-xs text-[#66727D]">
+        <div className="flex flex-col items-center gap-2">
+          <div className="h-6 w-6 animate-spin rounded-full border-2 border-[#20252B] border-t-transparent" />
+          <span>Loading verified examination material...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (loadError || questions.length === 0) {
+    return (
+      <div className="flex h-screen items-center justify-center p-6 bg-[#F1F3F4] text-[#20252B]">
+        <div className="glass-polar max-w-md w-full rounded-[36px] p-8 text-center space-y-4 shadow-xl">
+          <div className="h-12 w-12 mx-auto rounded-2xl bg-[#9CC6E0]/30 flex items-center justify-center text-[#20252B]">
+            <FileText className="h-6 w-6 stroke-[2]" />
+          </div>
+          <h2 className="text-lg font-bold font-sans text-[#20252B]">
+            Papers are being prepared
+          </h2>
+          <p className="text-xs text-[#66727D] leading-relaxed">
+            {loadError || 'The selected examination papers will appear here once they are published by an authorized administrator.'}
+          </p>
+          <div className="pt-2">
+            <Link
+              href="/dashboard/qp-prep"
+              className="inline-flex items-center gap-1.5 rounded-full bg-[#20252B] px-6 py-2.5 text-xs font-bold text-white hover:bg-black transition-all"
+            >
+              <span>Back to QP Prep</span>
+              <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex h-screen flex-col bg-[#F1F3F4] text-[#20252B] overflow-hidden select-none">
@@ -496,7 +534,7 @@ export default function ExamExecutionPage() {
             <Shield className="h-4 w-4 stroke-[2.5]" />
           </div>
           <div>
-            <h1 className="text-xs sm:text-sm font-bold text-[#20252B] line-clamp-1">{paper.name}</h1>
+            <h1 className="text-xs sm:text-sm font-bold text-[#20252B] line-clamp-1">{paperName}</h1>
             <span className="text-[10px] text-[#66727D]">
               Candidate: <strong className="text-[#20252B]">{candidate.fullName}</strong> • ID:{' '}
               <strong className="font-mono text-[#20252B]">{candidate.registrationId}</strong>
@@ -649,13 +687,13 @@ export default function ExamExecutionPage() {
           ) : (
             <div className="flex-1 overflow-y-auto p-4 sm:p-6 bg-[#F1F3F4]">
               <LiveOMRSheet
-                totalQuestions={180}
+                totalQuestions={questions.length}
                 answers={answers}
                 questionIdMap={questionIdMap}
                 currentQuestionNumber={currentIndex + 1}
                 studentName={candidate.fullName}
                 registrationId={candidate.registrationId}
-                paperName={paper.name}
+                paperName={paperName}
                 attemptId={attemptId}
                 onSelectOption={(qNum, opt) => {
                   const q = questions[qNum - 1];

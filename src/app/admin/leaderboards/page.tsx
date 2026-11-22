@@ -40,7 +40,7 @@ export default function AdminLeaderboardsPage() {
     {
       rank: 1,
       candidateName: 'Aditya Srivastava',
-      registrationId: 'FORT-26-000084',
+      registrationId: 'MW-26-000084',
       exam: 'neet',
       score: 705,
       totalMarks: 720,
@@ -52,7 +52,7 @@ export default function AdminLeaderboardsPage() {
     {
       rank: 2,
       candidateName: 'Priya Iyer',
-      registrationId: 'FORT-26-000002',
+      registrationId: 'MW-26-000002',
       exam: 'neet',
       score: 692,
       totalMarks: 720,
@@ -64,7 +64,7 @@ export default function AdminLeaderboardsPage() {
     {
       rank: 3,
       candidateName: 'Aarav Sharma',
-      registrationId: 'FORT-26-000001',
+      registrationId: 'MW-26-000001',
       exam: 'neet',
       score: 668,
       totalMarks: 720,
@@ -76,7 +76,7 @@ export default function AdminLeaderboardsPage() {
     {
       rank: 4,
       candidateName: 'Suspicious Candidate X',
-      registrationId: 'FORT-26-000999',
+      registrationId: 'MW-26-000999',
       exam: 'neet',
       score: 720,
       totalMarks: 720,

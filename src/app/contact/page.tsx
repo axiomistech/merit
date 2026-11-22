@@ -3,44 +3,48 @@ import Link from 'next/link';
 import { Mail, Shield } from 'lucide-react';
 
 export const metadata = {
-  title: 'Contact Us — FORT Learning',
-  description: 'Reach FORT Learning support and grievance redressal officer.',
+  title: 'Contact Us — MERITWISE',
+  description: 'Reach MERITWISE academic support and grievance redressal officer.',
 };
 
 export default function ContactPage() {
   return (
-    <div className="bg-[#F1F3F4] text-[#20252B] min-h-screen py-20">
+    <div className="bg-[#FBFBFA] text-[#121316] min-h-screen py-20">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h1 className="text-4xl font-extrabold sm:text-5xl text-[#20252B]">Contact FORT Learning</h1>
-          <p className="mt-4 text-base text-[#66727D]">
-            Our academic and technical support desks are available for candidates and educators.
+        <div className="text-center space-y-3">
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-[#E4E4DF] bg-[#FFFFFF] px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#52525B]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#8C6D3B]" />
+            MERITWISE DESK
+          </div>
+          <h1 className="text-4xl font-extrabold sm:text-5xl text-[#121316]">Contact MERITWISE</h1>
+          <p className="mt-2 text-base text-[#52525B]">
+            Our academic and technical support desks are available for candidates and administrators.
           </p>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2">
-          <div className="rounded-2xl border border-[#DCE2E6] bg-white p-8 shadow-soft">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#E9EEF1] text-[#20252B]">
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <div className="merit-card p-8 shadow-xs space-y-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#F7F3EB] text-[#8C6D3B]">
               <Mail className="h-5 w-5" />
             </div>
-            <h3 className="mt-4 text-lg font-bold text-[#20252B]">Student Support Desk</h3>
-            <p className="mt-2 text-xs text-[#66727D] leading-relaxed">
-              For question inquiries, attempt recovery, and account assistance.
+            <h3 className="text-lg font-bold text-[#121316]">Candidate Support Desk</h3>
+            <p className="text-xs text-[#52525B] leading-relaxed">
+              For question inquiries, attempt verification, and candidate profile assistance.
             </p>
-            <div className="mt-4 text-sm font-mono font-bold text-[#20252B]">support@fortlearning.com</div>
+            <div className="pt-2 text-sm font-mono font-bold text-[#121316]">support@meritwise.com</div>
           </div>
 
-          <div className="rounded-2xl border border-[#DCE2E6] bg-white p-8 shadow-soft">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#FDEDF0] text-[#E4002B]">
+          <div className="merit-card p-8 shadow-xs space-y-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#F7F3EB] text-[#8C6D3B]">
               <Shield className="h-5 w-5" />
             </div>
-            <h3 className="mt-4 text-lg font-bold text-[#20252B]">Grievance Redressal</h3>
-            <p className="mt-2 text-xs text-[#66727D] leading-relaxed">
-              Statutory grievance officer under Information Technology Rules.
+            <h3 className="text-lg font-bold text-[#121316]">Grievance Redressal</h3>
+            <p className="text-xs text-[#52525B] leading-relaxed">
+              Statutory grievance officer under digital intermediary rules.
             </p>
             <Link
               href="/contact/grievance"
-              className="mt-4 inline-block text-xs font-bold text-[#20252B] hover:underline"
+              className="inline-block text-xs font-semibold text-[#121316] hover:text-[#8C6D3B] hover:underline"
             >
               View Grievance Officer Details →
             </Link>

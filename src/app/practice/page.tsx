@@ -1,8 +1,5 @@
-'use client';
+import { redirect } from 'next/navigation';
 
-import React from 'react';
-import PracticeHubPage from '../dashboard/practice/page';
-
-export default function PublicPracticePage() {
-  return <PracticeHubPage />;
+export default function PracticeRedirectPage() {
+  redirect('/dashboard');
 }

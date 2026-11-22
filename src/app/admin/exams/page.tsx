@@ -163,7 +163,7 @@ export default function AdminExamsPage() {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="e.g. FORT GATE CS"
+                    placeholder="e.g. GATE CS"
                     className="mt-1 w-full rounded-xl border border-[#DCE2E6] bg-white p-2.5 text-xs text-[#20252B] focus:border-[#20252B] focus:outline-none"
                   />
                 </div>

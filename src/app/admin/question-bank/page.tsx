@@ -82,8 +82,23 @@ export default function AdminQuestionBankPage() {
   const [parsedImportRows, setParsedImportRows] = useState<any[]>([]);
   const [importValidationErrors, setImportValidationErrors] = useState<string[]>([]);
 
+  const loadQuestions = async () => {
+    try {
+      const res = await fetch('/api/questions?limit=500');
+      const data = await res.json();
+      if (data.success && Array.isArray(data.data)) {
+        setQuestions(data.data);
+      } else {
+        setQuestions([]);
+      }
+    } catch (err) {
+      console.error('Failed to load questions:', err);
+      setQuestions([]);
+    }
+  };
+
   useEffect(() => {
-    setQuestions(getStoredQuestions());
+    loadQuestions();
   }, []);
 
   const handleOpenCreate = () => {
@@ -158,65 +173,83 @@ export default function AdminQuestionBankPage() {
     }
   };
 
-  const handleSaveQuestion = (e: React.FormEvent) => {
+  const handleSaveQuestion = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.text) return;
-
-    let updated: AdminQuestionRecord[];
-    if (editingQuestion) {
-      updated = questions.map((q) =>
-        q.id === editingQuestion.id
-          ? {
-              ...q,
-              text: formData.text,
-              examSlug: formData.examSlug,
-              subjectSlug: formData.subjectSlug,
-              subjectName: formData.subjectName,
-              conceptName: formData.conceptName,
-              questionType: formData.questionType,
-              difficulty: formData.difficulty,
-              marks: formData.marks,
-              negativeMarks: formData.negativeMarks,
-              status: formData.status,
-              options: formData.options,
-              answerKey: { correctOptions: [formData.correctOption] },
-              explanation: { text: formData.explanationText },
-              updated_at: new Date().toISOString(),
-            }
-          : q
-      );
-      logAdminAction('edit_question', 'question', editingQuestion.id, `Modified question text & options in ${formData.subjectName}`);
-      toast.success('Question updated successfully with revision recorded.');
-    } else {
-      const newQ: AdminQuestionRecord = {
-        id: `q_${Date.now().toString(36)}`,
-        versionId: `qv_${Date.now().toString(36)}`,
-        examSlug: formData.examSlug,
-        subjectSlug: formData.subjectSlug,
-        subjectName: formData.subjectName,
-        chapterSlug: formData.conceptName.toLowerCase().replace(/\s+/g, '-'),
-        conceptSlug: formData.conceptName.toLowerCase().replace(/\s+/g, '-'),
-        conceptName: formData.conceptName,
-        questionType: formData.questionType,
-        difficulty: formData.difficulty,
-        marks: formData.marks,
-        negativeMarks: formData.negativeMarks,
-        status: formData.status,
-        text: formData.text,
-        options: formData.options,
-        answerKey: { correctOptions: [formData.correctOption] },
-        explanation: { text: formData.explanationText },
-        created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
-      };
-      updated = [newQ, ...questions];
-      logAdminAction('create_question', 'question', newQ.id, `Created question in ${formData.subjectName}`);
-      toast.success('New question authored and published to question bank.');
+    if (!formData.text.trim()) {
+      toast.error('Question statement cannot be empty.');
+      return;
     }
 
-    setQuestions(updated);
-    saveStoredQuestions(updated);
-    setShowCreateModal(false);
+    try {
+      if (editingQuestion) {
+        const payload = {
+          text: formData.text,
+          examSlug: formData.examSlug,
+          subjectSlug: formData.subjectSlug,
+          subjectName: formData.subjectName,
+          conceptName: formData.conceptName,
+          questionType: formData.questionType,
+          difficulty: formData.difficulty,
+          marks: formData.marks,
+          negativeMarks: formData.negativeMarks,
+          status: formData.status,
+          options: formData.options,
+          answerKey: { correctOptions: [formData.correctOption] },
+          explanation: { text: formData.explanationText },
+        };
+
+        const res = await fetch(`/api/questions/${editingQuestion.id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        const data = await res.json();
+        if (!res.ok || !data.success) {
+          throw new Error(data.error || 'Failed to update question');
+        }
+
+        logAdminAction('edit_question', 'question', editingQuestion.id, `Modified question text & options in ${formData.subjectName}`);
+        toast.success('Question updated successfully.');
+      } else {
+        const payload = {
+          examSlug: formData.examSlug,
+          subjectSlug: formData.subjectSlug,
+          subjectName: formData.subjectName,
+          chapterSlug: formData.conceptName.toLowerCase().replace(/\s+/g, '-'),
+          conceptSlug: formData.conceptName.toLowerCase().replace(/\s+/g, '-'),
+          conceptName: formData.conceptName,
+          questionType: formData.questionType,
+          difficulty: formData.difficulty,
+          marks: formData.marks,
+          negativeMarks: formData.negativeMarks,
+          status: formData.status,
+          text: formData.text,
+          options: formData.options,
+          answerKey: { correctOptions: [formData.correctOption] },
+          explanation: { text: formData.explanationText },
+        };
+
+        const res = await fetch('/api/questions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        const data = await res.json();
+        if (!res.ok || !data.success) {
+          throw new Error(data.error || data.details?.join(', ') || 'Failed to create question');
+        }
+
+        logAdminAction('create_question', 'question', data.data?.id || 'new', `Created question in ${formData.subjectName}`);
+        toast.success('New question authored and saved to database.');
+      }
+
+      await loadQuestions();
+      setShowCreateModal(false);
+    } catch (err: any) {
+      toast.error(err.message);
+    }
   };
 
   // Bulk Import Handlers
@@ -231,7 +264,9 @@ export default function AdminQuestionBankPage() {
       rows.forEach((r, idx) => {
         if (!r.text) errors.push(`Row ${idx + 1}: Missing question statement text`);
         if (!r.options || r.options.length < 2) errors.push(`Row ${idx + 1}: Options must have at least 2 choices`);
-        if (!r.correctOption) errors.push(`Row ${idx + 1}: Missing correct answer option`);
+        if (!r.correctOption && (!r.answerKey || !r.answerKey.correctOptions)) {
+          errors.push(`Row ${idx + 1}: Missing correct answer option`);
+        }
       });
 
       setImportValidationErrors(errors);
@@ -242,40 +277,57 @@ export default function AdminQuestionBankPage() {
     }
   };
 
-  const handleConfirmImport = () => {
-    const newItems: AdminQuestionRecord[] = parsedImportRows.map((r, idx) => ({
-      id: `q_imp_${Date.now().toString(36)}_${idx}`,
-      versionId: `qv_imp_${Date.now().toString(36)}_${idx}`,
-      examSlug: r.examSlug || 'neet',
-      subjectSlug: r.subjectSlug || 'physics',
-      subjectName: r.subjectName || 'Physics',
-      chapterSlug: 'general',
-      conceptSlug: 'general',
-      conceptName: r.conceptName || 'General Practice',
-      questionType: r.questionType || 'single_correct',
-      difficulty: r.difficulty || 'medium',
-      marks: r.marks || 4,
-      negativeMarks: r.negativeMarks || -1,
-      status: 'published',
-      text: r.text,
-      options: r.options.map((opt: any, oIdx: number) => ({
-        key: opt.key || String.fromCharCode(65 + oIdx),
-        text: opt.text || opt,
-      })),
-      answerKey: { correctOptions: [r.correctOption || 'A'] },
-      explanation: { text: r.explanation || 'Direct scientific formula application.' },
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-    }));
+  const handleConfirmImport = async () => {
+    try {
+      const formattedItems = parsedImportRows.map((r, idx) => ({
+        id: `q_imp_${Date.now().toString(36)}_${idx}`,
+        versionId: `qv_imp_${Date.now().toString(36)}_${idx}`,
+        examSlug: r.examSlug || 'neet',
+        subjectSlug: r.subjectSlug || 'physics',
+        subjectName: r.subjectName || 'Physics',
+        chapterSlug: r.chapterSlug || 'general',
+        conceptName: r.conceptName || 'General Practice',
+        questionType: r.questionType || 'single_correct',
+        difficulty: r.difficulty || 'medium',
+        marks: r.marks || 4,
+        negativeMarks: r.negativeMarks !== undefined ? r.negativeMarks : -1,
+        status: r.status || 'published',
+        text: r.text,
+        options: Array.isArray(r.options)
+          ? r.options.map((opt: any, oIdx: number) => ({
+              key: opt.key || String.fromCharCode(65 + oIdx),
+              text: typeof opt === 'string' ? opt : opt.text,
+            }))
+          : [],
+        answerKey: r.answerKey || { correctOptions: [r.correctOption || 'A'] },
+        explanation: r.explanation || { text: 'Verified administrator solution.' },
+      }));
 
-    const updated = [...newItems, ...questions];
-    setQuestions(updated);
-    saveStoredQuestions(updated);
-    logAdminAction('bulk_import_questions', 'question_bank', `${newItems.length}_questions`, `Imported ${newItems.length} questions from JSON payload`);
-    toast.success(`Successfully imported ${newItems.length} questions into Question Bank!`);
-    setShowImportModal(false);
-    setImportStep(1);
-    setImportJsonText('');
+      const res = await fetch('/api/questions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ questions: formattedItems }),
+      });
+
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || 'Failed to import questions');
+      }
+
+      logAdminAction(
+        'bulk_import_questions',
+        'question_bank',
+        `${formattedItems.length}_questions`,
+        `Imported ${formattedItems.length} questions from JSON payload`
+      );
+      toast.success(`Successfully saved ${formattedItems.length} questions into persistent database!`);
+      setShowImportModal(false);
+      setImportStep(1);
+      setImportJsonText('');
+      await loadQuestions();
+    } catch (err: any) {
+      toast.error(err.message);
+    }
   };
 
   const filtered = questions.filter((q) => {
@@ -569,7 +621,7 @@ export default function AdminQuestionBankPage() {
                   </div>
                 ) : (
                   <div className="rounded-2xl bg-[#E9EEF1] p-4 text-xs text-[#20252B] space-y-1">
-                    ✓ All rows conform to FORT question database schemas. Ready to import.
+                    ✓ All rows conform to question database schemas. Ready to import.
                   </div>
                 )}
 

@@ -55,7 +55,7 @@ export async function POST(req: Request) {
       const studentEmail = paymentEntity?.email || 'candidate@example.com';
       const amount = paymentEntity?.amount ? paymentEntity.amount / 100 : 10;
 
-      const regId = paymentEntity?.notes?.registration_id || 'FORT-26-000001';
+      const regId = paymentEntity?.notes?.registration_id || 'MW-26-000001';
       const store = getEntitlementsStore();
       if (!store[regId]) {
         store[regId] = [];

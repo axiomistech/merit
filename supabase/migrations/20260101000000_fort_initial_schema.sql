@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS public.registration_sequences (
     updated_at TIMESTAMPTZ NOT NULL DEFAULT timezone('utc'::text, now())
 );
 
--- Function to safely generate FORT-YY-000000 registration IDs
+-- Function to safely generate MW-YY-000000 registration IDs (MERITWISE)
 CREATE OR REPLACE FUNCTION public.generate_fort_registration_id()
 RETURNS TEXT AS $$
 DECLARE
@@ -33,8 +33,15 @@ BEGIN
         updated_at = timezone('utc'::text, now())
     RETURNING sequence_value INTO next_val;
     
-    formatted_id := 'FORT-' || LPAD(current_year_short::TEXT, 2, '0') || '-' || LPAD(next_val::TEXT, 6, '0');
+    formatted_id := 'MW-' || LPAD(current_year_short::TEXT, 2, '0') || '-' || LPAD(next_val::TEXT, 6, '0');
     RETURN formatted_id;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE OR REPLACE FUNCTION public.generate_meritwise_registration_id()
+RETURNS TEXT AS $$
+BEGIN
+    RETURN public.generate_fort_registration_id();
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 

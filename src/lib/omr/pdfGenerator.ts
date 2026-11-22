@@ -24,7 +24,7 @@ export interface GenerateOmrPdfInput {
 export function generateOmrPdf(input: GenerateOmrPdfInput): jsPDF {
   const {
     studentName = 'DHANUSH JAGADEESH',
-    registrationId = 'FORT-26-000001',
+    registrationId = 'MW-26-000001',
     attemptId = 'ATT-20261121',
     submissionTime,
     rollNumber,
@@ -54,7 +54,7 @@ export function generateOmrPdf(input: GenerateOmrPdfInput): jsPDF {
   const graphiteBlack = [17, 17, 17]; // #111111 - Filled bubble graphite fill
 
   // Formatted numeric roll number (10 digits)
-  // Extract digits from registration ID (e.g. FORT-26-000001 -> 2600000001)
+  // Extract digits from registration ID (e.g. MW-26-000001 -> 2600000001)
   const numericOnly = (rollNumber || registrationId).replace(/\D/g, '');
   const rollDigits = (numericOnly.length >= 10
     ? numericOnly.slice(-10)
@@ -81,14 +81,14 @@ export function generateOmrPdf(input: GenerateOmrPdfInput): jsPDF {
   // --- HEADER SECTION (y: 6 to 22) ---
   const headerY = 7;
 
-  // FORT Learning Logo (Left)
+  // MERITWISE Logo (Left)
   doc.setTextColor(darkForest[0], darkForest[1], darkForest[2]);
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(14);
-  doc.text('FORT', 10, headerY + 4);
-  doc.setFontSize(10);
+  doc.setFontSize(13);
+  doc.text('MERITWISE', 10, headerY + 4);
+  doc.setFontSize(8);
   doc.setFont('helvetica', 'normal');
-  doc.text('Learning', 10, headerY + 8);
+  doc.text('Examination System', 10, headerY + 8);
 
   // Center Instruction Capsule
   doc.setDrawColor(redBorder[0], redBorder[1], redBorder[2]);
@@ -118,7 +118,7 @@ export function generateOmrPdf(input: GenerateOmrPdfInput): jsPDF {
   doc.text('NEET OMR ANSWER SHEET', pageWidth - 9, headerY + 6, { align: 'right' });
 
   // --- VERTICAL BRANDING RIBBON ON LEFT ---
-  // "FORT Learning Knowledge. Built Strong."
+  // "MERITWISE Practice with purpose. Progress with merit."
   doc.setFontSize(6.5);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(115, 120, 110);
@@ -416,7 +416,7 @@ export function generateOmrPdf(input: GenerateOmrPdfInput): jsPDF {
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(darkForest[0], darkForest[1], darkForest[2]);
   const declLines = doc.splitTextToSize(
-    'I declare that particulars and signature on this OMR Answer Sheet are mine and are same as in the attached Sheet. I further declare that particulars filled-in and signature as well as the circles darkened on this ORIGINAL Copy is same as in the FORT Learning copy.',
+    'I declare that particulars and signature on this OMR Answer Sheet are mine and are same as in the attached Sheet. I further declare that particulars filled-in and signature as well as the circles darkened on this ORIGINAL Copy is same as in the MERITWISE official record.',
     declColWidth - 4
   );
   doc.text(declLines, leftColX + 2, declY + 8);
@@ -541,7 +541,7 @@ export function generateOmrPdf(input: GenerateOmrPdfInput): jsPDF {
   // Automatic download if requested
   const sanitizedReg = registrationId.replace(/[^A-Za-z0-9_-]/g, '_');
   const sanitizedAtt = attemptId.replace(/[^A-Za-z0-9_-]/g, '_');
-  const filename = `FORT_NEET_OMR_${sanitizedReg}_${sanitizedAtt}.pdf`;
+  const filename = `MERITWISE_OMR_${sanitizedReg}_${sanitizedAtt}.pdf`;
 
   if (autoDownload && typeof window !== 'undefined') {
     doc.save(filename);

@@ -105,14 +105,15 @@ export default function MyQuestionPapersPage() {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem('fort_student_session');
+      const stored =
+        localStorage.getItem('merit_student_session') || localStorage.getItem('fort_student_session');
       if (stored) {
         try {
           const parsed = JSON.parse(stored);
           setStudentSession(parsed);
 
           // Fetch student entitlements
-          fetch(`/api/entitlements?registrationId=${parsed.registrationId || 'FORT-26-000001'}`)
+          fetch(`/api/entitlements?registrationId=${parsed.registrationId || 'MW-26-000001'}`)
             .then((res) => res.json())
             .then((data) => {
               if (data.success && data.unlockedPapers) {
@@ -122,7 +123,7 @@ export default function MyQuestionPapersPage() {
             .catch(() => {});
 
           // Fetch student attempts
-          fetch(`/api/test-attempts?registrationId=${parsed.registrationId || 'FORT-26-000001'}`)
+          fetch(`/api/test-attempts?registrationId=${parsed.registrationId || 'MW-26-000001'}`)
             .then((res) => res.json())
             .then((data) => {
               if (data.success && data.data) {
@@ -194,7 +195,7 @@ export default function MyQuestionPapersPage() {
         </div>
 
         <Link
-          href="/papers"
+          href="/dashboard/qp-prep"
           className="glass-polar inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-bold text-[#20252B] transition-all hover:border-[#9CC6E0]"
         >
           <span>Explore All Papers</span>
@@ -262,7 +263,7 @@ export default function MyQuestionPapersPage() {
           </p>
           <div className="pt-2">
             <Link
-              href="/papers"
+              href="/dashboard/qp-prep"
               className="glass-racing-red inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-bold text-white shadow-sm transition-transform hover:scale-[1.02]"
             >
               <span>Explore Question Papers</span>

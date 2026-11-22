@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { Shield, Lock, Mail, ArrowRight, UserCheck, KeyRound } from 'lucide-react';
 import { INITIAL_ADMIN_USERS, ROLE_DEFAULT_PERMISSIONS } from '@/lib/admin/auth';
 import { toast } from 'sonner';
+import { MeritwiseLogo } from '@/components/brand/MeritwiseLogo';
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -56,11 +57,11 @@ export default function AdminLoginPage() {
       <div className="w-full max-w-md rounded-[28px] border border-[#DCE2E6] bg-white p-8 sm:p-10 shadow-[0_8px_30px_rgba(38,49,38,0.06)] space-y-6">
         {/* Header */}
         <div className="text-center">
-          <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-2xl bg-[#20252B] text-white">
-            <Shield className="h-5 w-5 stroke-[2.5]" />
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-[#20252B] p-2 text-white shadow-sm mb-3">
+            <MeritwiseLogo variant="white" size="xs" showWordmark={false} />
           </div>
           <h1 className="mt-4 text-2xl font-bold font-sans text-[#20252B]">
-            FORT Control Command
+            MERITWISE Admin Portal
           </h1>
           <p className="mt-1 text-xs text-[#66727D]">
             Authorized Administrative System Access

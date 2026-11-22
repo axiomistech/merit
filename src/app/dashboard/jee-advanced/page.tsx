@@ -59,7 +59,7 @@ export default function StudentJeeAdvancedDashboardPage() {
       <div className="rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-[0_2px_8px_rgba(38,49,38,0.04)]">
         <h2 className="text-base font-bold text-[#20252B]">Strict Partial Marking Engine Rulebook</h2>
         <p className="mt-1 text-xs text-[#66727D]">
-          FORT implements the exact mathematical partial-credit algorithm specified by Joint Admission Board (JAB).
+          MERITWISE implements the exact mathematical partial-credit algorithm specified by Joint Admission Board (JAB).
         </p>
 
         <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-4 text-xs">

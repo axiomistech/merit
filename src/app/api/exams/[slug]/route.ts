@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
-import { EXAMINATIONS, SAMPLE_NEET_PAPER } from '@/data/seedData';
+import { EXAMINATIONS } from '@/data/seedData';
 import { getStoredExams } from '@/lib/admin/store';
+import { getStoredPapersServer } from '@/lib/server/backendStore';
 
 export async function GET(
   req: Request,
@@ -19,13 +20,14 @@ export async function GET(
     }
 
     const seedExam = EXAMINATIONS.find((e) => e.slug === slug);
+    const publishedPapers = getStoredPapersServer({ examSlug: slug, status: 'published' });
 
     return NextResponse.json({
       success: true,
       data: {
         ...exam,
         subjects: seedExam ? seedExam.subjects : [],
-        samplePaper: slug === 'neet' ? SAMPLE_NEET_PAPER : null,
+        publishedPapers,
       },
     });
   } catch (error: any) {

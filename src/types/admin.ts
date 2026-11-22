@@ -198,6 +198,22 @@ export interface EmailCampaign {
   created_at: string;
 }
 
+export interface TutorialVideoConfig {
+  id?: string;
+  enabled: boolean;
+  videoUrl: string;
+  storageKey?: string;
+  fileName?: string;
+  title: string;
+  subtitle?: string;
+  description?: string;
+  mimeType?: string;
+  sizeBytes?: number;
+  durationSeconds?: number;
+  posterUrl?: string;
+  updated_at?: string;
+}
+
 export interface CMSHomepageData {
   heroTagline: string;
   heroHeadline: string;
@@ -217,6 +233,7 @@ export interface CMSHomepageData {
     testsLabel: string;
     testsValue: string;
   };
+  tutorialVideo?: TutorialVideoConfig;
 }
 
 export interface CMSStaticPage {

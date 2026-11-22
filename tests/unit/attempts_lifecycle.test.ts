@@ -1,20 +1,65 @@
 import { describe, it, expect } from 'vitest';
 import { evaluateAttempt } from '../../src/lib/scoring/engine';
-import { SAMPLE_NEET_QUESTIONS } from '../../src/data/seedData';
 
 describe('Test Attempt Lifecycle & Immutability Engine (Section 10 & 30)', () => {
   it('creates an authoritative score based strictly on answer keys and negative marking', () => {
-    const questionSnapshot = SAMPLE_NEET_QUESTIONS.slice(0, 5).map((q) => ({
-      questionVersionId: q.versionId,
-      displayNumber: q.displayNumber,
-      questionType: q.questionType,
-      subjectSlug: q.subjectSlug,
-      subjectName: q.subjectName,
-      difficulty: q.difficulty,
-      marks: q.marks,
-      negativeMarks: q.negativeMarks,
-      correctOptions: q.answerKey?.correctOptions || ['B'],
-    }));
+    const questionSnapshot = [
+      {
+        questionVersionId: 'qv-1',
+        displayNumber: 1,
+        questionType: 'single_correct' as const,
+        subjectSlug: 'physics',
+        subjectName: 'Physics',
+        difficulty: 'medium' as const,
+        marks: 4,
+        negativeMarks: -1,
+        correctOptions: ['B'],
+      },
+      {
+        questionVersionId: 'qv-2',
+        displayNumber: 2,
+        questionType: 'single_correct' as const,
+        subjectSlug: 'physics',
+        subjectName: 'Physics',
+        difficulty: 'medium' as const,
+        marks: 4,
+        negativeMarks: -1,
+        correctOptions: ['B'],
+      },
+      {
+        questionVersionId: 'qv-3',
+        displayNumber: 3,
+        questionType: 'single_correct' as const,
+        subjectSlug: 'chemistry',
+        subjectName: 'Chemistry',
+        difficulty: 'easy' as const,
+        marks: 4,
+        negativeMarks: -1,
+        correctOptions: ['A'],
+      },
+      {
+        questionVersionId: 'qv-4',
+        displayNumber: 4,
+        questionType: 'single_correct' as const,
+        subjectSlug: 'botany',
+        subjectName: 'Botany',
+        difficulty: 'hard' as const,
+        marks: 4,
+        negativeMarks: -1,
+        correctOptions: ['C'],
+      },
+      {
+        questionVersionId: 'qv-5',
+        displayNumber: 5,
+        questionType: 'single_correct' as const,
+        subjectSlug: 'zoology',
+        subjectName: 'Zoology',
+        difficulty: 'medium' as const,
+        marks: 4,
+        negativeMarks: -1,
+        correctOptions: ['D'],
+      },
+    ];
 
     // Answers: Q1 correct (+4), Q2 incorrect (-1), Q3 unanswered (0)
     const clientAnswers = {

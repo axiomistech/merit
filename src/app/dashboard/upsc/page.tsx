@@ -59,7 +59,7 @@ export default function StudentUpscDashboardPage() {
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#DCE2E6] pb-6">
         <div>
           <span className="rounded-lg bg-[#E9EEF1] px-2.5 py-1 text-xs font-bold text-[#20252B]">
-            FORT UPSC Civil Services
+            UPSC Civil Services Examination
           </span>
           <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold text-[#20252B]">
             UPSC CSE Preparation Studio

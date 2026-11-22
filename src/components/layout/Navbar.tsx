@@ -2,18 +2,18 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { ChevronDown, Menu, X } from 'lucide-react';
-import { EXAMINATIONS } from '@/data/seedData';
+import { usePathname, useRouter } from 'next/navigation';
+import { ChevronDown, Menu, X, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { MeritwiseLogo } from '@/components/brand/MeritwiseLogo';
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [examsDropdownOpen, setExamsDropdownOpen] = useState(false);
-  const [mobileExamsOpen, setMobileExamsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const pathname = usePathname();
+  const router = useRouter();
 
   const handleMouseEnter = () => {
     if (timeoutRef.current) {
@@ -32,15 +32,7 @@ export function Navbar() {
     }, 150);
   };
 
-  const handleToggleClick = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = null;
-    }
-    setExamsDropdownOpen((prev) => !prev);
-  };
-
-  const closeDropdownImmediately = () => {
+  const closeDropdown = () => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
       timeoutRef.current = null;
@@ -48,41 +40,22 @@ export function Navbar() {
     setExamsDropdownOpen(false);
   };
 
-  const handleBlur = (e: React.FocusEvent) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(e.relatedTarget as Node)) {
-      closeDropdownImmediately();
-    }
-  };
-
-  // Close dropdown on click outside or escape key
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        closeDropdownImmediately();
-      }
-    }
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === 'Escape') {
-        closeDropdownImmediately();
-        setMobileMenuOpen(false);
+        closeDropdown();
       }
     }
     document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('keydown', handleKeyDown);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleKeyDown);
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, []);
 
-  // Close menus on route change
   useEffect(() => {
     setMobileMenuOpen(false);
-    closeDropdownImmediately();
-    setMobileExamsOpen(false);
+    closeDropdown();
   }, [pathname]);
 
   // Hide public navbar on active exam execution screen to avoid distraction
@@ -90,245 +63,205 @@ export function Navbar() {
     return null;
   }
 
-  const isExamActive = EXAMINATIONS.some((exam) => pathname === `/${exam.slug}`);
-  const isPracticeActive = pathname?.startsWith('/practice');
+  const handleStartPractice = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (typeof window !== 'undefined') {
+      const session = localStorage.getItem('fort_student_session') || localStorage.getItem('merit_student_session');
+      if (session) {
+        router.push('/dashboard');
+      } else {
+        router.push('/login?redirect=/dashboard');
+      }
+    }
+  };
+
+  const examCategories = [
+    {
+      slug: 'neet',
+      name: 'NEET',
+      fullName: 'National Eligibility cum Entrance Test',
+      detail: 'Physics, Chemistry, Botany, Zoology • 720 Marks',
+    },
+    {
+      slug: 'jee',
+      name: 'JEE',
+      fullName: 'Joint Entrance Examination',
+      detail: 'Main & Advanced • Physics, Chemistry, Mathematics',
+    },
+    {
+      slug: 'upsc',
+      name: 'UPSC',
+      fullName: 'Civil Services Examination',
+      detail: 'Prelims General Studies (Paper I) & CSAT (Paper II)',
+    },
+    {
+      slug: 'gate',
+      name: 'GATE',
+      fullName: 'Graduate Aptitude Test in Engineering',
+      detail: 'CS, ME, EE, EC, CE & Data Science',
+    },
+  ];
 
   return (
-    <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
-      <div className="pointer-events-auto relative flex h-14 w-full max-w-[1120px] items-center justify-between rounded-full border border-white/70 bg-[#F1F3F4]/85 px-4 sm:px-6 backdrop-blur-md shadow-[0_8px_32px_rgba(32,37,43,0.06)] transition-all">
-        {/* Left: Minimal geometric F + FORT brand mark */}
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-[#E4E4DF] bg-[#FBFBFA]/90 backdrop-blur-md transition-all">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        {/* Left: Brand Identity (Golden Logo on Light Background) */}
         <Link
           href="/"
-          className="group flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9CC6E0] rounded-full"
-          aria-label="FORT Learning Home"
+          className="group flex items-center focus-visible:outline-none"
+          aria-label="MERITWISE Home"
         >
-          <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#9CC6E0]/40 border border-white/70 text-[#20252B] shadow-xs transition-transform group-hover:scale-105">
-            <span className="font-mono text-sm font-black text-[#20252B]">F</span>
-          </div>
-          <div className="flex items-baseline">
-            <span className="font-mono text-base font-extrabold tracking-tight text-[#20252B]">FORT</span>
-            <span className="ml-1 font-sans text-[11px] font-semibold uppercase tracking-wider text-[#66727D]">
-              Learning
-            </span>
-          </div>
+          <MeritwiseLogo variant="gold" size="md" priority />
         </Link>
 
-        {/* Center: Primary Navigation (Strictly 3 Links) */}
-        <nav
-          className="hidden md:flex md:items-center md:gap-8"
-          aria-label="Primary Navigation"
-        >
+        {/* Center: Simplified Primary Navigation */}
+        <nav className="hidden md:flex md:items-center md:gap-8" aria-label="Primary Navigation">
           {/* 1. Exams Dropdown */}
           <div
             ref={dropdownRef}
             className="relative"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            onBlur={handleBlur}
           >
             <button
               type="button"
-              onClick={handleToggleClick}
+              onClick={() => setExamsDropdownOpen((prev) => !prev)}
               aria-expanded={examsDropdownOpen}
-              aria-haspopup="true"
               className={cn(
-                'flex items-center gap-1.5 py-1.5 text-sm font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9CC6E0] rounded-md',
-                examsDropdownOpen || isExamActive
-                  ? 'text-[#20252B] font-semibold'
-                  : 'text-[#66727D] hover:text-[#20252B]'
+                'flex items-center gap-1 text-xs font-semibold uppercase tracking-wider transition-colors py-2',
+                examsDropdownOpen ? 'text-[#121316]' : 'text-[#52525B] hover:text-[#121316]'
               )}
             >
               <span>Exams</span>
               <ChevronDown
-                className={cn(
-                  'h-3.5 w-3.5 transition-transform duration-200 text-[#66727D]',
-                  examsDropdownOpen && 'rotate-180 text-[#20252B]'
-                )}
-                aria-hidden="true"
+                className={cn('h-3.5 w-3.5 transition-transform duration-200', examsDropdownOpen && 'rotate-180')}
               />
             </button>
 
             {examsDropdownOpen && (
-              <div
-                className="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-80 z-50 animate-in fade-in zoom-in-95 duration-150"
-                role="menu"
-                aria-label="Examinations menu"
-              >
-                {/* Invisible hover bridge to eliminate gap on diagonal pointer trajectory */}
-                <div className="absolute -top-1 left-0 right-0 h-4" />
-
-                <div className="glass-polar rounded-[28px] p-2.5 shadow-2xl backdrop-blur-2xl">
-                  <div className="px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-[#66727D]">
-                    Target Curricula
+              <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-80 z-50 animate-in fade-in zoom-in-95 duration-150">
+                <div className="rounded-2xl border border-[#E4E4DF] bg-[#FFFFFF] p-2 shadow-xl">
+                  <div className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#71717A] border-b border-[#F4F4F0] mb-1">
+                    Primary Curricula
                   </div>
-                  <div className="space-y-1">
-                    {EXAMINATIONS.map((exam) => {
-                      const isActive = pathname === `/${exam.slug}`;
-                      return (
-                        <Link
-                          key={exam.slug}
-                          href={`/${exam.slug}`}
-                          onClick={closeDropdownImmediately}
-                          role="menuitem"
-                          className={cn(
-                            'flex items-start gap-3 rounded-xl p-2.5 transition-colors duration-150',
-                            isActive
-                              ? 'bg-[#E9EEF1] text-[#20252B]'
-                              : 'hover:bg-[#F1F3F4] text-[#20252B]'
-                          )}
-                        >
-                          <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#9CC6E0]/30 text-xs font-bold text-[#20252B]">
-                            {exam.shortName.slice(0, 2)}
-                          </div>
-                          <div className="min-w-0 flex-1">
-                            <div className="text-sm font-semibold text-[#20252B] truncate">
-                              {exam.name}
-                            </div>
-                            <div className="line-clamp-1 text-xs text-[#66727D]">
-                              {exam.tagline}
-                            </div>
-                          </div>
-                        </Link>
-                      );
-                    })}
+                  <div className="space-y-0.5">
+                    {examCategories.map((exam) => (
+                      <Link
+                        key={exam.slug}
+                        href={`/${exam.slug}`}
+                        onClick={closeDropdown}
+                        className="group flex flex-col rounded-xl p-2.5 transition-colors hover:bg-[#F7F7F4]"
+                      >
+                        <div className="flex items-center justify-between">
+                          <span className="font-bold text-xs text-[#121316] group-hover:text-[#8C6D3B] transition-colors">
+                            {exam.name}
+                          </span>
+                          <span className="text-[10px] text-[#71717A] font-mono">↗</span>
+                        </div>
+                        <span className="text-[11px] font-medium text-[#52525B] line-clamp-1">
+                          {exam.fullName}
+                        </span>
+                        <span className="text-[10px] text-[#71717A] line-clamp-1 mt-0.5">
+                          {exam.detail}
+                        </span>
+                      </Link>
+                    ))}
                   </div>
                 </div>
               </div>
             )}
           </div>
 
-          {/* 2. Practice */}
+          {/* 2. How it works */}
           <Link
-            href="/practice"
-            className={cn(
-              'py-1.5 text-sm font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9CC6E0] rounded-md',
-              isPracticeActive
-                ? 'text-[#20252B] font-semibold'
-                : 'text-[#66727D] hover:text-[#20252B]'
-            )}
+            href="/#how-it-works"
+            className="text-xs font-semibold uppercase tracking-wider text-[#52525B] hover:text-[#121316] transition-colors py-2"
           >
-            Practice
-          </Link>
-
-          {/* 3. Leaderboard */}
-          <Link
-            href="/dashboard/leaderboard"
-            className={cn(
-              'py-1.5 text-sm font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9CC6E0] rounded-md',
-              pathname === '/dashboard/leaderboard'
-                ? 'text-[#20252B] font-semibold'
-                : 'text-[#66727D] hover:text-[#20252B]'
-            )}
-          >
-            Leaderboard
+            How it works
           </Link>
         </nav>
 
-        {/* Right Action: Clean text/ghost button Sign in ↗ */}
-        <div className="hidden md:flex md:items-center">
+        {/* Right: Sign in & Primary CTA Start Practice */}
+        <div className="hidden md:flex md:items-center md:gap-4">
           <Link
             href="/login"
-            className="group inline-flex items-center gap-1.5 text-sm font-semibold text-[#20252B] hover:text-[#E4002B] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9CC6E0] rounded-full px-3.5 py-1.5 hover:bg-white/60"
+            className="text-xs font-semibold uppercase tracking-wider text-[#52525B] hover:text-[#121316] transition-colors px-2 py-1.5"
           >
-            <span>Sign in</span>
-            <span className="font-mono text-xs transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-0.5">
-              ↗
-            </span>
+            Sign in
           </Link>
+
+          <button
+            type="button"
+            onClick={handleStartPractice}
+            className="rounded-full bg-[#121316] px-5 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition-all hover:bg-[#27272A] active:scale-[0.98]"
+          >
+            Start Practice
+          </button>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          type="button"
-          onClick={() => setMobileMenuOpen((prev) => !prev)}
-          className="flex h-9 w-9 items-center justify-center rounded-full text-[#20252B] hover:bg-white/60 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9CC6E0]"
-          aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
-          aria-expanded={mobileMenuOpen}
-        >
-          {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
-
-        {/* Mobile Dropdown Panel */}
-        {mobileMenuOpen && (
-          <div className="absolute top-[calc(100%+8px)] left-0 right-0 rounded-3xl border border-white/70 bg-[#F1F3F4]/95 p-5 shadow-2xl backdrop-blur-2xl md:hidden animate-in fade-in zoom-in-95 duration-150">
-            <div className="space-y-3">
-              {/* Examinations Accordion */}
-              <div>
-                <button
-                  type="button"
-                  onClick={() => setMobileExamsOpen((prev) => !prev)}
-                  className="flex w-full items-center justify-between py-2 text-sm font-semibold text-[#20252B]"
-                >
-                  <span>Exams</span>
-                  <ChevronDown
-                    className={cn(
-                      'h-4 w-4 text-[#66727D] transition-transform duration-200',
-                      mobileExamsOpen && 'rotate-180 text-[#20252B]'
-                    )}
-                  />
-                </button>
-                {mobileExamsOpen && (
-                  <div className="mt-2 space-y-1 pl-3 border-l-2 border-[#DCE2E6]">
-                    {EXAMINATIONS.map((exam) => (
-                      <Link
-                        key={exam.slug}
-                        href={`/${exam.slug}`}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className={cn(
-                          'block rounded-lg px-3 py-1.5 text-xs font-medium transition-colors',
-                          pathname === `/${exam.slug}`
-                            ? 'bg-[#E9EEF1] text-[#20252B] font-semibold'
-                            : 'text-[#66727D] hover:text-[#20252B]'
-                        )}
-                      >
-                        {exam.name}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Practice */}
-              <Link
-                href="/practice"
-                onClick={() => setMobileMenuOpen(false)}
-                className={cn(
-                  'block py-2 text-sm font-medium transition-colors',
-                  isPracticeActive ? 'text-[#20252B] font-semibold' : 'text-[#66727D] hover:text-[#20252B]'
-                )}
-              >
-                Practice
-              </Link>
-
-              {/* Leaderboard */}
-              <Link
-                href="/dashboard/leaderboard"
-                onClick={() => setMobileMenuOpen(false)}
-                className={cn(
-                  'block py-2 text-sm font-medium transition-colors',
-                  pathname === '/dashboard/leaderboard'
-                    ? 'text-[#20252B] font-semibold'
-                    : 'text-[#66727D] hover:text-[#20252B]'
-                )}
-              >
-                Leaderboard
-              </Link>
-
-              {/* Sign In */}
-              <div className="pt-3 border-t border-[#DCE2E6]/80">
-                <Link
-                  href="/login"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-between rounded-xl bg-white/70 px-4 py-2 text-sm font-semibold text-[#20252B] hover:text-[#E4002B] transition-colors"
-                >
-                  <span>Sign in</span>
-                  <span className="font-mono text-xs">↗</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-        )}
+        {/* Mobile menu trigger */}
+        <div className="flex md:hidden">
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen((prev) => !prev)}
+            className="rounded-lg p-2 text-[#121316] hover:bg-[#F4F4F0]"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {mobileMenuOpen && (
+        <div className="border-b border-[#E4E4DF] bg-[#FFFFFF] px-4 py-5 shadow-lg md:hidden animate-in fade-in duration-150 space-y-4">
+          <div className="space-y-1">
+            <div className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#71717A]">
+              Examinations
+            </div>
+            {examCategories.map((exam) => (
+              <Link
+                key={exam.slug}
+                href={`/${exam.slug}`}
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-between rounded-lg px-3 py-2 text-xs font-semibold text-[#121316] hover:bg-[#F4F4F0]"
+              >
+                <span>{exam.name} — {exam.fullName}</span>
+                <span className="text-xs text-[#71717A]">↗</span>
+              </Link>
+            ))}
+          </div>
+
+          <div className="border-t border-[#E4E4DF] pt-3 space-y-2">
+            <Link
+              href="/#how-it-works"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block rounded-lg px-3 py-2 text-xs font-semibold text-[#52525B] hover:text-[#121316]"
+            >
+              How it works
+            </Link>
+
+            <Link
+              href="/login"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block rounded-lg px-3 py-2 text-xs font-semibold text-[#52525B] hover:text-[#121316]"
+            >
+              Sign in
+            </Link>
+
+            <button
+              type="button"
+              onClick={(e) => {
+                setMobileMenuOpen(false);
+                handleStartPractice(e);
+              }}
+              className="w-full rounded-full bg-[#121316] py-2.5 text-center text-xs font-bold uppercase tracking-wider text-white shadow-sm"
+            >
+              Start Practice
+            </button>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

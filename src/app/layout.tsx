@@ -6,39 +6,48 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'FORT Learning — Knowledge. Built Strong.',
-    template: '%s | FORT Learning',
+    default: 'MERITWISE — Competitive Examination Practice & Assessment',
+    template: '%s | MERITWISE',
   },
   description:
-    'Institutional digital learning and examination practice platform for NEET, JEE Main, JEE Advanced, UPSC, and Engineering aspirants. Data-driven practice, live OMR sheets, server-authoritative mock simulations, and precision analytics.',
+    'Practice with purpose. Progress with merit. Curated competitive examination papers, timed testing, authoritative evaluation, and performance diagnostics for NEET, JEE, UPSC, and GATE.',
   keywords: [
+    'MERITWISE',
     'NEET practice',
-    'JEE Main mock tests',
-    'JEE Advanced simulation',
-    'UPSC answer writing',
-    'Live OMR sheet',
-    'Exam analytics',
-    'FORT Learning',
+    'JEE Main practice',
+    'JEE Advanced',
+    'UPSC Civil Services',
+    'GATE examination',
+    'timed mock tests',
+    'question paper practice',
+    'performance evaluation',
   ],
-  authors: [{ name: 'FORT Learning' }],
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://fortlearning.com'),
+  authors: [{ name: 'MERITWISE' }],
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://meritwise.in'),
   openGraph: {
-    title: 'FORT Learning — Knowledge. Built Strong.',
+    title: 'MERITWISE — Competitive Examination Practice & Assessment',
     description:
-      'Serious digital learning and examination practice infrastructure built around concepts, questions, simulations, and continuous improvement.',
-    url: 'https://fortlearning.com',
-    siteName: 'FORT Learning',
+      'Practice with purpose. Progress with merit. Curated competitive examination papers, timed testing, authoritative evaluation, and performance diagnostics for NEET, JEE, UPSC, and GATE.',
+    url: 'https://meritwise.in',
+    siteName: 'MERITWISE',
     locale: 'en_IN',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'FORT Learning — Knowledge. Built Strong.',
-    description: 'Precision examination practice with live OMR simulation and honest analytics.',
+    title: 'MERITWISE — Practice with purpose. Progress with merit.',
+    description: 'Curated examination papers, timed tests, and diagnostic insights for NEET, JEE, UPSC, and GATE.',
   },
   robots: {
     index: true,
     follow: true,
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/brand/logo-gold-icon.png', type: 'image/png' },
+    ],
+    apple: '/brand/logo-gold-icon.png',
   },
 };
 
@@ -53,17 +62,27 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-screen font-sans bg-[#F1F3F4] text-[#20252B] antialiased selection:bg-[#9CC6E0]/40 selection:text-[#20252B]">
-        <div className="flex min-h-screen flex-col">
-          <Navbar />
-          <main className="flex-1 pt-20 sm:pt-24">{children}</main>
-          <Footer />
-        </div>
-        <Toaster position="top-right" theme="light" richColors />
+      <body className="min-h-screen font-sans bg-[#FBFBFA] text-[#121316] antialiased selection:bg-[#8C6D3B]/20 selection:text-[#121316]">
+        <Navbar />
+        <main className="min-h-screen pt-20">{children}</main>
+        <Footer />
+        <Toaster
+          position="bottom-right"
+          toastOptions={{
+            style: {
+              background: '#FFFFFF',
+              color: '#121316',
+              border: '1px solid #E4E4DF',
+              borderRadius: '16px',
+              fontSize: '13px',
+              fontFamily: 'var(--font-primary)',
+            },
+          }}
+        />
       </body>
     </html>
   );

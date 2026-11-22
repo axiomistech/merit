@@ -4,7 +4,7 @@ import { getAttemptsStore } from '@/lib/server/backendStore';
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
-    const regId = searchParams.get('registrationId') || 'FORT-26-000001';
+    const regId = searchParams.get('registrationId') || 'MW-26-000001';
 
     const store = getAttemptsStore();
     const candidateAttempts = Object.values(store).filter(

@@ -10,7 +10,7 @@ export default function AdminEvaluationsPage() {
     {
       id: 'eval_01',
       studentName: 'Rohan Deshmukh',
-      registrationId: 'FORT-26-000004',
+      registrationId: 'MW-26-000004',
       exam: 'UPSC CSE Mains',
       paperName: 'GS Paper I: Indian Heritage and Geography',
       questionTitle: 'Discuss the impact of climate change on Himalayan glacial retreat (250 words)',
@@ -23,7 +23,7 @@ export default function AdminEvaluationsPage() {
     {
       id: 'eval_02',
       studentName: 'Aarav Sharma',
-      registrationId: 'FORT-26-000002',
+      registrationId: 'MW-26-000002',
       exam: 'JEE Advanced',
       paperName: 'Physics Paper 2 (Multi-Correct Partial Scoring)',
       questionTitle: 'Electromagnetic induction in rotating copper disc with eddy currents',

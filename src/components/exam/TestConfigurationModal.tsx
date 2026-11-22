@@ -26,7 +26,7 @@ export function TestConfigurationModal({
   isOpen,
   onClose,
   onStart,
-  examName = 'FORT NEET (UG)',
+  examName = 'NEET (UG)',
   subjectName = 'Physics',
   chapterName = 'Laws of Motion',
   questionCount = 30,

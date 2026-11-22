@@ -1,75 +1,36 @@
 import { NextResponse } from 'next/server';
-import { getStoredTests, saveStoredTests, AdminTestRecord } from '@/lib/admin/store';
-import { SAMPLE_NEET_PAPER } from '@/data/seedData';
+import {
+  getStoredPapersServer,
+  saveStoredPaperServer,
+  getStoredQuestionsServer,
+  StoredPaper,
+  validatePaperForSave,
+} from '@/lib/server/backendStore';
+import { verifyServerAdminAccess } from '@/lib/admin/auth';
 
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
-    const exam = searchParams.get('exam');
-    const paperType = searchParams.get('type');
+    const exam = searchParams.get('exam') || undefined;
+    const paperType = searchParams.get('type') || undefined;
+    const status = searchParams.get('status') || undefined;
 
-    let tests = getStoredTests();
-    if (!tests || tests.length === 0) {
-      tests = [
-        {
-          id: 'paper_neet_mock_01',
-          name: SAMPLE_NEET_PAPER.name,
-          slug: SAMPLE_NEET_PAPER.slug,
-          examSlug: 'neet',
-          paperType: 'mock_exam',
-          durationMinutes: SAMPLE_NEET_PAPER.durationMinutes,
-          totalQuestions: SAMPLE_NEET_PAPER.totalQuestions,
-          maxMarks: (SAMPLE_NEET_PAPER as any).maxMarks || 720,
-          price: (SAMPLE_NEET_PAPER as any).price || 10,
-          isFreeEligible: (SAMPLE_NEET_PAPER as any).isFreeEligible ?? true,
-          status: 'published',
-          questionIds: Array.from({ length: 180 }, (_, i) => `q_neet_${i + 1}`),
-          created_at: '2026-01-01T00:00:00Z',
-        },
-        {
-          id: 'paper_neet_pyq_2025',
-          name: 'NEET 2025 Official Previous Year Paper (Shift 1)',
-          slug: 'neet-2025-pyq-official',
-          examSlug: 'neet',
-          paperType: 'previous_year',
-          durationMinutes: 200,
-          totalQuestions: 180,
-          maxMarks: 720,
-          price: 10,
-          isFreeEligible: false,
-          status: 'published',
-          questionIds: Array.from({ length: 180 }, (_, i) => `q_neet_pyq_${i + 1}`),
-          created_at: '2026-01-01T00:00:00Z',
-        },
-        {
-          id: 'paper_jee_mock_01',
-          name: 'JEE Main 2026 Full Simulation Mock 1',
-          slug: 'jee-main-2026-simulation-01',
-          examSlug: 'jee-main',
-          paperType: 'mock_exam',
-          durationMinutes: 180,
-          totalQuestions: 90,
-          maxMarks: 300,
-          price: 10,
-          isFreeEligible: true,
-          status: 'published',
-          questionIds: Array.from({ length: 90 }, (_, i) => `q_jee_${i + 1}`),
-          created_at: '2026-01-01T00:00:00Z',
-        },
-      ];
-    }
+    const authCheck = verifyServerAdminAccess(req, 'exams.view');
+    const isAdmin = authCheck.authorized;
 
-    if (exam && exam !== 'all') {
-      tests = tests.filter((t) => t.examSlug === exam);
-    }
-    if (paperType && paperType !== 'all') {
-      tests = tests.filter((t) => t.paperType === paperType);
-    }
+    // Students strictly receive only published papers from the database
+    const effectiveStatus = isAdmin ? status : 'published';
+
+    const papers = getStoredPapersServer({
+      examSlug: exam,
+      paperType,
+      status: effectiveStatus,
+    });
 
     return NextResponse.json({
       success: true,
-      total: tests.length,
-      data: tests,
+      total: papers.length,
+      data: papers,
     });
   } catch (error: any) {
     return NextResponse.json(
@@ -81,42 +42,89 @@ export async function GET(req: Request) {
 
 export async function POST(req: Request) {
   try {
+    const authCheck = verifyServerAdminAccess(req, 'tests.create');
+    if (!authCheck.authorized) {
+      return NextResponse.json(
+        { success: false, error: authCheck.reason || 'Unauthorized administrative action.' },
+        { status: 401 }
+      );
+    }
+
     const body = await req.json();
 
     if (!body.name || !body.examSlug) {
       return NextResponse.json(
-        { success: false, error: 'Test name and exam slug are required' },
+        { success: false, error: 'Question paper title and target examination are required.' },
         { status: 400 }
       );
     }
 
-    const tests = getStoredTests();
-    const newTest: AdminTestRecord = {
-      id: `test_${Date.now()}`,
-      name: body.name,
-      slug: body.slug || body.name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+    const questionIds = Array.isArray(body.questionIds) ? body.questionIds : [];
+
+    // Compute actual total marks from assigned questions
+    const allQuestions = getStoredQuestionsServer();
+    const assignedQuestions = questionIds
+      .map((qid: string) => allQuestions.find((q) => q.id === qid))
+      .filter((q: any): q is NonNullable<typeof q> => !!q);
+
+    const computedTotalMarks = assignedQuestions.reduce((acc: number, q: any) => acc + (q.marks || 4), 0);
+
+    const newPaper: StoredPaper = {
+      id: body.id || `paper_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
+      name: body.name.trim(),
+      slug:
+        body.slug ||
+        body.name
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-|-$/g, ''),
       examSlug: body.examSlug,
       paperType: body.paperType || 'mock_exam',
+      year: body.year ? Number(body.year) : new Date().getFullYear(),
+      subject: body.subject || 'All Subjects',
       durationMinutes: Number(body.durationMinutes) || 180,
-      totalQuestions: Number(body.totalQuestions) || 180,
-      maxMarks: Number(body.maxMarks) || 720,
+      totalQuestions: questionIds.length,
+      maxMarks: computedTotalMarks > 0 ? computedTotalMarks : Number(body.maxMarks) || 720,
+      markingScheme: body.markingScheme || '+4 for correct, -1 for incorrect, 0 for unattempted',
+      hasOMR: body.hasOMR !== undefined ? body.hasOMR : true,
       price: Number(body.price) || 10,
       isFreeEligible: body.isFreeEligible !== undefined ? body.isFreeEligible : true,
-      status: body.status || 'published',
-      questionIds: body.questionIds || [],
+      status: body.status || 'draft',
+      instructions: Array.isArray(body.instructions) && body.instructions.length > 0
+        ? body.instructions
+        : [
+            '1. Server-authoritative timer runs for the configured duration.',
+            '2. Marking Scheme: Standard negative marking is applied automatically.',
+            '3. Instant personalized vector A4 OMR answer sheet is generated upon submission.',
+          ],
+      sections: Array.isArray(body.sections) ? body.sections : [],
+      questionIds,
       created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+      published_at: body.status === 'published' ? new Date().toISOString() : undefined,
+      created_by: 'admin',
     };
 
-    const updated = [newTest, ...tests];
-    saveStoredTests(updated);
+    const saveResult = saveStoredPaperServer(newPaper);
+    if (!saveResult.success) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Question paper validation failed',
+          details: saveResult.errors,
+        },
+        { status: 400 }
+      );
+    }
 
     return NextResponse.json({
       success: true,
-      data: newTest,
+      message: 'Question paper created and saved successfully.',
+      data: newPaper,
     });
   } catch (error: any) {
     return NextResponse.json(
-      { success: false, error: error.message || 'Failed to create test' },
+      { success: false, error: error.message || 'Failed to create question paper' },
       { status: 500 }
     );
   }

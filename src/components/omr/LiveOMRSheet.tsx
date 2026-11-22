@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 import { FileDown, ZoomIn, ZoomOut, Maximize2, Minimize2, CheckCircle2 } from 'lucide-react';
 import { generateOmrPdf } from '@/lib/omr/pdfGenerator';
 import { generateBarcodeModules } from '@/lib/omr/barcode';
+import { MeritwiseLogo } from '@/components/brand/MeritwiseLogo';
 
 interface OMRProps {
   totalQuestions?: number;
@@ -37,8 +38,8 @@ export function LiveOMRSheet({
   onJumpToQuestion,
   isReadOnly = false,
   studentName = 'DHANUSH JAGADEESH',
-  registrationId = 'FORT-26-000001',
-  examName = 'FORT NEET (UG)',
+  registrationId = 'MW-26-000001',
+  examName = 'NEET (UG)',
   paperName = 'All India Full Mock Test - 01',
   attemptId = 'ATT-20261121',
   rollNumber,
@@ -180,18 +181,8 @@ export function LiveOMRSheet({
           {/* --- TOP HEADER --- */}
           <div className="flex items-center justify-between border-b border-[#D45D4C]/30 pb-3 pl-3 pr-3">
             {/* Logo */}
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded bg-[#9CC6E0] text-[#20252B] flex items-center justify-center font-bold text-xs">
-                F
-              </div>
-              <div>
-                <div className="font-extrabold text-base tracking-tight text-[#20252B] leading-none">
-                  FORT
-                </div>
-                <div className="text-[9px] font-semibold text-[#20252B] leading-none tracking-wider uppercase">
-                  Learning
-                </div>
-              </div>
+            <div className="flex items-center">
+              <MeritwiseLogo variant="gold" size="xs" />
             </div>
 
             {/* Center Instructions Capsule */}
@@ -435,7 +426,7 @@ export function LiveOMRSheet({
                   DECLARATION BY THE CANDIDATE
                 </div>
                 <p className="text-[7.5px] leading-tight text-[#20252B]">
-                  I declare that particulars and signature on this OMR Answer Sheet are mine and are same as in the attached Sheet. I further declare that particulars filled-in and signature as well as the circles darkened on this ORIGINAL Copy is same as in the FORT Learning copy.
+                  I declare that particulars and signature on this OMR Answer Sheet are mine and are same as in the attached Sheet. I further declare that particulars filled-in and signature as well as the circles darkened on this ORIGINAL Copy is same as in the MERITWISE official record.
                 </p>
               </div>
 

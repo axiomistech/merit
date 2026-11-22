@@ -28,8 +28,9 @@ export default function StudentLeaderboardPage() {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem('fort_student_session');
-      let currentRegId = 'FORT-26-000001';
+      const stored =
+        localStorage.getItem('merit_student_session') || localStorage.getItem('fort_student_session');
+      let currentRegId = 'MW-26-000001';
       let currentName = 'DHANUSH JAGADEESH';
 
       if (stored) {
@@ -45,7 +46,8 @@ export default function StudentLeaderboardPage() {
       let userScore = 0;
       let userAccuracy = 0;
       let userAttemptDate = '2026-11-21';
-      const storedAttempt = localStorage.getItem('fort_latest_attempt');
+      const storedAttempt =
+        localStorage.getItem('merit_latest_attempt') || localStorage.getItem('fort_latest_attempt');
       if (storedAttempt) {
         try {
           const parsed = JSON.parse(storedAttempt);
@@ -59,7 +61,7 @@ export default function StudentLeaderboardPage() {
         {
           rank: 1,
           displayName: 'Aditya S.',
-          registrationId: 'FORT-26-000084',
+          registrationId: 'MW-26-000084',
           exam: 'neet',
           examLabel: 'NEET (UG)',
           score: 705,
@@ -71,7 +73,7 @@ export default function StudentLeaderboardPage() {
         {
           rank: 2,
           displayName: 'Priya I.',
-          registrationId: 'FORT-26-000002',
+          registrationId: 'MW-26-000002',
           exam: 'neet',
           examLabel: 'NEET (UG)',
           score: 692,
@@ -83,7 +85,7 @@ export default function StudentLeaderboardPage() {
         {
           rank: 3,
           displayName: 'Rohan D.',
-          registrationId: 'FORT-26-000004',
+          registrationId: 'MW-26-000004',
           exam: 'jee-main',
           examLabel: 'JEE Main',
           score: 285,
@@ -95,7 +97,7 @@ export default function StudentLeaderboardPage() {
         {
           rank: 4,
           displayName: 'Aarav S.',
-          registrationId: 'FORT-26-000003',
+          registrationId: 'MW-26-000003',
           exam: 'neet',
           examLabel: 'NEET (UG)',
           score: 648,
@@ -168,7 +170,7 @@ export default function StudentLeaderboardPage() {
         </div>
 
         <Link
-          href="/papers"
+          href="/dashboard/qp-prep"
           className="glass-racing-red inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-bold text-white shadow-md transition-transform hover:scale-[1.02]"
         >
           <span>Attempt Paper & Compete</span>
@@ -220,7 +222,7 @@ export default function StudentLeaderboardPage() {
             </p>
           </div>
           <Link
-            href="/papers"
+            href="/dashboard/qp-prep"
             className="glass-racing-red inline-flex items-center gap-1.5 rounded-full px-5 py-2.5 text-xs font-bold text-white shadow-sm transition-transform hover:scale-[1.02]"
           >
             <span>Unlock Free Paper</span>

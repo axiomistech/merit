@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
+import { MeritwiseLogo } from '@/components/brand/MeritwiseLogo';
 import {
   Shield,
   LayoutDashboard,
@@ -162,16 +163,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <aside className="hidden lg:flex lg:w-72 lg:flex-col lg:border-r lg:border-[#DCE2E6] lg:bg-white shrink-0">
         {/* Brand Header */}
         <div className="flex h-16 items-center justify-between border-b border-[#DCE2E6] px-6">
-          <Link href="/admin" className="flex items-center gap-2.5">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#9CC6E0] text-[#20252B]">
-              <Shield className="h-4 w-4 stroke-[2.5]" />
-            </div>
-            <div>
-              <span className="font-mono text-base font-bold tracking-wider text-[#20252B]">FORT</span>
-              <span className="ml-1.5 rounded-full bg-[#9CC6E0]/20 px-2 py-0.5 text-[9px] font-bold text-[#20252B] uppercase">
-                Control
-              </span>
-            </div>
+          <Link href="/admin" className="flex items-center gap-2">
+            <MeritwiseLogo variant="gold" size="sm" />
+            <span className="rounded-full bg-[#F7F3EB] px-2 py-0.5 text-[9px] font-bold text-[#6E5328] uppercase tracking-wider">
+              Admin
+            </span>
           </Link>
         </div>
 
@@ -279,7 +275,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             />
             <div className="relative flex w-72 flex-1 flex-col bg-white shadow-2xl">
               <div className="flex h-16 items-center justify-between border-b border-[#DCE2E6] px-6">
-                <span className="font-mono font-bold text-[#20252B]">FORT CONTROL</span>
+                <div className="flex items-center gap-2">
+                  <MeritwiseLogo variant="gold" size="xs" />
+                  <span className="rounded-full bg-[#F7F3EB] px-2 py-0.5 text-[9px] font-bold text-[#6E5328] uppercase tracking-wider">
+                    Admin
+                  </span>
+                </div>
                 <button
                   onClick={() => setSidebarOpen(false)}
                   className="rounded-lg p-1 text-[#66727D]"

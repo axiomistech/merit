@@ -5,7 +5,7 @@ export const SAMPLE_JEE_MAIN_PAPER: ExamPaperConfig = {
   name: 'JEE Main All India Computer-Based Full Mock - 01',
   slug: 'jee-main-all-india-mock-01',
   examSlug: 'jee-main',
-  examName: 'FORT JEE Main',
+  examName: 'JEE Main',
   durationMinutes: 180, // 3 hours standard
   totalMarks: 300,
   totalQuestions: 15,
@@ -97,7 +97,7 @@ export const SAMPLE_UPSC_PAPER: ExamPaperConfig = {
   name: 'UPSC Civil Services Prelims GS-I Full Simulation - 01',
   slug: 'upsc-prelims-gs1-01',
   examSlug: 'upsc',
-  examName: 'FORT UPSC Civil Services',
+  examName: 'UPSC Civil Services',
   durationMinutes: 120, // 2 hours
   totalMarks: 200,
   totalQuestions: 10,

@@ -30,7 +30,7 @@ export default function AdminSEOPage() {
     logAdminAction({
       action: 'SEO_SETTINGS_UPDATED',
       resource_type: 'seo',
-      change_summary: `Updated SEO meta tags and social card settings for FORT Learning`,
+      change_summary: `Updated SEO meta tags and social card settings for MERITWISE`,
     });
     toast.success('SEO metadata and social sharing tags updated.');
   };

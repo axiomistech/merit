@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getAttemptsStore } from '@/lib/server/backendStore';
+import { getAttemptsStore, saveAttemptsStore } from '@/lib/server/backendStore';
 import { evaluateAttempt } from '@/lib/scoring/engine';
 
 export async function POST(
@@ -70,6 +70,8 @@ export async function POST(
     attempt.submitted_at = now.toISOString();
     attempt.durationSeconds = durationSeconds;
     attempt.result = evaluation;
+
+    saveAttemptsStore();
 
     return NextResponse.json({
       success: true,

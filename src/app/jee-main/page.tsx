@@ -1,171 +1,107 @@
 import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle2, Shield, Clock, Zap, Target, BookOpen } from 'lucide-react';
-import { EXAMINATIONS } from '@/data/seedData';
+import { ExamSwitcher } from '@/components/exams/ExamSwitcher';
 
 export const metadata = {
-  title: 'FORT JEE Main — Speed, Accuracy & Numerical Problem Mastery',
+  title: 'MERITWISE JEE Main — Computer-Based Testing & Numerical Response',
   description:
     'CBT examination simulation for JEE Main aspirants across Physics, Chemistry, and Mathematics with NTA pattern (+4, -1 for MCQs and numerical value questions).',
 };
 
 export default function JeeMainLandingPage() {
   return (
-    <div className="bg-[#F1F3F4] text-[#20252B] min-h-screen py-10">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-16">
-        {/* Hero Container in Glacier Blue */}
-        <div className="rounded-[32px] bg-[#9CC6E0] p-8 sm:p-12 lg:p-16 text-[#20252B] shadow-xl relative overflow-hidden">
-          <div className="max-w-2xl space-y-5">
-            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#20252B]/80">
-              <span className="h-px w-6 bg-[#20252B]/40" />
+    <div className="bg-[#FBFBFA] text-[#121316] min-h-screen py-6 sm:py-10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
+        {/* Capsule Glassmorphism Exam Switcher */}
+        <ExamSwitcher currentSlug="jee-main" />
+
+        {/* Hero Section */}
+        <div className="merit-card rounded-[32px] p-8 sm:p-12 lg:p-16 space-y-6">
+          <div className="max-w-3xl space-y-4">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#E4E4DF] bg-[#F7F3EB] px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[#6E5328]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#8C6D3B]" />
               <span>JOINT ENTRANCE EXAMINATION (MAIN) • NTA CBT</span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl font-bold font-sans tracking-tight leading-[1.1] text-[#20252B]">
-              Engineering problem{' '}
-              <span className="relative inline-block italic">
-                solving.
-                <svg
-                  className="absolute -bottom-2 left-0 w-full text-[#E4002B] overflow-visible"
-                  viewBox="0 0 100 12"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M2 8C26 3 66 2 98 7C70 11 36 10 5 9"
-                    stroke="currentColor"
-                    strokeWidth="3.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
+            <h1 className="text-4xl sm:text-5xl font-extrabold font-sans tracking-tight leading-[1.1] text-[#121316]">
+              Engineering problem solving with precision.
             </h1>
 
-            <p className="text-base sm:text-lg text-[#20252B]/90 font-medium leading-relaxed">
-              Speed, numerical accuracy, and disciplined question selection under true Computer-Based Testing conditions. Featuring MCQs and exact decimal/integer numerical response evaluations with NTA +4 / -1 rules.
+            <p className="text-base sm:text-lg text-[#52525B] font-normal leading-relaxed">
+              Speed, numerical accuracy, and disciplined question selection under true Computer-Based Testing conditions. Featuring MCQs and numerical response evaluations with NTA +4 / -1 rules.
             </p>
 
-            <div className="flex flex-wrap items-center gap-4 pt-3">
+            <div className="flex flex-wrap items-center gap-4 pt-4">
               <Link
-                href="/exam/jee-main-demo"
-                className="rounded-xl bg-[#E4002B] px-8 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#E4002B]/30 hover:bg-[#C90026] transition-all hover:translate-y-[-1px]"
+                href="/practice"
+                className="btn-merit-primary h-12 px-8 text-sm font-bold uppercase tracking-wider"
               >
-                Start Free JEE Main Mock
+                Start Practice ↗
               </Link>
-              <Link
-                href="/pricing"
-                className="rounded-xl border border-[#20252B]/20 bg-white/80 backdrop-blur-sm px-8 py-3.5 text-sm font-semibold text-[#20252B] hover:bg-white transition-all shadow-sm"
+              <a
+                href="#blueprint"
+                className="btn-merit-secondary h-12 px-7 text-sm font-semibold inline-flex items-center gap-1.5"
               >
-                View Paper Packs
-              </Link>
+                View Blueprint
+              </a>
             </div>
           </div>
         </div>
 
         {/* Blueprint & Pattern */}
-        <section>
+        <section id="blueprint">
           <div className="mb-6">
-            <div className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
+            <div className="text-xs font-bold uppercase tracking-wider text-[#71717A]">
               EXAMINATION BLUEPRINT
             </div>
-            <h2 className="mt-1 text-3xl font-bold font-sans text-[#20252B]">
-              Standard NTA JEE Main Pattern
+            <h2 className="mt-1 text-2xl sm:text-3xl font-bold font-sans text-[#121316]">
+              JEE Main Testing Architecture
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              {
-                title: 'Subject Distribution',
-                value: '300 Marks',
-                sub: 'Physics, Chemistry & Mathematics (25 Qs each)',
-              },
-              {
-                title: 'Server-Timed Duration',
-                value: '180 Minutes',
-                sub: 'Authoritative countdown with auto-save sync',
-              },
-              {
-                title: 'Marking Architecture',
-                value: '+4 / -1',
-                sub: 'Full negative marking on both Section A & Section B',
-              },
+              { label: 'Total Duration', value: '180 Minutes', detail: '3 Hours CBT Countdown' },
+              { label: 'Total Questions', value: '90 Questions', detail: '30 per subject (MCQs + NVQs)' },
+              { label: 'Marking Scheme', value: '+4 / -1', detail: 'Negative marking for MCQs & NVQs' },
+              { label: 'Total Marks', value: '300 Marks', detail: '100 marks per subject' },
             ].map((stat, idx) => (
-              <div key={idx} className="rounded-[24px] border border-[#DCE2E6] bg-white p-6 shadow-sm">
-                <div className="text-xs font-semibold text-[#66727D]">{stat.title}</div>
-                <div className="mt-2 text-3xl font-extrabold font-sans text-[#20252B]">{stat.value}</div>
-                <div className="mt-1 text-xs text-[#66727D]">{stat.sub}</div>
+              <div key={idx} className="merit-card p-6 space-y-2">
+                <div className="text-xs font-semibold text-[#71717A]">{stat.label}</div>
+                <div className="text-2xl font-extrabold font-sans text-[#121316]">{stat.value}</div>
+                <div className="text-xs text-[#52525B]">{stat.detail}</div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Section Structure Detail */}
-        <section className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          <div className="rounded-[28px] border border-[#DCE2E6] bg-white p-8 shadow-sm">
-            <div className="inline-flex items-center gap-2 rounded-full bg-[#E9EEF1] px-3 py-1 text-xs font-bold text-[#20252B]">
-              Section A • Single Choice MCQs
+        {/* Section Dual Focus */}
+        <section className="grid grid-cols-1 gap-8 md:grid-cols-2">
+          <div className="merit-card p-8 space-y-4">
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#F4F4F0] px-3 py-1 text-xs font-bold text-[#121316]">
+              Section A • Single Correct MCQs
             </div>
-            <h3 className="mt-4 text-xl font-bold text-[#20252B] font-sans">
-              20 Mandatory Questions per Discipline
+            <h3 className="text-xl font-bold text-[#121316] font-sans">
+              Conceptual Breadth & Analytical Speed
             </h3>
-            <p className="mt-2 text-sm text-[#66727D] leading-relaxed">
-              Fast, concept-dense four-choice questions designed to test fundamentals, speed, and analytical rigor. Immediate question state telemetry tracking (Not Visited, Answered, Marked for Review).
+            <p className="text-xs text-[#52525B] leading-relaxed">
+              Standard multiple choice questions testing fundamental principles, problem transformation, and quick mathematical elimination across Physics, Chemistry, and Mathematics.
             </p>
-            <ul className="mt-6 space-y-3 text-xs text-[#20252B]">
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-[#9CC6E0]" />
-                <span>+4 for correct answer, -1 for wrong choice</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-[#9CC6E0]" />
-                <span>Formula sheet references and LaTeX KaTeX rendered equations</span>
-              </li>
-            </ul>
           </div>
 
-          <div className="rounded-[28px] border border-[#DCE2E6] bg-white p-8 shadow-sm">
-            <div className="inline-flex items-center gap-2 rounded-full bg-[#FDEDF0] px-3 py-1 text-xs font-bold text-[#E4002B]">
+          <div className="merit-card p-8 space-y-4">
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#F7F3EB] px-3 py-1 text-xs font-bold text-[#6E5328]">
               Section B • Numerical Value (NVQ)
             </div>
-            <h3 className="mt-4 text-xl font-bold text-[#20252B] font-sans">
-              Numerical Response with Server Validation
+            <h3 className="text-xl font-bold text-[#121316] font-sans">
+              Numerical Response with Exact Validation
             </h3>
-            <p className="mt-2 text-sm text-[#66727D] leading-relaxed">
-              Pure calculation questions without answer choices. Enter exact floating-point or integer values with support for configurable tolerance bounds (±0.05).
+            <p className="text-xs text-[#52525B] leading-relaxed">
+              Calculation questions without answer options. Enter exact integer values with configured server-authoritative tolerance bounds (±0.05).
             </p>
-            <ul className="mt-6 space-y-3 text-xs text-[#20252B]">
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-[#E4002B]" />
-                <span>Full negative marking (-1) in compliance with latest NTA norms</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-[#9CC6E0]" />
-                <span>Prevents rounding confusion with explicit precision rules</span>
-              </li>
-            </ul>
           </div>
         </section>
-
-        {/* Call to action */}
-        <div className="rounded-[28px] border border-[#DCE2E6] bg-white p-8 text-center sm:p-12 shadow-sm">
-          <h2 className="text-2xl sm:text-3xl font-bold font-sans text-[#20252B]">
-            Benchmark Your JEE Main Standing Today
-          </h2>
-          <p className="mx-auto mt-2 max-w-xl text-sm text-[#66727D]">
-            One free high-yield JEE Main paper is credited to your account instantly on signup.
-          </p>
-          <div className="mt-6">
-            <Link
-              href="/signup"
-              className="inline-flex items-center gap-2 rounded-full bg-[#E4002B] px-8 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#E4002B]/30 hover:bg-[#C90026] transition-all"
-            >
-              <span>Create Free Account</span>
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </div>
       </div>
     </div>
   );

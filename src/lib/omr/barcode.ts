@@ -1,5 +1,5 @@
 /**
- * High-precision Code 39 Barcode Generator for FORT Learning Examination OMR Sheets.
+ * High-precision Code 39 Barcode Generator for MERITWISE Examination OMR Sheets.
  * Generates an array of bar modules (narrow/wide) for crisp vector rendering in both SVG and jsPDF.
  */
 

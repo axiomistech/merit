@@ -1,95 +1,108 @@
 import React from 'react';
 import Link from 'next/link';
+import { MeritwiseLogo } from '@/components/brand/MeritwiseLogo';
 
 export function Footer() {
   return (
-    <footer className="border-t border-[#DCE2E6]/80 bg-[#F1F3F4] text-[#66727D]">
+    <footer className="border-t border-[#E4E4DF] bg-[#FBFBFA] text-[#52525B]">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-5">
           {/* Brand Column */}
-          <div className="lg:col-span-2 space-y-3">
-            <Link href="/" className="inline-flex items-center gap-2.5">
-              <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#9CC6E0]/40 border border-white/80 text-[#20252B] shadow-xs">
-                <span className="font-mono text-sm font-black text-[#20252B]">F</span>
-              </div>
-              <div className="flex items-baseline">
-                <span className="font-mono text-xl font-black tracking-tight text-[#20252B]">FORT</span>
-                <span className="ml-1 text-xs font-semibold uppercase tracking-widest text-[#66727D]">
-                  Learning
-                </span>
-              </div>
+          <div className="lg:col-span-2 space-y-4">
+            <Link href="/" className="inline-flex items-center focus-visible:outline-none mb-1">
+              <MeritwiseLogo variant="gold" size="xl" />
             </Link>
 
-            <p className="text-sm font-semibold text-[#20252B] tracking-tight">
-              Practice. Understand. Improve.
+            <p className="text-sm font-semibold text-[#121316]">
+              Practice with purpose. Progress with merit.
             </p>
 
-            <p className="max-w-sm text-xs leading-relaxed text-[#66727D]">
-              Institutional digital learning and examination practice platform built around authentic question papers, timed simulation engines, and diagnostic insights.
+            <p className="max-w-sm text-xs leading-relaxed text-[#71717A]">
+              A serious digital examination practice and assessment platform for competitive candidates preparing for NEET, JEE, UPSC, and GATE.
             </p>
+          </div>
+
+          {/* Examinations */}
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#121316]">
+              Exams
+            </h4>
+            <ul className="mt-4 space-y-2.5 text-xs">
+              <li>
+                <Link href="/neet" className="hover:text-[#121316] transition-colors">
+                  NEET (Medical)
+                </Link>
+              </li>
+              <li>
+                <Link href="/jee-main" className="hover:text-[#121316] transition-colors">
+                  JEE (Engineering)
+                </Link>
+              </li>
+              <li>
+                <Link href="/upsc" className="hover:text-[#121316] transition-colors">
+                  UPSC (Civil Services)
+                </Link>
+              </li>
+              <li>
+                <Link href="/gate" className="hover:text-[#121316] transition-colors">
+                  GATE (Graduate Technical)
+                </Link>
+              </li>
+            </ul>
           </div>
 
           {/* Platform */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#121316]">
               Platform
             </h4>
             <ul className="mt-4 space-y-2.5 text-xs">
               <li>
-                <Link href="/exams" className="hover:text-[#20252B] transition-colors">
-                  Exams
+                <Link href="/#how-it-works" className="hover:text-[#121316] transition-colors">
+                  How it works
                 </Link>
               </li>
               <li>
-                <Link href="/practice" className="hover:text-[#20252B] transition-colors">
-                  Practice
+                <Link href="/about" className="hover:text-[#121316] transition-colors">
+                  About
                 </Link>
               </li>
               <li>
-                <Link href="/dashboard/leaderboard" className="hover:text-[#20252B] transition-colors">
-                  Leaderboard
+                <Link href="/pricing" className="hover:text-[#121316] transition-colors">
+                  Paper Access & Pricing
                 </Link>
               </li>
-            </ul>
-          </div>
-
-          {/* Account */}
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
-              Account
-            </h4>
-            <ul className="mt-4 space-y-2.5 text-xs">
               <li>
-                <Link href="/login" className="hover:text-[#20252B] transition-colors">
+                <Link href="/login" className="hover:text-[#121316] transition-colors">
                   Sign in
                 </Link>
               </li>
-              <li>
-                <Link href="/signup" className="hover:text-[#20252B] transition-colors">
-                  Register
-                </Link>
-              </li>
             </ul>
           </div>
 
-          {/* Legal */}
+          {/* Legal & Contact */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#121316]">
               Legal
             </h4>
             <ul className="mt-4 space-y-2.5 text-xs">
               <li>
-                <Link href="/privacy-policy" className="hover:text-[#20252B] transition-colors">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms-and-conditions" className="hover:text-[#20252B] transition-colors">
+                <Link href="/terms-and-conditions" className="hover:text-[#121316] transition-colors">
                   Terms
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-[#20252B] transition-colors">
+                <Link href="/privacy-policy" className="hover:text-[#121316] transition-colors">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/refund-policy" className="hover:text-[#121316] transition-colors">
+                  Refund Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-[#121316] transition-colors">
                   Contact
                 </Link>
               </li>
@@ -98,18 +111,13 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 border-t border-[#DCE2E6]/80 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#66727D]">
-          <div>© FORT Learning. All rights reserved.</div>
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[#E4E4DF] pt-8 text-xs text-[#71717A] sm:flex-row">
+          <div>
+            &copy; {new Date().getFullYear()} MERITWISE. All rights reserved.
+          </div>
           <div className="flex items-center gap-6">
-            <Link href="/privacy-policy" className="hover:text-[#20252B] transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms-and-conditions" className="hover:text-[#20252B] transition-colors">
-              Terms
-            </Link>
-            <Link href="/contact" className="hover:text-[#20252B] transition-colors">
-              Contact
-            </Link>
+            <span>Every attempt counts.</span>
+            <span>Measure your progress.</span>
           </div>
         </div>
       </div>

@@ -16,7 +16,7 @@ export async function POST(req: Request) {
 
     const cleanRoll = (rollNumber || '1029384756').padStart(10, '0').slice(-10);
     const cleanCode = testBookletCode || 'A';
-    const cleanReg = registrationId || 'FORT-26-000001';
+    const cleanReg = registrationId || 'MW-26-000001';
 
     // Generate 180 questions bubble matrix
     const bubbles = Array.from({ length: 180 }, (_, i) => {

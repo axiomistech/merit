@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ArrowRight, CheckCircle2, Shield, Layers, Award, Terminal } from 'lucide-react';
 
 export const metadata = {
-  title: 'FORT JEE Advanced — Multi-Correct & Partial Marking Architecture',
+  title: 'MERITWISE JEE Advanced — Multi-Correct & Partial Marking Architecture',
   description:
     'Advanced examination simulation for IIT aspirants featuring multi-correct questions, variable marking schemes, and Paper 1 & Paper 2 workflows.',
 };

@@ -62,7 +62,7 @@ export async function POST(req: Request) {
 
     // Grant Entitlement with Idempotency Check
     const store = getEntitlementsStore();
-    const regId = studentRegistrationId || 'FORT-26-000001';
+    const regId = studentRegistrationId || 'MW-26-000001';
     if (!store[regId]) {
       store[regId] = [];
     }

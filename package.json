@@ -1,7 +1,7 @@
 {
-  "name": "fort-learning",
+  "name": "meritwise",
   "version": "1.0.0",
-  "description": "FORT Learning — Educational examination practice and analytics platform",
+  "description": "MERITWISE — Serious competitive examination practice and assessment platform",
   "private": true,
   "scripts": {
     "dev": "next dev",

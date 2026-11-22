@@ -1,500 +1,252 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap');
 @import "tailwindcss";
 
 @theme {
-  /* Unified Plus Jakarta Sans font family across the platform */
   --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-serif: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: "Newsreader", Georgia, Cambria, "Times New Roman", Times, serif;
   --font-heading: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
-  /* Official Brand Palette */
-  --color-polar-white: #F1F3F4;
-  --color-glacier-blue: #9CC6E0;
-  --color-racing-red: #E4002B;
+  /* MERITWISE Design Tokens */
+  --color-ivory: #FBFBFA;
+  --color-charcoal: #121316;
+  --color-text-secondary: #52525B;
+  --color-border-subtle: #E4E4DF;
+  --color-surface-card: #FFFFFF;
+  --color-surface-muted: #F4F4F0;
 
-  --color-pure-white: #FFFFFF;
-  --color-ink: #20252B;
-  --color-text-secondary: #66727D;
-  --color-border-subtle: #DCE2E6;
-  --color-surface-muted: #E9EEF1;
+  --color-bronze: #8C6D3B;
+  --color-bronze-dark: #6E5328;
+  --color-bronze-light: #F7F3EB;
 
-  --color-success: #9CC6E0;
-  --color-warning: #9CC6E0;
-  --color-danger: #E4002B;
+  --color-success: #15803D;
+  --color-warning: #B45309;
+  --color-danger: #B91C1C;
 
-  /* Brand Aliases */
-  --color-fort-polar: #F1F3F4;
-  --color-fort-glacier: #9CC6E0;
-  --color-fort-red: #E4002B;
-  --color-fort-ink: #20252B;
-  --color-fort-border: #DCE2E6;
-  --color-fort-muted: #E9EEF1;
+  /* Backward Compatibility Tokens */
+  --color-polar-white: #FBFBFA;
+  --color-glacier-blue: #E8E8E2;
+  --color-racing-red: #121316;
+  --color-ink: #121316;
+  --color-fort-polar: #FBFBFA;
+  --color-fort-glacier: #E8E8E2;
+  --color-fort-red: #121316;
+  --color-fort-ink: #121316;
+  --color-fort-border: #E4E4DF;
+  --color-fort-muted: #F4F4F0;
 }
 
 :root {
-  /* ========================================================================= */
-  /* CENTRALIZED TYPOGRAPHY TOKENS (PLUS JAKARTA SANS ONLY)                   */
-  /* ========================================================================= */
   --font-primary: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-editorial: "Newsreader", Georgia, Cambria, "Times New Roman", serif;
   --font-sans: var(--font-primary);
-  --font-serif: var(--font-primary);
+  --font-serif: var(--font-editorial);
 
-  /* Font Weights */
-  --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-  --font-weight-extrabold: 800;
+  /* Primary Palette */
+  --merit-canvas: #FBFBFA;
+  --merit-ink: #121316;
+  --merit-text-secondary: #52525B;
+  --merit-text-muted: #71717A;
+  --merit-border: #E4E4DF;
+  --merit-border-light: #ECECE7;
+  --merit-surface: #FFFFFF;
+  --merit-surface-muted: #F4F4F0;
+  --merit-bronze: #8C6D3B;
+  --merit-bronze-light: #F7F3EB;
+  --merit-bronze-dark: #6E5328;
 
-  /* Type Scale */
-  --font-size-xs: 12px;
-  --font-size-sm: 14px;
-  --font-size-base: 16px;
-  --font-size-lg: 18px;
-  --font-size-xl: 20px;
-  --font-size-2xl: 24px;
-  --font-size-3xl: 30px;
-  --font-size-4xl: 40px;
-  --font-size-5xl: 56px;
-  --font-size-6xl: 60px;
-
-  /* Line Heights */
-  --line-height-tight: 1.08;
-  --line-height-heading: 1.2;
-  --line-height-subheading: 1.3;
-  --line-height-body: 1.7;
-
-  /* Letter Spacing */
-  --letter-spacing-hero: -0.045em;
-  --letter-spacing-heading: -0.025em;
-  --letter-spacing-section: -0.02em;
-  --letter-spacing-card: -0.015em;
-  --letter-spacing-button: -0.01em;
-  --letter-spacing-normal: 0;
-  --letter-spacing-label: 0.08em;
-
-  /* ========================================================================= */
-  /* FORT BRAND OFFICIAL PALETTE & THEME TOKENS                               */
-  /* ========================================================================= */
-  --fort-polar-white: #F1F3F4;
-  --fort-glacier-blue: #9CC6E0;
-  --fort-racing-red: #E4002B;
-
-  --fort-primary: #F1F3F4;
-  --fort-secondary: #9CC6E0;
-  --fort-accent: #E4002B;
-
-  /* Neutrals */
-  --fort-pure-white: #FFFFFF;
-  --fort-white: #FFFFFF;
-  --fort-ink: #20252B;
-  --fort-text-secondary: #66727D;
-  --fort-muted-text: #66727D;
-  --fort-border: #DCE2E6;
-  --fort-surface-muted: #E9EEF1;
-
-  /* Semantic */
-  --fort-success: #9CC6E0;
-  --fort-warning: #9CC6E0;
-  --fort-error: #E4002B;
-  --fort-danger: #E4002B;
-
-  /* Layout */
-  --fort-radius-sm: 8px;
-  --fort-radius-md: 12px;
-  --fort-radius-lg: 16px;
-  --fort-radius-xl: 20px;
-
-  /* Shadows */
-  --fort-shadow-sm: 0 2px 8px rgba(32, 37, 43, 0.04);
-  --fort-shadow-md: 0 4px 16px rgba(32, 37, 43, 0.06);
-
-  /* Component System Mapping */
-  --background: #F1F3F4;
-  --foreground: #20252B;
+  /* Shadcn / Standard System Mapping */
+  --background: #FBFBFA;
+  --foreground: #121316;
   --card: #FFFFFF;
-  --card-foreground: #20252B;
+  --card-foreground: #121316;
   --popover: #FFFFFF;
-  --popover-foreground: #20252B;
-  --primary: #E4002B;
+  --popover-foreground: #121316;
+  --primary: #121316;
   --primary-foreground: #FFFFFF;
-  --secondary: #9CC6E0;
-  --secondary-foreground: #20252B;
-  --muted: #E9EEF1;
-  --muted-foreground: #66727D;
-  --accent: #9CC6E0;
-  --accent-foreground: #20252B;
-  --destructive: #E4002B;
+  --secondary: #F4F4F0;
+  --secondary-foreground: #121316;
+  --muted: #F4F4F0;
+  --muted-foreground: #71717A;
+  --accent: #F7F3EB;
+  --accent-foreground: #6E5328;
+  --destructive: #B91C1C;
   --destructive-foreground: #FFFFFF;
-  --border: #DCE2E6;
+  --border: #E4E4DF;
   --input: #FFFFFF;
-  --ring: #9CC6E0;
-  --radius: 0.875rem;
+  --ring: #8C6D3B;
+  --radius: 0.75rem;
 
-  /* Backward Compatibility Aliases */
-  --color-offwhite: #F1F3F4;
-  --color-warm-white: #FFFFFF;
-  --color-sage: #9CC6E0;
-  --color-sage-light: #EBF3F8;
-  --color-sage-soft: #D7E7F2;
-  --color-sage-deep: #3B6B8A;
-  --color-forest: #20252B;
-  --color-text-primary: #20252B;
-  --color-text-secondary: #66727D;
-  --color-text-muted: #8E9BA6;
-  --color-tomato: #E4002B;
-  --color-tomato-light: #FDEDF0;
-  --color-border: #DCE2E6;
-  --color-divider: #E4EAEF;
-  --color-matte-gray: #F1F3F4;
-  --color-warm-gray: #E9EEF1;
-  --color-dark-surface: #20252B;
+  /* Legacy mappings re-anchored to academic palette */
+  --fort-polar-white: #FBFBFA;
+  --fort-glacier-blue: #EAEAE5;
+  --fort-racing-red: #121316;
+  --fort-ink: #121316;
+  --fort-text-secondary: #52525B;
+  --fort-border: #E4E4DF;
+  --fort-surface-muted: #F4F4F0;
 }
 
 body {
-  background-color: #F1F3F4;
-  color: #20252B;
+  background-color: var(--merit-canvas);
+  color: var(--merit-ink);
   font-family: var(--font-primary);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ========================================================================= */
-/* BASE TYPOGRAPHIC STYLING & RESPONSIVE SCALING                            */
-/* ========================================================================= */
+/* Editorial Typography */
+.font-editorial {
+  font-family: var(--font-editorial);
+}
 
+/* Headings */
 h1, .text-h1 {
   font-family: var(--font-primary);
-  font-size: clamp(32px, 4.5vw, 56px);
-  font-weight: 700;
+  letter-spacing: -0.035em;
   line-height: 1.1;
-  letter-spacing: var(--letter-spacing-heading);
+  font-weight: 700;
+  color: inherit;
 }
 
 h2, .text-h2 {
   font-family: var(--font-primary);
-  font-size: clamp(26px, 3.5vw, 40px);
-  font-weight: 700;
+  letter-spacing: -0.025em;
   line-height: 1.2;
-  letter-spacing: var(--letter-spacing-heading);
+  font-weight: 700;
+  color: inherit;
 }
 
 h3, .text-h3 {
   font-family: var(--font-primary);
-  font-size: clamp(22px, 2.5vw, 30px);
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: var(--letter-spacing-section);
-}
-
-h4, .text-h4 {
-  font-family: var(--font-primary);
-  font-size: clamp(19px, 2vw, 24px);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
   font-weight: 600;
-  line-height: 1.3;
-  letter-spacing: var(--letter-spacing-card);
+  color: inherit;
 }
 
-h5, .text-h5 {
+/* Editorial Wordmark */
+.meritwise-wordmark {
   font-family: var(--font-primary);
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.35;
-}
-
-h6, .text-h6 {
-  font-family: var(--font-primary);
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.4;
-}
-
-p, .text-body {
-  font-family: var(--font-primary);
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.7;
-}
-
-/* Hero Typography */
-.text-hero {
-  font-family: var(--font-primary);
-  font-size: clamp(36px, 5.5vw, 60px);
   font-weight: 800;
-  line-height: 1.08;
-  letter-spacing: var(--letter-spacing-hero);
-}
-
-/* Body Scales */
-.text-body-lg {
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.7;
-}
-
-.text-body-sm {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.6;
-}
-
-.text-caption {
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.5;
-}
-
-.text-metadata {
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 1.4;
-}
-
-/* Uppercase Labels / Eyebrows */
-.text-eyebrow, .label-uppercase {
-  font-size: 12px;
-  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-label);
+  color: #121316;
 }
 
-/* Examination & Question Typography */
-.text-question {
-  font-size: clamp(18px, 1.8vw, 22px);
-  font-weight: 500;
-  line-height: 1.6;
-}
-
-.text-option {
-  font-size: clamp(15px, 1.4vw, 17px);
-  font-weight: 400;
-  line-height: 1.55;
-}
-
-.text-timer {
-  font-size: clamp(18px, 1.8vw, 22px);
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-}
-
-/* Tabular numerals for timers, scores, question indices */
-.tabular-nums {
-  font-variant-numeric: tabular-nums;
-}
-
-/* Button Typography Standard */
-button, .btn {
-  font-family: var(--font-primary);
-  letter-spacing: var(--letter-spacing-button);
-}
-
-.btn-primary {
-  background-color: #E4002B;
+/* Primary Button - Serious, Authoritative, Minimal */
+.btn-merit-primary {
+  background-color: #121316;
   color: #FFFFFF;
-  border: none;
-  font-size: 15px;
+  border-radius: 9999px;
   font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
+  font-size: 14px;
+  padding: 10px 24px;
   transition: all 0.15s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
-.btn-primary:hover {
-  background-color: #C90026;
-  transform: translateY(-1px);
+.btn-merit-primary:hover {
+  background-color: #27272A;
+  transform: translateY(-0.5px);
 }
-.btn-primary:active {
-  background-color: #B00021;
+.btn-merit-primary:active {
   transform: translateY(0);
 }
 
-.btn-secondary {
-  background-color: #9CC6E0;
-  color: #20252B;
-  border: none;
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-  transition: all 0.15s ease-in-out;
-}
-.btn-secondary:hover {
-  background-color: #8AB6D1;
-}
-
-.btn-outline {
+/* Secondary Button - Subtle Border */
+.btn-merit-secondary {
   background-color: #FFFFFF;
-  border: 1px solid #9CC6E0;
-  color: #20252B;
-  font-size: 15px;
+  color: #121316;
+  border: 1px solid #E4E4DF;
+  border-radius: 9999px;
   font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
+  font-size: 14px;
+  padding: 10px 24px;
   transition: all 0.15s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
-.btn-outline:hover {
-  background-color: #F1F3F4;
+.btn-merit-secondary:hover {
+  background-color: #F4F4F0;
+  border-color: #D4D4CE;
 }
 
-.btn-neutral {
-  background-color: #F1F3F4;
-  border: 1px solid #DCE2E6;
-  color: #20252B;
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 1.2;
-  transition: all 0.15s ease-in-out;
-}
-.btn-neutral:hover {
-  background-color: #E9EEF1;
-}
-
-/* Card Standards */
-.card-standard {
+/* Editorial Cards */
+.merit-card {
   background-color: #FFFFFF;
-  border: 1px solid #DCE2E6;
-  border-radius: 14px;
-  box-shadow: 0 2px 8px rgba(32, 37, 43, 0.04);
+  border: 1px solid #E4E4DF;
+  border-radius: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.merit-card:hover {
+  border-color: #D4D4CE;
+  box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.04);
 }
 
-.card-glacier {
-  background-color: #9CC6E0;
-  color: #20252B;
-  border-radius: 14px;
+/* Restrained Bronze Badge */
+.merit-pill {
+  background-color: #F7F3EB;
+  border: 1px solid #E8DFCF;
+  color: #6E5328;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  padding: 3px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
-/* Subtle, clean shadows */
-.shadow-soft {
-  box-shadow: 0 2px 8px -2px rgba(32, 37, 43, 0.04), 0 1px 4px -1px rgba(32, 37, 43, 0.02);
+/* Neutral Eyebrow */
+.merit-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #71717A;
 }
 
-.shadow-card {
-  box-shadow: 0 4px 16px -4px rgba(32, 37, 43, 0.05), 0 2px 6px -2px rgba(32, 37, 43, 0.02);
-}
-
-.shadow-elevated {
-  box-shadow: 0 12px 32px -8px rgba(32, 37, 43, 0.07), 0 4px 12px -2px rgba(32, 37, 43, 0.03);
-}
-
-/* ========================================================================= */
-/* LIQUID GLASS & GLASSMORPHISM SYSTEM (OFFICIAL 3 COLORS ONLY)             */
-/* Polar White (60%) #F1F3F4 | Glacier Blue (30%) #9CC6E0 | Racing Red (10%) #E4002B */
-/* ========================================================================= */
-
+/* Legacy Class Harmonizers */
 .liquid-canvas {
+  background-color: var(--merit-canvas);
   position: relative;
-  background-color: #F1F3F4;
-  overflow: hidden;
 }
-
-/* Ambient Liquid fluid orbs behind glassmorphic surfaces */
-.liquid-fluid-backdrop {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.liquid-orb-glacier {
-  position: absolute;
-  border-radius: 9999px;
-  background: radial-gradient(circle, rgba(156, 198, 224, 0.45) 0%, rgba(156, 198, 224, 0.05) 60%, transparent 80%);
-  filter: blur(80px);
-}
-
-.liquid-orb-red {
-  position: absolute;
-  border-radius: 9999px;
-  background: radial-gradient(circle, rgba(228, 0, 43, 0.25) 0%, rgba(228, 0, 43, 0.03) 60%, transparent 80%);
-  filter: blur(90px);
-}
-
-/* 1. Polar White Liquid Glass (60% Main) */
 .glass-polar {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 
-    0 24px 60px -15px rgba(32, 37, 43, 0.06),
-    0 1px 2px 0 rgba(255, 255, 255, 0.95) inset,
-    0 -1px 2px 0 rgba(0, 0, 0, 0.02) inset;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid #E4E4DF;
+  border-radius: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
-
-/* 2. Glacier Blue Liquid Glass (30% Secondary) */
 .glass-glacier {
-  background: linear-gradient(135deg, rgba(156, 198, 224, 0.5) 0%, rgba(156, 198, 224, 0.2) 100%);
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 
-    0 20px 45px -10px rgba(156, 198, 224, 0.35),
-    0 1px 2px 0 rgba(255, 255, 255, 0.9) inset;
+  background: #F7F3EB;
+  border: 1px solid #E8DFCF;
+  color: #121316;
+  border-radius: 24px;
 }
-
-/* 3. Racing Red Liquid Glass (10% Accent) */
 .glass-racing-red {
-  background: linear-gradient(135deg, rgba(228, 0, 43, 0.95) 0%, rgba(200, 0, 38, 0.9) 100%);
-  backdrop-filter: blur(20px) saturate(190%);
-  -webkit-backdrop-filter: blur(20px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  background-color: #121316;
   color: #FFFFFF;
-  box-shadow: 
-    0 16px 36px -6px rgba(228, 0, 43, 0.35),
-    0 1px 2px 0 rgba(255, 255, 255, 0.5) inset;
+  border: 1px solid #27272A;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
-
-/* Translucent Glass Pill Badge */
 .glass-pill {
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 4px 12px rgba(32, 37, 43, 0.03), inset 0 1px 1px rgba(255, 255, 255, 0.8);
-}
-
-/* Glassmorphism restrained */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 8px 24px -4px rgba(32, 37, 43, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.9);
-}
-
-.glass-nav {
-  background: rgba(241, 243, 244, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(220, 226, 230, 0.8);
-}
-
-/* Custom scrollbars */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #F1F3F4;
-}
-::-webkit-scrollbar-thumb {
-  background: #9CC6E0;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid #E4E4DF;
+  color: #52525B;
   border-radius: 9999px;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #7DAECB;
+.liquid-fluid-backdrop {
+  display: none;
 }
-
-/* Print layout for physical OMR */
-@media print {
-  body {
-    background: #FFFFFF !important;
-    color: #000000 !important;
-  }
-  .no-print {
-    display: none !important;
-  }
-  .print-only {
-    display: block !important;
-  }
+.liquid-orb-glacier, .liquid-orb-red {
+  display: none;
 }

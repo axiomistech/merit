@@ -4,7 +4,7 @@ import { getEntitlementsStore } from '@/lib/server/backendStore';
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
-    const studentRegistrationId = searchParams.get('registrationId') || 'FORT-26-000001';
+    const studentRegistrationId = searchParams.get('registrationId') || 'MW-26-000001';
     const paperSlug = searchParams.get('paperSlug');
 
     const store = getEntitlementsStore();

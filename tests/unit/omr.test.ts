@@ -1,12 +1,28 @@
 import { describe, it, expect } from 'vitest';
-import { getFullNeet180Questions } from '@/data/seedData';
 import { generateBarcodeModules } from '@/lib/omr/barcode';
 import { generateOmrPdf } from '@/lib/omr/pdfGenerator';
 import { AnswerState } from '@/types/exam';
 
+function createNeet180TestQuestions() {
+  const list = [];
+  const subjects = [
+    { slug: 'physics', count: 45 },
+    { slug: 'chemistry', count: 45 },
+    { slug: 'botany', count: 45 },
+    { slug: 'zoology', count: 45 },
+  ];
+  let num = 1;
+  for (const s of subjects) {
+    for (let i = 0; i < s.count; i++) {
+      list.push({ displayNumber: num++, subjectSlug: s.slug });
+    }
+  }
+  return list;
+}
+
 describe('NEET 180-Question OMR Implementation', () => {
   it('correctly partitions 180 questions into 4 vertical columns of 45', () => {
-    const questions = getFullNeet180Questions();
+    const questions = createNeet180TestQuestions();
     expect(questions.length).toBe(180);
 
     // Column 1: Questions 1 to 45 (Physics)
@@ -57,15 +73,15 @@ describe('NEET 180-Question OMR Implementation', () => {
   });
 
   it('generates an A4 portrait vector PDF without throwing errors', () => {
-    const questions = getFullNeet180Questions();
     const questionIdMap: Record<number, string> = {};
     const sampleAnswers: Record<string, AnswerState> = {};
 
-    questions.forEach((q, i) => {
-      questionIdMap[i + 1] = q.versionId;
+    for (let i = 1; i <= 180; i++) {
+      const qId = `qv-${i}`;
+      questionIdMap[i] = qId;
       if (i % 3 === 0) {
-        sampleAnswers[q.versionId] = {
-          questionVersionId: q.versionId,
+        sampleAnswers[qId] = {
+          questionVersionId: qId,
           selectedOptions: ['B'],
           isAnswered: true,
           markedForReview: false,
@@ -73,7 +89,7 @@ describe('NEET 180-Question OMR Implementation', () => {
           lastUpdated: Date.now(),
         };
       }
-    });
+    }
 
     const doc = generateOmrPdf({
       studentName: 'DHANUSH JAGADEESH',

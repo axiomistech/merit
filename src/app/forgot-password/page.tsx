@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Shield, ArrowRight, Mail, CheckCircle2 } from 'lucide-react';
 import { toast } from 'sonner';
+import { MeritwiseLogo } from '@/components/brand/MeritwiseLogo';
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('');
@@ -25,12 +26,9 @@ export default function ForgotPasswordPage() {
   return (
     <div className="bg-[#F1F3F4] text-[#20252B] min-h-screen py-20 flex items-center justify-center px-4">
       <div className="w-full max-w-md rounded-[28px] border border-[#DCE2E6] bg-white p-8 sm:p-10 shadow-[0_8px_30px_rgba(38,49,38,0.06)]">
-        <div className="text-center">
-          <Link href="/" className="inline-flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#9CC6E0] text-[#20252B]">
-              <Shield className="h-5 w-5 stroke-[2.5]" />
-            </div>
-            <span className="font-mono text-xl font-bold tracking-wider text-[#20252B]">FORT</span>
+        <div className="text-center flex flex-col items-center">
+          <Link href="/" className="inline-flex items-center focus-visible:outline-none mb-3">
+            <MeritwiseLogo variant="gold" size="lg" />
           </Link>
           <h1 className="mt-4 text-2xl font-bold text-[#20252B] font-sans">Reset Password</h1>
           <p className="mt-1 text-xs text-[#66727D]">

@@ -11,7 +11,7 @@ export default function AdminAttemptsPage() {
     {
       id: 'ATT-2026-NEET-01',
       studentName: 'DHANUSH JAGADEESH',
-      registrationId: 'FORT-26-000001',
+      registrationId: 'MW-26-000001',
       paperName: 'NEET (UG) 180-Question Diagnostic Simulation #1',
       startedAt: '2026-01-02 10:00',
       submittedAt: '2026-01-02 13:20',
@@ -23,7 +23,7 @@ export default function AdminAttemptsPage() {
     {
       id: 'ATT-2026-JM-02',
       studentName: 'Aarav Sharma',
-      registrationId: 'FORT-26-000002',
+      registrationId: 'MW-26-000002',
       paperName: 'JEE Main CBT Simulation #1',
       startedAt: '2026-01-04 12:00',
       submittedAt: '2026-01-04 15:00',
@@ -35,7 +35,7 @@ export default function AdminAttemptsPage() {
     {
       id: 'ATT-2026-UPSC-03',
       studentName: 'Rohan Deshmukh',
-      registrationId: 'FORT-26-000004',
+      registrationId: 'MW-26-000004',
       paperName: 'UPSC CSE Prelims GS-I Test',
       startedAt: '2026-01-08 09:00',
       submittedAt: '2026-01-08 11:00',

@@ -40,7 +40,7 @@ export async function POST(req: Request) {
         originalAmount: price,
         discountAmount,
         productName: product ? product.title : 'Standard Examination Paper Token',
-        studentRegistrationId: studentRegistrationId || 'FORT-26-000001',
+        studentRegistrationId: studentRegistrationId || 'MW-26-000001',
         customer: {
           name: studentName || 'Candidate',
           email: studentEmail || 'student@fortlearning.com',

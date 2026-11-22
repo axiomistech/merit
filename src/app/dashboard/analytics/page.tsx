@@ -65,8 +65,9 @@ export default function StudentAnalyticsPage() {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const storedSession = localStorage.getItem('fort_student_session');
-      let regId = 'FORT-26-000001';
+      const storedSession =
+        localStorage.getItem('merit_student_session') || localStorage.getItem('fort_student_session');
+      let regId = 'MW-26-000001';
       if (storedSession) {
         try {
           const parsed = JSON.parse(storedSession);
@@ -75,7 +76,8 @@ export default function StudentAnalyticsPage() {
       }
 
       // Check if candidate has completed any local attempts
-      const latestAttempt = localStorage.getItem('fort_latest_attempt');
+      const latestAttempt =
+        localStorage.getItem('merit_latest_attempt') || localStorage.getItem('fort_latest_attempt');
       let localHasAttempt = false;
       let localEval: any = null;
       if (latestAttempt) {
@@ -199,7 +201,7 @@ export default function StudentAnalyticsPage() {
           </p>
           <div className="pt-3">
             <Link
-              href="/papers"
+              href="/dashboard/qp-prep"
               className="glass-racing-red inline-flex items-center gap-2 rounded-full px-8 py-3 text-sm font-bold text-white shadow-lg transition-transform hover:scale-[1.02]"
             >
               <span>Unlock Question Paper</span>

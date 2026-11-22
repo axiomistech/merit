@@ -3,30 +3,23 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
-  Shield,
   ArrowRight,
-  BookOpen,
-  Clock,
-  CheckCircle2,
-  AlertTriangle,
-  Flame,
-  BarChart3,
-  Sparkles,
   FileText,
   RotateCcw,
-  Play,
-  Lock,
+  BarChart3,
+  CheckCircle2,
   Gift,
+  Clock,
   Award,
+  ChevronRight,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { TestConfigurationModal } from '@/components/exam/TestConfigurationModal';
 
 export default function StudentDashboardPage() {
   const [candidate, setCandidate] = useState({
     fullName: 'Candidate',
-    registrationId: 'FORT-26-000001',
-    email: 'student@example.com',
+    registrationId: 'MW-26-000001',
+    email: 'candidate@example.com',
   });
 
   const [hasAttempts, setHasAttempts] = useState(false);
@@ -42,50 +35,33 @@ export default function StudentDashboardPage() {
     unlockedPapers: [],
   });
 
-  const [configModal, setConfigModal] = useState<{
-    isOpen: boolean;
-    examName: string;
-    subjectName: string;
-    chapterName: string;
-    questionCount: number;
-    durationMinutes: number;
-    isPaid: boolean;
-    attemptRoute: string;
-  }>({
-    isOpen: false,
-    examName: 'NEET',
-    subjectName: '',
-    chapterName: '',
-    questionCount: 30,
-    durationMinutes: 30,
-    isPaid: false,
-    attemptRoute: '/exam/neet-demo',
-  });
-
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const storedSession = localStorage.getItem('fort_student_session');
+      const storedSession =
+        localStorage.getItem('merit_student_session') || localStorage.getItem('fort_student_session');
       if (storedSession) {
         try {
           const parsed = JSON.parse(storedSession);
           setCandidate({
             fullName: parsed.fullName || 'Candidate',
-            registrationId: parsed.registrationId || 'FORT-26-000001',
-            email: parsed.email || 'student@example.com',
+            registrationId: parsed.registrationId || 'MW-26-000001',
+            email: parsed.email || 'candidate@example.com',
           });
         } catch {}
       }
 
       // Load attempts
       let attemptList: any[] = [];
-      const storedAttempts = localStorage.getItem('fort_student_attempts');
+      const storedAttempts =
+        localStorage.getItem('merit_student_attempts') || localStorage.getItem('fort_student_attempts');
       if (storedAttempts) {
         try {
           attemptList = JSON.parse(storedAttempts);
         } catch {}
       }
 
-      const storedLatest = localStorage.getItem('fort_latest_attempt');
+      const storedLatest =
+        localStorage.getItem('merit_latest_attempt') || localStorage.getItem('fort_latest_attempt');
       if (storedLatest) {
         try {
           const parsedLatest = JSON.parse(storedLatest);
@@ -104,7 +80,7 @@ export default function StudentDashboardPage() {
         }
       }
 
-      // Load entitlements from API or fallback
+      // Load entitlements
       fetch('/api/entitlements')
         .then((r) => r.json())
         .then((data) => {
@@ -117,7 +93,8 @@ export default function StudentDashboardPage() {
           }
         })
         .catch(() => {
-          const storedEnt = localStorage.getItem('fort_entitlements');
+          const storedEnt =
+            localStorage.getItem('merit_entitlements') || localStorage.getItem('fort_entitlements');
           if (storedEnt) {
             try {
               const parsed = JSON.parse(storedEnt);
@@ -128,470 +105,284 @@ export default function StudentDashboardPage() {
     }
   }, []);
 
-  // Compute performance metrics
-  const avgAccuracy = attempts.length > 0
-    ? Math.round(attempts.reduce((acc, a) => acc + (a.accuracy || 0), 0) / attempts.length)
-    : 0;
+  const avgAccuracy =
+    attempts.length > 0
+      ? Math.round(attempts.reduce((acc, a) => acc + (a.accuracy || 0), 0) / attempts.length)
+      : 0;
 
-  const totalQuestionsAttempted = attempts.reduce((acc, a) => acc + (a.totalQuestions || a.attemptedCount || 0), 0);
-
-  const curatedPapers = [
-    {
-      id: 'paper_neet_2025_pyq',
-      name: 'NEET (UG) 2025 Official Question Paper (May Shift)',
-      slug: 'neet-2025-official-pyq',
-      examLabel: 'NEET (UG)',
-      questions: 180,
-      duration: 200,
-      marks: 720,
-      hasOMR: true,
-    },
-    {
-      id: 'paper_jee_2025_shift1',
-      name: 'JEE Main 2025 Session 1 (Jan 24 Shift 1)',
-      slug: 'jee-main-2025-session1-shift1',
-      examLabel: 'JEE Main',
-      questions: 90,
-      duration: 180,
-      marks: 300,
-      hasOMR: false,
-    },
-    {
-      id: 'paper_upsc_prelims_2024',
-      name: 'UPSC Civil Services Prelims 2024 GS-1',
-      slug: 'upsc-prelims-2024-gs1',
-      examLabel: 'UPSC CSE',
-      questions: 100,
-      duration: 120,
-      marks: 200,
-      hasOMR: true,
-    },
-  ];
+  const totalQuestionsAttempted = attempts.reduce(
+    (acc, a) => acc + (a.totalQuestions || a.attemptedCount || 0),
+    0
+  );
 
   return (
-    <div className="relative min-h-screen overflow-hidden p-4 sm:p-6 lg:p-8 space-y-10 max-w-7xl mx-auto">
-      {/* Ambient Liquid Fluid Backdrop (3 Colors Only) */}
-      <div className="liquid-fluid-backdrop">
-        <div className="liquid-orb-glacier top-[-80px] right-[-60px] h-[550px] w-[550px]" />
-        <div className="liquid-orb-red top-[350px] left-[-80px] h-[500px] w-[500px]" />
-        <div className="liquid-orb-glacier bottom-[-100px] right-[10%] h-[600px] w-[600px]" />
+    <div className="space-y-8 max-w-7xl mx-auto text-[#121316]">
+      {/* Greeting Header */}
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#E4E4DF] pb-6">
+        <div>
+          <div className="flex items-center gap-2">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-[#E4E4DF] bg-[#FFFFFF] px-3 py-0.5 text-[11px] font-bold uppercase tracking-wider text-[#52525B]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#8C6D3B]" />
+              CANDIDATE DASHBOARD
+            </span>
+          </div>
+          <h1 className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-[#121316]">
+            Welcome, {candidate.fullName}
+          </h1>
+          <p className="mt-0.5 text-xs text-[#52525B]">
+            Candidate ID: <span className="font-mono font-bold text-[#121316]">{candidate.registrationId}</span> • Verified Profile
+          </p>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <Link
+            href="/dashboard/qp-prep"
+            className="btn-merit-primary h-10 px-5 text-xs font-bold uppercase tracking-wider"
+          >
+            <FileText className="h-3.5 w-3.5" />
+            <span>Question Papers</span>
+            <span className="font-mono text-xs">↗</span>
+          </Link>
+        </div>
       </div>
 
-      <div className="relative z-10 space-y-10">
-        {/* Test Setup Preflight Modal */}
-        <TestConfigurationModal
-          isOpen={configModal.isOpen}
-          onClose={() => setConfigModal({ ...configModal, isOpen: false })}
-          examName={configModal.examName}
-          subjectName={configModal.subjectName}
-          chapterName={configModal.chapterName}
-          questionCount={configModal.questionCount}
-          durationMinutes={configModal.durationMinutes}
-          isPaid={configModal.isPaid}
-          attemptRoute={configModal.attemptRoute}
-        />
-
-        {/* Greeting Header */}
-        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/60 pb-6">
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
-                Student Dashboard
-              </span>
-              <span className="glass-pill rounded-full px-3 py-0.5 font-mono text-[11px] font-bold text-[#20252B]">
-                ACTIVE SESSION
-              </span>
-            </div>
-            <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold font-sans text-[#20252B]">
-              Welcome, {candidate.fullName}
-            </h1>
-            <p className="text-xs text-[#66727D]">
-              Candidate ID: <span className="font-mono font-bold text-[#20252B]">{candidate.registrationId}</span> • Registered Account
-            </p>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <Link
-              href="/papers"
-              className="glass-racing-red flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-bold text-white shadow-lg shadow-[#E4002B]/25 transition-all hover:translate-y-[-1px]"
-            >
-              <FileText className="h-4 w-4" />
-              <span>Browse Question Papers</span>
-            </Link>
-          </div>
-        </div>
-
-        {/* 5-Domain Student Dashboard Navigation Bar */}
-        <div className="glass-polar flex flex-wrap items-center gap-2 rounded-full p-1.5 shadow-sm overflow-x-auto">
-          {[
-            { label: 'Overview', href: '/dashboard', active: true },
-            { label: 'Question Papers', href: '/dashboard/papers', active: false },
-            { label: 'Practice Hub', href: '/dashboard/practice', active: false },
-            { label: 'Performance Analytics', href: '/dashboard/analytics', active: false },
-            { label: 'Leaderboard', href: '/dashboard/leaderboard', active: false },
-            { label: 'Attempt History', href: '/dashboard/history', active: false },
-            { label: 'Bookmarks', href: '/dashboard/bookmarks', active: false },
-            { label: 'Purchases', href: '/dashboard/purchases', active: false },
-            { label: 'Profile', href: '/dashboard/profile', active: false },
-          ].map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={cn(
-                'rounded-full px-4 py-2 text-xs font-bold transition-all whitespace-nowrap',
-                item.active
-                  ? 'bg-[#20252B] text-white shadow-sm'
-                  : 'text-[#66727D] hover:text-[#20252B] hover:bg-white/60'
-              )}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </div>
-
-        {/* ==================================================================== */}
-        {/* FREE PAPER STATUS BANNER (LIQUID GLASS) */}
-        {/* ==================================================================== */}
-        {entitlements.freePaperAvailable ? (
-          <section className="glass-glacier relative overflow-hidden rounded-[36px] p-6 sm:p-8 shadow-xl">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-              <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/60 text-[#20252B] shadow-sm">
-                  <Gift className="h-6 w-6 stroke-[2.2] text-[#E4002B]" />
-                </div>
-                <div>
-                  <div className="inline-flex items-center gap-1.5 rounded-full bg-[#E4002B] px-3 py-0.5 text-[10px] font-bold text-white uppercase tracking-wider shadow-sm">
-                    Complimentary Access Available
-                  </div>
-                  <h2 className="mt-2 text-lg sm:text-xl font-bold font-sans text-[#20252B]">
-                    Your preparation starts here. You have your first question paper waiting.
-                  </h2>
-                  <p className="mt-1 text-xs text-[#20252B]/80 max-w-2xl leading-relaxed">
-                    Choose any examination paper from our library. Your first paper is completely free, with full CBT simulation, automatic scoring, and physical OMR sheet.
-                  </p>
-                </div>
+      {/* ==================================================================== */}
+      {/* COMPLIMENTARY ENTITLEMENT BANNER                                     */}
+      {/* ==================================================================== */}
+      {entitlements.freePaperAvailable ? (
+        <section className="rounded-2xl border border-[#E8E0D0] bg-[#F7F3EB] p-5 sm:p-6 shadow-xs">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+            <div className="flex items-start gap-4">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#FFFFFF] text-[#8C6D3B] shadow-xs">
+                <Gift className="h-5 w-5 stroke-[2.2]" />
               </div>
-
-              <Link
-                href="/papers"
-                className="glass-racing-red inline-flex items-center gap-2 rounded-full px-7 py-3 text-xs font-bold text-white shadow-lg shadow-[#E4002B]/25 transition-all hover:translate-y-[-1px] shrink-0"
-              >
-                <span>Explore Question Papers</span>
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </section>
-        ) : entitlements.freePaperSlug ? (
-          <section className="glass-polar rounded-[36px] p-6 sm:p-8 shadow-xl">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-              <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#9CC6E0]/30 text-[#20252B]">
-                  <CheckCircle2 className="h-6 w-6 stroke-[2.2] text-[#E4002B]" />
+              <div className="space-y-1">
+                <div className="inline-flex items-center gap-1.5 rounded-full bg-[#8C6D3B] px-3 py-0.5 text-[10px] font-bold text-white uppercase tracking-wider">
+                  Complimentary Access Available
                 </div>
-                <div>
-                  <div className="text-[10px] font-bold uppercase tracking-wider text-[#20252B]">
-                    Complimentary Entitlement Active
-                  </div>
-                  <h2 className="mt-1 text-base sm:text-lg font-bold font-sans text-[#20252B]">
-                    Free Paper Unlocked: {entitlements.freePaperSlug}
-                  </h2>
-                  <p className="mt-1 text-xs text-[#66727D]">
-                    Permanent access granted. You can attempt, re-attempt, and review this paper at any time without fees.
-                  </p>
-                </div>
-              </div>
-
-              <Link
-                href={`/exam/${entitlements.freePaperSlug}`}
-                className="inline-flex items-center gap-2 rounded-full bg-[#20252B] px-6 py-3 text-xs font-bold text-white shadow-sm hover:bg-[#20252B]/90 transition-all shrink-0"
-              >
-                <span>Start Examination</span>
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </section>
-        ) : null}
-
-        {/* ==================================================================== */}
-        {/* PERFORMANCE OVERVIEW (LIQUID GLASS METRIC TILES) */}
-        {/* ==================================================================== */}
-        <section className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
-              My Performance Overview
-            </h2>
-            <Link href="/dashboard/analytics" className="text-xs font-bold text-[#20252B] hover:underline">
-              Detailed Analytics →
-            </Link>
-          </div>
-
-          {hasAttempts ? (
-            <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-              <div className="glass-polar rounded-[28px] p-6 shadow-xl">
-                <div className="text-xs text-[#66727D]">Average Accuracy</div>
-                <div className="mt-2 font-mono text-3xl font-black text-[#20252B]">
-                  {avgAccuracy}%
-                </div>
-                <div className="mt-1 text-[11px] text-[#66727D]">Calculated on evaluated mocks</div>
-              </div>
-
-              <div className="glass-polar rounded-[28px] p-6 shadow-xl">
-                <div className="text-xs text-[#66727D]">Latest Mock Score</div>
-                <div className="mt-2 font-mono text-3xl font-black text-[#20252B]">
-                  {latestAttempt?.totalScore ?? latestAttempt?.score ?? 0}
-                  <span className="text-xs text-[#66727D] font-normal"> / {latestAttempt?.maxScore || 720}</span>
-                </div>
-                <div className="mt-1 text-[11px] text-[#20252B] font-semibold">
-                  Accuracy: {latestAttempt?.accuracy ?? 0}%
-                </div>
-              </div>
-
-              <div className="glass-polar rounded-[28px] p-6 shadow-xl">
-                <div className="text-xs text-[#66727D]">Total Questions Attempted</div>
-                <div className="mt-2 font-mono text-3xl font-black text-[#20252B]">
-                  {totalQuestionsAttempted}
-                </div>
-                <div className="mt-1 text-[11px] text-[#66727D]">Across all examination papers</div>
-              </div>
-
-              <div className="glass-polar rounded-[28px] p-6 shadow-xl">
-                <div className="text-xs text-[#66727D]">Tests Completed</div>
-                <div className="mt-2 font-mono text-3xl font-black text-[#20252B]">
-                  {attempts.length}
-                </div>
-                <div className="mt-1 text-[11px] text-[#20252B] font-semibold">Full scorecards generated</div>
-              </div>
-            </div>
-          ) : (
-            <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-                <div className="glass-polar rounded-[28px] p-6 shadow-xl">
-                  <div className="text-xs text-[#66727D]">Average Accuracy</div>
-                  <div className="mt-2 font-mono text-3xl font-black text-[#66727D]">--</div>
-                  <div className="mt-1 text-[11px] text-[#66727D]">Awaiting first test</div>
-                </div>
-
-                <div className="glass-polar rounded-[28px] p-6 shadow-xl">
-                  <div className="text-xs text-[#66727D]">Latest Mock Score</div>
-                  <div className="mt-2 font-mono text-3xl font-black text-[#66727D]">--</div>
-                  <div className="mt-1 text-[11px] text-[#66727D]">Awaiting first test</div>
-                </div>
-
-                <div className="glass-polar rounded-[28px] p-6 shadow-xl">
-                  <div className="text-xs text-[#66727D]">Questions Attempted</div>
-                  <div className="mt-2 font-mono text-3xl font-black text-[#66727D]">0</div>
-                  <div className="mt-1 text-[11px] text-[#66727D]">No attempts yet</div>
-                </div>
-
-                <div className="glass-polar rounded-[28px] p-6 shadow-xl">
-                  <div className="text-xs text-[#66727D]">Tests Completed</div>
-                  <div className="mt-2 font-mono text-3xl font-black text-[#66727D]">0</div>
-                  <div className="mt-1 text-[11px] text-[#66727D]">No tests completed</div>
-                </div>
-              </div>
-
-              <div className="glass-polar rounded-[32px] p-8 text-center space-y-3 shadow-xl">
-                <div className="flex h-12 w-12 mx-auto items-center justify-center rounded-2xl bg-[#9CC6E0]/20 text-[#66727D]">
-                  <BarChart3 className="h-6 w-6 stroke-[2] text-[#20252B]" />
-                </div>
-                <h3 className="text-sm font-bold font-sans text-[#20252B]">
-                  No Performance Insights Recorded
-                </h3>
-                <p className="text-xs text-[#66727D] max-w-md mx-auto leading-relaxed">
-                  Your performance insights will develop as you attempt papers. Complete an examination to begin building your personal analytics.
+                <h2 className="text-base sm:text-lg font-bold text-[#121316]">
+                  Your preparation starts here. Your first examination paper is complimentary.
+                </h2>
+                <p className="text-xs text-[#52525B] max-w-2xl leading-relaxed">
+                  Select any examination paper from our library. Your first paper unlocks free of charge, with complete CBT timed simulation, scorecards, and physical vector A4 OMR sheets.
                 </p>
-                <div className="pt-2">
-                  <Link
-                    href="/papers"
-                    className="glass-racing-red inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-bold text-white shadow-lg shadow-[#E4002B]/25 transition-all hover:translate-y-[-1px]"
-                  >
-                    <span>Unlock a Question Paper</span>
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
               </div>
             </div>
-          )}
+
+            <Link
+              href="/dashboard/qp-prep"
+              className="btn-merit-primary px-6 py-2.5 text-xs font-bold uppercase tracking-wider shrink-0 self-start sm:self-center"
+            >
+              <span>Select Free Paper</span>
+              <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
         </section>
+      ) : entitlements.freePaperSlug ? (
+        <section className="merit-card p-5 sm:p-6 shadow-xs">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+            <div className="flex items-start gap-4">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#F7F3EB] text-[#8C6D3B]">
+                <CheckCircle2 className="h-5 w-5 stroke-[2.2]" />
+              </div>
+              <div>
+                <div className="text-[10px] font-bold uppercase tracking-wider text-[#71717A]">
+                  Active Entitlement
+                </div>
+                <h2 className="text-sm sm:text-base font-bold text-[#121316]">
+                  Complimentary Paper: {entitlements.freePaperSlug}
+                </h2>
+                <p className="text-xs text-[#52525B]">
+                  Permanent access granted. You can attempt, re-attempt, and review this paper at any time.
+                </p>
+              </div>
+            </div>
+
+            <Link
+              href={`/exam/${entitlements.freePaperSlug}`}
+              className="btn-merit-primary px-5 py-2 text-xs font-bold uppercase tracking-wider shrink-0 self-start sm:self-center"
+            >
+              <span>Practice Paper</span>
+              <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
+        </section>
+      ) : null}
 
       {/* ==================================================================== */}
-      {/* CURATED QUESTION PAPERS (DISCOVERY TEASER) */}
+      {/* PERFORMANCE OVERVIEW METRIC TILES                                    */}
       {/* ==================================================================== */}
       <section className="space-y-4">
         <div className="flex items-center justify-between">
-          <div>
-            <h2 className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
-              Question Papers Library
-            </h2>
-            <p className="text-base font-bold font-sans text-[#20252B]">
-              National Entrance Examinations & Previous Years
-            </p>
-          </div>
-          <Link
-            href="/papers"
-            className="text-xs font-bold text-[#20252B] hover:underline"
-          >
-            Browse All Question Papers →
+          <h2 className="text-xs font-bold uppercase tracking-wider text-[#71717A]">
+            Performance Snapshot
+          </h2>
+          <Link href="/dashboard/analytics" className="text-xs font-semibold text-[#121316] hover:underline flex items-center gap-1">
+            <span>Detailed Analytics</span>
+            <ChevronRight className="h-3.5 w-3.5" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {curatedPapers.map((paper) => {
-            const isUnlocked = entitlements.unlockedPapers.includes(paper.slug);
-            return (
-              <div
-                key={paper.id}
-                className="glass-polar rounded-[28px] p-6 shadow-xl hover:border-[#9CC6E0] transition-all flex flex-col justify-between space-y-4"
-              >
-                <div>
-                  <div className="flex items-center justify-between">
-                    <span className="glass-pill rounded-full px-3 py-0.5 text-[10px] font-bold text-[#20252B]">
-                      {paper.examLabel}
-                    </span>
-                    {paper.hasOMR && (
-                      <span className="rounded-full bg-[#9CC6E0]/30 px-2.5 py-0.5 text-[10px] font-bold text-[#20252B]">
-                        OMR SIMULATION
-                      </span>
-                    )}
-                  </div>
-                  <h3 className="mt-3 text-sm font-bold font-sans text-[#20252B] line-clamp-2">
-                    {paper.name}
-                  </h3>
-                  <div className="mt-2 flex items-center gap-3 text-xs text-[#66727D]">
-                    <span>{paper.questions} Qs</span>
-                    <span>•</span>
-                    <span>{paper.duration} Mins</span>
-                    <span>•</span>
-                    <span>{paper.marks} Marks</span>
-                  </div>
-                </div>
-
-                <div className="pt-3 border-t border-white/60 flex items-center justify-between">
-                  <span className="text-xs font-bold text-[#20252B]">
-                    {isUnlocked ? (
-                      <span className="text-[#20252B]">Unlocked</span>
-                    ) : entitlements.freePaperAvailable ? (
-                      <span className="text-[#E4002B]">Free for You</span>
-                    ) : (
-                      '₹10'
-                    )}
-                  </span>
-
-                  {isUnlocked ? (
-                    <Link
-                      href={`/exam/${paper.slug}`}
-                      className="inline-flex items-center gap-1.5 rounded-full bg-[#20252B] px-4 py-1.5 text-xs font-bold text-white hover:bg-[#20252B]/90 transition-all shadow-sm"
-                    >
-                      <span>Start Attempt</span>
-                      <ArrowRight className="h-3.5 w-3.5" />
-                    </Link>
-                  ) : entitlements.freePaperAvailable ? (
-                    <Link
-                      href={`/papers/${paper.slug}`}
-                      className="glass-racing-red inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold text-white shadow-md shadow-[#E4002B]/20 transition-all hover:translate-y-[-1px]"
-                    >
-                      <span>Unlock Free</span>
-                      <Gift className="h-3.5 w-3.5" />
-                    </Link>
-                  ) : (
-                    <Link
-                      href={`/papers/${paper.slug}`}
-                      className="glass-glacier inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold text-[#20252B] transition-all hover:border-[#9CC6E0]"
-                    >
-                      <span>Unlock ₹10</span>
-                      <Lock className="h-3 w-3" />
-                    </Link>
-                  )}
-                </div>
+        {hasAttempts ? (
+          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+            <div className="merit-card p-5 shadow-xs">
+              <div className="text-xs font-semibold text-[#71717A]">Average Accuracy</div>
+              <div className="mt-2 font-mono text-3xl font-extrabold text-[#121316]">
+                {avgAccuracy}%
               </div>
-            );
-          })}
-        </div>
+              <div className="mt-1 text-[11px] text-[#52525B]">Evaluated attempts</div>
+            </div>
+
+            <div className="merit-card p-5 shadow-xs">
+              <div className="text-xs font-semibold text-[#71717A]">Latest Mock Score</div>
+              <div className="mt-2 font-mono text-3xl font-extrabold text-[#121316]">
+                {latestAttempt?.totalScore ?? latestAttempt?.score ?? 0}
+                <span className="text-xs text-[#71717A] font-normal"> / {latestAttempt?.maxScore || 720}</span>
+              </div>
+              <div className="mt-1 text-[11px] text-[#52525B]">
+                Accuracy: {latestAttempt?.accuracy ?? 0}%
+              </div>
+            </div>
+
+            <div className="merit-card p-5 shadow-xs">
+              <div className="text-xs font-semibold text-[#71717A]">Questions Attempted</div>
+              <div className="mt-2 font-mono text-3xl font-extrabold text-[#121316]">
+                {totalQuestionsAttempted}
+              </div>
+              <div className="mt-1 text-[11px] text-[#52525B]">Across all papers</div>
+            </div>
+
+            <div className="merit-card p-5 shadow-xs">
+              <div className="text-xs font-semibold text-[#71717A]">Tests Completed</div>
+              <div className="mt-2 font-mono text-3xl font-extrabold text-[#121316]">
+                {attempts.length}
+              </div>
+              <div className="mt-1 text-[11px] text-[#52525B]">Scorecards generated</div>
+            </div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+            <div className="merit-card p-5 shadow-xs">
+              <div className="text-xs font-semibold text-[#71717A]">Average Accuracy</div>
+              <div className="mt-2 font-mono text-3xl font-extrabold text-[#A1A1AA]">--</div>
+              <div className="mt-1 text-[11px] text-[#71717A]">Awaiting first test</div>
+            </div>
+
+            <div className="merit-card p-5 shadow-xs">
+              <div className="text-xs font-semibold text-[#71717A]">Latest Mock Score</div>
+              <div className="mt-2 font-mono text-3xl font-extrabold text-[#A1A1AA]">--</div>
+              <div className="mt-1 text-[11px] text-[#71717A]">Awaiting first test</div>
+            </div>
+
+            <div className="merit-card p-5 shadow-xs">
+              <div className="text-xs font-semibold text-[#71717A]">Questions Attempted</div>
+              <div className="mt-2 font-mono text-3xl font-extrabold text-[#A1A1AA]">0</div>
+              <div className="mt-1 text-[11px] text-[#71717A]">No attempts yet</div>
+            </div>
+
+            <div className="merit-card p-5 shadow-xs">
+              <div className="text-xs font-semibold text-[#71717A]">Tests Completed</div>
+              <div className="mt-2 font-mono text-3xl font-extrabold text-[#A1A1AA]">0</div>
+              <div className="mt-1 text-[11px] text-[#71717A]">No tests completed</div>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* ==================================================================== */}
-      {/* QUICK PRACTICE (SOLVE IN UNDER 15 SECONDS) */}
+      {/* 4 CORE EXAMINATION CURRICULA                                         */}
       {/* ==================================================================== */}
       <section className="space-y-4">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-xs font-bold uppercase tracking-wider text-[#20252B]">
-              Quick Practice
+            <h2 className="text-xs font-bold uppercase tracking-wider text-[#71717A]">
+              Preparation Disciplines
             </h2>
-            <p className="text-base font-bold font-sans text-[#20252B]">
-              Start Solving in Under 15 Seconds
+            <p className="text-base font-bold text-[#121316]">
+              Target Examination Curricula
             </p>
           </div>
           <Link
-            href="/dashboard/papers"
-            className="text-xs font-bold text-[#20252B] hover:underline"
+            href="/dashboard/qp-prep"
+            className="text-xs font-semibold text-[#121316] hover:underline flex items-center gap-1"
           >
-            View Question Papers →
+            <span>Open Question Papers</span>
+            <ChevronRight className="h-3.5 w-3.5" />
           </Link>
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            { subject: 'Physics', chapter: 'Laws of Motion & Friction', qs: 30, mins: 30, tag: 'High-Yield' },
-            { subject: 'Chemistry', chapter: 'Chemical Bonding', qs: 35, mins: 30, tag: 'NCERT Core' },
-            { subject: 'Botany', chapter: 'Photosynthesis (C3/C4)', qs: 30, mins: 25, tag: 'Mechanisms' },
-            { subject: 'Zoology', chapter: 'Neural Control & Hormones', qs: 30, mins: 25, tag: 'Direct Facts' },
-          ].map((item, idx) => (
+            {
+              exam: 'NEET',
+              fullName: 'Medical Entrance (UG)',
+              desc: 'Authentic 720-mark national medical entrance question papers with vector A4 OMR.',
+              spec: '180 Qs • 200m',
+            },
+            {
+              exam: 'JEE',
+              fullName: 'Engineering Entrance',
+              desc: 'Official sessions with numerical integer fields and multi-select partial marking.',
+              spec: 'Main & Advanced',
+            },
+            {
+              exam: 'UPSC',
+              fullName: 'Civil Services CSE',
+              desc: 'Prelims GS-1 and CSAT simulations calibrated with standard 0.66 negative marking.',
+              spec: 'GS-1 & CSAT',
+            },
+            {
+              exam: 'GATE',
+              fullName: 'Graduate Aptitude Test',
+              desc: 'Branch-specific engineering assessment with MCQ, MSQ, and NAT calculator parity.',
+              spec: 'CS, ME, EE, EC, CE',
+            },
+          ].map((item) => (
             <div
-              key={idx}
-              className="glass-polar rounded-[28px] p-6 shadow-xl hover:border-[#9CC6E0] transition-all flex flex-col justify-between space-y-4"
+              key={item.exam}
+              className="merit-card p-6 shadow-xs flex flex-col justify-between space-y-4"
             >
-              <div>
+              <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="glass-pill rounded-full px-2.5 py-0.5 text-[10px] font-bold text-[#20252B]">
-                    {item.subject}
+                  <span className="font-sans text-lg font-bold text-[#121316] tracking-tight">
+                    {item.exam}
                   </span>
-                  <span className="text-[10px] text-[#66727D] font-semibold">{item.tag}</span>
+                  <span className="font-mono text-[10px] font-bold text-[#71717A] bg-[#F4F4F0] px-2 py-0.5 rounded-full">
+                    {item.spec}
+                  </span>
                 </div>
-                <h3 className="mt-2 text-sm font-bold font-sans text-[#20252B]">
-                  {item.chapter}
-                </h3>
-                <div className="mt-1 text-xs text-[#66727D]">
-                  {item.qs} Questions • {item.mins} Mins
-                </div>
+                <div className="text-xs font-semibold text-[#52525B]">{item.fullName}</div>
+                <p className="text-xs text-[#71717A] leading-relaxed">
+                  {item.desc}
+                </p>
               </div>
 
-              <button
-                onClick={() =>
-                  setConfigModal({
-                    isOpen: true,
-                    examName: 'NEET',
-                    subjectName: item.subject,
-                    chapterName: item.chapter,
-                    questionCount: item.qs,
-                    durationMinutes: item.mins,
-                    isPaid: false,
-                    attemptRoute: '/exam/neet-demo',
-                  })
-                }
-                className="glass-racing-red w-full inline-flex items-center justify-center gap-1.5 rounded-full py-2.5 text-xs font-bold text-white shadow-md shadow-[#E4002B]/20 transition-all hover:translate-y-[-1px]"
+              <Link
+                href="/dashboard/qp-prep"
+                className="btn-merit-secondary w-full py-2 text-xs font-bold uppercase tracking-wider"
               >
-                <span>Start Practice</span>
-                <Play className="h-3 w-3 fill-current" />
-              </button>
+                <span>Browse Papers</span>
+                <span className="font-mono text-xs">↗</span>
+              </Link>
             </div>
           ))}
         </div>
       </section>
 
       {/* ==================================================================== */}
-      {/* RECENT ACTIVITY (ATTEMPT HISTORY) */}
+      {/* RECENT ACTIVITY (ATTEMPT HISTORY)                                     */}
       {/* ==================================================================== */}
-      <section className="glass-polar rounded-[32px] p-8 shadow-xl space-y-4">
-        <div className="flex items-center justify-between border-b border-white/60 pb-4">
+      <section className="merit-card p-6 shadow-xs space-y-4">
+        <div className="flex items-center justify-between border-b border-[#E4E4DF] pb-4">
           <div className="flex items-center gap-2">
-            <RotateCcw className="h-5 w-5 text-[#20252B]" />
-            <h3 className="text-base font-bold font-sans text-[#20252B]">
+            <RotateCcw className="h-4 w-4 text-[#8C6D3B]" />
+            <h3 className="text-sm font-bold text-[#121316]">
               Recent Activity
             </h3>
           </div>
-          <Link href="/dashboard/history" className="text-xs font-bold text-[#20252B] hover:underline">
-            View All History
+          <Link href="/dashboard/history" className="text-xs font-semibold text-[#121316] hover:underline flex items-center gap-1">
+            <span>View All History</span>
+            <ChevronRight className="h-3.5 w-3.5" />
           </Link>
         </div>
 
@@ -599,7 +390,7 @@ export default function StudentDashboardPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead>
-                <tr className="border-b border-white/60 text-[#66727D]">
+                <tr className="border-b border-[#E4E4DF] text-[#71717A]">
                   <th className="pb-3 font-semibold">Examination Paper</th>
                   <th className="pb-3 font-semibold">Date Completed</th>
                   <th className="pb-3 font-semibold">Score</th>
@@ -607,27 +398,27 @@ export default function StudentDashboardPage() {
                   <th className="pb-3 font-semibold text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/40">
+              <tbody className="divide-y divide-[#E4E4DF]/60">
                 {attempts.slice(0, 5).map((att, idx) => (
                   <tr key={att.id || idx}>
-                    <td className="py-3 font-bold text-[#20252B]">
+                    <td className="py-3 font-semibold text-[#121316]">
                       {att.paperName || att.paperSlug || 'Examination Simulation'}
                     </td>
-                    <td className="py-3 text-[#66727D]">
+                    <td className="py-3 text-[#71717A]">
                       {att.completedAt ? new Date(att.completedAt).toLocaleDateString() : 'Recent'}
                     </td>
-                    <td className="py-3 font-mono font-bold text-[#20252B]">
+                    <td className="py-3 font-mono font-bold text-[#121316]">
                       {att.totalScore ?? att.score ?? 0} / {att.maxScore || 720}
                     </td>
-                    <td className="py-3 font-mono font-bold text-[#20252B]">
+                    <td className="py-3 font-mono font-bold text-[#121316]">
                       {att.accuracy ? `${att.accuracy}%` : '--'}
                     </td>
                     <td className="py-3 text-right">
                       <Link
                         href={`/dashboard/results/${att.id || 'latest'}`}
-                        className="font-bold text-[#20252B] hover:text-[#E4002B] transition-colors"
+                        className="font-semibold text-[#121316] hover:text-[#8C6D3B] transition-colors"
                       >
-                        View Result & OMR →
+                        Scorecard & OMR →
                       </Link>
                     </td>
                   </tr>
@@ -637,20 +428,19 @@ export default function StudentDashboardPage() {
           </div>
         ) : (
           <div className="py-8 text-center space-y-3">
-            <p className="text-xs text-[#66727D] max-w-md mx-auto leading-relaxed">
-              No examination attempts recorded yet. Papers you complete will appear here with full scorecards and physical OMR evaluations.
+            <p className="text-xs text-[#71717A] max-w-md mx-auto leading-relaxed">
+              No examination attempts recorded yet. Papers you complete will appear here with full diagnostic scorecards and vector A4 OMR evaluations.
             </p>
             <Link
-              href="/papers"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#20252B] hover:text-[#E4002B] transition-colors"
+              href="/dashboard/qp-prep"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#121316] hover:text-[#8C6D3B] transition-colors"
             >
-              <span>Browse Question Papers</span>
-              <ArrowRight className="h-3 w-3" />
+              <span>Explore Question Papers</span>
+              <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
         )}
       </section>
-    </div>
     </div>
   );
 }

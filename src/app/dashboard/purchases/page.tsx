@@ -93,7 +93,7 @@ export default function StudentPurchasesPage() {
         </div>
 
         <Link
-          href="/papers"
+          href="/dashboard/qp-prep"
           className="glass-racing-red inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-bold text-white shadow-md transition-transform hover:scale-[1.02]"
         >
           <FileText className="h-4 w-4" />
@@ -116,7 +116,7 @@ export default function StudentPurchasesPage() {
           </div>
           <div className="pt-2">
             <Link
-              href="/papers"
+              href="/dashboard/qp-prep"
               className="glass-polar inline-flex items-center gap-2 rounded-full px-7 py-3 text-xs font-bold text-[#20252B] transition-all hover:border-[#9CC6E0]"
             >
               <span>Explore Question Papers</span>

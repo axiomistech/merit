@@ -1,6 +1,12 @@
 import { NextResponse } from 'next/server';
-import { getStoredTests } from '@/lib/admin/store';
-import { SAMPLE_NEET_PAPER, getFullNeet180Questions } from '@/data/seedData';
+import {
+  getStoredPaperBySlugServer,
+  saveStoredPaperServer,
+  deleteStoredPaperServer,
+  getStoredQuestionByIdServer,
+  StoredPaper,
+} from '@/lib/server/backendStore';
+import { verifyServerAdminAccess } from '@/lib/admin/auth';
 
 export async function GET(
   req: Request,
@@ -8,48 +14,171 @@ export async function GET(
 ) {
   try {
     const { slug } = await params;
-    const tests = getStoredTests();
-    const test = tests.find((t) => t.slug === slug || t.id === slug);
+    const { searchParams } = new URL(req.url);
+    const includeQuestions = searchParams.get('includeQuestions') === 'true';
 
-    if (!test && slug !== SAMPLE_NEET_PAPER.slug) {
+    const paper = getStoredPaperBySlugServer(slug);
+
+    if (!paper) {
       return NextResponse.json(
-        { success: false, error: `Test '${slug}' not found` },
+        { success: false, error: `Question paper '${slug}' not found` },
         { status: 404 }
       );
     }
 
-    const samplePaper = SAMPLE_NEET_PAPER as any;
-    const testData = test || {
-      id: 'paper_neet_mock_01',
-      name: SAMPLE_NEET_PAPER.name,
-      slug: SAMPLE_NEET_PAPER.slug,
-      examSlug: 'neet',
-      paperType: 'mock_exam',
-      durationMinutes: SAMPLE_NEET_PAPER.durationMinutes,
-      totalQuestions: SAMPLE_NEET_PAPER.totalQuestions,
-      maxMarks: samplePaper.maxMarks || 720,
-      price: samplePaper.price || 10,
-      isFreeEligible: samplePaper.isFreeEligible ?? true,
-      status: 'published',
-    };
+    const authCheck = verifyServerAdminAccess(req, 'exams.view');
+    const isAdmin = authCheck.authorized;
+
+    // Students cannot view unpublished papers
+    if (!isAdmin && paper.status !== 'published') {
+      return NextResponse.json(
+        { success: false, error: 'Question paper not available or unpublished' },
+        { status: 404 }
+      );
+    }
+
+    let questions: any[] = [];
+    if (includeQuestions && paper.questionIds && paper.questionIds.length > 0) {
+      questions = paper.questionIds
+        .map((qid, idx) => {
+          const q = getStoredQuestionByIdServer(qid);
+          if (!q) return null;
+
+          // If not admin, sanitize: remove confidential answerKey and explanation
+          if (!isAdmin) {
+            return {
+              id: q.id,
+              versionId: q.versionId,
+              displayNumber: idx + 1,
+              questionType: q.questionType,
+              examSlug: q.examSlug,
+              subjectSlug: q.subjectSlug,
+              subjectName: q.subjectName,
+              chapterSlug: q.chapterSlug,
+              conceptName: q.conceptName,
+              difficulty: q.difficulty,
+              marks: q.marks,
+              negativeMarks: q.negativeMarks,
+              text: q.text,
+              imageUrl: q.imageUrl,
+              options: q.options,
+            };
+          }
+
+          return {
+            ...q,
+            displayNumber: idx + 1,
+          };
+        })
+        .filter(Boolean);
+    }
 
     return NextResponse.json({
       success: true,
       data: {
-        ...testData,
-        instructions:
-          '1. The test contains 180 questions divided into Physics, Chemistry, Botany, and Zoology.\n2. Marking Scheme: +4 marks for correct response, -1 mark for incorrect response, 0 for unattempted.\n3. Automatic personalized NEET A4 OMR sheet is generated upon submission.',
-        sections: [
-          { name: 'Physics', questionsCount: 45, maxMarks: 180 },
-          { name: 'Chemistry', questionsCount: 45, maxMarks: 180 },
-          { name: 'Botany', questionsCount: 45, maxMarks: 180 },
-          { name: 'Zoology', questionsCount: 45, maxMarks: 180 },
-        ],
+        ...paper,
+        questions: includeQuestions ? questions : undefined,
       },
     });
   } catch (error: any) {
     return NextResponse.json(
       { success: false, error: error.message || 'Failed to fetch test details' },
+      { status: 500 }
+    );
+  }
+}
+
+export async function PUT(
+  req: Request,
+  { params }: { params: Promise<{ slug: string }> }
+) {
+  try {
+    const authCheck = verifyServerAdminAccess(req, 'tests.edit');
+    if (!authCheck.authorized) {
+      return NextResponse.json(
+        { success: false, error: authCheck.reason || 'Unauthorized administrative action.' },
+        { status: 401 }
+      );
+    }
+
+    const { slug } = await params;
+    const body = await req.json();
+    const existing = getStoredPaperBySlugServer(slug);
+
+    if (!existing) {
+      return NextResponse.json(
+        { success: false, error: `Question paper '${slug}' not found` },
+        { status: 404 }
+      );
+    }
+
+    const updated: StoredPaper = {
+      ...existing,
+      ...body,
+      id: existing.id,
+      slug: existing.slug,
+      updated_at: new Date().toISOString(),
+      published_at:
+        body.status === 'published' && existing.status !== 'published'
+          ? new Date().toISOString()
+          : existing.published_at,
+    };
+
+    const saveResult = saveStoredPaperServer(updated);
+    if (!saveResult.success) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Question paper validation failed',
+          details: saveResult.errors,
+        },
+        { status: 400 }
+      );
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: 'Question paper updated successfully.',
+      data: updated,
+    });
+  } catch (error: any) {
+    return NextResponse.json(
+      { success: false, error: error.message || 'Failed to update question paper' },
+      { status: 500 }
+    );
+  }
+}
+
+export async function DELETE(
+  req: Request,
+  { params }: { params: Promise<{ slug: string }> }
+) {
+  try {
+    const authCheck = verifyServerAdminAccess(req, 'tests.edit');
+    if (!authCheck.authorized) {
+      return NextResponse.json(
+        { success: false, error: authCheck.reason || 'Unauthorized administrative action.' },
+        { status: 401 }
+      );
+    }
+
+    const { slug } = await params;
+    const deleted = deleteStoredPaperServer(slug);
+
+    if (!deleted) {
+      return NextResponse.json(
+        { success: false, error: `Question paper '${slug}' not found` },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: `Question paper '${slug}' deleted successfully.`,
+    });
+  } catch (error: any) {
+    return NextResponse.json(
+      { success: false, error: error.message || 'Failed to delete question paper' },
       { status: 500 }
     );
   }

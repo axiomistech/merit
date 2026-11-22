@@ -168,7 +168,7 @@ export default function AdminStudentsPage() {
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search by FORT ID, Name, or Email..."
+            placeholder="Search by Candidate ID, Name, or Email..."
             className="w-full rounded-full border border-[#DCE2E6] bg-white py-2 pl-10 pr-4 text-xs text-[#20252B] focus:border-[#20252B] focus:outline-none"
           />
         </div>

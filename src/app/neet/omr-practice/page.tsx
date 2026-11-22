@@ -58,7 +58,7 @@ export default function NeetOmrPracticePage() {
             className="flex items-center gap-2 text-xs font-semibold text-[#66727D] hover:text-[#20252B]"
           >
             <ArrowLeft className="h-4 w-4" />
-            <span>Back to FORT NEET</span>
+            <span>Back to NEET Overview</span>
           </Link>
 
           <div className="flex items-center gap-3">
@@ -95,8 +95,8 @@ export default function NeetOmrPracticePage() {
           questionIdMap={questionIdMap}
           onSelectOption={handleSelectOption}
           studentName="DHANUSH JAGADEESH"
-          registrationId="FORT-26-000001"
-          examName="FORT NEET (UG)"
+          registrationId="MW-26-000001"
+          examName="NEET (UG)"
           paperName="OMR Speed & Shading Drill"
           attemptId="ATT-2026-OMR-PRACTICE"
         />

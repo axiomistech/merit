@@ -1,0 +1,19 @@
+{
+  "questions": [],
+  "papers": [],
+  "entitlements": {},
+  "attempts": {},
+  "tutorialVideo": {
+    "id": "vid_test_123",
+    "enabled": true,
+    "videoUrl": "/api/videos/tutorial_test_123.mp4",
+    "storageKey": "tutorial-videos/tutorial_test_123.mp4",
+    "fileName": "tutorial_test_123.mp4",
+    "title": "Custom Platform Walkthrough",
+    "subtitle": "Native HTML5 Video Streaming",
+    "description": "Exam simulation walkthrough",
+    "mimeType": "video/mp4",
+    "sizeBytes": 1548576,
+    "updated_at": "2026-11-22T20:22:53.124Z"
+  }
+}

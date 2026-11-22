@@ -14,7 +14,7 @@ import {
   Layers,
   ChevronRight,
 } from 'lucide-react';
-import { EXAMINATIONS, SAMPLE_NEET_PAPER } from '@/data/seedData';
+import { EXAMINATIONS } from '@/data/seedData';
 import { MathText } from '@/components/ui/MathText';
 
 export default function PublicExamDetailPage() {
@@ -82,10 +82,10 @@ export default function PublicExamDetailPage() {
 
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <Link
-              href="/papers"
+              href="/practice"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#20252B] text-white text-xs font-semibold hover:bg-[#344034] transition-colors shadow-sm"
             >
-              Explore Official Question Papers
+              Start Practice
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
@@ -135,40 +135,24 @@ export default function PublicExamDetailPage() {
           </div>
         </div>
 
-        {/* Sample Question Card with KaTeX rendering */}
-        <div className="rounded-[28px] border border-[#DCE2E6] bg-white p-8 sm:p-10 shadow-[0_4px_20px_rgba(38,49,38,0.04)] space-y-4">
-          <div className="flex items-center justify-between border-b border-[#DCE2E6] pb-4">
-            <div>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-[#9CC6E0]">Sample Examination Question</span>
-              <h3 className="text-base font-bold text-[#20252B]">Physics: Laws of Motion & Friction</h3>
-            </div>
-            <span className="text-xs font-mono font-bold text-[#66727D]">+4 / -1 Marks</span>
+        {/* Preparation Gateway */}
+        <div className="rounded-[28px] border border-[#DCE2E6] bg-white p-8 sm:p-10 shadow-[0_4px_20px_rgba(38,49,38,0.04)] space-y-4 text-center">
+          <div className="max-w-md mx-auto space-y-2">
+            <h3 className="text-xl font-bold font-sans text-[#20252B]">
+              Ready to Practice {exam.name}?
+            </h3>
+            <p className="text-xs text-[#66727D] leading-relaxed">
+              Access published examination papers, timed CBT simulations, and physical vector A4 OMR sheets in your QP Prep workspace.
+            </p>
           </div>
-
-          <div className="text-xs text-[#20252B] leading-relaxed pt-2">
-            <MathText text="A block of mass $m = 2\\text{ kg}$ rests on a rough horizontal surface with coefficient of static friction $\\mu_s = 0.4$. A horizontal force $F = 6\\text{ N}$ is applied to the block. Taking $g = 10\\text{ m/s}^2$, what is the magnitude of the frictional force exerted by the surface on the block?" />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
-            {[
-              { key: 'A', text: '$8\\text{ N}$' },
-              { key: 'B', text: '$6\\text{ N}$ (Correct)' },
-              { key: 'C', text: '$0\\text{ N}$' },
-              { key: 'D', text: '$2\\text{ N}$' },
-            ].map((opt) => (
-              <div
-                key={opt.key}
-                className="flex items-center gap-2 p-2.5 rounded-xl border border-[#DCE2E6] text-xs bg-[#F1F3F4]/60"
-              >
-                <span className="font-bold font-mono w-5 text-[#66727D]">{opt.key}.</span>
-                <MathText text={opt.text} />
-              </div>
-            ))}
-          </div>
-
-          <div className="pt-3 border-t border-[#DCE2E6] text-[11px] text-[#66727D]">
-            <span className="font-bold text-[#20252B]">Explanation: </span>
-            <MathText text="Maximum static friction $f_{s,\\max} = \\mu_s N = 0.4 \\times (2 \\times 10) = 8\\text{ N}$. Since the applied force $F = 6\\text{ N} < f_{s,\\max}$, the block does not slip, and static friction self-adjusts to exactly balance the applied force: $f_s = 6\\text{ N}$." />
+          <div className="pt-2">
+            <Link
+              href="/dashboard/qp-prep"
+              className="glass-racing-red inline-flex items-center gap-2 rounded-full px-8 py-3 text-xs font-bold text-white shadow-lg shadow-[#E4002B]/25 transition-transform hover:scale-[1.02]"
+            >
+              <span>Start Practice in QP Prep</span>
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </div>

@@ -13,7 +13,7 @@ import {
   Layers,
   ChevronRight,
 } from 'lucide-react';
-import { EXAMINATIONS, SAMPLE_NEET_PAPER } from '@/data/seedData';
+import { EXAMINATIONS } from '@/data/seedData';
 
 export default function StudentNeetDashboardPage() {
   const [selectedSubject, setSelectedSubject] = useState('physics');
@@ -34,7 +34,7 @@ export default function StudentNeetDashboardPage() {
         <div>
           <div className="flex items-center gap-2">
             <span className="rounded-lg bg-[#E9EEF1] px-2.5 py-1 text-xs font-bold text-[#20252B]">
-              FORT NEET (UG)
+              NEET (UG) Medical
             </span>
             <span className="text-xs text-[#66727D]">Physics • Chemistry • Botany • Zoology</span>
           </div>

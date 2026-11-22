@@ -19,11 +19,11 @@ export async function POST(req: Request) {
 
     const supabase = createAdminClient();
 
-    // 1. Generate atomic registration ID: FORT-26-000001
-    let registrationId = `FORT-26-${Math.floor(100000 + Math.random() * 900000)}`;
+    // 1. Generate atomic registration ID: MW-26-XXXXXX (MERITWISE)
+    let registrationId = `MW-26-${Math.floor(100000 + Math.random() * 900000)}`;
 
     try {
-      const { data: generatedId } = await supabase.rpc('generate_fort_registration_id');
+      const { data: generatedId } = await supabase.rpc('generate_meritwise_registration_id');
       if (generatedId) {
         registrationId = generatedId;
       }

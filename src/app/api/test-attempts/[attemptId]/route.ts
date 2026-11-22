@@ -1,7 +1,5 @@
 import { NextResponse } from 'next/server';
 import { getAttemptsStore } from '@/lib/server/backendStore';
-import { SAMPLE_NEET_PAPER, getFullNeet180Questions } from '@/data/seedData';
-import { getStoredTests } from '@/lib/admin/store';
 
 export async function GET(
   req: Request,
@@ -10,60 +8,13 @@ export async function GET(
   try {
     const { attemptId } = await params;
     const store = getAttemptsStore();
-    let attempt = store[attemptId];
+    const attempt = store[attemptId];
 
-    // If attempt is not yet in store (e.g. direct link or fresh load), auto-initialize authoritatively
     if (!attempt) {
-      const paper = SAMPLE_NEET_PAPER;
-      const durationMinutes = paper.durationMinutes || 200;
-      const now = new Date();
-      const deadline = new Date(now.getTime() + durationMinutes * 60 * 1000);
-      const questions = getFullNeet180Questions();
-
-      const questionsSnapshot = questions.map((q) => ({
-        versionId: q.versionId,
-        displayNumber: q.displayNumber,
-        questionType: q.questionType,
-        subjectSlug: q.subjectSlug,
-        subjectName: q.subjectName,
-        conceptSlug: q.conceptSlug || '',
-        conceptName: q.conceptName || '',
-        difficulty: q.difficulty,
-        marks: q.marks,
-        negativeMarks: q.negativeMarks,
-        text: q.text,
-        options: q.options,
-        answerKey: q.answerKey,
-        explanation: q.explanation,
-      }));
-
-      attempt = {
-        id: attemptId,
-        studentId: 'usr_candidate_01',
-        studentRegistrationId: 'FORT-26-000001',
-        studentName: 'Candidate',
-        paperId: paper.id,
-        paperSlug: paper.slug,
-        paperName: paper.name,
-        paperSnapshot: {
-          id: paper.id,
-          name: paper.name,
-          slug: paper.slug,
-          durationMinutes,
-          maxMarks: (paper as any).maxMarks || 720,
-          negativeMarkingScheme: '-1 for incorrect, +4 for correct',
-        },
-        questionsSnapshot,
-        status: 'active',
-        started_at: now.toISOString(),
-        deadline_at: deadline.toISOString(),
-        submitted_at: null,
-        durationSeconds: 0,
-        responses: {},
-        result: null,
-      };
-
-      store[attemptId] = attempt;
+      return NextResponse.json(
+        { success: false, error: `Examination attempt '${attemptId}' not found.` },
+        { status: 404 }
+      );
     }
 
     const now = new Date();
@@ -77,18 +28,20 @@ export async function GET(
     }
 
     // SANITIZATION: Never expose correct answer keys or explanations during active/un-submitted examination
-    const sanitizedQuestions = attempt.questionsSnapshot.map((q: any) => ({
+    const sanitizedQuestions = (attempt.questionsSnapshot || []).map((q: any) => ({
+      id: q.id,
       versionId: q.versionId,
       displayNumber: q.displayNumber,
       questionType: q.questionType,
       subjectSlug: q.subjectSlug,
       subjectName: q.subjectName,
-      conceptSlug: q.conceptSlug,
+      chapterSlug: q.chapterSlug,
       conceptName: q.conceptName,
       difficulty: q.difficulty,
       marks: q.marks,
       negativeMarks: q.negativeMarks,
       text: q.text,
+      imageUrl: q.imageUrl,
       options: q.options,
     }));
 
@@ -102,9 +55,9 @@ export async function GET(
         startedAt: attempt.started_at,
         deadlineAt: attempt.deadline_at,
         serverTime: now.toISOString(),
-        durationMinutes: attempt.paperSnapshot.durationMinutes,
+        durationMinutes: attempt.paperSnapshot?.durationMinutes || 180,
         totalQuestions: sanitizedQuestions.length,
-        maxMarks: attempt.paperSnapshot.maxMarks,
+        maxMarks: attempt.paperSnapshot?.maxMarks || 720,
         responses: attempt.responses || {},
         questions: sanitizedQuestions,
         result: attempt.result || null,

@@ -10,7 +10,6 @@ import {
   Award,
   CheckCircle2,
   Search,
-  Filter,
 } from 'lucide-react';
 import { EXAMINATIONS } from '@/data/seedData';
 import { cn } from '@/lib/utils';
@@ -20,6 +19,10 @@ export default function PublicExamsPage() {
   const [categoryFilter, setCategoryFilter] = useState('all');
 
   const filteredExams = EXAMINATIONS.filter((e) => {
+    // Only show primary exams
+    if (['jee-main', 'jee-advanced'].includes(e.slug) && categoryFilter !== 'engineering') {
+      return false;
+    }
     const matchesSearch =
       e.name.toLowerCase().includes(search.toLowerCase()) ||
       e.shortName.toLowerCase().includes(search.toLowerCase()) ||
@@ -29,49 +32,50 @@ export default function PublicExamsPage() {
   });
 
   return (
-    <div className="bg-[#F1F3F4] text-[#20252B] min-h-screen py-16 px-4 sm:px-6 lg:px-8">
+    <div className="bg-[#FBFBFA] text-[#121316] min-h-screen py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-12">
-        {/* Hero Header */}
+        {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#9CC6E0]/40 bg-[#9CC6E0]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-[#3B4C30]">
-            <BookOpen className="h-3.5 w-3.5" />
-            Curated Examination Catalogs
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#E4E4DF] bg-[#F7F3EB] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#6E5328]">
+            <BookOpen className="h-3.5 w-3.5 text-[#8C6D3B]" />
+            <span>EXAMINATION CURRICULA</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-bold font-sans text-[#20252B] tracking-tight">
-            Discover Your Target Examination
+          <h1 className="text-3xl sm:text-5xl font-extrabold font-sans text-[#121316] tracking-tight">
+            Target Curricula & Formats
           </h1>
-          <p className="text-sm sm:text-base text-[#66727D] leading-relaxed">
-            Authentic examination simulations, curated topic-wise questions, authentic printable A4 OMR sheets, and sub-concept diagnostic analytics.
+          <p className="text-sm sm:text-base text-[#52525B] leading-relaxed">
+            Strictly focused on India&apos;s most competitive entrance examinations. Standardized blueprints, server-timed CBT testing, and instant vector OMR evaluations.
           </p>
         </div>
 
         {/* Search & Filters */}
-        <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[#DCE2E6] bg-white p-4 shadow-[0_2px_8px_rgba(38,49,38,0.04)] max-w-4xl mx-auto">
+        <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[#E4E4DF] bg-white p-4 max-w-4xl mx-auto shadow-xs">
           <div className="relative flex-1 min-w-[260px]">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[#66727D]" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[#71717A]" />
             <input
               type="text"
-              placeholder="Search exam name (NEET, JEE, UPSC, GATE)..."
+              placeholder="Search exam (NEET, JEE, UPSC, GATE)..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full rounded-xl border border-[#DCE2E6] bg-[#F1F3F4] pl-10 pr-4 py-2 text-xs text-[#20252B] placeholder-[#A3A89E] focus:outline-none focus:border-[#9CC6E0]"
+              className="w-full rounded-xl border border-[#E4E4DF] bg-[#FBFBFA] pl-10 pr-4 py-2 text-xs text-[#121316] placeholder-[#71717A] focus:outline-none focus:border-[#121316]"
             />
           </div>
           <div className="flex items-center gap-2">
             {[
-              { id: 'all', label: 'All Exams' },
+              { id: 'all', label: 'All Curricula' },
               { id: 'medical', label: 'Medical' },
               { id: 'engineering', label: 'Engineering' },
               { id: 'civil_services', label: 'Civil Services' },
+              { id: 'postgraduate', label: 'GATE' },
             ].map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setCategoryFilter(cat.id)}
                 className={cn(
-                  'px-3 py-1.5 text-xs font-semibold rounded-lg border transition-colors',
+                  'px-3.5 py-1.5 text-xs font-semibold rounded-full border transition-colors',
                   categoryFilter === cat.id
-                    ? 'bg-[#20252B] text-white border-[#20252B]'
-                    : 'bg-white text-[#52584E] border-[#DCE2E6] hover:bg-[#F1F3F4]'
+                    ? 'bg-[#121316] text-white border-[#121316]'
+                    : 'bg-white text-[#52525B] border-[#E4E4DF] hover:bg-[#F4F4F0]'
                 )}
               >
                 {cat.label}
@@ -81,39 +85,34 @@ export default function PublicExamsPage() {
         </div>
 
         {/* Exams Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {filteredExams.map((exam) => (
             <div
-              key={exam.slug}
-              className="rounded-[24px] border border-[#DCE2E6] bg-white p-7 shadow-[0_4px_20px_rgba(38,49,38,0.04)] flex flex-col justify-between space-y-6 hover:border-[#9CC6E0] hover:shadow-[0_8px_30px_rgba(38,49,38,0.08)] transition-all"
+              key={exam.id}
+              className="merit-card p-8 flex flex-col justify-between space-y-6"
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#F1F3F4] text-[#52584E] border border-[#DCE2E6]">
-                    {exam.category.replace('_', ' ')}
-                  </span>
-                  <span className="text-xs font-mono font-bold text-[#9CC6E0]">
+                  <span className="rounded-full bg-[#F4F4F0] px-3 py-1 font-mono text-xs font-bold text-[#121316]">
                     {exam.shortName}
                   </span>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-[#8C6D3B]">
+                    {exam.category.replace('_', ' ')}
+                  </span>
                 </div>
 
-                <div>
-                  <h3 className="text-xl font-bold font-sans text-[#20252B]">{exam.name}</h3>
-                  <p className="mt-1.5 text-xs text-[#66727D] leading-relaxed line-clamp-3">
-                    {exam.description}
-                  </p>
-                </div>
+                <h2 className="text-2xl font-bold font-sans text-[#121316] tracking-tight">{exam.name}</h2>
+                <p className="text-xs text-[#52525B] leading-relaxed">{exam.description}</p>
 
-                {/* Subjects Pill List */}
-                <div className="space-y-1.5 pt-2">
-                  <div className="text-[11px] font-bold uppercase tracking-wider text-[#66727D]">
-                    Covered Disciplines ({exam.subjects.length}):
+                <div className="pt-3 border-t border-[#E4E4DF]">
+                  <div className="text-[11px] font-bold uppercase tracking-wider text-[#71717A] mb-2">
+                    Key Disciplines
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {exam.subjects.map((sub) => (
                       <span
-                        key={sub.slug}
-                        className="px-2.5 py-1 rounded-lg bg-[#F1F3F4] text-[11px] font-medium text-[#20252B]"
+                        key={sub.id}
+                        className="rounded-full border border-[#E4E4DF] bg-[#FBFBFA] px-3 py-1 text-[11px] font-medium text-[#121316]"
                       >
                         {sub.name}
                       </span>
@@ -122,19 +121,20 @@ export default function PublicExamsPage() {
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-[#DCE2E6] flex items-center justify-between">
+              <div className="pt-4 border-t border-[#E4E4DF] flex items-center justify-between">
                 <Link
-                  href={`/exams/${exam.slug}`}
-                  className="text-xs font-semibold text-[#52584E] hover:text-[#20252B] transition-colors"
+                  href={`/${exam.slug}`}
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#121316] hover:text-[#8C6D3B] transition-colors"
                 >
-                  View Syllabus & Blueprint
+                  <span>Explore Blueprint</span>
+                  <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
+
                 <Link
-                  href={`/login`}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#20252B] text-white text-xs font-semibold hover:bg-[#344034] transition-colors shadow-sm"
+                  href="/practice"
+                  className="btn-merit-primary text-xs py-2 px-5"
                 >
                   Start Practice
-                  <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </div>
             </div>

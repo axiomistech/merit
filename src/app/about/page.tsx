@@ -1,106 +1,119 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
 import {
-  Shield,
-  BookOpen,
   ArrowRight,
-  Award,
   CheckCircle2,
   Clock,
-  Layers,
-  Sparkles,
-  Target,
+  ShieldCheck,
+  Award,
 } from 'lucide-react';
+import { MeritwiseLogo } from '@/components/brand/MeritwiseLogo';
+
+export const metadata = {
+  title: 'About — MERITWISE',
+  description: 'Serious competitive examination practice and assessment platform for NEET, JEE, UPSC, and GATE.',
+};
 
 export default function AboutPage() {
   return (
-    <div className="bg-[#F1F3F4] text-[#20252B] min-h-screen py-16 px-4 sm:px-6 lg:px-8">
+    <div className="bg-[#FBFBFA] text-[#121316] min-h-screen py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto space-y-12">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#9CC6E0]/40 bg-[#9CC6E0]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-[#3B4C30]">
-            <Shield className="h-3.5 w-3.5" />
-            About FORT Learning
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#E4E4DF] bg-[#FFFFFF] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#52525B]">
+            <MeritwiseLogo variant="gold" size="xs" showWordmark={false} />
+            <span>About MERITWISE</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-bold font-sans text-[#20252B] tracking-tight">
-            Knowledge. Built Strong.
+          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#121316]">
+            Practice with purpose. Progress with merit.
           </h1>
-          <p className="text-sm sm:text-base text-[#66727D] leading-relaxed">
-            FORT Learning is an online examination preparation, practice, and diagnostic assessment ecosystem engineered for serious students.
+          <p className="text-base text-[#52525B] leading-relaxed">
+            MERITWISE is a serious digital examination practice and assessment platform built for students preparing for India's high-stakes competitive examinations.
           </p>
         </div>
 
-        {/* The 6-Stage Pedagogy */}
-        <div className="rounded-[28px] border border-[#DCE2E6] bg-white p-8 sm:p-10 shadow-[0_4px_20px_rgba(38,49,38,0.04)] space-y-6">
-          <h2 className="text-2xl font-bold font-sans text-[#20252B]">Our Core Pedagogy</h2>
-          <p className="text-xs text-[#66727D] leading-relaxed">
-            We reject superficial question dumping and generic percentage scores. FORT guides candidates through a structured cognitive loop designed to systematically eliminate conceptual vulnerabilities:
+        {/* Core Principles */}
+        <div className="merit-card p-8 sm:p-10 shadow-xs space-y-6">
+          <h2 className="text-xl font-bold text-[#121316]">Purpose & Philosophy</h2>
+          <p className="text-xs text-[#52525B] leading-relaxed">
+            We reject the coaching-institute clutter, fake toppers, inflated question counts, and aggressive sales funnels that dominate online education. MERITWISE is designed as quiet, high-precision academic examination infrastructure.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 pt-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 pt-2">
             {[
-              { step: '01', title: 'Learning', desc: 'Core concept mastery structured through hierarchical syllabus trees.' },
-              { step: '02', title: 'Understanding', desc: 'Mathematical derivations and KaTeX-rendered multi-step explanations.' },
-              { step: '03', title: 'Practice', desc: 'Curated chapter-wise MCQs with timed 15-second standard feedback.' },
-              { step: '04', title: 'Examination', desc: 'Realistic full-length simulations with authentic printable A4 OMR sheets.' },
-              { step: '05', title: 'Analysis', desc: 'Sub-concept diagnostic accuracy, speed velocity, and penalty metrics.' },
-              { step: '06', title: 'Improvement', desc: 'Targeted practice recommendations generated from real attempt weaknesses.' },
+              { step: '01', title: 'Curated Papers', desc: 'Authentic examination papers adhering strictly to official examination blueprints.' },
+              { step: '02', title: 'Timed Testing', desc: 'Server-authoritative test countdowns with automated submission sync.' },
+              { step: '03', title: 'Objective Evaluation', desc: 'Rigorous scoring engines matching negative and partial marking rules.' },
+              { step: '04', title: 'Merit Diagnostics', desc: 'Sectional speed, accuracy, and sub-concept mastery analysis.' },
             ].map((p) => (
-              <div key={p.step} className="p-4 rounded-2xl border border-[#DCE2E6] bg-[#F1F3F4]/50 space-y-1.5">
-                <span className="font-mono text-xs font-bold text-[#9CC6E0]">{p.step}</span>
-                <h3 className="font-bold text-sm text-[#20252B]">{p.title}</h3>
-                <p className="text-[11px] text-[#66727D] leading-relaxed">{p.desc}</p>
+              <div key={p.step} className="p-4 rounded-xl border border-[#E4E4DF] bg-[#FFFFFF] space-y-1.5">
+                <span className="font-mono text-xs font-bold text-[#8C6D3B]">{p.step}</span>
+                <h3 className="font-bold text-sm text-[#121316]">{p.title}</h3>
+                <p className="text-[11px] text-[#71717A] leading-relaxed">{p.desc}</p>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Architectural Principles */}
-        <div className="rounded-[28px] border border-[#DCE2E6] bg-white p-8 sm:p-10 shadow-[0_4px_20px_rgba(38,49,38,0.04)] space-y-6">
-          <h2 className="text-2xl font-bold font-sans text-[#20252B]">Engineering & Integrity Principles</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-[#52584E]">
-            <div className="flex items-start gap-3 p-4 rounded-xl border border-[#DCE2E6]">
-              <CheckCircle2 className="h-4 w-4 text-[#9CC6E0] shrink-0 mt-0.5" />
+        {/* 4 Focused Disciplines */}
+        <div className="merit-card p-8 sm:p-10 shadow-xs space-y-6">
+          <h2 className="text-xl font-bold text-[#121316]">Strict Four-Curriculum Focus</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-[#52525B]">
+            <div className="p-4 rounded-xl border border-[#E4E4DF] bg-[#FFFFFF] space-y-1">
+              <div className="font-bold text-[#121316] text-sm">NEET (UG)</div>
+              <p className="text-[#71717A]">
+                180-question timed simulations across Physics, Chemistry, Botany, and Zoology with instant vector A4 OMR sheets.
+              </p>
+            </div>
+            <div className="p-4 rounded-xl border border-[#E4E4DF] bg-[#FFFFFF] space-y-1">
+              <div className="font-bold text-[#121316] text-sm">JEE (Main & Advanced)</div>
+              <p className="text-[#71717A]">
+                Computer-Based Test simulation with single-choice, multi-select partial scoring, and numerical value entry.
+              </p>
+            </div>
+            <div className="p-4 rounded-xl border border-[#E4E4DF] bg-[#FFFFFF] space-y-1">
+              <div className="font-bold text-[#121316] text-sm">UPSC Civil Services</div>
+              <p className="text-[#71717A]">
+                Prelims General Studies Paper I and CSAT Paper II with standard fractional negative marking calibration.
+              </p>
+            </div>
+            <div className="p-4 rounded-xl border border-[#E4E4DF] bg-[#FFFFFF] space-y-1">
+              <div className="font-bold text-[#121316] text-sm">GATE</div>
+              <p className="text-[#71717A]">
+                Branch-specific examination preparation across CS, DA, ME, EE, EC, and CE with MCQ, MSQ, and NAT questions.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Engineering Principles */}
+        <div className="merit-card p-8 sm:p-10 shadow-xs space-y-6">
+          <h2 className="text-xl font-bold text-[#121316]">Platform Integrity Standards</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div className="flex items-start gap-3 p-4 rounded-xl border border-[#E4E4DF] bg-[#FFFFFF]">
+              <ShieldCheck className="h-4 w-4 text-[#8C6D3B] shrink-0 mt-0.5" />
               <div>
-                <div className="font-bold text-[#20252B]">Immutable Historical Snapshots</div>
-                <div className="text-[#66727D] mt-0.5">When questions or scoring rules are updated in the question bank, candidate past attempts remain permanently unchanged and reproducible.</div>
+                <div className="font-bold text-[#121316]">Zero AI-Generated Questions</div>
+                <div className="text-[#71717A] mt-0.5">Every paper and solution is verified and entered by authorized academic administrators.</div>
               </div>
             </div>
 
-            <div className="flex items-start gap-3 p-4 rounded-xl border border-[#DCE2E6]">
-              <CheckCircle2 className="h-4 w-4 text-[#9CC6E0] shrink-0 mt-0.5" />
+            <div className="flex items-start gap-3 p-4 rounded-xl border border-[#E4E4DF] bg-[#FFFFFF]">
+              <Clock className="h-4 w-4 text-[#8C6D3B] shrink-0 mt-0.5" />
               <div>
-                <div className="font-bold text-[#20252B]">Authoritative Server-Side Scoring</div>
-                <div className="text-[#66727D] mt-0.5">Exam timers, question responses, answer evaluation, and negative marking are calculated strictly on the backend—never trusting client-side manipulation.</div>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-3 p-4 rounded-xl border border-[#DCE2E6]">
-              <CheckCircle2 className="h-4 w-4 text-[#9CC6E0] shrink-0 mt-0.5" />
-              <div>
-                <div className="font-bold text-[#20252B]">Authentic Printable NEET OMR</div>
-                <div className="text-[#66727D] mt-0.5">True-to-life 180-question A4 vector OMR sheets with barcode serials, roll number bubbles, and candidate declaration boxes.</div>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-3 p-4 rounded-xl border border-[#DCE2E6]">
-              <CheckCircle2 className="h-4 w-4 text-[#9CC6E0] shrink-0 mt-0.5" />
-              <div>
-                <div className="font-bold text-[#20252B]">Zero Fake Statistics</div>
-                <div className="text-[#66727D] mt-0.5">All analytics, score percentiles, and recommendations are derived dynamically from verified database attempt records.</div>
+                <div className="font-bold text-[#121316]">Authoritative Timing & Scoring</div>
+                <div className="text-[#71717A] mt-0.5">Test windows and scores are calculated server-side to guarantee consistency and security.</div>
               </div>
             </div>
           </div>
 
-          <div className="pt-4 border-t border-[#DCE2E6] flex justify-center">
+          <div className="pt-4 border-t border-[#E4E4DF] flex justify-center">
             <Link
               href="/signup"
-              className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-[#20252B] text-white text-xs font-semibold hover:bg-[#344034] transition-colors shadow-sm"
+              className="btn-merit-primary px-8 py-3 text-xs font-bold uppercase tracking-wider"
             >
-              Join FORT Learning Today
-              <ArrowRight className="h-4 w-4" />
+              <span>Get Started with MERITWISE</span>
+              <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
         </div>

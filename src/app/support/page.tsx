@@ -22,7 +22,7 @@ export default function SupportDeskPage() {
 
   const [tickets, setTickets] = useState([
     {
-      id: 'FORT-SUP-2026-000001',
+      id: 'MW-SUP-2026-000001',
       category: 'examination',
       subject: 'Inquiry regarding OMR PDF bubble resolution on mobile devices',
       status: 'resolved',
@@ -38,7 +38,7 @@ export default function SupportDeskPage() {
       return;
     }
 
-    const newTicketId = `FORT-SUP-2026-${Math.floor(100000 + Math.random() * 900000)}`;
+    const newTicketId = `MW-SUP-2026-${Math.floor(100000 + Math.random() * 900000)}`;
     const newTicket = {
       id: newTicketId,
       category,

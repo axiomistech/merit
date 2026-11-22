@@ -51,7 +51,7 @@ export async function POST(req: Request) {
       ticket_number: `TICK-26-${Math.floor(1000 + Math.random() * 9000)}`,
       student_name: student_name || 'Candidate',
       student_email: student_email || 'candidate@example.com',
-      student_registration_id: student_registration_id || 'FORT-26-000001',
+      student_registration_id: student_registration_id || 'MW-26-000001',
       category: category || 'general',
       subject,
       description,

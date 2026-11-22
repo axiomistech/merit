@@ -20,7 +20,7 @@ export default function OnboardingPage() {
 
   const [candidate, setCandidate] = useState({
     fullName: 'Candidate',
-    registrationId: 'FORT-26-000001',
+    registrationId: 'MW-26-000001',
   });
 
   const [targetExam, setTargetExam] = useState<string>('neet');
@@ -35,13 +35,14 @@ export default function OnboardingPage() {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem('fort_student_session');
+      const stored =
+        localStorage.getItem('merit_student_session') || localStorage.getItem('fort_student_session');
       if (stored) {
         try {
           const parsed = JSON.parse(stored);
           setCandidate({
             fullName: parsed.fullName || 'Candidate',
-            registrationId: parsed.registrationId || 'FORT-26-000001',
+            registrationId: parsed.registrationId || 'MW-26-000001',
           });
         } catch {}
       }
@@ -84,7 +85,7 @@ export default function OnboardingPage() {
         })
       );
     }
-    toast.success('Profile personalized! Welcome to FORT Learning.');
+    toast.success('Profile personalized! Welcome to MERITWISE.');
     router.push('/dashboard');
   };
 
@@ -92,7 +93,7 @@ export default function OnboardingPage() {
     neet: ['Physics', 'Chemistry', 'Botany', 'Zoology'],
     jee: ['Physics', 'Chemistry', 'Mathematics'],
     upsc: ['General Studies I', 'CSAT GS-II', 'Current Affairs', 'Mains Essay'],
-    engineering: ['Data Structures', 'Circuit Theory', 'Engineering Math', 'Thermodynamics'],
+    gate: ['Computer Science', 'Data Science & AI', 'Mechanical', 'Electrical', 'Electronics', 'Civil'],
   };
 
   return (

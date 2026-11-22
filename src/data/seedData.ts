@@ -7,7 +7,7 @@ export interface ExamInfo {
   shortName: string;
   tagline: string;
   description: string;
-  category: 'medical' | 'engineering' | 'civil_services' | 'university';
+  category: 'medical' | 'engineering' | 'civil_services' | 'postgraduate';
   accentColor: string;
   subjects: {
     id: string;
@@ -22,645 +22,106 @@ export const EXAMINATIONS: ExamInfo[] = [
   {
     id: 'exam-neet',
     slug: 'neet',
-    name: 'FORT NEET (UG)',
+    name: 'MERITWISE NEET',
     shortName: 'NEET',
-    tagline: 'Precision medical entrance practice with live physical-grade OMR simulation.',
-    description: 'Designed specifically for National Eligibility cum Entrance Test aspirants, covering Physics, Chemistry, Botany, and Zoology with exact NTA marking schemes (+4, -1, 0) and high-fidelity OMR sheets.',
+    tagline: 'Precision medical entrance practice with timed simulation and calibrated OMR sheets.',
+    description:
+      'Engineered specifically for National Eligibility cum Entrance Test aspirants, covering Physics, Chemistry, Botany, and Zoology with official NTA marking (+4, -1, 0) and high-fidelity vector OMR generation.',
     category: 'medical',
-    accentColor: '#10B981',
+    accentColor: '#8C6D3B',
     subjects: [
-      { id: 'sub-neet-phy', slug: 'physics', name: 'Physics', chaptersCount: 28, questionCount: 2450 },
-      { id: 'sub-neet-chem', slug: 'chemistry', name: 'Chemistry', chaptersCount: 30, questionCount: 2600 },
-      { id: 'sub-neet-bot', slug: 'botany', name: 'Botany', chaptersCount: 22, questionCount: 2100 },
-      { id: 'sub-neet-zoo', slug: 'zoology', name: 'Zoology', chaptersCount: 20, questionCount: 1950 },
+      { id: 'sub-neet-phy', slug: 'physics', name: 'Physics', chaptersCount: 28, questionCount: 0 },
+      { id: 'sub-neet-chem', slug: 'chemistry', name: 'Chemistry', chaptersCount: 30, questionCount: 0 },
+      { id: 'sub-neet-bot', slug: 'botany', name: 'Botany', chaptersCount: 22, questionCount: 0 },
+      { id: 'sub-neet-zoo', slug: 'zoology', name: 'Zoology', chaptersCount: 20, questionCount: 0 },
     ],
   },
   {
-    id: 'exam-jee-main',
-    slug: 'jee-main',
-    name: 'FORT JEE Main',
-    shortName: 'JEE Main',
-    tagline: 'Speed, accuracy, and numerical question mastery under real CBT conditions.',
-    description: 'Engineered for Joint Entrance Examination Main aspirants across Physics, Chemistry, and Mathematics, supporting single-correct MCQs and numerical value questions with integer/decimal rounding.',
+    id: 'exam-jee',
+    slug: 'jee',
+    name: 'MERITWISE JEE',
+    shortName: 'JEE',
+    tagline: 'Engineering entrance problem solving across JEE Main and JEE Advanced.',
+    description:
+      'Rigorous Computer-Based Testing simulation for Joint Entrance Examination aspirants across Physics, Chemistry, and Mathematics, supporting single-correct MCQs, multi-correct selections with partial marking, and numerical integer response fields.',
     category: 'engineering',
-    accentColor: '#6486C6',
+    accentColor: '#121316',
     subjects: [
-      { id: 'sub-jm-phy', slug: 'physics', name: 'Physics', chaptersCount: 28, questionCount: 2800 },
-      { id: 'sub-jm-chem', slug: 'chemistry', name: 'Chemistry', chaptersCount: 30, questionCount: 2900 },
-      { id: 'sub-jm-math', slug: 'mathematics', name: 'Mathematics', chaptersCount: 26, questionCount: 3100 },
-    ],
-  },
-  {
-    id: 'exam-jee-adv',
-    slug: 'jee-advanced',
-    name: 'FORT JEE Advanced',
-    shortName: 'JEE Advanced',
-    tagline: 'Multi-correct, partial marking, and complex concept integration testing.',
-    description: 'Dedicated simulation environment for IIT JEE Advanced candidates featuring multi-select questions with strict partial mark configurations, numerical grids, matrix matching, and Paper 1 & Paper 2 workflows.',
-    category: 'engineering',
-    accentColor: '#F59E0B',
-    subjects: [
-      { id: 'sub-ja-phy', slug: 'physics', name: 'Physics', chaptersCount: 28, questionCount: 1800 },
-      { id: 'sub-ja-chem', slug: 'chemistry', name: 'Chemistry', chaptersCount: 30, questionCount: 1750 },
-      { id: 'sub-ja-math', slug: 'mathematics', name: 'Mathematics', chaptersCount: 26, questionCount: 1900 },
+      { id: 'sub-jee-phy', slug: 'physics', name: 'Physics', chaptersCount: 28, questionCount: 0 },
+      { id: 'sub-jee-chem', slug: 'chemistry', name: 'Chemistry', chaptersCount: 30, questionCount: 0 },
+      { id: 'sub-jee-math', slug: 'mathematics', name: 'Mathematics', chaptersCount: 26, questionCount: 0 },
     ],
   },
   {
     id: 'exam-upsc',
     slug: 'upsc',
-    name: 'FORT UPSC Civil Services',
-    shortName: 'UPSC CSE',
-    tagline: 'Prelims objective rigor and Mains descriptive answer-writing with rubric analytics.',
-    description: 'Comprehensive preparation suite covering Prelims GS-I, CSAT with negative marking (-0.66 / -0.83), and a specialized Mains rich-text answer-writing studio with word limits and rubric evaluation.',
+    name: 'MERITWISE UPSC',
+    shortName: 'UPSC',
+    tagline: 'Civil services preliminary objective accuracy and analytical assessment.',
+    description:
+      'Standardized examination environment for Union Public Service Commission candidates covering General Studies (Paper I) and CSAT (Paper II) with standard 0.66 negative marking calibration.',
     category: 'civil_services',
-    accentColor: '#8B5CF6',
+    accentColor: '#8C6D3B',
     subjects: [
-      { id: 'sub-upsc-gs', slug: 'general-studies', name: 'General Studies (GS)', chaptersCount: 35, questionCount: 3200 },
-      { id: 'sub-upsc-csat', slug: 'csat', name: 'CSAT (Paper II)', chaptersCount: 18, questionCount: 1500 },
-      { id: 'sub-upsc-mains', slug: 'mains-writing', name: 'Mains Descriptive Studio', chaptersCount: 24, questionCount: 850 },
+      { id: 'sub-upsc-gs1', slug: 'general-studies-1', name: 'General Studies I', chaptersCount: 35, questionCount: 0 },
+      { id: 'sub-upsc-csat', slug: 'csat', name: 'CSAT (General Studies II)', chaptersCount: 18, questionCount: 0 },
     ],
   },
   {
-    id: 'exam-engineering',
-    slug: 'engineering',
-    name: 'FORT Engineering Universities',
-    shortName: 'Engineering',
-    tagline: 'University semester examination preparation tailored to your university and syllabus.',
-    description: 'Configurable academic examination platform for Anna University, VTU, JNTU, Mumbai University, and autonomous institutions across CSE, ECE, EEE, Mechanical, and Civil engineering branches.',
-    category: 'university',
-    accentColor: '#06B6D4',
+    id: 'exam-gate',
+    slug: 'gate',
+    name: 'MERITWISE GATE',
+    shortName: 'GATE',
+    tagline: 'Branch-specific graduate engineering assessments and virtual calculator testing.',
+    description:
+      'Comprehensive Graduate Aptitude Test in Engineering simulation supporting branch-specific papers (CS, ME, EE, EC, CE, DA) with single-correct MCQs, multiple-select questions (MSQs), and numerical answer type (NAT) questions.',
+    category: 'postgraduate',
+    accentColor: '#121316',
     subjects: [
-      { id: 'sub-eng-ds', slug: 'data-structures', name: 'Data Structures & Algorithms', chaptersCount: 12, questionCount: 950 },
-      { id: 'sub-eng-dbms', slug: 'dbms', name: 'Database Management Systems', chaptersCount: 10, questionCount: 800 },
-      { id: 'sub-eng-os', slug: 'operating-systems', name: 'Operating Systems', chaptersCount: 10, questionCount: 750 },
-      { id: 'sub-eng-cn', slug: 'computer-networks', name: 'Computer Networks', chaptersCount: 11, questionCount: 700 },
+      { id: 'sub-gate-cs', slug: 'computer-science', name: 'Computer Science & IT', chaptersCount: 12, questionCount: 0 },
+      { id: 'sub-gate-me', slug: 'mechanical', name: 'Mechanical Engineering', chaptersCount: 12, questionCount: 0 },
+      { id: 'sub-gate-ee', slug: 'electrical', name: 'Electrical Engineering', chaptersCount: 11, questionCount: 0 },
+      { id: 'sub-gate-ec', slug: 'electronics', name: 'Electronics & Communication', chaptersCount: 11, questionCount: 0 },
+      { id: 'sub-gate-ce', slug: 'civil', name: 'Civil Engineering', chaptersCount: 10, questionCount: 0 },
+      { id: 'sub-gate-ga', slug: 'general-aptitude', name: 'General Aptitude & Engineering Mathematics', chaptersCount: 8, questionCount: 0 },
+    ],
+  },
+  // Retained for backward navigation compatibility
+  {
+    id: 'exam-jee-main',
+    slug: 'jee-main',
+    name: 'MERITWISE JEE Main',
+    shortName: 'JEE Main',
+    tagline: 'Speed, accuracy, and numerical problem mastery under NTA CBT conditions.',
+    description: 'JEE Main examination simulation across Physics, Chemistry, and Mathematics.',
+    category: 'engineering',
+    accentColor: '#121316',
+    subjects: [
+      { id: 'sub-jm-phy', slug: 'physics', name: 'Physics', chaptersCount: 28, questionCount: 0 },
+      { id: 'sub-jm-chem', slug: 'chemistry', name: 'Chemistry', chaptersCount: 30, questionCount: 0 },
+      { id: 'sub-jm-math', slug: 'mathematics', name: 'Mathematics', chaptersCount: 26, questionCount: 0 },
+    ],
+  },
+  {
+    id: 'exam-jee-adv',
+    slug: 'jee-advanced',
+    name: 'MERITWISE JEE Advanced',
+    shortName: 'JEE Advanced',
+    tagline: 'Multi-correct, partial marking, and complex concept integration testing.',
+    description: 'IIT JEE Advanced simulation environment featuring multi-select and numerical questions.',
+    category: 'engineering',
+    accentColor: '#8C6D3B',
+    subjects: [
+      { id: 'sub-ja-phy', slug: 'physics', name: 'Physics (Advanced)', chaptersCount: 28, questionCount: 0 },
+      { id: 'sub-ja-chem', slug: 'chemistry', name: 'Chemistry (Advanced)', chaptersCount: 30, questionCount: 0 },
+      { id: 'sub-ja-math', slug: 'mathematics', name: 'Mathematics (Advanced)', chaptersCount: 26, questionCount: 0 },
     ],
   },
 ];
 
-// Complete NEET Mock Paper with realistic scientific questions
-export const SAMPLE_NEET_PAPER: ExamPaperConfig = {
-  id: 'paper-neet-mock-01',
-  name: 'NEET (UG) All India Full Mock Examination - 01',
-  slug: 'neet-all-india-mock-01',
-  examSlug: 'neet',
-  examName: 'FORT NEET (UG)',
-  durationMinutes: 200, // 3 hours 20 mins standard NTA duration
-  totalMarks: 720,
-  totalQuestions: 20, // 20 comprehensive questions in sample full paper
-  instructions: [
-    'The test contains 4 subjects: Physics, Chemistry, Botany, and Zoology.',
-    'For each correct response, you will be awarded 4 marks.',
-    'For each incorrect response, 1 mark will be deducted from your total score.',
-    'Unattempted questions receive zero marks.',
-    'Use the Live OMR sheet to fill your responses or click the options directly on screen.',
-    'Timer is synchronized with the server. When the timer hits 00:00, your paper will auto-submit.',
-  ],
-  sections: [
-    { id: 'sec-phy', name: 'Physics', subjectSlug: 'physics', questionIndices: [1, 2, 3, 4, 5] },
-    { id: 'sec-chem', name: 'Chemistry', subjectSlug: 'chemistry', questionIndices: [6, 7, 8, 9, 10] },
-    { id: 'sec-bot', name: 'Botany', subjectSlug: 'botany', questionIndices: [11, 12, 13, 14, 15] },
-    { id: 'sec-zoo', name: 'Zoology', subjectSlug: 'zoology', questionIndices: [16, 17, 18, 19, 20] },
-  ],
-};
-
-export const SAMPLE_NEET_QUESTIONS: QuestionData[] = [
-  // Physics (1-5)
-  {
-    id: 'q-neet-1',
-    versionId: 'qv-neet-1',
-    displayNumber: 1,
-    questionType: 'single_correct',
-    subjectName: 'Physics',
-    subjectSlug: 'physics',
-    conceptName: 'Electrostatics & Gauss Law',
-    conceptSlug: 'electrostatics',
-    difficulty: 'medium',
-    text: 'A point charge $q$ is placed at the center of a hollow cubical conductor of edge length $L$. What is the total electric flux passing through any one face of the cube?',
-    options: [
-      { key: 'A', text: '$\\frac{q}{\\varepsilon_0}$' },
-      { key: 'B', text: '$\\frac{q}{6\\varepsilon_0}$' },
-      { key: 'C', text: '$\\frac{q}{24\\varepsilon_0}$' },
-      { key: 'D', text: 'Zero' },
-    ],
-    marks: 4,
-    negativeMarks: 1,
-    answerKey: { correctOptions: ['B'] },
-    explanation: {
-      text: 'By Gauss Law, total flux enclosed through all 6 symmetrical faces of the cube is $\\Phi_{total} = \\frac{q}{\\varepsilon_0}$. Because the charge is located at the center, the flux is equally divided among the 6 faces: $\\Phi_{face} = \\frac{q}{6\\varepsilon_0}$.',
-    },
-  },
-  {
-    id: 'q-neet-2',
-    versionId: 'qv-neet-2',
-    displayNumber: 2,
-    questionType: 'single_correct',
-    subjectName: 'Physics',
-    subjectSlug: 'physics',
-    conceptName: 'Current Electricity & Wheatstone Bridge',
-    conceptSlug: 'current-electricity',
-    difficulty: 'easy',
-    text: 'Four resistors of resistances $2\\,\\Omega$, $4\\,\\Omega$, $6\\,\\Omega$, and $12\\,\\Omega$ form a Wheatstone bridge. Under balanced condition, what is the ratio of potential difference across opposite arms?',
-    options: [
-      { key: 'A', text: 'Equal to 1 (No current passes through the galvanometer)' },
-      { key: 'B', text: '2:1' },
-      { key: 'C', text: '1:3' },
-      { key: 'D', text: 'Zero' },
-    ],
-    marks: 4,
-    negativeMarks: 1,
-    answerKey: { correctOptions: ['A'] },
-    explanation: {
-      text: 'In a balanced Wheatstone bridge $\\frac{R_1}{R_2} = \\frac{R_3}{R_4}$ ($2/4 = 6/12 = 0.5$). The potentials at the galvanometer terminals are equal, so zero current flows through the detector.',
-    },
-  },
-  {
-    id: 'q-neet-3',
-    versionId: 'qv-neet-3',
-    displayNumber: 3,
-    questionType: 'single_correct',
-    subjectName: 'Physics',
-    subjectSlug: 'physics',
-    conceptName: 'Ray Optics & Total Internal Reflection',
-    conceptSlug: 'ray-optics',
-    difficulty: 'medium',
-    text: 'The critical angle for a medium with refractive index $\\mu = \\sqrt{2}$ with respect to air is:',
-    options: [
-      { key: 'A', text: '$30^\\circ$' },
-      { key: 'B', text: '$45^\\circ$' },
-      { key: 'C', text: '$60^\\circ$' },
-      { key: 'D', text: '$90^\\circ$' },
-    ],
-    marks: 4,
-    negativeMarks: 1,
-    answerKey: { correctOptions: ['B'] },
-    explanation: {
-      text: '$\\sin \\theta_c = \\frac{1}{\\mu} = \\frac{1}{\\sqrt{2}}$. Therefore $\\theta_c = \\arcsin(1/\\sqrt{2}) = 45^\\circ$.',
-    },
-  },
-  {
-    id: 'q-neet-4',
-    versionId: 'qv-neet-4',
-    displayNumber: 4,
-    questionType: 'single_correct',
-    subjectName: 'Physics',
-    subjectSlug: 'physics',
-    conceptName: 'Thermodynamics & Carnot Engine',
-    conceptSlug: 'thermodynamics',
-    difficulty: 'hard',
-    text: 'A Carnot engine operates between temperatures $T_1 = 500\\,\\text{K}$ (source) and $T_2 = 300\\,\\text{K}$ (sink). If the engine absorbs $1000\\,\\text{J}$ of heat from the source, what is the work done?',
-    options: [
-      { key: 'A', text: '$600\\,\\text{J}$' },
-      { key: 'B', text: '$400\\,\\text{J}$' },
-      { key: 'C', text: '$200\\,\\text{J}$' },
-      { key: 'D', text: '$500\\,\\text{J}$' },
-    ],
-    marks: 4,
-    negativeMarks: 1,
-    answerKey: { correctOptions: ['B'] },
-    explanation: {
-      text: 'Efficiency $\\eta = 1 - \\frac{T_2}{T_1} = 1 - \\frac{300}{500} = 0.40$. Work done $W = \\eta \\cdot Q_1 = 0.40 \\times 1000\\,\\text{J} = 400\\,\\text{J}$.',
-    },
-  },
-  {
-    id: 'q-neet-5',
-    versionId: 'qv-neet-5',
-    displayNumber: 5,
-    questionType: 'single_correct',
-    subjectName: 'Physics',
-    subjectSlug: 'physics',
-    conceptName: 'Photoelectric Effect',
-    conceptSlug: 'modern-physics',
-    difficulty: 'medium',
-    text: 'According to Einstein photoelectric equation, if the frequency of incident light is doubled, the maximum kinetic energy of emitted photoelectrons:',
-    options: [
-      { key: 'A', text: 'Is doubled' },
-      { key: 'B', text: 'Becomes more than double' },
-      { key: 'C', text: 'Remains unchanged' },
-      { key: 'D', text: 'Is halved' },
-    ],
-    marks: 4,
-    negativeMarks: 1,
-    answerKey: { correctOptions: ['B'] },
-    explanation: {
-      text: '$K_{max} = h\\nu - \\Phi$. If $\\nu\' = 2\\nu$, then $K\'_{max} = 2h\\nu - \\Phi = 2(K_{max} + \\Phi) - \\Phi = 2K_{max} + \\Phi > 2K_{max}$.',
-    },
-  },
-
-  // Chemistry (6-10)
-  {
-    id: 'q-neet-6',
-    versionId: 'qv-neet-6',
-    displayNumber: 6,
-    questionType: 'single_correct',
-    subjectName: 'Chemistry',
-    subjectSlug: 'chemistry',
-    conceptName: 'Chemical Bonding & Hybridization',
-    conceptSlug: 'chemical-bonding',
-    difficulty: 'easy',
-    text: 'The hybridization of the central atom and the molecular geometry of $\\text{SF}_6$ molecule are respectively:',
-    options: [
-      { key: 'A', text: '$sp^3d^2$ and Octahedral' },
-      { key: 'B', text: '$sp^3d$ and Trigonal bipyramidal' },
-      { key: 'C', text: '$sp^3$ and Tetrahedral' },
-      { key: 'D', text: '$d^2sp^3$ and Square planar' },
-    ],
-    marks: 4,
-    negativeMarks: 1,
-    answerKey: { correctOptions: ['A'] },
-    explanation: {
-      text: 'Sulfur has 6 valence electrons and forms 6 single bonds with fluorine with 0 lone pairs. Steric number = 6, yielding $sp^3d^2$ hybridization and regular octahedral geometry.',
-    },
-  },
-  {
-    id: 'q-neet-7',
-    versionId: 'qv-neet-7',
-    displayNumber: 7,
-    questionType: 'single_correct',
-    subjectName: 'Chemistry',
-    subjectSlug: 'chemistry',
-    conceptName: 'Chemical Equilibrium & Le Chatelier Principle',
-    conceptSlug: 'equilibrium',
-    difficulty: 'medium',
-    text: 'For the exothermic reaction $\\text{N}_2(g) + 3\\text{H}_2(g) \\rightleftharpoons 2\\text{NH}_3(g)$, which set of conditions maximizes the equilibrium yield of ammonia?',
-    options: [
-      { key: 'A', text: 'Low temperature and low pressure' },
-      { key: 'B', text: 'Low temperature and high pressure' },
-      { key: 'C', text: 'High temperature and high pressure' },
-      { key: 'D', text: 'High temperature and low pressure' },
-    ],
-    marks: 4,
-    negativeMarks: 1,
-    answerKey: { correctOptions: ['B'] },
-    explanation: {
-      text: 'Because $\\Delta H < 0$, lowering temperature shifts equilibrium forward. Because moles of gas decrease from 4 to 2, increasing pressure shifts equilibrium towards fewer moles.',
-    },
-  },
-  {
-    id: 'q-neet-8',
-    versionId: 'qv-neet-8',
-    displayNumber: 8,
-    questionType: 'single_correct',
-    subjectName: 'Chemistry',
-    subjectSlug: 'chemistry',
-    conceptName: 'Coordination Chemistry',
-    conceptSlug: 'coordination-compounds',
-    difficulty: 'medium',
-    text: 'What is the IUPAC name of $[\\text{Co}(\\text{NH}_3)_5\\text{Cl}]\\text{Cl}_2$?',
-    options: [
-      { key: 'A', text: 'Pentaamminechlorocobalt(III) chloride' },
-      { key: 'B', text: 'Pentaamminechlorocobalt(II) chloride' },
-      { key: 'C', text: 'Chloropentaamminecobalt(III) chloride' },
-      { key: 'D', text: 'Cobalt pentaammine trichloride' },
-    ],
-    marks: 4,
-    negativeMarks: 1,
-    answerKey: { correctOptions: ['A'] },
-    explanation: {
-      text: 'Ligands are named alphabetically: ammine comes before chlorido. Cobalt oxidation state is $x + 5(0) - 1 = +2 \\implies x = +3$. Thus: Pentaamminechlorocobalt(III) chloride.',
-    },
-  },
-  {
-    id: 'q-neet-9',
-    versionId: 'qv-neet-9',
-    displayNumber: 9,
-    questionType: 'single_correct',
-    subjectName: 'Chemistry',
-    subjectSlug: 'chemistry',
-    conceptName: 'Organic Reaction Mechanisms & Cannizzaro',
-    conceptSlug: 'aldehydes-ketones',
-    difficulty: 'hard',
-    text: 'Which of the following aldehydes will undergo Cannizzaro reaction when treated with concentrated $\\text{NaOH}$?',
-    options: [
-      { key: 'A', text: 'Acetaldehyde ($\\text{CH}_3\\text{CHO}$)' },
-      { key: 'B', text: 'Formaldehyde ($\\text{HCHO}$)' },
-      { key: 'C', text: 'Propionaldehyde ($\\text{CH}_3\\text{CH}_2\\text{CHO}$)' },
-      { key: 'D', text: 'Acetone ($\\text{CH}_3\\text{COCH}_3$)' },
-    ],
-    marks: 4,
-    negativeMarks: 1,
-    answerKey: { correctOptions: ['B'] },
-    explanation: {
-      text: 'Cannizzaro reaction is shown exclusively by aldehydes having NO $\\alpha$-hydrogens. Formaldehyde and Benzaldehyde lack $\\alpha$-hydrogens and disproportionate into methanol and sodium formate.',
-    },
-  },
-  {
-    id: 'q-neet-10',
-    versionId: 'qv-neet-10',
-    displayNumber: 10,
-    questionType: 'single_correct',
-    subjectName: 'Chemistry',
-    subjectSlug: 'chemistry',
-    conceptName: 'Electrochemistry & Nernst Equation',
-    conceptSlug: 'electrochemistry',
-    difficulty: 'medium',
-    text: 'The standard reduction potential $E^\\circ$ for $\\text{Zn}^{2+}/\\text{Zn}$ is $-0.76\\,\\text{V}$ and for $\\text{Cu}^{2+}/\\text{Cu}$ is $+0.34\\,\\text{V}$. The standard EMF of the Daniell cell is:',
-    options: [
-      { key: 'A', text: '$+1.10\\,\\text{V}$' },
-      { key: 'B', text: '$-1.10\\,\\text{V}$' },
-      { key: 'C', text: '$+0.42\\,\\text{V}$' },
-      { key: 'D', text: '$-0.42\\,\\text{V}$' },
-    ],
-    marks: 4,
-    negativeMarks: 1,
-    answerKey: { correctOptions: ['A'] },
-    explanation: {
-      text: '$E^\\circ_{cell} = E^\\circ_{cathode} - E^\\circ_{anode} = (+0.34) - (-0.76) = +1.10\\,\\text{V}$.',
-    },
-  },
-
-  // Botany (11-15)
-  {
-    id: 'q-neet-11',
-    versionId: 'qv-neet-11',
-    displayNumber: 11,
-    questionType: 'single_correct',
-    subjectName: 'Botany',
-    subjectSlug: 'botany',
-    conceptName: 'Photosynthesis in Higher Plants',
-    conceptSlug: 'photosynthesis',
-    difficulty: 'easy',
-    text: 'The primary $\\text{CO}_2$ acceptor in $\\text{C}_4$ pathway of photosynthesis is:',
-    options: [
-      { key: 'A', text: 'Phosphoenolpyruvate (PEP)' },
-      { key: 'B', text: 'Ribulose-1,5-bisphosphate (RuBP)' },
-      { key: 'C', text: 'Oxaloacetic acid (OAA)' },
-      { key: 'D', text: 'Phosphoglyceric acid (PGA)' },
-    ],
-    marks: 4,
-    negativeMarks: 1,
-    answerKey: { correctOptions: ['A'] },
-    explanation: {
-      text: 'In C4 plants, atmospheric CO2 is initially fixed in the mesophyll cells by Phosphoenolpyruvate (PEP) catalyzed by PEP carboxylase, forming the 4-carbon organic acid Oxaloacetic acid (OAA).',
-    },
-  },
-  {
-    id: 'q-neet-12',
-    versionId: 'qv-neet-12',
-    displayNumber: 12,
-    questionType: 'single_correct',
-    subjectName: 'Botany',
-    subjectSlug: 'botany',
-    conceptName: 'Cell Cycle & Cell Division',
-    conceptSlug: 'cell-cycle',
-    difficulty: 'medium',
-    text: 'During which phase of meiosis do homologous chromosomes pair and cross over (recombination occur)?',
-    options: [
-      { key: 'A', text: 'Pachytene of Prophase I' },
-      { key: 'B', text: 'Diplotene of Prophase I' },
-      { key: 'C', text: 'Metaphase II' },
-      { key: 'D', text: 'Anaphase I' },
-    ],
-    marks: 4,
-    negativeMarks: 1,
-    answerKey: { correctOptions: ['A'] },
-    explanation: {
-      text: 'Crossing over between non-sister chromatids of homologous chromosomes occurs during Pachytene stage of Prophase I, mediated by the enzyme recombinase.',
-    },
-  },
-  {
-    id: 'q-neet-13',
-    versionId: 'qv-neet-13',
-    displayNumber: 13,
-    questionType: 'single_correct',
-    subjectName: 'Botany',
-    subjectSlug: 'botany',
-    conceptName: 'Plant Growth Regulators & Phytohormones',
-    conceptSlug: 'plant-physiology',
-    difficulty: 'medium',
-    text: 'Which phytohormone is primarily responsible for promoting apical dominance in growing shoots?',
-    options: [
-      { key: 'A', text: 'Auxin' },
-      { key: 'B', text: 'Cytokinin' },
-      { key: 'C', text: 'Gibberellin' },
-      { key: 'D', text: 'Abscisic acid' },
-    ],
-    marks: 4,
-    negativeMarks: 1,
-    answerKey: { correctOptions: ['A'] },
-    explanation: {
-      text: 'Auxin synthesized at the shoot apex suppresses the growth of lateral (axillary) buds, a phenomenon known as apical dominance. Cytokinins act antagonistically.',
-    },
-  },
-  {
-    id: 'q-neet-14',
-    versionId: 'qv-neet-14',
-    displayNumber: 14,
-    questionType: 'single_correct',
-    subjectName: 'Botany',
-    subjectSlug: 'botany',
-    conceptName: 'Genetics & Mendel Laws of Inheritance',
-    conceptSlug: 'genetics',
-    difficulty: 'medium',
-    text: 'What phenotypic ratio is obtained in the $F_2$ generation of a typical Mendelian dihybrid cross?',
-    options: [
-      { key: 'A', text: '9:3:3:1' },
-      { key: 'B', text: '3:1' },
-      { key: 'C', text: '1:2:1' },
-      { key: 'D', text: '9:7' },
-    ],
-    marks: 4,
-    negativeMarks: 1,
-    answerKey: { correctOptions: ['A'] },
-    explanation: {
-      text: 'A Mendelian dihybrid cross involving two independently assorting unlinked genes yields a 9:3:3:1 phenotypic ratio in the F2 generation.',
-    },
-  },
-  {
-    id: 'q-neet-15',
-    versionId: 'qv-neet-15',
-    displayNumber: 15,
-    questionType: 'single_correct',
-    subjectName: 'Botany',
-    subjectSlug: 'botany',
-    conceptName: 'Ecosystem & Energy Flow',
-    conceptSlug: 'ecology',
-    difficulty: 'easy',
-    text: 'According to Lindeman 10% law of energy transfer in an ecosystem, if producers capture $10,000\\,\\text{J}$ of solar energy, how much energy is transferred to secondary consumers?',
-    options: [
-      { key: 'A', text: '$100\\,\\text{J}$' },
-      { key: 'B', text: '$1000\\,\\text{J}$' },
-      { key: 'C', text: '$10\\,\\text{J}$' },
-      { key: 'D', text: '$1\\,\\text{J}$' },
-    ],
-    marks: 4,
-    negativeMarks: 1,
-    answerKey: { correctOptions: ['A'] },
-    explanation: {
-      text: 'Producers = 10,000 J. Primary consumers (herbivores) receive 10% = 1,000 J. Secondary consumers (carnivores) receive 10% of 1,000 J = 100 J.',
-    },
-  },
-
-  // Zoology (16-20)
-  {
-    id: 'q-neet-16',
-    versionId: 'qv-neet-16',
-    displayNumber: 16,
-    questionType: 'single_correct',
-    subjectName: 'Zoology',
-    subjectSlug: 'zoology',
-    conceptName: 'Human Physiology & Circulatory System',
-    conceptSlug: 'human-circulation',
-    difficulty: 'easy',
-    text: 'The natural pacemaker of the human heart that generates action potentials at the highest frequency is:',
-    options: [
-      { key: 'A', text: 'Sinoatrial (SA) node' },
-      { key: 'B', text: 'Atrioventricular (AV) node' },
-      { key: 'C', text: 'Bundle of His' },
-      { key: 'D', text: 'Purkinje fibers' },
-    ],
-    marks: 4,
-    negativeMarks: 1,
-    answerKey: { correctOptions: ['A'] },
-    explanation: {
-      text: 'The SA node, situated in the right upper corner of the right atrium, is autoexcitable and sets the rhythmic pace of cardiac contractions (70-75 action potentials/minute).',
-    },
-  },
-  {
-    id: 'q-neet-17',
-    versionId: 'qv-neet-17',
-    displayNumber: 17,
-    questionType: 'single_correct',
-    subjectName: 'Zoology',
-    subjectSlug: 'zoology',
-    conceptName: 'Endocrine System & Hormonal Feedback',
-    conceptSlug: 'human-endocrine',
-    difficulty: 'medium',
-    text: 'A surge in which hormone triggers ovulation and the release of the secondary oocyte from the Graafian follicle in human females?',
-    options: [
-      { key: 'A', text: 'Luteinizing Hormone (LH)' },
-      { key: 'B', text: 'Follicle Stimulating Hormone (FSH)' },
-      { key: 'C', text: 'Progesterone' },
-      { key: 'D', text: 'Prolactin' },
-    ],
-    marks: 4,
-    negativeMarks: 1,
-    answerKey: { correctOptions: ['A'] },
-    explanation: {
-      text: 'Rapid secretion of LH leading to its maximum level during the mid-cycle (LH surge) induces rupture of the Graafian follicle and thereby the release of an ovum (ovulation).',
-    },
-  },
-  {
-    id: 'q-neet-18',
-    versionId: 'qv-neet-18',
-    displayNumber: 18,
-    questionType: 'single_correct',
-    subjectName: 'Zoology',
-    subjectSlug: 'zoology',
-    conceptName: 'Excretory Products & Countercurrent Mechanism',
-    conceptSlug: 'human-excretion',
-    difficulty: 'hard',
-    text: 'The countercurrent mechanism in the mammalian kidney that maintains a high osmolar gradient in the medullary interstitium operates between:',
-    options: [
-      { key: 'A', text: 'Henle loop and Vasa recta' },
-      { key: 'B', text: 'Glomerulus and Bowman capsule' },
-      { key: 'C', text: 'Proximal and Distal convoluted tubules' },
-      { key: 'D', text: 'Afferent and Efferent arterioles' },
-    ],
-    marks: 4,
-    negativeMarks: 1,
-    answerKey: { correctOptions: ['A'] },
-    explanation: {
-      text: 'The proximity between the Henle loop and vasa recta, as well as the countercurrent flow in their limbs, creates and maintains an increasing medullary interstitial osmolarity (from 300 to 1200 mOsmol/L).',
-    },
-  },
-  {
-    id: 'q-neet-19',
-    versionId: 'qv-neet-19',
-    displayNumber: 19,
-    questionType: 'single_correct',
-    subjectName: 'Zoology',
-    subjectSlug: 'zoology',
-    conceptName: 'Human Evolution & Homologous Structures',
-    conceptSlug: 'evolution',
-    difficulty: 'medium',
-    text: 'The forelimbs of humans, cheetahs, whales, and bats share a similar skeletal anatomical pattern despite performing different functions. This provides anatomical evidence of:',
-    options: [
-      { key: 'A', text: 'Divergent evolution (Homology)' },
-      { key: 'B', text: 'Convergent evolution (Analogy)' },
-      { key: 'C', text: 'Parallel evolution' },
-      { key: 'D', text: 'Saltation' },
-    ],
-    marks: 4,
-    negativeMarks: 1,
-    answerKey: { correctOptions: ['A'] },
-    explanation: {
-      text: 'Homologous organs indicate common ancestry where the same basic structural plan has evolved along different directions due to adaptations to different needs (divergent evolution).',
-    },
-  },
-  {
-    id: 'q-neet-20',
-    versionId: 'qv-neet-20',
-    displayNumber: 20,
-    questionType: 'single_correct',
-    subjectName: 'Zoology',
-    subjectSlug: 'zoology',
-    conceptName: 'Immunology & Antibodies',
-    conceptSlug: 'human-health',
-    difficulty: 'easy',
-    text: 'Which class of immunoglobulins is abundant in human colostrum and provides passive natural immunity to the newborn infant?',
-    options: [
-      { key: 'A', text: 'IgA' },
-      { key: 'B', text: 'IgG' },
-      { key: 'C', text: 'IgM' },
-      { key: 'D', text: 'IgE' },
-    ],
-    marks: 4,
-    negativeMarks: 1,
-    answerKey: { correctOptions: ['A'] },
-    explanation: {
-      text: 'The yellowish fluid colostrum secreted by mother during the initial days of lactation contains abundant antibodies of the IgA class to protect the infant.',
-    },
-  },
-];
-
-/**
- * Returns the complete 180-question NEET examination paper
- * partitioned strictly into 4 columns of 45 questions each:
- * - Physics: 001 to 045
- * - Chemistry: 046 to 090
- * - Botany: 091 to 135
- * - Zoology: 136 to 180
- */
+// Strict Content Rule: No fake or fabricated examination questions/papers
+export const SAMPLE_NEET_PAPER: ExamPaperConfig | null = null;
+export const SAMPLE_NEET_QUESTIONS: QuestionData[] = [];
 export function getFullNeet180Questions(): QuestionData[] {
-  const phyTemplates = SAMPLE_NEET_QUESTIONS.filter((q) => q.subjectSlug === 'physics');
-  const chemTemplates = SAMPLE_NEET_QUESTIONS.filter((q) => q.subjectSlug === 'chemistry');
-  const botTemplates = SAMPLE_NEET_QUESTIONS.filter((q) => q.subjectSlug === 'botany');
-  const zooTemplates = SAMPLE_NEET_QUESTIONS.filter((q) => q.subjectSlug === 'zoology');
-
-  const fullQuestions: QuestionData[] = [];
-
-  for (let i = 1; i <= 180; i++) {
-    let subjectName = 'Physics';
-    let subjectSlug = 'physics';
-    let templateList = phyTemplates;
-
-    if (i >= 46 && i <= 90) {
-      subjectName = 'Chemistry';
-      subjectSlug = 'chemistry';
-      templateList = chemTemplates;
-    } else if (i >= 91 && i <= 135) {
-      subjectName = 'Botany';
-      subjectSlug = 'botany';
-      templateList = botTemplates;
-    } else if (i >= 136 && i <= 180) {
-      subjectName = 'Zoology';
-      subjectSlug = 'zoology';
-      templateList = zooTemplates;
-    }
-
-    const template = templateList[(i - 1) % templateList.length] || SAMPLE_NEET_QUESTIONS[0];
-
-    fullQuestions.push({
-      ...template,
-      id: `q-neet-full-${i}`,
-      versionId: `qv-neet-full-${i}`,
-      displayNumber: i,
-      subjectName,
-      subjectSlug,
-    });
-  }
-
-  return fullQuestions;
+  return [];
 }
-
