@@ -78,27 +78,27 @@ export function Navbar() {
   const examCategories = [
     {
       slug: 'neet',
-      name: 'NEET',
+      name: 'NEET (UG)',
       fullName: 'National Eligibility cum Entrance Test',
       detail: 'Physics, Chemistry, Botany, Zoology • 720 Marks',
     },
     {
-      slug: 'jee',
-      name: 'JEE',
-      fullName: 'Joint Entrance Examination',
-      detail: 'Main & Advanced • Physics, Chemistry, Mathematics',
+      slug: 'jee-main',
+      name: 'JEE Main',
+      fullName: 'Joint Entrance Examination Main',
+      detail: 'Physics, Chemistry, Mathematics • 300 Marks',
     },
     {
-      slug: 'upsc',
-      name: 'UPSC',
-      fullName: 'Civil Services Examination',
-      detail: 'Prelims General Studies (Paper I) & CSAT (Paper II)',
+      slug: 'jee-advanced',
+      name: 'JEE Advanced',
+      fullName: 'Joint Entrance Examination Advanced',
+      detail: 'Physics, Chemistry, Mathematics • Multi-select & Numerical',
     },
     {
       slug: 'gate',
       name: 'GATE',
       fullName: 'Graduate Aptitude Test in Engineering',
-      detail: 'CS, ME, EE, EC, CE & Data Science',
+      detail: 'CS, ME, EE, EC, CE & Data Science • 100 Marks',
     },
   ];
 

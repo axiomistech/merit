@@ -92,14 +92,14 @@ export default function MyQuestionPapersPage() {
       maxMarks: 180,
     },
     {
-      id: 'paper_upsc_prelims_2024',
-      name: 'UPSC Civil Services Prelims 2024 GS-1',
-      slug: 'upsc-prelims-2024-gs1',
-      exam: 'UPSC CSE',
+      id: 'paper_gate_cs_2024',
+      name: 'GATE 2024 Computer Science & IT (Official Paper)',
+      slug: 'gate-cs-2024-official',
+      exam: 'GATE CS',
       year: 2024,
-      durationMinutes: 120,
-      totalQuestions: 100,
-      maxMarks: 200,
+      durationMinutes: 180,
+      totalQuestions: 65,
+      maxMarks: 100,
     },
   ];
 

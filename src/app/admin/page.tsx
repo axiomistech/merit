@@ -128,7 +128,7 @@ export default function AdminDashboardPage() {
           <div className="mt-2 font-mono text-2xl sm:text-3xl font-black text-[#20252B]">
             {exams.filter((e) => e.status === 'published').length}
           </div>
-          <div className="mt-1 text-[11px] text-[#66727D]">NEET, JEE, UPSC, Engg</div>
+          <div className="mt-1 text-[11px] text-[#66727D]">NEET, JEE Main, JEE Adv, GATE</div>
         </div>
 
         {/* Total Questions */}

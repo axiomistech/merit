@@ -112,23 +112,43 @@ export interface AdminTransactionRecord {
 
 // Initial seed generators
 export function getInitialExams(): AdminExamRecord[] {
-  return EXAMINATIONS.map((e) => ({
-    id: `exam_${e.slug}`,
-    slug: e.slug,
-    name: e.name,
-    shortName: e.shortName,
-    category: e.category,
-    description: e.description,
-    tagline: e.tagline,
-    subjectsCount: e.subjects.length,
-    questionsCount: 0,
-    publishedTestsCount: 0,
-    status: 'published',
-    defaultDurationMinutes: e.slug === 'neet' ? 200 : 180,
-    defaultMarks: e.slug === 'neet' ? 720 : 300,
-    negativeMarkingScheme: e.slug === 'neet' ? '+4 / -1' : '+4 / -1 / 0',
-    created_at: '2026-01-01T00:00:00Z',
-  }));
+  return EXAMINATIONS.map((e) => {
+    let duration = 180;
+    let marks = 300;
+    let scheme = '+4 / -1 / 0';
+
+    if (e.slug === 'neet') {
+      duration = 200;
+      marks = 720;
+      scheme = '+4 / -1';
+    } else if (e.slug === 'gate') {
+      duration = 180;
+      marks = 100;
+      scheme = '+1 / +2 (MCQ 1/3 neg; 0 MSQ/NAT)';
+    } else if (e.slug === 'jee-advanced') {
+      duration = 180;
+      marks = 300;
+      scheme = '+4 / -2 / partial';
+    }
+
+    return {
+      id: `exam_${e.slug}`,
+      slug: e.slug,
+      name: e.name,
+      shortName: e.shortName,
+      category: e.category,
+      description: e.description,
+      tagline: e.tagline,
+      subjectsCount: e.subjects.length,
+      questionsCount: 0,
+      publishedTestsCount: 0,
+      status: 'published',
+      defaultDurationMinutes: duration,
+      defaultMarks: marks,
+      negativeMarkingScheme: scheme,
+      created_at: '2026-01-01T00:00:00Z',
+    };
+  });
 }
 
 export function getInitialQuestions(): AdminQuestionRecord[] {
@@ -158,17 +178,55 @@ export function getInitialSupportTickets(): SupportTicketItem[] {
 
 // Persistent Store Helpers
 export function getStoredExams(): AdminExamRecord[] {
-  if (typeof window === 'undefined') return getInitialExams();
+  const initial = getInitialExams();
+  if (typeof window === 'undefined') return initial;
   const stored = localStorage.getItem('fort_admin_exams');
   if (!stored) {
-    const init = getInitialExams();
-    localStorage.setItem('fort_admin_exams', JSON.stringify(init));
-    return init;
+    localStorage.setItem('fort_admin_exams', JSON.stringify(initial));
+    return initial;
   }
   try {
-    return JSON.parse(stored);
+    const parsed: AdminExamRecord[] = JSON.parse(stored);
+    if (!Array.isArray(parsed) || parsed.length === 0) {
+      localStorage.setItem('fort_admin_exams', JSON.stringify(initial));
+      return initial;
+    }
+
+    // STRICT: Only support NEET, JEE Main, JEE Advanced, and GATE
+    const allowedSlugs = new Set(['neet', 'jee-main', 'jee-advanced', 'gate']);
+    const filtered = parsed.filter((e) => allowedSlugs.has(e.slug));
+
+    // Clean any legacy "FORT " or "MERITWISE " prefixes and ensure canonical names
+    const cleaned = filtered.map((e) => {
+      let cleanName = e.name.replace(/^(FORT|MERITWISE)\s+/i, '').trim();
+      let cleanShort = e.shortName.replace(/^(FORT|MERITWISE)\s+/i, '').trim();
+      if (e.slug === 'neet' && !cleanName.includes('(UG)')) {
+        cleanName = 'NEET (UG)';
+      }
+      return {
+        ...e,
+        name: cleanName,
+        shortName: cleanShort,
+      };
+    });
+
+    // Ensure all 4 target exams exist
+    const presentSlugs = new Set(cleaned.map((e) => e.slug));
+    for (const initExam of initial) {
+      if (!presentSlugs.has(initExam.slug)) {
+        cleaned.push(initExam);
+      }
+    }
+
+    // Sort in consistent order: neet, jee-main, jee-advanced, gate
+    const order = ['neet', 'jee-main', 'jee-advanced', 'gate'];
+    cleaned.sort((a, b) => order.indexOf(a.slug) - order.indexOf(b.slug));
+
+    localStorage.setItem('fort_admin_exams', JSON.stringify(cleaned));
+    return cleaned;
   } catch {
-    return getInitialExams();
+    localStorage.setItem('fort_admin_exams', JSON.stringify(initial));
+    return initial;
   }
 }
 
@@ -390,13 +448,13 @@ export function getInitialPricingRules(): PricingRule[] {
       updated_at: '2026-11-20T10:00:00Z',
     },
     {
-      id: 'rule_upsc',
-      examSlug: 'upsc-cse',
-      examName: 'UPSC Civil Services (Mains Evaluated)',
-      basePrice: 49,
-      firstPaperFree: false,
+      id: 'rule_gate',
+      examSlug: 'gate',
+      examName: 'GATE Graduate Engineering',
+      basePrice: 15,
+      firstPaperFree: true,
       bundleDiscountPercent: 15,
-      descriptiveEvaluationSurcharge: 40,
+      descriptiveEvaluationSurcharge: 0,
       isActive: true,
       updated_at: '2026-11-20T10:00:00Z',
     },
@@ -543,7 +601,7 @@ export function getInitialCMSHomepage(): CMSHomepageData {
     secondaryCtaLink: '/#exams',
     bannerEnabled: true,
     bannerMessage: 'First examination paper is complimentary for all registered candidates.',
-    featuredExamSlugs: ['neet', 'jee-main', 'jee-advanced', 'upsc-cse'],
+    featuredExamSlugs: ['neet', 'jee-main', 'jee-advanced', 'gate'],
     statsDisplay: {
       studentsLabel: 'Aspirants Practicing',
       studentsValue: '0',

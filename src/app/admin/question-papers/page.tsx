@@ -443,8 +443,7 @@ export default function AdminQuestionPapersPage() {
               <option value="neet">NEET (UG)</option>
               <option value="jee-main">JEE Main</option>
               <option value="jee-advanced">JEE Advanced</option>
-              <option value="upsc">UPSC Civil Services</option>
-              <option value="engineering">Engineering</option>
+              <option value="gate">GATE</option>
             </select>
           </div>
 
@@ -707,8 +706,7 @@ export default function AdminQuestionPapersPage() {
                       <option value="neet">NEET (UG)</option>
                       <option value="jee-main">JEE Main</option>
                       <option value="jee-advanced">JEE Advanced</option>
-                      <option value="upsc">UPSC Civil Services</option>
-                      <option value="engineering">Engineering</option>
+                      <option value="gate">GATE</option>
                     </select>
                   </div>
                 </div>

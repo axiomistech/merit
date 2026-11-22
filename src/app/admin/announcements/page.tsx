@@ -355,7 +355,7 @@ export default function AdminAnnouncementsPage() {
                     <option value="all">All Exams</option>
                     <option value="neet">NEET Only</option>
                     <option value="jee">JEE Main / Adv Only</option>
-                    <option value="upsc">UPSC Only</option>
+                    <option value="gate">GATE Only</option>
                   </select>
                 </div>
               </div>

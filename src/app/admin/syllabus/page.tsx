@@ -26,7 +26,7 @@ interface SyllabusNode {
 }
 
 export default function AdminSyllabusPage() {
-  const [selectedExam, setSelectedExam] = useState<'neet' | 'jee-main' | 'upsc' | 'engineering'>('neet');
+  const [selectedExam, setSelectedExam] = useState<'neet' | 'jee-main' | 'jee-advanced' | 'gate'>('neet');
   const [expandedNodes, setExpandedNodes] = useState<Record<string, boolean>>({
     'sub_phy': true,
     'unit_mech': true,
@@ -249,8 +249,8 @@ export default function AdminSyllabusPage() {
           {[
             { id: 'neet', label: 'NEET' },
             { id: 'jee-main', label: 'JEE Main' },
-            { id: 'upsc', label: 'UPSC CSE' },
-            { id: 'engineering', label: 'Engineering' },
+            { id: 'jee-advanced', label: 'JEE Advanced' },
+            { id: 'gate', label: 'GATE' },
           ].map((ex) => (
             <button
               key={ex.id}

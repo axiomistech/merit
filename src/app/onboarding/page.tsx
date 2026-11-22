@@ -54,12 +54,10 @@ export default function OnboardingPage() {
     setTargetExam(examSlug);
     if (examSlug === 'neet') {
       setSelectedSubjects(['Physics', 'Chemistry', 'Botany', 'Zoology']);
-    } else if (examSlug === 'jee') {
+    } else if (examSlug === 'jee-main' || examSlug === 'jee-advanced' || examSlug === 'jee') {
       setSelectedSubjects(['Physics', 'Chemistry', 'Mathematics']);
-    } else if (examSlug === 'upsc') {
-      setSelectedSubjects(['General Studies I', 'CSAT GS-II', 'Current Affairs', 'Mains Essay']);
-    } else if (examSlug === 'engineering') {
-      setSelectedSubjects(['Data Structures', 'Circuit Theory', 'Engineering Math', 'Thermodynamics']);
+    } else if (examSlug === 'gate') {
+      setSelectedSubjects(['Computer Science', 'Data Science & AI', 'Mechanical', 'Electrical']);
     }
   };
 
@@ -91,8 +89,8 @@ export default function OnboardingPage() {
 
   const availableSubjectsMap: Record<string, string[]> = {
     neet: ['Physics', 'Chemistry', 'Botany', 'Zoology'],
-    jee: ['Physics', 'Chemistry', 'Mathematics'],
-    upsc: ['General Studies I', 'CSAT GS-II', 'Current Affairs', 'Mains Essay'],
+    'jee-main': ['Physics', 'Chemistry', 'Mathematics'],
+    'jee-advanced': ['Physics', 'Chemistry', 'Mathematics'],
     gate: ['Computer Science', 'Data Science & AI', 'Mechanical', 'Electrical', 'Electronics', 'Civil'],
   };
 
@@ -129,9 +127,9 @@ export default function OnboardingPage() {
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             {[
               { id: 'neet', name: 'NEET', sub: 'Medical (UG)' },
-              { id: 'jee', name: 'JEE', sub: 'Main & Adv' },
-              { id: 'upsc', name: 'UPSC', sub: 'Civil Services' },
-              { id: 'engineering', name: 'Engineering', sub: 'Semester Syllabi' },
+              { id: 'jee-main', name: 'JEE Main', sub: 'NTA CBT' },
+              { id: 'jee-advanced', name: 'JEE Adv', sub: 'IIT Advanced' },
+              { id: 'gate', name: 'GATE', sub: 'Graduate Technical' },
             ].map((exam) => {
               const isSelected = targetExam === exam.id;
               return (

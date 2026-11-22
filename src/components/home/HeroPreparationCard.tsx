@@ -13,8 +13,8 @@ export interface HeroPreparationCardProps {
 export function HeroPreparationCard({ onStartPractice, className }: HeroPreparationCardProps) {
   const focusExams = [
     { name: 'NEET', href: '/neet' },
-    { name: 'JEE', href: '/jee-main' },
-    { name: 'UPSC', href: '/upsc' },
+    { name: 'JEE Main', href: '/jee-main' },
+    { name: 'JEE Adv', href: '/jee-advanced' },
     { name: 'GATE', href: '/gate' },
   ];
 

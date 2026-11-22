@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
 export interface ExamSwitcherProps {
-  currentSlug: 'neet' | 'jee-main' | 'jee' | 'upsc' | 'gate' | string;
+  currentSlug: 'neet' | 'jee-main' | 'jee-advanced' | 'jee' | 'gate' | string;
   className?: string;
   sticky?: boolean;
 }
@@ -26,18 +26,18 @@ const EXAM_TABS = [
     category: 'Engineering',
   },
   {
-    slug: 'upsc',
-    href: '/upsc',
-    label: 'UPSC',
-    fullName: 'Civil Services Examination (CSE)',
-    category: 'Civil Services',
+    slug: 'jee-advanced',
+    href: '/jee-advanced',
+    label: 'JEE Advanced',
+    fullName: 'Joint Entrance Examination (Advanced)',
+    category: 'Engineering',
   },
   {
     slug: 'gate',
     href: '/gate',
     label: 'GATE',
     fullName: 'Graduate Aptitude Test in Engineering',
-    category: 'Postgraduate',
+    category: 'Engineering',
   },
 ] as const;
 

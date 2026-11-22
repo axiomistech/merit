@@ -168,9 +168,10 @@ export default function AdminAnalyticsPage() {
               ) : (
                 <div className="space-y-3 pt-2">
                   {[
-                    { name: 'NEET (UG) Medical', count: attempts.filter((a) => a.examSlug?.includes('neet')).length, color: 'bg-[#9CC6E0]' },
-                    { name: 'JEE Main Engineering', count: attempts.filter((a) => a.examSlug?.includes('jee')).length, color: 'bg-[#20252B]' },
-                    { name: 'UPSC Civil Services', count: attempts.filter((a) => a.examSlug?.includes('upsc')).length, color: 'bg-[#52584E]' },
+                    { name: 'NEET (UG)', count: attempts.filter((a) => a.examSlug?.includes('neet')).length, color: 'bg-[#9CC6E0]' },
+                    { name: 'JEE Main', count: attempts.filter((a) => a.examSlug === 'jee-main' || a.examSlug === 'jee').length, color: 'bg-[#20252B]' },
+                    { name: 'JEE Advanced', count: attempts.filter((a) => a.examSlug?.includes('advanced')).length, color: 'bg-[#75896A]' },
+                    { name: 'GATE', count: attempts.filter((a) => a.examSlug?.includes('gate')).length, color: 'bg-[#52584E]' },
                   ].map((item, idx) => {
                     const share = totalAttempts > 0 ? Math.round((item.count / totalAttempts) * 100) : 0;
                     return (

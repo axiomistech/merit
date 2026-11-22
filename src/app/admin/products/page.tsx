@@ -225,7 +225,7 @@ export default function AdminProductsPage() {
         </div>
         <div className="flex items-center gap-2">
           <span className="text-xs text-[#66727D]">Exam:</span>
-          {['all', 'neet', 'jee-main', 'jee-advanced', 'upsc-cse'].map((ex) => (
+          {['all', 'neet', 'jee-main', 'jee-advanced', 'gate'].map((ex) => (
             <button
               key={ex}
               onClick={() => setExamFilter(ex)}
@@ -369,7 +369,7 @@ export default function AdminProductsPage() {
                     <option value="neet">NEET (UG)</option>
                     <option value="jee-main">JEE Main</option>
                     <option value="jee-advanced">JEE Advanced</option>
-                    <option value="upsc-cse">UPSC CSE</option>
+                    <option value="gate">GATE</option>
                     <option value="all">All Exams</option>
                   </select>
                 </div>

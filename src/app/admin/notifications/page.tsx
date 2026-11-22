@@ -216,7 +216,7 @@ export default function AdminNotificationsPage() {
                   <option value="all_students">All Students</option>
                   <option value="neet_aspirants">NEET (UG) Medical Aspirants</option>
                   <option value="jee_aspirants">JEE Main / Advanced Aspirants</option>
-                  <option value="upsc_aspirants">UPSC Civil Services Aspirants</option>
+                  <option value="gate_aspirants">GATE Graduate Engineering Aspirants</option>
                   <option value="inactive_students">Inactive (No practice in 7 days)</option>
                 </select>
               </div>

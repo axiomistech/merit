@@ -18,7 +18,7 @@ export function Footer() {
             </p>
 
             <p className="max-w-sm text-xs leading-relaxed text-[#71717A]">
-              A serious digital examination practice and assessment platform for competitive candidates preparing for NEET, JEE, UPSC, and GATE.
+              A serious digital examination practice and assessment platform for competitive candidates preparing for NEET, JEE Main, JEE Advanced, and GATE.
             </p>
           </div>
 
@@ -30,22 +30,22 @@ export function Footer() {
             <ul className="mt-4 space-y-2.5 text-xs">
               <li>
                 <Link href="/neet" className="hover:text-[#121316] transition-colors">
-                  NEET (Medical)
+                  NEET (UG)
                 </Link>
               </li>
               <li>
                 <Link href="/jee-main" className="hover:text-[#121316] transition-colors">
-                  JEE (Engineering)
+                  JEE Main
                 </Link>
               </li>
               <li>
-                <Link href="/upsc" className="hover:text-[#121316] transition-colors">
-                  UPSC (Civil Services)
+                <Link href="/jee-advanced" className="hover:text-[#121316] transition-colors">
+                  JEE Advanced
                 </Link>
               </li>
               <li>
                 <Link href="/gate" className="hover:text-[#121316] transition-colors">
-                  GATE (Graduate Technical)
+                  GATE
                 </Link>
               </li>
             </ul>

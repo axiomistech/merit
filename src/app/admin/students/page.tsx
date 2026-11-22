@@ -180,9 +180,10 @@ export default function AdminStudentsPage() {
             className="rounded-full border border-[#DCE2E6] bg-white px-3 py-1.5 text-xs text-[#20252B]"
           >
             <option value="all">All Exams</option>
-            <option value="neet">NEET</option>
-            <option value="jee">JEE Main</option>
-            <option value="upsc">UPSC</option>
+            <option value="neet">NEET (UG)</option>
+            <option value="jee-main">JEE Main</option>
+            <option value="jee-advanced">JEE Advanced</option>
+            <option value="gate">GATE</option>
           </select>
 
           <select

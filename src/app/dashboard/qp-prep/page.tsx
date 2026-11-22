@@ -24,7 +24,7 @@ export interface QuestionPaperItem {
   id: string;
   name: string;
   slug: string;
-  examCategory: 'neet' | 'jee' | 'upsc' | 'gate' | string;
+  examCategory: 'neet' | 'jee-main' | 'jee-advanced' | 'gate' | string;
   examLabel: string;
   year: number;
   subject: string;
@@ -49,7 +49,7 @@ export default function QPPrepWorkspacePage() {
     email: 'candidate@example.com',
   });
 
-  const [selectedExam, setSelectedExam] = useState<'neet' | 'jee' | 'upsc' | 'gate'>('neet');
+  const [selectedExam, setSelectedExam] = useState<'neet' | 'jee-main' | 'jee-advanced' | 'gate'>('neet');
   const [searchQuery, setSearchQuery] = useState('');
   const [publishedPapers, setPublishedPapers] = useState<QuestionPaperItem[]>([]);
   const [loadingPapers, setLoadingPapers] = useState<boolean>(true);
@@ -512,8 +512,8 @@ export default function QPPrepWorkspacePage() {
         <div className="flex items-center gap-1.5 rounded-full border border-[#E4E4DF] bg-[#FFFFFF] p-1.5 shadow-xs overflow-x-auto">
           {[
             { id: 'neet', label: 'NEET' },
-            { id: 'jee', label: 'JEE' },
-            { id: 'upsc', label: 'UPSC' },
+            { id: 'jee-main', label: 'JEE Main' },
+            { id: 'jee-advanced', label: 'JEE Advanced' },
             { id: 'gate', label: 'GATE' },
           ].map((tab) => (
             <button

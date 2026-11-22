@@ -107,9 +107,9 @@ export default function StudentSettingsPage() {
                   className="w-full rounded-xl border border-[#E4E4DF] bg-[#FFFFFF] p-2.5 text-[#121316] focus:outline-none focus:border-[#121316]"
                 >
                   <option value="neet">NEET (UG) Medical</option>
-                  <option value="jee">JEE Main / Advanced</option>
-                  <option value="upsc">UPSC Civil Services</option>
-                  <option value="gate">GATE Engineering</option>
+                  <option value="jee-main">JEE Main Engineering</option>
+                  <option value="jee-advanced">JEE Advanced Engineering</option>
+                  <option value="gate">GATE Graduate Engineering</option>
                 </select>
               </div>
               <div>

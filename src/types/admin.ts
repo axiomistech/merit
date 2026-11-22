@@ -160,7 +160,7 @@ export interface InAppNotification {
   id: string;
   title: string;
   message: string;
-  targetAudience: 'all_students' | 'neet_aspirants' | 'jee_aspirants' | 'upsc_aspirants' | 'engineering_students' | 'inactive_students';
+  targetAudience: 'all_students' | 'neet_aspirants' | 'jee_aspirants' | 'gate_aspirants' | 'upsc_aspirants' | 'engineering_students' | 'inactive_students';
   priority: 'low' | 'normal' | 'high' | 'urgent';
   actionUrl?: string;
   sentAt: string;

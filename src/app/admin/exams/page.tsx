@@ -201,8 +201,6 @@ export default function AdminExamsPage() {
                   >
                     <option value="medical">Medical (NEET)</option>
                     <option value="engineering">Engineering (JEE / GATE)</option>
-                    <option value="civil_services">Civil Services (UPSC)</option>
-                    <option value="university">University Semester</option>
                   </select>
                 </div>
               </div>
@@ -335,8 +333,6 @@ export default function AdminExamsPage() {
             <option value="all">All Categories</option>
             <option value="medical">Medical</option>
             <option value="engineering">Engineering</option>
-            <option value="civil_services">Civil Services</option>
-            <option value="university">University</option>
           </select>
         </div>
       </div>
