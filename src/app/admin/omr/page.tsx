@@ -383,28 +383,32 @@ export default function AdminOMRPage() {
         </div>
       )}
 
-      {/* TAB 3: UPLOAD SCANNED OMR */}
+      {/* TAB 3: PHYSICAL OMR SCANNING & INGESTION (ROADMAP / FUTURE SCOPE) */}
       {activeTab === 'upload_scan' && (
         <div className="rounded-2xl border border-[#DCE2E6] bg-white p-8 shadow-[0_2px_8px_rgba(38,49,38,0.04)] max-w-2xl mx-auto text-center space-y-4">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#9CC6E0]/15 text-[#3B4C30]">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#9CC6E0]/20 text-[#20252B]">
             <UploadCloud className="h-7 w-7" />
           </div>
           <div>
-            <h2 className="text-lg font-bold text-[#20252B]">Upload Scanned OMR Batch</h2>
-            <p className="mt-1 text-xs text-[#66727D]">
-              Upload 300 DPI high-contrast grayscale or RGB scans (PDF, TIFF, JPEG). Our optical recognition engine parses roll numbers, booklet codes, and bubble fills.
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#9CC6E0]/20 text-[#20252B] text-[11px] font-bold uppercase tracking-wider mb-2">
+              Engineering Roadmap • Phase 2 Scope
+            </div>
+            <h2 className="text-lg font-bold text-[#20252B]">Physical Paper OMR Scanner Ingestion</h2>
+            <p className="mt-1 text-xs text-[#66727D] leading-relaxed">
+              Optical recognition for physically scanned paper sheets (high-speed feeder / 300 DPI duplex scanner pipeline) is scheduled for Platform v2.0.
+              <strong>Digital OMR bubble shading</strong> and <strong>vector A4 printable PDF generation</strong> are currently live and production-ready.
             </p>
           </div>
 
-          <div className="border-2 border-dashed border-[#DCE2E6] rounded-2xl p-8 hover:border-[#9CC6E0] transition-colors cursor-pointer bg-[#F1F3F4]/50">
+          <div className="border-2 border-dashed border-[#DCE2E6] rounded-2xl p-8 bg-[#F1F3F4]/50">
             <FileText className="h-8 w-8 mx-auto text-[#66727D] mb-2" />
-            <div className="text-xs font-semibold text-[#20252B]">Drag and drop scanned OMR files here</div>
-            <div className="text-[11px] text-[#66727D] mt-1">Supports up to 50 sheets per batch (max 100MB)</div>
+            <div className="text-xs font-semibold text-[#20252B]">Hardware Optical Ingestion Staging</div>
+            <div className="text-[11px] text-[#66727D] mt-1">Accepts test scans for OpenCV & Hough circle detection calibration</div>
             <button
-              onClick={() => toast.info('Demo upload simulator ready. Auto-detection engine is active.')}
+              onClick={() => toast.info('Physical scanner ingestion pipeline is staged for Platform v2.0 release.')}
               className="mt-4 px-4 py-2 bg-[#20252B] text-white text-xs font-semibold rounded-xl hover:bg-[#344034] transition-colors"
             >
-              Select Files from Computer
+              Stage Calibration Scans (Testing Only)
             </button>
           </div>
         </div>

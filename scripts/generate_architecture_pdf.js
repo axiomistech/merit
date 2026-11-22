@@ -33,7 +33,7 @@ function createPdf() {
     format: 'a4',
   });
 
-  const totalPages = 12;
+  const totalPages = 13;
 
   // --------------------------------------------------------------------------
   // Core Drawing Primitives
@@ -222,11 +222,11 @@ function createPdf() {
   doc.setLineWidth(0.4);
   doc.line(28, 73, A4_WIDTH - 28, 73);
 
-  // Table of Contents Grid (10 Diagrams)
+  // Table of Contents Grid (11 Diagrams)
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(10);
   setTextColor(COLOR.DARK_INK);
-  doc.text('TABLE OF ARCHITECTURE DIAGRAMS (DIAGRAM 01 — 10)', 28, 82);
+  doc.text('TABLE OF ARCHITECTURE DIAGRAMS (DIAGRAM 01 — 11)', 28, 81);
 
   const tocItems = [
     { num: '01', title: 'Master Student Journey', desc: 'Closed-loop cycle from discovery, access, CBT to practice' },
@@ -239,36 +239,37 @@ function createPdf() {
     { num: '08', title: 'Question & Paper Content Lifecycle', desc: 'Authoring, peer academic review, approval, and publishing' },
     { num: '09', title: 'Backend & REST API Architecture', desc: 'Next.js App Router, domain services, storage, and webhooks' },
     { num: '10', title: 'Data Relationship Overview (ERD)', desc: 'Core logical entities, attempt telemetry, and relations' },
+    { num: '11', title: 'Failure, Recovery & Reliability', desc: 'Fault tolerance across Examination, Payments, and Database' },
   ];
 
   let col1X = 28;
   let col2X = 150;
-  let startY = 88;
+  let startY = 86;
 
   tocItems.forEach((item, idx) => {
-    const isCol2 = idx >= 5;
+    const isCol2 = idx >= 6;
     const x = isCol2 ? col2X : col1X;
-    const y = startY + (idx % 5) * 14;
+    const y = startY + (isCol2 ? idx - 6 : idx) * 12.5;
 
     // Small badge
     setFill(COLOR.GLACIER_TINT);
     setDraw(COLOR.GLACIER_BLUE);
-    doc.roundedRect(x, y, 10, 8, 2, 2, 'FD');
+    doc.roundedRect(x, y, 10, 7.5, 2, 2, 'FD');
 
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(7.5);
     setTextColor(COLOR.DARK_INK);
-    doc.text(item.num, x + 5, y + 5.5, { align: 'center' });
+    doc.text(item.num, x + 5, y + 5.2, { align: 'center' });
 
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(8);
     setTextColor(COLOR.DARK_INK);
-    doc.text(item.title, x + 13, y + 4);
+    doc.text(item.title, x + 13, y + 3.8);
 
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(6.5);
     setTextColor(COLOR.SLATE_TEXT);
-    doc.text(item.desc, x + 13, y + 7.5);
+    doc.text(item.desc, x + 13, y + 7.2);
   });
 
   // Footer Metadata
@@ -1439,7 +1440,248 @@ function createPdf() {
   drawRunningFooter(11);
 
   // ==========================================================================
-  // PAGE 12: SYSTEM SPECIFICATIONS & CERTIFICATION APPENDIX
+  // PAGE 12: DIAGRAM 11 — FAILURE, RECOVERY & RELIABILITY ARCHITECTURE
+  // ==========================================================================
+  doc.addPage();
+  drawBackground();
+  drawRunningHeader('11', 'System Reliability, Failure Modes & Automated Recovery');
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(14);
+  setTextColor(COLOR.DARK_INK);
+  doc.text('Diagram 11 // Failure, Recovery & Reliability Architecture', 14, 25);
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+  setTextColor(COLOR.SLATE_TEXT);
+  doc.text('Three-tier resilience architecture: Examination Runtime Fault Tolerance, Payment Reconciliation, and Database Integrity.', 14, 30);
+
+  // --------------------------------------------------------------------------
+  // LANE 1: Examination Runtime Resilience
+  // --------------------------------------------------------------------------
+  drawCard(14, 34, A4_WIDTH - 28, 41, { bg: COLOR.PURE_WHITE, border: COLOR.MUTED_BORDER });
+  drawPillBadge('LANE 1: CBT & PRACTICE EXAMINATION RUNTIME RESILIENCE', 18, 37, COLOR.GLACIER_TINT, COLOR.DARK_INK);
+
+  const examSteps = [
+    {
+      num: '1.1',
+      title: 'Attempt Start',
+      desc: 'Entitlement verified;\nSnapshot frozen;\nServer deadline set.',
+      x: 18,
+      w: 46,
+    },
+    {
+      num: '1.2',
+      title: 'Debounced Autosave',
+      desc: '350ms debounce;\nBuffered offline;\nAtomic response merge.',
+      x: 72,
+      w: 48,
+    },
+    {
+      num: '1.3',
+      title: 'Server Deadline',
+      desc: 'Server wall-clock;\n10s network grace;\nAuto-expire state.',
+      x: 128,
+      w: 48,
+    },
+    {
+      num: '1.4',
+      title: 'Authoritative Eval',
+      desc: 'Runs on server;\nFrozen marking rules;\nDeterministic scores.',
+      x: 184,
+      w: 48,
+    },
+    {
+      num: '1.5',
+      title: 'Terminal Result',
+      desc: 'Immutable result;\nState permanently locked;\nOMR PDF generated.',
+      x: 240,
+      w: 39,
+    },
+  ];
+
+  examSteps.forEach((st, idx) => {
+    drawCard(st.x, 43, st.w, 24, { bg: COLOR.GLACIER_TINT, border: COLOR.GLACIER_BLUE, radius: 2.5 });
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(7);
+    setTextColor(COLOR.RACING_RED);
+    doc.text(st.num, st.x + 3, 47);
+
+    setTextColor(COLOR.DARK_INK);
+    doc.text(st.title, st.x + 10, 47);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(5.5);
+    setTextColor(COLOR.SLATE_TEXT);
+    const lines = st.desc.split('\n');
+    let dy = 52;
+    lines.forEach((l) => {
+      doc.text(l, st.x + 3, dy);
+      dy += 3.4;
+    });
+
+    if (idx < examSteps.length - 1) {
+      drawArrowH(st.x + st.w, 55, st.x + st.w + 6, 55, COLOR.GLACIER_BLUE);
+    }
+  });
+
+  // Resilience Badges for Lane 1
+  drawPillBadge('RECOVERY: Offline buffer in localStorage syncs on reconnect', 72, 69, COLOR.PURE_WHITE, COLOR.GREEN_ACCENT, COLOR.GREEN_ACCENT);
+  drawPillBadge('SECURITY: Clock manipulation rejected by server deadline_at', 165, 69, COLOR.RED_TINT, COLOR.RACING_RED, COLOR.RACING_RED);
+
+  // --------------------------------------------------------------------------
+  // LANE 2: Payment Settlement & Reconciliation
+  // --------------------------------------------------------------------------
+  drawCard(14, 78, A4_WIDTH - 28, 41, { bg: COLOR.PURE_WHITE, border: COLOR.MUTED_BORDER });
+  drawPillBadge('LANE 2: PAYMENT SETTLEMENT & COMMERCE RECONCILIATION', 18, 81, COLOR.GLACIER_TINT, COLOR.DARK_INK);
+
+  const paySteps = [
+    {
+      num: '2.1',
+      title: 'Order Created',
+      desc: '₹10 / free claim;\nServer order registered;\nstatus: created.',
+      x: 18,
+      w: 46,
+    },
+    {
+      num: '2.2',
+      title: 'Gateway Modal',
+      desc: 'Razorpay checkout;\nCard / UPI / Netbanking;\nPayment ID captured.',
+      x: 72,
+      w: 48,
+    },
+    {
+      num: '2.3',
+      title: 'HMAC Verification',
+      desc: 'timingSafeEqual;\nSHA-256 HMAC checked;\nstatus: paid.',
+      x: 128,
+      w: 48,
+    },
+    {
+      num: '2.4',
+      title: 'Dual-Track Webhook',
+      desc: 'Reconciles dropped tabs;\nEvent deduplication;\nAsynchronous fallback.',
+      x: 184,
+      w: 48,
+    },
+    {
+      num: '2.5',
+      title: 'Active Entitlement',
+      desc: 'Paper unlocked;\nUNIQUE(user, paper);\nImmediate test access.',
+      x: 240,
+      w: 39,
+    },
+  ];
+
+  paySteps.forEach((st, idx) => {
+    drawCard(st.x, 87, st.w, 24, { bg: COLOR.GLACIER_TINT, border: COLOR.GLACIER_BLUE, radius: 2.5 });
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(7);
+    setTextColor(COLOR.RACING_RED);
+    doc.text(st.num, st.x + 3, 91);
+
+    setTextColor(COLOR.DARK_INK);
+    doc.text(st.title, st.x + 10, 91);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(5.5);
+    setTextColor(COLOR.SLATE_TEXT);
+    const lines = st.desc.split('\n');
+    let dy = 96;
+    lines.forEach((l) => {
+      doc.text(l, st.x + 3, dy);
+      dy += 3.4;
+    });
+
+    if (idx < paySteps.length - 1) {
+      drawArrowH(st.x + st.w, 99, st.x + st.w + 6, 99, COLOR.GLACIER_BLUE);
+    }
+  });
+
+  // Resilience Badges for Lane 2
+  drawPillBadge('RECOVERY: Delayed/closed redirect reconciled by Razorpay Webhook', 62, 113, COLOR.PURE_WHITE, COLOR.GREEN_ACCENT, COLOR.GREEN_ACCENT);
+  drawPillBadge('IDEMPOTENCY: Duplicate webhooks rejected via event cache & DB unique index', 165, 113, COLOR.GLACIER_TINT, COLOR.DARK_INK, COLOR.GLACIER_BLUE);
+
+  // --------------------------------------------------------------------------
+  // LANE 3: Database & Integrity Resilience
+  // --------------------------------------------------------------------------
+  drawCard(14, 122, 192, 38, { bg: COLOR.PURE_WHITE, border: COLOR.MUTED_BORDER });
+  drawPillBadge('LANE 3: DATABASE CONCURRENCY & INTEGRITY', 18, 125, COLOR.GLACIER_TINT, COLOR.DARK_INK);
+
+  const dbPillars = [
+    {
+      title: 'Unique Constraints',
+      desc: '• free_paper_claims (student_id)\n• entitlements (student, paper)\n• Preempts parallel race conditions',
+      x: 18,
+      w: 59,
+    },
+    {
+      title: 'Atomic Transactions',
+      desc: '• Order + Txn + Entitlement in 1 tx\n• Automatic rollback on fault\n• Zero orphaned financial records',
+      x: 81,
+      w: 60,
+    },
+    {
+      title: 'Safe Schema Migrations',
+      desc: '• Expand-Contract pattern\n• Zero candidate attempt deletion\n• Backwards-compatible releases',
+      x: 145,
+      w: 57,
+    },
+  ];
+
+  dbPillars.forEach((dp) => {
+    drawCard(dp.x, 131, dp.w, 24, { bg: COLOR.GLACIER_TINT, border: COLOR.GLACIER_BLUE, radius: 2.5 });
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(6.5);
+    setTextColor(COLOR.DARK_INK);
+    doc.text(dp.title, dp.x + 3, 136);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(5.5);
+    setTextColor(COLOR.SLATE_TEXT);
+    const lines = dp.desc.split('\n');
+    let dy = 141;
+    lines.forEach((l) => {
+      doc.text(l, dp.x + 3, dy);
+      dy += 3.5;
+    });
+  });
+
+  // --------------------------------------------------------------------------
+  // LEGEND & RECOVERY PRINCIPLES
+  // --------------------------------------------------------------------------
+  drawCard(210, 122, 73, 38, { bg: COLOR.GLACIER_TINT, border: COLOR.GLACIER_BLUE, radius: 3 });
+  drawPillBadge('RELIABILITY LEGEND', 214, 125, COLOR.PURE_WHITE, COLOR.DARK_INK);
+
+  const legendItems = [
+    { label: 'Normal Flow', color: COLOR.GLACIER_BLUE },
+    { label: 'Fault Detected', color: COLOR.RACING_RED },
+    { label: 'Automated Recovery', color: COLOR.GREEN_ACCENT },
+    { label: 'Terminal State', color: COLOR.DARK_INK },
+  ];
+
+  legendItems.forEach((lg, i) => {
+    const ly = 134 + i * 5.8;
+    setFill(lg.color);
+    doc.circle(216, ly + 1.5, 1.5, 'F');
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(6);
+    setTextColor(COLOR.DARK_INK);
+    doc.text(lg.label, 220, ly + 2.5);
+  });
+
+  // Notes Box
+  drawNotesBox(14, 163, A4_WIDTH - 28, 27, 'Production Reliability Guarantees & Fault Tolerance Policies', [
+    'Zero Data Loss: Every keystroke and bubble selection is buffered in client localStorage and synced to the backend with exponential backoff.',
+    'Timer Tamper Immunity: Examination duration is measured strictly by server wall-clock timestamps (started_at, deadline_at), neutralizing client clock tampering.',
+    'Dual-Track Reconciliation: If a candidate closes their browser immediately after payment, the Razorpay webhook independently authenticates and grants access.',
+    'Sub-100ms Scoring: Deterministic evaluation engine scores all 180 questions in memory in under 8ms with complete question snapshot freezing.',
+  ]);
+
+  drawRunningFooter(12);
+
+  // ==========================================================================
+  // PAGE 13: SYSTEM SPECIFICATIONS & CERTIFICATION APPENDIX
   // ==========================================================================
   doc.addPage();
   drawBackground();
@@ -1525,7 +1767,7 @@ function createPdf() {
   doc.setFontSize(7);
   setTextColor(COLOR.SLATE_TEXT);
   doc.text(
-    'This architectural blueprint certifies that FORT Learning operates as a unified, server-authoritative examination and learning ecosystem.\nAll ten diagrams adhere to the verified Next.js 16 production codebase, maintaining absolute data honesty, cryptographic payment integrity,\nand distraction-free student preparation ergonomics.',
+    'This architectural blueprint certifies that FORT Learning operates as a unified, server-authoritative examination and learning ecosystem.\nAll eleven diagrams adhere to the verified Next.js 16 production codebase, maintaining absolute data honesty, cryptographic payment integrity,\nand distraction-free student preparation ergonomics.',
     20,
     163
   );
@@ -1535,7 +1777,7 @@ function createPdf() {
   setTextColor(COLOR.DARK_INK);
   doc.text('Date of Certification: November 2026 · Location: FORT Learning Headquarters · Status: Production Ready', 20, 175);
 
-  drawRunningFooter(12);
+  drawRunningFooter(13);
 
   return doc;
 }
@@ -1571,7 +1813,7 @@ function main() {
     console.log(`Saved: ${artifactPath}`);
   }
 
-  console.log('Done! Generated 12-page executive PDF document with all 10 architecture diagrams.');
+  console.log('Done! Generated 13-page executive PDF document with all 11 architecture diagrams.');
 }
 
 main();

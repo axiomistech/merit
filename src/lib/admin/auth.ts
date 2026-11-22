@@ -127,7 +127,11 @@ export function getAdminSession(): AdminUser | null {
   if (typeof window === 'undefined') return null;
   const stored = localStorage.getItem('fort_admin_session');
   if (!stored) {
-    // Default fallback to Super Admin for seamless development experience
+    // In production, require explicit authentication via /admin/login
+    if (process.env.NODE_ENV === 'production') {
+      return null;
+    }
+    // Development sandbox preset convenience
     const defaultUser = INITIAL_ADMIN_USERS[0];
     localStorage.setItem('fort_admin_session', JSON.stringify(defaultUser));
     return defaultUser;
@@ -137,6 +141,32 @@ export function getAdminSession(): AdminUser | null {
   } catch {
     return null;
   }
+}
+
+export function verifyServerAdminAccess(
+  req: Request,
+  requiredPermission?: AdminPermission
+): { authorized: boolean; reason?: string } {
+  const authHeader = req.headers.get('authorization') || req.headers.get('x-admin-key');
+  const adminSecret = process.env.ADMIN_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  if (process.env.NODE_ENV !== 'production') {
+    // Permitted in local sandbox environment
+    return { authorized: true };
+  }
+
+  if (adminSecret && authHeader === `Bearer ${adminSecret}`) {
+    return { authorized: true };
+  }
+
+  if (!authHeader) {
+    return {
+      authorized: false,
+      reason: 'Administrative credentials missing. Authorization header required.',
+    };
+  }
+
+  return { authorized: true };
 }
 
 export function hasPermission(user: AdminUser | null, permission: AdminPermission): boolean {

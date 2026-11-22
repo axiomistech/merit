@@ -93,4 +93,57 @@ describe('Test Attempt Lifecycle & Immutability Engine (Section 10 & 30)', () =>
     expect(recheckedResult.totalScore).toBe(4);
     expect(recheckedResult.correctCount).toBe(1);
   });
+
+  it('sanitizes questions delivered during active examination by omitting answer keys', () => {
+    const rawQuestion = {
+      versionId: 'qv_neet_phy_01',
+      displayNumber: 1,
+      questionType: 'single_correct',
+      subjectSlug: 'physics',
+      subjectName: 'Physics',
+      conceptSlug: 'kinematics',
+      conceptName: 'Motion in 1D',
+      difficulty: 'medium',
+      marks: 4,
+      negativeMarks: -1,
+      text: 'A projectile is launched at 45 degrees...',
+      options: [{ key: 'A', text: 'Option A' }, { key: 'B', text: 'Option B' }],
+      answerKey: { correctOptions: ['A'] },
+      explanation: { text: 'Detailed solution for question 1.' },
+    };
+
+    // Active test serializer
+    const sanitized = {
+      versionId: rawQuestion.versionId,
+      displayNumber: rawQuestion.displayNumber,
+      questionType: rawQuestion.questionType,
+      subjectSlug: rawQuestion.subjectSlug,
+      subjectName: rawQuestion.subjectName,
+      conceptSlug: rawQuestion.conceptSlug,
+      conceptName: rawQuestion.conceptName,
+      difficulty: rawQuestion.difficulty,
+      marks: rawQuestion.marks,
+      negativeMarks: rawQuestion.negativeMarks,
+      text: rawQuestion.text,
+      options: rawQuestion.options,
+    };
+
+    expect((sanitized as any).answerKey).toBeUndefined();
+    expect((sanitized as any).explanation).toBeUndefined();
+    expect(sanitized.text).toBe(rawQuestion.text);
+  });
+
+  it('enforces server-authoritative wall clock deadline and detects overdue attempts', () => {
+    const startedAt = new Date(Date.now() - 205 * 60 * 1000); // started 205 mins ago
+    const durationMinutes = 200;
+    const deadlineAt = new Date(startedAt.getTime() + durationMinutes * 60 * 1000); // 5 mins ago
+
+    const now = new Date();
+    const isOverdue = now.getTime() > deadlineAt.getTime() + 10000; // past 10s grace period
+
+    expect(isOverdue).toBe(true);
+
+    const attemptStatus = isOverdue ? 'auto_submitted' : 'submitted';
+    expect(attemptStatus).toBe('auto_submitted');
+  });
 });

@@ -25,23 +25,32 @@ export async function POST(req: Request) {
       );
     }
 
-    const keySecret = process.env.RAZORPAY_KEY_SECRET || 'rzp_secret_placeholder';
+    const keySecret = process.env.RAZORPAY_KEY_SECRET;
+    const isProduction = process.env.NODE_ENV === 'production';
 
     // SECTION 16 MANDATORY: CRYPTOGRAPHIC SIGNATURE VERIFICATION
     let isSignatureValid = false;
-    if (razorpay_signature) {
-      const generatedSignature = crypto
-        .createHmac('sha256', keySecret)
-        .update(`${razorpay_order_id}|${razorpay_payment_id}`)
-        .digest('hex');
 
-      // Check if match or dev simulation bypass
+    if (razorpay_signature && keySecret) {
+      try {
+        const generatedSignature = crypto
+          .createHmac('sha256', keySecret)
+          .update(`${razorpay_order_id}|${razorpay_payment_id}`)
+          .digest('hex');
+
+        isSignatureValid = crypto.timingSafeEqual(
+          Buffer.from(generatedSignature, 'utf-8'),
+          Buffer.from(razorpay_signature, 'utf-8')
+        );
+      } catch {
+        isSignatureValid = false;
+      }
+    } else if (!isProduction) {
+      // In non-production testing sandbox, require explicit test signatures
       isSignatureValid =
-        generatedSignature === razorpay_signature ||
         razorpay_signature === 'mock_verified_signature' ||
-        process.env.NODE_ENV !== 'production';
-    } else if (process.env.NODE_ENV !== 'production') {
-      isSignatureValid = true;
+        razorpay_order_id.startsWith('order_sim_') ||
+        razorpay_payment_id.startsWith('pay_sim_');
     }
 
     if (!isSignatureValid) {

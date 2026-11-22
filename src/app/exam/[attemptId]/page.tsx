@@ -28,6 +28,7 @@ import {
   QuestionData,
   AnswerState,
   QuestionPaletteStatus,
+  ExamAttemptEvaluation,
 } from '@/types/exam';
 import { evaluateAttempt } from '@/lib/scoring/engine';
 import { MathText } from '@/components/ui/MathText';
@@ -42,8 +43,14 @@ export default function ExamExecutionPage() {
   const attemptId = (params?.attemptId as string) || 'ATT-2026-NEET-01';
 
   const paper = SAMPLE_NEET_PAPER;
-  // Full 180 questions for NEET CBT Simulation
-  const questions: QuestionData[] = useMemo(() => getFullNeet180Questions(), []);
+  // Initialize questions without answer keys to prevent client inspection during active exam
+  const [questions, setQuestions] = useState<QuestionData[]>(() =>
+    getFullNeet180Questions().map((q) => ({
+      ...q,
+      answerKey: undefined as any,
+      explanation: undefined as any,
+    }))
+  );
 
   const [currentIndex, setCurrentIndex] = useState(0); // 0-based index
   const [answers, setAnswers] = useState<Record<string, AnswerState>>({});
@@ -52,6 +59,7 @@ export default function ExamExecutionPage() {
   const [showSubmitConfirmModal, setShowSubmitConfirmModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [syncStatus, setSyncStatus] = useState<'synced' | 'saving' | 'offline'>('synced');
 
   // Authenticated candidate profile
   const [candidate, setCandidate] = useState({
@@ -62,6 +70,7 @@ export default function ExamExecutionPage() {
   // Server-authoritative countdown timer simulation (200 minutes = 12000 seconds)
   const [secondsRemaining, setSecondsRemaining] = useState<number>(12000);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const autosaveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     // Retrieve authentic candidate profile from session
@@ -77,30 +86,62 @@ export default function ExamExecutionPage() {
         } catch {}
       }
 
-      // Check if previous answers exist in localStorage for attempt recovery
+      // Check if previous answers exist in localStorage for offline recovery buffer
       const savedAnswers = localStorage.getItem(`fort_attempt_${attemptId}_answers`);
       if (savedAnswers) {
         try {
           setAnswers(JSON.parse(savedAnswers));
         } catch {}
       }
-
-      // SECTION 9 & 25 MANDATORY: PERSISTENT SERVER-ALIGNED TIMER & RECOVERY
-      const totalSecs = (paper.durationMinutes || 200) * 60;
-      const startKey = `fort_attempt_${attemptId}_start_timestamp`;
-      const startTs = localStorage.getItem(startKey);
-      if (!startTs) {
-        localStorage.setItem(startKey, Date.now().toString());
-      } else {
-        const elapsed = Math.floor((Date.now() - Number(startTs)) / 1000);
-        const remaining = Math.max(0, totalSecs - elapsed);
-        setSecondsRemaining(remaining);
-        if (remaining <= 0) {
-          handleFinalSubmit(true);
-          return;
-        }
-      }
     }
+
+    // SECTION 9 & 25 MANDATORY: FETCH AUTHORITATIVE ATTEMPT STATE & SERVER DEADLINE
+    fetch(`/api/test-attempts/${attemptId}`)
+      .then((r) => r.json())
+      .then((res) => {
+        if (res.success && res.data) {
+          const attemptData = res.data;
+          // Set sanitized questions without answer keys
+          if (attemptData.questions && attemptData.questions.length > 0) {
+            setQuestions(attemptData.questions);
+          }
+
+          // If attempt has already been submitted, redirect to verified result
+          if (
+            attemptData.status === 'submitted' ||
+            attemptData.status === 'auto_submitted' ||
+            attemptData.status === 'evaluated'
+          ) {
+            toast.info('This test attempt was already submitted and locked.');
+            router.push(`/dashboard/results/${attemptId}`);
+            return;
+          }
+
+          // Anchor timer to authoritative server deadline
+          if (attemptData.deadlineAt) {
+            const serverRemaining = Math.max(
+              0,
+              Math.floor((new Date(attemptData.deadlineAt).getTime() - Date.now()) / 1000)
+            );
+            setSecondsRemaining(serverRemaining);
+            if (serverRemaining <= 0) {
+              handleFinalSubmit(true);
+              return;
+            }
+          }
+
+          // Merge any authoritative server responses with local buffer
+          if (attemptData.responses && Object.keys(attemptData.responses).length > 0) {
+            setAnswers((prev) => ({ ...attemptData.responses, ...prev }));
+          }
+
+          setSyncStatus('synced');
+        }
+      })
+      .catch((err) => {
+        console.warn('Network offline or backend unreachable, using local recovery buffer:', err);
+        setSyncStatus('offline');
+      });
 
     timerRef.current = setInterval(() => {
       setSecondsRemaining((prev) => {
@@ -115,8 +156,9 @@ export default function ExamExecutionPage() {
 
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
+      if (autosaveTimeoutRef.current) clearTimeout(autosaveTimeoutRef.current);
     };
-  }, [attemptId]);
+  }, [attemptId, router]);
 
   const currentQ = questions[currentIndex];
 
@@ -135,6 +177,31 @@ export default function ExamExecutionPage() {
   };
 
   const currentAnswer = currentQ ? answers[currentQ.versionId] : undefined;
+
+  const syncResponseToServer = (questionVersionId: string, state: AnswerState) => {
+    if (autosaveTimeoutRef.current) clearTimeout(autosaveTimeoutRef.current);
+    setSyncStatus('saving');
+    autosaveTimeoutRef.current = setTimeout(async () => {
+      try {
+        const res = await fetch(`/api/test-attempts/${attemptId}/responses`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            questionVersionId,
+            selectedOptions: state.selectedOptions,
+            markedForReview: state.markedForReview,
+          }),
+        });
+        if (res.ok) {
+          setSyncStatus('synced');
+        } else {
+          setSyncStatus('offline');
+        }
+      } catch {
+        setSyncStatus('offline');
+      }
+    }, 350);
+  };
 
   const handleSelectOption = (optionKey: string) => {
     if (!currentQ) return;
@@ -169,6 +236,7 @@ export default function ExamExecutionPage() {
     if (typeof window !== 'undefined') {
       localStorage.setItem(`fort_attempt_${attemptId}_answers`, JSON.stringify(nextAnswers));
     }
+    syncResponseToServer(currentQ.versionId, nextState);
   };
 
   const handleToggleMarkForReview = () => {
@@ -192,6 +260,7 @@ export default function ExamExecutionPage() {
     if (typeof window !== 'undefined') {
       localStorage.setItem(`fort_attempt_${attemptId}_answers`, JSON.stringify(nextAnswers));
     }
+    syncResponseToServer(currentQ.versionId, nextState);
   };
 
   const handleClearResponse = () => {
@@ -203,6 +272,14 @@ export default function ExamExecutionPage() {
     if (typeof window !== 'undefined') {
       localStorage.setItem(`fort_attempt_${attemptId}_answers`, JSON.stringify(nextAnswers));
     }
+    syncResponseToServer(currentQ.versionId, {
+      questionVersionId: currentQ.versionId,
+      selectedOptions: [],
+      isAnswered: false,
+      markedForReview: false,
+      timeSpentSeconds: 0,
+      lastUpdated: Date.now(),
+    });
   };
 
   const handleNext = () => {
@@ -273,30 +350,53 @@ export default function ExamExecutionPage() {
   }, [answers, visited, questions]);
 
   // Final submission handler
-  const handleFinalSubmit = (isAuto: boolean = false) => {
+  const handleFinalSubmit = async (isAuto: boolean = false) => {
     setIsSubmitting(true);
     setShowSubmitConfirmModal(false);
 
-    // Call centralized evaluation engine
-    const evaluation = evaluateAttempt({
-      questions: questions.map((q) => ({
-        questionVersionId: q.versionId,
-        displayNumber: q.displayNumber,
-        questionType: q.questionType,
-        subjectSlug: q.subjectSlug,
-        subjectName: q.subjectName,
-        conceptSlug: q.conceptSlug,
-        conceptName: q.conceptName,
-        difficulty: q.difficulty,
-        marks: q.marks,
-        negativeMarks: q.negativeMarks,
-        correctOptions: q.answerKey?.correctOptions,
-        numericalValue: q.answerKey?.numericalValue,
-        numericalTolerance: q.answerKey?.numericalTolerance,
-      })),
-      answers,
-      durationSeconds: 12000 - secondsRemaining,
-    });
+    let evaluation: ExamAttemptEvaluation | null = null;
+    let finalDuration = 12000 - secondsRemaining;
+
+    // SECTION 12 & 16: SUBMIT AUTHORITATIVELY TO SERVER
+    try {
+      const res = await fetch(`/api/test-attempts/${attemptId}/submit`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ answers }),
+      });
+      const data = await res.json();
+      if (data.success && data.data?.evaluation) {
+        evaluation = data.data.evaluation;
+        if (data.data.durationSeconds) {
+          finalDuration = data.data.durationSeconds;
+        }
+      }
+    } catch (err) {
+      console.warn('Backend submission failed, falling back to local scoring engine:', err);
+    }
+
+    // Fallback scoring if offline
+    if (!evaluation) {
+      evaluation = evaluateAttempt({
+        questions: getFullNeet180Questions().map((q) => ({
+          questionVersionId: q.versionId,
+          displayNumber: q.displayNumber,
+          questionType: q.questionType,
+          subjectSlug: q.subjectSlug,
+          subjectName: q.subjectName,
+          conceptSlug: q.conceptSlug,
+          conceptName: q.conceptName,
+          difficulty: q.difficulty,
+          marks: q.marks,
+          negativeMarks: q.negativeMarks,
+          correctOptions: q.answerKey?.correctOptions,
+          numericalValue: q.answerKey?.numericalValue,
+          numericalTolerance: q.answerKey?.numericalTolerance,
+        })),
+        answers,
+        durationSeconds: finalDuration,
+      });
+    }
 
     const submissionTimestamp = new Date().toLocaleString('en-IN', {
       day: '2-digit',
@@ -329,7 +429,7 @@ export default function ExamExecutionPage() {
           wrongCount: evaluation.incorrectCount,
           unansweredCount: evaluation.unattemptedCount,
           completedAt: new Date().toISOString(),
-          timeSpentSeconds: 12000 - secondsRemaining,
+          timeSpentSeconds: finalDuration,
         };
         existingAttempts = [newAttemptRecord, ...existingAttempts.filter((a: any) => a.id !== attemptId)];
         localStorage.setItem('fort_student_attempts', JSON.stringify(existingAttempts));
@@ -405,6 +505,28 @@ export default function ExamExecutionPage() {
         </div>
 
         <div className="flex items-center gap-3 sm:gap-4">
+          {/* Server Sync Status Pill */}
+          <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-xl border border-[#DCE2E6] bg-white text-[11px] font-medium shadow-sm">
+            {syncStatus === 'synced' && (
+              <>
+                <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                <span className="text-[#20252B]">Server Synced</span>
+              </>
+            )}
+            {syncStatus === 'saving' && (
+              <>
+                <span className="h-2 w-2 rounded-full bg-amber-500 animate-pulse" />
+                <span className="text-[#66727D]">Autosaving...</span>
+              </>
+            )}
+            {syncStatus === 'offline' && (
+              <>
+                <span className="h-2 w-2 rounded-full bg-[#E4002B]" />
+                <span className="text-[#E4002B]">Offline Buffer</span>
+              </>
+            )}
+          </div>
+
           {/* Server-authoritative Countdown Timer */}
           <div
             className={cn(

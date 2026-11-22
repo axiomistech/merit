@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getStoredQuestions, saveStoredQuestions } from '@/lib/admin/store';
+import { verifyServerAdminAccess } from '@/lib/admin/auth';
 
 export async function GET(
   req: Request,
@@ -34,6 +35,14 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const authCheck = verifyServerAdminAccess(req, 'questions.edit');
+    if (!authCheck.authorized) {
+      return NextResponse.json(
+        { success: false, error: authCheck.reason || 'Unauthorized administrative action.' },
+        { status: 401 }
+      );
+    }
+
     const { id } = await params;
     const body = await req.json();
     const questions = getStoredQuestions();

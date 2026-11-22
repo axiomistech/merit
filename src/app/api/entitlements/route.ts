@@ -129,24 +129,14 @@ export async function POST(req: Request) {
     }
 
     if (action === 'paid_unlock') {
-      const paidEntitlement = {
-        id: `ent_paid_${Date.now()}`,
-        type: 'paid_unlock',
-        paperSlug,
-        orderId: orderId || `ord_${Date.now()}`,
-        paymentId: paymentId || `pay_${Date.now()}`,
-        grantedAt: new Date().toISOString(),
-        expiresAt: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
-        status: 'active',
-      };
-
-      userEntitlements.push(paidEntitlement);
-
-      return NextResponse.json({
-        success: true,
-        message: 'Question paper unlocked for ₹10 successfully',
-        data: paidEntitlement,
-      });
+      // SECURITY ENFORCEMENT: Paid entitlements must strictly originate from verified Razorpay transactions
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Direct client-side paid entitlement creation is forbidden. Entitlements must be granted through verified payment settlement via /api/payments/verify.',
+        },
+        { status: 403 }
+      );
     }
 
     return NextResponse.json(

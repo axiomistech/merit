@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getStoredQuestions, saveStoredQuestions, AdminQuestionRecord } from '@/lib/admin/store';
 import { SAMPLE_NEET_QUESTIONS } from '@/data/seedData';
+import { verifyServerAdminAccess } from '@/lib/admin/auth';
 
 export async function GET(req: Request) {
   try {
@@ -86,6 +87,14 @@ export async function GET(req: Request) {
 
 export async function POST(req: Request) {
   try {
+    const authCheck = verifyServerAdminAccess(req, 'questions.create');
+    if (!authCheck.authorized) {
+      return NextResponse.json(
+        { success: false, error: authCheck.reason || 'Unauthorized administrative action.' },
+        { status: 401 }
+      );
+    }
+
     const body = await req.json();
 
     if (!body.text || !body.subjectSlug) {

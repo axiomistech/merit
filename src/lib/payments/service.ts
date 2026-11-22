@@ -159,22 +159,32 @@ export function verifyRazorpaySignature(
   paymentId: string,
   signature: string
 ): boolean {
-  if (orderId.startsWith('order_sim_')) {
-    // Dev sandbox bypass
+  // Development sandbox simulation bypass (strictly forbidden in production)
+  if (process.env.NODE_ENV !== 'production' && orderId.startsWith('order_sim_')) {
     return true;
   }
   const secret = process.env.RAZORPAY_KEY_SECRET;
-  if (!secret) return false;
+  if (!secret) {
+    if (process.env.NODE_ENV === 'production') {
+      console.error('CRITICAL SECURITY: RAZORPAY_KEY_SECRET missing in production.');
+      return false;
+    }
+    return false;
+  }
 
-  const expectedSignature = crypto
-    .createHmac('sha256', secret)
-    .update(`${orderId}|${paymentId}`)
-    .digest('hex');
+  try {
+    const expectedSignature = crypto
+      .createHmac('sha256', secret)
+      .update(`${orderId}|${paymentId}`)
+      .digest('hex');
 
-  return crypto.timingSafeEqual(
-    Buffer.from(expectedSignature, 'utf-8'),
-    Buffer.from(signature, 'utf-8')
-  );
+    return crypto.timingSafeEqual(
+      Buffer.from(expectedSignature, 'utf-8'),
+      Buffer.from(signature, 'utf-8')
+    );
+  } catch {
+    return false;
+  }
 }
 
 /**

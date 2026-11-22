@@ -6,13 +6,57 @@ import { getAttemptsStore } from '@/lib/server/backendStore';
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { paperSlug, studentId, studentRegistrationId, studentName } = body;
+    const { paperSlug, studentId, studentRegistrationId, studentName, attemptId: requestedAttemptId } = body;
+
+    const store = getAttemptsStore();
+    const regId = studentRegistrationId || 'FORT-26-000001';
+
+    // DUPLICATE ATTEMPT PREVENTION & ATTEMPT RECOVERY:
+    // Check if candidate already has an active, unexpired attempt for this paper
+    const existingAttempt = Object.values(store).find(
+      (a: any) =>
+        a.studentRegistrationId === regId &&
+        (a.paperSlug === paperSlug || a.paperId === paperSlug) &&
+        a.status === 'active' &&
+        new Date(a.deadline_at).getTime() > Date.now()
+    );
+
+    if (existingAttempt) {
+      return NextResponse.json({
+        success: true,
+        message: 'Resuming existing active test attempt (idempotent)',
+        data: {
+          attemptId: existingAttempt.id,
+          paperName: existingAttempt.paperName,
+          durationMinutes: existingAttempt.paperSnapshot.durationMinutes,
+          startedAt: existingAttempt.started_at,
+          deadlineAt: existingAttempt.deadline_at,
+          totalQuestions: existingAttempt.questionsSnapshot.length,
+          maxMarks: existingAttempt.paperSnapshot.maxMarks,
+          responses: existingAttempt.responses || {},
+          questions: existingAttempt.questionsSnapshot.map((q: any) => ({
+            versionId: q.versionId,
+            displayNumber: q.displayNumber,
+            questionType: q.questionType,
+            subjectSlug: q.subjectSlug,
+            subjectName: q.subjectName,
+            conceptSlug: q.conceptSlug,
+            conceptName: q.conceptName,
+            difficulty: q.difficulty,
+            marks: q.marks,
+            negativeMarks: q.negativeMarks,
+            text: q.text,
+            options: q.options,
+          })),
+        },
+      });
+    }
 
     const paper =
       getStoredTests().find((t: any) => t.slug === paperSlug || t.id === paperSlug) ||
       SAMPLE_NEET_PAPER;
 
-    const attemptId = `ATT-${Date.now().toString(36).toUpperCase()}-${Math.floor(1000 + Math.random() * 9000)}`;
+    const attemptId = requestedAttemptId || `ATT-${Date.now().toString(36).toUpperCase()}-${Math.floor(1000 + Math.random() * 9000)}`;
     const now = new Date();
     const durationMinutes = paper.durationMinutes || 200;
     const deadline = new Date(now.getTime() + durationMinutes * 60 * 1000);

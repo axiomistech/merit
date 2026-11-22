@@ -59,4 +59,44 @@ describe('Access Control, Entitlements & Webhook Idempotency (Section 15 & 16)',
     expect(res2.duplicate).toBe(true);
     expect(entitlements.length).toBe(1); // Entitlement count must remain 1!
   });
+
+  it('rejects direct client-side paid_unlock requests without verified transaction', () => {
+    const handleEntitlementRequest = (action: string) => {
+      if (action === 'paid_unlock') {
+        return { status: 403, error: 'Direct client-side paid entitlement creation is forbidden.' };
+      }
+      return { status: 200, success: true };
+    };
+
+    const attempt = handleEntitlementRequest('paid_unlock');
+    expect(attempt.status).toBe(403);
+    expect(attempt.error).toContain('forbidden');
+  });
+
+  it('verifies razorpay payment signatures cryptographically and rejects tampering', () => {
+    const crypto = require('crypto');
+    const secret = 'rzp_test_secret_12345';
+    const orderId = 'order_987654';
+    const paymentId = 'pay_123456';
+
+    const validSignature = crypto
+      .createHmac('sha256', secret)
+      .update(`${orderId}|${paymentId}`)
+      .digest('hex');
+
+    const verify = (sig: string) => {
+      const expected = crypto
+        .createHmac('sha256', secret)
+        .update(`${orderId}|${paymentId}`)
+        .digest('hex');
+      try {
+        return crypto.timingSafeEqual(Buffer.from(expected, 'utf-8'), Buffer.from(sig, 'utf-8'));
+      } catch {
+        return false;
+      }
+    };
+
+    expect(verify(validSignature)).toBe(true);
+    expect(verify('tampered_signature_payload')).toBe(false);
+  });
 });

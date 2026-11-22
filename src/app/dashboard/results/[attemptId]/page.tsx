@@ -41,6 +41,7 @@ export default function ExamResultPage() {
   const initialTab = (searchParams.get('tab') as 'overview' | 'solutions' | 'omr') || 'overview';
 
   const [evaluation, setEvaluation] = useState<ExamAttemptEvaluation | null>(null);
+  const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<'overview' | 'solutions' | 'omr'>(initialTab);
   const [expandedSolutions, setExpandedSolutions] = useState<Record<string, boolean>>({});
   const [answers, setAnswers] = useState<Record<string, AnswerState>>({});
@@ -93,53 +94,106 @@ export default function ExamResultPage() {
         } catch {}
       }
 
-      // Evaluation
+      // Check local storage for evaluation
       const storedEval = localStorage.getItem(`fort_result_${attemptId}`);
       if (storedEval) {
         try {
           setEvaluation(JSON.parse(storedEval));
+          setLoading(false);
+          return;
         } catch {}
-      } else {
-        // Fallback realistic evaluation matching user prompt standard
-        const fallbackEval: ExamAttemptEvaluation = {
-          totalScore: 580,
-          maxScore: 720,
-          scorePercentage: 80.5,
-          accuracy: 78.0,
-          attemptRate: 94.4,
-          completionRate: 100.0,
-          timeTakenSeconds: 10800,
-          correctCount: 140,
-          incorrectCount: 30,
-          unattemptedCount: 10,
-          subjectPerformance: {
-            physics: { subjectName: 'Physics', score: 135, maxScore: 180, correct: 35, incorrect: 8, unattempted: 2, accuracy: 81.4 },
-            chemistry: { subjectName: 'Chemistry', score: 155, maxScore: 180, correct: 39, incorrect: 4, unattempted: 2, accuracy: 90.7 },
-            botany: { subjectName: 'Botany', score: 145, maxScore: 180, correct: 38, incorrect: 5, unattempted: 2, accuracy: 88.4 },
-            zoology: { subjectName: 'Zoology', score: 145, maxScore: 180, correct: 38, incorrect: 5, unattempted: 2, accuracy: 88.4 },
-          },
-          conceptPerformance: {
-            electrostatics: { conceptName: 'Electrostatics & Gauss Law', correct: 2, total: 5, accuracy: 40.0 },
-            'chemical-bonding': { conceptName: 'Chemical Bonding & Hybridization', correct: 5, total: 5, accuracy: 100.0 },
-          },
-          questionResults: questions.slice(0, 30).map((q, i) => ({
-            questionVersionId: q.versionId,
-            displayNumber: q.displayNumber,
-            questionType: q.questionType,
-            result: i % 5 === 1 ? 'incorrect' : i % 9 === 0 ? 'unattempted' : 'correct',
-            marksEarned: i % 5 === 1 ? -1 : i % 9 === 0 ? 0 : 4,
-            timeSpentSeconds: 65,
-          })),
-        };
-        setEvaluation(fallbackEval);
       }
+
+      // Fetch authoritative result from server
+      fetch(`/api/test-attempts/${attemptId}/result`)
+        .then((r) => r.json())
+        .then((res) => {
+          if (res.success && res.data) {
+            const data = res.data;
+            const evalRecord: ExamAttemptEvaluation = {
+              totalScore: data.summary?.totalScore ?? 0,
+              maxScore: data.summary?.maxScore ?? 720,
+              scorePercentage: data.summary?.percentage ?? 0,
+              accuracy: data.summary?.accuracy ?? 0,
+              attemptRate: Math.round(
+                (((data.summary?.correctCount ?? 0) + (data.summary?.wrongCount ?? 0)) / 180) * 100
+              ),
+              completionRate: 100,
+              timeTakenSeconds: data.durationSeconds ?? 0,
+              correctCount: data.summary?.correctCount ?? 0,
+              incorrectCount: data.summary?.wrongCount ?? 0,
+              unattemptedCount: data.summary?.unansweredCount ?? 180,
+              subjectPerformance: data.sectionScores || {
+                physics: { subjectName: 'Physics', score: 0, maxScore: 180, correct: 0, incorrect: 0, unattempted: 45, accuracy: 0 },
+                chemistry: { subjectName: 'Chemistry', score: 0, maxScore: 180, correct: 0, incorrect: 0, unattempted: 45, accuracy: 0 },
+                botany: { subjectName: 'Botany', score: 0, maxScore: 180, correct: 0, incorrect: 0, unattempted: 45, accuracy: 0 },
+                zoology: { subjectName: 'Zoology', score: 0, maxScore: 180, correct: 0, incorrect: 0, unattempted: 45, accuracy: 0 },
+              },
+              conceptPerformance: {},
+              questionResults: data.questionReview?.map((qr: any) => ({
+                questionVersionId: qr.questionVersionId,
+                displayNumber: qr.displayNumber,
+                questionType: 'single_correct',
+                result: qr.isCorrect ? 'correct' : qr.studentSelectedOptions.length === 0 ? 'unattempted' : 'incorrect',
+                marksEarned: qr.marksAwarded,
+                timeSpentSeconds: 60,
+              })) || [],
+            };
+            setEvaluation(evalRecord);
+            localStorage.setItem(`fort_result_${attemptId}`, JSON.stringify(evalRecord));
+          } else {
+            setEvaluation(null);
+          }
+        })
+        .catch(() => {
+          setEvaluation(null);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
     }
   }, [attemptId, questions]);
 
-  if (!evaluation) {
+  if (loading) {
     return (
       <div className="flex h-96 items-center justify-center text-xs text-[#66727D]">
-        Loading analytical evaluation...
+        <div className="flex flex-col items-center gap-3">
+          <div className="h-6 w-6 animate-spin rounded-full border-2 border-[#20252B] border-t-transparent" />
+          <span>Retrieving verified analytical evaluation...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (!evaluation) {
+    return (
+      <div className="relative min-h-[60vh] flex items-center justify-center p-4">
+        <div className="max-w-md w-full rounded-[28px] border border-[#DCE2E6] bg-white p-8 text-center shadow-xl space-y-4">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#F1F3F4] text-[#66727D]">
+            <Clock className="h-7 w-7 text-[#20252B]" />
+          </div>
+          <div>
+            <h2 className="text-lg font-bold text-[#20252B]">Scorecard Awaiting Submission</h2>
+            <p className="mt-1 text-xs text-[#66727D] leading-relaxed">
+              No evaluation record was found for attempt <strong className="font-mono text-[#20252B]">{attemptId}</strong>.
+              If this examination is in progress, please return to the active test hall and finalize your submission.
+            </p>
+          </div>
+          <div className="flex flex-col gap-2 pt-2">
+            <Link
+              href={`/exam/${attemptId}`}
+              className="w-full rounded-xl bg-[#20252B] py-2.5 text-xs font-semibold text-white hover:bg-[#344034] transition-colors"
+            >
+              Resume Examination Hall ↗
+            </Link>
+            <Link
+              href="/dashboard"
+              className="w-full rounded-xl border border-[#DCE2E6] bg-[#F1F3F4] py-2.5 text-xs font-semibold text-[#66727D] hover:bg-white transition-colors"
+            >
+              Return to Student Dashboard
+            </Link>
+          </div>
+        </div>
       </div>
     );
   }
