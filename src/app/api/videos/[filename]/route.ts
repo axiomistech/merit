@@ -27,11 +27,10 @@ export async function GET(
     const { filename } = await context.params;
     const filePath = getSafeFilePath(filename);
 
+    const safeName = path.basename(filename);
     if (!filePath || !fs.existsSync(filePath)) {
-      return NextResponse.json(
-        { success: false, error: 'Video file not found' },
-        { status: 404 }
-      );
+      // Gracefully redirect to static CDN route if serverless filesystem doesn't have the file
+      return NextResponse.redirect(new URL(`/uploads/videos/${safeName}`, req.url), 307);
     }
 
     const stat = fs.statSync(filePath);
