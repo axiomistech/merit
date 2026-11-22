@@ -243,70 +243,80 @@ export default function AdminProductsPage() {
       </div>
 
       {/* Products Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredProducts.map((p) => (
-          <div
-            key={p.id}
-            className="rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-[0_2px_8px_rgba(38,49,38,0.04)] flex flex-col justify-between space-y-4 hover:border-[#9CC6E0] transition-all"
-          >
-            <div>
-              <div className="flex items-center justify-between gap-2 mb-2">
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#F1F3F4] text-[#52584E] border border-[#DCE2E6]">
-                  {p.paperType.replace('_', ' ')}
-                </span>
-                <span
-                  className={cn(
-                    'text-[10px] font-bold uppercase px-2 py-0.5 rounded-full',
-                    p.status === 'active' ? 'bg-[#9CC6E0]/20 text-[#3B4C30]' : 'bg-[#66727D]/15 text-[#66727D]'
+      {filteredProducts.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredProducts.map((p) => (
+            <div
+              key={p.id}
+              className="rounded-2xl border border-[#DCE2E6] bg-white p-6 shadow-[0_2px_8px_rgba(38,49,38,0.04)] flex flex-col justify-between space-y-4 hover:border-[#9CC6E0] transition-all"
+            >
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#F1F3F4] text-[#52584E] border border-[#DCE2E6]">
+                    {p.paperType.replace('_', ' ')}
+                  </span>
+                  <span
+                    className={cn(
+                      'text-[10px] font-bold uppercase px-2 py-0.5 rounded-full',
+                      p.status === 'active' ? 'bg-[#9CC6E0]/20 text-[#3B4C30]' : 'bg-[#66727D]/15 text-[#66727D]'
+                    )}
+                  >
+                    {p.status}
+                  </span>
+                </div>
+                <h3 className="font-bold text-base text-[#20252B] leading-snug">{p.title}</h3>
+                <p className="mt-1 text-xs text-[#66727D] line-clamp-2">{p.description}</p>
+
+                <div className="mt-4 flex items-baseline gap-2">
+                  <span className="text-2xl font-bold font-mono text-[#20252B]">₹{p.price}</span>
+                  {p.originalPrice && (
+                    <span className="text-xs text-[#A3A89E] line-through font-mono">₹{p.originalPrice}</span>
                   )}
-                >
-                  {p.status}
-                </span>
-              </div>
-              <h3 className="font-bold text-base text-[#20252B] leading-snug">{p.title}</h3>
-              <p className="mt-1 text-xs text-[#66727D] line-clamp-2">{p.description}</p>
-
-              <div className="mt-4 flex items-baseline gap-2">
-                <span className="text-2xl font-bold font-mono text-[#20252B]">₹{p.price}</span>
-                {p.originalPrice && (
-                  <span className="text-xs text-[#A3A89E] line-through font-mono">₹{p.originalPrice}</span>
-                )}
-                <span className="text-[11px] text-[#66727D] ml-auto">
-                  {p.includedPapersCount} Paper{p.includedPapersCount > 1 ? 's' : ''}
-                </span>
-              </div>
-
-              <div className="mt-4 pt-3 border-t border-[#DCE2E6] space-y-1.5 text-xs text-[#52584E]">
-                <div className="flex items-center gap-1.5 text-[11px]">
-                  <Clock className="h-3.5 w-3.5 text-[#66727D]" />
-                  <span>{p.accessValidityDays} days validity from purchase</span>
+                  <span className="text-[11px] text-[#66727D] ml-auto">
+                    {p.includedPapersCount} Paper{p.includedPapersCount > 1 ? 's' : ''}
+                  </span>
                 </div>
-                <div className="flex items-center gap-1.5 text-[11px]">
-                  <TrendingUp className="h-3.5 w-3.5 text-[#9CC6E0]" />
-                  <span><strong>{p.salesCount}</strong> students enrolled</span>
+
+                <div className="mt-4 pt-3 border-t border-[#DCE2E6] space-y-1.5 text-xs text-[#52584E]">
+                  <div className="flex items-center gap-1.5 text-[11px]">
+                    <Clock className="h-3.5 w-3.5 text-[#66727D]" />
+                    <span>{p.accessValidityDays} days validity from purchase</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-[11px]">
+                    <TrendingUp className="h-3.5 w-3.5 text-[#9CC6E0]" />
+                    <span><strong>{p.salesCount}</strong> students enrolled</span>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="flex items-center justify-between pt-3 border-t border-[#DCE2E6]">
-              <button
-                onClick={() => handleToggleStatus(p)}
-                className="text-xs font-semibold text-[#66727D] hover:text-[#20252B]"
-              >
-                {p.status === 'active' ? 'Deactivate' : 'Activate'}
-              </button>
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center justify-between pt-3 border-t border-[#DCE2E6]">
                 <button
-                  onClick={() => handleOpenEdit(p)}
-                  className="p-1.5 rounded-lg border border-[#DCE2E6] text-[#52584E] hover:bg-[#F1F3F4] transition-colors"
+                  onClick={() => handleToggleStatus(p)}
+                  className="text-xs font-semibold text-[#66727D] hover:text-[#20252B]"
                 >
-                  <Edit className="h-3.5 w-3.5" />
+                  {p.status === 'active' ? 'Deactivate' : 'Activate'}
                 </button>
+                <div className="flex items-center gap-1.5">
+                  <button
+                    onClick={() => handleOpenEdit(p)}
+                    className="p-1.5 rounded-lg border border-[#DCE2E6] text-[#52584E] hover:bg-[#F1F3F4] transition-colors"
+                  >
+                    <Edit className="h-3.5 w-3.5" />
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <div className="rounded-2xl border border-[#DCE2E6] bg-white p-12 text-center text-[#66727D] shadow-[0_2px_8px_rgba(38,49,38,0.04)] space-y-3">
+          <Package className="h-8 w-8 mx-auto text-[#A1A1AA]" />
+          <h3 className="text-base font-bold text-[#20252B]">No product packages configured yet.</h3>
+          <p className="text-xs text-[#66727D] max-w-md mx-auto">
+            Click Create Product Pack above to publish examination bundles, single-paper practice tokens, or custom pricing packages.
+          </p>
+        </div>
+      )}
 
       {/* Create / Edit Modal */}
       {showModal && (

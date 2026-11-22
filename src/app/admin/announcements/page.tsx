@@ -248,6 +248,15 @@ export default function AdminAnnouncementsPage() {
             </div>
           </div>
         ))}
+        {filteredAnnouncements.length === 0 && (
+          <div className="rounded-2xl border border-[#DCE2E6] bg-white p-12 text-center text-[#66727D] shadow-[0_2px_8px_rgba(38,49,38,0.04)] space-y-3">
+            <Megaphone className="h-8 w-8 mx-auto text-[#A1A1AA]" />
+            <h3 className="text-base font-bold text-[#20252B]">No announcement banners configured yet.</h3>
+            <p className="text-xs text-[#66727D] max-w-md mx-auto">
+              Click New Announcement above to create notification banners for candidates across exam dashboards.
+            </p>
+          </div>
+        )}
       </div>
 
       {/* Modal */}

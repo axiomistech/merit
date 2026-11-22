@@ -147,42 +147,8 @@ export function getInitialTransactions(): AdminTransactionRecord[] {
 }
 
 export function getInitialCoupons(): CouponItem[] {
-  return [
-    {
-      id: 'cpn_01',
-      code: 'WELCOME50',
-      name: 'New Candidate Discount',
-      description: '50% off on all individual test papers',
-      discount_type: 'percentage',
-      discount_value: 50,
-      applicable_exams: ['all'],
-      min_purchase_amount: 10,
-      total_limit: 1000,
-      used_count: 0,
-      per_user_limit: 1,
-      starts_at: '2026-01-01T00:00:00Z',
-      expires_at: '2026-12-31T23:59:59Z',
-      status: 'active',
-      revenue_generated: 0,
-    },
-    {
-      id: 'cpn_02',
-      code: 'NEET2026',
-      name: 'NEET Aspirant Promotion',
-      description: 'Flat ₹5 discount on NEET mock series',
-      discount_type: 'fixed',
-      discount_value: 5,
-      applicable_exams: ['neet'],
-      min_purchase_amount: 10,
-      total_limit: 500,
-      used_count: 0,
-      per_user_limit: 2,
-      starts_at: '2026-01-01T00:00:00Z',
-      expires_at: '2026-06-30T23:59:59Z',
-      status: 'active',
-      revenue_generated: 0,
-    },
-  ];
+  // STRICT RULE: No simulated, dummy, or promotional coupons. Empty by default.
+  return [];
 }
 
 export function getInitialSupportTickets(): SupportTicketItem[] {
@@ -308,17 +274,22 @@ export function saveStoredTransactions(txns: AdminTransactionRecord[]) {
 }
 
 export function getStoredCoupons(): CouponItem[] {
-  if (typeof window === 'undefined') return getInitialCoupons();
+  if (typeof window === 'undefined') return [];
   const stored = localStorage.getItem('fort_admin_coupons');
-  if (!stored) {
-    const init = getInitialCoupons();
-    localStorage.setItem('fort_admin_coupons', JSON.stringify(init));
-    return init;
-  }
+  if (!stored) return [];
   try {
-    return JSON.parse(stored);
+    const list: CouponItem[] = JSON.parse(stored);
+    const mockCouponIds = new Set(['cpn_01', 'cpn_02']);
+    const mockCodes = new Set(['WELCOME50', 'NEET2026']);
+    const cleanList = list.filter(
+      (c) => !mockCouponIds.has(c.id) && !mockCodes.has(c.code?.toUpperCase())
+    );
+    if (cleanList.length !== list.length) {
+      localStorage.setItem('fort_admin_coupons', JSON.stringify(cleanList));
+    }
+    return cleanList;
   } catch {
-    return getInitialCoupons();
+    return [];
   }
 }
 
@@ -351,83 +322,30 @@ export function saveStoredSupportTickets(tickets: SupportTicketItem[]) {
 
 // ---------------- PRODUCTS & PACKS ----------------
 export function getInitialProducts(): ProductPackage[] {
-  return [
-    {
-      id: 'prod_neet_full_2026',
-      title: 'NEET 2026 Ultimate Mock Series (10 Full Tests + OMR)',
-      slug: 'neet-2026-ultimate-mock-series',
-      examSlug: 'neet',
-      paperType: 'mock_series',
-      description: 'Ten full-length 720-mark simulated examinations with instant printable A4 OMR sheets, detailed KaTeX solutions, and all-India percentile ranking.',
-      price: 99,
-      originalPrice: 199,
-      includedPapersCount: 10,
-      accessValidityDays: 365,
-      features: ['10 NTA-format 720-mark papers', 'Automatic printable NEET OMR generation', 'Negative marking analytics (-1/+4)', 'Subject & chapter diagnostic report'],
-      status: 'active',
-      salesCount: 0,
-      created_at: '2026-01-10T10:00:00Z',
-    },
-    {
-      id: 'prod_jee_advanced_pack',
-      title: 'JEE Advanced High-Yield Numerical & Matrix Pack',
-      slug: 'jee-advanced-pack',
-      examSlug: 'jee-advanced',
-      paperType: 'chapter_bundle',
-      description: '6 intensive simulation tests focusing on multi-correct, integer, and paragraph questions with partial marking calculations.',
-      price: 149,
-      originalPrice: 249,
-      includedPapersCount: 6,
-      accessValidityDays: 180,
-      features: ['Partial marking evaluation engine', 'Multi-correct with decimal numericals', 'Time-per-question velocity metrics'],
-      status: 'active',
-      salesCount: 0,
-      created_at: '2026-02-01T12:00:00Z',
-    },
-    {
-      id: 'prod_upsc_mains_pack',
-      title: 'UPSC Mains GS Answer Evaluation (5 Papers)',
-      slug: 'upsc-mains-gs-evaluation',
-      examSlug: 'upsc-cse',
-      paperType: 'full_pass',
-      description: 'Human evaluator reviewed descriptive answers with rubric-based marks (0-10) and structured improvement feedback.',
-      price: 499,
-      originalPrice: 799,
-      includedPapersCount: 5,
-      accessValidityDays: 90,
-      features: ['Verified educator grading within 48h', 'Rubric breakdown across structure & depth', 'Model answers and reference pointers'],
-      status: 'active',
-      salesCount: 0,
-      created_at: '2026-02-15T09:30:00Z',
-    },
-    {
-      id: 'prod_single_paper_token',
-      title: 'Standard Examination Practice Token (1 Full Paper)',
-      slug: 'standard-paper-token',
-      examSlug: 'all',
-      paperType: 'single_paper',
-      description: 'Standard pay-per-test access for any mock or custom test paper across MERITWISE.',
-      price: 10,
-      originalPrice: 20,
-      includedPapersCount: 1,
-      accessValidityDays: 30,
-      features: ['Full paper simulation', 'Instant solution access', 'OMR download (for NEET)'],
-      status: 'active',
-      salesCount: 0,
-      created_at: '2026-01-01T00:00:00Z',
-    },
-  ];
+  // STRICT RULE: No simulated, dummy, or placeholder product packages. Empty by default.
+  return [];
 }
 
 export function getStoredProducts(): ProductPackage[] {
-  if (typeof window === 'undefined') return getInitialProducts();
+  if (typeof window === 'undefined') return [];
   const stored = localStorage.getItem('fort_admin_products');
-  if (!stored) {
-    const init = getInitialProducts();
-    localStorage.setItem('fort_admin_products', JSON.stringify(init));
-    return init;
+  if (!stored) return [];
+  try {
+    const list: ProductPackage[] = JSON.parse(stored);
+    const mockProductIds = new Set([
+      'prod_neet_full_2026',
+      'prod_jee_advanced_pack',
+      'prod_upsc_mains_pack',
+      'prod_single_paper_token',
+    ]);
+    const cleanList = list.filter((p) => !mockProductIds.has(p.id));
+    if (cleanList.length !== list.length) {
+      localStorage.setItem('fort_admin_products', JSON.stringify(cleanList));
+    }
+    return cleanList;
+  } catch {
+    return [];
   }
-  try { return JSON.parse(stored); } catch { return getInitialProducts(); }
 }
 
 export function saveStoredProducts(products: ProductPackage[]) {
@@ -559,47 +477,25 @@ export function saveStoredNotifications(notifs: InAppNotification[]) {
 
 // ---------------- ANNOUNCEMENTS ----------------
 export function getInitialAnnouncements(): AnnouncementBanner[] {
-  return [
-    {
-      id: 'ann_01',
-      title: 'NEET 2026 Registration Announcement',
-      content: 'National Testing Agency official bulletin released. Practice according to updated syllabus guidelines.',
-      badgeText: 'Important',
-      bannerType: 'info',
-      targetExam: 'neet',
-      placement: 'header_top',
-      isActive: true,
-      startDate: '2026-11-01T00:00:00Z',
-      endDate: '2026-12-31T23:59:59Z',
-      dismissible: true,
-      created_at: '2026-11-01T10:00:00Z',
-    },
-    {
-      id: 'ann_02',
-      title: 'First Full Examination Paper Is Free For All Registered Candidates',
-      content: 'Claim your complimentary full-length test with personalized OMR sheet and instantaneous diagnostic scoring upon registration.',
-      badgeText: 'Offer',
-      bannerType: 'success',
-      targetExam: 'all',
-      placement: 'dashboard_top',
-      isActive: true,
-      startDate: '2026-01-01T00:00:00Z',
-      endDate: '2026-12-31T23:59:59Z',
-      dismissible: false,
-      created_at: '2026-01-01T00:00:00Z',
-    },
-  ];
+  // STRICT RULE: No simulated or dummy announcement banners. Empty by default.
+  return [];
 }
 
 export function getStoredAnnouncements(): AnnouncementBanner[] {
-  if (typeof window === 'undefined') return getInitialAnnouncements();
+  if (typeof window === 'undefined') return [];
   const stored = localStorage.getItem('fort_admin_announcements');
-  if (!stored) {
-    const init = getInitialAnnouncements();
-    localStorage.setItem('fort_admin_announcements', JSON.stringify(init));
-    return init;
+  if (!stored) return [];
+  try {
+    const list: AnnouncementBanner[] = JSON.parse(stored);
+    const mockAnnIds = new Set(['ann_01', 'ann_02']);
+    const cleanList = list.filter((a) => !mockAnnIds.has(a.id));
+    if (cleanList.length !== list.length) {
+      localStorage.setItem('fort_admin_announcements', JSON.stringify(cleanList));
+    }
+    return cleanList;
+  } catch {
+    return [];
   }
-  try { return JSON.parse(stored); } catch { return getInitialAnnouncements(); }
 }
 
 export function saveStoredAnnouncements(announcements: AnnouncementBanner[]) {
