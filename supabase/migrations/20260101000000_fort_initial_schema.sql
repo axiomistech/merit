@@ -688,3 +688,55 @@ CREATE POLICY "Public can view published blogs" ON public.blog_posts
 ALTER TABLE public.homepage_sections ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "Public can view enabled homepage sections" ON public.homepage_sections
     FOR SELECT USING (enabled = true);
+
+-- ==============================================================================
+-- 12. INITIAL SEED DATA & STORAGE BUCKETS
+-- ==============================================================================
+
+-- Storage Buckets (Public storage for tutorial videos and avatars)
+INSERT INTO storage.buckets (id, name, public)
+VALUES 
+    ('tutorial-videos', 'tutorial-videos', true),
+    ('avatars', 'avatars', true)
+ON CONFLICT (id) DO NOTHING;
+
+-- Storage Bucket Policies
+DO $$
+BEGIN
+    IF NOT EXISTS (
+        SELECT 1 FROM pg_policies WHERE tablename = 'objects' AND schemaname = 'storage' AND policyname = 'Public tutorial video access'
+    ) THEN
+        CREATE POLICY "Public tutorial video access" ON storage.objects
+            FOR SELECT USING (bucket_id = 'tutorial-videos');
+    END IF;
+
+    IF NOT EXISTS (
+        SELECT 1 FROM pg_policies WHERE tablename = 'objects' AND schemaname = 'storage' AND policyname = 'Public avatar access'
+    ) THEN
+        CREATE POLICY "Public avatar access" ON storage.objects
+            FOR SELECT USING (bucket_id = 'avatars');
+    END IF;
+END $$;
+
+-- Default Seed Examinations (NEET, JEE, UPSC, GATE)
+INSERT INTO public.examinations (slug, name, description, category, active, display_order)
+VALUES
+    ('neet', 'NEET (UG)', 'National Eligibility cum Entrance Test for Undergraduate Medical Admissions', 'medical', true, 1),
+    ('jee', 'JEE (Main & Advanced)', 'Joint Entrance Examination for Engineering Admissions', 'engineering', true, 2),
+    ('upsc', 'UPSC (Civil Services)', 'Civil Services Examination Preliminary and Mains Assessment', 'civil_services', true, 3),
+    ('gate', 'GATE', 'Graduate Aptitude Test in Engineering for Postgraduate & Technical PSU Admissions', 'engineering', true, 4)
+ON CONFLICT (slug) DO UPDATE
+SET name = EXCLUDED.name,
+    description = EXCLUDED.description,
+    category = EXCLUDED.category,
+    active = EXCLUDED.active,
+    display_order = EXCLUDED.display_order;
+
+-- Default Admin Roles
+INSERT INTO public.admin_roles (name, description)
+VALUES 
+    ('superadmin', 'Full administrative authorization across content, billing, and candidate data'),
+    ('editor', 'Question paper authoring and syllabus curator'),
+    ('reviewer', 'Psychometric and answer review evaluator')
+ON CONFLICT (name) DO NOTHING;
+
