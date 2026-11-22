@@ -234,7 +234,7 @@ export function FlippableMeritwiseCard({
       {/* ==================================================================== */}
       <div
         role="region"
-        aria-label="Section title: How Meritwise Works"
+        aria-label="Section title: See How It All Works."
         className="relative w-full shrink-0 h-[76px] sm:h-[84px] rounded-2xl sm:rounded-[22px] flex items-center justify-center overflow-hidden select-none transition-all"
         style={staticHeadingCardStyle}
       >
@@ -261,8 +261,8 @@ export function FlippableMeritwiseCard({
         <div className="pointer-events-none absolute -bottom-12 -right-12 h-32 w-32 rounded-full bg-[#DCE7ED]/45 blur-2xl z-0" />
 
         {/* Center Typography: Premium Black Only (No buttons, no icons, no badges) */}
-        <h3 className="relative z-20 text-xs sm:text-sm font-bold uppercase tracking-[0.14em] text-[#151A15] text-center px-4">
-          HOW MERITWISE WORKS
+        <h3 className="relative z-20 text-sm sm:text-base font-bold text-[#151A15] text-center px-4 tracking-[-0.01em]">
+          See How It All Works.
         </h3>
       </div>
 
