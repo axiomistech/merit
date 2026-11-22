@@ -12,7 +12,8 @@ export const DEFAULT_TUTORIAL_VIDEO: TutorialVideoConfig = {
   subtitle: 'See how Meritwise works in action.',
   description: 'Complete platform demonstration: Timed examination simulation, physical-grade vector OMR response sheets, and diagnostic analytics.',
   mimeType: 'video/mp4',
-  sizeBytes: 23552,
+  sizeBytes: 23257,
+  posterUrl: '/brand/tutorial-poster.jpg',
   updated_at: new Date().toISOString(),
 };
 
@@ -435,7 +436,18 @@ export function saveEntitlementsStore(): void {
 
 export function getStoredTutorialVideoServer(): TutorialVideoConfig {
   const db = getDatabase();
-  return db.tutorialVideo || DEFAULT_TUTORIAL_VIDEO;
+  const config = db.tutorialVideo || DEFAULT_TUTORIAL_VIDEO;
+
+  // Defensive fallback: If the referenced video file does not exist on disk and we are not in tests,
+  // gracefully fall back to the built-in default walkthrough video
+  if (process.env.NODE_ENV !== 'test' && config.fileName) {
+    const filePath = path.join(process.cwd(), 'public', 'uploads', 'videos', path.basename(config.fileName));
+    if (!fs.existsSync(filePath)) {
+      return DEFAULT_TUTORIAL_VIDEO;
+    }
+  }
+
+  return config;
 }
 
 export function saveStoredTutorialVideoServer(config: TutorialVideoConfig): boolean {

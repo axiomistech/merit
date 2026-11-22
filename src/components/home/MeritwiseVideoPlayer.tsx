@@ -66,6 +66,11 @@ export const MeritwiseVideoPlayer = forwardRef<
   const [hasError, setHasError] = useState(false);
   const [isScrubbing, setIsScrubbing] = useState(false);
 
+  // Clear error state whenever src changes
+  useEffect(() => {
+    setHasError(false);
+  }, [src]);
+
   // Imperative handle exposed to parent components
   useImperativeHandle(ref, () => ({
     pause: () => {

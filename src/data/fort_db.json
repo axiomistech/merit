@@ -4,16 +4,17 @@
   "entitlements": {},
   "attempts": {},
   "tutorialVideo": {
-    "id": "vid_test_123",
+    "id": "vid_default_walkthrough",
     "enabled": true,
-    "videoUrl": "/api/videos/tutorial_test_123.mp4",
-    "storageKey": "tutorial-videos/tutorial_test_123.mp4",
-    "fileName": "tutorial_test_123.mp4",
-    "title": "Custom Platform Walkthrough",
-    "subtitle": "Native HTML5 Video Streaming",
-    "description": "Exam simulation walkthrough",
+    "videoUrl": "/api/videos/meritwise-platform-walkthrough.mp4",
+    "storageKey": "tutorial-videos/meritwise-platform-walkthrough.mp4",
+    "fileName": "meritwise-platform-walkthrough.mp4",
+    "title": "MERITWISE Platform Walkthrough & Tutorial",
+    "subtitle": "See how Meritwise works in action.",
+    "description": "Complete platform demonstration: Timed examination simulation, physical-grade vector OMR response sheets, and diagnostic analytics.",
     "mimeType": "video/mp4",
-    "sizeBytes": 1548576,
-    "updated_at": "2026-11-22T21:17:56.301Z"
+    "sizeBytes": 23257,
+    "posterUrl": "/brand/tutorial-poster.jpg",
+    "updated_at": "2026-11-22T21:29:00.768Z"
   }
 }

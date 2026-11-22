@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, afterAll } from 'vitest';
 import {
   getStoredTutorialVideoServer,
   saveStoredTutorialVideoServer,
@@ -7,6 +7,10 @@ import {
 import { TutorialVideoConfig } from '@/types/admin';
 
 describe('Native Tutorial Video Configuration & Storage Lifecycle', () => {
+  afterAll(() => {
+    // Restore default configuration so tests never leave phantom entries in the database
+    saveStoredTutorialVideoServer(DEFAULT_TUTORIAL_VIDEO);
+  });
   it('provides default native video asset without external YouTube dependencies', () => {
     expect(DEFAULT_TUTORIAL_VIDEO.videoUrl).toBe('/api/videos/meritwise-platform-walkthrough.mp4');
     expect(DEFAULT_TUTORIAL_VIDEO.mimeType).toBe('video/mp4');
