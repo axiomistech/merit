@@ -46,12 +46,12 @@ describe('Admin RBAC & Security Enforcement (Section 25 & 31)', () => {
 
     beforeEach(() => {
       process.env.ADMIN_SECRET_KEY = TEST_ADMIN_SECRET;
-      process.env.NODE_ENV = 'production';
+      (process.env as Record<string, string | undefined>).NODE_ENV = 'production';
     });
 
     afterEach(() => {
       delete process.env.ADMIN_SECRET_KEY;
-      process.env.NODE_ENV = 'test';
+      (process.env as Record<string, string | undefined>).NODE_ENV = 'test';
     });
 
     it('denies access when authorization header is missing', () => {

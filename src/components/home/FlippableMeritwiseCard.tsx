@@ -201,15 +201,15 @@ export function FlippableMeritwiseCard({
   // 180-deg horizontal rotation for the 3D flipper container
   const flipRotation = isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)';
 
-  // Reusable Matte Sage Glass slab styling with subtle glacier-mist cooler undertone
+  // Reusable Matte Sage Glass slab styling with visible glacier-blue mist & edge reflections
   const matteSageGlassStyle: React.CSSProperties = {
     background:
-      'linear-gradient(140deg, rgba(234, 241, 245, 0.22) 0%, rgba(199, 211, 189, 0.80) 18%, rgba(156, 175, 136, 0.74) 52%, rgba(117, 137, 106, 0.68) 100%)',
-    backdropFilter: 'blur(24px) saturate(108%)',
-    WebkitBackdropFilter: 'blur(24px) saturate(108%)',
-    border: '1px solid rgba(234, 241, 245, 0.40)',
+      'linear-gradient(140deg, rgba(220, 231, 237, 0.35) 0%, rgba(199, 211, 189, 0.78) 20%, rgba(156, 175, 136, 0.72) 54%, rgba(117, 137, 106, 0.68) 100%)',
+    backdropFilter: 'blur(26px) saturate(108%)',
+    WebkitBackdropFilter: 'blur(26px) saturate(108%)',
+    border: '1px solid rgba(201, 217, 226, 0.55)',
     boxShadow:
-      'inset 0 1.5px 2px 0 rgba(245, 250, 253, 0.70), inset 1.5px 0 2px 0 rgba(220, 231, 237, 0.40), inset 0 -3px 6px 0 rgba(65, 82, 54, 0.38), inset -2px 0 5px 0 rgba(65, 82, 54, 0.25), inset 0 0 28px 0 rgba(201, 217, 226, 0.22)',
+      '0 24px 50px -12px rgba(28, 40, 22, 0.18), 0 0 42px -6px rgba(201, 217, 226, 0.45), inset 0 1.5px 2px 0 rgba(245, 250, 253, 0.85), inset 1.5px 0 2px 0 rgba(220, 231, 237, 0.55), inset 0 -3px 6px 0 rgba(65, 82, 54, 0.38), inset -2px 0 5px 0 rgba(65, 82, 54, 0.25), inset 0 0 32px 0 rgba(201, 217, 226, 0.28)',
     transformStyle: 'preserve-3d',
   };
 
@@ -276,21 +276,21 @@ export function FlippableMeritwiseCard({
             }}
             onClick={handleCardFlip}
           >
-            {/* Architectural 3-5px Thick Glass Edge Simulation Rim with faint glacial reflection */}
+            {/* Architectural 3-5px Thick Glass Edge Simulation Rim with visible glacial daylight reflection */}
             <div
               className="pointer-events-none absolute inset-0 rounded-[inherit] z-10"
               style={{
-                border: '1px solid rgba(234, 241, 245, 0.34)',
-                boxShadow: 'inset 0 0 0 1px rgba(201, 217, 226, 0.16)',
+                border: '1.5px solid rgba(201, 217, 226, 0.55)',
+                boxShadow: 'inset 0 0 0 1px rgba(220, 231, 237, 0.40)',
               }}
             />
 
-            {/* Soft Cloudy Internal Diffusion Mist with subtle cool glacier mist */}
+            {/* Soft Cloudy Internal Diffusion Mist with visible cool glacier mist */}
             <div
               className="pointer-events-none absolute inset-0 rounded-[inherit] z-0 overflow-hidden"
               style={{
                 background:
-                  'radial-gradient(ellipse 90% 60% at 50% 0%, rgba(245, 249, 252, 0.32) 0%, rgba(220, 231, 237, 0.14) 30%, rgba(156, 175, 136, 0.12) 65%, transparent 100%)',
+                  'radial-gradient(ellipse 90% 60% at 50% 0%, rgba(220, 231, 237, 0.35) 0%, rgba(201, 217, 226, 0.22) 32%, rgba(156, 175, 136, 0.12) 65%, transparent 100%)',
               }}
             />
 
@@ -299,15 +299,15 @@ export function FlippableMeritwiseCard({
               <div
                 className="pointer-events-none absolute inset-0 z-30 rounded-[inherit] transition-opacity duration-500 overflow-hidden"
                 style={{
-                  opacity: isHovered && !isVideoInteracting ? 0.14 : 0.04,
-                  background: `radial-gradient(circle 460px at ${specular.x}% ${specular.y}%, rgba(245, 250, 253, 0.44) 0%, rgba(220, 231, 237, 0.16) 35%, transparent 75%)`,
+                  opacity: isHovered && !isVideoInteracting ? 0.20 : 0.08,
+                  background: `radial-gradient(circle 480px at ${specular.x}% ${specular.y}%, rgba(245, 250, 253, 0.55) 0%, rgba(220, 231, 237, 0.30) 35%, transparent 75%)`,
                 }}
               />
             )}
 
             {/* Ambient Background Glows */}
-            <div className="pointer-events-none absolute -top-24 -left-24 h-56 w-56 rounded-full bg-[#DCE7ED]/32 blur-3xl z-0" />
-            <div className="pointer-events-none absolute -bottom-24 -right-24 h-56 w-56 rounded-full bg-[#75896A]/25 blur-3xl z-0" />
+            <div className="pointer-events-none absolute -top-20 -left-20 h-64 w-64 rounded-full bg-[#C9D9E2]/55 blur-3xl z-0" />
+            <div className="pointer-events-none absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-[#DCE7ED]/45 blur-3xl z-0" />
 
             {/* 1. TOP: Clean semibold heading without capsule or badge */}
             <div
@@ -362,27 +362,27 @@ export function FlippableMeritwiseCard({
             }}
             onClick={handleCardFlip}
           >
-            {/* Architectural 3-5px Thick Glass Edge Simulation Rim with faint glacial reflection */}
+            {/* Architectural 3-5px Thick Glass Edge Simulation Rim with visible glacial daylight reflection */}
             <div
               className="pointer-events-none absolute inset-0 rounded-[inherit] z-10"
               style={{
-                border: '1px solid rgba(234, 241, 245, 0.34)',
-                boxShadow: 'inset 0 0 0 1px rgba(201, 217, 226, 0.16)',
+                border: '1.5px solid rgba(201, 217, 226, 0.55)',
+                boxShadow: 'inset 0 0 0 1px rgba(220, 231, 237, 0.40)',
               }}
             />
 
-            {/* Soft Cloudy Internal Diffusion Mist with subtle cool glacier mist */}
+            {/* Soft Cloudy Internal Diffusion Mist with visible cool glacier mist */}
             <div
               className="pointer-events-none absolute inset-0 rounded-[inherit] z-0 overflow-hidden"
               style={{
                 background:
-                  'radial-gradient(ellipse 90% 60% at 50% 0%, rgba(245, 249, 252, 0.32) 0%, rgba(220, 231, 237, 0.14) 30%, rgba(156, 175, 136, 0.12) 65%, transparent 100%)',
+                  'radial-gradient(ellipse 90% 60% at 50% 0%, rgba(220, 231, 237, 0.35) 0%, rgba(201, 217, 226, 0.22) 32%, rgba(156, 175, 136, 0.12) 65%, transparent 100%)',
               }}
             />
 
             {/* Ambient Occlusion Glows */}
-            <div className="pointer-events-none absolute -top-24 -right-24 h-56 w-56 rounded-full bg-[#DCE7ED]/32 blur-3xl z-0" />
-            <div className="pointer-events-none absolute -bottom-24 -left-24 h-56 w-56 rounded-full bg-[#75896A]/25 blur-3xl z-0" />
+            <div className="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full bg-[#C9D9E2]/55 blur-3xl z-0" />
+            <div className="pointer-events-none absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-[#DCE7ED]/45 blur-3xl z-0" />
 
             {/* 1. Header (translateZ: 14px) - Compact & left-aligned */}
             <div

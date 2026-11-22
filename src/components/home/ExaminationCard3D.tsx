@@ -108,7 +108,7 @@ export function ExaminationCard3D({ exam, onStartPractice, className }: Examinat
 
       {/* Subtle Ambient Accent Glow */}
       <div className="pointer-events-none absolute -top-16 -right-16 h-36 w-36 rounded-full bg-[#8C6D3B]/5 blur-2xl" />
-      <div className="pointer-events-none absolute -bottom-16 -left-16 h-36 w-36 rounded-full bg-[#EAF1F5]/40 blur-2xl" />
+      <div className="pointer-events-none absolute -bottom-16 -left-16 h-40 w-40 rounded-full bg-[#DCE7ED]/55 blur-2xl" />
 
       {/* Top Section: Category & Acronym + Essential Metadata */}
       <div className="relative z-10 space-y-4">

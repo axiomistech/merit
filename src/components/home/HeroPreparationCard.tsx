@@ -36,10 +36,10 @@ export function HeroPreparationCard({ onStartPractice, className }: HeroPreparat
             'linear-gradient(140deg, rgba(199, 211, 189, 0.82) 0%, rgba(156, 175, 136, 0.74) 48%, rgba(117, 137, 106, 0.68) 100%)',
           backdropFilter: 'blur(24px) saturate(110%)',
           WebkitBackdropFilter: 'blur(24px) saturate(110%)',
-          border: '1px solid rgba(234, 241, 245, 0.38)',
+          border: '1px solid rgba(201, 217, 226, 0.45)',
           // 3-5px Solid Glass Slab Edge Lighting with faint glacial daylight reflection
           boxShadow:
-            'inset 0 1.5px 2px 0 rgba(245, 250, 253, 0.65), inset 1.5px 0 2px 0 rgba(220, 231, 237, 0.35), inset 0 -3px 6px 0 rgba(65, 82, 54, 0.40), inset -2px 0 5px 0 rgba(65, 82, 54, 0.25), inset 0 0 28px 0 rgba(199, 211, 189, 0.30)',
+            'inset 0 1.5px 2px 0 rgba(245, 250, 253, 0.75), inset 1.5px 0 2px 0 rgba(201, 217, 226, 0.45), inset 0 -3px 6px 0 rgba(65, 82, 54, 0.40), inset -2px 0 5px 0 rgba(65, 82, 54, 0.25), inset 0 0 28px 0 rgba(199, 211, 189, 0.30)',
           transformStyle: 'preserve-3d',
         }}
       >
@@ -47,7 +47,7 @@ export function HeroPreparationCard({ onStartPractice, className }: HeroPreparat
         <div
           className="pointer-events-none absolute inset-0 rounded-[inherit] z-10"
           style={{
-            border: '1px solid rgba(234, 241, 245, 0.28)',
+            border: '1px solid rgba(201, 217, 226, 0.35)',
             boxShadow: 'inset 0 0 0 1px rgba(117, 137, 106, 0.18)',
           }}
         />
