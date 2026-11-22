@@ -4,18 +4,24 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Shield, Lock, Mail, ArrowRight, UserCheck, KeyRound } from 'lucide-react';
-import { INITIAL_ADMIN_USERS, ROLE_DEFAULT_PERMISSIONS } from '@/lib/admin/auth';
+import {
+  INITIAL_ADMIN_USERS,
+  ROLE_DEFAULT_PERMISSIONS,
+  ALL_PERMISSIONS,
+  isAuthorizedAdminEmail,
+} from '@/lib/admin/auth';
+import { AdminRole, AdminUser } from '@/types/admin';
 import { toast } from 'sonner';
 import { MeritwiseLogo } from '@/components/brand/MeritwiseLogo';
 
 export default function AdminLoginPage() {
   const router = useRouter();
-  const [email, setEmail] = useState('admin@fortlearning.com');
-  const [password, setPassword] = useState('Admin@Fort2026!');
+  const [email, setEmail] = useState('meritwisehq@gmail.com');
+  const [password, setPassword] = useState('Admin@Meritwise2026!');
   const [loading, setLoading] = useState(false);
-  const [selectedRole, setSelectedRole] = useState<'super_admin' | 'content_admin' | 'evaluator' | 'support_admin' | 'finance_admin'>('super_admin');
+  const [selectedRole, setSelectedRole] = useState<AdminRole>('admin');
 
-  const handleRolePreset = (role: 'super_admin' | 'content_admin' | 'evaluator' | 'support_admin' | 'finance_admin') => {
+  const handleRolePreset = (role: AdminRole) => {
     setSelectedRole(role);
     const found = INITIAL_ADMIN_USERS.find((u) => u.role === role);
     if (found) {
@@ -28,22 +34,31 @@ export default function AdminLoginPage() {
     setLoading(true);
 
     try {
-      const activeAdmin = INITIAL_ADMIN_USERS.find((u) => u.email === email) || {
-        id: `adm_${Date.now().toString(36)}`,
-        name: email.split('@')[0].toUpperCase(),
-        email,
-        role: selectedRole,
+      const normalizedEmail = email.trim().toLowerCase();
+      if (!isAuthorizedAdminEmail(normalizedEmail)) {
+        toast.error('Access Denied. Only authorized administrator accounts can access this console.');
+        setLoading(false);
+        return;
+      }
+
+      const activeAdmin: AdminUser = INITIAL_ADMIN_USERS.find(
+        (u) => u.email.toLowerCase() === normalizedEmail
+      ) || {
+        id: 'adm_meritwise_hq',
+        name: 'Meritwise HQ Admin',
+        email: normalizedEmail,
+        role: selectedRole === 'admin' ? 'admin' : selectedRole,
         status: 'active' as const,
         created_at: new Date().toISOString(),
         last_login: new Date().toISOString(),
-        permissions: ROLE_DEFAULT_PERMISSIONS[selectedRole],
+        permissions: ALL_PERMISSIONS,
       };
 
       if (typeof window !== 'undefined') {
         localStorage.setItem('fort_admin_session', JSON.stringify(activeAdmin));
       }
 
-      toast.success(`Authenticated as ${activeAdmin.name} (${activeAdmin.role.replace('_', ' ').toUpperCase()})`);
+      toast.success(`Authenticated as ${activeAdmin.name} (${activeAdmin.role.toUpperCase()})`);
       router.push('/admin');
     } catch (err: any) {
       toast.error('Authentication failed');
@@ -75,7 +90,7 @@ export default function AdminLoginPage() {
           </div>
           <div className="grid grid-cols-2 gap-1.5 text-xs font-semibold">
             {[
-              { id: 'super_admin', label: 'Super Admin' },
+              { id: 'admin', label: 'Admin (Full Access)' },
               { id: 'content_admin', label: 'Content Admin' },
               { id: 'evaluator', label: 'Evaluator' },
               { id: 'support_admin', label: 'Support Admin' },

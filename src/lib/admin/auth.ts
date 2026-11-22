@@ -30,7 +30,19 @@ export const ALL_PERMISSIONS: AdminPermission[] = [
   'audit_logs.view',
 ];
 
+export const AUTHORIZED_ADMIN_EMAILS: string[] = [
+  'meritwisehq@gmail.com',
+  'admin@fortlearning.com',
+];
+
+export function isAuthorizedAdminEmail(email?: string | null): boolean {
+  if (!email) return false;
+  const normalized = email.trim().toLowerCase();
+  return AUTHORIZED_ADMIN_EMAILS.some((adminEmail) => adminEmail.toLowerCase() === normalized);
+}
+
 export const ROLE_DEFAULT_PERMISSIONS: Record<AdminRole, AdminPermission[]> = {
+  admin: ALL_PERMISSIONS,
   super_admin: ALL_PERMISSIONS,
   content_admin: [
     'dashboard.view',
@@ -72,10 +84,20 @@ export const ROLE_DEFAULT_PERMISSIONS: Record<AdminRole, AdminPermission[]> = {
 
 export const INITIAL_ADMIN_USERS: AdminUser[] = [
   {
+    id: 'adm_meritwise_hq',
+    name: 'Meritwise HQ Admin',
+    email: 'meritwisehq@gmail.com',
+    role: 'admin',
+    status: 'active',
+    created_at: '2026-01-01T00:00:00Z',
+    last_login: new Date().toISOString(),
+    permissions: ALL_PERMISSIONS,
+  },
+  {
     id: 'adm_01',
     name: 'Dhanush Jagadeesh',
     email: 'admin@fortlearning.com',
-    role: 'super_admin',
+    role: 'admin',
     status: 'active',
     created_at: '2026-01-01T00:00:00Z',
     last_login: new Date().toISOString(),
@@ -125,34 +147,66 @@ export const INITIAL_ADMIN_USERS: AdminUser[] = [
 
 export function getAdminSession(): AdminUser | null {
   if (typeof window === 'undefined') return null;
+
+  // 1. Check direct admin session
   const stored = localStorage.getItem('fort_admin_session');
-  if (!stored) {
-    // In production, require explicit authentication via /admin/login
-    if (process.env.NODE_ENV === 'production') {
-      return null;
+  if (stored) {
+    try {
+      const parsed = JSON.parse(stored);
+      if (parsed && isAuthorizedAdminEmail(parsed.email)) {
+        return parsed;
+      }
+    } catch {
+      // invalid JSON, ignore
     }
-    // Development sandbox preset convenience
-    const defaultUser = INITIAL_ADMIN_USERS[0];
-    localStorage.setItem('fort_admin_session', JSON.stringify(defaultUser));
-    return defaultUser;
   }
-  try {
-    return JSON.parse(stored);
-  } catch {
+
+  // 2. Auto-recognition: check student session for meritwisehq@gmail.com
+  const studentStored =
+    localStorage.getItem('merit_student_session') || localStorage.getItem('fort_student_session');
+  if (studentStored) {
+    try {
+      const studentSession = JSON.parse(studentStored);
+      if (studentSession?.email && isAuthorizedAdminEmail(studentSession.email)) {
+        const adminUser: AdminUser = {
+          id: 'adm_meritwise_hq',
+          name: studentSession.fullName || 'Meritwise HQ Admin',
+          email: studentSession.email.toLowerCase().trim(),
+          role: 'admin',
+          status: 'active',
+          created_at: '2026-01-01T00:00:00Z',
+          last_login: new Date().toISOString(),
+          permissions: ALL_PERMISSIONS,
+        };
+        localStorage.setItem('fort_admin_session', JSON.stringify(adminUser));
+        return adminUser;
+      }
+    } catch {
+      // invalid JSON, ignore
+    }
+  }
+
+  // 3. In production, require explicit authentication via /admin/login
+  if (process.env.NODE_ENV === 'production') {
     return null;
   }
+
+  // Development sandbox preset convenience
+  const defaultUser = INITIAL_ADMIN_USERS[0];
+  localStorage.setItem('fort_admin_session', JSON.stringify(defaultUser));
+  return defaultUser;
 }
 
 export function verifyServerAdminAccess(
   req: Request,
   requiredPermission?: AdminPermission
-): { authorized: boolean; reason?: string } {
+): { authorized: boolean; reason?: string; userEmail?: string } {
   const authHeader = req.headers.get('authorization') || req.headers.get('x-admin-key');
   const adminSecret = process.env.ADMIN_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
 
   if (process.env.NODE_ENV !== 'production' && !adminSecret) {
     // Permitted in local development sandbox only when no secret is configured
-    return { authorized: true };
+    return { authorized: true, userEmail: 'meritwisehq@gmail.com' };
   }
 
   if (!authHeader) {
@@ -179,12 +233,12 @@ export function verifyServerAdminAccess(
     };
   }
 
-  return { authorized: true };
+  return { authorized: true, userEmail: 'meritwisehq@gmail.com' };
 }
 
 export function hasPermission(user: AdminUser | null, permission: AdminPermission): boolean {
   if (!user) return false;
-  if (user.role === 'super_admin') return true;
+  if (user.role === 'admin' || user.role === 'super_admin') return true;
   return user.permissions?.includes(permission) || false;
 }
 

@@ -6,6 +6,8 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { Lock, Mail, User, Calendar, CheckCircle2, ArrowRight } from 'lucide-react';
 import { toast } from 'sonner';
 import { MeritwiseLogo } from '@/components/brand/MeritwiseLogo';
+import { isAuthorizedAdminEmail, ALL_PERMISSIONS } from '@/lib/admin/auth';
+import type { AdminUser } from '@/types/admin';
 
 function SignupForm() {
   const router = useRouter();
@@ -44,20 +46,46 @@ function SignupForm() {
         throw new Error(data.error || 'Failed to create account');
       }
 
+      const normalizedEmail = formData.email.trim().toLowerCase();
+      const isAdmin = isAuthorizedAdminEmail(normalizedEmail);
+
       // Store student session locally for immediate seamless onboarding
       if (typeof window !== 'undefined') {
         const session = {
           userId: data.userId,
           registrationId: data.registrationId,
           fullName: formData.fullName,
-          email: formData.email,
+          email: normalizedEmail,
+          role: isAdmin ? 'admin' : 'student',
         };
         localStorage.setItem('merit_student_session', JSON.stringify(session));
         localStorage.setItem('fort_student_session', JSON.stringify(session));
+
+        // When creating an account with an authorized admin email, automatically initialize the admin session
+        if (isAdmin) {
+          const adminSession: AdminUser = {
+            id: 'adm_meritwise_hq',
+            name: formData.fullName || 'Meritwise HQ Admin',
+            email: normalizedEmail,
+            role: 'admin',
+            status: 'active',
+            created_at: new Date().toISOString(),
+            last_login: new Date().toISOString(),
+            permissions: ALL_PERMISSIONS,
+          };
+          localStorage.setItem('fort_admin_session', JSON.stringify(adminSession));
+        }
       }
 
-      toast.success(`Account created! Your Candidate ID is ${data.registrationId}`);
-      if (redirectTarget) {
+      toast.success(
+        isAdmin
+          ? 'Administrator account created successfully!'
+          : `Account created! Your Candidate ID is ${data.registrationId}`
+      );
+
+      if (isAdmin && !redirectTarget) {
+        router.push('/admin');
+      } else if (redirectTarget) {
         router.push(redirectTarget);
       } else {
         router.push('/dashboard');

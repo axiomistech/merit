@@ -211,7 +211,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 {currentUser?.name || 'Admin User'}
               </div>
               <div className="font-mono text-[10px] text-[#66727D] uppercase">
-                {currentUser?.role?.replace('_', ' ') || 'SUPER ADMIN'}
+                {currentUser?.role?.replace('_', ' ') || 'ADMIN'}
               </div>
             </div>
             <button

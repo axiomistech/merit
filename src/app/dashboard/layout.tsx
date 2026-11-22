@@ -12,9 +12,11 @@ import {
   Menu,
   X,
   LogOut,
+  Shield,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { MeritwiseLogo } from '@/components/brand/MeritwiseLogo';
+import { isAuthorizedAdminEmail } from '@/lib/admin/auth';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -97,6 +99,19 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           })}
         </nav>
 
+        {/* Admin Console Shortcut for Authorized Platform Admins */}
+        {isAuthorizedAdminEmail(candidate.email) && (
+          <div className="border-t border-[#E4E4DF] p-3">
+            <Link
+              href="/admin"
+              className="flex items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-semibold text-[#8C6D3B] bg-[#F7F3EB] hover:bg-[#EFE7D8] transition-colors"
+            >
+              <Shield className="h-4 w-4" />
+              <span>Admin Console</span>
+            </Link>
+          </div>
+        )}
+
         {/* Sign out bottom */}
         <div className="border-t border-[#E4E4DF] p-3">
           <Link
@@ -168,6 +183,20 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                   );
                 })}
               </nav>
+
+              {/* Admin Console Shortcut for Authorized Platform Admins (Mobile) */}
+              {isAuthorizedAdminEmail(candidate.email) && (
+                <div className="border-t border-[#E4E4DF] pt-3">
+                  <Link
+                    href="/admin"
+                    onClick={() => setSidebarOpen(false)}
+                    className="flex items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-semibold text-[#8C6D3B] bg-[#F7F3EB] hover:bg-[#EFE7D8]"
+                  >
+                    <Shield className="h-4 w-4" />
+                    <span>Admin Console</span>
+                  </Link>
+                </div>
+              )}
 
               <div className="border-t border-[#E4E4DF] pt-3">
                 <Link

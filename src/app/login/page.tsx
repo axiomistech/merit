@@ -6,10 +6,13 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { Lock, Mail, ArrowRight } from 'lucide-react';
 import { toast } from 'sonner';
 import { MeritwiseLogo } from '@/components/brand/MeritwiseLogo';
+import { isAuthorizedAdminEmail, ALL_PERMISSIONS } from '@/lib/admin/auth';
+import type { AdminUser } from '@/types/admin';
 
 function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const hasCustomRedirect = Boolean(searchParams.get('redirect') || searchParams.get('returnUrl'));
   const redirectTarget = searchParams.get('redirect') || searchParams.get('returnUrl') || '/dashboard';
 
   const [loading, setLoading] = useState(false);
@@ -21,24 +24,47 @@ function LoginForm() {
     setLoading(true);
 
     try {
+      const normalizedEmail = email.trim().toLowerCase();
+      const isAdmin = isAuthorizedAdminEmail(normalizedEmail);
+
       if (typeof window !== 'undefined') {
         const stored =
           localStorage.getItem('merit_student_session') || localStorage.getItem('fort_student_session');
         let session = stored ? JSON.parse(stored) : null;
-        if (!session || session.email !== email) {
+        if (!session || session.email !== normalizedEmail) {
           session = {
-            userId: 'usr_active_candidate',
-            registrationId: 'MW-26-000001',
-            fullName: email.split('@')[0].toUpperCase(),
-            email,
+            userId: isAdmin ? 'usr_admin_meritwise' : 'usr_active_candidate',
+            registrationId: isAdmin ? 'MW-ADMIN-01' : 'MW-26-000001',
+            fullName: isAdmin ? 'Meritwise HQ Admin' : email.split('@')[0].toUpperCase(),
+            email: normalizedEmail,
+            role: isAdmin ? 'admin' : 'student',
           };
           localStorage.setItem('merit_student_session', JSON.stringify(session));
           localStorage.setItem('fort_student_session', JSON.stringify(session));
         }
+
+        // When logging in with an authorized admin email, automatically initialize the admin session
+        if (isAdmin) {
+          const adminSession: AdminUser = {
+            id: 'adm_meritwise_hq',
+            name: 'Meritwise HQ Admin',
+            email: normalizedEmail,
+            role: 'admin',
+            status: 'active',
+            created_at: '2026-01-01T00:00:00Z',
+            last_login: new Date().toISOString(),
+            permissions: ALL_PERMISSIONS,
+          };
+          localStorage.setItem('fort_admin_session', JSON.stringify(adminSession));
+        }
       }
 
-      toast.success('Signed in successfully.');
-      router.push(redirectTarget);
+      toast.success(isAdmin ? 'Signed in as Administrator.' : 'Signed in successfully.');
+      if (isAdmin && !hasCustomRedirect) {
+        router.push('/admin');
+      } else {
+        router.push(redirectTarget);
+      }
     } catch (err: any) {
       toast.error(err.message || 'Login failed');
     } finally {

@@ -1,4 +1,5 @@
 export type AdminRole =
+  | 'admin'
   | 'super_admin'
   | 'content_admin'
   | 'evaluator'
