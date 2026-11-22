@@ -23,8 +23,8 @@ export interface GenerateOmrPdfInput {
 
 export function generateOmrPdf(input: GenerateOmrPdfInput): jsPDF {
   const {
-    studentName = 'DHANUSH JAGADEESH',
-    registrationId = 'MW-26-000001',
+    studentName = 'Candidate',
+    registrationId = 'MW-CANDIDATE',
     attemptId = 'ATT-20261121',
     submissionTime,
     rollNumber,

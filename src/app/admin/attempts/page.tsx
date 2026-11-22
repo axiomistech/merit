@@ -6,45 +6,23 @@ import { Compass, Search, Filter, Clock, CheckCircle2, ArrowRight } from 'lucide
 
 export default function AdminAttemptsPage() {
   const [search, setSearch] = useState('');
+  const [attempts, setAttempts] = useState<any[]>([]);
 
-  const attempts = [
-    {
-      id: 'ATT-2026-NEET-01',
-      studentName: 'DHANUSH JAGADEESH',
-      registrationId: 'MW-26-000001',
-      paperName: 'NEET (UG) 180-Question Diagnostic Simulation #1',
-      startedAt: '2026-01-02 10:00',
-      submittedAt: '2026-01-02 13:20',
-      duration: '3h 20m',
-      score: '580 / 720',
-      accuracy: '78.0%',
-      status: 'evaluated',
-    },
-    {
-      id: 'ATT-2026-JM-02',
-      studentName: 'Aarav Sharma',
-      registrationId: 'MW-26-000002',
-      paperName: 'JEE Main CBT Simulation #1',
-      startedAt: '2026-01-04 12:00',
-      submittedAt: '2026-01-04 15:00',
-      duration: '3h 00m',
-      score: '210 / 300',
-      accuracy: '82.5%',
-      status: 'evaluated',
-    },
-    {
-      id: 'ATT-2026-UPSC-03',
-      studentName: 'Rohan Deshmukh',
-      registrationId: 'MW-26-000004',
-      paperName: 'UPSC CSE Prelims GS-I Test',
-      startedAt: '2026-01-08 09:00',
-      submittedAt: '2026-01-08 11:00',
-      duration: '2h 00m',
-      score: '112 / 200',
-      accuracy: '72.0%',
-      status: 'evaluated',
-    },
-  ];
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('merit_student_attempts') || localStorage.getItem('fort_student_attempts');
+      if (stored) {
+        try {
+          const list = JSON.parse(stored);
+          const mockAttIds = new Set(['ATT-2026-NEET-01', 'ATT-2026-JM-02', 'ATT-2026-UPSC-03']);
+          const clean = Array.isArray(list) ? list.filter((a: any) => !mockAttIds.has(a.id)) : [];
+          setAttempts(clean);
+        } catch {
+          setAttempts([]);
+        }
+      }
+    }
+  }, []);
 
   const filtered = attempts.filter(
     (a) =>
@@ -94,44 +72,52 @@ export default function AdminAttemptsPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-[#DCE2E6]">
-              {filtered.map((att) => (
-                <tr key={att.id} className="hover:bg-[#F1F3F4]/50 transition-colors">
-                  <td className="py-4 px-6 font-mono font-bold text-[#20252B]">
-                    {att.id}
-                  </td>
-                  <td className="py-4 px-6">
-                    <div className="font-bold text-[#20252B]">{att.studentName}</div>
-                    <div className="font-mono text-[10px] text-[#66727D]">{att.registrationId}</div>
-                  </td>
-                  <td className="py-4 px-6 font-medium text-[#20252B] max-w-xs">
-                    {att.paperName}
-                  </td>
-                  <td className="py-4 px-6 text-[#66727D]">
-                    <div>{att.submittedAt}</div>
-                    <div className="text-[10px] text-[#66727D]">Took {att.duration}</div>
-                  </td>
-                  <td className="py-4 px-6">
-                    <div className="font-mono font-bold text-[#20252B]">{att.score}</div>
-                    <div className="font-mono text-[11px] font-semibold text-[#20252B]">
-                      {att.accuracy}
-                    </div>
-                  </td>
-                  <td className="py-4 px-6">
-                    <span className="rounded-full bg-[#E9EEF1] px-2.5 py-0.5 text-[10px] font-bold text-[#20252B] uppercase">
-                      {att.status}
-                    </span>
-                  </td>
-                  <td className="py-4 px-6 text-right">
-                    <Link
-                      href={`/dashboard/results/${att.id}`}
-                      target="_blank"
-                      className="font-bold text-[#20252B] hover:underline"
-                    >
-                      View Report →
-                    </Link>
+              {filtered.length === 0 ? (
+                <tr>
+                  <td colSpan={7} className="py-12 text-center text-[#66727D]">
+                    No test attempts recorded yet.
                   </td>
                 </tr>
-              ))}
+              ) : (
+                filtered.map((att) => (
+                  <tr key={att.id} className="hover:bg-[#F1F3F4]/50 transition-colors">
+                    <td className="py-4 px-6 font-mono font-bold text-[#20252B]">
+                      {att.id}
+                    </td>
+                    <td className="py-4 px-6">
+                      <div className="font-bold text-[#20252B]">{att.studentName}</div>
+                      <div className="font-mono text-[10px] text-[#66727D]">{att.registrationId}</div>
+                    </td>
+                    <td className="py-4 px-6 font-medium text-[#20252B] max-w-xs">
+                      {att.paperName}
+                    </td>
+                    <td className="py-4 px-6 text-[#66727D]">
+                      <div>{att.submittedAt}</div>
+                      <div className="text-[10px] text-[#66727D]">Took {att.duration}</div>
+                    </td>
+                    <td className="py-4 px-6">
+                      <div className="font-mono font-bold text-[#20252B]">{att.score}</div>
+                      <div className="font-mono text-[11px] font-semibold text-[#20252B]">
+                        {att.accuracy}
+                      </div>
+                    </td>
+                    <td className="py-4 px-6">
+                      <span className="rounded-full bg-[#E9EEF1] px-2.5 py-0.5 text-[10px] font-bold text-[#20252B] uppercase">
+                        {att.status}
+                      </span>
+                    </td>
+                    <td className="py-4 px-6 text-right">
+                      <Link
+                        href={`/dashboard/results/${att.id}`}
+                        target="_blank"
+                        className="font-bold text-[#20252B] hover:underline"
+                      >
+                        View Report →
+                      </Link>
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>

@@ -6,34 +6,7 @@ import { logAdminAction } from '@/lib/admin/auth';
 import { toast } from 'sonner';
 
 export default function AdminEvaluationsPage() {
-  const [evaluations, setEvaluations] = useState([
-    {
-      id: 'eval_01',
-      studentName: 'Rohan Deshmukh',
-      registrationId: 'MW-26-000004',
-      exam: 'UPSC CSE Mains',
-      paperName: 'GS Paper I: Indian Heritage and Geography',
-      questionTitle: 'Discuss the impact of climate change on Himalayan glacial retreat (250 words)',
-      submittedAt: 'Today, 11:30',
-      evaluatorName: 'Senior Answer Evaluator',
-      status: 'assigned',
-      rubricScore: 'Pending',
-      wordCount: 242,
-    },
-    {
-      id: 'eval_02',
-      studentName: 'Aarav Sharma',
-      registrationId: 'MW-26-000002',
-      exam: 'JEE Advanced',
-      paperName: 'Physics Paper 2 (Multi-Correct Partial Scoring)',
-      questionTitle: 'Electromagnetic induction in rotating copper disc with eddy currents',
-      submittedAt: 'Yesterday, 16:45',
-      evaluatorName: 'System Engine',
-      status: 'evaluated',
-      rubricScore: '+3 (Partial Correct)',
-      wordCount: null,
-    },
-  ]);
+  const [evaluations, setEvaluations] = useState<any[]>([]);
 
   const [scoringModal, setScoringModal] = useState<any>(null);
   const [scoreMarks, setScoreMarks] = useState(7);
@@ -151,39 +124,47 @@ export default function AdminEvaluationsPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-[#DCE2E6]">
-              {evaluations.map((item) => (
-                <tr key={item.id} className="hover:bg-[#F1F3F4]/50 transition-colors">
-                  <td className="py-4 px-6">
-                    <div className="font-bold text-[#20252B]">{item.studentName}</div>
-                    <div className="font-mono text-[10px] text-[#66727D]">{item.registrationId}</div>
-                  </td>
-                  <td className="py-4 px-6 max-w-xs">
-                    <div className="font-bold text-[#20252B] truncate">{item.paperName}</div>
-                    <div className="text-[11px] text-[#66727D] truncate">{item.questionTitle}</div>
-                  </td>
-                  <td className="py-4 px-6 text-[#66727D]">{item.submittedAt}</td>
-                  <td className="py-4 px-6 font-medium text-[#20252B]">{item.evaluatorName}</td>
-                  <td className="py-4 px-6">
-                    <span
-                      className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase ${
-                        item.status === 'evaluated'
-                          ? 'bg-[#E9EEF1] text-[#20252B]'
-                          : 'bg-[#FEF3C7] text-[#92400E]'
-                      }`}
-                    >
-                      {item.status} ({item.rubricScore})
-                    </span>
-                  </td>
-                  <td className="py-4 px-6 text-right">
-                    <button
-                      onClick={() => handleOpenEvaluate(item)}
-                      className="font-bold text-[#20252B] hover:underline"
-                    >
-                      {item.status === 'evaluated' ? 'Re-evaluate' : 'Grade Answer →'}
-                    </button>
+              {evaluations.length === 0 ? (
+                <tr>
+                  <td colSpan={6} className="py-12 text-center text-[#66727D]">
+                    No evaluations pending or submitted yet.
                   </td>
                 </tr>
-              ))}
+              ) : (
+                evaluations.map((item) => (
+                  <tr key={item.id} className="hover:bg-[#F1F3F4]/50 transition-colors">
+                    <td className="py-4 px-6">
+                      <div className="font-bold text-[#20252B]">{item.studentName}</div>
+                      <div className="font-mono text-[10px] text-[#66727D]">{item.registrationId}</div>
+                    </td>
+                    <td className="py-4 px-6 max-w-xs">
+                      <div className="font-bold text-[#20252B] truncate">{item.paperName}</div>
+                      <div className="text-[11px] text-[#66727D] truncate">{item.questionTitle}</div>
+                    </td>
+                    <td className="py-4 px-6 text-[#66727D]">{item.submittedAt}</td>
+                    <td className="py-4 px-6 font-medium text-[#20252B]">{item.evaluatorName}</td>
+                    <td className="py-4 px-6">
+                      <span
+                        className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase ${
+                          item.status === 'evaluated'
+                            ? 'bg-[#E9EEF1] text-[#20252B]'
+                            : 'bg-[#FEF3C7] text-[#92400E]'
+                        }`}
+                      >
+                        {item.status} ({item.rubricScore})
+                      </span>
+                    </td>
+                    <td className="py-4 px-6 text-right">
+                      <button
+                        onClick={() => handleOpenEvaluate(item)}
+                        className="font-bold text-[#20252B] hover:underline"
+                      >
+                        {item.status === 'evaluated' ? 'Re-evaluate' : 'Grade Answer →'}
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>

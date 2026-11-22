@@ -213,7 +213,7 @@ export default function AdminNotificationsPage() {
                   }
                   className="w-full rounded-xl border border-[#DCE2E6] p-2.5 text-xs text-[#20252B] focus:outline-none focus:border-[#9CC6E0]"
                 >
-                  <option value="all_students">All Students (4,218 Candidates)</option>
+                  <option value="all_students">All Students</option>
                   <option value="neet_aspirants">NEET (UG) Medical Aspirants</option>
                   <option value="jee_aspirants">JEE Main / Advanced Aspirants</option>
                   <option value="upsc_aspirants">UPSC Civil Services Aspirants</option>

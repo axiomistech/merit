@@ -41,7 +41,7 @@ export async function POST(req: Request) {
         questionsPerColumn: 45,
       },
       candidate: {
-        name: candidateName || 'DHANUSH JAGADEESH',
+        name: candidateName || 'Candidate',
         registrationId: cleanReg,
         rollNumber: cleanRoll,
         rollNumberDigits: cleanRoll.split('').map(Number),

@@ -9,6 +9,25 @@ import { ArrowLeft, RefreshCw, Sparkles } from 'lucide-react';
 export default function NeetOmrPracticePage() {
   const totalQuestions = 180; // Full 180 questions in NEET OMR practice sandbox
   const [answers, setAnswers] = useState<Record<string, AnswerState>>({});
+  const [candidateInfo, setCandidateInfo] = useState({
+    name: 'Candidate',
+    registrationId: 'MW-26-PRACTICE',
+  });
+
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('merit_student_session') || localStorage.getItem('fort_student_session');
+      if (stored) {
+        try {
+          const parsed = JSON.parse(stored);
+          setCandidateInfo({
+            name: parsed.fullName || 'Candidate',
+            registrationId: parsed.registrationId || 'MW-26-PRACTICE',
+          });
+        } catch {}
+      }
+    }
+  }, []);
 
   const questionIdMap = React.useMemo(() => {
     const map: Record<number, string> = {};
@@ -94,8 +113,8 @@ export default function NeetOmrPracticePage() {
           answers={answers}
           questionIdMap={questionIdMap}
           onSelectOption={handleSelectOption}
-          studentName="DHANUSH JAGADEESH"
-          registrationId="MW-26-000001"
+          studentName={candidateInfo.name}
+          registrationId={candidateInfo.registrationId}
           examName="NEET (UG)"
           paperName="OMR Speed & Shading Drill"
           attemptId="ATT-2026-OMR-PRACTICE"

@@ -137,101 +137,13 @@ export function getInitialQuestions(): AdminQuestionRecord[] {
 }
 
 export function getInitialStudents(): AdminStudentRecord[] {
-  return [
-    {
-      id: 'usr_001',
-      registrationId: 'MW-26-000001',
-      fullName: 'DHANUSH JAGADEESH',
-      email: 'dhanush.student@gmail.com',
-      accountStatus: 'active',
-      targetExam: 'NEET (UG)',
-      testsAttempted: 1,
-      totalPurchases: 10,
-      created_at: '2026-01-02T10:15:00Z',
-      last_activity: 'Just now',
-      administrativeNotes: ['Complimentary Paper Claimed atomically.'],
-    },
-    {
-      id: 'usr_002',
-      registrationId: 'MW-26-000002',
-      fullName: 'Aarav Sharma',
-      email: 'aarav.sharma@example.com',
-      accountStatus: 'active',
-      targetExam: 'JEE Main',
-      testsAttempted: 3,
-      totalPurchases: 20,
-      created_at: '2026-01-04T12:30:00Z',
-      last_activity: '2 hours ago',
-    },
-    {
-      id: 'usr_003',
-      registrationId: 'MW-26-000003',
-      fullName: 'Priya Iyer',
-      email: 'priya.iyer@example.com',
-      accountStatus: 'active',
-      targetExam: 'NEET (UG)',
-      testsAttempted: 2,
-      totalPurchases: 10,
-      created_at: '2026-01-06T15:45:00Z',
-      last_activity: '1 day ago',
-    },
-    {
-      id: 'usr_004',
-      registrationId: 'MW-26-000004',
-      fullName: 'Rohan Deshmukh',
-      email: 'rohan.d@example.com',
-      accountStatus: 'active',
-      targetExam: 'UPSC CSE',
-      testsAttempted: 4,
-      totalPurchases: 30,
-      created_at: '2026-01-08T09:20:00Z',
-      last_activity: '3 days ago',
-    },
-  ];
+  // STRICT RULE: No simulated, fabricated, or mock student registrations. Empty by default.
+  return [];
 }
 
 export function getInitialTransactions(): AdminTransactionRecord[] {
-  return [
-    {
-      id: 'txn_001',
-      orderId: 'order_rpay_98231',
-      studentId: 'usr_001',
-      studentName: 'DHANUSH JAGADEESH',
-      studentEmail: 'dhanush.student@gmail.com',
-      productName: 'NEET (UG) 180-Q Diagnostic Paper #1',
-      amount: 10,
-      status: 'successful',
-      gateway: 'razorpay',
-      gatewayPaymentId: 'pay_rzp_live_0192837',
-      created_at: '2026-01-02T10:20:00Z',
-    },
-    {
-      id: 'txn_002',
-      orderId: 'order_rpay_98232',
-      studentId: 'usr_002',
-      studentName: 'Aarav Sharma',
-      studentEmail: 'aarav.sharma@example.com',
-      productName: 'JEE Main 2026 Speed Pack #1',
-      amount: 10,
-      status: 'successful',
-      gateway: 'razorpay',
-      gatewayPaymentId: 'pay_rzp_live_0192838',
-      created_at: '2026-01-04T12:35:00Z',
-    },
-    {
-      id: 'txn_003',
-      orderId: 'order_rpay_98233',
-      studentId: 'usr_004',
-      studentName: 'Rohan Deshmukh',
-      studentEmail: 'rohan.d@example.com',
-      productName: 'UPSC Prelims GS Mock Paper',
-      amount: 10,
-      status: 'successful',
-      gateway: 'razorpay',
-      gatewayPaymentId: 'pay_rzp_live_0192839',
-      created_at: '2026-01-08T09:25:00Z',
-    },
-  ];
+  // STRICT RULE: No simulated, fabricated, or dummy payment records. Empty by default.
+  return [];
 }
 
 export function getInitialCoupons(): CouponItem[] {
@@ -246,12 +158,12 @@ export function getInitialCoupons(): CouponItem[] {
       applicable_exams: ['all'],
       min_purchase_amount: 10,
       total_limit: 1000,
-      used_count: 142,
+      used_count: 0,
       per_user_limit: 1,
       starts_at: '2026-01-01T00:00:00Z',
       expires_at: '2026-12-31T23:59:59Z',
       status: 'active',
-      revenue_generated: 710,
+      revenue_generated: 0,
     },
     {
       id: 'cpn_02',
@@ -263,51 +175,19 @@ export function getInitialCoupons(): CouponItem[] {
       applicable_exams: ['neet'],
       min_purchase_amount: 10,
       total_limit: 500,
-      used_count: 88,
+      used_count: 0,
       per_user_limit: 2,
       starts_at: '2026-01-01T00:00:00Z',
       expires_at: '2026-06-30T23:59:59Z',
       status: 'active',
-      revenue_generated: 440,
+      revenue_generated: 0,
     },
   ];
 }
 
 export function getInitialSupportTickets(): SupportTicketItem[] {
-  return [
-    {
-      id: 'tkt_01',
-      ticket_number: 'TCK-26-001',
-      student_name: 'DHANUSH JAGADEESH',
-      student_email: 'dhanush.student@gmail.com',
-      student_registration_id: 'MW-26-000001',
-      category: 'omr',
-      subject: 'Inquiry regarding vector PDF barcode clarity on printout',
-      description: 'Printing on standard home inkjet; wanted to confirm if the Code 39 barcode alignment is verified for physical scanning.',
-      status: 'resolved',
-      priority: 'normal',
-      assigned_admin: 'Candidate Support Desk',
-      created_at: '2026-01-03T11:00:00Z',
-      updated_at: '2026-01-03T12:30:00Z',
-      internal_notes: ['Verified vector Code 39 format. Printable at 300 DPI cleanly.'],
-    },
-    {
-      id: 'tkt_02',
-      ticket_number: 'TCK-26-002',
-      student_name: 'Priya Iyer',
-      student_email: 'priya.iyer@example.com',
-      student_registration_id: 'MW-26-000003',
-      category: 'question_error',
-      subject: 'Discrepancy in Optics focal length sign convention',
-      description: 'In Q14 of NEET Diagnostic, please verify if the convex mirror radius of curvature is positive.',
-      status: 'open',
-      priority: 'high',
-      assigned_admin: 'Academic Curriculum Lead',
-      created_at: '2026-01-06T16:00:00Z',
-      updated_at: '2026-01-06T16:00:00Z',
-      internal_notes: ['Assigned to physics subject matter expert.'],
-    },
-  ];
+  // STRICT RULE: No fabricated support tickets. Empty by default.
+  return [];
 }
 
 // Persistent Store Helpers
@@ -377,17 +257,25 @@ export function saveStoredTests(tests: AdminTestRecord[]) {
 }
 
 export function getStoredStudents(): AdminStudentRecord[] {
-  if (typeof window === 'undefined') return getInitialStudents();
+  if (typeof window === 'undefined') return [];
   const stored = localStorage.getItem('fort_admin_students');
-  if (!stored) {
-    const init = getInitialStudents();
-    localStorage.setItem('fort_admin_students', JSON.stringify(init));
-    return init;
-  }
+  if (!stored) return [];
   try {
-    return JSON.parse(stored);
+    const list: AdminStudentRecord[] = JSON.parse(stored);
+    const mockEmails = new Set([
+      'dhanush.student@gmail.com',
+      'aarav.sharma@example.com',
+      'priya.iyer@example.com',
+      'rohan.d@example.com',
+    ]);
+    const mockIds = new Set(['usr_001', 'usr_002', 'usr_003', 'usr_004']);
+    const cleanList = list.filter((s) => !mockEmails.has(s.email?.toLowerCase()) && !mockIds.has(s.id));
+    if (cleanList.length !== list.length) {
+      localStorage.setItem('fort_admin_students', JSON.stringify(cleanList));
+    }
+    return cleanList;
   } catch {
-    return getInitialStudents();
+    return [];
   }
 }
 
@@ -397,17 +285,20 @@ export function saveStoredStudents(students: AdminStudentRecord[]) {
 }
 
 export function getStoredTransactions(): AdminTransactionRecord[] {
-  if (typeof window === 'undefined') return getInitialTransactions();
+  if (typeof window === 'undefined') return [];
   const stored = localStorage.getItem('fort_admin_transactions');
-  if (!stored) {
-    const init = getInitialTransactions();
-    localStorage.setItem('fort_admin_transactions', JSON.stringify(init));
-    return init;
-  }
+  if (!stored) return [];
   try {
-    return JSON.parse(stored);
+    const list: AdminTransactionRecord[] = JSON.parse(stored);
+    const mockTxnIds = new Set(['txn_001', 'txn_002', 'txn_003']);
+    const mockGateways = new Set(['pay_rzp_live_0192837', 'pay_rzp_live_0192838', 'pay_rzp_live_0192839']);
+    const cleanList = list.filter((t) => !mockTxnIds.has(t.id) && !mockGateways.has(t.gatewayPaymentId));
+    if (cleanList.length !== list.length) {
+      localStorage.setItem('fort_admin_transactions', JSON.stringify(cleanList));
+    }
+    return cleanList;
   } catch {
-    return getInitialTransactions();
+    return [];
   }
 }
 
@@ -437,17 +328,19 @@ export function saveStoredCoupons(coupons: CouponItem[]) {
 }
 
 export function getStoredSupportTickets(): SupportTicketItem[] {
-  if (typeof window === 'undefined') return getInitialSupportTickets();
+  if (typeof window === 'undefined') return [];
   const stored = localStorage.getItem('fort_admin_support_tickets');
-  if (!stored) {
-    const init = getInitialSupportTickets();
-    localStorage.setItem('fort_admin_support_tickets', JSON.stringify(init));
-    return init;
-  }
+  if (!stored) return [];
   try {
-    return JSON.parse(stored);
+    const list: SupportTicketItem[] = JSON.parse(stored);
+    const mockTicketIds = new Set(['tkt_01', 'tkt_02', 'TCK-26-001', 'TCK-26-002']);
+    const cleanList = list.filter((t) => !mockTicketIds.has(t.id) && !mockTicketIds.has(t.ticket_number));
+    if (cleanList.length !== list.length) {
+      localStorage.setItem('fort_admin_support_tickets', JSON.stringify(cleanList));
+    }
+    return cleanList;
   } catch {
-    return getInitialSupportTickets();
+    return [];
   }
 }
 
@@ -472,7 +365,7 @@ export function getInitialProducts(): ProductPackage[] {
       accessValidityDays: 365,
       features: ['10 NTA-format 720-mark papers', 'Automatic printable NEET OMR generation', 'Negative marking analytics (-1/+4)', 'Subject & chapter diagnostic report'],
       status: 'active',
-      salesCount: 428,
+      salesCount: 0,
       created_at: '2026-01-10T10:00:00Z',
     },
     {
@@ -488,7 +381,7 @@ export function getInitialProducts(): ProductPackage[] {
       accessValidityDays: 180,
       features: ['Partial marking evaluation engine', 'Multi-correct with decimal numericals', 'Time-per-question velocity metrics'],
       status: 'active',
-      salesCount: 215,
+      salesCount: 0,
       created_at: '2026-02-01T12:00:00Z',
     },
     {
@@ -504,7 +397,7 @@ export function getInitialProducts(): ProductPackage[] {
       accessValidityDays: 90,
       features: ['Verified educator grading within 48h', 'Rubric breakdown across structure & depth', 'Model answers and reference pointers'],
       status: 'active',
-      salesCount: 94,
+      salesCount: 0,
       created_at: '2026-02-15T09:30:00Z',
     },
     {
@@ -520,7 +413,7 @@ export function getInitialProducts(): ProductPackage[] {
       accessValidityDays: 30,
       features: ['Full paper simulation', 'Instant solution access', 'OMR download (for NEET)'],
       status: 'active',
-      salesCount: 1840,
+      salesCount: 0,
       created_at: '2026-01-01T00:00:00Z',
     },
   ];
@@ -610,47 +503,25 @@ export function saveStoredPricingRules(rules: PricingRule[]) {
 
 // ---------------- REFUNDS ----------------
 export function getInitialRefunds(): RefundRecord[] {
-  return [
-    {
-      id: 'ref_9011',
-      paymentId: 'pay_rzp_881923',
-      orderId: 'order_rzp_9901',
-      studentId: 'std_01',
-      studentName: 'Aarav Sharma',
-      studentEmail: 'aarav.sharma@example.com',
-      amount: 10,
-      reason: 'duplicate_payment',
-      notes: 'Customer charged twice due to bank retry timeout. Verified via webhook logs.',
-      status: 'processed',
-      processed_at: '2026-11-21T16:00:00Z',
-      processed_by: 'finance@fortlearning.com',
-      created_at: '2026-11-21T15:45:00Z',
-    },
-    {
-      id: 'ref_9012',
-      paymentId: 'pay_rzp_881940',
-      orderId: 'order_rzp_9918',
-      studentId: 'std_04',
-      studentName: 'Ananya Verma',
-      studentEmail: 'ananya.v@example.com',
-      amount: 99,
-      reason: 'accidental_purchase',
-      notes: 'Purchased NEET pack instead of JEE Main pack within 15 minutes of signup. No test started.',
-      status: 'pending_approval',
-      created_at: '2026-11-21T19:30:00Z',
-    },
-  ];
+  // STRICT RULE: No fabricated refund records. Empty by default.
+  return [];
 }
 
 export function getStoredRefunds(): RefundRecord[] {
-  if (typeof window === 'undefined') return getInitialRefunds();
+  if (typeof window === 'undefined') return [];
   const stored = localStorage.getItem('fort_admin_refunds');
-  if (!stored) {
-    const init = getInitialRefunds();
-    localStorage.setItem('fort_admin_refunds', JSON.stringify(init));
-    return init;
+  if (!stored) return [];
+  try {
+    const list: RefundRecord[] = JSON.parse(stored);
+    const mockRefIds = new Set(['ref_9011', 'ref_9012']);
+    const cleanList = list.filter((r) => !mockRefIds.has(r.id));
+    if (cleanList.length !== list.length) {
+      localStorage.setItem('fort_admin_refunds', JSON.stringify(cleanList));
+    }
+    return cleanList;
+  } catch {
+    return [];
   }
-  try { return JSON.parse(stored); } catch { return getInitialRefunds(); }
 }
 
 export function saveStoredRefunds(refunds: RefundRecord[]) {
@@ -660,45 +531,25 @@ export function saveStoredRefunds(refunds: RefundRecord[]) {
 
 // ---------------- NOTIFICATIONS ----------------
 export function getInitialNotifications(): InAppNotification[] {
-  return [
-    {
-      id: 'notif_001',
-      title: 'All-India NEET Mock 3 Live This Weekend',
-      message: 'The official 720-mark full simulation is now available. Window closes Sunday 23:59 IST. Printable OMR sheet included.',
-      targetAudience: 'neet_aspirants',
-      priority: 'high',
-      actionUrl: '/dashboard/practice',
-      sentAt: '2026-11-21T09:00:00Z',
-      sentBy: 'Super Admin',
-      readCount: 1420,
-      deliveredCount: 1850,
-      status: 'sent',
-    },
-    {
-      id: 'notif_002',
-      title: 'Scheduled System Maintenance Notice',
-      message: 'MERITWISE will undergo scheduled infrastructure upgrades on Nov 24, 02:00-04:00 AM IST. Examination attempts will be paused during this window.',
-      targetAudience: 'all_students',
-      priority: 'normal',
-      actionUrl: '/help',
-      sentAt: '2026-11-20T14:30:00Z',
-      sentBy: 'System Administrator',
-      readCount: 3120,
-      deliveredCount: 4100,
-      status: 'sent',
-    },
-  ];
+  // STRICT RULE: No fabricated in-app notifications. Empty by default.
+  return [];
 }
 
 export function getStoredNotifications(): InAppNotification[] {
-  if (typeof window === 'undefined') return getInitialNotifications();
+  if (typeof window === 'undefined') return [];
   const stored = localStorage.getItem('fort_admin_notifications');
-  if (!stored) {
-    const init = getInitialNotifications();
-    localStorage.setItem('fort_admin_notifications', JSON.stringify(init));
-    return init;
+  if (!stored) return [];
+  try {
+    const list: InAppNotification[] = JSON.parse(stored);
+    const mockNotifs = new Set(['notif_001', 'notif_002']);
+    const cleanList = list.filter((n) => !mockNotifs.has(n.id));
+    if (cleanList.length !== list.length) {
+      localStorage.setItem('fort_admin_notifications', JSON.stringify(cleanList));
+    }
+    return cleanList;
+  } catch {
+    return [];
   }
-  try { return JSON.parse(stored); } catch { return getInitialNotifications(); }
 }
 
 export function saveStoredNotifications(notifs: InAppNotification[]) {
@@ -758,44 +609,25 @@ export function saveStoredAnnouncements(announcements: AnnouncementBanner[]) {
 
 // ---------------- EMAIL CAMPAIGNS ----------------
 export function getInitialCampaigns(): EmailCampaign[] {
-  return [
-    {
-      id: 'camp_01',
-      name: 'Weekly Diagnostic Performance Digest',
-      subject: 'Your MERITWISE Weekly Progress & Weak Area Breakdown',
-      previewText: 'Review your physics accuracy and recommended practice chapters this week.',
-      targetSegment: 'Active Candidates (Last 7 Days)',
-      recipientsCount: 3200,
-      openRatePercent: 44.8,
-      clickRatePercent: 18.2,
-      status: 'sent',
-      sentAt: '2026-11-18T06:00:00Z',
-      created_at: '2026-11-17T14:00:00Z',
-    },
-    {
-      id: 'camp_02',
-      name: 'NEET 2026 Full Syllabus Countdown',
-      subject: 'Are you exam ready? Test yourself with Mock 3',
-      previewText: 'Take the realistic 720-mark simulation with instant OMR PDF download.',
-      targetSegment: 'NEET Aspirants',
-      recipientsCount: 2150,
-      openRatePercent: 0,
-      clickRatePercent: 0,
-      status: 'draft',
-      created_at: '2026-11-21T11:00:00Z',
-    },
-  ];
+  // STRICT RULE: No fabricated email campaigns. Empty by default.
+  return [];
 }
 
 export function getStoredCampaigns(): EmailCampaign[] {
-  if (typeof window === 'undefined') return getInitialCampaigns();
+  if (typeof window === 'undefined') return [];
   const stored = localStorage.getItem('fort_admin_campaigns');
-  if (!stored) {
-    const init = getInitialCampaigns();
-    localStorage.setItem('fort_admin_campaigns', JSON.stringify(init));
-    return init;
+  if (!stored) return [];
+  try {
+    const list: EmailCampaign[] = JSON.parse(stored);
+    const mockCamps = new Set(['camp_01', 'camp_02']);
+    const cleanList = list.filter((c) => !mockCamps.has(c.id));
+    if (cleanList.length !== list.length) {
+      localStorage.setItem('fort_admin_campaigns', JSON.stringify(cleanList));
+    }
+    return cleanList;
+  } catch {
+    return [];
   }
-  try { return JSON.parse(stored); } catch { return getInitialCampaigns(); }
 }
 
 export function saveStoredCampaigns(campaigns: EmailCampaign[]) {
@@ -818,11 +650,11 @@ export function getInitialCMSHomepage(): CMSHomepageData {
     featuredExamSlugs: ['neet', 'jee-main', 'jee-advanced', 'upsc-cse'],
     statsDisplay: {
       studentsLabel: 'Aspirants Practicing',
-      studentsValue: '4,200+',
+      studentsValue: '0',
       questionsLabel: 'Curated Question Bank',
-      questionsValue: '18,500+',
+      questionsValue: '0',
       testsLabel: 'Full Mocks Completed',
-      testsValue: '28,000+',
+      testsValue: '0',
     },
     tutorialVideo: {
       id: 'vid_default_walkthrough',
@@ -1127,60 +959,25 @@ export function saveStoredIntegrations(integrations: IntegrationService[]) {
 
 // ---------------- OMR VERIFICATION QUEUE ----------------
 export function getInitialOMRRecords(): OMRVerificationItem[] {
-  return [
-    {
-      id: 'omr_rec_001',
-      candidateRegistrationId: 'MW-26-000001',
-      candidateName: 'Aarav Sharma',
-      testPaperName: 'NEET 2026 All-India Full Mock #1',
-      rollNumberEntered: '1029384756',
-      testBookletCode: 'A',
-      scannedAt: '2026-11-21T14:45:00Z',
-      autoExtractedScore: 560,
-      totalQuestions: 180,
-      ambiguousCount: 0,
-      status: 'verified',
-      reviewerName: 'Evaluator Team',
-      reviewNotes: 'High-contrast clean fill. All 180 bubble detections confirmed without discrepancy.',
-      bubbles: Array.from({ length: 180 }, (_, i) => ({
-        qNum: i + 1,
-        detectedBubble: ['1', '2', '3', '4'][i % 4],
-        confidence: 0.99,
-        isAmbiguous: false,
-      })),
-    },
-    {
-      id: 'omr_rec_002',
-      candidateRegistrationId: 'MW-26-000002',
-      candidateName: 'Priya Iyer',
-      testPaperName: 'NEET 2026 All-India Full Mock #1',
-      rollNumberEntered: '1029384757',
-      testBookletCode: 'B',
-      scannedAt: '2026-11-21T15:20:00Z',
-      autoExtractedScore: 610,
-      totalQuestions: 180,
-      ambiguousCount: 2,
-      status: 'requires_review',
-      reviewNotes: 'Q.42 and Q.89 appear partially smudged / faint erasure. Requires human verification.',
-      bubbles: Array.from({ length: 180 }, (_, i) => ({
-        qNum: i + 1,
-        detectedBubble: i === 41 ? '2' : i === 88 ? '3' : ['1', '2', '3', '4'][(i * 2) % 4],
-        confidence: (i === 41 || i === 88) ? 0.61 : 0.98,
-        isAmbiguous: i === 41 || i === 88,
-      })),
-    },
-  ];
+  // STRICT RULE: No fabricated OMR verification queue records. Empty by default.
+  return [];
 }
 
 export function getStoredOMRRecords(): OMRVerificationItem[] {
-  if (typeof window === 'undefined') return getInitialOMRRecords();
+  if (typeof window === 'undefined') return [];
   const stored = localStorage.getItem('fort_admin_omr_records');
-  if (!stored) {
-    const init = getInitialOMRRecords();
-    localStorage.setItem('fort_admin_omr_records', JSON.stringify(init));
-    return init;
+  if (!stored) return [];
+  try {
+    const list: OMRVerificationItem[] = JSON.parse(stored);
+    const mockOMR = new Set(['omr_rec_001', 'omr_rec_002']);
+    const cleanList = list.filter((o) => !mockOMR.has(o.id));
+    if (cleanList.length !== list.length) {
+      localStorage.setItem('fort_admin_omr_records', JSON.stringify(cleanList));
+    }
+    return cleanList;
+  } catch {
+    return [];
   }
-  try { return JSON.parse(stored); } catch { return getInitialOMRRecords(); }
 }
 
 export function saveStoredOMRRecords(records: OMRVerificationItem[]) {

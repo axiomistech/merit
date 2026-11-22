@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   ListTree,
   Plus,
@@ -14,6 +14,7 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 import { logAdminAction } from '@/lib/admin/auth';
+import { getStoredQuestions } from '@/lib/admin/store';
 import { toast } from 'sonner';
 
 interface SyllabusNode {
@@ -31,39 +32,47 @@ export default function AdminSyllabusPage() {
     'unit_mech': true,
   });
 
+  const [questions, setQuestions] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setQuestions(getStoredQuestions());
+    }
+  }, []);
+
   const [syllabusData, setSyllabusData] = useState<Record<string, SyllabusNode[]>>({
     neet: [
       {
         id: 'sub_phy',
         name: 'Physics',
         nodeType: 'subject',
-        questionCount: 2450,
+        questionCount: 0,
         children: [
           {
             id: 'unit_mech',
             name: 'Unit I: Mechanics',
             nodeType: 'unit',
-            questionCount: 820,
+            questionCount: 0,
             children: [
               {
                 id: 'chap_lom',
                 name: 'Laws of Motion & Friction',
                 nodeType: 'chapter',
-                questionCount: 180,
+                questionCount: 0,
                 children: [
-                  { id: 'top_newton', name: 'Newton\'s First & Second Laws', nodeType: 'topic', questionCount: 65 },
-                  { id: 'top_friction', name: 'Static & Kinetic Friction Coefficient', nodeType: 'topic', questionCount: 60 },
-                  { id: 'top_circular', name: 'Circular Motion & Banking of Roads', nodeType: 'topic', questionCount: 55 },
+                  { id: 'top_newton', name: 'Newton\'s First & Second Laws', nodeType: 'topic', questionCount: 0 },
+                  { id: 'top_friction', name: 'Static & Kinetic Friction Coefficient', nodeType: 'topic', questionCount: 0 },
+                  { id: 'top_circular', name: 'Circular Motion & Banking of Roads', nodeType: 'topic', questionCount: 0 },
                 ],
               },
               {
                 id: 'chap_wep',
                 name: 'Work, Energy & Power',
                 nodeType: 'chapter',
-                questionCount: 160,
+                questionCount: 0,
                 children: [
-                  { id: 'top_we_thm', name: 'Work-Energy Theorem', nodeType: 'topic', questionCount: 70 },
-                  { id: 'top_collisions', name: 'Elastic & Inelastic Collisions in 1D/2D', nodeType: 'topic', questionCount: 90 },
+                  { id: 'top_we_thm', name: 'Work-Energy Theorem', nodeType: 'topic', questionCount: 0 },
+                  { id: 'top_collisions', name: 'Elastic & Inelastic Collisions in 1D/2D', nodeType: 'topic', questionCount: 0 },
                 ],
               },
             ],
@@ -72,10 +81,10 @@ export default function AdminSyllabusPage() {
             id: 'unit_elec',
             name: 'Unit II: Electricity & Magnetism',
             nodeType: 'unit',
-            questionCount: 640,
+            questionCount: 0,
             children: [
-              { id: 'chap_electro', name: 'Electrostatics & Gauss Law', nodeType: 'chapter', questionCount: 210 },
-              { id: 'chap_current', name: 'Current Electricity & Kirchhoff\'s Laws', nodeType: 'chapter', questionCount: 190 },
+              { id: 'chap_electro', name: 'Electrostatics & Gauss Law', nodeType: 'chapter', questionCount: 0 },
+              { id: 'chap_current', name: 'Current Electricity & Kirchhoff\'s Laws', nodeType: 'chapter', questionCount: 0 },
             ],
           },
         ],
@@ -84,16 +93,16 @@ export default function AdminSyllabusPage() {
         id: 'sub_chem',
         name: 'Chemistry',
         nodeType: 'subject',
-        questionCount: 2600,
+        questionCount: 0,
         children: [
           {
             id: 'unit_phys_chem',
             name: 'Unit I: Physical Chemistry',
             nodeType: 'unit',
-            questionCount: 920,
+            questionCount: 0,
             children: [
-              { id: 'chap_thermo', name: 'Chemical Thermodynamics', nodeType: 'chapter', questionCount: 220 },
-              { id: 'chap_equil', name: 'Ionic & Chemical Equilibrium', nodeType: 'chapter', questionCount: 240 },
+              { id: 'chap_thermo', name: 'Chemical Thermodynamics', nodeType: 'chapter', questionCount: 0 },
+              { id: 'chap_equil', name: 'Ionic & Chemical Equilibrium', nodeType: 'chapter', questionCount: 0 },
             ],
           },
         ],
@@ -102,21 +111,38 @@ export default function AdminSyllabusPage() {
         id: 'sub_bio',
         name: 'Biology (Botany & Zoology)',
         nodeType: 'subject',
-        questionCount: 4050,
+        questionCount: 0,
         children: [
           {
             id: 'unit_plant_phys',
             name: 'Unit I: Plant Physiology',
             nodeType: 'unit',
-            questionCount: 880,
+            questionCount: 0,
             children: [
-              { id: 'chap_photo', name: 'Photosynthesis in Higher Plants (C3/C4)', nodeType: 'chapter', questionCount: 290 },
+              { id: 'chap_photo', name: 'Photosynthesis in Higher Plants (C3/C4)', nodeType: 'chapter', questionCount: 0 },
             ],
           },
         ],
       },
     ],
   });
+
+  // Calculate actual question count dynamically
+  const getNodeQuestionCount = (node: SyllabusNode): number => {
+    if (questions.length === 0) return 0;
+    const nameLower = node.name.toLowerCase();
+    const directMatches = questions.filter((q: any) =>
+      (q.subject && q.subject.toLowerCase().includes(nameLower)) ||
+      (q.topic && q.topic.toLowerCase().includes(nameLower)) ||
+      (q.chapter && q.chapter.toLowerCase().includes(nameLower))
+    ).length;
+
+    if (node.children && node.children.length > 0) {
+      const childrenSum = node.children.reduce((acc, child) => acc + getNodeQuestionCount(child), 0);
+      return Math.max(directMatches, childrenSum);
+    }
+    return directMatches;
+  };
 
   const toggleExpand = (nodeId: string) => {
     setExpandedNodes((prev) => ({ ...prev, [nodeId]: !prev[nodeId] }));
@@ -173,7 +199,7 @@ export default function AdminSyllabusPage() {
 
                 <div className="flex items-center gap-4 text-[#66727D]">
                   <span className="font-mono text-[11px]">
-                    {node.questionCount} Questions
+                    {getNodeQuestionCount(node)} Questions
                   </span>
 
                   {node.nodeType !== 'topic' && (

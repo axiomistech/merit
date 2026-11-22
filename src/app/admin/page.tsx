@@ -45,13 +45,24 @@ export default function AdminDashboardPage() {
 
     if (typeof window !== 'undefined') {
       const logs = JSON.parse(localStorage.getItem('fort_admin_audit_logs') || '[]');
-      setAuditLogs(logs.slice(0, 5));
+      const cleanLogs = Array.isArray(logs) ? logs.filter((l: any) => !['log_001', 'log_002', 'log_003'].includes(l.id)) : [];
+      if (Array.isArray(logs) && cleanLogs.length !== logs.length) {
+        localStorage.setItem('fort_admin_audit_logs', JSON.stringify(cleanLogs));
+      }
+      setAuditLogs(cleanLogs.slice(0, 5));
     }
   }, []);
 
-  const totalRevenue = transactions
-    .filter((t) => t.status === 'successful')
-    .reduce((sum, t) => sum + (t.amount || 0), 0);
+  const successfulTxns = transactions.filter(
+    (t) => t.status === 'successful' || t.status === 'SUCCESS'
+  );
+  const totalRevenue = successfulTxns.reduce((sum, t) => sum + (t.amount || 0), 0);
+
+  const todayRegistrations = students.filter((s) => {
+    if (!s.registeredAt && !s.created_at) return false;
+    const dateStr = s.registeredAt || s.created_at;
+    return new Date(dateStr).toDateString() === new Date().toDateString();
+  }).length;
 
   const reportedQuestions = questions.filter((q) => q.status === 'pending_review' || q.reportReason);
 
@@ -103,8 +114,8 @@ export default function AdminDashboardPage() {
           <div className="mt-2 font-mono text-2xl sm:text-3xl font-black text-[#20252B]">
             {students.length}
           </div>
-          <div className="mt-1 text-[11px] text-[#20252B] font-semibold">
-            +1 new registered today
+          <div className="mt-1 text-[11px] text-[#66727D] font-medium">
+            {todayRegistrations > 0 ? `+${todayRegistrations} new registered today` : '0 registered today'}
           </div>
         </div>
 
@@ -127,9 +138,9 @@ export default function AdminDashboardPage() {
             <FileText className="h-4 w-4 text-[#20252B]" />
           </div>
           <div className="mt-2 font-mono text-2xl sm:text-3xl font-black text-[#20252B]">
-            {questions.length * 100}
+            {questions.length}
           </div>
-          <div className="mt-1 text-[11px] text-[#20252B] font-semibold">
+          <div className="mt-1 text-[11px] text-[#66727D] font-medium">
             KaTeX mathematical verified
           </div>
         </div>
@@ -143,8 +154,8 @@ export default function AdminDashboardPage() {
           <div className="mt-2 font-mono text-2xl sm:text-3xl font-black text-[#20252B]">
             ₹{totalRevenue}
           </div>
-          <div className="mt-1 text-[11px] text-[#20252B] font-semibold">
-            {transactions.length} successful orders
+          <div className="mt-1 text-[11px] text-[#66727D] font-medium">
+            {successfulTxns.length} successful order{successfulTxns.length === 1 ? '' : 's'}
           </div>
         </div>
       </div>
@@ -166,27 +177,33 @@ export default function AdminDashboardPage() {
           </div>
 
           <div className="space-y-3">
-            {students.slice(0, 4).map((st) => (
-              <div
-                key={st.id}
-                className="flex items-center justify-between rounded-2xl bg-[#F1F3F4] p-3.5 border border-[#DCE2E6]"
-              >
-                <div>
-                  <span className="font-mono text-xs font-bold text-[#20252B]">
-                    {st.registrationId}
-                  </span>
-                  <div className="font-bold text-xs text-[#20252B]">{st.fullName}</div>
-                  <div className="text-[11px] text-[#66727D]">{st.email}</div>
-                </div>
-
-                <div className="text-right">
-                  <span className="rounded-full bg-white border border-[#DCE2E6] px-2.5 py-0.5 text-[10px] font-bold text-[#20252B]">
-                    {st.targetExam}
-                  </span>
-                  <div className="mt-1 text-[10px] text-[#66727D]">{st.last_activity}</div>
-                </div>
+            {students.length === 0 ? (
+              <div className="rounded-2xl bg-[#F1F3F4] p-6 text-center text-xs text-[#66727D]">
+                No students registered yet.
               </div>
-            ))}
+            ) : (
+              students.slice(0, 4).map((st) => (
+                <div
+                  key={st.id}
+                  className="flex items-center justify-between rounded-2xl bg-[#F1F3F4] p-3.5 border border-[#DCE2E6]"
+                >
+                  <div>
+                    <span className="font-mono text-xs font-bold text-[#20252B]">
+                      {st.registrationId}
+                    </span>
+                    <div className="font-bold text-xs text-[#20252B]">{st.fullName}</div>
+                    <div className="text-[11px] text-[#66727D]">{st.email}</div>
+                  </div>
+
+                  <div className="text-right">
+                    <span className="rounded-full bg-white border border-[#DCE2E6] px-2.5 py-0.5 text-[10px] font-bold text-[#20252B]">
+                      {st.targetExam}
+                    </span>
+                    <div className="mt-1 text-[10px] text-[#66727D]">{st.last_activity}</div>
+                  </div>
+                </div>
+              ))
+            )}
           </div>
         </div>
 
@@ -205,28 +222,34 @@ export default function AdminDashboardPage() {
           </div>
 
           <div className="space-y-3">
-            {transactions.slice(0, 4).map((txn) => (
-              <div
-                key={txn.id}
-                className="flex items-center justify-between rounded-2xl bg-[#F1F3F4] p-3.5 border border-[#DCE2E6]"
-              >
-                <div>
-                  <div className="font-bold text-xs text-[#20252B]">{txn.productName}</div>
-                  <div className="text-[11px] text-[#66727D]">
-                    {txn.studentName} • <span className="font-mono">{txn.gatewayPaymentId}</span>
-                  </div>
-                </div>
-
-                <div className="text-right">
-                  <div className="font-mono font-bold text-xs text-[#20252B]">
-                    +₹{txn.amount}
-                  </div>
-                  <span className="rounded-full bg-[#E9EEF1] px-2 py-0.5 text-[9px] font-bold text-[#20252B] uppercase">
-                    {txn.status}
-                  </span>
-                </div>
+            {transactions.length === 0 ? (
+              <div className="rounded-2xl bg-[#F1F3F4] p-6 text-center text-xs text-[#66727D]">
+                No transactions recorded yet.
               </div>
-            ))}
+            ) : (
+              transactions.slice(0, 4).map((txn) => (
+                <div
+                  key={txn.id}
+                  className="flex items-center justify-between rounded-2xl bg-[#F1F3F4] p-3.5 border border-[#DCE2E6]"
+                >
+                  <div>
+                    <div className="font-bold text-xs text-[#20252B]">{txn.productName}</div>
+                    <div className="text-[11px] text-[#66727D]">
+                      {txn.studentName} • <span className="font-mono">{txn.gatewayPaymentId}</span>
+                    </div>
+                  </div>
+
+                  <div className="text-right">
+                    <div className="font-mono font-bold text-xs text-[#20252B]">
+                      +₹{txn.amount}
+                    </div>
+                    <span className="rounded-full bg-[#E9EEF1] px-2 py-0.5 text-[9px] font-bold text-[#20252B] uppercase">
+                      {txn.status}
+                    </span>
+                  </div>
+                </div>
+              ))
+            )}
           </div>
         </div>
       </div>
@@ -251,28 +274,34 @@ export default function AdminDashboardPage() {
           </div>
 
           <div className="space-y-3">
-            {tickets.map((t) => (
-              <div
-                key={t.id}
-                className="rounded-2xl border border-[#DCE2E6] bg-[#F1F3F4] p-4 space-y-2 text-xs"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="font-mono font-bold text-[#20252B]">{t.ticket_number}</span>
-                  <span
-                    className={cn(
-                      'rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase',
-                      t.status === 'open'
-                        ? 'bg-[#FDEDF0] text-[#E4002B]'
-                        : 'bg-[#E9EEF1] text-[#20252B]'
-                    )}
-                  >
-                    {t.status}
-                  </span>
-                </div>
-                <div className="font-bold text-[#20252B]">{t.subject}</div>
-                <p className="text-[#66727D] text-[11px] line-clamp-2">{t.description}</p>
+            {tickets.length === 0 ? (
+              <div className="rounded-2xl bg-[#F1F3F4] p-6 text-center text-xs text-[#66727D]">
+                No support tickets requiring attention.
               </div>
-            ))}
+            ) : (
+              tickets.map((t) => (
+                <div
+                  key={t.id}
+                  className="rounded-2xl border border-[#DCE2E6] bg-[#F1F3F4] p-4 space-y-2 text-xs"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono font-bold text-[#20252B]">{t.ticket_number}</span>
+                    <span
+                      className={cn(
+                        'rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase',
+                        t.status === 'open'
+                          ? 'bg-[#FDEDF0] text-[#E4002B]'
+                          : 'bg-[#E9EEF1] text-[#20252B]'
+                      )}
+                    >
+                      {t.status}
+                    </span>
+                  </div>
+                  <div className="font-bold text-[#20252B]">{t.subject}</div>
+                  <p className="text-[#66727D] text-[11px] line-clamp-2">{t.description}</p>
+                </div>
+              ))
+            )}
           </div>
         </div>
 

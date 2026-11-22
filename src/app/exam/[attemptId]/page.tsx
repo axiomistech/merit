@@ -54,8 +54,8 @@ export default function ExamExecutionPage() {
 
   // Authenticated candidate profile
   const [candidate, setCandidate] = useState({
-    fullName: 'DHANUSH JAGADEESH',
-    registrationId: 'MW-26-000001',
+    fullName: 'Candidate',
+    registrationId: 'MW-CANDIDATE',
   });
 
   // Server-authoritative countdown timer simulation (200 minutes = 12000 seconds)
@@ -72,8 +72,8 @@ export default function ExamExecutionPage() {
         try {
           const parsed = JSON.parse(stored);
           setCandidate({
-            fullName: (parsed.fullName || 'DHANUSH JAGADEESH').toUpperCase(),
-            registrationId: parsed.registrationId || 'MW-26-000001',
+            fullName: (parsed.fullName || 'Candidate').toUpperCase(),
+            registrationId: parsed.registrationId || 'MW-CANDIDATE',
           });
         } catch {}
       }

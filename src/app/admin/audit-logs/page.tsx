@@ -14,50 +14,18 @@ export default function AdminAuditLogsPage() {
       const stored = localStorage.getItem('fort_admin_audit_logs');
       if (stored) {
         try {
-          setLogs(JSON.parse(stored));
-        } catch {}
+          const list = JSON.parse(stored);
+          const mockLogIds = new Set(['log_001', 'log_002', 'log_003']);
+          const clean = Array.isArray(list) ? list.filter((l: any) => !mockLogIds.has(l.id)) : [];
+          if (clean.length !== list.length) {
+            localStorage.setItem('fort_admin_audit_logs', JSON.stringify(clean));
+          }
+          setLogs(clean);
+        } catch {
+          setLogs([]);
+        }
       } else {
-        // Initial verified audit ledger entries
-        const initialLogs: AuditLogEntry[] = [
-          {
-            id: 'log_001',
-            actor_name: 'Dhanush Jagadeesh',
-            actor_email: 'admin@fortlearning.com',
-            actor_role: 'super_admin',
-            action: 'publish_exam_blueprint',
-            resource_type: 'examination',
-            resource_id: 'exam_neet',
-            change_summary: 'Published revised 2026 NEET blueprint with 180 questions and +4/-1 marking.',
-            created_at: '2026-01-02T10:00:00Z',
-            ip_address: '106.51.24.12',
-          },
-          {
-            id: 'log_002',
-            actor_name: 'Academic Curriculum Lead',
-            actor_email: 'content@fortlearning.com',
-            actor_role: 'content_admin',
-            action: 'update_question_version',
-            resource_type: 'question',
-            resource_id: 'q_chem_04',
-            change_summary: 'Updated molecular orbital hybridization diagram in Chemical Bonding.',
-            created_at: '2026-01-04T14:20:00Z',
-            ip_address: '49.207.211.5',
-          },
-          {
-            id: 'log_003',
-            actor_name: 'Financial Controller',
-            actor_email: 'finance@fortlearning.com',
-            actor_role: 'finance_admin',
-            action: 'verify_razorpay_webhook',
-            resource_type: 'payment_webhook',
-            resource_id: 'evt_rzp_98124',
-            change_summary: 'Settled HMAC SHA256 payment verification for order_rpay_98231 (₹10.00).',
-            created_at: '2026-01-08T09:30:00Z',
-            ip_address: '157.48.19.88',
-          },
-        ];
-        setLogs(initialLogs);
-        localStorage.setItem('fort_admin_audit_logs', JSON.stringify(initialLogs));
+        setLogs([]);
       }
     }
   }, []);
@@ -137,34 +105,42 @@ export default function AdminAuditLogsPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-[#DCE2E6]">
-              {filtered.map((log) => (
-                <tr key={log.id} className="hover:bg-[#F1F3F4]/50 transition-colors">
-                  <td className="py-4 px-6 font-mono text-[11px] text-[#66727D]">
-                    {log.created_at.split('T')[0]} {log.created_at.split('T')[1]?.substring(0, 5)}
-                  </td>
-                  <td className="py-4 px-6">
-                    <div className="font-bold text-[#20252B]">{log.actor_name}</div>
-                    <div className="text-[10px] text-[#66727D]">{log.actor_email}</div>
-                  </td>
-                  <td className="py-4 px-6">
-                    <span className="rounded-full bg-[#E9EEF1] px-2.5 py-0.5 font-mono text-[10px] font-bold text-[#20252B] uppercase">
-                      {log.actor_role?.replace('_', ' ')}
-                    </span>
-                  </td>
-                  <td className="py-4 px-6">
-                    <span className="font-mono font-bold text-[#20252B]">{log.action}</span>
-                    <div className="text-[10px] text-[#66727D]">
-                      {log.resource_type}: {log.resource_id}
-                    </div>
-                  </td>
-                  <td className="py-4 px-6 text-[#20252B] max-w-sm">
-                    {log.change_summary}
-                  </td>
-                  <td className="py-4 px-6 text-right font-mono text-[10px] text-[#66727D]">
-                    {log.ip_address || '127.0.0.1'}
+              {filtered.length === 0 ? (
+                <tr>
+                  <td colSpan={6} className="py-12 text-center text-[#66727D]">
+                    No audit logs recorded yet.
                   </td>
                 </tr>
-              ))}
+              ) : (
+                filtered.map((log) => (
+                  <tr key={log.id} className="hover:bg-[#F1F3F4]/50 transition-colors">
+                    <td className="py-4 px-6 font-mono text-[11px] text-[#66727D]">
+                      {log.created_at.split('T')[0]} {log.created_at.split('T')[1]?.substring(0, 5)}
+                    </td>
+                    <td className="py-4 px-6">
+                      <div className="font-bold text-[#20252B]">{log.actor_name}</div>
+                      <div className="text-[10px] text-[#66727D]">{log.actor_email}</div>
+                    </td>
+                    <td className="py-4 px-6">
+                      <span className="rounded-full bg-[#E9EEF1] px-2.5 py-0.5 font-mono text-[10px] font-bold text-[#20252B] uppercase">
+                        {log.actor_role?.replace('_', ' ')}
+                      </span>
+                    </td>
+                    <td className="py-4 px-6">
+                      <span className="font-mono font-bold text-[#20252B]">{log.action}</span>
+                      <div className="text-[10px] text-[#66727D]">
+                        {log.resource_type}: {log.resource_id}
+                      </div>
+                    </td>
+                    <td className="py-4 px-6 text-[#20252B] max-w-sm">
+                      {log.change_summary}
+                    </td>
+                    <td className="py-4 px-6 text-right font-mono text-[10px] text-[#66727D]">
+                      {log.ip_address || '127.0.0.1'}
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>

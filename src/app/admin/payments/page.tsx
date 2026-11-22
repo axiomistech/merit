@@ -188,58 +188,66 @@ export default function AdminPaymentsPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-[#DCE2E6]">
-              {filteredTransactions.map((t) => (
-                <tr key={t.id} className="hover:bg-[#F1F3F4]/60 transition-colors">
-                  <td className="p-4">
-                    <div className="font-mono font-bold text-[#20252B]">{t.id}</div>
-                    <div className="font-mono text-[11px] text-[#66727D]">{t.orderId}</div>
-                  </td>
-                  <td className="p-4">
-                    <div className="font-semibold text-[#20252B]">{t.studentName}</div>
-                    <div className="text-[11px] text-[#66727D]">{t.studentEmail}</div>
-                  </td>
-                  <td className="p-4 text-[#20252B] max-w-xs truncate">{t.productName}</td>
-                  <td className="p-4 font-bold font-mono text-[#20252B]">₹{t.amount}</td>
-                  <td className="p-4">
-                    <span className="capitalize text-[#52584E] font-medium">{t.gateway}</span>
-                  </td>
-                  <td className="p-4">
-                    <span
-                      className={cn(
-                        'inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider',
-                        t.status === 'successful' && 'bg-[#9CC6E0]/20 text-[#3B4C30]',
-                        t.status === 'refunded' && 'bg-amber-100 text-amber-800',
-                        t.status === 'failed' && 'bg-[#E4002B]/15 text-[#E4002B]'
-                      )}
-                    >
-                      {t.status}
-                    </span>
-                  </td>
-                  <td className="p-4 text-[#66727D] font-mono text-[11px]">
-                    {t.created_at.replace('T', ' ').substring(0, 19)}
-                  </td>
-                  <td className="p-4 text-right">
-                    <div className="flex items-center justify-end gap-1.5">
-                      <button
-                        onClick={() => setSelectedTxn(t)}
-                        className="p-1.5 rounded-lg border border-[#DCE2E6] text-[#52584E] hover:bg-[#F1F3F4] transition-colors"
-                        title="View Receipt"
-                      >
-                        <Eye className="h-3.5 w-3.5" />
-                      </button>
-                      {t.status === 'successful' && (
-                        <button
-                          onClick={() => handleIssueRefund(t)}
-                          className="px-2 py-1 rounded-lg border border-[#DCE2E6] text-[11px] font-semibold text-[#E4002B] hover:bg-[#E4002B]/10 transition-colors"
-                          title="Issue Refund"
-                        >
-                          Refund
-                        </button>
-                      )}
-                    </div>
+              {filteredTransactions.length === 0 ? (
+                <tr>
+                  <td colSpan={8} className="p-12 text-center text-[#66727D]">
+                    No transactions recorded yet.
                   </td>
                 </tr>
-              ))}
+              ) : (
+                filteredTransactions.map((t) => (
+                  <tr key={t.id} className="hover:bg-[#F1F3F4]/60 transition-colors">
+                    <td className="p-4">
+                      <div className="font-mono font-bold text-[#20252B]">{t.id}</div>
+                      <div className="font-mono text-[11px] text-[#66727D]">{t.orderId}</div>
+                    </td>
+                    <td className="p-4">
+                      <div className="font-semibold text-[#20252B]">{t.studentName}</div>
+                      <div className="text-[11px] text-[#66727D]">{t.studentEmail}</div>
+                    </td>
+                    <td className="p-4 text-[#20252B] max-w-xs truncate">{t.productName}</td>
+                    <td className="p-4 font-bold font-mono text-[#20252B]">₹{t.amount}</td>
+                    <td className="p-4">
+                      <span className="capitalize text-[#52584E] font-medium">{t.gateway}</span>
+                    </td>
+                    <td className="p-4">
+                      <span
+                        className={cn(
+                          'inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider',
+                          t.status === 'successful' && 'bg-[#9CC6E0]/20 text-[#3B4C30]',
+                          t.status === 'refunded' && 'bg-amber-100 text-amber-800',
+                          t.status === 'failed' && 'bg-[#E4002B]/15 text-[#E4002B]'
+                        )}
+                      >
+                        {t.status}
+                      </span>
+                    </td>
+                    <td className="p-4 text-[#66727D] font-mono text-[11px]">
+                      {t.created_at.replace('T', ' ').substring(0, 19)}
+                    </td>
+                    <td className="p-4 text-right">
+                      <div className="flex items-center justify-end gap-1.5">
+                        <button
+                          onClick={() => setSelectedTxn(t)}
+                          className="p-1.5 rounded-lg border border-[#DCE2E6] text-[#52584E] hover:bg-[#F1F3F4] transition-colors"
+                          title="View Receipt"
+                        >
+                          <Eye className="h-3.5 w-3.5" />
+                        </button>
+                        {t.status === 'successful' && (
+                          <button
+                            onClick={() => handleIssueRefund(t)}
+                            className="px-2 py-1 rounded-lg border border-[#DCE2E6] text-[11px] font-semibold text-[#E4002B] hover:bg-[#E4002B]/10 transition-colors"
+                            title="Issue Refund"
+                          >
+                            Refund
+                          </button>
+                        )}
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>

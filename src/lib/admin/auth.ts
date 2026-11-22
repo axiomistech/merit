@@ -32,7 +32,6 @@ export const ALL_PERMISSIONS: AdminPermission[] = [
 
 export const AUTHORIZED_ADMIN_EMAILS: string[] = [
   'meritwisehq@gmail.com',
-  'admin@fortlearning.com',
 ];
 
 export function isAuthorizedAdminEmail(email?: string | null): boolean {
@@ -92,56 +91,6 @@ export const INITIAL_ADMIN_USERS: AdminUser[] = [
     created_at: '2026-01-01T00:00:00Z',
     last_login: new Date().toISOString(),
     permissions: ALL_PERMISSIONS,
-  },
-  {
-    id: 'adm_01',
-    name: 'Dhanush Jagadeesh',
-    email: 'admin@fortlearning.com',
-    role: 'admin',
-    status: 'active',
-    created_at: '2026-01-01T00:00:00Z',
-    last_login: new Date().toISOString(),
-    permissions: ALL_PERMISSIONS,
-  },
-  {
-    id: 'adm_02',
-    name: 'Academic Curriculum Lead',
-    email: 'content@fortlearning.com',
-    role: 'content_admin',
-    status: 'active',
-    created_at: '2026-01-05T00:00:00Z',
-    last_login: new Date().toISOString(),
-    permissions: ROLE_DEFAULT_PERMISSIONS.content_admin,
-  },
-  {
-    id: 'adm_03',
-    name: 'Senior Answer Evaluator',
-    email: 'evaluator@fortlearning.com',
-    role: 'evaluator',
-    status: 'active',
-    created_at: '2026-01-10T00:00:00Z',
-    last_login: new Date().toISOString(),
-    permissions: ROLE_DEFAULT_PERMISSIONS.evaluator,
-  },
-  {
-    id: 'adm_04',
-    name: 'Candidate Support Desk',
-    email: 'support@fortlearning.com',
-    role: 'support_admin',
-    status: 'active',
-    created_at: '2026-01-12T00:00:00Z',
-    last_login: new Date().toISOString(),
-    permissions: ROLE_DEFAULT_PERMISSIONS.support_admin,
-  },
-  {
-    id: 'adm_05',
-    name: 'Financial Controller',
-    email: 'finance@fortlearning.com',
-    role: 'finance_admin',
-    status: 'active',
-    created_at: '2026-01-15T00:00:00Z',
-    last_login: new Date().toISOString(),
-    permissions: ROLE_DEFAULT_PERMISSIONS.finance_admin,
   },
 ];
 

@@ -1,59 +1,72 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FolderTree, Plus, BookOpen, Layers, Edit2, Search } from 'lucide-react';
+import { getStoredQuestions } from '@/lib/admin/store';
 import { toast } from 'sonner';
 
 export default function AdminSubjectsPage() {
   const [search, setSearch] = useState('');
+  const [realQuestions, setRealQuestions] = useState<any[]>([]);
 
-  const subjectsData = [
+  useEffect(() => {
+    setRealQuestions(getStoredQuestions());
+  }, []);
+
+  const subjectsConfig = [
     {
       id: 'sub_1',
+      slug: 'physics',
       exam: 'NEET (UG)',
       name: 'Physics',
       unitsCount: 10,
       chaptersCount: 28,
-      totalQuestions: 2450,
       activeStatus: 'Active',
     },
     {
       id: 'sub_2',
+      slug: 'chemistry',
       exam: 'NEET (UG)',
       name: 'Chemistry',
       unitsCount: 12,
       chaptersCount: 30,
-      totalQuestions: 2600,
       activeStatus: 'Active',
     },
     {
       id: 'sub_3',
+      slug: 'botany',
       exam: 'NEET (UG)',
       name: 'Botany',
       unitsCount: 8,
       chaptersCount: 22,
-      totalQuestions: 2100,
       activeStatus: 'Active',
     },
     {
       id: 'sub_4',
+      slug: 'zoology',
       exam: 'NEET (UG)',
       name: 'Zoology',
       unitsCount: 8,
       chaptersCount: 20,
-      totalQuestions: 1950,
       activeStatus: 'Active',
     },
     {
       id: 'sub_5',
+      slug: 'mathematics',
       exam: 'JEE Main',
       name: 'Mathematics',
       unitsCount: 10,
       chaptersCount: 26,
-      totalQuestions: 3100,
       activeStatus: 'Active',
     },
   ];
+
+  const subjectsData = subjectsConfig.map((s) => ({
+    ...s,
+    totalQuestions: realQuestions.filter(
+      (q) => q.subjectSlug === s.slug || q.subjectName?.toLowerCase() === s.name.toLowerCase()
+    ).length,
+  }));
 
   const filtered = subjectsData.filter(
     (s) =>

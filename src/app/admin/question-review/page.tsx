@@ -28,32 +28,7 @@ interface ReviewQueueItem {
 }
 
 export default function AdminQuestionReviewPage() {
-  const [items, setItems] = useState<ReviewQueueItem[]>([
-    {
-      id: 'rev_01',
-      questionId: 'q_neet_14',
-      subjectName: 'Physics',
-      conceptName: 'Ray Optics & Mirrors',
-      questionText: 'A concave mirror of focal length $f = 20\\text{ cm}$ produces an image twice the height of the object. Calculate the possible object distances $u$.',
-      reportedBy: 'priya.iyer@example.com (MW-26-000003)',
-      issueCategory: 'reported_by_student',
-      reason: 'Candidate suspects sign convention in real vs virtual magnification cases should explicitly state both $u = -10\\text{ cm}$ and $u = -30\\text{ cm}$.',
-      timestamp: 'Today, 14:20',
-      status: 'pending',
-    },
-    {
-      id: 'rev_02',
-      questionId: 'q_chem_09',
-      subjectName: 'Chemistry',
-      conceptName: 'Coordination Compounds',
-      questionText: 'Identify the magnetic nature and hybridization of $[\\text{Fe}(\\text{CN})_6]^{3-}$ according to Valence Bond Theory.',
-      reportedBy: 'Quality Assurance Audit Bot',
-      issueCategory: 'missing_explanation',
-      reason: 'Explanation lacks detailed electron spin pairing diagram in $d$-orbitals.',
-      timestamp: 'Yesterday, 18:00',
-      status: 'pending',
-    },
-  ]);
+  const [items, setItems] = useState<ReviewQueueItem[]>([]);
 
   const handleApprove = (id: string, qId: string) => {
     setItems((prev) => prev.map((item) => (item.id === id ? { ...item, status: 'resolved' } : item)));
@@ -89,7 +64,16 @@ export default function AdminQuestionReviewPage() {
 
       {/* Review Queue Items */}
       <div className="space-y-4">
-        {items.map((item) => (
+        {items.length === 0 ? (
+          <div className="rounded-[28px] border border-[#DCE2E6] bg-white p-12 text-center text-[#66727D] shadow-sm space-y-2">
+            <CheckSquare className="h-8 w-8 mx-auto text-[#A1A1AA]" />
+            <h3 className="text-base font-bold text-[#20252B]">No questions currently flagged for review.</h3>
+            <p className="text-xs text-[#66727D]">
+              Quality assurance queue is clear. Flagged questions from students and automated linters will appear here.
+            </p>
+          </div>
+        ) : (
+          items.map((item) => (
           <div
             key={item.id}
             className="rounded-[28px] border border-[#DCE2E6] bg-white p-6 sm:p-7 shadow-sm space-y-4"
@@ -154,7 +138,8 @@ export default function AdminQuestionReviewPage() {
               </div>
             )}
           </div>
-        ))}
+        ))
+      )}
       </div>
     </div>
   );

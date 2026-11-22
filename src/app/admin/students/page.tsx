@@ -213,47 +213,55 @@ export default function AdminStudentsPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-[#DCE2E6]">
-              {filtered.map((s) => (
-                <tr key={s.id} className="hover:bg-[#F1F3F4]/50 transition-colors">
-                  <td className="py-4 px-6 font-mono font-bold text-[#20252B]">
-                    {s.registrationId}
-                  </td>
-                  <td className="py-4 px-6">
-                    <div className="font-bold text-[#20252B]">{s.fullName}</div>
-                    <div className="text-[11px] text-[#66727D]">{s.email}</div>
-                  </td>
-                  <td className="py-4 px-6">
-                    <span className="rounded-full bg-white border border-[#DCE2E6] px-2.5 py-0.5 text-[10px] font-bold text-[#20252B]">
-                      {s.targetExam}
-                    </span>
-                  </td>
-                  <td className="py-4 px-6 font-mono font-bold text-[#20252B]">
-                    {s.testsAttempted}
-                  </td>
-                  <td className="py-4 px-6 font-mono font-bold text-[#20252B]">
-                    ₹{s.totalPurchases}
-                  </td>
-                  <td className="py-4 px-6">
-                    <span
-                      className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase ${
-                        s.accountStatus === 'active'
-                          ? 'bg-[#E9EEF1] text-[#20252B]'
-                          : 'bg-[#FDEDF0] text-[#E4002B]'
-                      }`}
-                    >
-                      {s.accountStatus}
-                    </span>
-                  </td>
-                  <td className="py-4 px-6 text-right">
-                    <button
-                      onClick={() => setSelectedStudent(s)}
-                      className="font-bold text-[#20252B] hover:underline"
-                    >
-                      View Profile →
-                    </button>
+              {filtered.length === 0 ? (
+                <tr>
+                  <td colSpan={7} className="py-12 text-center text-[#66727D]">
+                    No students registered yet.
                   </td>
                 </tr>
-              ))}
+              ) : (
+                filtered.map((s) => (
+                  <tr key={s.id} className="hover:bg-[#F1F3F4]/50 transition-colors">
+                    <td className="py-4 px-6 font-mono font-bold text-[#20252B]">
+                      {s.registrationId}
+                    </td>
+                    <td className="py-4 px-6">
+                      <div className="font-bold text-[#20252B]">{s.fullName}</div>
+                      <div className="text-[11px] text-[#66727D]">{s.email}</div>
+                    </td>
+                    <td className="py-4 px-6">
+                      <span className="rounded-full bg-white border border-[#DCE2E6] px-2.5 py-0.5 text-[10px] font-bold text-[#20252B]">
+                        {s.targetExam}
+                      </span>
+                    </td>
+                    <td className="py-4 px-6 font-mono font-bold text-[#20252B]">
+                      {s.testsAttempted}
+                    </td>
+                    <td className="py-4 px-6 font-mono font-bold text-[#20252B]">
+                      ₹{s.totalPurchases}
+                    </td>
+                    <td className="py-4 px-6">
+                      <span
+                        className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase ${
+                          s.accountStatus === 'active'
+                            ? 'bg-[#E9EEF1] text-[#20252B]'
+                            : 'bg-[#FDEDF0] text-[#E4002B]'
+                        }`}
+                      >
+                        {s.accountStatus}
+                      </span>
+                    </td>
+                    <td className="py-4 px-6 text-right">
+                      <button
+                        onClick={() => setSelectedStudent(s)}
+                        className="font-bold text-[#20252B] hover:underline"
+                      >
+                        View Profile →
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>

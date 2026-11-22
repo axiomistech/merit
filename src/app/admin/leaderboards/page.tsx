@@ -36,56 +36,7 @@ export default function AdminLeaderboardsPage() {
   const [minScoreThreshold, setMinScoreThreshold] = useState(300);
   const [isLeaderboardPublic, setIsLeaderboardPublic] = useState(true);
 
-  const [entries, setEntries] = useState<LeaderboardEntry[]>([
-    {
-      rank: 1,
-      candidateName: 'Aditya Srivastava',
-      registrationId: 'MW-26-000084',
-      exam: 'neet',
-      score: 705,
-      totalMarks: 720,
-      accuracy: 98.2,
-      durationSeconds: 11400,
-      attemptDate: '2026-11-20',
-      isDisqualified: false,
-    },
-    {
-      rank: 2,
-      candidateName: 'Priya Iyer',
-      registrationId: 'MW-26-000002',
-      exam: 'neet',
-      score: 692,
-      totalMarks: 720,
-      accuracy: 96.5,
-      durationSeconds: 11800,
-      attemptDate: '2026-11-21',
-      isDisqualified: false,
-    },
-    {
-      rank: 3,
-      candidateName: 'Aarav Sharma',
-      registrationId: 'MW-26-000001',
-      exam: 'neet',
-      score: 668,
-      totalMarks: 720,
-      accuracy: 93.8,
-      durationSeconds: 10900,
-      attemptDate: '2026-11-21',
-      isDisqualified: false,
-    },
-    {
-      rank: 4,
-      candidateName: 'Suspicious Candidate X',
-      registrationId: 'MW-26-000999',
-      exam: 'neet',
-      score: 720,
-      totalMarks: 720,
-      accuracy: 100.0,
-      durationSeconds: 180, // 3 minutes for 180 questions!
-      attemptDate: '2026-11-19',
-      isDisqualified: true,
-    },
-  ]);
+  const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
 
   const handleToggleDisqualify = (regId: string) => {
     const updated = entries.map((e) =>
@@ -203,59 +154,67 @@ export default function AdminLeaderboardsPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-[#DCE2E6]">
-              {entries.map((e) => (
-                <tr
-                  key={e.registrationId}
-                  className={cn(
-                    'hover:bg-[#F1F3F4]/60 transition-colors',
-                    e.isDisqualified && 'bg-[#E4002B]/5 text-[#66727D]'
-                  )}
-                >
-                  <td className="p-4 font-bold font-mono text-sm text-[#20252B]">
-                    {e.isDisqualified ? '—' : `#${e.rank}`}
-                  </td>
-                  <td className="p-4">
-                    <div className="font-semibold text-[#20252B]">
-                      {maskCandidateNames ? `${e.registrationId.substring(0, 10)}****` : e.candidateName}
-                    </div>
-                    <div className="font-mono text-[10px] text-[#66727D]">{e.registrationId}</div>
-                  </td>
-                  <td className="p-4 font-bold font-mono text-[#20252B]">
-                    {e.score} / {e.totalMarks}
-                  </td>
-                  <td className="p-4 font-mono font-medium text-[#20252B]">{e.accuracy}%</td>
-                  <td className="p-4 font-mono text-[#52584E]">
-                    {Math.round(e.durationSeconds / 60)} mins
-                    {e.durationSeconds < 600 && (
-                      <span className="block text-[10px] text-[#E4002B] font-bold">Anomaly: Fast</span>
-                    )}
-                  </td>
-                  <td className="p-4">
-                    {e.isDisqualified ? (
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-[#E4002B]/15 text-[#E4002B]">
-                        Disqualified
-                      </span>
-                    ) : (
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-[#9CC6E0]/20 text-[#3B4C30]">
-                        Verified
-                      </span>
-                    )}
-                  </td>
-                  <td className="p-4 text-right">
-                    <button
-                      onClick={() => handleToggleDisqualify(e.registrationId)}
-                      className={cn(
-                        'px-2.5 py-1 text-xs font-semibold rounded-lg border transition-colors',
-                        e.isDisqualified
-                          ? 'border-[#9CC6E0] text-[#3B4C30] hover:bg-[#9CC6E0]/20'
-                          : 'border-[#E4002B]/30 text-[#E4002B] hover:bg-[#E4002B]/10'
-                      )}
-                    >
-                      {e.isDisqualified ? 'Reinstate' : 'Disqualify'}
-                    </button>
+              {entries.length === 0 ? (
+                <tr>
+                  <td colSpan={7} className="p-12 text-center text-[#66727D]">
+                    No leaderboard rankings available yet.
                   </td>
                 </tr>
-              ))}
+              ) : (
+                entries.map((e) => (
+                  <tr
+                    key={e.registrationId}
+                    className={cn(
+                      'hover:bg-[#F1F3F4]/60 transition-colors',
+                      e.isDisqualified && 'bg-[#E4002B]/5 text-[#66727D]'
+                    )}
+                  >
+                    <td className="p-4 font-bold font-mono text-sm text-[#20252B]">
+                      {e.isDisqualified ? '—' : `#${e.rank}`}
+                    </td>
+                    <td className="p-4">
+                      <div className="font-semibold text-[#20252B]">
+                        {maskCandidateNames ? `${e.registrationId.substring(0, 10)}****` : e.candidateName}
+                      </div>
+                      <div className="font-mono text-[10px] text-[#66727D]">{e.registrationId}</div>
+                    </td>
+                    <td className="p-4 font-bold font-mono text-[#20252B]">
+                      {e.score} / {e.totalMarks}
+                    </td>
+                    <td className="p-4 font-mono font-medium text-[#20252B]">{e.accuracy}%</td>
+                    <td className="p-4 font-mono text-[#52584E]">
+                      {Math.round(e.durationSeconds / 60)} mins
+                      {e.durationSeconds < 600 && (
+                        <span className="block text-[10px] text-[#E4002B] font-bold">Anomaly: Fast</span>
+                      )}
+                    </td>
+                    <td className="p-4">
+                      {e.isDisqualified ? (
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-[#E4002B]/15 text-[#E4002B]">
+                          Disqualified
+                        </span>
+                      ) : (
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-[#9CC6E0]/20 text-[#3B4C30]">
+                          Verified
+                        </span>
+                      )}
+                    </td>
+                    <td className="p-4 text-right">
+                      <button
+                        onClick={() => handleToggleDisqualify(e.registrationId)}
+                        className={cn(
+                          'px-2.5 py-1 text-xs font-semibold rounded-lg border transition-colors',
+                          e.isDisqualified
+                            ? 'border-[#9CC6E0] text-[#3B4C30] hover:bg-[#9CC6E0]/20'
+                            : 'border-[#E4002B]/30 text-[#E4002B] hover:bg-[#E4002B]/10'
+                        )}
+                      >
+                        {e.isDisqualified ? 'Reinstate' : 'Disqualify'}
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>

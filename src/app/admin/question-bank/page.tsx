@@ -718,7 +718,16 @@ export default function AdminQuestionBankPage() {
 
       {/* Questions Listing */}
       <div className="space-y-4">
-        {filtered.map((q, idx) => (
+        {filtered.length === 0 ? (
+          <div className="rounded-[24px] border border-[#DCE2E6] bg-white p-12 text-center text-[#66727D] shadow-sm space-y-2">
+            <FileText className="h-8 w-8 mx-auto text-[#A1A1AA]" />
+            <h3 className="text-base font-bold text-[#20252B]">Your question bank is empty.</h3>
+            <p className="text-xs text-[#66727D]">
+              Author a mathematical question using KaTeX or import validated questions via JSON/CSV.
+            </p>
+          </div>
+        ) : (
+          filtered.map((q, idx) => (
           <div
             key={q.id}
             className="rounded-[24px] border border-[#DCE2E6] bg-white p-6 shadow-sm hover:border-[#20252B] transition-all space-y-4"
@@ -773,7 +782,8 @@ export default function AdminQuestionBankPage() {
               })}
             </div>
           </div>
-        ))}
+        ))
+      )}
       </div>
     </div>
   );

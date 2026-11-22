@@ -32,9 +32,12 @@ function LoginForm() {
           localStorage.getItem('merit_student_session') || localStorage.getItem('fort_student_session');
         let session = stored ? JSON.parse(stored) : null;
         if (!session || session.email !== normalizedEmail) {
+          const generatedRegId = isAdmin
+            ? 'MW-ADMIN-01'
+            : `MW-26-${Math.floor(100000 + Math.random() * 900000)}`;
           session = {
-            userId: isAdmin ? 'usr_admin_meritwise' : 'usr_active_candidate',
-            registrationId: isAdmin ? 'MW-ADMIN-01' : 'MW-26-000001',
+            userId: isAdmin ? 'usr_admin_meritwise' : `usr_${Date.now()}`,
+            registrationId: generatedRegId,
             fullName: isAdmin ? 'Meritwise HQ Admin' : email.split('@')[0].toUpperCase(),
             email: normalizedEmail,
             role: isAdmin ? 'admin' : 'student',
@@ -73,18 +76,38 @@ function LoginForm() {
   };
 
   const handleGoogleSignIn = () => {
+    const userEmail = prompt('Enter your Google email address:')?.trim().toLowerCase();
+    if (!userEmail) return;
+    const isAdmin = isAuthorizedAdminEmail(userEmail);
     if (typeof window !== 'undefined') {
+      const regId = isAdmin ? 'MW-ADMIN-01' : `MW-26-${Math.floor(100000 + Math.random() * 900000)}`;
+      const name = userEmail.split('@')[0];
       const session = {
-        userId: 'usr_google_candidate',
-        registrationId: 'MW-26-000001',
-        fullName: 'DHANUSH JAGADEESH',
-        email: 'dhanush.student@gmail.com',
+        userId: `usr_${Date.now()}`,
+        registrationId: regId,
+        fullName: name.charAt(0).toUpperCase() + name.slice(1),
+        email: userEmail,
+        role: isAdmin ? 'admin' : 'student',
       };
       localStorage.setItem('merit_student_session', JSON.stringify(session));
       localStorage.setItem('fort_student_session', JSON.stringify(session));
+
+      if (isAdmin) {
+        const adminSession: AdminUser = {
+          id: 'adm_meritwise_hq',
+          name: 'Meritwise HQ Admin',
+          email: userEmail,
+          role: 'admin',
+          status: 'active',
+          created_at: '2026-01-01T00:00:00Z',
+          last_login: new Date().toISOString(),
+          permissions: ALL_PERMISSIONS,
+        };
+        localStorage.setItem('fort_admin_session', JSON.stringify(adminSession));
+      }
     }
     toast.success('Signed in with Google successfully.');
-    router.push(redirectTarget);
+    router.push(isAdmin && !hasCustomRedirect ? '/admin' : redirectTarget);
   };
 
   return (

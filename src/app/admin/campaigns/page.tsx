@@ -35,7 +35,7 @@ export default function AdminCampaignsPage() {
     name: '',
     subject: '',
     previewText: '',
-    targetSegment: 'All Registered Candidates (4,218)',
+    targetSegment: 'All Registered Candidates',
   });
 
   useEffect(() => {
@@ -153,6 +153,13 @@ export default function AdminCampaignsPage() {
                   </td>
                 </tr>
               ))}
+              {filteredCampaigns.length === 0 && (
+                <tr>
+                  <td colSpan={7} className="p-12 text-center text-[#66727D] text-xs">
+                    No email campaigns created yet. Click New Campaign to create one.
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
@@ -215,10 +222,10 @@ export default function AdminCampaignsPage() {
                   onChange={(e) => setFormData({ ...formData, targetSegment: e.target.value })}
                   className="w-full rounded-xl border border-[#DCE2E6] p-2.5 text-xs text-[#20252B] focus:outline-none focus:border-[#9CC6E0]"
                 >
-                  <option value="All Registered Candidates (4,218)">All Registered Candidates (4,218)</option>
-                  <option value="NEET 2026 Aspirants (2,150)">NEET 2026 Aspirants (2,150)</option>
-                  <option value="JEE Main Candidates (1,220)">JEE Main Candidates (1,220)</option>
-                  <option value="Inactive in last 14 days (640)">Inactive in last 14 days (640)</option>
+                  <option value="All Registered Candidates">All Registered Candidates</option>
+                  <option value="NEET 2026 Aspirants">NEET 2026 Aspirants</option>
+                  <option value="JEE Main Candidates">JEE Main Candidates</option>
+                  <option value="Inactive Candidates">Inactive Candidates</option>
                 </select>
               </div>
 

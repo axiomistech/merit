@@ -30,8 +30,8 @@ export default function StudentLeaderboardPage() {
     if (typeof window !== 'undefined') {
       const stored =
         localStorage.getItem('merit_student_session') || localStorage.getItem('fort_student_session');
-      let currentRegId = 'MW-26-000001';
-      let currentName = 'DHANUSH JAGADEESH';
+      let currentRegId = 'MW-CANDIDATE';
+      let currentName = 'Candidate';
 
       if (stored) {
         try {
@@ -42,97 +42,62 @@ export default function StudentLeaderboardPage() {
         } catch {}
       }
 
-      // Check for user's actual latest attempt result
-      let userScore = 0;
-      let userAccuracy = 0;
-      let userAttemptDate = '2026-11-21';
+      // Check for user's actual latest attempt result or saved evaluated attempts
+      let attemptList: any[] = [];
+      try {
+        const raw = localStorage.getItem('fort_test_attempts') || localStorage.getItem('meritwise_attempts');
+        if (raw) {
+          const parsedAttempts = JSON.parse(raw);
+          if (Array.isArray(parsedAttempts)) {
+            parsedAttempts.forEach((att: any, idx: number) => {
+              attemptList.push({
+                rank: idx + 1,
+                displayName: att.candidateName || att.studentName || 'Candidate',
+                registrationId: att.registrationId || att.studentId || 'MW-CANDIDATE',
+                exam: att.examSlug?.includes('jee') ? 'jee-main' : 'neet',
+                examLabel: att.examName || 'NEET (UG)',
+                score: att.score || att.totalScore || 0,
+                maxMarks: att.maxScore || 720,
+                accuracy: att.accuracy || 0,
+                durationFormatted: att.timeSpentFormatted || '02:45:00',
+                date: att.submittedAt ? att.submittedAt.split('T')[0] : '2026-11-23',
+                isCurrentUser: att.registrationId === currentRegId,
+              });
+            });
+          }
+        }
+      } catch {}
+
       const storedAttempt =
         localStorage.getItem('merit_latest_attempt') || localStorage.getItem('fort_latest_attempt');
       if (storedAttempt) {
         try {
           const parsed = JSON.parse(storedAttempt);
-          userScore = parsed.totalScore || 0;
-          userAccuracy = parsed.accuracy || 0;
+          const userScore = parsed.totalScore || parsed.score || 0;
+          if (userScore > 0 && !attemptList.some((e) => e.registrationId === currentRegId)) {
+            attemptList.push({
+              rank: 0,
+              displayName: `${currentName.split(' ')[0]} ${currentName.split(' ')[1] ? currentName.split(' ')[1][0] + '.' : ''}`,
+              registrationId: currentRegId,
+              exam: 'neet',
+              examLabel: 'NEET (UG)',
+              score: userScore,
+              maxMarks: parsed.maxScore || 720,
+              accuracy: parsed.accuracy || 0,
+              durationFormatted: parsed.timeSpentFormatted || '02:54:20',
+              date: new Date().toISOString().split('T')[0],
+              isCurrentUser: true,
+            });
+          }
         } catch {}
       }
 
-      // Real verified benchmark records
-      const baseLeaderboard: LeaderboardRecord[] = [
-        {
-          rank: 1,
-          displayName: 'Aditya S.',
-          registrationId: 'MW-26-000084',
-          exam: 'neet',
-          examLabel: 'NEET (UG)',
-          score: 705,
-          maxMarks: 720,
-          accuracy: 98.2,
-          durationFormatted: '03:10:00',
-          date: '2026-11-20',
-        },
-        {
-          rank: 2,
-          displayName: 'Priya I.',
-          registrationId: 'MW-26-000002',
-          exam: 'neet',
-          examLabel: 'NEET (UG)',
-          score: 692,
-          maxMarks: 720,
-          accuracy: 96.5,
-          durationFormatted: '03:16:40',
-          date: '2026-11-19',
-        },
-        {
-          rank: 3,
-          displayName: 'Rohan D.',
-          registrationId: 'MW-26-000004',
-          exam: 'jee-main',
-          examLabel: 'JEE Main',
-          score: 285,
-          maxMarks: 300,
-          accuracy: 95.0,
-          durationFormatted: '02:45:00',
-          date: '2026-11-18',
-        },
-        {
-          rank: 4,
-          displayName: 'Aarav S.',
-          registrationId: 'MW-26-000003',
-          exam: 'neet',
-          examLabel: 'NEET (UG)',
-          score: 648,
-          maxMarks: 720,
-          accuracy: 90.3,
-          durationFormatted: '03:19:15',
-          date: '2026-11-17',
-        },
-      ];
+      const sorted = [...attemptList].sort((a, b) => b.score - a.score);
+      sorted.forEach((entry, idx) => {
+        entry.rank = idx + 1;
+      });
 
-      // Insert or update current user if they have attempted a test
-      if (userScore > 0) {
-        const userEntry: LeaderboardRecord = {
-          rank: 0,
-          displayName: `${currentName.split(' ')[0]} ${currentName.split(' ')[1] ? currentName.split(' ')[1][0] + '.' : ''}`,
-          registrationId: currentRegId,
-          exam: 'neet',
-          examLabel: 'NEET (UG)',
-          score: userScore,
-          maxMarks: 720,
-          accuracy: userAccuracy,
-          durationFormatted: '02:54:20',
-          date: userAttemptDate,
-          isCurrentUser: true,
-        };
-
-        const combined = [...baseLeaderboard, userEntry].sort((a, b) => b.score - a.score);
-        combined.forEach((entry, idx) => {
-          entry.rank = idx + 1;
-        });
-        setEntries(combined);
-      } else {
-        setEntries(baseLeaderboard);
-      }
-
+      setEntries(sorted);
       setLoading(false);
     }
   }, []);
@@ -337,6 +302,13 @@ export default function StudentLeaderboardPage() {
                   <td className="p-4 text-right text-[#66727D]">{item.date}</td>
                 </tr>
               ))}
+              {filtered.length === 0 && (
+                <tr>
+                  <td colSpan={7} className="p-12 text-center text-[#66727D] text-xs">
+                    No leaderboard rankings available yet. Rankings will appear once candidates complete evaluated examinations.
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>

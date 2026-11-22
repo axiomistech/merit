@@ -74,6 +74,26 @@ function SignupForm() {
             permissions: ALL_PERMISSIONS,
           };
           localStorage.setItem('fort_admin_session', JSON.stringify(adminSession));
+        } else {
+          // Record genuine student registration in admin store
+          try {
+            const raw = localStorage.getItem('fort_admin_students');
+            const studentsList = raw ? JSON.parse(raw) : [];
+            const newStudent = {
+              id: data.userId || `usr_${Date.now()}`,
+              registrationId: data.registrationId || `MW-26-${Math.floor(100000 + Math.random() * 900000)}`,
+              fullName: formData.fullName,
+              email: normalizedEmail,
+              phone: formData.phone || '',
+              targetExam: 'NEET',
+              status: 'active',
+              registeredAt: new Date().toISOString(),
+              testsAttempted: 0,
+              totalSpent: 0,
+            };
+            studentsList.unshift(newStudent);
+            localStorage.setItem('fort_admin_students', JSON.stringify(studentsList));
+          } catch {}
         }
       }
 
