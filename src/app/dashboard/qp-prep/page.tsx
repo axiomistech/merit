@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
+import { openRazorpayCheckout } from '@/components/payment/RazorpayCheckoutButton';
 
 export interface QuestionPaperItem {
   id: string;
@@ -238,57 +239,33 @@ export default function QPPrepWorkspacePage() {
     }
   };
 
-  // Handle Paid Paper Unlock (₹10 payment verification)
+  // Handle Paid Paper Unlock (₹10 payment verification via Razorpay)
   const handlePaidUnlock = async (paper: QuestionPaperItem) => {
     setIsProcessingPayment(true);
     try {
-      // 1. Create Order
-      const orderRes = await fetch('/api/orders/create', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          paperSlug: paper.slug,
-          paperName: paper.name,
-          studentRegistrationId: studentSession.registrationId,
-          amount: 10,
-        }),
+      await openRazorpayCheckout({
+        amountInPaise: 1000,
+        name: paper.name,
+        description: `Unlock Question Paper: ${paper.name}`,
+        studentName: studentSession.fullName,
+        studentEmail: studentSession.email,
+        studentRegistrationId: studentSession.registrationId,
+        paperSlug: paper.slug,
+        onSuccess: async () => {
+          setEntitlements((prev) => ({
+            ...prev,
+            unlockedPapers: Array.from(new Set([...prev.unlockedPapers, paper.slug])),
+          }));
+
+          setCheckoutPaper(null);
+          toast.success(`Access unlocked! "${paper.name}" is available for unlimited practice.`);
+          await handleStartExam(paper);
+        },
+        onError: () => {},
+        onDismiss: () => {},
       });
-
-      const orderData = await orderRes.json();
-      if (!orderRes.ok || !orderData.success) {
-        throw new Error(orderData.error || 'Order creation failed');
-      }
-
-      const orderId = orderData.order.id;
-
-      // 2. Direct Instant Verification
-      const verifyRes = await fetch('/api/payments/verify', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          razorpay_order_id: orderId,
-          razorpay_payment_id: `pay_mw_${Date.now()}`,
-          razorpay_signature: `sig_verified_${Date.now()}`,
-          paperSlug: paper.slug,
-          studentRegistrationId: studentSession.registrationId,
-        }),
-      });
-
-      const verifyData = await verifyRes.json();
-      if (!verifyRes.ok || !verifyData.success) {
-        throw new Error(verifyData.error || 'Payment verification failed');
-      }
-
-      setEntitlements((prev) => ({
-        ...prev,
-        unlockedPapers: Array.from(new Set([...prev.unlockedPapers, paper.slug])),
-      }));
-
-      setCheckoutPaper(null);
-      toast.success(`Access unlocked! "${paper.name}" is available for unlimited practice.`);
-      await handleStartExam(paper);
     } catch (err: any) {
-      toast.error(err.message);
+      toast.error(err.message || 'Payment initiation failed');
     } finally {
       setIsProcessingPayment(false);
     }

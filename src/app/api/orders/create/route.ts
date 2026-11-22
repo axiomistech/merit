@@ -1,9 +1,10 @@
 import { NextResponse } from 'next/server';
+import Razorpay from 'razorpay';
 import { getStoredProducts, getStoredCoupons } from '@/lib/admin/store';
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
+    const body = await req.json().catch(() => ({}));
     const { productId, studentName, studentEmail, studentRegistrationId, couponCode } = body;
 
     const products = getStoredProducts();
@@ -27,25 +28,59 @@ export async function POST(req: Request) {
       }
     }
 
-    const finalAmount = Math.max(0, price - discountAmount);
-    const orderId = `order_${Date.now()}_${Math.floor(100 + Math.random() * 900)}`;
+    const finalAmount = Math.max(1, price - discountAmount); // Minimum ₹1 (100 paise)
+    const amountInPaise = finalAmount * 100;
+
+    const keyId = process.env.RAZORPAY_KEY_ID || process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID;
+    const keySecret = process.env.RAZORPAY_KEY_SECRET;
+
+    let orderId = `order_${Date.now()}_${Math.floor(100 + Math.random() * 900)}`;
+
+    if (keyId && keySecret) {
+      try {
+        const razorpay = new Razorpay({
+          key_id: keyId,
+          key_secret: keySecret,
+        });
+
+        const rzpOrder = await razorpay.orders.create({
+          amount: amountInPaise,
+          currency: 'INR',
+          receipt: `rcpt_${(studentRegistrationId || 'mw').toLowerCase()}_${Date.now().toString().slice(-6)}`,
+          notes: {
+            productId: productId || 'paper_default',
+            productName: product ? product.title : 'Standard Examination Paper Token',
+            studentRegistrationId: studentRegistrationId || 'MW-26-000001',
+          },
+        });
+
+        orderId = rzpOrder.id;
+      } catch (err: any) {
+        console.warn('Razorpay order creation fallback:', err.message);
+      }
+    }
 
     return NextResponse.json({
       success: true,
+      order_id: orderId,
+      orderId,
+      amount: amountInPaise,
+      currency: 'INR',
       data: {
+        order_id: orderId,
         orderId,
         currency: 'INR',
         amount: finalAmount, // in INR
-        amountInPaise: finalAmount * 100,
+        amountInPaise,
         originalAmount: price,
         discountAmount,
         productName: product ? product.title : 'Standard Examination Paper Token',
         studentRegistrationId: studentRegistrationId || 'MW-26-000001',
         customer: {
           name: studentName || 'Candidate',
-          email: studentEmail || 'student@fortlearning.com',
+          email: studentEmail || 'student@meritwise.in',
         },
-        razorpayKeyId: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || 'rzp_test_placeholder',
+        razorpayKeyId: keyId || 'rzp_test_placeholder',
       },
     });
   } catch (error: any) {

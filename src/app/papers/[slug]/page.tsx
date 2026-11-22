@@ -19,6 +19,7 @@ import {
   AlertCircle,
 } from 'lucide-react';
 import { toast } from 'sonner';
+import { openRazorpayCheckout } from '@/components/payment/RazorpayCheckoutButton';
 
 interface PaperDetail {
   id: string;
@@ -179,50 +180,24 @@ function PaperDetailContent() {
 
     setIsProcessingUnlock(true);
     try {
-      const orderRes = await fetch('/api/orders/create', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          productId: slug,
-          studentName: studentSession.fullName,
-          studentEmail: studentSession.email,
-          studentRegistrationId: studentSession.registrationId,
-        }),
+      await openRazorpayCheckout({
+        amountInPaise: 1000, // ₹10 standard price
+        name: paper?.name || 'Examination Question Paper',
+        description: `Full Paper Unlock: ${paper?.name || slug}`,
+        studentName: studentSession.fullName,
+        studentEmail: studentSession.email,
+        studentRegistrationId: studentSession.registrationId,
+        paperSlug: slug,
+        onSuccess: () => {
+          setHasAccess(true);
+          setShowPaymentModal(false);
+          toast.success('Payment verified (₹10). Question paper unlocked permanently!');
+        },
+        onError: () => {},
+        onDismiss: () => {},
       });
-
-      const orderData = await orderRes.json();
-      if (!orderRes.ok || !orderData.success) {
-        throw new Error(orderData.error || 'Failed to initialize order');
-      }
-
-      const { orderId } = orderData.data;
-
-      const verifyRes = await fetch('/api/payments/verify', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          razorpay_order_id: orderId,
-          razorpay_payment_id: `pay_rzp_${Date.now()}`,
-          razorpay_signature: 'mock_verified_signature',
-          studentRegistrationId: studentSession.registrationId,
-          studentName: studentSession.fullName,
-          studentEmail: studentSession.email,
-          productName: paper?.name || slug,
-          amount: 10,
-          paperSlug: slug,
-        }),
-      });
-
-      const verifyData = await verifyRes.json();
-      if (!verifyRes.ok || !verifyData.success) {
-        throw new Error(verifyData.error || 'Payment verification failed');
-      }
-
-      setHasAccess(true);
-      setShowPaymentModal(false);
-      toast.success('Payment verified (₹10). Question paper unlocked permanently!');
     } catch (err: any) {
-      toast.error(err.message);
+      toast.error(err.message || 'Payment initiation failed');
     } finally {
       setIsProcessingUnlock(false);
     }

@@ -3,7 +3,10 @@ import Razorpay from 'razorpay';
 import { createAdminClient } from '@/lib/supabase/admin';
 
 // Initialize Razorpay instance safely (with fallback handling if env not set)
-const razorpayKeyId = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || 'rzp_test_placeholder';
+const razorpayKeyId =
+  process.env.RAZORPAY_KEY_ID ||
+  process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID ||
+  'rzp_test_placeholder';
 const razorpayKeySecret = process.env.RAZORPAY_KEY_SECRET || 'secret_placeholder';
 
 const razorpay = new Razorpay({

@@ -5,7 +5,7 @@ import { getStoredTransactions, saveStoredTransactions } from '@/lib/admin/store
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
+    const body = await req.json().catch(() => ({}));
     const {
       razorpay_order_id,
       razorpay_payment_id,
@@ -18,45 +18,48 @@ export async function POST(req: Request) {
       paperSlug,
     } = body;
 
-    if (!razorpay_order_id || !razorpay_payment_id) {
+    const orderId = razorpay_order_id || body.order_id;
+    const paymentId = razorpay_payment_id || body.payment_id;
+    const signature = razorpay_signature || body.signature;
+
+    if (!orderId || !paymentId || !signature) {
       return NextResponse.json(
-        { success: false, error: 'Incomplete payment payload' },
+        { success: false, error: 'Incomplete payment verification payload: order_id, payment_id, and signature are required' },
         { status: 400 }
       );
     }
 
     const keySecret = process.env.RAZORPAY_KEY_SECRET;
-    const isProduction = process.env.NODE_ENV === 'production';
 
-    // SECTION 16 MANDATORY: CRYPTOGRAPHIC SIGNATURE VERIFICATION
+    // Cryptographic signature verification
     let isSignatureValid = false;
 
-    if (razorpay_signature && keySecret) {
+    if (keySecret) {
       try {
         const generatedSignature = crypto
           .createHmac('sha256', keySecret)
-          .update(`${razorpay_order_id}|${razorpay_payment_id}`)
+          .update(`${orderId}|${paymentId}`)
           .digest('hex');
 
         isSignatureValid = crypto.timingSafeEqual(
           Buffer.from(generatedSignature, 'utf-8'),
-          Buffer.from(razorpay_signature, 'utf-8')
+          Buffer.from(signature, 'utf-8')
         );
       } catch {
         isSignatureValid = false;
       }
-    } else if (!isProduction) {
-      // In non-production testing sandbox, require explicit test signatures
+    } else if (process.env.NODE_ENV !== 'production') {
+      // In non-production testing sandbox without secret
       isSignatureValid =
-        razorpay_signature === 'mock_verified_signature' ||
-        razorpay_order_id.startsWith('order_sim_') ||
-        razorpay_payment_id.startsWith('pay_sim_');
+        signature === 'mock_verified_signature' ||
+        orderId.startsWith('order_sim_') ||
+        paymentId.startsWith('pay_sim_');
     }
 
     if (!isSignatureValid) {
       return NextResponse.json(
-        { success: false, error: 'Cryptographic signature verification failed. Tampering detected.' },
-        { status: 403 }
+        { success: false, error: 'Cryptographic signature verification failed. Signature mismatch.' },
+        { status: 400 }
       );
     }
 
@@ -68,7 +71,7 @@ export async function POST(req: Request) {
     }
 
     const alreadyProcessed = store[regId].find(
-      (e) => e.orderId === razorpay_order_id || e.paymentId === razorpay_payment_id
+      (e) => e.orderId === orderId || e.paymentId === paymentId
     );
 
     if (alreadyProcessed) {
@@ -76,8 +79,8 @@ export async function POST(req: Request) {
         success: true,
         message: 'Payment already verified and entitlement active (idempotent)',
         data: {
-          paymentId: razorpay_payment_id,
-          orderId: razorpay_order_id,
+          paymentId,
+          orderId,
           entitlement: alreadyProcessed,
         },
       });
@@ -87,8 +90,8 @@ export async function POST(req: Request) {
       id: `ent_purchased_${Date.now()}`,
       type: 'paid_unlock',
       paperSlug: paperSlug || 'all',
-      orderId: razorpay_order_id,
-      paymentId: razorpay_payment_id,
+      orderId,
+      paymentId,
       grantedAt: new Date().toISOString(),
       expiresAt: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
       status: 'active',
@@ -98,27 +101,28 @@ export async function POST(req: Request) {
 
     // Record verified transaction in store
     const transactions = getStoredTransactions();
-    const newTxn = {
-      id: razorpay_payment_id,
-      orderId: razorpay_order_id,
+    transactions.unshift({
+      id: paymentId,
+      orderId,
       studentId: regId,
       studentName: studentName || 'Candidate',
-      studentEmail: studentEmail || 'candidate@example.com',
-      productName: productName || 'Standard Test Paper',
-      amount: Number(amount) || 10,
-      status: 'successful' as const,
+      studentEmail: studentEmail || 'student@meritwise.in',
+      productName: productName || 'Standard Examination Paper Token',
+      amount: amount || 10,
+      status: 'successful',
       gateway: 'razorpay' as const,
-      gatewayPaymentId: razorpay_payment_id,
+      gatewayPaymentId: paymentId,
       created_at: new Date().toISOString(),
-    };
-    saveStoredTransactions([newTxn, ...transactions]);
+    });
+    saveStoredTransactions(transactions);
 
     return NextResponse.json({
       success: true,
-      message: 'Payment verified and entitlement created successfully',
+      message: 'Payment verified successfully and access unlocked.',
       data: {
-        paymentId: razorpay_payment_id,
-        orderId: razorpay_order_id,
+        paymentId,
+        orderId,
+        studentRegistrationId: regId,
         entitlement: newEntitlement,
       },
     });
