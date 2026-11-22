@@ -1,10 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Italiana&family=DM+Serif+Display:ital@0;1&display=swap');
 @import "tailwindcss";
+
+@font-face {
+  font-family: 'Runiga';
+  src: url('/fonts/Runiga.woff') format('woff'),
+       url('/fonts/Runiga.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 @theme {
   --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-serif: "Newsreader", Georgia, Cambria, "Times New Roman", Times, serif;
   --font-heading: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-editorial-luxury: "Runiga", "Bodoni Moda", "Italiana", "Cormorant Garamond", "DM Serif Display", Georgia, serif;
 
   /* MERITWISE Design Tokens */
   --color-ivory: #FBFBFA;
@@ -249,4 +259,13 @@ h3, .text-h3 {
 }
 .liquid-orb-glacier, .liquid-orb-red {
   display: none;
+}
+
+/* Luxury Editorial Serif Typography */
+.font-editorial-luxury {
+  font-family: 'Runiga', 'Bodoni Moda', 'Italiana', 'Cormorant Garamond', 'DM Serif Display', Georgia, serif;
+  font-feature-settings: 'liga' 1, 'dlig' 1, 'kern' 1, 'calt' 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
