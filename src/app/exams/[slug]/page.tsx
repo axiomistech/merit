@@ -82,18 +82,26 @@ export default function PublicExamDetailPage() {
 
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <Link
-              href="/login"
+              href="/papers"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#20252B] text-white text-xs font-semibold hover:bg-[#344034] transition-colors shadow-sm"
             >
-              Start Free Full Mock Test
+              Explore Official Question Papers
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
-              href="/pricing"
+              href={`/practice/${exam.slug}`}
               className="px-5 py-3 rounded-xl border border-[#DCE2E6] bg-white text-xs font-semibold text-[#20252B] hover:bg-[#F1F3F4] transition-colors"
             >
-              View Test Pack Pricing
+              Practice Disciplines
             </Link>
+            {isNeet && (
+              <Link
+                href="/neet/omr-practice"
+                className="px-5 py-3 rounded-xl border border-[#9CC6E0] bg-[#9CC6E0]/20 text-xs font-semibold text-[#20252B] hover:bg-[#9CC6E0]/30 transition-colors"
+              >
+                Physical OMR Practice
+              </Link>
+            )}
           </div>
         </div>
 

@@ -6,6 +6,7 @@ import Link from 'next/link';
 import {
   Shield,
   ArrowLeft,
+  ArrowRight,
   CheckCircle2,
   XCircle,
   HelpCircle,
@@ -397,6 +398,16 @@ export default function ExamResultPage() {
                       <span>Unattempted:</span>
                       <span className="font-mono">{data.unattempted}</span>
                     </div>
+                  </div>
+
+                  <div className="mt-3.5 pt-3 border-t border-[#DCE2E6]/70">
+                    <Link
+                      href={`/practice/neet/${subKey}`}
+                      className="inline-flex items-center gap-1 text-xs font-bold text-[#20252B] hover:text-[#E4002B] transition-colors"
+                    >
+                      <span>Practice {data.subjectName}</span>
+                      <ArrowRight className="h-3 w-3" />
+                    </Link>
                   </div>
                 </div>
               ))}

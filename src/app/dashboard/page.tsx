@@ -221,6 +221,34 @@ export default function StudentDashboardPage() {
           </div>
         </div>
 
+        {/* 5-Domain Student Dashboard Navigation Bar */}
+        <div className="glass-polar flex flex-wrap items-center gap-2 rounded-full p-1.5 shadow-sm overflow-x-auto">
+          {[
+            { label: 'Overview', href: '/dashboard', active: true },
+            { label: 'Question Papers', href: '/dashboard/papers', active: false },
+            { label: 'Practice Hub', href: '/dashboard/practice', active: false },
+            { label: 'Performance Analytics', href: '/dashboard/analytics', active: false },
+            { label: 'Leaderboard', href: '/dashboard/leaderboard', active: false },
+            { label: 'Attempt History', href: '/dashboard/history', active: false },
+            { label: 'Bookmarks', href: '/dashboard/bookmarks', active: false },
+            { label: 'Purchases', href: '/dashboard/purchases', active: false },
+            { label: 'Profile', href: '/dashboard/profile', active: false },
+          ].map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={cn(
+                'rounded-full px-4 py-2 text-xs font-bold transition-all whitespace-nowrap',
+                item.active
+                  ? 'bg-[#20252B] text-white shadow-sm'
+                  : 'text-[#66727D] hover:text-[#20252B] hover:bg-white/60'
+              )}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+
         {/* ==================================================================== */}
         {/* FREE PAPER STATUS BANNER (LIQUID GLASS) */}
         {/* ==================================================================== */}

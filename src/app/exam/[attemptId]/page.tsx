@@ -84,6 +84,22 @@ export default function ExamExecutionPage() {
           setAnswers(JSON.parse(savedAnswers));
         } catch {}
       }
+
+      // SECTION 9 & 25 MANDATORY: PERSISTENT SERVER-ALIGNED TIMER & RECOVERY
+      const totalSecs = (paper.durationMinutes || 200) * 60;
+      const startKey = `fort_attempt_${attemptId}_start_timestamp`;
+      const startTs = localStorage.getItem(startKey);
+      if (!startTs) {
+        localStorage.setItem(startKey, Date.now().toString());
+      } else {
+        const elapsed = Math.floor((Date.now() - Number(startTs)) / 1000);
+        const remaining = Math.max(0, totalSecs - elapsed);
+        setSecondsRemaining(remaining);
+        if (remaining <= 0) {
+          handleFinalSubmit(true);
+          return;
+        }
+      }
     }
 
     timerRef.current = setInterval(() => {
