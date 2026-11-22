@@ -150,12 +150,8 @@ export function verifyServerAdminAccess(
   const authHeader = req.headers.get('authorization') || req.headers.get('x-admin-key');
   const adminSecret = process.env.ADMIN_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-  if (process.env.NODE_ENV !== 'production') {
-    // Permitted in local sandbox environment
-    return { authorized: true };
-  }
-
-  if (adminSecret && authHeader === `Bearer ${adminSecret}`) {
+  if (process.env.NODE_ENV !== 'production' && !adminSecret) {
+    // Permitted in local development sandbox only when no secret is configured
     return { authorized: true };
   }
 
@@ -163,6 +159,23 @@ export function verifyServerAdminAccess(
     return {
       authorized: false,
       reason: 'Administrative credentials missing. Authorization header required.',
+    };
+  }
+
+  if (!adminSecret) {
+    return {
+      authorized: false,
+      reason: 'Server configuration error: Administrative secret not configured.',
+    };
+  }
+
+  const expectedBearer = `Bearer ${adminSecret}`;
+  const isMatch = authHeader === expectedBearer || authHeader === adminSecret;
+
+  if (!isMatch) {
+    return {
+      authorized: false,
+      reason: 'Invalid administrative credentials. Access denied.',
     };
   }
 

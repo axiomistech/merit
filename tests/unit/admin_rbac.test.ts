@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest';
-import { hasPermission } from '../../src/lib/admin/auth';
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { hasPermission, verifyServerAdminAccess } from '../../src/lib/admin/auth';
 import { AdminUser } from '../../src/types/admin';
 
 describe('Admin RBAC & Security Enforcement (Section 25 & 31)', () => {
@@ -39,5 +39,45 @@ describe('Admin RBAC & Security Enforcement (Section 25 & 31)', () => {
   it('denies all permissions to unauthenticated users', () => {
     expect(hasPermission(null, 'dashboard.view')).toBe(false);
     expect(hasPermission(null, 'exams.manage')).toBe(false);
+  });
+
+  describe('Server-side Admin Request Authorization', () => {
+    const TEST_ADMIN_SECRET = 'test_secure_admin_secret_998877';
+
+    beforeEach(() => {
+      process.env.ADMIN_SECRET_KEY = TEST_ADMIN_SECRET;
+      process.env.NODE_ENV = 'production';
+    });
+
+    afterEach(() => {
+      delete process.env.ADMIN_SECRET_KEY;
+      process.env.NODE_ENV = 'test';
+    });
+
+    it('denies access when authorization header is missing', () => {
+      const req = new Request('http://localhost:3000/api/questions', {
+        headers: {},
+      });
+      const check = verifyServerAdminAccess(req);
+      expect(check.authorized).toBe(false);
+      expect(check.reason).toMatch(/credentials missing/i);
+    });
+
+    it('denies access when authorization header is invalid or tampered', () => {
+      const req = new Request('http://localhost:3000/api/questions', {
+        headers: { authorization: 'Bearer invalid_wrong_token' },
+      });
+      const check = verifyServerAdminAccess(req);
+      expect(check.authorized).toBe(false);
+      expect(check.reason).toMatch(/invalid administrative credentials/i);
+    });
+
+    it('grants access when valid Bearer admin secret is provided', () => {
+      const req = new Request('http://localhost:3000/api/questions', {
+        headers: { authorization: `Bearer ${TEST_ADMIN_SECRET}` },
+      });
+      const check = verifyServerAdminAccess(req);
+      expect(check.authorized).toBe(true);
+    });
   });
 });
