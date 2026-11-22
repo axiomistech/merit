@@ -66,7 +66,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-screen font-sans bg-[#FBFBFA] text-[#121316] antialiased selection:bg-[#8C6D3B]/20 selection:text-[#121316]">
+      <body className="min-h-screen font-sans bg-[#F8FAF6] text-[#121316] antialiased selection:bg-[#8C6D3B]/20 selection:text-[#121316]">
         <Navbar />
         <main className="min-h-screen pt-20">{children}</main>
         <Footer />

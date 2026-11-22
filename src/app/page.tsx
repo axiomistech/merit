@@ -76,41 +76,34 @@ export default function HomePage() {
     },
   ];
 
-  return (
-    <div className="relative min-h-screen bg-[#F8FAF6] text-[#151A15] overflow-x-hidden">
-      {/* Noticeable, Matte Glacier-Blue Fog & Ambient Daylight Atmospheric Layer */}
-      <div
-        className="pointer-events-none fixed inset-0 -z-10 select-none overflow-hidden"
-        aria-hidden="true"
-        style={{
-          background: [
-            // 1. Upper-Right & Behind Right Panel: Pronounced Matte Glacier Fog (Glacial Shadow #C9D9E2 & Frost Blue #DCE7ED)
-            'radial-gradient(1100px 900px at 86% 14%, rgba(201, 217, 226, 0.70) 0%, rgba(220, 231, 237, 0.52) 36%, rgba(234, 241, 245, 0.32) 64%, transparent 86%)',
-            // 2. Lower-Left / Mid-Left: Diffused Cool Glacial Mist Haze
-            'radial-gradient(1150px 850px at 8% 54%, rgba(201, 217, 226, 0.58) 0%, rgba(220, 231, 237, 0.42) 35%, rgba(234, 241, 245, 0.24) 62%, transparent 84%)',
-            // 3. Lower-Middle & Right: Ambient Glacial Reflection & Grounding
-            'radial-gradient(1200px 950px at 80% 82%, rgba(220, 231, 237, 0.52) 0%, rgba(201, 217, 226, 0.38) 40%, rgba(234, 241, 245, 0.22) 68%, transparent 88%)',
-            // 4. Central Soft Transition: Sage Green Core marrying smoothly with Glacier Mist
-            'radial-gradient(900px circle at 42% 34%, rgba(156, 175, 136, 0.18) 0%, rgba(220, 231, 237, 0.20) 55%, transparent 82%)',
-          ].join(', '),
-        }}
-      />
+  // Fully Opaque Atmospheric Canvas Style
+  // Subtle glacier-blue matte fog is blended directly into the actual rendered surface of the off-white background
+  const homepageAtmosphericStyle: React.CSSProperties = {
+    backgroundColor: '#F8FAF6',
+    backgroundImage: [
+      // 1. Upper-Right & Framing Tutorial Area: Noticeable, soft matte glacier-blue fog (Glacial Shadow #C9D9E2 & Frost Blue #DCE7ED)
+      'radial-gradient(ellipse 1150px 800px at 86% 10%, rgba(201, 217, 226, 0.72) 0%, rgba(220, 231, 237, 0.50) 32%, rgba(234, 241, 245, 0.28) 60%, transparent 84%)',
+      // 2. Middle-Left & Negative Space: Organic cool glacier mist haze
+      'radial-gradient(ellipse 1000px 720px at 6% 36%, rgba(201, 217, 226, 0.52) 0%, rgba(220, 231, 237, 0.35) 34%, rgba(234, 241, 245, 0.18) 62%, transparent 82%)',
+      // 3. Lower Sections (Lower-Right & Lower-Middle): Subtle cool haze grounding the layout
+      'radial-gradient(ellipse 1250px 880px at 82% 72%, rgba(220, 231, 237, 0.48) 0%, rgba(201, 217, 226, 0.34) 36%, rgba(234, 241, 245, 0.20) 64%, transparent 85%)',
+      // 4. Subtle Lower-Left Negative Space: Faint cool morning mist
+      'radial-gradient(ellipse 950px 680px at 12% 88%, rgba(220, 231, 237, 0.40) 0%, rgba(201, 217, 226, 0.24) 38%, transparent 80%)',
+      // 5. Central / Left Ambient Sage Transition: Harmonious bridge between sage cards and canvas
+      'radial-gradient(ellipse 850px 600px at 32% 18%, rgba(156, 175, 136, 0.18) 0%, rgba(220, 231, 237, 0.14) 48%, transparent 78%)',
+    ].join(', '),
+    backgroundRepeat: 'no-repeat',
+  };
 
+  return (
+    <div
+      className="relative min-h-screen text-[#151A15] overflow-x-hidden"
+      style={homepageAtmosphericStyle}
+    >
       {/* ==================================================================== */}
       {/* 1. HERO SECTION — REALISTIC 3D MATTE SAGE GLASS HERO CARDS           */}
       {/* ==================================================================== */}
       <section className="relative mx-auto max-w-7xl px-4 pt-8 pb-16 sm:px-6 lg:px-8 lg:pt-12 lg:pb-24">
-        {/* Soft, Visibly Noticeable Glacier-Blue Ambient Glow specifically framing Card 2 ("How MeritWise Works") */}
-        <div className="pointer-events-none absolute top-1/2 right-[6%] -translate-y-1/2 h-[640px] w-[640px] rounded-full bg-gradient-to-br from-[#C9D9E2]/75 via-[#DCE7ED]/60 to-transparent blur-[90px] -z-10" />
-
-        {/* Diffused Glacier Mist in Upper-Right portion of the page */}
-        <div className="pointer-events-none absolute -top-32 right-[-8%] h-[740px] w-[740px] rounded-full bg-gradient-to-b from-[#C9D9E2]/70 via-[#DCE7ED]/60 to-[#EAF1F5]/40 blur-[110px] -z-10" />
-
-        {/* Central & Left Ambient Sage Atmosphere (75% Dominance) */}
-        <div className="pointer-events-none absolute top-1/2 left-[15%] -translate-x-1/2 -translate-y-1/2 h-88 w-88 rounded-full bg-[#9CAF88]/22 blur-3xl -z-10" />
-        <div className="pointer-events-none absolute top-[55%] left-[30%] -translate-x-1/2 -translate-y-1/2 h-76 w-76 rounded-full bg-[#75896A]/15 blur-3xl -z-10" />
-        <div className="pointer-events-none absolute top-1/2 right-[25%] translate-x-1/2 -translate-y-1/2 h-80 w-80 rounded-full bg-[#DCE7ED]/45 blur-3xl -z-10" />
-
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 items-stretch">
           {/* Card 1 — Examination Preparation */}
           <HeroPreparationCard onStartPractice={handleStartPractice} />
@@ -127,10 +120,6 @@ export default function HomePage() {
       {/* 2. STRICTLY FOUR EXAMINATION CATEGORIES (PREMIUM 3D GLASSMORPHISM)    */}
       {/* ==================================================================== */}
       <section id="examinations" className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        {/* Visible Cool-Blue Mist Haze near Lower-Left Background */}
-        <div className="pointer-events-none absolute top-1/2 -left-28 -translate-y-1/2 h-[640px] w-[640px] rounded-full bg-gradient-to-tr from-[#C9D9E2]/65 via-[#DCE7ED]/50 to-transparent blur-[110px] -z-10" />
-        <div className="pointer-events-none absolute -bottom-16 right-10 h-76 w-76 rounded-full bg-[#DCE7ED]/45 blur-3xl -z-10" />
-
         <div className="max-w-2xl mx-auto text-center space-y-3 mb-12">
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#121316]">
             Focused preparation for serious candidates.
@@ -156,11 +145,6 @@ export default function HomePage() {
       {/* 3. HOW IT WORKS (FOUR SIMPLE STEPS) — 3D MATTE SAGE GLASS SLAB       */}
       {/* ==================================================================== */}
       <section id="how-it-works" className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        {/* Soft Cool-Blue Fog in Lower-Middle / Left */}
-        <div className="pointer-events-none absolute top-1/2 left-[8%] -translate-y-1/2 h-[660px] w-[660px] rounded-full bg-gradient-to-tr from-[#C9D9E2]/55 via-[#DCE7ED]/45 to-transparent blur-[110px] -z-10" />
-        <div className="pointer-events-none absolute -top-16 right-[-4%] h-[580px] w-[580px] rounded-full bg-gradient-to-b from-[#DCE7ED]/55 via-[#EAF1F5]/40 to-transparent blur-[100px] -z-10" />
-        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-4/5 rounded-full bg-[#9CAF88]/16 blur-3xl -z-10" />
-
         <div
           className="relative rounded-[28px] sm:rounded-[32px] p-8 sm:p-12 lg:p-16 space-y-12 overflow-hidden select-none transition-all"
           style={{
