@@ -12,7 +12,7 @@ export const DEFAULT_TUTORIAL_VIDEO: TutorialVideoConfig = {
   subtitle: 'See how Meritwise works in action.',
   description: 'Complete platform demonstration: Timed examination simulation, physical-grade vector OMR response sheets, and diagnostic analytics.',
   mimeType: 'video/mp4',
-  sizeBytes: 23257,
+  sizeBytes: 131776,
   posterUrl: '/brand/tutorial-poster.jpg',
   updated_at: new Date().toISOString(),
 };
