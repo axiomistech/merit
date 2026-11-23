@@ -2,42 +2,19 @@ import React from 'react';
 
 /**
  * Authentic 2D Vector NEET OMR Answer Sheet Background Canvas.
- * Rendered in straight 2D grayscale with precise question columns,
- * Roll No. grid, Test Booklet Code, and vertical margin notices.
+ * Rendered in straight 2D grayscale with full 200-question columns,
+ * Roll No. grid, Test Booklet Code, and optical timing marks.
+ * Extends across 85-90% of hero height with a cinematic matte-black merge mask.
  */
 export function NeetOmrBackground() {
-  // Generate question row items for the 4 visible columns
-  const col1 = [
-    '001', '002', '003', '004', '005', '006', '007', '008', '009', '010',
-    '011', '012', '013', '014', '015', '016', '017', '018', '019', '020',
-    '021', '022', '023', '024', '025', '026', '027', '028', '029', '030',
-    '031', '032', '033', '034', '035', '036', '037', '038', '039', '040',
-    '041', '042', '043', '044', '045'
-  ];
+  // Generate question numbers for official 4 columns (50 questions each = 200 questions)
+  const generateNumbers = (start: number, count: number) =>
+    Array.from({ length: count }, (_, i) => String(start + i).padStart(3, '0'));
 
-  const col2 = [
-    '051', '052', '053', '054', '055', '056', '057', '058', '059', '060',
-    '061', '062', '063', '064', '065', '066', '067', '068', '069', '070',
-    '071', '072', '073', '074', '075', '076', '077', '078', '079', '080',
-    '081', '082', '083', '084', '085', '086', '087', '088', '089', '090',
-    '091', '092', '093', '094', '095'
-  ];
-
-  const col3 = [
-    '101', '102', '103', '104', '105', '106', '107', '108', '109', '110',
-    '111', '112', '113', '114', '115', '116', '117', '118', '119', '120',
-    '121', '122', '123', '124', '125', '126', '127', '128', '129', '130',
-    '131', '132', '133', '134', '135', '136', '137', '138', '139', '140',
-    '141', '142', '143', '144', '145'
-  ];
-
-  const col4 = [
-    '151', '152', '153', '154', '155', '156', '157', '158', '159', '160',
-    '161', '162', '163', '164', '165', '166', '167', '168', '169', '170',
-    '171', '172', '173', '174', '175', '176', '177', '178', '179', '180',
-    '181', '182', '183', '184', '185', '186', '187', '188', '189', '190',
-    '191', '192', '193', '194', '195'
-  ];
+  const col1 = generateNumbers(1, 50);    // 001 - 050 (Physics)
+  const col2 = generateNumbers(51, 50);   // 051 - 100 (Chemistry)
+  const col3 = generateNumbers(101, 50);  // 101 - 150 (Botany)
+  const col4 = generateNumbers(151, 50);  // 151 - 200 (Zoology)
 
   return (
     <div
@@ -45,37 +22,37 @@ export function NeetOmrBackground() {
       className="pointer-events-none absolute inset-0 select-none overflow-hidden z-0"
       style={{
         maskImage:
-          'linear-gradient(to bottom, black 0%, black 42%, rgba(0, 0, 0, 0.55) 54%, rgba(0, 0, 0, 0.12) 65%, transparent 74%)',
+          'linear-gradient(to bottom, black 0%, black 65%, rgba(0, 0, 0, 0.85) 75%, rgba(0, 0, 0, 0.45) 88%, transparent 100%)',
         WebkitMaskImage:
-          'linear-gradient(to bottom, black 0%, black 42%, rgba(0, 0, 0, 0.55) 54%, rgba(0, 0, 0, 0.12) 65%, transparent 74%)',
+          'linear-gradient(to bottom, black 0%, black 65%, rgba(0, 0, 0, 0.85) 75%, rgba(0, 0, 0, 0.45) 88%, transparent 100%)',
       }}
     >
       {/* 1. Straight 2D Vector OMR Sheet */}
       <svg
-        viewBox="0 0 1440 860"
+        viewBox="0 0 1440 1020"
         preserveAspectRatio="xMidYMin slice"
-        className="w-full h-full object-cover text-white"
+        className="w-full h-full object-cover text-[#C4C8CE]"
         style={{
-          opacity: 0.22,
+          opacity: 0.25,
           filter: 'grayscale(100%)',
         }}
       >
         <defs>
           <pattern id="timing-marks" width="10" height="18" patternUnits="userSpaceOnUse">
-            <rect x="0" y="3" width="7" height="5" fill="currentColor" fillOpacity="0.45" />
+            <rect x="0" y="3" width="7" height="5" fill="currentColor" fillOpacity="0.55" />
           </pattern>
         </defs>
 
         {/* Optical Timing Marks on Left Edge */}
-        <rect x="14" y="20" width="7" height="820" fill="url(#timing-marks)" />
+        <rect x="14" y="20" width="7" height="970" fill="url(#timing-marks)" />
 
         {/* Left Vertical Notice */}
-        <g transform="translate(48, 620) rotate(-90)">
+        <g transform="translate(48, 680) rotate(-90)">
           <text
             x="0"
             y="0"
             fill="currentColor"
-            fillOpacity="0.65"
+            fillOpacity="0.68"
             fontSize="14"
             fontWeight="700"
             letterSpacing="2.5"
@@ -88,16 +65,29 @@ export function NeetOmrBackground() {
         {/* Top Header: NEET OMR ANSWER SHEET */}
         <text
           x="1080"
-          y="72"
+          y="70"
           textAnchor="middle"
           fill="currentColor"
-          fillOpacity="0.55"
+          fillOpacity="0.60"
           fontSize="20"
           fontWeight="900"
           letterSpacing="3"
           fontFamily="system-ui, -apple-system, sans-serif"
         >
           NEET OMR ANSWER SHEET
+        </text>
+        <text
+          x="1080"
+          y="86"
+          textAnchor="middle"
+          fill="currentColor"
+          fillOpacity="0.45"
+          fontSize="10"
+          fontWeight="700"
+          letterSpacing="1.5"
+          fontFamily="monospace, sans-serif"
+        >
+          SIDE - 1 • 200 QUESTIONS BLUEPRINT
         </text>
 
         {/* ============================================================== */}
@@ -109,7 +99,7 @@ export function NeetOmrBackground() {
             y="14"
             textAnchor="middle"
             fill="currentColor"
-            fillOpacity="0.6"
+            fillOpacity="0.65"
             fontSize="12"
             fontWeight="800"
             letterSpacing="1.5"
@@ -128,7 +118,7 @@ export function NeetOmrBackground() {
                   height="20"
                   fill="none"
                   stroke="currentColor"
-                  strokeOpacity="0.3"
+                  strokeOpacity="0.35"
                   strokeWidth="1"
                 />
               </g>
@@ -145,7 +135,7 @@ export function NeetOmrBackground() {
                       fill={col === (row * 3) % 10 ? 'currentColor' : 'none'}
                       fillOpacity={col === (row * 3) % 10 ? '0.5' : '0'}
                       stroke="currentColor"
-                      strokeOpacity="0.3"
+                      strokeOpacity="0.32"
                       strokeWidth="0.9"
                     />
                     <text
@@ -167,14 +157,14 @@ export function NeetOmrBackground() {
         </g>
 
         {/* ============================================================== */}
-        {/* TEST BOOKLET CODE (Bottom Left)                                */}
+        {/* TEST BOOKLET CODE (Left Lower)                                 */}
         {/* ============================================================== */}
-        <g transform="translate(80, 720)">
+        <g transform="translate(80, 700)">
           <text
             x="0"
             y="0"
             fill="currentColor"
-            fillOpacity="0.55"
+            fillOpacity="0.60"
             fontSize="13"
             fontWeight="700"
             letterSpacing="1"
@@ -198,15 +188,27 @@ export function NeetOmrBackground() {
             cy="28"
             r="12"
             fill="currentColor"
-            fillOpacity="0.25"
+            fillOpacity="0.30"
             stroke="currentColor"
             strokeOpacity="0.45"
             strokeWidth="1.5"
           />
+          <text
+            x="80"
+            y="32"
+            textAnchor="middle"
+            fill="currentColor"
+            fillOpacity="0.80"
+            fontSize="12"
+            fontWeight="800"
+            fontFamily="sans-serif"
+          >
+            A
+          </text>
         </g>
 
         {/* ============================================================== */}
-        {/* QUESTION & RESPONSE COLUMNS (Center & Right)                  */}
+        {/* QUESTION & RESPONSE COLUMNS (4 Columns x 50 Questions = 200)   */}
         {/* ============================================================== */}
         {[
           { items: col1, x: 380 },
@@ -222,20 +224,20 @@ export function NeetOmrBackground() {
               y="16"
               textAnchor="middle"
               fill="currentColor"
-              fillOpacity="0.65"
+              fillOpacity="0.60"
               fontSize="11"
               fontWeight="800"
               fontFamily="monospace, sans-serif"
             >
               Q. No.
             </text>
-            <line x1="46" y1="0" x2="46" y2="740" stroke="currentColor" strokeOpacity="0.2" strokeWidth="1" />
+            <line x1="46" y1="0" x2="46" y2="818" stroke="currentColor" strokeOpacity="0.20" strokeWidth="1" />
             <text
               x="128"
               y="16"
               textAnchor="middle"
               fill="currentColor"
-              fillOpacity="0.65"
+              fillOpacity="0.60"
               fontSize="11"
               fontWeight="800"
               letterSpacing="1"
@@ -245,7 +247,7 @@ export function NeetOmrBackground() {
             </text>
             <line x1="0" y1="24" x2="210" y2="24" stroke="currentColor" strokeOpacity="0.25" strokeWidth="1" />
 
-            {/* Questions List */}
+            {/* Questions List (50 rows) */}
             {column.items.map((qNum, rowIdx) => {
               const yPos = 44 + rowIdx * 15.5;
               return (
@@ -256,7 +258,7 @@ export function NeetOmrBackground() {
                     y="0"
                     textAnchor="middle"
                     fill="currentColor"
-                    fillOpacity="0.7"
+                    fillOpacity="0.65"
                     fontSize="9.5"
                     fontWeight="700"
                     fontFamily="monospace, sans-serif"
@@ -275,9 +277,9 @@ export function NeetOmrBackground() {
                           cy="-3"
                           r="6.5"
                           fill={isFilled ? 'currentColor' : 'none'}
-                          fillOpacity={isFilled ? '0.45' : '0'}
+                          fillOpacity={isFilled ? '0.40' : '0'}
                           stroke="currentColor"
-                          strokeOpacity="0.38"
+                          strokeOpacity="0.32"
                           strokeWidth="1"
                         />
                         <text
@@ -285,7 +287,7 @@ export function NeetOmrBackground() {
                           y="0.5"
                           textAnchor="middle"
                           fill="currentColor"
-                          fillOpacity={isFilled ? '0.1' : '0.65'}
+                          fillOpacity={isFilled ? '0.1' : '0.60'}
                           fontSize="7"
                           fontWeight="700"
                           fontFamily="sans-serif"
@@ -298,24 +300,25 @@ export function NeetOmrBackground() {
                 </g>
               );
             })}
+            <line x1="0" y1="822" x2="210" y2="822" stroke="currentColor" strokeOpacity="0.25" strokeWidth="1" />
           </g>
         ))}
 
-        {/* 5th Column along right edge showing bubbles (4) (4) (4) */}
+        {/* 5th Column along right edge showing bubbles (4) */}
         <g transform="translate(1370, 92)">
           <text
             x="18"
             y="16"
             textAnchor="middle"
             fill="currentColor"
-            fillOpacity="0.5"
+            fillOpacity="0.50"
             fontSize="10"
             fontWeight="700"
             fontFamily="sans-serif"
           >
             Response
           </text>
-          {Array.from({ length: 42 }).map((_, rowIdx) => (
+          {Array.from({ length: 50 }).map((_, rowIdx) => (
             <g key={`c5-${rowIdx}`} transform={`translate(18, ${44 + rowIdx * 15.5})`}>
               <circle
                 cx="0"
@@ -323,7 +326,7 @@ export function NeetOmrBackground() {
                 r="6.5"
                 fill="none"
                 stroke="currentColor"
-                strokeOpacity="0.35"
+                strokeOpacity="0.30"
                 strokeWidth="1"
               />
               <text
@@ -331,7 +334,7 @@ export function NeetOmrBackground() {
                 y="0.5"
                 textAnchor="middle"
                 fill="currentColor"
-                fillOpacity="0.55"
+                fillOpacity="0.50"
                 fontSize="7"
                 fontWeight="700"
                 fontFamily="sans-serif"
@@ -343,10 +346,115 @@ export function NeetOmrBackground() {
         </g>
 
         {/* Optical Timing Marks on Right Edge */}
-        <rect x="1420" y="20" width="7" height="820" fill="url(#timing-marks)" />
+        <rect x="1420" y="20" width="7" height="970" fill="url(#timing-marks)" />
+
+        {/* ============================================================== */}
+        {/* BOTTOM VERIFICATION & SIGNATURES (y = 926 - 990)               */}
+        {/* ============================================================== */}
+        <g transform="translate(380, 928)">
+          {/* Candidate Signature Box */}
+          <rect
+            x="0"
+            y="0"
+            width="220"
+            height="36"
+            fill="none"
+            stroke="currentColor"
+            strokeOpacity="0.22"
+            strokeWidth="1"
+            strokeDasharray="4 3"
+          />
+          <text
+            x="110"
+            y="13"
+            textAnchor="middle"
+            fill="currentColor"
+            fillOpacity="0.50"
+            fontSize="7.5"
+            fontWeight="700"
+            fontFamily="monospace, sans-serif"
+          >
+            Signature of Candidate (In Running Hand)
+          </text>
+          <path
+            d="M 30 26 Q 55 18 80 26 T 130 22 T 190 26"
+            fill="none"
+            stroke="currentColor"
+            strokeOpacity="0.25"
+            strokeWidth="1.2"
+          />
+
+          {/* Invigilator Signature Box */}
+          <g transform="translate(250, 0)">
+            <rect
+              x="0"
+              y="0"
+              width="220"
+              height="36"
+              fill="none"
+              stroke="currentColor"
+              strokeOpacity="0.22"
+              strokeWidth="1"
+              strokeDasharray="4 3"
+            />
+            <text
+              x="110"
+              y="13"
+              textAnchor="middle"
+              fill="currentColor"
+              fillOpacity="0.50"
+              fontSize="7.5"
+              fontWeight="700"
+              fontFamily="monospace, sans-serif"
+            >
+              Signature of Invigilator (With Date &amp; Time)
+            </text>
+            <path
+              d="M 40 25 Q 70 17 100 25 T 150 21 T 180 25"
+              fill="none"
+              stroke="currentColor"
+              strokeOpacity="0.22"
+              strokeWidth="1.2"
+            />
+          </g>
+
+          {/* Center Barcode Track */}
+          <g transform="translate(500, 4)">
+            <rect x="0" y="0" width="180" height="24" fill="url(#timing-marks)" opacity="0.45" />
+            <text
+              x="90"
+              y="32"
+              textAnchor="middle"
+              fill="currentColor"
+              fillOpacity="0.45"
+              fontSize="7.5"
+              fontWeight="700"
+              letterSpacing="1"
+              fontFamily="monospace, sans-serif"
+            >
+              *NEET-UG-2026-OMR-A*
+            </text>
+          </g>
+        </g>
+
+        {/* Declaration Notice */}
+        <g transform="translate(380, 982)">
+          <text
+            x="0"
+            y="0"
+            fill="currentColor"
+            fillOpacity="0.40"
+            fontSize="7"
+            fontWeight="600"
+            letterSpacing="0.8"
+            fontFamily="monospace, sans-serif"
+          >
+            I hereby declare that all entries made in this answer sheet are authentic and verified by candidate.
+          </text>
+        </g>
       </svg>
 
-      {/* 2. Soft Top Specular Atmosphere (No bottom darkening) */}
+      {/* 2. Soft Top Specular Atmosphere */}
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-[480px]"
         style={{
@@ -355,8 +463,7 @@ export function NeetOmrBackground() {
         }}
       />
 
-
-      {/* 4. Top Ambient Lighting for Specular Atmosphere */}
+      {/* 3. Top Ambient Lighting for Specular Atmosphere */}
       <div
         className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[360px] rounded-full blur-3xl"
         style={{
