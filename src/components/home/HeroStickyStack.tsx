@@ -38,6 +38,9 @@ export function HeroStickyStack({
   const section2Scale = useTransform(scrollYProgress, [0, 1], [0.94, 1]);
   const section2Y = useTransform(scrollYProgress, [0, 1], [40, 0]);
 
+  // 3. Upward shadow over Hero during stacking (fades to 0 when settled, never bleeds to Section 3)
+  const upwardShadowOpacity = useTransform(scrollYProgress, [0, 0.85, 1], [1, 0.25, 0]);
+
   return (
     <div ref={containerRef} className="relative w-full">
       {/* ==================================================================== */}
@@ -101,9 +104,16 @@ export function HeroStickyStack({
             transformStyle: 'preserve-3d',
             willChange: 'transform',
           }}
-          className="relative w-full bg-[#F8FAF6] rounded-t-[32px] pt-16 sm:pt-20 pb-20 sm:pb-24 shadow-[0_-24px_60px_rgba(0,0,0,0.45)]"
+          className="relative w-full bg-[#F8FAF6] rounded-t-[32px] pt-16 sm:pt-20 pb-20 sm:pb-24 border-0"
         >
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Top-rim upward shadow casting over the dark hero during entrance; fades away completely when settled and NEVER bleeds below Section 2 */}
+          <motion.div
+            aria-hidden="true"
+            style={{ opacity: upwardShadowOpacity }}
+            className="pointer-events-none absolute -top-8 inset-x-0 h-16 rounded-t-[32px] shadow-[0_-24px_60px_rgba(0,0,0,0.45)] z-0"
+          />
+
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
             <div className="max-w-2xl mx-auto text-center space-y-3 mb-12">
               <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#121316]">
