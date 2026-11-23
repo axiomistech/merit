@@ -22,29 +22,21 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-// Level 2: Raised 3D Frosted Glass Frame Styling (Dark Glass-on-Glass second depth tier)
+// Level 2: Raised Frosted Glass Frame Styling
 const glassFrameStyle: React.CSSProperties = {
-  background:
-    'linear-gradient(145deg, rgba(255, 255, 255, 0.38) 0%, rgba(130, 142, 156, 0.16) 28%, rgba(35, 40, 46, 0.35) 65%, rgba(18, 21, 25, 0.50) 100%)',
-  backdropFilter: 'blur(22px)',
-  WebkitBackdropFilter: 'blur(22px)',
-  border: '1.5px solid rgba(255, 255, 255, 0.42)',
-  boxShadow: [
-    '0 24px 48px -10px rgba(0, 0, 0, 0.65)',
-    '0 8px 18px -4px rgba(0, 0, 0, 0.40)',
-    'inset 0 2px 2.5px 0 rgba(255, 255, 255, 0.85)',
-    'inset 2px 0 2px 0 rgba(255, 255, 255, 0.55)',
-    'inset 0 -2.5px 4.5px 0 rgba(0, 0, 0, 0.55)',
-    'inset -2px 0 3px 0 rgba(0, 0, 0, 0.35)',
-  ].join(', '),
+  background: 'rgba(20, 26, 17, 0.40)',
+  backdropFilter: 'blur(16px)',
+  WebkitBackdropFilter: 'blur(16px)',
+  border: '1px solid rgba(255, 255, 255, 0.20)',
+  boxShadow: '0 8px 24px -4px rgba(20, 26, 17, 0.16), inset 0 1px 1px 0 rgba(255, 255, 255, 0.30)',
   isolation: 'isolate',
 };
 
-// Level 3: Inner Recessed Video Screen Base (Sitting inside the glass frame without black borders)
+// Level 3: Inner Recessed Video Screen Base
 const innerScreenStyle: React.CSSProperties = {
   backgroundColor: '#0D0E11',
   boxShadow:
-    'inset 0 2px 8px rgba(0, 0, 0, 0.70), inset 0 0 0 1px rgba(255, 255, 255, 0.10), 0 1px 1px rgba(255, 255, 255, 0.25)',
+    'inset 0 1px 4px rgba(0, 0, 0, 0.50), inset 0 0 0 1px rgba(255, 255, 255, 0.08)',
 };
 
 export interface MeritwiseVideoPlayerRef {
@@ -398,7 +390,7 @@ export const MeritwiseVideoPlayer = forwardRef<
         'meritwise-video-frame relative w-full select-none transition-all duration-300 focus:outline-none',
         isFullscreen
           ? 'h-full p-0 rounded-none bg-black border-none shadow-none'
-          : 'p-[6px] sm:p-[7px] rounded-[26px] sm:rounded-[28px]',
+          : 'p-0 rounded-[16px] overflow-hidden',
         className
       )}
     >
@@ -408,7 +400,7 @@ export const MeritwiseVideoPlayer = forwardRef<
           'meritwise-video-screen relative w-full overflow-hidden select-none group cursor-pointer',
           isFullscreen
             ? 'h-full rounded-none'
-            : 'aspect-video rounded-[20px] sm:rounded-[22px]'
+            : 'aspect-video rounded-[16px]'
         )}
         style={!isFullscreen ? innerScreenStyle : undefined}
       >

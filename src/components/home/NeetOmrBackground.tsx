@@ -50,13 +50,17 @@ export function NeetOmrBackground() {
           'linear-gradient(to bottom, black 0%, black 70%, rgba(0, 0, 0, 0.4) 86%, transparent 100%)',
       }}
     >
-      {/* 1. Straight 2D Vector OMR Sheet etched in Soft Glacier Charcoal (#243440) */}
+      {/* 1. Straight 2D Vector OMR Sheet etched in Deep Charcoal (#141A11) */}
       <svg
         viewBox="0 0 1440 860"
         preserveAspectRatio="xMidYMin slice"
-        className="w-full h-full object-cover text-[#243440]"
+        className="w-full h-full object-cover text-[#141A11]"
         style={{
-          opacity: 0.08,
+          opacity: 0.09,
+          maskImage:
+            'radial-gradient(ellipse 75% 65% at 50% 50%, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.85) 60%, rgba(0, 0, 0, 1) 100%)',
+          WebkitMaskImage:
+            'radial-gradient(ellipse 75% 65% at 50% 50%, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.85) 60%, rgba(0, 0, 0, 1) 100%)',
         }}
       >
         <defs>

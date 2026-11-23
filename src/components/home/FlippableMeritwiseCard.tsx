@@ -43,7 +43,7 @@ const STUDENT_JOURNEY_STEPS = [
   {
     number: '05',
     title: 'Analyze Results',
-    description: 'Explore scores, accuracy, speed, strengths and weaknesses.',
+    description: 'Explore scores, accuracy, speed, and strengths.',
   },
   {
     number: '06',
@@ -61,8 +61,8 @@ export function FlippableMeritwiseCard({
   const cardRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<MeritwiseVideoPlayerRef>(null);
 
-  // Flip state for the bottom interactive card:
-  // Continuous accumulating rotation: 0deg -> 180deg -> 360deg -> 540deg...
+  // Flip state for the unified bento card:
+  // Continuous accumulating rotation: 0deg -> 180deg -> 360deg...
   const [rotation, setRotation] = useState(0);
   const [isFlipping, setIsFlipping] = useState(false);
   const [isVideoInteracting, setIsVideoInteracting] = useState(false);
@@ -73,7 +73,6 @@ export function FlippableMeritwiseCard({
   // 3D cursor tilt state (active only when !isFlipped and not interacting with video)
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
-  const [specular, setSpecular] = useState({ x: 50, y: 50 });
   const [reducedMotion, setReducedMotion] = useState(false);
   const [isTouch, setIsTouch] = useState(false);
 
@@ -108,7 +107,7 @@ export function FlippableMeritwiseCard({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isFlipped, isFlipping]);
 
-  // Handle cursor movement for 3D tilt on bottom card
+  // Handle cursor movement for subtle 3D tilt
   const handleMouseMove = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
       if (isFlipped || isFlipping || isVideoInteracting || reducedMotion || isTouch || !cardRef.current) return;
@@ -119,16 +118,11 @@ export function FlippableMeritwiseCard({
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
 
-      // 5 deg max tilt per specification
-      const maxTilt = 5;
+      const maxTilt = 4;
       const rotateX = ((y - centerY) / centerY) * -maxTilt;
       const rotateY = ((x - centerX) / centerX) * maxTilt;
 
       setCoords({ x: rotateX, y: rotateY });
-      setSpecular({
-        x: Math.round((x / rect.width) * 100),
-        y: Math.round((y / rect.height) * 100),
-      });
     },
     [isFlipped, isFlipping, isVideoInteracting, reducedMotion, isTouch]
   );
@@ -143,13 +137,12 @@ export function FlippableMeritwiseCard({
     setCoords({ x: 0, y: 0 });
   };
 
-  // Click-to-Flip Handler: Continuously accumulates +180deg in the same direction on every click
+  // Click-to-Flip Handler: Continuously accumulates +180deg
   const handleCardFlip = (e?: React.MouseEvent) => {
     e?.stopPropagation();
     if (isFlipping) return;
 
     if (!isFlipped) {
-      // Flipping from Video to Guide: Pause video playback
       playerRef.current?.pause();
     }
 
@@ -161,17 +154,6 @@ export function FlippableMeritwiseCard({
     setTimeout(() => {
       setIsFlipping(false);
     }, 700);
-  };
-
-  // Keyboard navigation for bottom card flip (Enter or Space)
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      const target = e.target as HTMLElement;
-      if (target.tagName !== 'BUTTON' && target.tagName !== 'A' && target.tagName !== 'IFRAME') {
-        e.preventDefault();
-        handleCardFlip();
-      }
-    }
   };
 
   const handleDefaultStartPractice = (e: React.MouseEvent) => {
@@ -187,222 +169,135 @@ export function FlippableMeritwiseCard({
   const posterSrc = tutorialVideo?.posterUrl || DEFAULT_POSTER_URL;
   const isInteractiveTilt = !isFlipped && !isFlipping && !isVideoInteracting && !reducedMotion && !isTouch;
 
-  // 3D tilt transform for bottom card
+  // Subtle 3D tilt transform
   const tiltTransform =
     isInteractiveTilt && isHovered
       ? `rotateX(${coords.x.toFixed(2)}deg) rotateY(${coords.y.toFixed(2)}deg) translateY(-4px)`
       : `rotateX(0deg) rotateY(0deg) translateY(0px)`;
 
-  // Dynamic shadow displacement based on cursor tilt
-  const shadowX = isHovered && !isFlipped ? (-coords.y * 1.2).toFixed(1) : '0';
-  const shadowY = isHovered && !isFlipped ? (24 + coords.x * 1.0).toFixed(1) : '18';
-  const dynamicShadow =
-    isHovered && !isFlipped
-      ? `${shadowX}px ${shadowY}px 45px rgba(28, 40, 22, 0.28), 0 12px 24px rgba(28, 40, 22, 0.16)`
-      : '0 24px 50px -12px rgba(28, 40, 22, 0.22), 0 10px 24px -8px rgba(28, 40, 22, 0.14)';
-
-  // Continuous accumulating one-way rotation for bottom card 3D flipper container
+  // Continuous accumulating one-way rotation for 3D flip
   const flipRotation = `rotateY(${rotation}deg)`;
 
-  // Reusable 3D Luminous Sage Glass slab styling (matching Section 3)
-  const sageGlassSlabStyle: React.CSSProperties = {
+  // Matte Forged Sage Finish matching left bento card (#9CAF88)
+  const sageBentoCardStyle: React.CSSProperties = {
     background:
-      'linear-gradient(140deg, rgba(234, 241, 245, 0.25) 0%, rgba(199, 211, 189, 0.84) 18%, rgba(156, 175, 136, 0.76) 50%, rgba(117, 137, 106, 0.70) 100%)',
-    backdropFilter: 'blur(26px) saturate(110%)',
-    WebkitBackdropFilter: 'blur(26px) saturate(110%)',
-    border: '1px solid rgba(234, 241, 245, 0.50)',
+      'linear-gradient(155deg, rgba(166, 186, 148, 0.95) 0%, #9CAF88 50%, rgba(142, 162, 122, 0.95) 100%)',
+    backdropFilter: 'blur(20px) saturate(110%)',
+    WebkitBackdropFilter: 'blur(20px) saturate(110%)',
+    border: '1px solid rgba(20, 26, 17, 0.12)',
     boxShadow: [
-      '0 24px 50px -12px rgba(28, 40, 22, 0.22)',
-      '0 10px 24px -8px rgba(28, 40, 22, 0.14)',
-      'inset 0 1.5px 2px 0 rgba(245, 250, 253, 0.75)',
-      'inset 1.5px 0 2px 0 rgba(220, 231, 237, 0.45)',
-      'inset 0 -3px 6px 0 rgba(65, 82, 54, 0.38)',
-      'inset -2px 0 5px 0 rgba(65, 82, 54, 0.25)',
-      'inset 0 0 28px 0 rgba(199, 211, 189, 0.30)',
+      '0 12px 28px rgba(20, 26, 17, 0.12)',
+      'inset 0 1px 1px 0 rgba(255, 255, 255, 0.50)',
     ].join(', '),
     transformStyle: 'preserve-3d',
   };
 
-  // Dedicated slim top card luminous sage glass style (stationary, non-flipping)
-  const staticHeadingCardStyle: React.CSSProperties = {
-    background:
-      'linear-gradient(140deg, rgba(234, 241, 245, 0.25) 0%, rgba(199, 211, 189, 0.84) 18%, rgba(156, 175, 136, 0.76) 50%, rgba(117, 137, 106, 0.70) 100%)',
-    backdropFilter: 'blur(26px) saturate(110%)',
-    WebkitBackdropFilter: 'blur(26px) saturate(110%)',
-    border: '1px solid rgba(234, 241, 245, 0.50)',
-    boxShadow: [
-      '0 24px 50px -12px rgba(28, 40, 22, 0.22)',
-      '0 10px 24px -8px rgba(28, 40, 22, 0.14)',
-      'inset 0 1.5px 2px 0 rgba(245, 250, 253, 0.75)',
-      'inset 1.5px 0 2px 0 rgba(220, 231, 237, 0.45)',
-      'inset 0 -3px 6px 0 rgba(65, 82, 54, 0.38)',
-      'inset -2px 0 5px 0 rgba(65, 82, 54, 0.25)',
-      'inset 0 0 28px 0 rgba(199, 211, 189, 0.30)',
-    ].join(', '),
-  };
-
   return (
-    <div className={cn('relative w-full h-full flex flex-col gap-4 sm:gap-[18px]', className)}>
-      {/* ==================================================================== */}
-      {/* 1. TOP CARD — STATIC SLIM RECTANGULAR HEADING CARD                   */}
-      {/* ==================================================================== */}
+    <div
+      ref={cardRef}
+      tabIndex={0}
+      role="region"
+      aria-label="See How It All Works. Platform demonstration video and student journey guide."
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className={cn(
+        'relative w-full h-full min-h-[480px] sm:min-h-[520px] select-none rounded-[36px] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40',
+        className
+      )}
+      style={{ perspective: '1400px' }}
+    >
+      {/* 3D Tilt Wrapper */}
       <div
-        role="region"
-        aria-label="Section title: See How It All Works."
-        className="relative w-full shrink-0 h-[76px] sm:h-[84px] rounded-2xl sm:rounded-[24px] flex items-center justify-center overflow-hidden select-none transition-all"
-        style={staticHeadingCardStyle}
-      >
-        {/* Architectural 3-5px Thick Glass Edge Simulation Rim with glacial reflection */}
-        <div
-          className="pointer-events-none absolute inset-0 rounded-[inherit] z-10"
-          style={{
-            border: '1px solid rgba(234, 241, 245, 0.35)',
-            boxShadow: 'inset 0 0 0 1px rgba(201, 217, 226, 0.18)',
-          }}
-        />
-
-        {/* Soft Cloudy Internal Diffusion Mist with gentle glacier undertone */}
-        <div
-          className="pointer-events-none absolute inset-0 rounded-[inherit] z-0 overflow-hidden"
-          style={{
-            background:
-              'radial-gradient(ellipse 90% 60% at 50% 0%, rgba(245, 249, 252, 0.35) 0%, rgba(220, 231, 237, 0.14) 30%, rgba(156, 175, 136, 0.14) 65%, transparent 100%)',
-          }}
-        />
-
-        {/* Ambient Corner Occlusion Glows */}
-        <div className="pointer-events-none absolute -top-12 -left-12 h-32 w-32 rounded-full bg-[#C7D3BD]/35 blur-2xl z-0" />
-        <div className="pointer-events-none absolute -bottom-12 -right-12 h-32 w-32 rounded-full bg-[#75896A]/28 blur-2xl z-0" />
-
-        {/* Center Typography: Benton Sans Typography with Golden Accent Underline on "Works." - Dark Forest Charcoal (#151A15) */}
-        <h3
-          className="relative z-20 text-xl sm:text-2xl md:text-[25px] lg:text-[27px] font-semibold leading-tight text-[#151A15] text-center px-4 select-none tracking-[-0.015em]"
-          style={{
-            fontFamily: "'Benton Sans', 'Benton', sans-serif",
-          }}
-        >
-          See How It All{' '}
-          <span className="relative inline-block">
-            Works.
-            <svg
-              viewBox="0 0 100 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="absolute -bottom-1.5 left-0 w-full h-[6px] text-[#8C6D3B] pointer-events-none"
-            >
-              <path
-                d="M2 7C28 3.5 68 3.5 98 6.5C76 8.5 32 8.5 2 7Z"
-                fill="currentColor"
-              />
-            </svg>
-          </span>
-        </h3>
-      </div>
-
-      {/* ==================================================================== */}
-      {/* 2. BOTTOM CARD — INTERACTIVE 3D FLIP CARD (VIDEO / GUIDE)            */}
-      {/* ==================================================================== */}
-      <div
-        ref={cardRef}
-        tabIndex={0}
-        role="region"
-        aria-label={
-          isFlipped
-            ? 'Meritwise preparation guide. Click anywhere or press Enter to flip to video walkthrough.'
-            : 'Meritwise video demonstration. Click outside the video or press Enter to flip to preparation guide.'
-        }
-        onKeyDown={handleKeyDown}
-        onMouseMove={handleMouseMove}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        className="relative w-full flex-1 min-h-[440px] sm:min-h-[470px] select-none rounded-[28px] sm:rounded-[32px] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+        className="relative w-full h-full rounded-[36px]"
         style={{
-          perspective: '1200px',
+          transform: tiltTransform,
+          transformStyle: 'preserve-3d',
+          transition: isHovered && !isFlipped
+            ? 'transform 0.14s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.18s ease-out'
+            : 'transform 0.58s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.58s ease-out',
         }}
       >
-        {/* 3D Tilt Wrapper */}
+        {/* Continuous Flip Container */}
         <div
-          className="relative w-full h-full rounded-[inherit]"
+          className="relative w-full h-full rounded-[36px]"
           style={{
-            transform: tiltTransform,
+            transform: flipRotation,
             transformStyle: 'preserve-3d',
-            transition: isHovered && !isFlipped
-              ? 'transform 0.14s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.18s ease-out'
-              : 'transform 0.58s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.58s ease-out',
-            boxShadow: dynamicShadow,
+            transition: reducedMotion
+              ? 'transform 0.01s'
+              : 'transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)',
           }}
         >
-          {/* Continuous One-Way Flip Container */}
+          {/* ============================================================== */}
+          {/* SIDE 1: UNIFIED RIGHT BENTO CARD (FRONT FACE - DEFAULT)        */}
+          {/* ============================================================== */}
           <div
-            className="relative w-full h-full rounded-[inherit]"
+            role="region"
+            aria-label="See How It All Works. Platform walkthrough video."
+            className={cn(
+              'relative h-full w-full rounded-[36px] p-5 sm:p-6 lg:p-7 flex flex-col justify-between overflow-hidden transition-all select-none',
+              isFlipped && 'pointer-events-none'
+            )}
             style={{
-              transform: flipRotation,
-              transformStyle: 'preserve-3d',
-              transition: reducedMotion
-                ? 'transform 0.01s'
-                : 'transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)',
+              ...sageBentoCardStyle,
+              backfaceVisibility: 'hidden',
+              WebkitBackfaceVisibility: 'hidden',
+              transform: 'rotateY(0deg)',
             }}
           >
-            {/* ============================================================== */}
-            {/* SIDE 1: NATIVE MERITWISE VIDEO PLAYER (FRONT FACE - DEFAULT)   */}
-            {/* ============================================================== */}
+            {/* Fine translucent internal rim highlight */}
             <div
-              role="region"
-              aria-label="Meritwise video demonstration. Click the card frame to flip to preparation guide."
-              className={cn(
-                'relative h-full w-full min-h-[440px] sm:min-h-[470px] rounded-[28px] sm:rounded-[32px] p-4 sm:p-5 lg:p-6 flex flex-col justify-center items-center overflow-hidden cursor-pointer transition-all',
-                isFlipped && 'pointer-events-none'
-              )}
+              className="pointer-events-none absolute inset-0 rounded-[inherit] z-10"
               style={{
-                ...sageGlassSlabStyle,
-                backfaceVisibility: 'hidden',
-                WebkitBackfaceVisibility: 'hidden',
-                transform: 'rotateY(0deg)',
+                border: '1px solid rgba(255, 255, 255, 0.20)',
               }}
-              onClick={handleCardFlip}
+            />
+
+            {/* Soft internal atmospheric diffusion mist */}
+            <div
+              className="pointer-events-none absolute inset-0 rounded-[inherit] z-0 overflow-hidden"
+              style={{
+                background:
+                  'radial-gradient(ellipse 90% 55% at 50% 0%, rgba(255, 255, 255, 0.22) 0%, transparent 80%)',
+              }}
+            />
+
+            {/* 1. TOP HEADER: "See How It All Works." Typography & Journey Toggle Pill */}
+            <div
+              style={{ transform: 'translateZ(14px)' }}
+              className="relative z-20 flex items-center justify-between gap-3 px-1 pt-1 pb-3 sm:pb-4 border-b border-[rgba(20,26,17,0.12)]"
             >
-              {/* Architectural 3-5px Thick Glass Edge Simulation Rim with glacial reflection */}
-              <div
-                className="pointer-events-none absolute inset-0 rounded-[inherit] z-10"
+              <h3
+                className="text-xl sm:text-2xl lg:text-[25px] font-bold tracking-[-0.02em] text-[#141A11]"
                 style={{
-                  border: '1px solid rgba(234, 241, 245, 0.35)',
-                  boxShadow: 'inset 0 0 0 1px rgba(201, 217, 226, 0.18)',
+                  fontFamily: "'Benton Sans', 'Benton', sans-serif",
                 }}
-              />
-
-              {/* Soft Cloudy Internal Diffusion Mist with gentle glacier undertone */}
-              <div
-                className="pointer-events-none absolute inset-0 rounded-[inherit] z-0 overflow-hidden"
-                style={{
-                  background:
-                    'radial-gradient(ellipse 90% 60% at 50% 0%, rgba(245, 249, 252, 0.35) 0%, rgba(220, 231, 237, 0.14) 30%, rgba(156, 175, 136, 0.14) 65%, transparent 100%)',
-                }}
-              />
-
-              {/* Moving Diffused Fogged Light Reflection */}
-              {!isFlipped && !reducedMotion && !isTouch && (
-                <div
-                  className="pointer-events-none absolute inset-0 z-30 rounded-[inherit] transition-opacity duration-500 overflow-hidden"
-                  style={{
-                    opacity: isHovered && !isVideoInteracting ? 0.30 : 0.12,
-                    background: `radial-gradient(circle 480px at ${specular.x}% ${specular.y}%, rgba(255, 255, 255, 0.40) 0%, rgba(245, 249, 252, 0.15) 35%, transparent 75%)`,
-                  }}
-                />
-              )}
-
-              {/* Ambient Background Corner Glows */}
-              <div className="pointer-events-none absolute -top-20 -left-20 h-64 w-64 rounded-full bg-[#C7D3BD]/35 blur-3xl z-0" />
-              <div className="pointer-events-none absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-[#75896A]/28 blur-3xl z-0" />
-
-              {/* Center: Large responsive 16:9 native Meritwise video player */}
-              <div
-                style={{ transform: 'translateZ(14px)' }}
-                className="relative z-20 w-full max-w-xl mx-auto my-auto cursor-default"
-                onClick={(e) => e.stopPropagation()}
-                onPointerDown={(e) => e.stopPropagation()}
-                onMouseEnter={() => setIsVideoInteracting(true)}
-                onMouseLeave={() => setIsVideoInteracting(false)}
               >
+                See How It All Works.
+              </h3>
+
+              <button
+                type="button"
+                onClick={handleCardFlip}
+                className="group flex items-center gap-1.5 rounded-full border border-[rgba(20,26,17,0.22)] bg-[rgba(20,26,17,0.06)] px-3.5 py-1.5 text-xs font-bold text-[#141A11] transition-all duration-200 hover:bg-[rgba(20,26,17,0.12)] hover:border-[rgba(20,26,17,0.34)] active:scale-95"
+                aria-label="View Student Journey Guide"
+              >
+                <span className="uppercase tracking-wider text-[11px]">Guide</span>
+                <span className="text-xs text-[#141A11]/70 group-hover:text-[#141A11] transition-colors">↗</span>
+              </button>
+            </div>
+
+            {/* 2. CENTER: Clean Embedded Video Player in Concentric Frame (rounded-[16px]) */}
+            <div
+              style={{ transform: 'translateZ(18px)' }}
+              className="relative z-20 w-full my-auto py-2 sm:py-3 cursor-default"
+              onClick={(e) => e.stopPropagation()}
+              onPointerDown={(e) => e.stopPropagation()}
+              onMouseEnter={() => setIsVideoInteracting(true)}
+              onMouseLeave={() => setIsVideoInteracting(false)}
+            >
+              <div className="w-full rounded-[16px] overflow-hidden border border-[rgba(20,26,17,0.14)] shadow-md">
                 <MeritwiseVideoPlayer
                   ref={playerRef}
                   src={videoSrc}
@@ -413,111 +308,114 @@ export function FlippableMeritwiseCard({
               </div>
             </div>
 
-            {/* ============================================================== */}
-            {/* SIDE 2: COMPLETE STUDENT JOURNEY GUIDE (REVERSE FACE)          */}
-            {/* ============================================================== */}
+            {/* 3. BOTTOM CAPTION / STATUS BAR */}
             <div
-              role="region"
-              aria-label="Meritwise preparation guide. Click anywhere on the card surface to flip back to video."
-              className={cn(
-                'absolute inset-0 h-full w-full rounded-[28px] sm:rounded-[32px] p-6 sm:p-7 lg:p-8 flex flex-col justify-between overflow-hidden cursor-pointer transition-all',
-                !isFlipped && 'pointer-events-none'
-              )}
-              style={{
-                ...sageGlassSlabStyle,
-                backfaceVisibility: 'hidden',
-                WebkitBackfaceVisibility: 'hidden',
-                transform: 'rotateY(180deg)',
-              }}
-              onClick={handleCardFlip}
+              style={{ transform: 'translateZ(10px)' }}
+              className="relative z-20 flex items-center justify-between text-[11px] font-semibold text-[#465047] px-1 pt-2 border-t border-[rgba(20,26,17,0.12)]"
             >
-              {/* Architectural 3-5px Thick Glass Edge Simulation Rim with glacial reflection */}
-              <div
-                className="pointer-events-none absolute inset-0 rounded-[inherit] z-10"
-                style={{
-                  border: '1px solid rgba(234, 241, 245, 0.35)',
-                  boxShadow: 'inset 0 0 0 1px rgba(201, 217, 226, 0.18)',
-                }}
-              />
+              <span className="flex items-center gap-1.5">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#141A11]" />
+                Interactive Platform Walkthrough
+              </span>
+              <span className="font-mono text-[10px] text-[#465047]/80">1080P HD</span>
+            </div>
+          </div>
 
-              {/* Soft Cloudy Internal Diffusion Mist with gentle glacier undertone */}
-              <div
-                className="pointer-events-none absolute inset-0 rounded-[inherit] z-0 overflow-hidden"
-                style={{
-                  background:
-                    'radial-gradient(ellipse 90% 60% at 50% 0%, rgba(245, 249, 252, 0.35) 0%, rgba(220, 231, 237, 0.14) 30%, rgba(156, 175, 136, 0.14) 65%, transparent 100%)',
-                }}
-              />
+          {/* ============================================================== */}
+          {/* SIDE 2: COMPLETE STUDENT JOURNEY GUIDE (REVERSE FACE)          */}
+          {/* ============================================================== */}
+          <div
+            role="region"
+            aria-label="Student Journey Guide. Step by step preparation overview."
+            className={cn(
+              'absolute inset-0 h-full w-full rounded-[36px] p-6 sm:p-7 lg:p-8 flex flex-col justify-between overflow-hidden transition-all select-none',
+              !isFlipped && 'pointer-events-none'
+            )}
+            style={{
+              ...sageBentoCardStyle,
+              backfaceVisibility: 'hidden',
+              WebkitBackfaceVisibility: 'hidden',
+              transform: 'rotateY(180deg)',
+            }}
+          >
+            {/* Fine translucent internal rim highlight */}
+            <div
+              className="pointer-events-none absolute inset-0 rounded-[inherit] z-10"
+              style={{
+                border: '1px solid rgba(255, 255, 255, 0.20)',
+              }}
+            />
 
-              {/* Ambient Occlusion Corner Glows */}
-              <div className="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full bg-[#C7D3BD]/35 blur-3xl z-0" />
-              <div className="pointer-events-none absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-[#75896A]/28 blur-3xl z-0" />
+            {/* Soft internal atmospheric diffusion mist */}
+            <div
+              className="pointer-events-none absolute inset-0 rounded-[inherit] z-0 overflow-hidden"
+              style={{
+                background:
+                  'radial-gradient(ellipse 90% 55% at 50% 0%, rgba(255, 255, 255, 0.22) 0%, transparent 80%)',
+              }}
+            />
 
-              {/* 1. Header (translateZ: 14px) - Compact & left-aligned */}
-              <div
-                style={{ transform: 'translateZ(14px)' }}
-                className="space-y-1 relative z-20"
-              >
-                <h2 className="text-lg sm:text-xl lg:text-2xl font-extrabold text-[#151A15] tracking-tight leading-tight">
-                  Getting started is simple.
-                </h2>
-                <p className="text-xs sm:text-sm text-[#455044] font-medium leading-snug">
-                  Six steps from your first practice to better results.
+            {/* Header: Title + Flip Back to Video Button */}
+            <div className="flex items-center justify-between pb-3 border-b border-[rgba(20,26,17,0.14)] relative z-10">
+              <div>
+                <h4
+                  className="text-lg sm:text-xl font-bold tracking-tight text-[#141A11]"
+                  style={{ fontFamily: "'Benton Sans', 'Benton', sans-serif" }}
+                >
+                  Student Journey
+                </h4>
+                <p className="text-xs text-[#465047] font-medium">
+                  Six steps from preparation to exam mastery
                 </p>
               </div>
 
-              {/* 2. Six Steps in Balanced 2-Column, 3-Row Grid (translateZ: 10px) */}
-              <div
-                style={{ transform: 'translateZ(10px)' }}
-                className="grid grid-cols-1 sm:grid-cols-2 gap-x-3.5 sm:gap-x-4.5 gap-y-2.5 sm:gap-y-3 my-auto py-1.5 sm:py-2 relative z-20"
+              <button
+                type="button"
+                onClick={handleCardFlip}
+                className="group flex items-center gap-1.5 rounded-full border border-[rgba(20,26,17,0.22)] bg-[rgba(20,26,17,0.06)] px-3 py-1.5 text-xs font-bold text-[#141A11] transition-all hover:bg-[rgba(20,26,17,0.12)] active:scale-95"
+                aria-label="Flip back to video"
               >
-                {STUDENT_JOURNEY_STEPS.map((step) => (
-                  <div
-                    key={step.number}
-                    className="flex items-start gap-2.5 sm:gap-3 rounded-2xl border border-white/60 bg-white/45 p-2.5 sm:p-3 shadow-xs backdrop-blur-sm transition-all hover:bg-white/70 hover:border-[#DCE7ED]/80 hover:scale-[1.01]"
-                  >
-                    {/* Small Numbered Label */}
-                    <span className="font-mono text-xs font-black text-[#151A15] bg-[#75896A]/20 flex h-6 w-6 shrink-0 items-center justify-center rounded-xl border border-white/40 shadow-xs mt-0.5">
+                <span className="text-[11px] uppercase tracking-wider">Video</span>
+                <span className="font-mono text-xs">↺</span>
+              </button>
+            </div>
+
+            {/* 6-Step Journey Grid (2 columns, 3 rows) */}
+            <div className="grid grid-cols-2 gap-3 sm:gap-3.5 my-auto py-2 relative z-10">
+              {STUDENT_JOURNEY_STEPS.map((step) => (
+                <div
+                  key={step.number}
+                  className="rounded-2xl border border-[rgba(20,26,17,0.12)] bg-[rgba(255,255,255,0.30)] p-3 sm:p-3.5 backdrop-blur-xs transition-colors hover:bg-[rgba(255,255,255,0.45)]"
+                >
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="font-mono text-[11px] font-bold text-[#141A11]/60">
                       {step.number}
                     </span>
-
-                    {/* Step Title & Concise Sentence */}
-                    <div className="min-w-0">
-                      <h3 className="text-xs sm:text-[13px] font-bold text-[#151A15] leading-tight">
-                        {step.title}
-                      </h3>
-                      <p className="text-[11px] sm:text-xs text-[#455044] leading-snug mt-0.5">
-                        {step.description}
-                      </p>
-                    </div>
+                    <span className="h-1 w-1 rounded-full bg-[#141A11]/30" />
+                    <span className="text-xs font-bold text-[#141A11] line-clamp-1">
+                      {step.title}
+                    </span>
                   </div>
-                ))}
-              </div>
-
-              {/* 3. Bottom Action Area (translateZ: 18px) */}
-              <div
-                style={{ transform: 'translateZ(18px)' }}
-                className="pt-3 sm:pt-4 border-t border-[#75896A]/25 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 relative z-20 cursor-default"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <div>
-                  <h4 className="text-xs sm:text-sm font-bold text-[#151A15] leading-tight">
-                    Ready to begin?
-                  </h4>
-                  <p className="text-[11px] sm:text-xs text-[#455044] font-medium leading-snug mt-0.5">
-                    Your first paper is just a few clicks away.
+                  <p className="text-[11px] text-[#465047] leading-relaxed line-clamp-2">
+                    {step.description}
                   </p>
                 </div>
+              ))}
+            </div>
 
-                <button
-                  type="button"
-                  onClick={handleDefaultStartPractice}
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#151A15] text-white px-6 sm:px-7 py-2.5 sm:py-3 text-xs font-extrabold uppercase tracking-wider shadow-lg hover:bg-[#232923] transition-all hover:scale-[1.02] active:scale-[0.98] w-full sm:w-auto shrink-0"
-                >
-                  <span>Start Practice</span>
-                  <span className="font-mono text-xs">↗</span>
-                </button>
-              </div>
+            {/* Bottom Footer: Start Practice Action */}
+            <div className="pt-3 border-t border-[rgba(20,26,17,0.14)] flex items-center justify-between relative z-10">
+              <span className="text-[11px] font-semibold text-[#465047]">
+                Ready to begin your timed test?
+              </span>
+
+              <button
+                type="button"
+                onClick={handleDefaultStartPractice}
+                className="rounded-full bg-[#141A11] text-white px-5 py-2 text-xs font-extrabold uppercase tracking-wider shadow-md hover:bg-[#232923] transition-all hover:scale-[1.02] active:scale-[0.98]"
+              >
+                Start Practice →
+              </button>
             </div>
           </div>
         </div>
