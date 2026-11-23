@@ -17,7 +17,6 @@ export interface StackedSectionTwoProps {
 export function StackedSectionTwo({ primaryExams, onStartPractice }: StackedSectionTwoProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -26,55 +25,45 @@ export function StackedSectionTwo({ primaryExams, onStartPractice }: StackedSect
     if (prefersReducedMotion) return;
 
     const ctx = gsap.context(() => {
-      // Create master scroll-synchronized scrub timeline
+      // Dedicated scroll-synchronized 3D stacking timeline
+      // Section 1 remains stationary briefly while Section 2 begins approaching from below
+      // Section 2 enters with rotateX: 10deg, scale: 0.94, y: 120px
+      // As scrolling continues, Section 2 straightens to 0deg, scales to 1, and settles seamlessly
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: 'top bottom', // when top of wrapper enters the bottom of the viewport
-          end: 'top 22%', // when top of wrapper reaches upper 22% of viewport
-          scrub: 1, // smooth reversible scrub linked to scrollbar
+          start: 'top bottom', // Begins when Section 2 top touches viewport bottom
+          end: 'top top', // Completes when Section 2 reaches top of viewport
+          scrub: 1, // Smooth, direct scrollbar synchronization
+          invalidateOnRefresh: true,
         },
       });
 
-      // 1. Panel Tilt-In and Stacking:
-      // Starts tilted backward at rotateX: 8deg, y: 100px, scale: 0.94
-      // Straightens to rotateX: 0deg, y: 0px, scale: 1
+      // Animate ONLY the Section 2 panel itself as one solid physical slab
       tl.fromTo(
         panelRef.current,
         {
-          rotateX: 8,
-          y: 100,
+          rotateX: 10,
           scale: 0.94,
+          y: 120,
+          borderTopLeftRadius: 24,
+          borderTopRightRadius: 24,
+          boxShadow: '0 -28px 65px -15px rgba(0, 0, 0, 0.45), 0 -8px 24px -6px rgba(0, 0, 0, 0.25)',
           transformOrigin: 'center top',
         },
         {
           rotateX: 0,
-          y: 0,
           scale: 1,
+          y: 0,
+          borderTopLeftRadius: 0,
+          borderTopRightRadius: 0,
+          boxShadow: '0 0px 0px 0px rgba(0, 0, 0, 0)',
           ease: 'power2.out',
           duration: 1,
         }
       );
 
-      // 2. Subtle staggered entrance for the 4 examination cards
-      if (cardsRef.current) {
-        const cardElements = cardsRef.current.children;
-        tl.fromTo(
-          cardElements,
-          {
-            y: 36,
-            opacity: 0.15,
-          },
-          {
-            y: 0,
-            opacity: 1,
-            stagger: 0.09,
-            ease: 'power1.out',
-            duration: 0.8,
-          },
-          '-=0.35' // overlap smoothly as panel finishes settling
-        );
-      }
+      ScrollTrigger.refresh();
     }, containerRef);
 
     return () => ctx.revert();
@@ -83,20 +72,23 @@ export function StackedSectionTwo({ primaryExams, onStartPractice }: StackedSect
   return (
     <div
       ref={containerRef}
-      className="relative z-20 w-full -mt-14 sm:-mt-18 lg:-mt-22 pointer-events-auto"
+      className="relative z-20 w-full pointer-events-auto"
       style={{
-        perspective: '1200px',
+        perspective: '1100px',
       }}
     >
       {/* 3D Tilting & Stacking Floating Panel */}
       <section
         ref={panelRef}
         id="examinations"
-        className="relative w-full rounded-t-[32px] sm:rounded-t-[44px] lg:rounded-t-[54px] bg-[#F8FAF6] pt-14 sm:pt-18 pb-16 sm:pb-20 shadow-[0_-24px_55px_-12px_rgba(0,0,0,0.18),0_-1px_2px_rgba(255,255,255,0.7)_inset]"
+        className="relative w-full bg-[#F8FAF6] pt-16 sm:pt-20 pb-20 sm:pb-24"
         style={{
+          borderTopLeftRadius: '24px',
+          borderTopRightRadius: '24px',
           transformOrigin: 'center top',
           transformStyle: 'preserve-3d',
-          willChange: 'transform',
+          boxShadow: '0 -28px 65px -15px rgba(0, 0, 0, 0.45), 0 -8px 24px -6px rgba(0, 0, 0, 0.25)',
+          willChange: 'transform, border-radius, box-shadow',
         }}
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -110,11 +102,8 @@ export function StackedSectionTwo({ primaryExams, onStartPractice }: StackedSect
             </p>
           </div>
 
-          {/* 4 Interactive 3D Glassmorphism Cards with Staggered Entrance */}
-          <div
-            ref={cardsRef}
-            className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 items-stretch"
-          >
+          {/* 4 Interactive 3D Glassmorphism Cards */}
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 items-stretch">
             {primaryExams.map((exam) => (
               <div key={exam.id} className="h-full">
                 <ExaminationCard3D

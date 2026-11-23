@@ -89,47 +89,48 @@ export default function HomePage() {
       style={homepageAtmosphericStyle}
     >
       {/* ==================================================================== */}
-      {/* SHARED CINEMATIC HERO-TO-SECTION-2 BACKGROUND SURFACE               */}
-      {/* Continuous matte-black OMR to neutral charcoal to #F8FAF6 canvas     */}
+      {/* HERO & SECTION 2 STACKING CONTAINER                                   */}
       {/* ==================================================================== */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-[700px] sm:h-[730px] lg:h-[750px] z-0 select-none overflow-hidden"
-        style={{
-          background:
-            'linear-gradient(to bottom, #111214 0%, #111214 42%, #151619 51%, #1C1E23 60%, #292C33 68%, #40444E 75%, #646974 82%, #959AA3 87.5%, #C4C8C2 92.5%, #E3E6E0 96%, #F2F5F0 98.5%, #F8FAF6 100%)',
-        }}
-      >
-        {/* Straight 2D Grayscale NEET OMR Answer Sheet Background Canvas */}
-        <NeetOmrBackground />
-      </div>
-
-      {/* ==================================================================== */}
-      {/* 1. HERO SECTION — CINEMATIC MATTE-BLACK GLASSMORPHISM HERO           */}
-      {/* ==================================================================== */}
-      <section className="relative z-10 text-[#F5F5F5] pt-24 sm:pt-28 pb-6 sm:pb-8">
-        {/* Hero Cards Container */}
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-6 lg:gap-8 lg:grid-cols-2 items-stretch">
-            {/* Card 1 — Examination Preparation */}
-            <HeroPreparationCard onStartPractice={handleStartPractice} />
-
-            {/* Card 2 — Double-Sided 3D Card: Heading & Native Video Player / Journey Guide */}
-            <FlippableMeritwiseCard
-              tutorialVideo={tutorialVideoConfig}
-              onStartPractice={handleStartPractice}
-            />
+      <div className="relative w-full">
+        {/* ==================================================================== */}
+        {/* 1. HERO SECTION — CINEMATIC MATTE-BLACK GLASSMORPHISM HERO           */}
+        {/* ==================================================================== */}
+        <section className="relative lg:sticky lg:top-0 z-10 text-[#F5F5F5] pt-24 sm:pt-28 pb-14 sm:pb-18 lg:pb-20 min-h-screen lg:max-h-[960px] flex flex-col justify-center overflow-hidden">
+          {/* CINEMATIC MATTE-BLACK HERO BACKGROUND SURFACE */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 z-0 select-none overflow-hidden"
+            style={{
+              background: '#111214',
+            }}
+          >
+            {/* Straight 2D Grayscale NEET OMR Answer Sheet Background Canvas */}
+            <NeetOmrBackground />
           </div>
-        </div>
-      </section>
 
-      {/* ==================================================================== */}
-      {/* 2. STRICTLY FOUR EXAMINATION CATEGORIES (3D TILT-IN & STACKING PANEL) */}
-      {/* ==================================================================== */}
-      <StackedSectionTwo
-        primaryExams={primaryExams}
-        onStartPractice={handleStartPractice}
-      />
+          {/* Hero Cards Container */}
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
+            <div className="grid grid-cols-1 gap-6 lg:gap-8 lg:grid-cols-2 items-stretch">
+              {/* Card 1 — Examination Preparation */}
+              <HeroPreparationCard onStartPractice={handleStartPractice} />
+
+              {/* Card 2 — Double-Sided 3D Card: Heading & Native Video Player / Journey Guide */}
+              <FlippableMeritwiseCard
+                tutorialVideo={tutorialVideoConfig}
+                onStartPractice={handleStartPractice}
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* ==================================================================== */}
+        {/* 2. STRICTLY FOUR EXAMINATION CATEGORIES (3D TILT-IN & STACKING PANEL) */}
+        {/* ==================================================================== */}
+        <StackedSectionTwo
+          primaryExams={primaryExams}
+          onStartPractice={handleStartPractice}
+        />
+      </div>
 
       {/* ==================================================================== */}
       {/* 3. HOW IT WORKS (FOUR SIMPLE STEPS) — 3D MATTE SAGE GLASS SLAB       */}
