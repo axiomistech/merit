@@ -1,0 +1,135 @@
+'use client';
+
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { HeroPreparationCard } from './HeroPreparationCard';
+import { FlippableMeritwiseCard } from './FlippableMeritwiseCard';
+import { ExaminationCard3D, ExaminationCardData } from './ExaminationCard3D';
+import { NeetOmrBackground } from './NeetOmrBackground';
+import { TutorialVideoConfig } from '@/types/admin';
+
+export interface HeroStickyStackProps {
+  tutorialVideoConfig?: TutorialVideoConfig | null;
+  primaryExams: ExaminationCardData[];
+  onStartPractice: (e: React.MouseEvent) => void;
+}
+
+export function HeroStickyStack({
+  tutorialVideoConfig,
+  primaryExams,
+  onStartPractice,
+}: HeroStickyStackProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const section2Ref = useRef<HTMLDivElement>(null);
+
+  // Track scroll progress as Section 2 enters the viewport from the bottom (0) and reaches the top (1)
+  const { scrollYProgress } = useScroll({
+    target: section2Ref,
+    offset: ['start end', 'start start'],
+  });
+
+  // 1. Sticky Base Layer (Section 1): Scale down (1 -> 0.94) and dim brightness (1 -> 0.65)
+  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 0.94]);
+  const heroBrightness = useTransform(scrollYProgress, [0, 1], [1, 0.65]);
+  const heroFilter = useTransform(heroBrightness, (b) => `brightness(${b})`);
+
+  // 2. 3D Tilt-In & Stacking (Section 2): rotateX(14deg -> 0deg), scale(0.94 -> 1), translateY(40px -> 0px)
+  const section2RotateX = useTransform(scrollYProgress, [0, 1], [14, 0]);
+  const section2Scale = useTransform(scrollYProgress, [0, 1], [0.94, 1]);
+  const section2Y = useTransform(scrollYProgress, [0, 1], [40, 0]);
+
+  return (
+    <div ref={containerRef} className="relative w-full">
+      {/* ==================================================================== */}
+      {/* 1. STICKY BASE LAYER (SECTION 1 — HERO)                              */}
+      {/* Pinned in place at top: 0, z-index: 1 while Section 2 rises over it  */}
+      {/* ==================================================================== */}
+      <motion.section
+        style={{
+          scale: heroScale,
+          filter: heroFilter,
+          transformOrigin: 'center center',
+          willChange: 'transform, filter',
+        }}
+        className="sticky top-0 z-[1] w-full min-h-screen text-[#F5F5F5] flex flex-col justify-center overflow-hidden"
+      >
+        {/* Solid Matte-Black Background with Vector NEET OMR Marks */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-0 select-none overflow-hidden"
+          style={{
+            background: '#111214',
+          }}
+        >
+          <NeetOmrBackground />
+        </div>
+
+        {/* Hero Cards Container */}
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full pt-24 sm:pt-28 pb-14 sm:pb-18 lg:pb-20">
+          <div className="grid grid-cols-1 gap-6 lg:gap-8 lg:grid-cols-2 items-stretch">
+            {/* Card 1 — Examination Preparation */}
+            <HeroPreparationCard onStartPractice={onStartPractice} />
+
+            {/* Card 2 — Double-Sided 3D Card: Heading & Native Video Player / Journey Guide */}
+            <FlippableMeritwiseCard
+              tutorialVideo={tutorialVideoConfig ?? undefined}
+              onStartPractice={onStartPractice}
+            />
+          </div>
+        </div>
+      </motion.section>
+
+      {/* ==================================================================== */}
+      {/* 2. 3D PERSPECTIVE WRAPPER & STACKED CARD (SECTION 2)                 */}
+      {/* perspective: 1400px and transform-style: preserve-3d                 */}
+      {/* ==================================================================== */}
+      <div
+        ref={section2Ref}
+        className="relative z-10 w-full"
+        style={{
+          perspective: '1400px',
+          transformStyle: 'preserve-3d',
+        }}
+      >
+        <motion.section
+          id="examinations"
+          style={{
+            rotateX: section2RotateX,
+            scale: section2Scale,
+            y: section2Y,
+            transformOrigin: 'center top',
+            transformStyle: 'preserve-3d',
+            willChange: 'transform',
+          }}
+          className="relative w-full bg-[#F8FAF6] rounded-t-[32px] pt-16 sm:pt-20 pb-20 sm:pb-24 shadow-[0_-24px_60px_rgba(0,0,0,0.45)]"
+        >
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            {/* Section Header */}
+            <div className="max-w-2xl mx-auto text-center space-y-3 mb-12">
+              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#121316]">
+                Focused preparation for serious candidates.
+              </h2>
+              <p className="text-sm text-[#52525B]">
+                Four core examination categories. Each built around its official format, marking rules, and duration.
+              </p>
+            </div>
+
+            {/* 4 Interactive 3D Glassmorphism Cards */}
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 items-stretch">
+              {primaryExams.map((exam) => (
+                <div key={exam.id} className="h-full">
+                  <ExaminationCard3D
+                    exam={exam}
+                    onStartPractice={onStartPractice}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.section>
+      </div>
+    </div>
+  );
+}
+
+export default HeroStickyStack;

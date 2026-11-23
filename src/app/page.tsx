@@ -7,7 +7,7 @@ import { TutorialVideoConfig } from '@/types/admin';
 import { HeroPreparationCard } from '@/components/home/HeroPreparationCard';
 import { FlippableMeritwiseCard } from '@/components/home/FlippableMeritwiseCard';
 import { ExaminationCard3D, ExaminationCardData } from '@/components/home/ExaminationCard3D';
-import { StackedSectionTwo } from '@/components/home/StackedSectionTwo';
+import { HeroStickyStack } from '@/components/home/HeroStickyStack';
 import { NeetOmrBackground } from '@/components/home/NeetOmrBackground';
 import { MeritwiseLogo } from '@/components/brand/MeritwiseLogo';
 
@@ -85,52 +85,17 @@ export default function HomePage() {
 
   return (
     <div
-      className="relative min-h-screen text-[#151A15] overflow-x-hidden bg-[#F8FAF6]"
+      className="relative min-h-screen text-[#151A15] bg-[#F8FAF6] overflow-x-clip"
       style={homepageAtmosphericStyle}
     >
       {/* ==================================================================== */}
-      {/* HERO & SECTION 2 STACKING CONTAINER                                   */}
+      {/* 1 & 2. HERO STICKY STACK (3D TILT-IN & STACKING OVER SCROLL)         */}
       {/* ==================================================================== */}
-      <div className="relative w-full">
-        {/* ==================================================================== */}
-        {/* 1. HERO SECTION — CINEMATIC MATTE-BLACK GLASSMORPHISM HERO           */}
-        {/* ==================================================================== */}
-        <section className="relative lg:sticky lg:top-0 z-10 text-[#F5F5F5] pt-24 sm:pt-28 pb-14 sm:pb-18 lg:pb-20 min-h-screen lg:max-h-[960px] flex flex-col justify-center overflow-hidden">
-          {/* CINEMATIC MATTE-BLACK HERO BACKGROUND SURFACE */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 z-0 select-none overflow-hidden"
-            style={{
-              background: '#111214',
-            }}
-          >
-            {/* Straight 2D Grayscale NEET OMR Answer Sheet Background Canvas */}
-            <NeetOmrBackground />
-          </div>
-
-          {/* Hero Cards Container */}
-          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
-            <div className="grid grid-cols-1 gap-6 lg:gap-8 lg:grid-cols-2 items-stretch">
-              {/* Card 1 — Examination Preparation */}
-              <HeroPreparationCard onStartPractice={handleStartPractice} />
-
-              {/* Card 2 — Double-Sided 3D Card: Heading & Native Video Player / Journey Guide */}
-              <FlippableMeritwiseCard
-                tutorialVideo={tutorialVideoConfig}
-                onStartPractice={handleStartPractice}
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* ==================================================================== */}
-        {/* 2. STRICTLY FOUR EXAMINATION CATEGORIES (3D TILT-IN & STACKING PANEL) */}
-        {/* ==================================================================== */}
-        <StackedSectionTwo
-          primaryExams={primaryExams}
-          onStartPractice={handleStartPractice}
-        />
-      </div>
+      <HeroStickyStack
+        tutorialVideoConfig={tutorialVideoConfig ?? null}
+        primaryExams={primaryExams}
+        onStartPractice={handleStartPractice}
+      />
 
       {/* ==================================================================== */}
       {/* 3. HOW IT WORKS (FOUR SIMPLE STEPS) — 3D MATTE SAGE GLASS SLAB       */}
