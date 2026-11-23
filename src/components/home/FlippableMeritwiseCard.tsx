@@ -269,11 +269,11 @@ export function FlippableMeritwiseCard({
         <div className="pointer-events-none absolute -top-12 -left-12 h-32 w-32 rounded-full bg-white/[0.04] blur-2xl z-0" />
         <div className="pointer-events-none absolute -bottom-12 -right-12 h-32 w-32 rounded-full bg-black/50 blur-2xl z-0" />
 
-        {/* Center Typography: Luxury Editorial Serif with Golden Accent Underline on "Works." */}
+        {/* Center Typography: Benton Sans Typography with Golden Accent Underline on "Works." */}
         <h3
-          className="font-editorial-luxury relative z-20 text-xl sm:text-2xl md:text-[26px] lg:text-[28px] font-normal leading-tight text-[#F5F5F5] text-center px-4 select-none tracking-[0.01em]"
+          className="relative z-20 text-xl sm:text-2xl md:text-[25px] lg:text-[27px] font-semibold leading-tight text-[#F5F5F5] text-center px-4 select-none tracking-[-0.015em]"
           style={{
-            fontFamily: "'Runiga', 'Bodoni Moda', 'Italiana', 'Cormorant Garamond', 'DM Serif Display', Georgia, serif",
+            fontFamily: "'Benton Sans', 'Benton', sans-serif",
           }}
         >
           See How It All{' '}

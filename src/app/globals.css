@@ -10,10 +10,56 @@
   font-display: swap;
 }
 
+/* Benton Sans font family declarations (loads when licensed font files are placed in /fonts) */
+@font-face {
+  font-family: 'Benton Sans';
+  src: url('/fonts/BentonSans-Medium.woff2') format('woff2'),
+       url('/fonts/BentonSans-Medium.woff') format('woff'),
+       url('/fonts/BentonSans-Medium.otf') format('opentype'),
+       url('/fonts/BentonSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Benton Sans';
+  src: url('/fonts/BentonSans-SemiBold.woff2') format('woff2'),
+       url('/fonts/BentonSans-SemiBold.woff') format('woff'),
+       url('/fonts/BentonSans-SemiBold.otf') format('opentype'),
+       url('/fonts/BentonSans-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Benton Sans';
+  src: url('/fonts/BentonSans-Bold.woff2') format('woff2'),
+       url('/fonts/BentonSans-Bold.woff') format('woff'),
+       url('/fonts/BentonSans-Bold.otf') format('opentype'),
+       url('/fonts/BentonSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Benton';
+  src: url('/fonts/Benton-Medium.woff2') format('woff2'),
+       url('/fonts/Benton-Medium.woff') format('woff'),
+       url('/fonts/Benton-Medium.otf') format('opentype'),
+       url('/fonts/Benton-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-serif: "Newsreader", Georgia, Cambria, "Times New Roman", Times, serif;
   --font-heading: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-benton: "Benton Sans", "Benton", sans-serif;
   --font-editorial-luxury: "Runiga", "Bodoni Moda", "Italiana", "Cormorant Garamond", "DM Serif Display", Georgia, serif;
 
   /* MERITWISE Design Tokens */
