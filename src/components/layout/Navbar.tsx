@@ -3,12 +3,25 @@
 import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export function Navbar() {
   const router = useRouter();
+  const pathname = usePathname();
+
+  // Do not render floating marketing header in student portal/dashboard, admin portal, or active exam sessions
+  if (
+    pathname &&
+    (pathname.startsWith('/dashboard') ||
+      pathname.startsWith('/admin') ||
+      pathname.startsWith('/attempt') ||
+      pathname.startsWith('/exam') ||
+      pathname.startsWith('/review'))
+  ) {
+    return null;
+  }
   const [examsDropdownOpen, setExamsDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);

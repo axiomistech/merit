@@ -1,8 +1,24 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { MeritwiseLogo } from '@/components/brand/MeritwiseLogo';
 
 export function Footer() {
+  const pathname = usePathname();
+
+  // Do not render public marketing footer in student portal/dashboard, admin portal, or active exam sessions
+  if (
+    pathname &&
+    (pathname.startsWith('/dashboard') ||
+      pathname.startsWith('/admin') ||
+      pathname.startsWith('/attempt') ||
+      pathname.startsWith('/exam') ||
+      pathname.startsWith('/review'))
+  ) {
+    return null;
+  }
   return (
     <footer
       className="relative z-10 border-t border-[rgba(20,26,17,0.10)] text-[#465047]"
