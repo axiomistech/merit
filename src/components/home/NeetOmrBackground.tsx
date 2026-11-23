@@ -56,11 +56,11 @@ export function NeetOmrBackground() {
         preserveAspectRatio="xMidYMin slice"
         className="w-full h-full object-cover text-[#141A11]"
         style={{
-          opacity: 0.09,
+          opacity: 0.11,
           maskImage:
-            'radial-gradient(ellipse 75% 65% at 50% 50%, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.85) 60%, rgba(0, 0, 0, 1) 100%)',
+            'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.80) 60%, rgba(0, 0, 0, 1) 100%)',
           WebkitMaskImage:
-            'radial-gradient(ellipse 75% 65% at 50% 50%, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.85) 60%, rgba(0, 0, 0, 1) 100%)',
+            'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.80) 60%, rgba(0, 0, 0, 1) 100%)',
         }}
       >
         <defs>

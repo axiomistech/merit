@@ -29,7 +29,7 @@ export function HeroPreparationCard({ onStartPractice, className }: HeroPreparat
       {/* 3D MATTE FORGED SAGE BENTO CARD                                       */}
       {/* ==================================================================== */}
       <div
-        className="relative h-full flex flex-col justify-between rounded-[36px] p-7 sm:p-9 lg:p-10 transition-all overflow-hidden select-none"
+        className="relative h-full flex flex-col justify-between rounded-[36px] p-6 sm:p-7 lg:p-8 transition-all overflow-hidden select-none"
         style={{
           background:
             'linear-gradient(155deg, rgba(166, 186, 148, 0.95) 0%, #9CAF88 50%, rgba(142, 162, 122, 0.95) 100%)',
@@ -61,16 +61,16 @@ export function HeroPreparationCard({ onStartPractice, className }: HeroPreparat
         />
 
         {/* ================================================================ */}
-        {/* LAYERED 3D CONTENT HIERARCHY                                      */}
+        {/* 1. TOP & CORE CONTENT HIERARCHY                                   */}
         {/* ================================================================ */}
         <div
-          className="space-y-6 relative z-20"
+          className="space-y-4 sm:space-y-5 relative z-20"
           style={{ transformStyle: 'preserve-3d' }}
         >
           {/* Master Headline (translateZ: 14px) */}
           <h1
             style={{ transform: 'translateZ(14px)' }}
-            className="text-3xl sm:text-4xl lg:text-[42px] xl:text-[45px] font-extrabold tracking-[-0.035em] text-[#141A11] leading-[1.12]"
+            className="text-2xl sm:text-3xl lg:text-[38px] xl:text-[40px] font-extrabold tracking-[-0.035em] text-[#141A11] leading-[1.12]"
           >
             Your preparation deserves more than guesswork.
           </h1>
@@ -78,7 +78,7 @@ export function HeroPreparationCard({ onStartPractice, className }: HeroPreparat
           {/* Value Proposition Description (translateZ: 10px) */}
           <p
             style={{ transform: 'translateZ(10px)' }}
-            className="text-sm sm:text-base text-[#465047] font-medium leading-relaxed max-w-xl"
+            className="text-xs sm:text-sm text-[#465047] font-medium leading-relaxed max-w-xl"
           >
             Practice curated examination papers, attempt timed tests, evaluate your performance, and understand where you stand.
           </p>
@@ -86,13 +86,13 @@ export function HeroPreparationCard({ onStartPractice, className }: HeroPreparat
           {/* Action Buttons (translateZ: 16px) */}
           <div
             style={{ transform: 'translateZ(16px)' }}
-            className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4"
+            className="pt-1 flex flex-wrap items-center gap-3 sm:gap-3.5"
           >
             {/* Primary Action Button: Solid Dark Pill */}
             <button
               type="button"
               onClick={onStartPractice}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#141A11] text-white px-7 sm:px-8 h-12 text-xs sm:text-sm font-extrabold uppercase tracking-wider shadow-md hover:bg-[#232923] transition-all duration-200 hover:scale-[1.01] active:scale-[0.99]"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#141A11] text-white px-6 sm:px-7 h-11 sm:h-11.5 text-xs sm:text-[13px] font-extrabold uppercase tracking-wider shadow-md hover:bg-[#232923] transition-all duration-200 hover:scale-[1.01] active:scale-[0.99]"
             >
               <span>Start Practice</span>
               <ArrowUpRight className="h-4 w-4" />
@@ -101,7 +101,7 @@ export function HeroPreparationCard({ onStartPractice, className }: HeroPreparat
             {/* Secondary Button: Restrained Translucent Sage Pill */}
             <a
               href="#examinations"
-              className="inline-flex items-center justify-center gap-1.5 rounded-full border border-[rgba(20,26,17,0.18)] bg-[rgba(20,26,17,0.07)] px-6 sm:px-7 h-12 text-xs sm:text-sm font-bold text-[#141A11] transition-all duration-200 hover:bg-[rgba(20,26,17,0.12)] hover:border-[rgba(20,26,17,0.28)] hover:scale-[1.01] active:scale-[0.99]"
+              className="inline-flex items-center justify-center gap-1.5 rounded-full border border-[rgba(20,26,17,0.18)] bg-[rgba(20,26,17,0.07)] px-5 sm:px-6 h-11 sm:h-11.5 text-xs sm:text-[13px] font-bold text-[#141A11] transition-all duration-200 hover:bg-[rgba(20,26,17,0.12)] hover:border-[rgba(20,26,17,0.28)] hover:scale-[1.01] active:scale-[0.99]"
             >
               <span>Explore Exams</span>
               <ArrowUpRight className="h-4 w-4 text-[#141A11]" />
@@ -109,28 +109,68 @@ export function HeroPreparationCard({ onStartPractice, className }: HeroPreparat
           </div>
         </div>
 
-        {/* Focus Examinations Track (translateZ: 10px) */}
+        {/* ================================================================ */}
+        {/* 2. MIDDLE: Focus Examinations Track                               */}
+        {/* ================================================================ */}
         <div
           style={{
             transform: 'translateZ(10px)',
             transformStyle: 'preserve-3d',
           }}
-          className="pt-7 sm:pt-8 border-t border-[rgba(20,26,17,0.15)] relative z-20 mt-6 sm:mt-8"
+          className="pt-4 sm:pt-5 border-t border-[rgba(20,26,17,0.14)] relative z-20 mt-4 sm:mt-5"
         >
-          <div className="text-[11px] font-bold uppercase tracking-wider text-[#465047] mb-3">
+          <div className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#465047] mb-2 sm:mb-2.5">
             Focus Examinations
           </div>
-          <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             {focusExams.map((exam) => (
               <Link
                 key={exam.name}
                 href={exam.href}
-                className="group flex items-center gap-1.5 rounded-full border border-[rgba(20,26,17,0.22)] bg-[rgba(20,26,17,0.06)] px-4 py-1.5 text-xs font-bold text-[#141A11] transition-all duration-200 hover:bg-[rgba(20,26,17,0.12)] hover:border-[rgba(20,26,17,0.34)] hover:scale-[1.02] active:scale-[0.98]"
+                className="group flex items-center gap-1.5 rounded-full border border-[rgba(20,26,17,0.22)] bg-[rgba(20,26,17,0.06)] px-3.5 py-1 text-xs font-bold text-[#141A11] transition-all duration-200 hover:bg-[rgba(20,26,17,0.12)] hover:border-[rgba(20,26,17,0.34)] hover:scale-[1.02] active:scale-[0.98]"
               >
-                <span className="font-sans uppercase tracking-wider">{exam.name}</span>
+                <span className="font-sans uppercase tracking-wider text-[11px]">{exam.name}</span>
                 <ArrowUpRight className="h-3 w-3 text-[#141A11]/70 group-hover:text-[#141A11] transition-colors" />
               </Link>
             ))}
+          </div>
+        </div>
+
+        {/* ================================================================ */}
+        {/* 3. BOTTOM: Compact Three-Column Feature Strip                    */}
+        {/* ================================================================ */}
+        <div
+          style={{
+            transform: 'translateZ(10px)',
+            transformStyle: 'preserve-3d',
+          }}
+          className="pt-4 sm:pt-4.5 border-t border-[rgba(20,26,17,0.14)] relative z-20 mt-3 sm:mt-4"
+        >
+          <div className="grid grid-cols-3 gap-2 sm:gap-4">
+            <div>
+              <span className="block font-mono text-[9px] sm:text-[10px] uppercase tracking-wider text-[#465047]/80 mb-0.5">
+                01 — Practice
+              </span>
+              <span className="block text-xs sm:text-[12.5px] font-bold text-[#141A11] leading-snug">
+                Curated Exam Papers
+              </span>
+            </div>
+            <div>
+              <span className="block font-mono text-[9px] sm:text-[10px] uppercase tracking-wider text-[#465047]/80 mb-0.5">
+                02 — Simulate
+              </span>
+              <span className="block text-xs sm:text-[12.5px] font-bold text-[#141A11] leading-snug">
+                OMR &amp; Timed Tests
+              </span>
+            </div>
+            <div>
+              <span className="block font-mono text-[9px] sm:text-[10px] uppercase tracking-wider text-[#465047]/80 mb-0.5">
+                03 — Improve
+              </span>
+              <span className="block text-xs sm:text-[12.5px] font-bold text-[#141A11] leading-snug">
+                Performance Insights
+              </span>
+            </div>
           </div>
         </div>
       </div>

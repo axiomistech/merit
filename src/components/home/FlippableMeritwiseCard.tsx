@@ -202,7 +202,7 @@ export function FlippableMeritwiseCard({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className={cn(
-        'relative w-full h-full min-h-[480px] sm:min-h-[520px] select-none rounded-[36px] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40',
+        'relative w-full h-full min-h-[460px] sm:min-h-[480px] select-none rounded-[36px] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40',
         className
       )}
       style={{ perspective: '1400px' }}
@@ -236,7 +236,7 @@ export function FlippableMeritwiseCard({
             role="region"
             aria-label="See How It All Works. Platform walkthrough video."
             className={cn(
-              'relative h-full w-full rounded-[36px] p-5 sm:p-6 lg:p-7 flex flex-col justify-between overflow-hidden transition-all select-none',
+              'relative h-full w-full rounded-[36px] p-6 sm:p-7 lg:p-8 flex flex-col justify-between overflow-hidden transition-all select-none',
               isFlipped && 'pointer-events-none'
             )}
             style={{
@@ -266,7 +266,7 @@ export function FlippableMeritwiseCard({
             {/* 1. TOP HEADER: "See How It All Works." Typography & Journey Toggle Pill */}
             <div
               style={{ transform: 'translateZ(14px)' }}
-              className="relative z-20 flex items-center justify-between gap-3 px-1 pt-1 pb-3 sm:pb-4 border-b border-[rgba(20,26,17,0.12)]"
+              className="relative z-20 flex items-center justify-between gap-3 px-1 pt-0.5 pb-2.5 sm:pb-3 border-b border-[rgba(20,26,17,0.14)]"
             >
               <h3
                 className="text-xl sm:text-2xl lg:text-[25px] font-bold tracking-[-0.02em] text-[#141A11]"
@@ -280,10 +280,10 @@ export function FlippableMeritwiseCard({
               <button
                 type="button"
                 onClick={handleCardFlip}
-                className="group flex items-center gap-1.5 rounded-full border border-[rgba(20,26,17,0.22)] bg-[rgba(20,26,17,0.06)] px-3.5 py-1.5 text-xs font-bold text-[#141A11] transition-all duration-200 hover:bg-[rgba(20,26,17,0.12)] hover:border-[rgba(20,26,17,0.34)] active:scale-95"
+                className="group flex items-center gap-1.5 rounded-full border border-[rgba(20,26,17,0.22)] bg-[rgba(20,26,17,0.06)] px-3 py-1 text-xs font-bold text-[#141A11] transition-all duration-200 hover:bg-[rgba(20,26,17,0.12)] hover:border-[rgba(20,26,17,0.34)] active:scale-95"
                 aria-label="View Student Journey Guide"
               >
-                <span className="uppercase tracking-wider text-[11px]">Guide</span>
+                <span className="uppercase tracking-wider text-[10px] sm:text-[11px]">Guide</span>
                 <span className="text-xs text-[#141A11]/70 group-hover:text-[#141A11] transition-colors">↗</span>
               </button>
             </div>
@@ -291,7 +291,7 @@ export function FlippableMeritwiseCard({
             {/* 2. CENTER: Clean Embedded Video Player in Concentric Frame (rounded-[16px]) */}
             <div
               style={{ transform: 'translateZ(18px)' }}
-              className="relative z-20 w-full my-auto py-2 sm:py-3 cursor-default"
+              className="relative z-20 w-full my-auto py-1 sm:py-2 cursor-default"
               onClick={(e) => e.stopPropagation()}
               onPointerDown={(e) => e.stopPropagation()}
               onMouseEnter={() => setIsVideoInteracting(true)}
@@ -308,16 +308,33 @@ export function FlippableMeritwiseCard({
               </div>
             </div>
 
-            {/* 3. BOTTOM CAPTION / STATUS BAR */}
+            {/* 3. BOTTOM: Compact Three-Step Walkthrough Process Strip */}
             <div
               style={{ transform: 'translateZ(10px)' }}
-              className="relative z-20 flex items-center justify-between text-[11px] font-semibold text-[#465047] px-1 pt-2 border-t border-[rgba(20,26,17,0.12)]"
+              className="relative z-20 pt-3 sm:pt-3.5 border-t border-[rgba(20,26,17,0.14)] mt-1.5 sm:mt-2"
             >
-              <span className="flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#141A11]" />
-                Interactive Platform Walkthrough
-              </span>
-              <span className="font-mono text-[10px] text-[#465047]/80">1080P HD</span>
+              <div className="flex items-center justify-between text-[11px] sm:text-[12.5px] font-bold text-[#141A11]">
+                <div className="flex items-center gap-1.5">
+                  <span className="font-mono text-[9px] sm:text-[10px] text-[#465047]/80 font-normal">
+                    01
+                  </span>
+                  <span>Select Exam</span>
+                </div>
+                <span className="text-[#141A11]/30 font-mono text-xs">→</span>
+                <div className="flex items-center gap-1.5">
+                  <span className="font-mono text-[9px] sm:text-[10px] text-[#465047]/80 font-normal">
+                    02
+                  </span>
+                  <span>Attempt Test</span>
+                </div>
+                <span className="text-[#141A11]/30 font-mono text-xs">→</span>
+                <div className="flex items-center gap-1.5">
+                  <span className="font-mono text-[9px] sm:text-[10px] text-[#465047]/80 font-normal">
+                    03
+                  </span>
+                  <span>Analyse Results</span>
+                </div>
+              </div>
             </div>
           </div>
 

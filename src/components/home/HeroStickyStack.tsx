@@ -91,7 +91,7 @@ export function HeroStickyStack({
         </div>
 
         {/* Hero Cards Container */}
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full pt-24 sm:pt-28 pb-14 sm:pb-18 lg:pb-20">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full pt-20 sm:pt-24 lg:pt-26 pb-6 sm:pb-8 lg:pb-10">
           <div className="grid grid-cols-1 gap-6 lg:gap-8 lg:grid-cols-2 items-stretch">
             {/* Card 1 — Examination Preparation */}
             <HeroPreparationCard onStartPractice={onStartPractice} />
@@ -101,6 +101,13 @@ export function HeroStickyStack({
               tutorialVideo={tutorialVideoConfig ?? undefined}
               onStartPractice={onStartPractice}
             />
+          </div>
+
+          {/* Subtle Minimal Scroll Cue */}
+          <div className="hidden sm:flex items-center justify-center pt-4 sm:pt-5 lg:pt-6 pointer-events-none select-none">
+            <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.22em] text-[#465047]/70">
+              Scroll to explore ↓
+            </span>
           </div>
         </div>
       </motion.section>
