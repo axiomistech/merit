@@ -195,44 +195,40 @@ export function FlippableMeritwiseCard({
 
   // Dynamic shadow displacement based on cursor tilt
   const shadowX = isHovered && !isFlipped ? (-coords.y * 1.2).toFixed(1) : '0';
-  const shadowY = isHovered && !isFlipped ? (16 + coords.x * 1.0).toFixed(1) : '10';
+  const shadowY = isHovered && !isFlipped ? (20 + coords.x * 1.0).toFixed(1) : '14';
   const dynamicShadow =
     isHovered && !isFlipped
-      ? `${shadowX}px ${shadowY}px 30px -6px rgba(0, 0, 0, 0.40), 0 6px 14px -3px rgba(0, 0, 0, 0.22)`
-      : '0 14px 28px -6px rgba(0, 0, 0, 0.35), 0 4px 10px -3px rgba(0, 0, 0, 0.20)';
+      ? `${shadowX}px ${shadowY}px 40px rgba(24, 32, 18, 0.26), 0 8px 18px rgba(24, 32, 18, 0.15)`
+      : '0 20px 40px rgba(24, 32, 18, 0.22), 0 6px 14px rgba(24, 32, 18, 0.12)';
 
   // Continuous accumulating one-way rotation for bottom card 3D flipper container
   const flipRotation = `rotateY(${rotation}deg)`;
 
-  // Reusable Matte Charcoal Glass slab styling
-  const matteCharcoalGlassStyle: React.CSSProperties = {
-    background:
-      'linear-gradient(145deg, rgba(44, 48, 54, 0.72) 0%, rgba(22, 25, 29, 0.82) 48%, rgba(14, 16, 19, 0.92) 100%)',
-    backdropFilter: 'blur(26px) saturate(110%)',
-    WebkitBackdropFilter: 'blur(26px) saturate(110%)',
-    border: '1px solid rgba(255, 255, 255, 0.22)',
+  // Reusable Matte Forged Sage metal slab styling
+  const forgedSageMetalStyle: React.CSSProperties = {
+    background: 'linear-gradient(145deg, #95A881 0%, #849771 100%)',
+    border: '1px solid rgba(255, 255, 255, 0.35)',
     boxShadow: [
-      '0 14px 28px -4px rgba(0, 0, 0, 0.38)',
-      '0 4px 10px -2px rgba(0, 0, 0, 0.22)',
-      'inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.65)',
-      'inset 1.5px 0 2px 0 rgba(255, 255, 255, 0.35)',
-      'inset 0 -2.5px 5px 0 rgba(0, 0, 0, 0.50)',
+      '0 20px 40px rgba(24, 32, 18, 0.22)',
+      '0 6px 14px rgba(24, 32, 18, 0.12)',
+      'inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.40)',
+      'inset 1.5px 0 2px 0 rgba(255, 255, 255, 0.25)',
+      'inset 0 -2px 4px 0 rgba(20, 28, 16, 0.18)',
+      'inset -1.5px 0 3px 0 rgba(20, 28, 16, 0.12)',
     ].join(', '),
     transformStyle: 'preserve-3d',
   };
 
-  // Dedicated slim top card glassmorphism style (stationary, non-flipping)
+  // Dedicated slim top card forged sage metal style (stationary, non-flipping)
   const staticHeadingCardStyle: React.CSSProperties = {
-    background:
-      'linear-gradient(145deg, rgba(46, 50, 56, 0.76) 0%, rgba(24, 27, 32, 0.84) 50%, rgba(16, 18, 22, 0.92) 100%)',
-    backdropFilter: 'blur(26px) saturate(110%)',
-    WebkitBackdropFilter: 'blur(26px) saturate(110%)',
-    border: '1px solid rgba(255, 255, 255, 0.22)',
+    background: 'linear-gradient(145deg, #95A881 0%, #849771 100%)',
+    border: '1px solid rgba(255, 255, 255, 0.35)',
     boxShadow: [
-      '0 18px 40px -10px rgba(0, 0, 0, 0.45)',
-      'inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.70)',
-      'inset 1.5px 0 2px 0 rgba(255, 255, 255, 0.35)',
-      'inset 0 -2px 4px 0 rgba(0, 0, 0, 0.50)',
+      '0 20px 40px rgba(24, 32, 18, 0.22)',
+      'inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.40)',
+      'inset 1.5px 0 2px 0 rgba(255, 255, 255, 0.25)',
+      'inset 0 -2px 4px 0 rgba(20, 28, 16, 0.18)',
+      'inset -1.5px 0 3px 0 rgba(20, 28, 16, 0.12)',
     ].join(', '),
   };
 
@@ -251,8 +247,8 @@ export function FlippableMeritwiseCard({
         <div
           className="pointer-events-none absolute inset-0 rounded-[inherit] z-10"
           style={{
-            border: '1px solid rgba(255, 255, 255, 0.16)',
-            boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.08)',
+            border: '1px solid rgba(255, 255, 255, 0.25)',
+            boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.12)',
           }}
         />
 
@@ -261,17 +257,17 @@ export function FlippableMeritwiseCard({
           className="pointer-events-none absolute inset-0 rounded-[inherit] z-0 overflow-hidden"
           style={{
             background:
-              'radial-gradient(ellipse 70% 50% at 30% 0%, rgba(255, 255, 255, 0.18) 0%, transparent 70%)',
+              'radial-gradient(ellipse 70% 50% at 30% 0%, rgba(255, 255, 255, 0.25) 0%, transparent 70%)',
           }}
         />
 
         {/* Ambient Corner Occlusion Glows */}
-        <div className="pointer-events-none absolute -top-12 -left-12 h-32 w-32 rounded-full bg-white/[0.04] blur-2xl z-0" />
-        <div className="pointer-events-none absolute -bottom-12 -right-12 h-32 w-32 rounded-full bg-black/50 blur-2xl z-0" />
+        <div className="pointer-events-none absolute -top-12 -left-12 h-32 w-32 rounded-full bg-white/[0.08] blur-2xl z-0" />
+        <div className="pointer-events-none absolute -bottom-12 -right-12 h-32 w-32 rounded-full bg-[#182012]/30 blur-2xl z-0" />
 
-        {/* Center Typography: Benton Sans Typography with Golden Accent Underline on "Works." */}
+        {/* Center Typography: Benton Sans Typography with Golden Accent Underline on "Works." - Deep Forest Charcoal (#141A11) */}
         <h3
-          className="relative z-20 text-xl sm:text-2xl md:text-[25px] lg:text-[27px] font-semibold leading-tight text-[#F5F5F5] text-center px-4 select-none tracking-[-0.015em]"
+          className="relative z-20 text-xl sm:text-2xl md:text-[25px] lg:text-[27px] font-semibold leading-tight text-[#141A11] text-center px-4 select-none tracking-[-0.015em]"
           style={{
             fontFamily: "'Benton Sans', 'Benton', sans-serif",
           }}
@@ -283,7 +279,7 @@ export function FlippableMeritwiseCard({
               viewBox="0 0 100 12"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="absolute -bottom-1.5 left-0 w-full h-[6px] text-[#C6A052] pointer-events-none"
+              className="absolute -bottom-1.5 left-0 w-full h-[6px] text-[#8C6D3B] pointer-events-none"
             >
               <path
                 d="M2 7C28 3.5 68 3.5 98 6.5C76 8.5 32 8.5 2 7Z"
@@ -349,7 +345,7 @@ export function FlippableMeritwiseCard({
                 isFlipped && 'pointer-events-none'
               )}
               style={{
-                ...matteCharcoalGlassStyle,
+                ...forgedSageMetalStyle,
                 backfaceVisibility: 'hidden',
                 WebkitBackfaceVisibility: 'hidden',
                 transform: 'rotateY(0deg)',
@@ -360,8 +356,8 @@ export function FlippableMeritwiseCard({
               <div
                 className="pointer-events-none absolute inset-0 rounded-[inherit] z-10"
                 style={{
-                  border: '1px solid rgba(255, 255, 255, 0.16)',
-                  boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.08)',
+                  border: '1px solid rgba(255, 255, 255, 0.25)',
+                  boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.12)',
                 }}
               />
 
@@ -370,7 +366,7 @@ export function FlippableMeritwiseCard({
                 className="pointer-events-none absolute inset-0 rounded-[inherit] z-0 overflow-hidden"
                 style={{
                   background:
-                    'radial-gradient(ellipse 80% 50% at 20% 0%, rgba(255, 255, 255, 0.20) 0%, transparent 75%)',
+                    'radial-gradient(ellipse 80% 50% at 20% 0%, rgba(255, 255, 255, 0.28) 0%, transparent 75%)',
                 }}
               />
 
@@ -379,15 +375,15 @@ export function FlippableMeritwiseCard({
                 <div
                   className="pointer-events-none absolute inset-0 z-30 rounded-[inherit] transition-opacity duration-500 overflow-hidden"
                   style={{
-                    opacity: isHovered && !isVideoInteracting ? 0.20 : 0.08,
-                    background: `radial-gradient(circle 480px at ${specular.x}% ${specular.y}%, rgba(255, 255, 255, 0.30) 0%, rgba(255, 255, 255, 0.08) 35%, transparent 75%)`,
+                    opacity: isHovered && !isVideoInteracting ? 0.25 : 0.10,
+                    background: `radial-gradient(circle 480px at ${specular.x}% ${specular.y}%, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.10) 35%, transparent 75%)`,
                   }}
                 />
               )}
 
               {/* Ambient Background Corner Glows */}
-              <div className="pointer-events-none absolute -top-20 -left-20 h-64 w-64 rounded-full bg-white/[0.04] blur-3xl z-0" />
-              <div className="pointer-events-none absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-black/60 blur-3xl z-0" />
+              <div className="pointer-events-none absolute -top-20 -left-20 h-64 w-64 rounded-full bg-white/[0.08] blur-3xl z-0" />
+              <div className="pointer-events-none absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-[#182012]/30 blur-3xl z-0" />
 
               {/* Center: Large responsive 16:9 native Meritwise video player */}
               <div
@@ -419,7 +415,7 @@ export function FlippableMeritwiseCard({
                 !isFlipped && 'pointer-events-none'
               )}
               style={{
-                ...matteCharcoalGlassStyle,
+                ...forgedSageMetalStyle,
                 backfaceVisibility: 'hidden',
                 WebkitBackfaceVisibility: 'hidden',
                 transform: 'rotateY(180deg)',
@@ -430,8 +426,8 @@ export function FlippableMeritwiseCard({
               <div
                 className="pointer-events-none absolute inset-0 rounded-[inherit] z-10"
                 style={{
-                  border: '1px solid rgba(255, 255, 255, 0.16)',
-                  boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.08)',
+                  border: '1px solid rgba(255, 255, 255, 0.25)',
+                  boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.12)',
                 }}
               />
 
@@ -440,23 +436,23 @@ export function FlippableMeritwiseCard({
                 className="pointer-events-none absolute inset-0 rounded-[inherit] z-0 overflow-hidden"
                 style={{
                   background:
-                    'radial-gradient(ellipse 80% 50% at 20% 0%, rgba(255, 255, 255, 0.20) 0%, transparent 75%)',
+                    'radial-gradient(ellipse 80% 50% at 20% 0%, rgba(255, 255, 255, 0.28) 0%, transparent 75%)',
                 }}
               />
 
               {/* Ambient Occlusion Corner Glows */}
-              <div className="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full bg-white/[0.04] blur-3xl z-0" />
-              <div className="pointer-events-none absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-black/60 blur-3xl z-0" />
+              <div className="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full bg-white/[0.08] blur-3xl z-0" />
+              <div className="pointer-events-none absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-[#182012]/30 blur-3xl z-0" />
 
               {/* 1. Header (translateZ: 14px) - Compact & left-aligned */}
               <div
                 style={{ transform: 'translateZ(14px)' }}
                 className="space-y-1 relative z-20"
               >
-                <h2 className="text-lg sm:text-xl lg:text-2xl font-extrabold text-[#F5F5F5] tracking-tight leading-tight">
+                <h2 className="text-lg sm:text-xl lg:text-2xl font-extrabold text-[#141A11] tracking-tight leading-tight">
                   Getting started is simple.
                 </h2>
-                <p className="text-xs sm:text-sm text-[#B8B8BC] font-medium leading-snug">
+                <p className="text-xs sm:text-sm text-[#2C3626] font-medium leading-snug">
                   Six steps from your first practice to better results.
                 </p>
               </div>
@@ -472,16 +468,16 @@ export function FlippableMeritwiseCard({
                     className="flex items-start gap-3 group"
                   >
                     {/* Small Numbered Label */}
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/10 border border-white/20 text-[10px] font-mono font-extrabold text-[#F5F5F5] shadow-xs mt-0.5">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#141A11]/10 border border-[#141A11]/20 text-[10px] font-mono font-extrabold text-[#141A11] shadow-xs mt-0.5">
                       {step.number}
                     </span>
 
                     {/* Step Title & Concise Sentence */}
                     <div className="min-w-0">
-                      <h3 className="text-xs sm:text-[13px] font-bold text-[#F5F5F5] leading-tight">
+                      <h3 className="text-xs sm:text-[13px] font-bold text-[#141A11] leading-tight">
                         {step.title}
                       </h3>
-                      <p className="text-[11px] sm:text-xs text-[#B8B8BC] leading-snug mt-0.5">
+                      <p className="text-[11px] sm:text-xs text-[#2C3626] leading-snug mt-0.5">
                         {step.description}
                       </p>
                     </div>
@@ -492,14 +488,14 @@ export function FlippableMeritwiseCard({
               {/* 3. Bottom Action Area (translateZ: 18px) */}
               <div
                 style={{ transform: 'translateZ(18px)' }}
-                className="pt-3.5 sm:pt-4.5 border-t border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 relative z-20 cursor-default"
+                className="pt-3.5 sm:pt-4.5 border-t border-[rgba(20,26,17,0.14)] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 relative z-20 cursor-default"
                 onClick={(e) => e.stopPropagation()}
               >
                 <div>
-                  <h4 className="text-xs sm:text-sm font-bold text-[#F5F5F5] leading-tight">
+                  <h4 className="text-xs sm:text-sm font-bold text-[#141A11] leading-tight">
                     Ready to begin?
                   </h4>
-                  <p className="text-[11px] sm:text-xs text-[#B8B8BC] font-medium leading-snug mt-0.5">
+                  <p className="text-[11px] sm:text-xs text-[#2C3626] font-medium leading-snug mt-0.5">
                     Your first paper is just a few clicks away.
                   </p>
                 </div>
@@ -507,7 +503,7 @@ export function FlippableMeritwiseCard({
                 <button
                   type="button"
                   onClick={handleDefaultStartPractice}
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-white text-black px-6 sm:px-7 py-2.5 sm:py-3 text-xs font-extrabold uppercase tracking-wider shadow-lg hover:bg-neutral-100 transition-all hover:scale-[1.02] active:scale-[0.98] w-full sm:w-auto shrink-0"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#141A11] text-[#F4F6F0] px-6 sm:px-7 py-2.5 sm:py-3 text-xs font-extrabold uppercase tracking-wider shadow-lg hover:bg-[#20281C] transition-all hover:scale-[1.02] active:scale-[0.98] w-full sm:w-auto shrink-0"
                 >
                   <span>Start Practice</span>
                   <span className="font-mono text-xs">↗</span>

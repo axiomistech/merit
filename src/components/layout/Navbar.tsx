@@ -105,20 +105,19 @@ export function Navbar() {
 
   return (
     <header className="fixed top-4 sm:top-5 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-1.75rem)] sm:w-[calc(100%-3rem)] max-w-5xl transition-all">
-      {/* Floating Glass Pill Capsule */}
+      {/* Floating Matte Forged Sage Capsule */}
       <div
         className="relative flex h-[66px] sm:h-[72px] items-center justify-between px-5 sm:px-7 rounded-full transition-all"
         style={{
-          background:
-            'linear-gradient(180deg, rgba(38, 42, 48, 0.78) 0%, rgba(20, 23, 27, 0.88) 100%)',
-          backdropFilter: 'blur(26px) saturate(115%)',
-          WebkitBackdropFilter: 'blur(26px) saturate(115%)',
-          border: '1px solid rgba(255, 255, 255, 0.20)',
+          background: 'linear-gradient(145deg, #95A881 0%, #849771 100%)',
+          border: '1px solid rgba(255, 255, 255, 0.35)',
           boxShadow: [
-            '0 24px 50px -10px rgba(0, 0, 0, 0.75)',
-            '0 8px 22px -4px rgba(0, 0, 0, 0.50)',
-            'inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.70)',
-            'inset 0 -1.5px 3px 0 rgba(0, 0, 0, 0.45)',
+            '0 20px 40px rgba(24, 32, 18, 0.22)',
+            '0 6px 14px rgba(24, 32, 18, 0.12)',
+            'inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.40)',
+            'inset 1.5px 0 2px 0 rgba(255, 255, 255, 0.25)',
+            'inset 0 -2px 4px 0 rgba(20, 28, 16, 0.18)',
+            'inset -1.5px 0 3px 0 rgba(20, 28, 16, 0.12)',
           ].join(', '),
         }}
       >
@@ -127,11 +126,11 @@ export function Navbar() {
           className="pointer-events-none absolute inset-0 rounded-full"
           style={{
             background:
-              'radial-gradient(ellipse 65% 50% at 20% 0%, rgba(255, 255, 255, 0.45) 0%, transparent 60%)',
+              'radial-gradient(ellipse 65% 50% at 20% 0%, rgba(255, 255, 255, 0.35) 0%, transparent 60%)',
           }}
         />
 
-        {/* 1. Left: Brand Identity (Gold Icon + White Wordmark + Gold Dot) */}
+        {/* 1. Left: Brand Identity (Gold Icon + Deep Forest Charcoal Wordmark + Gold Dot) */}
         <div className="flex items-center gap-4 sm:gap-6 relative z-10">
           <Link
             href="/"
@@ -147,16 +146,16 @@ export function Navbar() {
               className="h-[20px] sm:h-[22px] w-auto object-contain shrink-0"
             />
             <div className="flex items-center gap-2">
-              <span className="font-sans font-black text-xs sm:text-sm tracking-[0.14em] text-white uppercase">
+              <span className="font-sans font-black text-xs sm:text-sm tracking-[0.14em] text-[#141A11] uppercase">
                 MERITWISE
               </span>
-              <span className="h-1.5 w-1.5 rounded-full bg-[#C6A052] shrink-0" />
+              <span className="h-1.5 w-1.5 rounded-full bg-[#8C6D3B] shrink-0" />
             </div>
           </Link>
         </div>
 
         {/* Center / Left Divider */}
-        <div className="hidden md:block h-6 w-px bg-white/15" />
+        <div className="hidden md:block h-6 w-px bg-[#141A11]/15" />
 
         {/* 2. Center: Primary Navigation */}
         <nav className="hidden md:flex md:items-center md:gap-7 relative z-10" aria-label="Primary Navigation">
@@ -173,7 +172,7 @@ export function Navbar() {
               aria-expanded={examsDropdownOpen}
               className={cn(
                 'flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider transition-colors py-2',
-                examsDropdownOpen ? 'text-white' : 'text-[#B8B8BC] hover:text-white'
+                examsDropdownOpen ? 'text-[#141A11]' : 'text-[#2C3626] hover:text-[#141A11]'
               )}
             >
               <span>Exams</span>
@@ -185,16 +184,15 @@ export function Navbar() {
             {examsDropdownOpen && (
               <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-80 z-50 animate-in fade-in zoom-in-95 duration-150">
                 <div
-                  className="rounded-2xl p-2 text-white shadow-2xl"
+                  className="rounded-2xl p-2 text-[#141A11] shadow-2xl"
                   style={{
-                    background: 'rgba(22, 25, 29, 0.94)',
-                    backdropFilter: 'blur(24px)',
-                    WebkitBackdropFilter: 'blur(24px)',
-                    border: '1px solid rgba(255, 255, 255, 0.18)',
-                    boxShadow: '0 20px 45px -8px rgba(0, 0, 0, 0.85), inset 0 1px 1px rgba(255, 255, 255, 0.3)',
+                    background: 'linear-gradient(145deg, #95A881 0%, #849771 100%)',
+                    border: '1px solid rgba(255, 255, 255, 0.35)',
+                    boxShadow:
+                      '0 20px 45px -8px rgba(24, 32, 18, 0.35), inset 0 1.5px 2px rgba(255, 255, 255, 0.40)',
                   }}
                 >
-                  <div className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#A1A1AA] border-b border-white/10 mb-1">
+                  <div className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#2C3626] border-b border-[rgba(20,26,17,0.14)] mb-1">
                     Primary Curricula
                   </div>
                   <div className="space-y-0.5">
@@ -203,18 +201,18 @@ export function Navbar() {
                         key={exam.slug}
                         href={`/${exam.slug}`}
                         onClick={closeDropdown}
-                        className="group flex flex-col rounded-xl p-2.5 transition-colors hover:bg-white/10"
+                        className="group flex flex-col rounded-xl p-2.5 transition-colors hover:bg-[rgba(20,26,17,0.08)]"
                       >
                         <div className="flex items-center justify-between">
-                          <span className="font-bold text-xs text-white group-hover:text-[#C6A052] transition-colors">
+                          <span className="font-bold text-xs text-[#141A11] group-hover:text-[#8C6D3B] transition-colors">
                             {exam.name}
                           </span>
-                          <span className="text-[10px] text-white/50 font-mono">↗</span>
+                          <span className="text-[10px] text-[#2C3626] font-mono">↗</span>
                         </div>
-                        <span className="text-[11px] font-medium text-[#B8B8BC] line-clamp-1">
+                        <span className="text-[11px] font-medium text-[#2C3626] line-clamp-1">
                           {exam.fullName}
                         </span>
-                        <span className="text-[10px] text-[#8E8E93] line-clamp-1 mt-0.5">
+                        <span className="text-[10px] text-[#2C3626]/80 line-clamp-1 mt-0.5">
                           {exam.detail}
                         </span>
                       </Link>
@@ -228,20 +226,20 @@ export function Navbar() {
           {/* How It Works Link */}
           <Link
             href="/how-it-works"
-            className="text-xs font-bold uppercase tracking-wider text-[#B8B8BC] hover:text-white transition-colors py-2"
+            className="text-xs font-bold uppercase tracking-wider text-[#2C3626] hover:text-[#141A11] transition-colors py-2"
           >
             How it works
           </Link>
         </nav>
 
         {/* Center / Right Divider */}
-        <div className="hidden md:block h-6 w-px bg-white/15" />
+        <div className="hidden md:block h-6 w-px bg-[#141A11]/15" />
 
-        {/* 3. Right: Sign In & Solid White START PRACTICE Pill Button */}
+        {/* 3. Right: Sign In & Deep Forest Charcoal START PRACTICE Pill Button */}
         <div className="hidden md:flex md:items-center md:gap-5 relative z-10">
           <Link
             href="/login"
-            className="text-xs font-bold uppercase tracking-wider text-[#B8B8BC] hover:text-white transition-colors px-2 py-1.5"
+            className="text-xs font-bold uppercase tracking-wider text-[#2C3626] hover:text-[#141A11] transition-colors px-2 py-1.5"
           >
             Sign in
           </Link>
@@ -249,7 +247,7 @@ export function Navbar() {
           <button
             type="button"
             onClick={handleStartPractice}
-            className="rounded-full bg-white px-5 sm:px-6 py-2.5 text-xs font-extrabold uppercase tracking-wider text-black shadow-md transition-all hover:bg-neutral-100 hover:scale-[1.02] active:scale-[0.98]"
+            className="rounded-full bg-[#141A11] px-5 sm:px-6 py-2.5 text-xs font-extrabold uppercase tracking-wider text-[#F4F6F0] shadow-md transition-all hover:bg-[#20281C] hover:scale-[1.02] active:scale-[0.98]"
           >
             Start Practice
           </button>
@@ -260,7 +258,7 @@ export function Navbar() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
-            className="rounded-full p-2 text-white hover:bg-white/10"
+            className="rounded-full p-2 text-[#141A11] hover:bg-[rgba(20,26,17,0.08)]"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -273,15 +271,13 @@ export function Navbar() {
         <div
           className="mt-2 rounded-3xl p-5 shadow-2xl md:hidden animate-in fade-in duration-150 space-y-4"
           style={{
-            background: 'rgba(20, 23, 27, 0.95)',
-            backdropFilter: 'blur(24px)',
-            WebkitBackdropFilter: 'blur(24px)',
-            border: '1px solid rgba(255, 255, 255, 0.18)',
-            boxShadow: '0 20px 45px -8px rgba(0, 0, 0, 0.85)',
+            background: 'linear-gradient(145deg, #95A881 0%, #849771 100%)',
+            border: '1px solid rgba(255, 255, 255, 0.35)',
+            boxShadow: '0 20px 45px -8px rgba(24, 32, 18, 0.35)',
           }}
         >
           <div className="space-y-1">
-            <div className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#A1A1AA]">
+            <div className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#2C3626]">
               Examinations
             </div>
             {examCategories.map((exam) => (
@@ -289,19 +285,19 @@ export function Navbar() {
                 key={exam.slug}
                 href={`/${exam.slug}`}
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between rounded-xl px-3 py-2 text-xs font-semibold text-white hover:bg-white/10"
+                className="flex items-center justify-between rounded-xl px-3 py-2 text-xs font-semibold text-[#141A11] hover:bg-[rgba(20,26,17,0.08)]"
               >
                 <span>{exam.name} — {exam.fullName}</span>
-                <span className="text-xs text-white/50">↗</span>
+                <span className="text-xs text-[#2C3626]">↗</span>
               </Link>
             ))}
           </div>
 
-          <div className="border-t border-white/10 pt-3 space-y-3">
+          <div className="border-t border-[rgba(20,26,17,0.14)] pt-3 space-y-3">
             <Link
               href="/how-it-works"
               onClick={() => setMobileMenuOpen(false)}
-              className="block rounded-xl px-3 py-2 text-xs font-semibold text-[#B8B8BC] hover:text-white"
+              className="block rounded-xl px-3 py-2 text-xs font-semibold text-[#2C3626] hover:text-[#141A11]"
             >
               How it works
             </Link>
@@ -309,7 +305,7 @@ export function Navbar() {
             <Link
               href="/login"
               onClick={() => setMobileMenuOpen(false)}
-              className="block rounded-xl px-3 py-2 text-xs font-semibold text-[#B8B8BC] hover:text-white"
+              className="block rounded-xl px-3 py-2 text-xs font-semibold text-[#2C3626] hover:text-[#141A11]"
             >
               Sign in
             </Link>
@@ -320,7 +316,7 @@ export function Navbar() {
                 setMobileMenuOpen(false);
                 handleStartPractice(e);
               }}
-              className="w-full rounded-full bg-white py-3 text-center text-xs font-extrabold uppercase tracking-wider text-black shadow-md"
+              className="w-full rounded-full bg-[#141A11] py-3 text-center text-xs font-extrabold uppercase tracking-wider text-[#F4F6F0] shadow-md hover:bg-[#20281C]"
             >
               Start Practice
             </button>

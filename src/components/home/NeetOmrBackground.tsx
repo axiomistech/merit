@@ -45,19 +45,18 @@ export function NeetOmrBackground() {
       className="pointer-events-none absolute inset-0 select-none overflow-hidden z-0"
       style={{
         maskImage:
-          'linear-gradient(to bottom, black 0%, black 42%, rgba(0, 0, 0, 0.55) 54%, rgba(0, 0, 0, 0.12) 65%, transparent 74%)',
+          'linear-gradient(to bottom, black 0%, black 70%, rgba(0, 0, 0, 0.4) 86%, transparent 100%)',
         WebkitMaskImage:
-          'linear-gradient(to bottom, black 0%, black 42%, rgba(0, 0, 0, 0.55) 54%, rgba(0, 0, 0, 0.12) 65%, transparent 74%)',
+          'linear-gradient(to bottom, black 0%, black 70%, rgba(0, 0, 0, 0.4) 86%, transparent 100%)',
       }}
     >
-      {/* 1. Straight 2D Vector OMR Sheet */}
+      {/* 1. Straight 2D Vector OMR Sheet etched in Deep Olive-Charcoal (#2A3324) */}
       <svg
         viewBox="0 0 1440 860"
         preserveAspectRatio="xMidYMin slice"
-        className="w-full h-full object-cover text-white"
+        className="w-full h-full object-cover text-[#2A3324]"
         style={{
-          opacity: 0.22,
-          filter: 'grayscale(100%)',
+          opacity: 0.12,
         }}
       >
         <defs>

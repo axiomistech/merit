@@ -54,16 +54,25 @@ export function HeroStickyStack({
           transformOrigin: 'center center',
           willChange: 'transform, filter',
         }}
-        className="sticky top-0 z-[1] w-full min-h-screen text-[#F5F5F5] flex flex-col justify-center overflow-hidden"
+        className="sticky top-0 z-[1] w-full min-h-screen text-[#141A11] flex flex-col justify-center overflow-hidden"
       >
-        {/* Solid Matte-Black Background with Vector NEET OMR Marks */}
+        {/* Matte Forged Sage (#9CAF88) Background with Vector NEET OMR Marks & Micro-Grain */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 z-0 select-none overflow-hidden"
           style={{
-            background: '#111214',
+            background:
+              'radial-gradient(ellipse 120% 90% at 50% 30%, #9CAF88 0%, #95A981 60%, #8EA27A 100%)',
           }}
         >
+          {/* Subtle micro-grain texture overlay */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 opacity-[0.035] mix-blend-overlay z-[1]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+            }}
+          />
           <NeetOmrBackground />
         </div>
 
@@ -106,11 +115,11 @@ export function HeroStickyStack({
           }}
           className="relative w-full bg-[#F8FAF6] rounded-t-[32px] pt-16 sm:pt-20 pb-20 sm:pb-24 border-0"
         >
-          {/* Top-rim upward shadow casting over the dark hero during entrance; fades away completely when settled and NEVER bleeds below Section 2 */}
+          {/* Top-rim upward shadow casting over the hero during entrance; fades away completely when settled and NEVER bleeds below Section 2 */}
           <motion.div
             aria-hidden="true"
             style={{ opacity: upwardShadowOpacity }}
-            className="pointer-events-none absolute -top-8 inset-x-0 h-16 rounded-t-[32px] shadow-[0_-24px_60px_rgba(0,0,0,0.45)] z-0"
+            className="pointer-events-none absolute -top-8 inset-x-0 h-16 rounded-t-[32px] shadow-[0_-24px_60px_rgba(20,28,16,0.28)] z-0"
           />
 
           <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
