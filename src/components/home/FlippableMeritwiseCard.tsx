@@ -28,7 +28,7 @@ const STUDENT_JOURNEY_STEPS = [
   {
     number: '02',
     title: 'Choose Your Exam',
-    description: 'NEET, JEE, UPSC or GATE.',
+    description: 'NEET, JEE Main, JEE Advanced, or GATE.',
   },
   {
     number: '03',

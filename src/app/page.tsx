@@ -146,7 +146,7 @@ export default function HomePage() {
       {/* ==================================================================== */}
       <section id="how-it-works" className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div
-          className="relative rounded-[28px] sm:rounded-[32px] p-8 sm:p-12 lg:p-16 space-y-12 overflow-hidden select-none transition-all"
+          className="relative rounded-[28px] sm:rounded-[32px] px-6 sm:px-10 lg:px-12 pt-8 sm:pt-10 lg:pt-12 pb-6 sm:pb-7 lg:pb-8 flex flex-col gap-8 sm:gap-10 overflow-hidden select-none transition-all"
           style={{
             // Layered Translucent Sage Gradients with subtle frost daylight highlight
             background:
@@ -161,7 +161,7 @@ export default function HomePage() {
         >
           {/* Architectural 3-5px Thick Glass Edge Simulation Rim with faint glacial reflection */}
           <div
-            className="pointer-events-none absolute inset-0 rounded-[inherit] z-10"
+            className="pointer-events-none absolute inset-0 !m-0 rounded-[inherit] z-10"
             style={{
               border: '1px solid rgba(234, 241, 245, 0.30)',
               boxShadow: 'inset 0 0 0 1px rgba(201, 217, 226, 0.15)',
@@ -170,7 +170,7 @@ export default function HomePage() {
 
           {/* Soft Cloudy Internal Diffusion Mist with gentle glacier undertone */}
           <div
-            className="pointer-events-none absolute inset-0 rounded-[inherit] z-0 overflow-hidden"
+            className="pointer-events-none absolute inset-0 !m-0 rounded-[inherit] z-0 overflow-hidden"
             style={{
               background:
                 'radial-gradient(ellipse 90% 60% at 50% 0%, rgba(245, 249, 252, 0.32) 0%, rgba(220, 231, 237, 0.12) 30%, rgba(156, 175, 136, 0.12) 65%, transparent 100%)',
@@ -204,7 +204,7 @@ export default function HomePage() {
                 step: '02',
                 title: 'Choose your examination',
                 description:
-                  'Select your target discipline — NEET, JEE, UPSC, or GATE. Access structured curricula and official blueprints.',
+                  'Select your target discipline — NEET, JEE Main, JEE Advanced, or GATE. Access structured curricula and official blueprints.',
               },
               {
                 step: '03',
