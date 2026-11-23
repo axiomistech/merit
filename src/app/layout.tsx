@@ -66,17 +66,17 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-screen font-sans bg-[#111214] text-[#F5F5F5] antialiased selection:bg-[#C6A052]/30 selection:text-white">
+      <body className="min-h-screen font-sans bg-[#F8FAF6] text-[#121316] antialiased selection:bg-[#8C6D3B]/20 selection:text-[#121316]">
         <Navbar />
-        <main className="min-h-screen pt-0">{children}</main>
+        <main className="min-h-screen pt-16">{children}</main>
         <Footer />
         <Toaster
           position="bottom-right"
           toastOptions={{
             style: {
-              background: '#181B1F',
-              color: '#F5F5F5',
-              border: '1px solid rgba(255, 255, 255, 0.15)',
+              background: '#FFFFFF',
+              color: '#121316',
+              border: '1px solid #E4E4DF',
               borderRadius: '16px',
               fontSize: '13px',
               fontFamily: 'var(--font-primary)',
