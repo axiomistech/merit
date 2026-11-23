@@ -7,6 +7,7 @@ import { TutorialVideoConfig } from '@/types/admin';
 import { HeroPreparationCard } from '@/components/home/HeroPreparationCard';
 import { FlippableMeritwiseCard } from '@/components/home/FlippableMeritwiseCard';
 import { ExaminationCard3D, ExaminationCardData } from '@/components/home/ExaminationCard3D';
+import { StackedSectionTwo } from '@/components/home/StackedSectionTwo';
 import { NeetOmrBackground } from '@/components/home/NeetOmrBackground';
 import { MeritwiseLogo } from '@/components/brand/MeritwiseLogo';
 
@@ -123,29 +124,12 @@ export default function HomePage() {
       </section>
 
       {/* ==================================================================== */}
-      {/* 2. STRICTLY FOUR EXAMINATION CATEGORIES (PREMIUM 3D GLASSMORPHISM)    */}
+      {/* 2. STRICTLY FOUR EXAMINATION CATEGORIES (3D TILT-IN & STACKING PANEL) */}
       {/* ==================================================================== */}
-      <section id="examinations" className="relative z-10 mx-auto max-w-7xl px-4 pt-10 sm:pt-14 pb-16 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mx-auto text-center space-y-3 mb-12">
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#121316]">
-            Focused preparation for serious candidates.
-          </h2>
-          <p className="text-sm text-[#52525B]">
-            Four core examination categories. Each built around its official format, marking rules, and duration.
-          </p>
-        </div>
-
-        {/* 4 Interactive 3D Glassmorphism Cards */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 items-stretch">
-          {primaryExams.map((exam) => (
-            <ExaminationCard3D
-              key={exam.id}
-              exam={exam}
-              onStartPractice={handleStartPractice}
-            />
-          ))}
-        </div>
-      </section>
+      <StackedSectionTwo
+        primaryExams={primaryExams}
+        onStartPractice={handleStartPractice}
+      />
 
       {/* ==================================================================== */}
       {/* 3. HOW IT WORKS (FOUR SIMPLE STEPS) — 3D MATTE SAGE GLASS SLAB       */}
