@@ -194,12 +194,12 @@ export function FlippableMeritwiseCard({
       : `rotateX(0deg) rotateY(0deg) translateY(0px)`;
 
   // Dynamic shadow displacement based on cursor tilt
-  const shadowX = isHovered && !isFlipped ? (-coords.y * 1.4).toFixed(1) : '0';
-  const shadowY = isHovered && !isFlipped ? (22 + coords.x * 1.2).toFixed(1) : '18';
+  const shadowX = isHovered && !isFlipped ? (-coords.y * 1.2).toFixed(1) : '0';
+  const shadowY = isHovered && !isFlipped ? (16 + coords.x * 1.0).toFixed(1) : '10';
   const dynamicShadow =
     isHovered && !isFlipped
-      ? `${shadowX}px ${shadowY}px 48px -10px rgba(0, 0, 0, 0.55), 0 12px 24px -8px rgba(0, 0, 0, 0.35)`
-      : '0 24px 55px -12px rgba(0, 0, 0, 0.50), 0 8px 20px -8px rgba(0, 0, 0, 0.35)';
+      ? `${shadowX}px ${shadowY}px 30px -6px rgba(0, 0, 0, 0.40), 0 6px 14px -3px rgba(0, 0, 0, 0.22)`
+      : '0 14px 28px -6px rgba(0, 0, 0, 0.35), 0 4px 10px -3px rgba(0, 0, 0, 0.20)';
 
   // Continuous accumulating one-way rotation for bottom card 3D flipper container
   const flipRotation = `rotateY(${rotation}deg)`;
@@ -212,8 +212,8 @@ export function FlippableMeritwiseCard({
     WebkitBackdropFilter: 'blur(26px) saturate(110%)',
     border: '1px solid rgba(255, 255, 255, 0.22)',
     boxShadow: [
-      '0 24px 55px rgba(0, 0, 0, 0.45)',
-      '0 8px 20px rgba(0, 0, 0, 0.30)',
+      '0 14px 28px -4px rgba(0, 0, 0, 0.38)',
+      '0 4px 10px -2px rgba(0, 0, 0, 0.22)',
       'inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.65)',
       'inset 1.5px 0 2px 0 rgba(255, 255, 255, 0.35)',
       'inset 0 -2.5px 5px 0 rgba(0, 0, 0, 0.50)',

@@ -45,9 +45,9 @@ export function NeetOmrBackground() {
       className="pointer-events-none absolute inset-0 select-none overflow-hidden z-0"
       style={{
         maskImage:
-          'linear-gradient(to bottom, black 0%, black 50%, rgba(0, 0, 0, 0.65) 68%, rgba(0, 0, 0, 0.25) 82%, transparent 94%)',
+          'linear-gradient(to bottom, black 0%, black 42%, rgba(0, 0, 0, 0.55) 54%, rgba(0, 0, 0, 0.12) 65%, transparent 74%)',
         WebkitMaskImage:
-          'linear-gradient(to bottom, black 0%, black 50%, rgba(0, 0, 0, 0.65) 68%, rgba(0, 0, 0, 0.25) 82%, transparent 94%)',
+          'linear-gradient(to bottom, black 0%, black 42%, rgba(0, 0, 0, 0.55) 54%, rgba(0, 0, 0, 0.12) 65%, transparent 74%)',
       }}
     >
       {/* 1. Straight 2D Vector OMR Sheet */}
@@ -346,12 +346,12 @@ export function NeetOmrBackground() {
         <rect x="1420" y="20" width="7" height="820" fill="url(#timing-marks)" />
       </svg>
 
-      {/* 2. Soft Edge Vignette Overlay */}
+      {/* 2. Soft Top Specular Atmosphere (No bottom darkening) */}
       <div
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[480px]"
         style={{
           background:
-            'radial-gradient(ellipse 110% 85% at 50% 30%, transparent 45%, rgba(17, 18, 20, 0.40) 75%, rgba(17, 18, 20, 0.88) 100%)',
+            'radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255, 255, 255, 0.04) 0%, transparent 80%)',
         }}
       />
 

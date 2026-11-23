@@ -77,45 +77,38 @@ export default function HomePage() {
     },
   ];
 
-  // Fully Opaque Atmospheric Canvas Style
-  // Subtle glacier-blue matte fog is blended directly into the actual rendered surface of the off-white background
+  // Clean atmospheric off-white canvas
   const homepageAtmosphericStyle: React.CSSProperties = {
     backgroundColor: '#F8FAF6',
-    backgroundImage: [
-      // 1. Upper-Right & Framing Tutorial Area: Noticeable, soft matte glacier-blue fog (Glacial Shadow #C9D9E2 & Frost Blue #DCE7ED)
-      'radial-gradient(ellipse 1150px 800px at 86% 10%, rgba(201, 217, 226, 0.72) 0%, rgba(220, 231, 237, 0.50) 32%, rgba(234, 241, 245, 0.28) 60%, transparent 84%)',
-      // 2. Middle-Left & Negative Space: Organic cool glacier mist haze
-      'radial-gradient(ellipse 1000px 720px at 6% 36%, rgba(201, 217, 226, 0.52) 0%, rgba(220, 231, 237, 0.35) 34%, rgba(234, 241, 245, 0.18) 62%, transparent 82%)',
-      // 3. Lower Sections (Lower-Right & Lower-Middle): Subtle cool haze grounding the layout
-      'radial-gradient(ellipse 1250px 880px at 82% 72%, rgba(220, 231, 237, 0.48) 0%, rgba(201, 217, 226, 0.34) 36%, rgba(234, 241, 245, 0.20) 64%, transparent 85%)',
-      // 4. Subtle Lower-Left Negative Space: Faint cool morning mist
-      'radial-gradient(ellipse 950px 680px at 12% 88%, rgba(220, 231, 237, 0.40) 0%, rgba(201, 217, 226, 0.24) 38%, transparent 80%)',
-      // 5. Central / Left Ambient Sage Transition: Harmonious bridge between sage cards and canvas
-      'radial-gradient(ellipse 850px 600px at 32% 18%, rgba(156, 175, 136, 0.18) 0%, rgba(220, 231, 237, 0.14) 48%, transparent 78%)',
-    ].join(', '),
-    backgroundRepeat: 'no-repeat',
   };
 
   return (
     <div
-      className="relative min-h-screen text-[#151A15] overflow-x-hidden"
+      className="relative min-h-screen text-[#151A15] overflow-x-hidden bg-[#F8FAF6]"
       style={homepageAtmosphericStyle}
     >
       {/* ==================================================================== */}
-      {/* 1. HERO SECTION — CINEMATIC MATTE-BLACK GLASSMORPHISM HERO           */}
+      {/* SHARED CINEMATIC HERO-TO-SECTION-2 BACKGROUND SURFACE               */}
+      {/* Continuous matte-black OMR to neutral charcoal to #F8FAF6 canvas     */}
       {/* ==================================================================== */}
-      <section
-        className="relative isolate overflow-hidden text-[#F5F5F5] pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-14 lg:pb-16"
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[700px] sm:h-[730px] lg:h-[750px] z-0 select-none overflow-hidden"
         style={{
           background:
-            'linear-gradient(to bottom, #111214 0%, #111214 55%, rgba(17, 18, 20, 0.98) 68%, rgba(17, 18, 20, 0.85) 78%, rgba(17, 18, 20, 0.52) 87%, rgba(17, 18, 20, 0.22) 93%, rgba(17, 18, 20, 0.06) 97%, transparent 100%)',
+            'linear-gradient(to bottom, #111214 0%, #111214 42%, #151619 51%, #1C1E23 60%, #292C33 68%, #40444E 75%, #646974 82%, #959AA3 87.5%, #C4C8C2 92.5%, #E3E6E0 96%, #F2F5F0 98.5%, #F8FAF6 100%)',
         }}
       >
-        {/* Straight 2D Grayscale NEET OMR Answer Sheet Background */}
+        {/* Straight 2D Grayscale NEET OMR Answer Sheet Background Canvas */}
         <NeetOmrBackground />
+      </div>
 
+      {/* ==================================================================== */}
+      {/* 1. HERO SECTION — CINEMATIC MATTE-BLACK GLASSMORPHISM HERO           */}
+      {/* ==================================================================== */}
+      <section className="relative z-10 text-[#F5F5F5] pt-24 sm:pt-28 pb-6 sm:pb-8">
         {/* Hero Cards Container */}
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-6 lg:gap-8 lg:grid-cols-2 items-stretch">
             {/* Card 1 — Examination Preparation */}
             <HeroPreparationCard onStartPractice={handleStartPractice} />
@@ -132,7 +125,7 @@ export default function HomePage() {
       {/* ==================================================================== */}
       {/* 2. STRICTLY FOUR EXAMINATION CATEGORIES (PREMIUM 3D GLASSMORPHISM)    */}
       {/* ==================================================================== */}
-      <section id="examinations" className="relative mx-auto max-w-7xl px-4 pt-8 sm:pt-10 pb-16 sm:px-6 lg:px-8">
+      <section id="examinations" className="relative z-10 mx-auto max-w-7xl px-4 pt-10 sm:pt-14 pb-16 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto text-center space-y-3 mb-12">
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#121316]">
             Focused preparation for serious candidates.

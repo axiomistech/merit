@@ -37,8 +37,8 @@ export function HeroPreparationCard({ onStartPractice, className }: HeroPreparat
           WebkitBackdropFilter: 'blur(26px) saturate(110%)',
           border: '1px solid rgba(255, 255, 255, 0.22)',
           boxShadow: [
-            '0 24px 55px rgba(0, 0, 0, 0.45)',
-            '0 8px 20px rgba(0, 0, 0, 0.30)',
+            '0 14px 28px -4px rgba(0, 0, 0, 0.38)',
+            '0 4px 10px -2px rgba(0, 0, 0, 0.22)',
             'inset 0 1.5px 2px rgba(255, 255, 255, 0.65)',
             'inset 1.5px 0 2px rgba(255, 255, 255, 0.35)',
             'inset 0 -2.5px 5px rgba(0, 0, 0, 0.50)',

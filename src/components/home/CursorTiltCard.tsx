@@ -89,11 +89,11 @@ export function CursorTiltCard({
       : `perspective(${perspective}px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
 
   // Depth-sensitive dynamic shadows displaced subtly based on cursor position
-  const shadowX = isHovered ? (-coords.y * 1.5).toFixed(1) : '0';
-  const shadowY = isHovered ? (24 + coords.x * 1.2).toFixed(1) : '18';
+  const shadowX = isHovered ? (-coords.y * 1.2).toFixed(1) : '0';
+  const shadowY = isHovered ? (16 + coords.x * 1.0).toFixed(1) : '10';
   const dynamicShadow = isInteractive
-    ? `${shadowX}px ${shadowY}px 50px -12px rgba(28, 40, 22, 0.22), 0 12px 24px -8px rgba(28, 40, 22, 0.14), 0 1px 3px 0 rgba(28, 40, 22, 0.08)`
-    : '0 20px 45px -12px rgba(28, 40, 22, 0.18), 0 8px 20px -8px rgba(28, 40, 22, 0.12)';
+    ? `${shadowX}px ${shadowY}px 28px -6px rgba(0, 0, 0, 0.28), 0 6px 14px -3px rgba(0, 0, 0, 0.16)`
+    : '0 12px 24px -6px rgba(0, 0, 0, 0.20), 0 4px 10px -3px rgba(0, 0, 0, 0.12)';
 
   return (
     <div
@@ -119,7 +119,7 @@ export function CursorTiltCard({
           className="pointer-events-none absolute inset-0 z-30 rounded-[inherit] transition-opacity duration-500 overflow-hidden"
           style={{
             opacity: isHovered ? 0.13 : 0.04,
-            background: `radial-gradient(circle 460px at ${specular.x}% ${specular.y}%, rgba(255, 255, 255, 0.42) 0%, rgba(199, 211, 189, 0.18) 40%, transparent 80%)`,
+            background: `radial-gradient(circle 460px at ${specular.x}% ${specular.y}%, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.10) 40%, transparent 80%)`,
           }}
         />
       )}
