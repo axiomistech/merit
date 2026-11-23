@@ -54,7 +54,7 @@ export function HeroStickyStack({
           transformOrigin: 'center center',
           willChange: 'transform, filter',
         }}
-        className="sticky top-0 z-[1] w-full min-h-screen text-[#141A11] flex flex-col justify-center overflow-hidden"
+        className="sticky top-0 z-[1] w-full min-h-screen text-[#151A15] flex flex-col justify-center overflow-hidden"
       >
         {/* Matte Forged Sage (#9CAF88) Background with Vector NEET OMR Marks & Micro-Grain */}
         <div
