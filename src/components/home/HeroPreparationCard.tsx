@@ -29,7 +29,7 @@ export function HeroPreparationCard({ onStartPractice, className }: HeroPreparat
       {/* 3D MATTE BLACK FROSTED GLASS SLAB                                    */}
       {/* ==================================================================== */}
       <div
-        className="relative h-full flex flex-col justify-between rounded-[30px] sm:rounded-[32px] p-7 sm:p-10 lg:p-11 transition-all overflow-hidden select-none"
+        className="relative h-full flex flex-col justify-between rounded-[24px] sm:rounded-[32px] p-5 xs:p-6 sm:p-10 lg:p-11 transition-all overflow-hidden select-none"
         style={{
           background:
             'linear-gradient(145deg, rgba(46, 50, 56, 0.72) 0%, rgba(26, 29, 34, 0.82) 48%, rgba(16, 18, 22, 0.92) 100%)',
@@ -72,13 +72,13 @@ export function HeroPreparationCard({ onStartPractice, className }: HeroPreparat
         {/* LAYERED 3D CONTENT HIERARCHY                                      */}
         {/* ================================================================ */}
         <div
-          className="space-y-6 relative z-20"
+          className="space-y-5 sm:space-y-6 relative z-20"
           style={{ transformStyle: 'preserve-3d' }}
         >
           {/* Master Headline (translateZ: 16px) */}
           <h1
             style={{ transform: 'translateZ(16px)' }}
-            className="text-3xl sm:text-4xl lg:text-[44px] xl:text-[46px] font-extrabold tracking-[-0.035em] text-[#F5F5F5] leading-[1.12]"
+            className="text-2xl xs:text-3xl sm:text-4xl lg:text-[44px] xl:text-[46px] font-extrabold tracking-[-0.035em] text-[#F5F5F5] leading-[1.14]"
           >
             Your preparation deserves more than guesswork.
           </h1>
@@ -86,7 +86,7 @@ export function HeroPreparationCard({ onStartPractice, className }: HeroPreparat
           {/* Value Proposition Description (translateZ: 10px) */}
           <p
             style={{ transform: 'translateZ(10px)' }}
-            className="text-sm sm:text-base text-[#B8B8BC] font-medium leading-relaxed max-w-xl"
+            className="text-xs xs:text-sm sm:text-base text-[#B8B8BC] font-medium leading-relaxed max-w-xl"
           >
             Practice curated examination papers, attempt timed tests, evaluate your performance, and understand where you stand.
           </p>
@@ -94,13 +94,13 @@ export function HeroPreparationCard({ onStartPractice, className }: HeroPreparat
           {/* Action Buttons (translateZ: 20px) */}
           <div
             style={{ transform: 'translateZ(20px)' }}
-            className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4"
+            className="pt-1 sm:pt-2 flex flex-wrap items-center gap-2.5 sm:gap-4"
           >
             {/* Primary Action Button: Solid White Pill with Black Text */}
             <button
               type="button"
               onClick={onStartPractice}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-white text-black px-7 sm:px-8 h-12 text-xs sm:text-sm font-extrabold uppercase tracking-wider shadow-lg hover:bg-neutral-100 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-white text-black px-6 sm:px-8 h-11 sm:h-12 text-xs sm:text-sm font-extrabold uppercase tracking-wider shadow-lg hover:bg-neutral-100 transition-all hover:scale-[1.02] active:scale-[0.98] w-full xs:w-auto"
             >
               <span>Start Practice</span>
               <span className="font-mono text-xs">↗</span>
@@ -109,7 +109,7 @@ export function HeroPreparationCard({ onStartPractice, className }: HeroPreparat
             {/* Secondary Button: Dark Translucent Glass Pill */}
             <a
               href="#examinations"
-              className="inline-flex items-center justify-center gap-1.5 rounded-full border border-white/20 bg-white/[0.05] px-6 sm:px-7 h-12 text-xs sm:text-sm font-semibold text-[#F5F5F5] shadow-xs backdrop-blur-sm hover:bg-white/[0.12] hover:border-white/35 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="inline-flex items-center justify-center gap-1.5 rounded-full border border-white/20 bg-white/[0.05] px-5 sm:px-7 h-11 sm:h-12 text-xs sm:text-sm font-semibold text-[#F5F5F5] shadow-xs backdrop-blur-sm hover:bg-white/[0.12] hover:border-white/35 transition-all hover:scale-[1.02] active:scale-[0.98] w-full xs:w-auto"
             >
               <span>Explore Exams</span>
               <ChevronRight className="h-4 w-4 text-[#B8B8BC]" />
@@ -123,20 +123,20 @@ export function HeroPreparationCard({ onStartPractice, className }: HeroPreparat
             transform: 'translateZ(12px)',
             transformStyle: 'preserve-3d',
           }}
-          className="pt-8 sm:pt-10 border-t border-white/10 relative z-20 mt-6 sm:mt-8"
+          className="pt-6 sm:pt-10 border-t border-white/10 relative z-20 mt-6 sm:mt-8"
         >
-          <div className="text-[11px] font-bold uppercase tracking-wider text-[#8E8E93] mb-3">
+          <div className="text-[10px] xs:text-[11px] font-bold uppercase tracking-wider text-[#8E8E93] mb-2.5 sm:mb-3">
             Focus Examinations
           </div>
-          <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2.5">
             {focusExams.map((exam) => (
               <Link
                 key={exam.name}
                 href={exam.href}
-                className="group flex items-center gap-1 rounded-full border border-white/15 bg-white/[0.05] px-4 py-1.5 text-xs font-bold text-[#F5F5F5] shadow-xs backdrop-blur-sm transition-all hover:border-white/40 hover:bg-white/[0.12] hover:scale-[1.02] active:scale-[0.98]"
+                className="group flex items-center gap-1 rounded-full border border-white/15 bg-white/[0.05] px-3 sm:px-4 py-1 sm:py-1.5 text-[11px] sm:text-xs font-bold text-[#F5F5F5] shadow-xs backdrop-blur-sm transition-all hover:border-white/40 hover:bg-white/[0.12] hover:scale-[1.02] active:scale-[0.98]"
               >
                 <span className="font-sans uppercase tracking-wider">{exam.name}</span>
-                <ChevronRight className="h-3.5 w-3.5 text-[#B8B8BC] transition-transform duration-150 group-hover:translate-x-0.5 group-hover:text-white" />
+                <ChevronRight className="h-3 sm:h-3.5 w-3 sm:w-3.5 text-[#B8B8BC] transition-transform duration-150 group-hover:translate-x-0.5 group-hover:text-white" />
               </Link>
             ))}
           </div>

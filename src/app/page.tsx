@@ -100,9 +100,9 @@ export default function HomePage() {
       {/* ==================================================================== */}
       {/* 3. HOW IT WORKS (FOUR SIMPLE STEPS) — 3D MATTE SAGE GLASS SLAB       */}
       {/* ==================================================================== */}
-      <section id="how-it-works" className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <section id="how-it-works" className="relative mx-auto max-w-7xl px-4 pt-4 sm:pt-8 lg:pt-14 pb-10 sm:pb-16 lg:pb-20 sm:px-6 lg:px-8">
         <div
-          className="relative rounded-[28px] sm:rounded-[32px] px-6 sm:px-10 lg:px-12 pt-8 sm:pt-10 lg:pt-12 pb-6 sm:pb-7 lg:pb-8 flex flex-col gap-8 sm:gap-10 overflow-hidden select-none transition-all"
+          className="relative rounded-[24px] sm:rounded-[32px] px-5 sm:px-10 lg:px-12 pt-7 sm:pt-10 lg:pt-12 pb-6 sm:pb-7 lg:pb-8 flex flex-col gap-6 sm:gap-10 overflow-hidden select-none transition-all"
           style={{
             // Layered Translucent Sage Gradients with subtle frost daylight highlight
             background:
@@ -138,17 +138,17 @@ export default function HomePage() {
           <div className="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-[#75896A]/25 blur-3xl z-0" />
 
           {/* Section Header */}
-          <div className="max-w-4xl mx-auto text-center space-y-3 relative z-20">
+          <div className="max-w-4xl mx-auto text-center space-y-2.5 sm:space-y-3 relative z-20">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#151A15] tracking-tight">
               Four steps from preparation to progress.
             </h2>
-            <p className="text-xs sm:text-sm text-[#455044] font-medium leading-relaxed max-w-4xl mx-auto md:whitespace-nowrap">
+            <p className="text-xs sm:text-sm text-[#455044] font-medium leading-relaxed max-w-4xl mx-auto">
               A disciplined, distraction-free path to test your knowledge and eliminate recurring weaknesses.
             </p>
           </div>
 
           {/* 4 Process Steps */}
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 relative z-20">
+          <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-4 relative z-20">
             {[
               {
                 step: '01',
@@ -177,9 +177,9 @@ export default function HomePage() {
             ].map((item) => (
               <div
                 key={item.step}
-                className="space-y-3 rounded-2xl border border-white/60 bg-white/45 p-6 shadow-xs backdrop-blur-sm transition-all hover:bg-white/70 hover:border-[#DCE7ED]/80 hover:scale-[1.01]"
+                className="space-y-2.5 sm:space-y-3 rounded-2xl border border-white/60 bg-white/45 p-5 sm:p-6 shadow-xs backdrop-blur-sm transition-all hover:bg-white/70 hover:border-[#DCE7ED]/80 hover:scale-[1.01]"
               >
-                <div className="font-mono text-2xl font-black text-[#151A15] bg-[#75896A]/20 inline-flex items-center justify-center px-3 py-0.5 rounded-xl border border-white/40 shadow-xs">
+                <div className="font-mono text-xl sm:text-2xl font-black text-[#151A15] bg-[#75896A]/20 inline-flex items-center justify-center px-3 py-0.5 rounded-xl border border-white/40 shadow-xs">
                   {item.step}
                 </div>
                 <h3 className="text-base font-bold text-[#151A15]">{item.title}</h3>
@@ -189,7 +189,7 @@ export default function HomePage() {
           </div>
 
           {/* Footer Action Bar */}
-          <div className="pt-6 border-t border-[#75896A]/25 flex flex-wrap items-center justify-between gap-4 relative z-20">
+          <div className="pt-5 sm:pt-6 border-t border-[#75896A]/25 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-20">
             <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-[#151A15]">
               <MeritwiseLogo variant="gold" size="xs" showWordmark={false} />
               <span>Every attempt counts. Measure your progress with MERITWISE.</span>
@@ -197,7 +197,7 @@ export default function HomePage() {
             <button
               type="button"
               onClick={handleStartPractice}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#151A15] text-white px-7 py-3 text-xs font-bold uppercase tracking-wider shadow-lg hover:bg-[#232923] transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#151A15] text-white px-7 py-3 text-xs font-bold uppercase tracking-wider shadow-lg hover:bg-[#232923] transition-all hover:scale-[1.02] active:scale-[0.98] w-full sm:w-auto"
             >
               <span>Begin Now</span>
               <ArrowRight className="h-3.5 w-3.5" />
@@ -209,16 +209,16 @@ export default function HomePage() {
       {/* ==================================================================== */}
       {/* 4. BRAND STATEMENT / FINAL CTA BANNER                                */}
       {/* ==================================================================== */}
-      <section className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="rounded-[32px] bg-[#121316] text-white p-8 sm:p-12 lg:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-          <div className="space-y-4 max-w-xl">
+      <section className="relative mx-auto max-w-7xl px-4 pt-2 sm:pt-6 pb-12 sm:pb-16 lg:pb-20 sm:px-6 lg:px-8">
+        <div className="rounded-[24px] sm:rounded-[32px] bg-[#121316] text-white p-6 sm:p-12 lg:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 sm:gap-8">
+          <div className="space-y-3 sm:space-y-4 max-w-xl">
             <div className="flex items-center gap-2.5">
               <MeritwiseLogo variant="white" size="xs" showWordmark={false} />
-              <div className="text-[11px] font-bold uppercase tracking-widest text-[#C09A52]">
+              <div className="text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-[#C09A52]">
                 PROGRESS WITH MERIT
               </div>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight !text-white leading-tight">
+            <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight !text-white leading-tight">
               Begin practicing with authentic examination papers.
             </h2>
             <p className="text-xs sm:text-sm text-[#A1A1AA] leading-relaxed">
@@ -229,7 +229,7 @@ export default function HomePage() {
           <button
             type="button"
             onClick={handleStartPractice}
-            className="rounded-full bg-white text-[#121316] px-8 py-3.5 text-xs font-bold uppercase tracking-wider shadow-lg transition-transform hover:scale-[1.02] shrink-0 active:scale-[0.98]"
+            className="rounded-full bg-white text-[#121316] px-8 py-3.5 text-xs font-bold uppercase tracking-wider shadow-lg transition-transform hover:scale-[1.02] shrink-0 active:scale-[0.98] w-full sm:w-auto text-center"
           >
             Start Practice ↗
           </button>

@@ -91,7 +91,7 @@ export function ExaminationCard3D({ exam, onStartPractice, className }: Examinat
         willChange: 'transform',
       }}
       className={cn(
-        'group relative h-full min-h-[240px] flex flex-col justify-between rounded-[22px] border border-white/85 bg-white/80 p-6 sm:p-7 shadow-[0_8px_24px_rgba(0,0,0,0.04),_0_1px_3px_rgba(0,0,0,0.02)] ring-1 ring-[#E4E4DF]/70 backdrop-blur-[20px] transition-all overflow-hidden select-none hover:border-white hover:ring-[#8C6D3B]/30 hover:shadow-[0_14px_32px_rgba(0,0,0,0.06),_0_2px_8px_rgba(140,109,59,0.05)]',
+        'group relative h-full min-h-0 sm:min-h-[220px] lg:min-h-[240px] flex flex-col justify-between rounded-[20px] sm:rounded-[22px] border border-white/85 bg-white/80 p-5 sm:p-6 lg:p-7 shadow-[0_8px_24px_rgba(0,0,0,0.04),_0_1px_3px_rgba(0,0,0,0.02)] ring-1 ring-[#E4E4DF]/70 backdrop-blur-[20px] transition-all overflow-hidden select-none hover:border-white hover:ring-[#8C6D3B]/30 hover:shadow-[0_14px_32px_rgba(0,0,0,0.06),_0_2px_8px_rgba(140,109,59,0.05)]',
         className
       )}
     >
@@ -111,13 +111,13 @@ export function ExaminationCard3D({ exam, onStartPractice, className }: Examinat
       <div className="pointer-events-none absolute -bottom-16 -left-16 h-40 w-40 rounded-full bg-[#DCE7ED]/55 blur-2xl" />
 
       {/* Top Section: Category & Acronym + Essential Metadata */}
-      <div className="relative z-10 space-y-4">
+      <div className="relative z-10 space-y-3 sm:space-y-4">
         {/* Short Category & Exam Acronym */}
         <div className="space-y-1">
-          <div className="text-[11px] font-bold uppercase tracking-wider text-[#8C6D3B]">
+          <div className="text-[10px] xs:text-[11px] font-bold uppercase tracking-wider text-[#8C6D3B]">
             {exam.category}
           </div>
-          <h3 className="text-3xl sm:text-4xl font-extrabold text-[#121316] tracking-tight group-hover:text-[#8C6D3B] transition-colors leading-none">
+          <h3 className="text-2xl xs:text-3xl sm:text-4xl font-extrabold text-[#121316] tracking-tight group-hover:text-[#8C6D3B] transition-colors leading-none">
             {exam.name}
           </h3>
         </div>
@@ -136,7 +136,7 @@ export function ExaminationCard3D({ exam, onStartPractice, className }: Examinat
       </div>
 
       {/* Footer Actions — Bottom Aligned */}
-      <div className="pt-5 border-t border-[#E4E4DF]/70 flex items-center justify-between gap-2 relative z-10 mt-auto">
+      <div className="pt-4 sm:pt-5 border-t border-[#E4E4DF]/70 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2.5 relative z-10 mt-4 sm:mt-auto">
         <Link
           href={`/${exam.slug}`}
           className="inline-flex items-center gap-1 text-xs font-bold text-[#121316] hover:text-[#8C6D3B] transition-colors group/link py-1"
@@ -148,7 +148,7 @@ export function ExaminationCard3D({ exam, onStartPractice, className }: Examinat
         <button
           type="button"
           onClick={onStartPractice}
-          className="rounded-full bg-[#121316] px-4 py-2 text-xs font-bold text-white shadow-sm transition-all hover:bg-[#27272A] hover:scale-[1.03] active:scale-[0.98] shrink-0"
+          className="rounded-full bg-[#121316] px-4 py-2 sm:py-2 text-xs font-bold text-white shadow-sm transition-all hover:bg-[#27272A] hover:scale-[1.03] active:scale-[0.98] shrink-0"
         >
           Start Practice ↗
         </button>

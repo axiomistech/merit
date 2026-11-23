@@ -27,6 +27,30 @@ export function Navbar() {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
+  // Lock body scroll when mobile menu is open
+  React.useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
+  // Close mobile menu on ESC key press
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setMobileMenuOpen(false);
+        setExamsDropdownOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   const handleMouseEnter = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setExamsDropdownOpen(true);
@@ -75,10 +99,10 @@ export function Navbar() {
   ];
 
   return (
-    <header className="fixed top-4 sm:top-5 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-1.75rem)] sm:w-[calc(100%-3rem)] max-w-5xl transition-all">
+    <header className="fixed top-3.5 sm:top-5 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-1.5rem)] sm:w-[calc(100%-3rem)] max-w-5xl transition-all">
       {/* Floating Matte Forged-White + Glacier-White Glassmorphism Capsule */}
       <div
-        className="relative flex h-[66px] sm:h-[72px] items-center justify-between px-5 sm:px-7 rounded-full transition-all"
+        className="relative flex h-[60px] sm:h-[72px] items-center justify-between px-4 xs:px-5 sm:px-7 rounded-full transition-all"
         style={{
           background:
             'linear-gradient(115deg, rgba(255, 255, 255, 0.88) 0%, rgba(247, 249, 248, 0.80) 42%, rgba(212, 230, 236, 0.68) 100%)',
@@ -111,11 +135,12 @@ export function Navbar() {
         />
 
         {/* 1. Left: Brand Identity (Gold Icon + Deep Charcoal Wordmark + Gold Dot) */}
-        <div className="flex items-center gap-4 sm:gap-6 relative z-10">
+        <div className="flex items-center gap-3 sm:gap-6 relative z-10">
           <Link
             href="/"
-            className="group flex items-center gap-2.5 focus-visible:outline-none select-none"
+            className="group flex items-center gap-2 sm:gap-2.5 focus-visible:outline-none select-none"
             aria-label="MERITWISE Home"
+            onClick={() => setMobileMenuOpen(false)}
           >
             <Image
               src="/brand/logo-gold.png"
@@ -123,10 +148,10 @@ export function Navbar() {
               width={34}
               height={22}
               priority
-              className="h-[20px] sm:h-[22px] w-auto object-contain shrink-0"
+              className="h-[18px] sm:h-[22px] w-auto object-contain shrink-0"
             />
-            <div className="flex items-center gap-2">
-              <span className="font-sans font-black text-xs sm:text-sm tracking-[0.14em] text-[#141A11] uppercase">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <span className="font-sans font-black text-[11px] sm:text-sm tracking-[0.14em] text-[#141A11] uppercase">
                 MERITWISE
               </span>
               <span className="h-1.5 w-1.5 rounded-full bg-[#C6A052] shrink-0" />
@@ -236,23 +261,23 @@ export function Navbar() {
           </button>
         </div>
 
-        {/* Mobile menu trigger */}
+        {/* Mobile menu trigger with WCAG 44x44px touch target */}
         <div className="flex md:hidden relative z-10">
           <button
             type="button"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
-            className="rounded-full p-2 text-[#141A11] hover:bg-[#D4E6EC]/40"
-            aria-label="Toggle menu"
+            className="flex h-11 w-11 items-center justify-center rounded-full text-[#141A11] hover:bg-[#D4E6EC]/40 active:scale-95 transition-all"
+            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
           >
             {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Menu Dropdown with Scroll Lock and Max-Height Constraint */}
       {mobileMenuOpen && (
         <div
-          className="mt-2 rounded-3xl p-5 shadow-2xl md:hidden animate-in fade-in duration-150 space-y-4"
+          className="mt-2 rounded-3xl p-5 shadow-2xl md:hidden animate-in fade-in duration-150 space-y-4 max-h-[calc(100vh-90px)] overflow-y-auto"
           style={{
             background:
               'linear-gradient(145deg, rgba(255, 255, 255, 0.96) 0%, rgba(247, 249, 248, 0.94) 45%, rgba(212, 230, 236, 0.92) 100%)',
@@ -271,7 +296,7 @@ export function Navbar() {
                 key={exam.slug}
                 href={`/${exam.slug}`}
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between rounded-xl px-3 py-2 text-xs font-semibold text-[#141A11] hover:bg-[#D4E6EC]/45"
+                className="flex items-center justify-between rounded-xl px-3 py-2.5 text-xs font-semibold text-[#141A11] hover:bg-[#D4E6EC]/45 transition-colors"
               >
                 <span>{exam.name} — {exam.fullName}</span>
                 <span className="text-xs text-[#465047]">↗</span>
@@ -279,11 +304,11 @@ export function Navbar() {
             ))}
           </div>
 
-          <div className="border-t border-[#141A11]/10 pt-3 space-y-3">
+          <div className="border-t border-[#141A11]/10 pt-3 space-y-2">
             <Link
               href="/how-it-works"
               onClick={() => setMobileMenuOpen(false)}
-              className="block rounded-xl px-3 py-2 text-xs font-semibold text-[#141A11]/80 hover:text-[#141A11]"
+              className="block rounded-xl px-3 py-2.5 text-xs font-semibold text-[#141A11]/80 hover:text-[#141A11] hover:bg-[#D4E6EC]/30 transition-colors"
             >
               How it works
             </Link>
@@ -291,7 +316,7 @@ export function Navbar() {
             <Link
               href="/login"
               onClick={() => setMobileMenuOpen(false)}
-              className="block rounded-xl px-3 py-2 text-xs font-semibold text-[#141A11]/80 hover:text-[#141A11]"
+              className="block rounded-xl px-3 py-2.5 text-xs font-semibold text-[#141A11]/80 hover:text-[#141A11] hover:bg-[#D4E6EC]/30 transition-colors"
             >
               Sign in
             </Link>
@@ -302,7 +327,7 @@ export function Navbar() {
                 setMobileMenuOpen(false);
                 handleStartPractice(e);
               }}
-              className="w-full rounded-full bg-[#141A11] py-3 text-center text-xs font-extrabold uppercase tracking-wider text-white shadow-md hover:bg-[#232923]"
+              className="w-full rounded-full bg-[#141A11] py-3 text-center text-xs font-extrabold uppercase tracking-wider text-white shadow-md hover:bg-[#232923] active:scale-[0.98] transition-all"
             >
               Start Practice
             </button>

@@ -244,7 +244,7 @@ export function FlippableMeritwiseCard({
       <div
         role="region"
         aria-label="Section title: See How It All Works."
-        className="relative w-full shrink-0 h-[76px] sm:h-[84px] rounded-2xl sm:rounded-[24px] flex items-center justify-center overflow-hidden select-none transition-all"
+        className="relative w-full shrink-0 h-[64px] sm:h-[80px] rounded-xl sm:rounded-[24px] flex items-center justify-center overflow-hidden select-none transition-all"
         style={staticHeadingCardStyle}
       >
         {/* Architectural Bevel Rim with Specular Daylight Reflection */}
@@ -271,7 +271,7 @@ export function FlippableMeritwiseCard({
 
         {/* Center Typography: Benton Sans Typography with Golden Accent Underline on "Works." */}
         <h3
-          className="relative z-20 text-xl sm:text-2xl md:text-[25px] lg:text-[27px] font-semibold leading-tight text-[#F5F5F5] text-center px-4 select-none tracking-[-0.015em]"
+          className="relative z-20 text-lg sm:text-2xl md:text-[25px] lg:text-[27px] font-semibold leading-tight text-[#F5F5F5] text-center px-4 select-none tracking-[-0.015em]"
           style={{
             fontFamily: "'Benton Sans', 'Benton', sans-serif",
           }}
@@ -310,7 +310,7 @@ export function FlippableMeritwiseCard({
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="relative w-full flex-1 min-h-[440px] sm:min-h-[470px] select-none rounded-[28px] sm:rounded-[32px] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+        className="relative w-full flex-1 min-h-[280px] xs:min-h-[320px] sm:min-h-[380px] lg:min-h-[470px] select-none rounded-[24px] sm:rounded-[32px] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
         style={{
           perspective: '1200px',
         }}
@@ -345,7 +345,7 @@ export function FlippableMeritwiseCard({
               role="region"
               aria-label="Meritwise video demonstration. Click the card frame to flip to preparation guide."
               className={cn(
-                'relative h-full w-full min-h-[440px] sm:min-h-[470px] rounded-[28px] sm:rounded-[32px] p-4 sm:p-5 lg:p-6 flex flex-col justify-center items-center overflow-hidden cursor-pointer transition-all',
+                'relative h-full w-full min-h-[280px] xs:min-h-[320px] sm:min-h-[380px] lg:min-h-[470px] rounded-[24px] sm:rounded-[32px] p-3 sm:p-5 lg:p-6 flex flex-col justify-center items-center overflow-hidden cursor-pointer transition-all',
                 isFlipped && 'pointer-events-none'
               )}
               style={{
@@ -415,7 +415,7 @@ export function FlippableMeritwiseCard({
               role="region"
               aria-label="Meritwise preparation guide. Click anywhere on the card surface to flip back to video."
               className={cn(
-                'absolute inset-0 h-full w-full rounded-[28px] sm:rounded-[32px] p-6 sm:p-7 lg:p-8 flex flex-col justify-between overflow-hidden cursor-pointer transition-all',
+                'absolute inset-0 h-full w-full rounded-[24px] sm:rounded-[32px] p-5 sm:p-7 lg:p-8 flex flex-col justify-between overflow-hidden cursor-pointer transition-all',
                 !isFlipped && 'pointer-events-none'
               )}
               style={{
