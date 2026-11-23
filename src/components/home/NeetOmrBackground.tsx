@@ -43,6 +43,12 @@ export function NeetOmrBackground() {
     <div
       aria-hidden="true"
       className="pointer-events-none absolute inset-0 select-none overflow-hidden z-0"
+      style={{
+        maskImage:
+          'linear-gradient(to bottom, black 0%, black 50%, rgba(0, 0, 0, 0.65) 68%, rgba(0, 0, 0, 0.25) 82%, transparent 94%)',
+        WebkitMaskImage:
+          'linear-gradient(to bottom, black 0%, black 50%, rgba(0, 0, 0, 0.65) 68%, rgba(0, 0, 0, 0.25) 82%, transparent 94%)',
+      }}
     >
       {/* 1. Straight 2D Vector OMR Sheet */}
       <svg
@@ -349,14 +355,6 @@ export function NeetOmrBackground() {
         }}
       />
 
-      {/* 3. Dark Bottom Fade Gradient (blending smoothly into subsequent sections) */}
-      <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-64"
-        style={{
-          background:
-            'linear-gradient(to bottom, rgba(17, 18, 20, 0) 0%, rgba(17, 18, 20, 0.70) 50%, #111214 100%)',
-        }}
-      />
 
       {/* 4. Top Ambient Lighting for Specular Atmosphere */}
       <div

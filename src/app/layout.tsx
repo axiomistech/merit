@@ -68,7 +68,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen font-sans bg-[#F8FAF6] text-[#121316] antialiased selection:bg-[#8C6D3B]/20 selection:text-[#121316]">
         <Navbar />
-        <main className="min-h-screen pt-16">{children}</main>
+        <main className="min-h-screen">{children}</main>
         <Footer />
         <Toaster
           position="bottom-right"

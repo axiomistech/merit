@@ -104,7 +104,13 @@ export default function HomePage() {
       {/* ==================================================================== */}
       {/* 1. HERO SECTION — CINEMATIC MATTE-BLACK GLASSMORPHISM HERO           */}
       {/* ==================================================================== */}
-      <section className="relative isolate overflow-hidden bg-[#111214] text-[#F5F5F5] -mt-16 pt-24 sm:pt-28 pb-16 lg:pb-24">
+      <section
+        className="relative isolate overflow-hidden text-[#F5F5F5] pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-14 lg:pb-16"
+        style={{
+          background:
+            'linear-gradient(to bottom, #111214 0%, #111214 55%, rgba(17, 18, 20, 0.98) 68%, rgba(17, 18, 20, 0.85) 78%, rgba(17, 18, 20, 0.52) 87%, rgba(17, 18, 20, 0.22) 93%, rgba(17, 18, 20, 0.06) 97%, transparent 100%)',
+        }}
+      >
         {/* Straight 2D Grayscale NEET OMR Answer Sheet Background */}
         <NeetOmrBackground />
 
@@ -121,21 +127,12 @@ export default function HomePage() {
             />
           </div>
         </div>
-
-        {/* Smooth Transition Gradient into following section */}
-        <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-40 z-10"
-          style={{
-            background:
-              'linear-gradient(to bottom, rgba(17, 18, 20, 0) 0%, rgba(17, 18, 20, 0.40) 40%, rgba(248, 250, 246, 0.85) 85%, #F8FAF6 100%)',
-          }}
-        />
       </section>
 
       {/* ==================================================================== */}
       {/* 2. STRICTLY FOUR EXAMINATION CATEGORIES (PREMIUM 3D GLASSMORPHISM)    */}
       {/* ==================================================================== */}
-      <section id="examinations" className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <section id="examinations" className="relative mx-auto max-w-7xl px-4 pt-8 sm:pt-10 pb-16 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto text-center space-y-3 mb-12">
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#121316]">
             Focused preparation for serious candidates.
