@@ -7,6 +7,7 @@ import { TutorialVideoConfig } from '@/types/admin';
 import { HeroPreparationCard } from '@/components/home/HeroPreparationCard';
 import { FlippableMeritwiseCard } from '@/components/home/FlippableMeritwiseCard';
 import { ExaminationCard3D, ExaminationCardData } from '@/components/home/ExaminationCard3D';
+import { NeetOmrBackground } from '@/components/home/NeetOmrBackground';
 import { MeritwiseLogo } from '@/components/brand/MeritwiseLogo';
 
 export default function HomePage() {
@@ -40,7 +41,7 @@ export default function HomePage() {
     }
   };
 
-  // 4 Primary Examination Categories (Ultra-Minimal)
+  // 4 Primary Examination Categories
   const primaryExams: ExaminationCardData[] = [
     {
       id: 'neet',
@@ -76,43 +77,27 @@ export default function HomePage() {
     },
   ];
 
-  // Fully Opaque Atmospheric Canvas Style
-  // Subtle glacier-blue matte fog is blended directly into the actual rendered surface of the off-white background
-  const homepageAtmosphericStyle: React.CSSProperties = {
-    backgroundColor: '#F8FAF6',
-    backgroundImage: [
-      // 1. Upper-Right & Framing Tutorial Area: Noticeable, soft matte glacier-blue fog (Glacial Shadow #C9D9E2 & Frost Blue #DCE7ED)
-      'radial-gradient(ellipse 1150px 800px at 86% 10%, rgba(201, 217, 226, 0.72) 0%, rgba(220, 231, 237, 0.50) 32%, rgba(234, 241, 245, 0.28) 60%, transparent 84%)',
-      // 2. Middle-Left & Negative Space: Organic cool glacier mist haze
-      'radial-gradient(ellipse 1000px 720px at 6% 36%, rgba(201, 217, 226, 0.52) 0%, rgba(220, 231, 237, 0.35) 34%, rgba(234, 241, 245, 0.18) 62%, transparent 82%)',
-      // 3. Lower Sections (Lower-Right & Lower-Middle): Subtle cool haze grounding the layout
-      'radial-gradient(ellipse 1250px 880px at 82% 72%, rgba(220, 231, 237, 0.48) 0%, rgba(201, 217, 226, 0.34) 36%, rgba(234, 241, 245, 0.20) 64%, transparent 85%)',
-      // 4. Subtle Lower-Left Negative Space: Faint cool morning mist
-      'radial-gradient(ellipse 950px 680px at 12% 88%, rgba(220, 231, 237, 0.40) 0%, rgba(201, 217, 226, 0.24) 38%, transparent 80%)',
-      // 5. Central / Left Ambient Sage Transition: Harmonious bridge between sage cards and canvas
-      'radial-gradient(ellipse 850px 600px at 32% 18%, rgba(156, 175, 136, 0.18) 0%, rgba(220, 231, 237, 0.14) 48%, transparent 78%)',
-    ].join(', '),
-    backgroundRepeat: 'no-repeat',
-  };
-
   return (
-    <div
-      className="relative min-h-screen text-[#151A15] overflow-x-hidden"
-      style={homepageAtmosphericStyle}
-    >
+    <div className="relative min-h-screen bg-[#111214] text-[#F5F5F5] overflow-x-hidden selection:bg-[#C6A052]/30 selection:text-white">
       {/* ==================================================================== */}
-      {/* 1. HERO SECTION — REALISTIC 3D MATTE SAGE GLASS HERO CARDS           */}
+      {/* 1. HERO SECTION — CINEMATIC MATTE BLACK GLASSMORPHISM WITH OMR CANVAS */}
       {/* ==================================================================== */}
-      <section className="relative mx-auto max-w-7xl px-4 pt-4 pb-16 sm:px-6 sm:pt-5 lg:px-8 lg:pt-6 lg:pb-24">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 items-stretch">
-          {/* Card 1 — Examination Preparation */}
-          <HeroPreparationCard onStartPractice={handleStartPractice} />
+      <section className="relative isolate overflow-hidden pt-28 sm:pt-32 pb-16 lg:pb-24">
+        {/* Layered Straight 2D Grayscale NEET OMR Blueprint Background */}
+        <NeetOmrBackground />
 
-          {/* Card 2 — Double-Sided 3D Card: Complete Student Journey & Video Demo */}
-          <FlippableMeritwiseCard
-            tutorialVideo={tutorialVideoConfig}
-            onStartPractice={handleStartPractice}
-          />
+        {/* Hero Cards Container */}
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-6 lg:gap-8 lg:grid-cols-2 items-stretch">
+            {/* Card 1 — Examination Preparation Deserves More Than Guesswork */}
+            <HeroPreparationCard onStartPractice={handleStartPractice} />
+
+            {/* Card 2 — Double-Sided 3D Card: Heading & Native Video Player / Journey Guide */}
+            <FlippableMeritwiseCard
+              tutorialVideo={tutorialVideoConfig}
+              onStartPractice={handleStartPractice}
+            />
+          </div>
         </div>
       </section>
 
@@ -121,10 +106,10 @@ export default function HomePage() {
       {/* ==================================================================== */}
       <section id="examinations" className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto text-center space-y-3 mb-12">
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#121316]">
+          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#F5F5F5]">
             Focused preparation for serious candidates.
           </h2>
-          <p className="text-sm text-[#52525B]">
+          <p className="text-sm text-[#B8B8BC]">
             Four core examination categories. Each built around its official format, marking rules, and duration.
           </p>
         </div>
@@ -142,51 +127,49 @@ export default function HomePage() {
       </section>
 
       {/* ==================================================================== */}
-      {/* 3. HOW IT WORKS (FOUR SIMPLE STEPS) — 3D MATTE SAGE GLASS SLAB       */}
+      {/* 3. HOW IT WORKS (FOUR SIMPLE STEPS) — 3D MATTE CHARCOAL GLASS SLAB   */}
       {/* ==================================================================== */}
       <section id="how-it-works" className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div
           className="relative rounded-[28px] sm:rounded-[32px] px-6 sm:px-10 lg:px-12 pt-8 sm:pt-10 lg:pt-12 pb-6 sm:pb-7 lg:pb-8 flex flex-col gap-8 sm:gap-10 overflow-hidden select-none transition-all"
           style={{
-            // Layered Translucent Sage Gradients with subtle frost daylight highlight
             background:
-              'linear-gradient(140deg, rgba(234, 241, 245, 0.20) 0%, rgba(199, 211, 189, 0.82) 18%, rgba(156, 175, 136, 0.74) 50%, rgba(117, 137, 106, 0.68) 100%)',
-            backdropFilter: 'blur(24px) saturate(108%)',
-            WebkitBackdropFilter: 'blur(24px) saturate(108%)',
-            border: '1px solid rgba(234, 241, 245, 0.45)',
-            // 3-5px Solid Glass Slab Edge Lighting & Inset Shading with faint glacial bevel reflections
+              'linear-gradient(145deg, rgba(38, 42, 48, 0.72) 0%, rgba(20, 23, 27, 0.84) 50%, rgba(14, 16, 19, 0.92) 100%)',
+            backdropFilter: 'blur(26px) saturate(110%)',
+            WebkitBackdropFilter: 'blur(26px) saturate(110%)',
+            border: '1px solid rgba(255, 255, 255, 0.18)',
             boxShadow:
-              '0 24px 50px -12px rgba(28, 40, 22, 0.20), 0 10px 24px -8px rgba(28, 40, 22, 0.12), inset 0 1.5px 2px 0 rgba(245, 250, 253, 0.65), inset 1.5px 0 2px 0 rgba(220, 231, 237, 0.35), inset 0 -3px 6px 0 rgba(65, 82, 54, 0.40), inset -2px 0 5px 0 rgba(65, 82, 54, 0.25), inset 0 0 28px 0 rgba(199, 211, 189, 0.28)',
+              '0 24px 55px rgba(0, 0, 0, 0.50), 0 8px 20px rgba(0, 0, 0, 0.35), inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.60), inset 0 -2.5px 5px 0 rgba(0, 0, 0, 0.45)',
           }}
         >
-          {/* Architectural 3-5px Thick Glass Edge Simulation Rim with faint glacial reflection */}
+          {/* Architectural 3D Glass Edge Simulation Rim */}
           <div
             className="pointer-events-none absolute inset-0 !m-0 rounded-[inherit] z-10"
             style={{
-              border: '1px solid rgba(234, 241, 245, 0.30)',
-              boxShadow: 'inset 0 0 0 1px rgba(201, 217, 226, 0.15)',
+              border: '1px solid rgba(255, 255, 255, 0.14)',
+              boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.06)',
             }}
           />
 
-          {/* Soft Cloudy Internal Diffusion Mist with gentle glacier undertone */}
+          {/* Soft Cloudy Internal Diffusion Mist */}
           <div
             className="pointer-events-none absolute inset-0 !m-0 rounded-[inherit] z-0 overflow-hidden"
             style={{
               background:
-                'radial-gradient(ellipse 90% 60% at 50% 0%, rgba(245, 249, 252, 0.32) 0%, rgba(220, 231, 237, 0.12) 30%, rgba(156, 175, 136, 0.12) 65%, transparent 100%)',
+                'radial-gradient(ellipse 90% 60% at 50% 0%, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.03) 40%, transparent 100%)',
             }}
           />
 
           {/* Ambient Occlusion Corner Glows */}
-          <div className="pointer-events-none absolute -top-24 -left-24 h-64 w-64 rounded-full bg-[#C7D3BD]/30 blur-3xl z-0" />
-          <div className="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-[#75896A]/25 blur-3xl z-0" />
+          <div className="pointer-events-none absolute -top-24 -left-24 h-64 w-64 rounded-full bg-white/[0.03] blur-3xl z-0" />
+          <div className="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-black/50 blur-3xl z-0" />
 
           {/* Section Header */}
           <div className="max-w-4xl mx-auto text-center space-y-3 relative z-20">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#151A15] tracking-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#F5F5F5] tracking-tight">
               Four steps from preparation to progress.
             </h2>
-            <p className="text-xs sm:text-sm text-[#455044] font-medium leading-relaxed max-w-4xl mx-auto md:whitespace-nowrap">
+            <p className="text-xs sm:text-sm text-[#B8B8BC] font-medium leading-relaxed max-w-4xl mx-auto md:whitespace-nowrap">
               A disciplined, distraction-free path to test your knowledge and eliminate recurring weaknesses.
             </p>
           </div>
@@ -221,27 +204,27 @@ export default function HomePage() {
             ].map((item) => (
               <div
                 key={item.step}
-                className="space-y-3 rounded-2xl border border-white/60 bg-white/45 p-6 shadow-xs backdrop-blur-sm transition-all hover:bg-white/70 hover:border-[#DCE7ED]/80 hover:scale-[1.01]"
+                className="space-y-3 rounded-2xl border border-white/12 bg-white/[0.04] p-6 shadow-xs backdrop-blur-sm transition-all hover:bg-white/[0.08] hover:border-white/25 hover:scale-[1.01]"
               >
-                <div className="font-mono text-2xl font-black text-[#151A15] bg-[#75896A]/20 inline-flex items-center justify-center px-3 py-0.5 rounded-xl border border-white/40 shadow-xs">
+                <div className="font-mono text-2xl font-black text-[#F5F5F5] bg-white/10 inline-flex items-center justify-center px-3 py-0.5 rounded-xl border border-white/15 shadow-xs">
                   {item.step}
                 </div>
-                <h3 className="text-base font-bold text-[#151A15]">{item.title}</h3>
-                <p className="text-xs text-[#455044] leading-relaxed">{item.description}</p>
+                <h3 className="text-base font-bold text-[#F5F5F5]">{item.title}</h3>
+                <p className="text-xs text-[#B8B8BC] leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
 
           {/* Footer Action Bar */}
-          <div className="pt-6 border-t border-[#75896A]/25 flex flex-wrap items-center justify-between gap-4 relative z-20">
-            <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-[#151A15]">
+          <div className="pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 relative z-20">
+            <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-[#F5F5F5]">
               <MeritwiseLogo variant="gold" size="xs" showWordmark={false} />
               <span>Every attempt counts. Measure your progress with MERITWISE.</span>
             </div>
             <button
               type="button"
               onClick={handleStartPractice}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#151A15] text-white px-7 py-3 text-xs font-bold uppercase tracking-wider shadow-lg hover:bg-[#232923] transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-white text-black px-7 py-3 text-xs font-bold uppercase tracking-wider shadow-lg hover:bg-neutral-100 transition-all hover:scale-[1.02] active:scale-[0.98]"
             >
               <span>Begin Now</span>
               <ArrowRight className="h-3.5 w-3.5" />
@@ -254,18 +237,25 @@ export default function HomePage() {
       {/* 4. BRAND STATEMENT / FINAL CTA BANNER                                */}
       {/* ==================================================================== */}
       <section className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="rounded-[32px] bg-[#121316] text-white p-8 sm:p-12 lg:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+        <div
+          className="rounded-[32px] p-8 sm:p-12 lg:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 border border-white/15"
+          style={{
+            background:
+              'linear-gradient(145deg, rgba(35, 38, 44, 0.85) 0%, rgba(18, 20, 24, 0.95) 100%)',
+            boxShadow: '0 24px 55px rgba(0,0,0,0.60), inset 0 1px 2px rgba(255,255,255,0.2)',
+          }}
+        >
           <div className="space-y-4 max-w-xl">
             <div className="flex items-center gap-2.5">
               <MeritwiseLogo variant="white" size="xs" showWordmark={false} />
-              <div className="text-[11px] font-bold uppercase tracking-widest text-[#C09A52]">
+              <div className="text-[11px] font-bold uppercase tracking-widest text-[#C6A052]">
                 PROGRESS WITH MERIT
               </div>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight !text-white leading-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
               Begin practicing with authentic examination papers.
             </h2>
-            <p className="text-xs sm:text-sm text-[#A1A1AA] leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#B8B8BC] leading-relaxed">
               Create your account to unlock your first full examination paper free. Track your progress across every attempt.
             </p>
           </div>
@@ -273,7 +263,7 @@ export default function HomePage() {
           <button
             type="button"
             onClick={handleStartPractice}
-            className="rounded-full bg-white text-[#121316] px-8 py-3.5 text-xs font-bold uppercase tracking-wider shadow-lg transition-transform hover:scale-[1.02] shrink-0 active:scale-[0.98]"
+            className="rounded-full bg-white text-black px-8 py-3.5 text-xs font-extrabold uppercase tracking-wider shadow-lg transition-transform hover:bg-neutral-100 hover:scale-[1.02] shrink-0 active:scale-[0.98]"
           >
             Start Practice ↗
           </button>

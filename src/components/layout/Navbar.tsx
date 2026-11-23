@@ -3,9 +3,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { ChevronDown, Menu, X, ArrowRight } from 'lucide-react';
+import { ChevronDown, Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { MeritwiseLogo } from '@/components/brand/MeritwiseLogo';
+import Image from 'next/image';
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -66,7 +66,8 @@ export function Navbar() {
   const handleStartPractice = (e: React.MouseEvent) => {
     e.preventDefault();
     if (typeof window !== 'undefined') {
-      const session = localStorage.getItem('fort_student_session') || localStorage.getItem('merit_student_session');
+      const session =
+        localStorage.getItem('fort_student_session') || localStorage.getItem('merit_student_session');
       if (session) {
         router.push('/dashboard');
       } else {
@@ -103,20 +104,63 @@ export function Navbar() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-[#E4E4DF] bg-[#FBFBFA]/90 backdrop-blur-md transition-all">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Left: Brand Identity (Golden Logo on Light Background) */}
-        <Link
-          href="/"
-          className="group flex items-center focus-visible:outline-none"
-          aria-label="MERITWISE Home"
-        >
-          <MeritwiseLogo variant="gold" size="md" priority />
-        </Link>
+    <header className="fixed top-4 sm:top-5 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-1.75rem)] sm:w-[calc(100%-3rem)] max-w-5xl transition-all">
+      {/* Floating Glass Pill Capsule */}
+      <div
+        className="relative flex h-[66px] sm:h-[72px] items-center justify-between px-5 sm:px-7 rounded-full transition-all"
+        style={{
+          background:
+            'linear-gradient(180deg, rgba(38, 42, 48, 0.78) 0%, rgba(20, 23, 27, 0.88) 100%)',
+          backdropFilter: 'blur(26px) saturate(115%)',
+          WebkitBackdropFilter: 'blur(26px) saturate(115%)',
+          border: '1px solid rgba(255, 255, 255, 0.20)',
+          boxShadow: [
+            '0 24px 50px -10px rgba(0, 0, 0, 0.75)',
+            '0 8px 22px -4px rgba(0, 0, 0, 0.50)',
+            'inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.70)',
+            'inset 0 -1.5px 3px 0 rgba(0, 0, 0, 0.45)',
+          ].join(', '),
+        }}
+      >
+        {/* Specular Edge Highlight Reflection along upper-left rim */}
+        <div
+          className="pointer-events-none absolute inset-0 rounded-full"
+          style={{
+            background:
+              'radial-gradient(ellipse 65% 50% at 20% 0%, rgba(255, 255, 255, 0.45) 0%, transparent 60%)',
+          }}
+        />
 
-        {/* Center: Simplified Primary Navigation */}
-        <nav className="hidden md:flex md:items-center md:gap-8" aria-label="Primary Navigation">
-          {/* 1. Exams Dropdown */}
+        {/* 1. Left: Brand Identity (Gold Icon + White Wordmark + Gold Dot) */}
+        <div className="flex items-center gap-4 sm:gap-6 relative z-10">
+          <Link
+            href="/"
+            className="group flex items-center gap-2.5 focus-visible:outline-none select-none"
+            aria-label="MERITWISE Home"
+          >
+            <Image
+              src="/brand/logo-gold.png"
+              alt="MERITWISE"
+              width={34}
+              height={22}
+              priority
+              className="h-[20px] sm:h-[22px] w-auto object-contain shrink-0"
+            />
+            <div className="flex items-center gap-2">
+              <span className="font-sans font-black text-xs sm:text-sm tracking-[0.14em] text-white uppercase">
+                MERITWISE
+              </span>
+              <span className="h-1.5 w-1.5 rounded-full bg-[#C6A052] shrink-0" />
+            </div>
+          </Link>
+        </div>
+
+        {/* Center / Left Divider */}
+        <div className="hidden md:block h-6 w-px bg-white/15" />
+
+        {/* 2. Center: Primary Navigation */}
+        <nav className="hidden md:flex md:items-center md:gap-7 relative z-10" aria-label="Primary Navigation">
+          {/* Exams Dropdown */}
           <div
             ref={dropdownRef}
             className="relative"
@@ -128,8 +172,8 @@ export function Navbar() {
               onClick={() => setExamsDropdownOpen((prev) => !prev)}
               aria-expanded={examsDropdownOpen}
               className={cn(
-                'flex items-center gap-1 text-xs font-semibold uppercase tracking-wider transition-colors py-2',
-                examsDropdownOpen ? 'text-[#121316]' : 'text-[#52525B] hover:text-[#121316]'
+                'flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider transition-colors py-2',
+                examsDropdownOpen ? 'text-white' : 'text-[#B8B8BC] hover:text-white'
               )}
             >
               <span>Exams</span>
@@ -139,9 +183,18 @@ export function Navbar() {
             </button>
 
             {examsDropdownOpen && (
-              <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-80 z-50 animate-in fade-in zoom-in-95 duration-150">
-                <div className="rounded-2xl border border-[#E4E4DF] bg-[#FFFFFF] p-2 shadow-xl">
-                  <div className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#71717A] border-b border-[#F4F4F0] mb-1">
+              <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-80 z-50 animate-in fade-in zoom-in-95 duration-150">
+                <div
+                  className="rounded-2xl p-2 text-white shadow-2xl"
+                  style={{
+                    background: 'rgba(22, 25, 29, 0.94)',
+                    backdropFilter: 'blur(24px)',
+                    WebkitBackdropFilter: 'blur(24px)',
+                    border: '1px solid rgba(255, 255, 255, 0.18)',
+                    boxShadow: '0 20px 45px -8px rgba(0, 0, 0, 0.85), inset 0 1px 1px rgba(255, 255, 255, 0.3)',
+                  }}
+                >
+                  <div className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#A1A1AA] border-b border-white/10 mb-1">
                     Primary Curricula
                   </div>
                   <div className="space-y-0.5">
@@ -150,18 +203,18 @@ export function Navbar() {
                         key={exam.slug}
                         href={`/${exam.slug}`}
                         onClick={closeDropdown}
-                        className="group flex flex-col rounded-xl p-2.5 transition-colors hover:bg-[#F7F7F4]"
+                        className="group flex flex-col rounded-xl p-2.5 transition-colors hover:bg-white/10"
                       >
                         <div className="flex items-center justify-between">
-                          <span className="font-bold text-xs text-[#121316] group-hover:text-[#8C6D3B] transition-colors">
+                          <span className="font-bold text-xs text-white group-hover:text-[#C6A052] transition-colors">
                             {exam.name}
                           </span>
-                          <span className="text-[10px] text-[#71717A] font-mono">↗</span>
+                          <span className="text-[10px] text-white/50 font-mono">↗</span>
                         </div>
-                        <span className="text-[11px] font-medium text-[#52525B] line-clamp-1">
+                        <span className="text-[11px] font-medium text-[#B8B8BC] line-clamp-1">
                           {exam.fullName}
                         </span>
-                        <span className="text-[10px] text-[#71717A] line-clamp-1 mt-0.5">
+                        <span className="text-[10px] text-[#8E8E93] line-clamp-1 mt-0.5">
                           {exam.detail}
                         </span>
                       </Link>
@@ -172,20 +225,23 @@ export function Navbar() {
             )}
           </div>
 
-          {/* 2. How it works */}
+          {/* How It Works Link */}
           <Link
             href="/#how-it-works"
-            className="text-xs font-semibold uppercase tracking-wider text-[#52525B] hover:text-[#121316] transition-colors py-2"
+            className="text-xs font-bold uppercase tracking-wider text-[#B8B8BC] hover:text-white transition-colors py-2"
           >
             How it works
           </Link>
         </nav>
 
-        {/* Right: Sign in & Primary CTA Start Practice */}
-        <div className="hidden md:flex md:items-center md:gap-4">
+        {/* Center / Right Divider */}
+        <div className="hidden md:block h-6 w-px bg-white/15" />
+
+        {/* 3. Right: Sign In & Solid White START PRACTICE Pill Button */}
+        <div className="hidden md:flex md:items-center md:gap-5 relative z-10">
           <Link
             href="/login"
-            className="text-xs font-semibold uppercase tracking-wider text-[#52525B] hover:text-[#121316] transition-colors px-2 py-1.5"
+            className="text-xs font-bold uppercase tracking-wider text-[#B8B8BC] hover:text-white transition-colors px-2 py-1.5"
           >
             Sign in
           </Link>
@@ -193,18 +249,18 @@ export function Navbar() {
           <button
             type="button"
             onClick={handleStartPractice}
-            className="rounded-full bg-[#121316] px-5 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition-all hover:bg-[#27272A] active:scale-[0.98]"
+            className="rounded-full bg-white px-5 sm:px-6 py-2.5 text-xs font-extrabold uppercase tracking-wider text-black shadow-md transition-all hover:bg-neutral-100 hover:scale-[1.02] active:scale-[0.98]"
           >
             Start Practice
           </button>
         </div>
 
         {/* Mobile menu trigger */}
-        <div className="flex md:hidden">
+        <div className="flex md:hidden relative z-10">
           <button
             type="button"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
-            className="rounded-lg p-2 text-[#121316] hover:bg-[#F4F4F0]"
+            className="rounded-full p-2 text-white hover:bg-white/10"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -214,9 +270,18 @@ export function Navbar() {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="border-b border-[#E4E4DF] bg-[#FFFFFF] px-4 py-5 shadow-lg md:hidden animate-in fade-in duration-150 space-y-4">
+        <div
+          className="mt-2 rounded-3xl p-5 shadow-2xl md:hidden animate-in fade-in duration-150 space-y-4"
+          style={{
+            background: 'rgba(20, 23, 27, 0.95)',
+            backdropFilter: 'blur(24px)',
+            WebkitBackdropFilter: 'blur(24px)',
+            border: '1px solid rgba(255, 255, 255, 0.18)',
+            boxShadow: '0 20px 45px -8px rgba(0, 0, 0, 0.85)',
+          }}
+        >
           <div className="space-y-1">
-            <div className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#71717A]">
+            <div className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#A1A1AA]">
               Examinations
             </div>
             {examCategories.map((exam) => (
@@ -224,19 +289,19 @@ export function Navbar() {
                 key={exam.slug}
                 href={`/${exam.slug}`}
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between rounded-lg px-3 py-2 text-xs font-semibold text-[#121316] hover:bg-[#F4F4F0]"
+                className="flex items-center justify-between rounded-xl px-3 py-2 text-xs font-semibold text-white hover:bg-white/10"
               >
                 <span>{exam.name} — {exam.fullName}</span>
-                <span className="text-xs text-[#71717A]">↗</span>
+                <span className="text-xs text-white/50">↗</span>
               </Link>
             ))}
           </div>
 
-          <div className="border-t border-[#E4E4DF] pt-3 space-y-2">
+          <div className="border-t border-white/10 pt-3 space-y-3">
             <Link
               href="/#how-it-works"
               onClick={() => setMobileMenuOpen(false)}
-              className="block rounded-lg px-3 py-2 text-xs font-semibold text-[#52525B] hover:text-[#121316]"
+              className="block rounded-xl px-3 py-2 text-xs font-semibold text-[#B8B8BC] hover:text-white"
             >
               How it works
             </Link>
@@ -244,7 +309,7 @@ export function Navbar() {
             <Link
               href="/login"
               onClick={() => setMobileMenuOpen(false)}
-              className="block rounded-lg px-3 py-2 text-xs font-semibold text-[#52525B] hover:text-[#121316]"
+              className="block rounded-xl px-3 py-2 text-xs font-semibold text-[#B8B8BC] hover:text-white"
             >
               Sign in
             </Link>
@@ -255,7 +320,7 @@ export function Navbar() {
                 setMobileMenuOpen(false);
                 handleStartPractice(e);
               }}
-              className="w-full rounded-full bg-[#121316] py-2.5 text-center text-xs font-bold uppercase tracking-wider text-white shadow-sm"
+              className="w-full rounded-full bg-white py-3 text-center text-xs font-extrabold uppercase tracking-wider text-black shadow-md"
             >
               Start Practice
             </button>
@@ -265,3 +330,5 @@ export function Navbar() {
     </header>
   );
 }
+
+export default Navbar;

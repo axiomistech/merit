@@ -22,29 +22,29 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-// Level 2: Raised 3D Frosted Glass Frame Styling (Glass-on-Glass second depth tier)
+// Level 2: Raised 3D Frosted Glass Frame Styling (Dark Glass-on-Glass second depth tier)
 const glassFrameStyle: React.CSSProperties = {
   background:
-    'linear-gradient(145deg, rgba(255, 255, 255, 0.65) 0%, rgba(214, 228, 205, 0.45) 25%, rgba(156, 175, 136, 0.35) 60%, rgba(105, 126, 92, 0.30) 100%)',
-  backdropFilter: 'blur(18px)',
-  WebkitBackdropFilter: 'blur(18px)',
-  border: '1px solid rgba(255, 255, 255, 0.52)',
+    'linear-gradient(145deg, rgba(255, 255, 255, 0.38) 0%, rgba(130, 142, 156, 0.16) 28%, rgba(35, 40, 46, 0.35) 65%, rgba(18, 21, 25, 0.50) 100%)',
+  backdropFilter: 'blur(22px)',
+  WebkitBackdropFilter: 'blur(22px)',
+  border: '1.5px solid rgba(255, 255, 255, 0.42)',
   boxShadow: [
-    '0 18px 36px -8px rgba(35, 48, 30, 0.24)',
-    '0 6px 14px -3px rgba(35, 48, 30, 0.14)',
-    'inset 0 1.5px 2.5px 0 rgba(255, 255, 255, 0.88)',
-    'inset 1.5px 0 2px 0 rgba(255, 255, 255, 0.65)',
-    'inset 0 -2.5px 4.5px 0 rgba(58, 76, 48, 0.26)',
-    'inset -1.5px 0 3px 0 rgba(58, 76, 48, 0.18)',
+    '0 24px 48px -10px rgba(0, 0, 0, 0.65)',
+    '0 8px 18px -4px rgba(0, 0, 0, 0.40)',
+    'inset 0 2px 2.5px 0 rgba(255, 255, 255, 0.85)',
+    'inset 2px 0 2px 0 rgba(255, 255, 255, 0.55)',
+    'inset 0 -2.5px 4.5px 0 rgba(0, 0, 0, 0.55)',
+    'inset -2px 0 3px 0 rgba(0, 0, 0, 0.35)',
   ].join(', '),
   isolation: 'isolate',
 };
 
 // Level 3: Inner Recessed Video Screen Base (Sitting inside the glass frame without black borders)
 const innerScreenStyle: React.CSSProperties = {
-  backgroundColor: '#101311',
+  backgroundColor: '#0D0E11',
   boxShadow:
-    'inset 0 2px 6px rgba(0, 0, 0, 0.45), inset 0 0 0 1px rgba(255, 255, 255, 0.08), 0 1px 1px rgba(255, 255, 255, 0.28)',
+    'inset 0 2px 8px rgba(0, 0, 0, 0.70), inset 0 0 0 1px rgba(255, 255, 255, 0.10), 0 1px 1px rgba(255, 255, 255, 0.25)',
 };
 
 export interface MeritwiseVideoPlayerRef {
@@ -516,7 +516,7 @@ export const MeritwiseVideoPlayer = forwardRef<
 
             {/* Played Progress */}
             <div
-              className="absolute left-0 top-0 h-full rounded-full bg-[#9CAF88] shadow-xs"
+              className="absolute left-0 top-0 h-full rounded-full bg-white shadow-xs"
               style={{ width: `${Math.min(progressPercent, 100)}%` }}
             />
 
@@ -536,7 +536,7 @@ export const MeritwiseVideoPlayer = forwardRef<
                 type="button"
                 onClick={togglePlay}
                 aria-label={isPlaying ? 'Pause' : 'Play'}
-                className="p-1 rounded-lg text-white hover:text-[#C7D3BD] transition-colors focus:outline-none"
+                className="p-1 rounded-lg text-white hover:text-white/80 transition-colors focus:outline-none"
               >
                 {isPlaying ? (
                   <Pause className="h-4 w-4 sm:h-5 sm:w-5 fill-white" />
