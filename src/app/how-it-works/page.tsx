@@ -169,7 +169,7 @@ export default function HowItWorksPage() {
       {/* ===================================================================== */}
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed inset-0 z-0 select-none overflow-hidden"
+        className="pointer-events-none absolute inset-0 z-0 select-none overflow-hidden"
         style={{
           background:
             'radial-gradient(ellipse 130% 95% at 50% 15%, #F8FAFA 0%, #F5F7F5 55%, #EDF3F5 80%, #DCECF1 100%)',
@@ -213,7 +213,7 @@ export default function HowItWorksPage() {
       {/* ===================================================================== */}
       {/* MAIN CONTENT WRAPPER                                                  */}
       {/* ===================================================================== */}
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 sm:pt-36 lg:pt-40 pb-24 sm:pb-32 space-y-20 sm:space-y-28 lg:space-y-32">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 sm:pt-36 lg:pt-40 pb-12 sm:pb-16 lg:pb-20 space-y-20 sm:space-y-28 lg:space-y-32">
         {/* =================================================================== */}
         {/* 01 — HERO SECTION                                                   */}
         {/* =================================================================== */}
