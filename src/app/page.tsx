@@ -103,7 +103,7 @@ export default function HomePage() {
       {/* ==================================================================== */}
       {/* 1. HERO SECTION — REALISTIC 3D MATTE SAGE GLASS HERO CARDS           */}
       {/* ==================================================================== */}
-      <section className="relative mx-auto max-w-7xl px-4 pt-8 pb-16 sm:px-6 lg:px-8 lg:pt-12 lg:pb-24">
+      <section className="relative mx-auto max-w-7xl px-4 pt-4 pb-16 sm:px-6 sm:pt-5 lg:px-8 lg:pt-6 lg:pb-24">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 items-stretch">
           {/* Card 1 — Examination Preparation */}
           <HeroPreparationCard onStartPractice={handleStartPractice} />
