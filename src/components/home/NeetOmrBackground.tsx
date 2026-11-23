@@ -45,22 +45,19 @@ export function NeetOmrBackground() {
       className="pointer-events-none absolute inset-0 select-none overflow-hidden z-0"
       style={{
         maskImage:
-          'linear-gradient(to bottom, black 0%, black 70%, rgba(0, 0, 0, 0.4) 86%, transparent 100%)',
+          'linear-gradient(to bottom, black 0%, black 42%, rgba(0, 0, 0, 0.55) 54%, rgba(0, 0, 0, 0.12) 65%, transparent 74%)',
         WebkitMaskImage:
-          'linear-gradient(to bottom, black 0%, black 70%, rgba(0, 0, 0, 0.4) 86%, transparent 100%)',
+          'linear-gradient(to bottom, black 0%, black 42%, rgba(0, 0, 0, 0.55) 54%, rgba(0, 0, 0, 0.12) 65%, transparent 74%)',
       }}
     >
-      {/* 1. Straight 2D Vector OMR Sheet etched in Deep Charcoal (#141A11) */}
+      {/* 1. Straight 2D Vector OMR Sheet */}
       <svg
         viewBox="0 0 1440 860"
         preserveAspectRatio="xMidYMin slice"
-        className="w-full h-full object-cover text-[#141A11]"
+        className="w-full h-full object-cover text-white"
         style={{
-          opacity: 0.11,
-          maskImage:
-            'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.80) 60%, rgba(0, 0, 0, 1) 100%)',
-          WebkitMaskImage:
-            'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.80) 60%, rgba(0, 0, 0, 1) 100%)',
+          opacity: 0.22,
+          filter: 'grayscale(100%)',
         }}
       >
         <defs>
@@ -349,21 +346,21 @@ export function NeetOmrBackground() {
         <rect x="1420" y="20" width="7" height="820" fill="url(#timing-marks)" />
       </svg>
 
-      {/* 2. Soft Top Specular Atmosphere */}
+      {/* 2. Soft Top Specular Atmosphere (No bottom darkening) */}
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-[480px]"
         style={{
           background:
-            'radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255, 255, 255, 0.45) 0%, transparent 80%)',
+            'radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255, 255, 255, 0.04) 0%, transparent 80%)',
         }}
       />
 
 
-      {/* 4. Top Ambient Lighting with soft glacier undertone */}
+      {/* 4. Top Ambient Lighting for Specular Atmosphere */}
       <div
         className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[360px] rounded-full blur-3xl"
         style={{
-          background: 'radial-gradient(circle, rgba(220, 236, 241, 0.35) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 70%)',
         }}
       />
     </div>

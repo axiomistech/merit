@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowUpRight } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { CursorTiltCard } from './CursorTiltCard';
 
 export interface HeroPreparationCardProps {
@@ -21,56 +21,64 @@ export function HeroPreparationCard({ onStartPractice, className }: HeroPreparat
   return (
     <CursorTiltCard
       className={className}
-      maxTilt={4}
-      hoverLift={4}
+      maxTilt={5}
+      hoverLift={5}
       perspective={1200}
     >
       {/* ==================================================================== */}
-      {/* 3D MATTE FORGED SAGE BENTO CARD                                       */}
+      {/* 3D MATTE BLACK FROSTED GLASS SLAB                                    */}
       {/* ==================================================================== */}
       <div
-        className="relative h-full flex flex-col justify-between rounded-[36px] p-6 sm:p-7 lg:p-8 transition-all overflow-hidden select-none"
+        className="relative h-full flex flex-col justify-between rounded-[30px] sm:rounded-[32px] p-7 sm:p-10 lg:p-11 transition-all overflow-hidden select-none"
         style={{
           background:
-            'linear-gradient(155deg, rgba(166, 186, 148, 0.95) 0%, #9CAF88 50%, rgba(142, 162, 122, 0.95) 100%)',
-          backdropFilter: 'blur(20px) saturate(110%)',
-          WebkitBackdropFilter: 'blur(20px) saturate(110%)',
-          border: '1px solid rgba(20, 26, 17, 0.12)',
+            'linear-gradient(145deg, rgba(46, 50, 56, 0.72) 0%, rgba(26, 29, 34, 0.82) 48%, rgba(16, 18, 22, 0.92) 100%)',
+          backdropFilter: 'blur(26px) saturate(110%)',
+          WebkitBackdropFilter: 'blur(26px) saturate(110%)',
+          border: '1px solid rgba(255, 255, 255, 0.22)',
           boxShadow: [
-            '0 12px 28px rgba(20, 26, 17, 0.12)',
-            'inset 0 1px 1px 0 rgba(255, 255, 255, 0.50)',
+            '0 14px 28px -4px rgba(0, 0, 0, 0.38)',
+            '0 4px 10px -2px rgba(0, 0, 0, 0.22)',
+            'inset 0 1.5px 2px rgba(255, 255, 255, 0.65)',
+            'inset 1.5px 0 2px rgba(255, 255, 255, 0.35)',
+            'inset 0 -2.5px 5px rgba(0, 0, 0, 0.50)',
           ].join(', '),
           transformStyle: 'preserve-3d',
         }}
       >
-        {/* Fine translucent internal rim highlight */}
+        {/* Architectural 3D Glass Edge Simulation Rim with specular reflection */}
         <div
           className="pointer-events-none absolute inset-0 rounded-[inherit] z-10"
           style={{
-            border: '1px solid rgba(255, 255, 255, 0.20)',
+            border: '1px solid rgba(255, 255, 255, 0.16)',
+            boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.08)',
           }}
         />
 
-        {/* Soft internal atmospheric diffusion mist */}
+        {/* Soft Upper-Left Specular Glare / Reflection Mist */}
         <div
           className="pointer-events-none absolute inset-0 rounded-[inherit] z-0 overflow-hidden"
           style={{
             background:
-              'radial-gradient(ellipse 90% 55% at 50% 0%, rgba(255, 255, 255, 0.22) 0%, transparent 80%)',
+              'radial-gradient(ellipse 80% 50% at 20% 0%, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.05) 40%, transparent 80%)',
           }}
         />
 
+        {/* Ambient Corner Occlusion Glows */}
+        <div className="pointer-events-none absolute -top-24 -left-24 h-56 w-56 rounded-full bg-white/[0.04] blur-3xl z-0" />
+        <div className="pointer-events-none absolute -bottom-24 -right-24 h-56 w-56 rounded-full bg-black/60 blur-3xl z-0" />
+
         {/* ================================================================ */}
-        {/* 1. TOP & CORE CONTENT HIERARCHY                                   */}
+        {/* LAYERED 3D CONTENT HIERARCHY                                      */}
         {/* ================================================================ */}
         <div
-          className="space-y-4 sm:space-y-5 relative z-20"
+          className="space-y-6 relative z-20"
           style={{ transformStyle: 'preserve-3d' }}
         >
-          {/* Master Headline (translateZ: 14px) */}
+          {/* Master Headline (translateZ: 16px) */}
           <h1
-            style={{ transform: 'translateZ(14px)' }}
-            className="text-2xl sm:text-3xl lg:text-[38px] xl:text-[40px] font-extrabold tracking-[-0.035em] text-[#141A11] leading-[1.12]"
+            style={{ transform: 'translateZ(16px)' }}
+            className="text-3xl sm:text-4xl lg:text-[44px] xl:text-[46px] font-extrabold tracking-[-0.035em] text-[#F5F5F5] leading-[1.12]"
           >
             Your preparation deserves more than guesswork.
           </h1>
@@ -78,99 +86,59 @@ export function HeroPreparationCard({ onStartPractice, className }: HeroPreparat
           {/* Value Proposition Description (translateZ: 10px) */}
           <p
             style={{ transform: 'translateZ(10px)' }}
-            className="text-xs sm:text-sm text-[#465047] font-medium leading-relaxed max-w-xl"
+            className="text-sm sm:text-base text-[#B8B8BC] font-medium leading-relaxed max-w-xl"
           >
             Practice curated examination papers, attempt timed tests, evaluate your performance, and understand where you stand.
           </p>
 
-          {/* Action Buttons (translateZ: 16px) */}
+          {/* Action Buttons (translateZ: 20px) */}
           <div
-            style={{ transform: 'translateZ(16px)' }}
-            className="pt-1 flex flex-wrap items-center gap-3 sm:gap-3.5"
+            style={{ transform: 'translateZ(20px)' }}
+            className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4"
           >
-            {/* Primary Action Button: Solid Dark Pill */}
+            {/* Primary Action Button: Solid White Pill with Black Text */}
             <button
               type="button"
               onClick={onStartPractice}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#141A11] text-white px-6 sm:px-7 h-11 sm:h-11.5 text-xs sm:text-[13px] font-extrabold uppercase tracking-wider shadow-md hover:bg-[#232923] transition-all duration-200 hover:scale-[1.01] active:scale-[0.99]"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-white text-black px-7 sm:px-8 h-12 text-xs sm:text-sm font-extrabold uppercase tracking-wider shadow-lg hover:bg-neutral-100 transition-all hover:scale-[1.02] active:scale-[0.98]"
             >
               <span>Start Practice</span>
-              <ArrowUpRight className="h-4 w-4" />
+              <span className="font-mono text-xs">↗</span>
             </button>
 
-            {/* Secondary Button: Restrained Translucent Sage Pill */}
+            {/* Secondary Button: Dark Translucent Glass Pill */}
             <a
               href="#examinations"
-              className="inline-flex items-center justify-center gap-1.5 rounded-full border border-[rgba(20,26,17,0.18)] bg-[rgba(20,26,17,0.07)] px-5 sm:px-6 h-11 sm:h-11.5 text-xs sm:text-[13px] font-bold text-[#141A11] transition-all duration-200 hover:bg-[rgba(20,26,17,0.12)] hover:border-[rgba(20,26,17,0.28)] hover:scale-[1.01] active:scale-[0.99]"
+              className="inline-flex items-center justify-center gap-1.5 rounded-full border border-white/20 bg-white/[0.05] px-6 sm:px-7 h-12 text-xs sm:text-sm font-semibold text-[#F5F5F5] shadow-xs backdrop-blur-sm hover:bg-white/[0.12] hover:border-white/35 transition-all hover:scale-[1.02] active:scale-[0.98]"
             >
               <span>Explore Exams</span>
-              <ArrowUpRight className="h-4 w-4 text-[#141A11]" />
+              <ChevronRight className="h-4 w-4 text-[#B8B8BC]" />
             </a>
           </div>
         </div>
 
-        {/* ================================================================ */}
-        {/* 2. MIDDLE: Focus Examinations Track                               */}
-        {/* ================================================================ */}
+        {/* Focus Examinations Track (translateZ: 12px) */}
         <div
           style={{
-            transform: 'translateZ(10px)',
+            transform: 'translateZ(12px)',
             transformStyle: 'preserve-3d',
           }}
-          className="pt-4 sm:pt-5 border-t border-[rgba(20,26,17,0.14)] relative z-20 mt-4 sm:mt-5"
+          className="pt-8 sm:pt-10 border-t border-white/10 relative z-20 mt-6 sm:mt-8"
         >
-          <div className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#465047] mb-2 sm:mb-2.5">
+          <div className="text-[11px] font-bold uppercase tracking-wider text-[#8E8E93] mb-3">
             Focus Examinations
           </div>
-          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
             {focusExams.map((exam) => (
               <Link
                 key={exam.name}
                 href={exam.href}
-                className="group flex items-center gap-1.5 rounded-full border border-[rgba(20,26,17,0.22)] bg-[rgba(20,26,17,0.06)] px-3.5 py-1 text-xs font-bold text-[#141A11] transition-all duration-200 hover:bg-[rgba(20,26,17,0.12)] hover:border-[rgba(20,26,17,0.34)] hover:scale-[1.02] active:scale-[0.98]"
+                className="group flex items-center gap-1 rounded-full border border-white/15 bg-white/[0.05] px-4 py-1.5 text-xs font-bold text-[#F5F5F5] shadow-xs backdrop-blur-sm transition-all hover:border-white/40 hover:bg-white/[0.12] hover:scale-[1.02] active:scale-[0.98]"
               >
-                <span className="font-sans uppercase tracking-wider text-[11px]">{exam.name}</span>
-                <ArrowUpRight className="h-3 w-3 text-[#141A11]/70 group-hover:text-[#141A11] transition-colors" />
+                <span className="font-sans uppercase tracking-wider">{exam.name}</span>
+                <ChevronRight className="h-3.5 w-3.5 text-[#B8B8BC] transition-transform duration-150 group-hover:translate-x-0.5 group-hover:text-white" />
               </Link>
             ))}
-          </div>
-        </div>
-
-        {/* ================================================================ */}
-        {/* 3. BOTTOM: Compact Three-Column Feature Strip                    */}
-        {/* ================================================================ */}
-        <div
-          style={{
-            transform: 'translateZ(10px)',
-            transformStyle: 'preserve-3d',
-          }}
-          className="pt-4 sm:pt-4.5 border-t border-[rgba(20,26,17,0.14)] relative z-20 mt-3 sm:mt-4"
-        >
-          <div className="grid grid-cols-3 gap-2 sm:gap-4">
-            <div>
-              <span className="block font-mono text-[9px] sm:text-[10px] uppercase tracking-wider text-[#465047]/80 mb-0.5">
-                01 — Practice
-              </span>
-              <span className="block text-xs sm:text-[12.5px] font-bold text-[#141A11] leading-snug">
-                Curated Exam Papers
-              </span>
-            </div>
-            <div>
-              <span className="block font-mono text-[9px] sm:text-[10px] uppercase tracking-wider text-[#465047]/80 mb-0.5">
-                02 — Simulate
-              </span>
-              <span className="block text-xs sm:text-[12.5px] font-bold text-[#141A11] leading-snug">
-                OMR &amp; Timed Tests
-              </span>
-            </div>
-            <div>
-              <span className="block font-mono text-[9px] sm:text-[10px] uppercase tracking-wider text-[#465047]/80 mb-0.5">
-                03 — Improve
-              </span>
-              <span className="block text-xs sm:text-[12.5px] font-bold text-[#141A11] leading-snug">
-                Performance Insights
-              </span>
-            </div>
           </div>
         </div>
       </div>
