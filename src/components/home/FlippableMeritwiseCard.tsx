@@ -62,10 +62,13 @@ export function FlippableMeritwiseCard({
   const playerRef = useRef<MeritwiseVideoPlayerRef>(null);
 
   // Flip state for the bottom interactive card:
-  // false = Side 1 (Video Walkthrough - Default Front), true = Side 2 (Student Journey Guide - Back)
-  const [isFlipped, setIsFlipped] = useState(false);
+  // Continuous accumulating rotation: 0deg -> 180deg -> 360deg -> 540deg...
+  const [rotation, setRotation] = useState(0);
   const [isFlipping, setIsFlipping] = useState(false);
   const [isVideoInteracting, setIsVideoInteracting] = useState(false);
+
+  // isFlipped is true when an odd half-turn has been reached (Guide facing user)
+  const isFlipped = Math.round(rotation / 180) % 2 !== 0;
 
   // 3D cursor tilt state (active only when !isFlipped and not interacting with video)
   const [coords, setCoords] = useState({ x: 0, y: 0 });
@@ -140,7 +143,7 @@ export function FlippableMeritwiseCard({
     setCoords({ x: 0, y: 0 });
   };
 
-  // Click-to-Flip Handler: Toggles Bottom Card between Side 1 (Video) and Side 2 (Guide)
+  // Click-to-Flip Handler: Continuously accumulates +180deg in the same direction on every click
   const handleCardFlip = (e?: React.MouseEvent) => {
     e?.stopPropagation();
     if (isFlipping) return;
@@ -148,19 +151,16 @@ export function FlippableMeritwiseCard({
     if (!isFlipped) {
       // Flipping from Video to Guide: Pause video playback
       playerRef.current?.pause();
-      setIsFlipping(true);
-      setIsFlipped(true);
-      setIsHovered(false);
-      setCoords({ x: 0, y: 0 });
-      setTimeout(() => setIsFlipping(false), 880);
-    } else {
-      // Flipping from Guide to Video: Return without auto-restarting video
-      setIsFlipping(true);
-      setIsFlipped(false);
-      setIsHovered(false);
-      setCoords({ x: 0, y: 0 });
-      setTimeout(() => setIsFlipping(false), 880);
     }
+
+    setIsFlipping(true);
+    setIsHovered(false);
+    setCoords({ x: 0, y: 0 });
+    setRotation((prev) => prev + 180);
+
+    setTimeout(() => {
+      setIsFlipping(false);
+    }, 700);
   };
 
   // Keyboard navigation for bottom card flip (Enter or Space)
@@ -201,8 +201,8 @@ export function FlippableMeritwiseCard({
       ? `${shadowX}px ${shadowY}px 48px -10px rgba(0, 0, 0, 0.55), 0 12px 24px -8px rgba(0, 0, 0, 0.35)`
       : '0 24px 55px -12px rgba(0, 0, 0, 0.50), 0 8px 20px -8px rgba(0, 0, 0, 0.35)';
 
-  // 180-deg horizontal rotation for bottom card 3D flipper container
-  const flipRotation = isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)';
+  // Continuous accumulating one-way rotation for bottom card 3D flipper container
+  const flipRotation = `rotateY(${rotation}deg)`;
 
   // Reusable Matte Charcoal Glass slab styling
   const matteCharcoalGlassStyle: React.CSSProperties = {
@@ -327,7 +327,7 @@ export function FlippableMeritwiseCard({
             boxShadow: dynamicShadow,
           }}
         >
-          {/* 180-deg Flip Container */}
+          {/* Continuous One-Way Flip Container */}
           <div
             className="relative w-full h-full rounded-[inherit]"
             style={{
@@ -335,7 +335,7 @@ export function FlippableMeritwiseCard({
               transformStyle: 'preserve-3d',
               transition: reducedMotion
                 ? 'transform 0.01s'
-                : 'transform 880ms cubic-bezier(0.22, 1, 0.36, 1)',
+                : 'transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)',
             }}
           >
             {/* ============================================================== */}
