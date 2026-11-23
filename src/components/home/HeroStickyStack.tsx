@@ -56,19 +56,33 @@ export function HeroStickyStack({
         }}
         className="sticky top-0 z-[1] w-full min-h-screen text-[#151A15] flex flex-col justify-center overflow-hidden"
       >
-        {/* Matte Forged Sage (#9CAF88) Background with Vector NEET OMR Marks & Micro-Grain */}
+        {/* Matte Forged White (#F5F7F5) + Soft Glacier Blue (#DCECF1) Background */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 z-0 select-none overflow-hidden"
           style={{
             background:
-              'radial-gradient(ellipse 120% 90% at 50% 30%, #9CAF88 0%, #95A981 60%, #8EA27A 100%)',
+              'radial-gradient(ellipse 130% 95% at 50% 15%, #F8FAFA 0%, #F5F7F5 55%, #EDF3F5 80%, #DCECF1 100%)',
           }}
         >
-          {/* Subtle micro-grain texture overlay */}
+          {/* Atmospheric Soft Glacier Blue Diffused Atmospheric Glows (subtle 25% atmospheric undertone) */}
+          <div
+            className="pointer-events-none absolute -top-32 right-[-5%] w-[850px] h-[650px] rounded-full blur-[140px] opacity-35"
+            style={{
+              background: 'radial-gradient(circle, #DCECF1 0%, #B8D5DF 50%, transparent 80%)',
+            }}
+          />
+          <div
+            className="pointer-events-none absolute top-[35%] left-[-10%] w-[750px] h-[550px] rounded-full blur-[150px] opacity-30"
+            style={{
+              background: 'radial-gradient(circle, #DCECF1 0%, #B8D5DF 45%, transparent 75%)',
+            }}
+          />
+
+          {/* Subtle tactile micro-grain texture overlay */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 opacity-[0.035] mix-blend-overlay z-[1]"
+            className="pointer-events-none absolute inset-0 opacity-[0.025] mix-blend-multiply z-[1]"
             style={{
               backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
             }}
@@ -119,7 +133,7 @@ export function HeroStickyStack({
           <motion.div
             aria-hidden="true"
             style={{ opacity: upwardShadowOpacity }}
-            className="pointer-events-none absolute -top-8 inset-x-0 h-16 rounded-t-[32px] shadow-[0_-24px_60px_rgba(20,28,16,0.28)] z-0"
+            className="pointer-events-none absolute -top-8 inset-x-0 h-16 rounded-t-[32px] shadow-[0_-24px_60px_rgba(30,45,55,0.08)] z-0"
           />
 
           <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
