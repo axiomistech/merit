@@ -227,7 +227,7 @@ export function Navbar() {
 
           {/* How It Works Link */}
           <Link
-            href="/#how-it-works"
+            href="/how-it-works"
             className="text-xs font-bold uppercase tracking-wider text-[#B8B8BC] hover:text-white transition-colors py-2"
           >
             How it works
@@ -299,7 +299,7 @@ export function Navbar() {
 
           <div className="border-t border-white/10 pt-3 space-y-3">
             <Link
-              href="/#how-it-works"
+              href="/how-it-works"
               onClick={() => setMobileMenuOpen(false)}
               className="block rounded-xl px-3 py-2 text-xs font-semibold text-[#B8B8BC] hover:text-white"
             >

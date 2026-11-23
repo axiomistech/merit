@@ -58,7 +58,7 @@ export function Footer() {
             </h4>
             <ul className="mt-4 space-y-2.5 text-xs">
               <li>
-                <Link href="/#how-it-works" className="hover:text-[#121316] transition-colors">
+                <Link href="/how-it-works" className="hover:text-[#121316] transition-colors">
                   How it works
                 </Link>
               </li>
