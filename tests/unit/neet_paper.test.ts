@@ -101,6 +101,65 @@ describe('Official NEET Phase-2 (Code: BB-QQ-XX) Paper & Questions', () => {
     expect(firstQ?.marks).toBe(4);
     expect(firstQ?.negativeMarks).toBe(1);
     expect(firstQ?.subjectSlug).toBe('chemistry');
+    expect(firstQ?.unitName).toBe('Organic Compounds Containing Nitrogen');
+    expect(firstQ?.chapterSlug).toBe('amines-and-diazonium-salts');
+    expect(firstQ?.topic).toBe('Diazonium Salts & Azo Coupling');
+  });
+
+  it('validates 100% syllabus unit, chapter slug, and micro-topic separation for all 180 questions', () => {
+    const questions = getStoredQuestionsServer();
+    expect(questions.length).toBe(180);
+
+    // Verify all 180 questions have valid non-empty syllabus attributes
+    questions.forEach((q, idx) => {
+      expect(q.unitName).toBeDefined();
+      expect(q.unitName?.length).toBeGreaterThan(0);
+      expect(q.chapterSlug).toBeDefined();
+      expect(q.chapterSlug?.length).toBeGreaterThan(0);
+      expect(q.topic).toBeDefined();
+      expect(q.topic?.length).toBeGreaterThan(0);
+      expect(q.conceptName).toBeDefined();
+      expect(q.conceptSlug).toBeDefined();
+    });
+
+    // Subject breakdown
+    const chemQs = questions.filter((q) => q.subjectSlug === 'chemistry');
+    expect(chemQs.length).toBe(45);
+
+    const bioBotanyQs = questions.filter((q) => q.subjectName === 'Biology (Botany)');
+    expect(bioBotanyQs.length).toBe(45);
+
+    const bioZoologyQs = questions.filter((q) => q.subjectName === 'Biology (Zoology)');
+    expect(bioZoologyQs.length).toBe(45);
+
+    const phyQs = questions.filter((q) => q.subjectSlug === 'physics');
+    expect(phyQs.length).toBe(45);
+
+    // Verify specific unit and topic assignments
+    const q1 = getStoredQuestionByIdServer('neet-2016-p2-q001');
+    expect(q1?.chapterSlug).toBe('amines-and-diazonium-salts');
+    expect(q1?.unitName).toBe('Organic Compounds Containing Nitrogen');
+    expect(q1?.topic).toBe('Diazonium Salts & Azo Coupling');
+
+    const q46 = getStoredQuestionByIdServer('neet-2016-p2-q046');
+    expect(q46?.chapterSlug).toBe('biotechnology-and-its-applications');
+    expect(q46?.unitName).toBe('Biotechnology and Its Applications');
+    expect(q46?.topic).toBe('Tools of Recombinant DNA - Ligases');
+
+    const q91 = getStoredQuestionByIdServer('neet-2016-p2-q091');
+    expect(q91?.chapterSlug).toBe('genetics-and-evolution');
+    expect(q91?.unitName).toBe('Genetics and Evolution');
+    expect(q91?.topic).toBe('Criteria for Genetic Material');
+
+    const q136 = getStoredQuestionByIdServer('neet-2016-p2-q136');
+    expect(q136?.chapterSlug).toBe('optics');
+    expect(q136?.unitName).toBe('Optics');
+    expect(q136?.topic).toBe('Refraction & Vision Correction Lenses');
+
+    const q180 = getStoredQuestionByIdServer('neet-2016-p2-q180');
+    expect(q180?.chapterSlug).toBe('optics');
+    expect(q180?.unitName).toBe('Optics');
+    expect(q180?.topic).toBe('Wave Optics - Two-Source Interference Intensity Contrast');
   });
 
   it('serves the NEET paper via GET /api/tests?exam=neet&status=published', async () => {

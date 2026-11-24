@@ -6,9 +6,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "organic-chemistry",
-      "unitName": "Organic Chemistry",
-      "topic": "Organic Reactions & Mechanisms",
+      "chapterSlug": "amines-and-diazonium-salts",
+      "unitName": "Organic Compounds Containing Nitrogen",
+      "topic": "Diazonium Salts & Azo Coupling",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -43,7 +43,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Diazonium Salts & Azo Coupling",
+      "conceptSlug": "amines-and-diazonium-salts"
     },
     {
       "id": "neet-2016-p2-q002",
@@ -51,9 +53,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "organic-chemistry",
-      "unitName": "Organic Chemistry",
-      "topic": "Organic Reactions & Mechanisms",
+      "chapterSlug": "haloalkanes-and-haloarenes",
+      "unitName": "Organic Compounds Containing Halogens",
+      "topic": "SN2 Substitution & Solvent Effects",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -88,7 +90,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "SN2 Substitution & Solvent Effects",
+      "conceptSlug": "haloalkanes-and-haloarenes"
     },
     {
       "id": "neet-2016-p2-q003",
@@ -96,9 +100,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "organic-chemistry",
-      "unitName": "Organic Chemistry",
-      "topic": "Organic Reactions & Mechanisms",
+      "chapterSlug": "alcohols-phenols-ethers-carbonyls",
+      "unitName": "Organic Compounds Containing Oxygen",
+      "topic": "Aldehydes & Ketones - Selective Hydrogenation",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -133,7 +137,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Aldehydes & Ketones - Selective Hydrogenation",
+      "conceptSlug": "alcohols-phenols-ethers-carbonyls"
     },
     {
       "id": "neet-2016-p2-q004",
@@ -141,9 +147,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "organic-chemistry",
-      "unitName": "Organic Chemistry",
-      "topic": "Organic Reactions & Mechanisms",
+      "chapterSlug": "general-organic-chemistry",
+      "unitName": "Some Basic Principles of Organic Chemistry",
+      "topic": "Tautomerism & Bredt's Rule",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -178,7 +184,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Tautomerism & Bredt's Rule",
+      "conceptSlug": "general-organic-chemistry"
     },
     {
       "id": "neet-2016-p2-q005",
@@ -186,9 +194,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "organic-chemistry",
-      "unitName": "Organic Chemistry",
-      "topic": "Organic Reactions & Mechanisms",
+      "chapterSlug": "alcohols-phenols-ethers-carbonyls",
+      "unitName": "Organic Compounds Containing Oxygen",
+      "topic": "Carboxylic Acids - Acidic Strength",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -223,7 +231,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Carboxylic Acids - Acidic Strength",
+      "conceptSlug": "alcohols-phenols-ethers-carbonyls"
     },
     {
       "id": "neet-2016-p2-q006",
@@ -231,9 +241,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "organic-chemistry",
-      "unitName": "Organic Chemistry",
-      "topic": "Organic Reactions & Mechanisms",
+      "chapterSlug": "hydrocarbons",
+      "unitName": "Hydrocarbons",
+      "topic": "Alkanes - Free Radical Halogenation",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -268,7 +278,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Alkanes - Free Radical Halogenation",
+      "conceptSlug": "hydrocarbons"
     },
     {
       "id": "neet-2016-p2-q007",
@@ -276,9 +288,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "physical-chemistry",
-      "unitName": "Physical Chemistry",
-      "topic": "Thermodynamics, Equilibrium & Kinetics",
+      "chapterSlug": "chemical-bonding-and-molecular-structure",
+      "unitName": "Chemical Bonding and Molecular Structure",
+      "topic": "Hydrogen Bonding in Biomolecules",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -313,7 +325,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Hydrogen Bonding in Biomolecules",
+      "conceptSlug": "chemical-bonding-and-molecular-structure"
     },
     {
       "id": "neet-2016-p2-q008",
@@ -321,9 +335,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "physical-chemistry",
-      "unitName": "Physical Chemistry",
-      "topic": "Thermodynamics, Equilibrium & Kinetics",
+      "chapterSlug": "redox-reactions-and-electrochemistry",
+      "unitName": "Redox Reactions and Electrochemistry",
+      "topic": "Molar Conductivity of Electrolytes",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -358,7 +372,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Molar Conductivity of Electrolytes",
+      "conceptSlug": "redox-reactions-and-electrochemistry"
     },
     {
       "id": "neet-2016-p2-q009",
@@ -366,9 +382,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "physical-chemistry",
-      "unitName": "Physical Chemistry",
-      "topic": "Thermodynamics, Equilibrium & Kinetics",
+      "chapterSlug": "chemical-kinetics",
+      "unitName": "Chemical Kinetics",
+      "topic": "Surface Catalysis & Zero/First Order Kinetics",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -403,7 +419,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Surface Catalysis & Zero/First Order Kinetics",
+      "conceptSlug": "chemical-kinetics"
     },
     {
       "id": "neet-2016-p2-q010",
@@ -411,9 +429,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "physical-chemistry",
-      "unitName": "Physical Chemistry",
-      "topic": "Thermodynamics, Equilibrium & Kinetics",
+      "chapterSlug": "practical-chemistry",
+      "unitName": "Principles Related to Practical Chemistry",
+      "topic": "Colloids & Coagulation Values",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -448,7 +466,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Colloids & Coagulation Values",
+      "conceptSlug": "practical-chemistry"
     },
     {
       "id": "neet-2016-p2-q011",
@@ -456,9 +476,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "physical-chemistry",
-      "unitName": "Physical Chemistry",
-      "topic": "Thermodynamics, Equilibrium & Kinetics",
+      "chapterSlug": "redox-reactions-and-electrochemistry",
+      "unitName": "Redox Reactions and Electrochemistry",
+      "topic": "Faraday's Laws of Electrolysis",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -493,7 +513,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Faraday's Laws of Electrolysis",
+      "conceptSlug": "redox-reactions-and-electrochemistry"
     },
     {
       "id": "neet-2016-p2-q012",
@@ -501,9 +523,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "physical-chemistry",
-      "unitName": "Physical Chemistry",
-      "topic": "Thermodynamics, Equilibrium & Kinetics",
+      "chapterSlug": "atomic-structure",
+      "unitName": "Atomic Structure",
+      "topic": "Quantum Numbers & Orbitals",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -538,7 +560,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Quantum Numbers & Orbitals",
+      "conceptSlug": "atomic-structure"
     },
     {
       "id": "neet-2016-p2-q013",
@@ -546,9 +570,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "physical-chemistry",
-      "unitName": "Physical Chemistry",
-      "topic": "Thermodynamics, Equilibrium & Kinetics",
+      "chapterSlug": "chemical-thermodynamics",
+      "unitName": "Chemical Thermodynamics",
+      "topic": "Entropy Changes in Isothermal Processes",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -583,7 +607,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Entropy Changes in Isothermal Processes",
+      "conceptSlug": "chemical-thermodynamics"
     },
     {
       "id": "neet-2016-p2-q014",
@@ -591,9 +617,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "physical-chemistry",
-      "unitName": "Physical Chemistry",
-      "topic": "Thermodynamics, Equilibrium & Kinetics",
+      "chapterSlug": "solutions",
+      "unitName": "Solutions",
+      "topic": "Van't Hoff Factor for Strong Electrolytes",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -628,7 +654,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Van't Hoff Factor for Strong Electrolytes",
+      "conceptSlug": "solutions"
     },
     {
       "id": "neet-2016-p2-q015",
@@ -636,9 +664,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "physical-chemistry",
-      "unitName": "Physical Chemistry",
-      "topic": "Thermodynamics, Equilibrium & Kinetics",
+      "chapterSlug": "equilibrium",
+      "unitName": "Equilibrium",
+      "topic": "Weak Base Ionization & Percent Dissociation",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -673,7 +701,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Weak Base Ionization & Percent Dissociation",
+      "conceptSlug": "equilibrium"
     },
     {
       "id": "neet-2016-p2-q016",
@@ -681,9 +711,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "inorganic-chemistry",
-      "unitName": "Inorganic Chemistry",
-      "topic": "Coordination Compounds & Periodic Properties",
+      "chapterSlug": "some-basic-concepts-in-chemistry",
+      "unitName": "Some Basic Concepts in Chemistry",
+      "topic": "Solid State & Coordination Numbers",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -718,7 +748,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Solid State & Coordination Numbers",
+      "conceptSlug": "some-basic-concepts-in-chemistry"
     },
     {
       "id": "neet-2016-p2-q017",
@@ -726,9 +758,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "physical-chemistry",
-      "unitName": "Physical Chemistry",
-      "topic": "Thermodynamics, Equilibrium & Kinetics",
+      "chapterSlug": "redox-reactions-and-electrochemistry",
+      "unitName": "Redox Reactions and Electrochemistry",
+      "topic": "Standard Cell Potential & Free Energy",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -763,7 +795,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Standard Cell Potential & Free Energy",
+      "conceptSlug": "redox-reactions-and-electrochemistry"
     },
     {
       "id": "neet-2016-p2-q018",
@@ -771,9 +805,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "physical-chemistry",
-      "unitName": "Physical Chemistry",
-      "topic": "Thermodynamics, Equilibrium & Kinetics",
+      "chapterSlug": "solutions",
+      "unitName": "Solutions",
+      "topic": "Thermodynamics of Ideal Solutions",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -808,7 +842,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Thermodynamics of Ideal Solutions",
+      "conceptSlug": "solutions"
     },
     {
       "id": "neet-2016-p2-q019",
@@ -816,9 +852,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "physical-chemistry",
-      "unitName": "Physical Chemistry",
-      "topic": "Thermodynamics, Equilibrium & Kinetics",
+      "chapterSlug": "equilibrium",
+      "unitName": "Equilibrium",
+      "topic": "Solubility Product & Common Ion Effect",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -853,7 +889,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Solubility Product & Common Ion Effect",
+      "conceptSlug": "equilibrium"
     },
     {
       "id": "neet-2016-p2-q020",
@@ -861,9 +899,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "physical-chemistry",
-      "unitName": "Physical Chemistry",
-      "topic": "Thermodynamics, Equilibrium & Kinetics",
+      "chapterSlug": "some-basic-concepts-in-chemistry",
+      "unitName": "Some Basic Concepts in Chemistry",
+      "topic": "Mole Concept & Stoichiometry",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -898,7 +936,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Mole Concept & Stoichiometry",
+      "conceptSlug": "some-basic-concepts-in-chemistry"
     },
     {
       "id": "neet-2016-p2-q021",
@@ -906,9 +946,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "physical-chemistry",
-      "unitName": "Physical Chemistry",
-      "topic": "Thermodynamics, Equilibrium & Kinetics",
+      "chapterSlug": "redox-reactions-and-electrochemistry",
+      "unitName": "Redox Reactions and Electrochemistry",
+      "topic": "Quantitative Electrolysis & Electron Count",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -943,7 +983,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Quantitative Electrolysis & Electron Count",
+      "conceptSlug": "redox-reactions-and-electrochemistry"
     },
     {
       "id": "neet-2016-p2-q022",
@@ -951,9 +993,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "inorganic-chemistry",
-      "unitName": "Inorganic Chemistry",
-      "topic": "Coordination Compounds & Periodic Properties",
+      "chapterSlug": "p-block-elements",
+      "unitName": "p-Block Elements (Groups 13 to 18)",
+      "topic": "Group 13 - Boric Acid Lewis Acidity",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -988,7 +1030,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Group 13 - Boric Acid Lewis Acidity",
+      "conceptSlug": "p-block-elements"
     },
     {
       "id": "neet-2016-p2-q023",
@@ -996,9 +1040,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "inorganic-chemistry",
-      "unitName": "Inorganic Chemistry",
-      "topic": "Coordination Compounds & Periodic Properties",
+      "chapterSlug": "p-block-elements",
+      "unitName": "p-Block Elements (Groups 13 to 18)",
+      "topic": "Group 13 - Complex Fluoride Formation",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -1033,7 +1077,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Group 13 - Complex Fluoride Formation",
+      "conceptSlug": "p-block-elements"
     },
     {
       "id": "neet-2016-p2-q024",
@@ -1041,9 +1087,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "inorganic-chemistry",
-      "unitName": "Inorganic Chemistry",
-      "topic": "Coordination Compounds & Periodic Properties",
+      "chapterSlug": "redox-reactions-and-electrochemistry",
+      "unitName": "Redox Reactions and Electrochemistry",
+      "topic": "Standard Electrode Potentials & Galvanization",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -1078,7 +1124,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Standard Electrode Potentials & Galvanization",
+      "conceptSlug": "redox-reactions-and-electrochemistry"
     },
     {
       "id": "neet-2016-p2-q025",
@@ -1086,9 +1134,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "inorganic-chemistry",
-      "unitName": "Inorganic Chemistry",
-      "topic": "Coordination Compounds & Periodic Properties",
+      "chapterSlug": "practical-chemistry",
+      "unitName": "Principles Related to Practical Chemistry",
+      "topic": "Suspensions & Milk of Lime",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -1123,7 +1171,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Suspensions & Milk of Lime",
+      "conceptSlug": "practical-chemistry"
     },
     {
       "id": "neet-2016-p2-q026",
@@ -1131,9 +1181,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "inorganic-chemistry",
-      "unitName": "Inorganic Chemistry",
-      "topic": "Coordination Compounds & Periodic Properties",
+      "chapterSlug": "chemical-bonding-and-molecular-structure",
+      "unitName": "Chemical Bonding and Molecular Structure",
+      "topic": "Hybridization of Nitrogen Species",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -1168,7 +1218,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Hybridization of Nitrogen Species",
+      "conceptSlug": "chemical-bonding-and-molecular-structure"
     },
     {
       "id": "neet-2016-p2-q027",
@@ -1176,9 +1228,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "inorganic-chemistry",
-      "unitName": "Inorganic Chemistry",
-      "topic": "Coordination Compounds & Periodic Properties",
+      "chapterSlug": "chemical-bonding-and-molecular-structure",
+      "unitName": "Chemical Bonding and Molecular Structure",
+      "topic": "Lewis Acids and Bases",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -1213,7 +1265,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Lewis Acids and Bases",
+      "conceptSlug": "chemical-bonding-and-molecular-structure"
     },
     {
       "id": "neet-2016-p2-q028",
@@ -1221,9 +1275,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "inorganic-chemistry",
-      "unitName": "Inorganic Chemistry",
-      "topic": "Coordination Compounds & Periodic Properties",
+      "chapterSlug": "chemical-bonding-and-molecular-structure",
+      "unitName": "Chemical Bonding and Molecular Structure",
+      "topic": "Isoelectronic and Isostructural Species",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -1258,7 +1312,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Isoelectronic and Isostructural Species",
+      "conceptSlug": "chemical-bonding-and-molecular-structure"
     },
     {
       "id": "neet-2016-p2-q029",
@@ -1266,9 +1322,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "inorganic-chemistry",
-      "unitName": "Inorganic Chemistry",
-      "topic": "Coordination Compounds & Periodic Properties",
+      "chapterSlug": "periodicity-in-properties",
+      "unitName": "Classification of Elements and Periodicity",
+      "topic": "Anomalous Properties of Beryllium",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -1303,7 +1359,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Anomalous Properties of Beryllium",
+      "conceptSlug": "periodicity-in-properties"
     },
     {
       "id": "neet-2016-p2-q030",
@@ -1311,9 +1369,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "inorganic-chemistry",
-      "unitName": "Inorganic Chemistry",
-      "topic": "Coordination Compounds & Periodic Properties",
+      "chapterSlug": "p-block-elements",
+      "unitName": "p-Block Elements (Groups 13 to 18)",
+      "topic": "Group 16 - Sulfuric Acid Reactions",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -1348,7 +1406,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Group 16 - Sulfuric Acid Reactions",
+      "conceptSlug": "p-block-elements"
     },
     {
       "id": "neet-2016-p2-q031",
@@ -1356,9 +1416,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "inorganic-chemistry",
-      "unitName": "Inorganic Chemistry",
-      "topic": "Coordination Compounds & Periodic Properties",
+      "chapterSlug": "atomic-structure",
+      "unitName": "Atomic Structure",
+      "topic": "Spatial Orientation of d-Orbitals",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -1393,7 +1453,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Spatial Orientation of d-Orbitals",
+      "conceptSlug": "atomic-structure"
     },
     {
       "id": "neet-2016-p2-q032",
@@ -1401,9 +1463,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "inorganic-chemistry",
-      "unitName": "Inorganic Chemistry",
-      "topic": "Coordination Compounds & Periodic Properties",
+      "chapterSlug": "p-block-elements",
+      "unitName": "p-Block Elements (Groups 13 to 18)",
+      "topic": "Group 18 - Xenon Fluoride Geometry",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -1438,7 +1500,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Group 18 - Xenon Fluoride Geometry",
+      "conceptSlug": "p-block-elements"
     },
     {
       "id": "neet-2016-p2-q033",
@@ -1446,9 +1510,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "inorganic-chemistry",
-      "unitName": "Inorganic Chemistry",
-      "topic": "Coordination Compounds & Periodic Properties",
+      "chapterSlug": "chemical-bonding-and-molecular-structure",
+      "unitName": "Chemical Bonding and Molecular Structure",
+      "topic": "VSEPR Geometry & Multiple Bonding",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -1483,7 +1547,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "VSEPR Geometry & Multiple Bonding",
+      "conceptSlug": "chemical-bonding-and-molecular-structure"
     },
     {
       "id": "neet-2016-p2-q034",
@@ -1491,9 +1557,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "inorganic-chemistry",
-      "unitName": "Inorganic Chemistry",
-      "topic": "Coordination Compounds & Periodic Properties",
+      "chapterSlug": "co-ordination-compounds",
+      "unitName": "Co-ordination Compounds",
+      "topic": "Trans-Effect in Coordination Complexes",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -1528,7 +1594,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Trans-Effect in Coordination Complexes",
+      "conceptSlug": "co-ordination-compounds"
     },
     {
       "id": "neet-2016-p2-q035",
@@ -1536,9 +1604,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "inorganic-chemistry",
-      "unitName": "Inorganic Chemistry",
-      "topic": "Coordination Compounds & Periodic Properties",
+      "chapterSlug": "d-and-f-block-elements",
+      "unitName": "d- and f-Block Elements",
+      "topic": "Lanthanoid Contraction & Basicity",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -1573,7 +1641,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Lanthanoid Contraction & Basicity",
+      "conceptSlug": "d-and-f-block-elements"
     },
     {
       "id": "neet-2016-p2-q036",
@@ -1581,9 +1651,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "inorganic-chemistry",
-      "unitName": "Inorganic Chemistry",
-      "topic": "Coordination Compounds & Periodic Properties",
+      "chapterSlug": "co-ordination-compounds",
+      "unitName": "Co-ordination Compounds",
+      "topic": "Jahn-Teller Effect in Octahedral Complexes",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -1618,7 +1688,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Jahn-Teller Effect in Octahedral Complexes",
+      "conceptSlug": "co-ordination-compounds"
     },
     {
       "id": "neet-2016-p2-q037",
@@ -1626,9 +1698,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "organic-chemistry",
-      "unitName": "Organic Chemistry",
-      "topic": "Organic Reactions & Mechanisms",
+      "chapterSlug": "hydrocarbons",
+      "unitName": "Hydrocarbons",
+      "topic": "Friedel-Crafts Alkylation Reagents",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -1663,7 +1735,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Friedel-Crafts Alkylation Reagents",
+      "conceptSlug": "hydrocarbons"
     },
     {
       "id": "neet-2016-p2-q038",
@@ -1671,9 +1745,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "organic-chemistry",
-      "unitName": "Organic Chemistry",
-      "topic": "Organic Reactions & Mechanisms",
+      "chapterSlug": "general-organic-chemistry",
+      "unitName": "Some Basic Principles of Organic Chemistry",
+      "topic": "Coplanarity & Molecular Geometry",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -1708,7 +1782,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Coplanarity & Molecular Geometry",
+      "conceptSlug": "general-organic-chemistry"
     },
     {
       "id": "neet-2016-p2-q039",
@@ -1716,9 +1792,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "organic-chemistry",
-      "unitName": "Organic Chemistry",
-      "topic": "Organic Reactions & Mechanisms",
+      "chapterSlug": "biomolecules",
+      "unitName": "Biomolecules",
+      "topic": "Polymers - Polyamides (Nylon 6,6)",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -1753,7 +1829,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Polymers - Polyamides (Nylon 6,6)",
+      "conceptSlug": "biomolecules"
     },
     {
       "id": "neet-2016-p2-q040",
@@ -1761,9 +1839,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "organic-chemistry",
-      "unitName": "Organic Chemistry",
-      "topic": "Organic Reactions & Mechanisms",
+      "chapterSlug": "general-organic-chemistry",
+      "unitName": "Some Basic Principles of Organic Chemistry",
+      "topic": "Aromatic Heterocycles & Pyrrole Resonance",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -1798,7 +1876,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Aromatic Heterocycles & Pyrrole Resonance",
+      "conceptSlug": "general-organic-chemistry"
     },
     {
       "id": "neet-2016-p2-q041",
@@ -1806,9 +1886,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "organic-chemistry",
-      "unitName": "Organic Chemistry",
-      "topic": "Organic Reactions & Mechanisms",
+      "chapterSlug": "hydrocarbons",
+      "unitName": "Hydrocarbons",
+      "topic": "Alkene Synthesis & Elimination Reactions",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -1843,7 +1923,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Alkene Synthesis & Elimination Reactions",
+      "conceptSlug": "hydrocarbons"
     },
     {
       "id": "neet-2016-p2-q042",
@@ -1851,9 +1933,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "organic-chemistry",
-      "unitName": "Organic Chemistry",
-      "topic": "Organic Reactions & Mechanisms",
+      "chapterSlug": "amines-and-diazonium-salts",
+      "unitName": "Organic Compounds Containing Nitrogen",
+      "topic": "Nitroalkanes & Nitrous Acid Reactivity",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -1888,7 +1970,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Nitroalkanes & Nitrous Acid Reactivity",
+      "conceptSlug": "amines-and-diazonium-salts"
     },
     {
       "id": "neet-2016-p2-q043",
@@ -1896,9 +1980,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "organic-chemistry",
-      "unitName": "Organic Chemistry",
-      "topic": "Organic Reactions & Mechanisms",
+      "chapterSlug": "biomolecules",
+      "unitName": "Biomolecules",
+      "topic": "Central Dogma of Molecular Genetics",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -1933,7 +2017,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Central Dogma of Molecular Genetics",
+      "conceptSlug": "biomolecules"
     },
     {
       "id": "neet-2016-p2-q044",
@@ -1941,9 +2027,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "organic-chemistry",
-      "unitName": "Organic Chemistry",
-      "topic": "Organic Reactions & Mechanisms",
+      "chapterSlug": "biomolecules",
+      "unitName": "Biomolecules",
+      "topic": "Carbohydrates - D/L Configuration of Aldoses",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -1978,7 +2064,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Carbohydrates - D/L Configuration of Aldoses",
+      "conceptSlug": "biomolecules"
     },
     {
       "id": "neet-2016-p2-q045",
@@ -1986,9 +2074,9 @@
       "examSlug": "neet",
       "subjectSlug": "chemistry",
       "subjectName": "Chemistry",
-      "chapterSlug": "organic-chemistry",
-      "unitName": "Organic Chemistry",
-      "topic": "Organic Reactions & Mechanisms",
+      "chapterSlug": "hydrocarbons",
+      "unitName": "Hydrocarbons",
+      "topic": "Electrophilic Aromatic Alkylation",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -2023,7 +2111,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Electrophilic Aromatic Alkylation",
+      "conceptSlug": "hydrocarbons"
     },
     {
       "id": "neet-2016-p2-q046",
@@ -2031,9 +2121,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "biotechnology-and-its-applications",
+      "unitName": "Biotechnology and Its Applications",
+      "topic": "Tools of Recombinant DNA - Ligases",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -2068,7 +2158,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Tools of Recombinant DNA - Ligases",
+      "conceptSlug": "biotechnology-and-its-applications"
     },
     {
       "id": "neet-2016-p2-q047",
@@ -2076,9 +2168,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "biotechnology-and-its-applications",
+      "unitName": "Biotechnology and Its Applications",
+      "topic": "Downstream Processing Components",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -2113,7 +2205,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Downstream Processing Components",
+      "conceptSlug": "biotechnology-and-its-applications"
     },
     {
       "id": "neet-2016-p2-q048",
@@ -2121,9 +2215,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "biotechnology-and-its-applications",
+      "unitName": "Biotechnology and Its Applications",
+      "topic": "Restriction Enzymes & Blunt Ends",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -2158,7 +2252,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Restriction Enzymes & Blunt Ends",
+      "conceptSlug": "biotechnology-and-its-applications"
     },
     {
       "id": "neet-2016-p2-q049",
@@ -2166,9 +2262,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "biotechnology-and-its-applications",
+      "unitName": "Biotechnology and Its Applications",
+      "topic": "Gene Therapy for ADA Deficiency",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -2203,7 +2299,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Gene Therapy for ADA Deficiency",
+      "conceptSlug": "biotechnology-and-its-applications"
     },
     {
       "id": "neet-2016-p2-q050",
@@ -2211,9 +2309,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "ecology-and-environment",
+      "unitName": "Ecology and Environment",
+      "topic": "Biodiversity Hotspots & Conservation",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -2248,7 +2346,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Biodiversity Hotspots & Conservation",
+      "conceptSlug": "ecology-and-environment"
     },
     {
       "id": "neet-2016-p2-q051",
@@ -2256,9 +2356,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "ecology-and-environment",
+      "unitName": "Ecology and Environment",
+      "topic": "Hydrothermal Vent Ecosystems & Producers",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -2293,7 +2393,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Hydrothermal Vent Ecosystems & Producers",
+      "conceptSlug": "ecology-and-environment"
     },
     {
       "id": "neet-2016-p2-q052",
@@ -2301,9 +2403,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "ecology-and-environment",
+      "unitName": "Ecology and Environment",
+      "topic": "r-Selected Species Life History",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -2338,7 +2440,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "r-Selected Species Life History",
+      "conceptSlug": "ecology-and-environment"
     },
     {
       "id": "neet-2016-p2-q053",
@@ -2346,9 +2450,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "ecology-and-environment",
+      "unitName": "Ecology and Environment",
+      "topic": "Population Interactions & Signs",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -2383,7 +2487,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Population Interactions & Signs",
+      "conceptSlug": "ecology-and-environment"
     },
     {
       "id": "neet-2016-p2-q054",
@@ -2391,9 +2497,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "ecology-and-environment",
+      "unitName": "Ecology and Environment",
+      "topic": "Invasive Alien Species & Biodiversity",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -2428,7 +2534,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Invasive Alien Species & Biodiversity",
+      "conceptSlug": "ecology-and-environment"
     },
     {
       "id": "neet-2016-p2-q055",
@@ -2436,9 +2544,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "ecology-and-environment",
+      "unitName": "Ecology and Environment",
+      "topic": "IUCN Red List Categories",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -2473,7 +2581,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "IUCN Red List Categories",
+      "conceptSlug": "ecology-and-environment"
     },
     {
       "id": "neet-2016-p2-q056",
@@ -2481,9 +2591,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "diversity-in-living-world",
+      "unitName": "Diversity in Living World",
+      "topic": "Kingdom Fungi & Cell Wall Composition",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -2518,7 +2628,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Kingdom Fungi & Cell Wall Composition",
+      "conceptSlug": "diversity-in-living-world"
     },
     {
       "id": "neet-2016-p2-q057",
@@ -2526,9 +2638,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "diversity-in-living-world",
+      "unitName": "Diversity in Living World",
+      "topic": "Archaebacteria & Methanogens",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -2563,7 +2675,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Archaebacteria & Methanogens",
+      "conceptSlug": "diversity-in-living-world"
     },
     {
       "id": "neet-2016-p2-q058",
@@ -2571,9 +2685,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "diversity-in-living-world",
+      "unitName": "Diversity in Living World",
+      "topic": "Chrysophytes - Diatomaceous Earth",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -2608,7 +2722,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Chrysophytes - Diatomaceous Earth",
+      "conceptSlug": "diversity-in-living-world"
     },
     {
       "id": "neet-2016-p2-q059",
@@ -2616,9 +2732,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "diversity-in-living-world",
+      "unitName": "Diversity in Living World",
+      "topic": "Taxonomic Aids - Herbarium Sheet Data",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -2653,7 +2769,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Taxonomic Aids - Herbarium Sheet Data",
+      "conceptSlug": "diversity-in-living-world"
     },
     {
       "id": "neet-2016-p2-q060",
@@ -2661,9 +2779,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "diversity-in-living-world",
+      "unitName": "Diversity in Living World",
+      "topic": "Gymnosperms - Conifer Adaptations",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -2698,7 +2816,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Gymnosperms - Conifer Adaptations",
+      "conceptSlug": "diversity-in-living-world"
     },
     {
       "id": "neet-2016-p2-q061",
@@ -2706,9 +2826,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "diversity-in-living-world",
+      "unitName": "Diversity in Living World",
+      "topic": "Algae - Economic Uses & Phycocolloids",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -2743,7 +2863,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Algae - Economic Uses & Phycocolloids",
+      "conceptSlug": "diversity-in-living-world"
     },
     {
       "id": "neet-2016-p2-q062",
@@ -2751,9 +2873,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "structural-organisation",
+      "unitName": "Structural Organisation in Animals and Plants",
+      "topic": "Flower Morphology - Polyadelphous Stamens",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -2788,7 +2910,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Flower Morphology - Polyadelphous Stamens",
+      "conceptSlug": "structural-organisation"
     },
     {
       "id": "neet-2016-p2-q063",
@@ -2796,9 +2920,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "structural-organisation",
+      "unitName": "Structural Organisation in Animals and Plants",
+      "topic": "Stamen Length Variations in Angiosperms",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -2833,7 +2957,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Stamen Length Variations in Angiosperms",
+      "conceptSlug": "structural-organisation"
     },
     {
       "id": "neet-2016-p2-q064",
@@ -2841,9 +2967,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "structural-organisation",
+      "unitName": "Structural Organisation in Animals and Plants",
+      "topic": "Flower Symmetry - Actinomorphic Flowers",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -2878,7 +3004,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Flower Symmetry - Actinomorphic Flowers",
+      "conceptSlug": "structural-organisation"
     },
     {
       "id": "neet-2016-p2-q065",
@@ -2886,9 +3014,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "structural-organisation",
+      "unitName": "Structural Organisation in Animals and Plants",
+      "topic": "Placentation Types - Free Central",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -2923,7 +3051,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Placentation Types - Free Central",
+      "conceptSlug": "structural-organisation"
     },
     {
       "id": "neet-2016-p2-q066",
@@ -2931,9 +3061,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "structural-organisation",
+      "unitName": "Structural Organisation in Animals and Plants",
+      "topic": "Plant Anatomy - Cortex & Stele",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -2968,7 +3098,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Plant Anatomy - Cortex & Stele",
+      "conceptSlug": "structural-organisation"
     },
     {
       "id": "neet-2016-p2-q067",
@@ -2976,9 +3108,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "structural-organisation",
+      "unitName": "Structural Organisation in Animals and Plants",
+      "topic": "Secondary Growth - Tyloses in Vessels",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -3013,7 +3145,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Secondary Growth - Tyloses in Vessels",
+      "conceptSlug": "structural-organisation"
     },
     {
       "id": "neet-2016-p2-q068",
@@ -3021,9 +3155,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "cell-structure-and-function",
+      "unitName": "Cell Structure and Function",
+      "topic": "Enzymes - Catalytic RNA & Ribozymes",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -3058,7 +3192,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Enzymes - Catalytic RNA & Ribozymes",
+      "conceptSlug": "cell-structure-and-function"
     },
     {
       "id": "neet-2016-p2-q069",
@@ -3066,9 +3202,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "cell-structure-and-function",
+      "unitName": "Cell Structure and Function",
+      "topic": "Cell Organelles - Plant vs. Animal Vacuoles",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -3103,7 +3239,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Cell Organelles - Plant vs. Animal Vacuoles",
+      "conceptSlug": "cell-structure-and-function"
     },
     {
       "id": "neet-2016-p2-q070",
@@ -3111,9 +3249,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "cell-structure-and-function",
+      "unitName": "Cell Structure and Function",
+      "topic": "Bacterial Cell Appendages & Motility",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -3148,7 +3286,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Bacterial Cell Appendages & Motility",
+      "conceptSlug": "cell-structure-and-function"
     },
     {
       "id": "neet-2016-p2-q071",
@@ -3156,9 +3296,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "cell-structure-and-function",
+      "unitName": "Cell Structure and Function",
+      "topic": "Endomembrane System - Lysosomes",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -3193,7 +3333,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Endomembrane System - Lysosomes",
+      "conceptSlug": "cell-structure-and-function"
     },
     {
       "id": "neet-2016-p2-q072",
@@ -3201,9 +3343,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "cell-structure-and-function",
+      "unitName": "Cell Structure and Function",
+      "topic": "Cell Cycle - S Phase DNA Synthesis",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -3238,7 +3380,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Cell Cycle - S Phase DNA Synthesis",
+      "conceptSlug": "cell-structure-and-function"
     },
     {
       "id": "neet-2016-p2-q073",
@@ -3246,9 +3390,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "plant-physiology",
+      "unitName": "Plant Physiology",
+      "topic": "Respiration - Amphibolic Acetyl-CoA Pathway",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -3283,7 +3427,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Respiration - Amphibolic Acetyl-CoA Pathway",
+      "conceptSlug": "plant-physiology"
     },
     {
       "id": "neet-2016-p2-q074",
@@ -3291,9 +3437,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "plant-physiology",
+      "unitName": "Plant Physiology",
+      "topic": "Transport in Plants - Phloem Sap Characteristics",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -3328,7 +3474,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Transport in Plants - Phloem Sap Characteristics",
+      "conceptSlug": "plant-physiology"
     },
     {
       "id": "neet-2016-p2-q075",
@@ -3336,9 +3484,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "plant-physiology",
+      "unitName": "Plant Physiology",
+      "topic": "Plant Hormones - Auxin & Cytokinin Organogenesis",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -3373,7 +3521,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Plant Hormones - Auxin & Cytokinin Organogenesis",
+      "conceptSlug": "plant-physiology"
     },
     {
       "id": "neet-2016-p2-q076",
@@ -3381,9 +3531,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "plant-physiology",
+      "unitName": "Plant Physiology",
+      "topic": "Photoperiodism & Phytochromes",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -3418,7 +3568,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Photoperiodism & Phytochromes",
+      "conceptSlug": "plant-physiology"
     },
     {
       "id": "neet-2016-p2-q077",
@@ -3426,9 +3578,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "plant-physiology",
+      "unitName": "Plant Physiology",
+      "topic": "Mineral Nutrition - Calcium in Meristems",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -3463,7 +3615,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Mineral Nutrition - Calcium in Meristems",
+      "conceptSlug": "plant-physiology"
     },
     {
       "id": "neet-2016-p2-q078",
@@ -3471,9 +3625,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "plant-physiology",
+      "unitName": "Plant Physiology",
+      "topic": "Photosynthesis - Photorespiration in C3/C4",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -3508,7 +3662,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Photosynthesis - Photorespiration in C3/C4",
+      "conceptSlug": "plant-physiology"
     },
     {
       "id": "neet-2016-p2-q079",
@@ -3516,9 +3672,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "reproduction",
+      "unitName": "Reproduction",
+      "topic": "Vegetative Propagation in Modified Stems",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -3553,7 +3709,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Vegetative Propagation in Modified Stems",
+      "conceptSlug": "reproduction"
     },
     {
       "id": "neet-2016-p2-q080",
@@ -3561,9 +3719,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "genetics-and-evolution",
+      "unitName": "Genetics and Evolution",
+      "topic": "Sexual Reproduction & Genetic Recombination",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -3598,7 +3756,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Sexual Reproduction & Genetic Recombination",
+      "conceptSlug": "genetics-and-evolution"
     },
     {
       "id": "neet-2016-p2-q081",
@@ -3606,9 +3766,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "reproduction",
+      "unitName": "Reproduction",
+      "topic": "Floral Structure & Pistil Fusion",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -3643,7 +3803,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Floral Structure & Pistil Fusion",
+      "conceptSlug": "reproduction"
     },
     {
       "id": "neet-2016-p2-q082",
@@ -3651,9 +3813,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "reproduction",
+      "unitName": "Reproduction",
+      "topic": "Megasporogenesis & Embryo Sac",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -3688,7 +3850,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Megasporogenesis & Embryo Sac",
+      "conceptSlug": "reproduction"
     },
     {
       "id": "neet-2016-p2-q083",
@@ -3696,9 +3860,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "reproduction",
+      "unitName": "Reproduction",
+      "topic": "Pollination Agents in Aquatic Plants",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -3733,7 +3897,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Pollination Agents in Aquatic Plants",
+      "conceptSlug": "reproduction"
     },
     {
       "id": "neet-2016-p2-q084",
@@ -3741,9 +3907,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "reproduction",
+      "unitName": "Reproduction",
+      "topic": "Ovule Morphology & Megasporangium",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -3778,7 +3944,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Ovule Morphology & Megasporangium",
+      "conceptSlug": "reproduction"
     },
     {
       "id": "neet-2016-p2-q085",
@@ -3786,9 +3954,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "genetics-and-evolution",
+      "unitName": "Genetics and Evolution",
+      "topic": "Semiconservative Replication in Vicia faba",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -3823,7 +3991,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Semiconservative Replication in Vicia faba",
+      "conceptSlug": "genetics-and-evolution"
     },
     {
       "id": "neet-2016-p2-q086",
@@ -3831,9 +4001,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "genetics-and-evolution",
+      "unitName": "Genetics and Evolution",
+      "topic": "Chromosomal Mutations - Translocation",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -3868,7 +4038,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Chromosomal Mutations - Translocation",
+      "conceptSlug": "genetics-and-evolution"
     },
     {
       "id": "neet-2016-p2-q087",
@@ -3876,9 +4048,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "genetics-and-evolution",
+      "unitName": "Genetics and Evolution",
+      "topic": "Gene Structure - Cistron Concept",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -3913,7 +4085,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Gene Structure - Cistron Concept",
+      "conceptSlug": "genetics-and-evolution"
     },
     {
       "id": "neet-2016-p2-q088",
@@ -3921,9 +4095,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "genetics-and-evolution",
+      "unitName": "Genetics and Evolution",
+      "topic": "Mendelian Genetics - Pure Breeding Lines",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -3958,7 +4132,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Mendelian Genetics - Pure Breeding Lines",
+      "conceptSlug": "genetics-and-evolution"
     },
     {
       "id": "neet-2016-p2-q089",
@@ -3966,9 +4142,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "genetics-and-evolution",
+      "unitName": "Genetics and Evolution",
+      "topic": "Bacterial 23S rRNA Peptidyl Transferase",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -4003,7 +4179,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Bacterial 23S rRNA Peptidyl Transferase",
+      "conceptSlug": "genetics-and-evolution"
     },
     {
       "id": "neet-2016-p2-q090",
@@ -4011,9 +4189,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Botany)",
-      "chapterSlug": "botany",
-      "unitName": "Botany",
-      "topic": "Plant Physiology, Anatomy & Genetics",
+      "chapterSlug": "biotechnology-and-its-applications",
+      "unitName": "Biotechnology and Its Applications",
+      "topic": "Bioreactor Design & Aeration",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -4048,7 +4226,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Bioreactor Design & Aeration",
+      "conceptSlug": "biotechnology-and-its-applications"
     },
     {
       "id": "neet-2016-p2-q091",
@@ -4056,9 +4236,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "genetics-and-evolution",
+      "unitName": "Genetics and Evolution",
+      "topic": "Criteria for Genetic Material",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -4093,7 +4273,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Criteria for Genetic Material",
+      "conceptSlug": "genetics-and-evolution"
     },
     {
       "id": "neet-2016-p2-q092",
@@ -4101,9 +4283,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "genetics-and-evolution",
+      "unitName": "Genetics and Evolution",
+      "topic": "Transcription Template Strand",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -4138,7 +4320,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Transcription Template Strand",
+      "conceptSlug": "genetics-and-evolution"
     },
     {
       "id": "neet-2016-p2-q093",
@@ -4146,9 +4330,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "biology-and-human-welfare",
+      "unitName": "Biology and Human Welfare",
+      "topic": "Animal Breeding & Interspecific Hybridization",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -4183,7 +4367,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Animal Breeding & Interspecific Hybridization",
+      "conceptSlug": "biology-and-human-welfare"
     },
     {
       "id": "neet-2016-p2-q094",
@@ -4191,9 +4377,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "biology-and-human-welfare",
+      "unitName": "Biology and Human Welfare",
+      "topic": "HIV Pathogenesis & Immune Attack",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -4228,7 +4414,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "HIV Pathogenesis & Immune Attack",
+      "conceptSlug": "biology-and-human-welfare"
     },
     {
       "id": "neet-2016-p2-q095",
@@ -4236,9 +4424,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "biology-and-human-welfare",
+      "unitName": "Biology and Human Welfare",
+      "topic": "Fisheries - Omega-3 Rich Marine Fishes",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -4273,7 +4461,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Fisheries - Omega-3 Rich Marine Fishes",
+      "conceptSlug": "biology-and-human-welfare"
     },
     {
       "id": "neet-2016-p2-q096",
@@ -4281,9 +4471,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "biology-and-human-welfare",
+      "unitName": "Biology and Human Welfare",
+      "topic": "Industrial Microbes & Bioactive Chemicals",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -4318,7 +4508,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Industrial Microbes & Bioactive Chemicals",
+      "conceptSlug": "biology-and-human-welfare"
     },
     {
       "id": "neet-2016-p2-q097",
@@ -4326,9 +4518,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "ecology-and-environment",
+      "unitName": "Ecology and Environment",
+      "topic": "Water Pollution - BOD Limitations",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -4363,7 +4555,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Water Pollution - BOD Limitations",
+      "conceptSlug": "ecology-and-environment"
     },
     {
       "id": "neet-2016-p2-q098",
@@ -4371,9 +4565,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "ecology-and-environment",
+      "unitName": "Ecology and Environment",
+      "topic": "Competitive Exclusion Principle",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -4408,7 +4602,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Competitive Exclusion Principle",
+      "conceptSlug": "ecology-and-environment"
     },
     {
       "id": "neet-2016-p2-q099",
@@ -4416,9 +4612,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "ecology-and-environment",
+      "unitName": "Ecology and Environment",
+      "topic": "Wildlife Conservation - Dachigam Hangul Sanctuary",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -4453,7 +4649,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Wildlife Conservation - Dachigam Hangul Sanctuary",
+      "conceptSlug": "ecology-and-environment"
     },
     {
       "id": "neet-2016-p2-q100",
@@ -4461,9 +4659,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "ecology-and-environment",
+      "unitName": "Ecology and Environment",
+      "topic": "Eutrophication & Aquatic Mortality",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -4498,7 +4696,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Eutrophication & Aquatic Mortality",
+      "conceptSlug": "ecology-and-environment"
     },
     {
       "id": "neet-2016-p2-q101",
@@ -4506,9 +4706,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "ecology-and-environment",
+      "unitName": "Ecology and Environment",
+      "topic": "Biomagnification of Toxicants (DDT)",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -4543,7 +4743,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Biomagnification of Toxicants (DDT)",
+      "conceptSlug": "ecology-and-environment"
     },
     {
       "id": "neet-2016-p2-q102",
@@ -4551,9 +4753,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "biology-and-human-welfare",
+      "unitName": "Biology and Human Welfare",
+      "topic": "Bacterial Infectious Diseases",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -4588,7 +4790,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Bacterial Infectious Diseases",
+      "conceptSlug": "biology-and-human-welfare"
     },
     {
       "id": "neet-2016-p2-q103",
@@ -4596,9 +4800,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "diversity-in-living-world",
+      "unitName": "Diversity in Living World",
+      "topic": "Taxonomic Hierarchy of Housefly",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -4633,7 +4837,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Taxonomic Hierarchy of Housefly",
+      "conceptSlug": "diversity-in-living-world"
     },
     {
       "id": "neet-2016-p2-q104",
@@ -4641,9 +4847,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "diversity-in-living-world",
+      "unitName": "Diversity in Living World",
+      "topic": "Chordata - Cyclostome Features",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -4678,7 +4884,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Chordata - Cyclostome Features",
+      "conceptSlug": "diversity-in-living-world"
     },
     {
       "id": "neet-2016-p2-q105",
@@ -4686,9 +4894,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "diversity-in-living-world",
+      "unitName": "Diversity in Living World",
+      "topic": "Biological Species Concept & Growth",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -4723,7 +4931,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Biological Species Concept & Growth",
+      "conceptSlug": "diversity-in-living-world"
     },
     {
       "id": "neet-2016-p2-q106",
@@ -4731,9 +4941,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "structural-organisation",
+      "unitName": "Structural Organisation in Animals and Plants",
+      "topic": "Cockroach Reproductive System",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -4768,7 +4978,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Cockroach Reproductive System",
+      "conceptSlug": "structural-organisation"
     },
     {
       "id": "neet-2016-p2-q107",
@@ -4776,9 +4988,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "structural-organisation",
+      "unitName": "Structural Organisation in Animals and Plants",
+      "topic": "Animal Tissues - Smooth Muscle Characteristics",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -4813,7 +5025,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Animal Tissues - Smooth Muscle Characteristics",
+      "conceptSlug": "structural-organisation"
     },
     {
       "id": "neet-2016-p2-q108",
@@ -4821,9 +5035,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "plant-physiology",
+      "unitName": "Plant Physiology",
+      "topic": "Oxidative Phosphorylation & ATP Synthesis",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -4858,7 +5072,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Oxidative Phosphorylation & ATP Synthesis",
+      "conceptSlug": "plant-physiology"
     },
     {
       "id": "neet-2016-p2-q109",
@@ -4866,9 +5082,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "cell-structure-and-function",
+      "unitName": "Cell Structure and Function",
+      "topic": "Protein Tertiary Structure & Bonds",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -4903,7 +5119,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Protein Tertiary Structure & Bonds",
+      "conceptSlug": "cell-structure-and-function"
     },
     {
       "id": "neet-2016-p2-q110",
@@ -4911,9 +5129,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "cell-structure-and-function",
+      "unitName": "Cell Structure and Function",
+      "topic": "Enzyme Catalysis & Activation Energy Graph",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -4948,7 +5166,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Enzyme Catalysis & Activation Energy Graph",
+      "conceptSlug": "cell-structure-and-function"
     },
     {
       "id": "neet-2016-p2-q111",
@@ -4956,9 +5176,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "cell-structure-and-function",
+      "unitName": "Cell Structure and Function",
+      "topic": "Cell Cycle Checkpoints - G2/M Arrest",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -4993,7 +5213,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Cell Cycle Checkpoints - G2/M Arrest",
+      "conceptSlug": "cell-structure-and-function"
     },
     {
       "id": "neet-2016-p2-q112",
@@ -5001,9 +5223,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "cell-structure-and-function",
+      "unitName": "Cell Structure and Function",
+      "topic": "Meiotic Stages - Prophase I Sub-phases",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -5038,7 +5260,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Meiotic Stages - Prophase I Sub-phases",
+      "conceptSlug": "cell-structure-and-function"
     },
     {
       "id": "neet-2016-p2-q113",
@@ -5046,9 +5270,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "human-physiology",
+      "unitName": "Human Physiology",
+      "topic": "Gastrointestinal Hormones - CCK & Secretin",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -5083,7 +5307,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Gastrointestinal Hormones - CCK & Secretin",
+      "conceptSlug": "human-physiology"
     },
     {
       "id": "neet-2016-p2-q114",
@@ -5091,9 +5317,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "human-physiology",
+      "unitName": "Human Physiology",
+      "topic": "Respiratory Physiology - Alveolar Gas Exchange",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -5128,7 +5354,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Respiratory Physiology - Alveolar Gas Exchange",
+      "conceptSlug": "human-physiology"
     },
     {
       "id": "neet-2016-p2-q115",
@@ -5136,9 +5364,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "human-physiology",
+      "unitName": "Human Physiology",
+      "topic": "Sensory Reception - Photoreceptor Potentials",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -5173,7 +5401,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Sensory Reception - Photoreceptor Potentials",
+      "conceptSlug": "human-physiology"
     },
     {
       "id": "neet-2016-p2-q116",
@@ -5181,9 +5411,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "human-physiology",
+      "unitName": "Human Physiology",
+      "topic": "Endocrine Disorders - Graves' Disease",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -5218,7 +5448,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Endocrine Disorders - Graves' Disease",
+      "conceptSlug": "human-physiology"
     },
     {
       "id": "neet-2016-p2-q117",
@@ -5226,9 +5458,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "human-physiology",
+      "unitName": "Human Physiology",
+      "topic": "Muscular Contraction - Calcium Ion Unmasking",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -5263,7 +5495,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Muscular Contraction - Calcium Ion Unmasking",
+      "conceptSlug": "human-physiology"
     },
     {
       "id": "neet-2016-p2-q118",
@@ -5271,9 +5505,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "human-physiology",
+      "unitName": "Human Physiology",
+      "topic": "Circulatory System - Thrombocytes & Clotting",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -5308,7 +5542,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Circulatory System - Thrombocytes & Clotting",
+      "conceptSlug": "human-physiology"
     },
     {
       "id": "neet-2016-p2-q119",
@@ -5316,9 +5552,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "human-physiology",
+      "unitName": "Human Physiology",
+      "topic": "Endocrine Pancreas - Insulin Action",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -5353,7 +5589,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Endocrine Pancreas - Insulin Action",
+      "conceptSlug": "human-physiology"
     },
     {
       "id": "neet-2016-p2-q120",
@@ -5361,9 +5599,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "human-physiology",
+      "unitName": "Human Physiology",
+      "topic": "Skeletal Disorders - Osteoporosis & Estrogen",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -5398,7 +5636,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Skeletal Disorders - Osteoporosis & Estrogen",
+      "conceptSlug": "human-physiology"
     },
     {
       "id": "neet-2016-p2-q121",
@@ -5406,9 +5646,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "human-physiology",
+      "unitName": "Human Physiology",
+      "topic": "Body Fluids - Blood Serum Composition",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -5443,7 +5683,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Body Fluids - Blood Serum Composition",
+      "conceptSlug": "human-physiology"
     },
     {
       "id": "neet-2016-p2-q122",
@@ -5451,9 +5693,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "human-physiology",
+      "unitName": "Human Physiology",
+      "topic": "Breathing Mechanics - Intrapleural Pressure",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -5488,7 +5730,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Breathing Mechanics - Intrapleural Pressure",
+      "conceptSlug": "human-physiology"
     },
     {
       "id": "neet-2016-p2-q123",
@@ -5496,9 +5740,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "human-physiology",
+      "unitName": "Human Physiology",
+      "topic": "Pituitary Gland - Neurohypophysis Storage",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -5533,7 +5777,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Pituitary Gland - Neurohypophysis Storage",
+      "conceptSlug": "human-physiology"
     },
     {
       "id": "neet-2016-p2-q124",
@@ -5541,9 +5787,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "human-physiology",
+      "unitName": "Human Physiology",
+      "topic": "Excretory System - PCT Active Reabsorption",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -5578,7 +5824,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Excretory System - PCT Active Reabsorption",
+      "conceptSlug": "human-physiology"
     },
     {
       "id": "neet-2016-p2-q125",
@@ -5586,9 +5834,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "reproduction",
+      "unitName": "Reproduction",
+      "topic": "Contraception - Hormone-Releasing IUDs",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -5623,7 +5871,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Contraception - Hormone-Releasing IUDs",
+      "conceptSlug": "reproduction"
     },
     {
       "id": "neet-2016-p2-q126",
@@ -5631,9 +5881,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "reproduction",
+      "unitName": "Reproduction",
+      "topic": "Surgical Contraception - Vasectomy",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -5668,7 +5918,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Surgical Contraception - Vasectomy",
+      "conceptSlug": "reproduction"
     },
     {
       "id": "neet-2016-p2-q127",
@@ -5676,9 +5928,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "reproduction",
+      "unitName": "Reproduction",
+      "topic": "In Vitro Fertilization & Embryo Transfer",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -5713,7 +5965,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "In Vitro Fertilization & Embryo Transfer",
+      "conceptSlug": "reproduction"
     },
     {
       "id": "neet-2016-p2-q128",
@@ -5721,9 +5975,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "reproduction",
+      "unitName": "Reproduction",
+      "topic": "Male Reproductive Duct Pathway",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -5758,7 +6012,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Male Reproductive Duct Pathway",
+      "conceptSlug": "reproduction"
     },
     {
       "id": "neet-2016-p2-q129",
@@ -5766,9 +6022,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "reproduction",
+      "unitName": "Reproduction",
+      "topic": "Human Reproductive Anatomy Terminology",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -5803,7 +6059,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Human Reproductive Anatomy Terminology",
+      "conceptSlug": "reproduction"
     },
     {
       "id": "neet-2016-p2-q130",
@@ -5811,9 +6069,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "reproduction",
+      "unitName": "Reproduction",
+      "topic": "Placental Endocrinology",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -5848,7 +6106,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Placental Endocrinology",
+      "conceptSlug": "reproduction"
     },
     {
       "id": "neet-2016-p2-q131",
@@ -5856,9 +6116,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "genetics-and-evolution",
+      "unitName": "Genetics and Evolution",
+      "topic": "Sex-Linked Inheritance - Color Blindness",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -5893,7 +6153,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Sex-Linked Inheritance - Color Blindness",
+      "conceptSlug": "genetics-and-evolution"
     },
     {
       "id": "neet-2016-p2-q132",
@@ -5901,9 +6163,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "genetics-and-evolution",
+      "unitName": "Genetics and Evolution",
+      "topic": "Mechanisms of Evolution - Genetic Drift",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -5938,7 +6200,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Mechanisms of Evolution - Genetic Drift",
+      "conceptSlug": "genetics-and-evolution"
     },
     {
       "id": "neet-2016-p2-q133",
@@ -5946,9 +6210,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "genetics-and-evolution",
+      "unitName": "Genetics and Evolution",
+      "topic": "Population Genetics - Hardy-Weinberg Equation",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -5983,7 +6247,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Population Genetics - Hardy-Weinberg Equation",
+      "conceptSlug": "genetics-and-evolution"
     },
     {
       "id": "neet-2016-p2-q134",
@@ -5991,9 +6257,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "genetics-and-evolution",
+      "unitName": "Genetics and Evolution",
+      "topic": "Human Evolution Chronology",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -6028,7 +6294,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Human Evolution Chronology",
+      "conceptSlug": "genetics-and-evolution"
     },
     {
       "id": "neet-2016-p2-q135",
@@ -6036,9 +6304,9 @@
       "examSlug": "neet",
       "subjectSlug": "biology",
       "subjectName": "Biology (Zoology)",
-      "chapterSlug": "zoology",
-      "unitName": "Zoology",
-      "topic": "Human Physiology, Genetics & Evolution",
+      "chapterSlug": "genetics-and-evolution",
+      "unitName": "Genetics and Evolution",
+      "topic": "Chemical Origin of Life Sequence",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -6073,7 +6341,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Chemical Origin of Life Sequence",
+      "conceptSlug": "genetics-and-evolution"
     },
     {
       "id": "neet-2016-p2-q136",
@@ -6081,9 +6351,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "modern-physics",
-      "unitName": "Modern Physics & Optics",
-      "topic": "Ray Optics, Wave Optics & Dual Nature",
+      "chapterSlug": "optics",
+      "unitName": "Optics",
+      "topic": "Refraction & Vision Correction Lenses",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -6118,7 +6388,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Refraction & Vision Correction Lenses",
+      "conceptSlug": "optics"
     },
     {
       "id": "neet-2016-p2-q137",
@@ -6126,9 +6398,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "modern-physics",
-      "unitName": "Modern Physics & Optics",
-      "topic": "Ray Optics, Wave Optics & Dual Nature",
+      "chapterSlug": "optics",
+      "unitName": "Optics",
+      "topic": "Wave Optics - Single Slit Diffraction Minima",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -6163,7 +6435,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Wave Optics - Single Slit Diffraction Minima",
+      "conceptSlug": "optics"
     },
     {
       "id": "neet-2016-p2-q138",
@@ -6171,9 +6445,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "modern-physics",
-      "unitName": "Modern Physics & Optics",
-      "topic": "Ray Optics, Wave Optics & Dual Nature",
+      "chapterSlug": "dual-nature-of-matter-and-radiation",
+      "unitName": "Dual Nature of Matter and Radiation",
+      "topic": "de-Broglie Wavelength & X-Ray Cutoff",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -6208,7 +6482,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "de-Broglie Wavelength & X-Ray Cutoff",
+      "conceptSlug": "dual-nature-of-matter-and-radiation"
     },
     {
       "id": "neet-2016-p2-q139",
@@ -6216,9 +6492,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "modern-physics",
-      "unitName": "Modern Physics & Optics",
-      "topic": "Ray Optics, Wave Optics & Dual Nature",
+      "chapterSlug": "dual-nature-of-matter-and-radiation",
+      "unitName": "Dual Nature of Matter and Radiation",
+      "topic": "Photoelectric Effect - Stopping Potential",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -6253,7 +6529,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Photoelectric Effect - Stopping Potential",
+      "conceptSlug": "dual-nature-of-matter-and-radiation"
     },
     {
       "id": "neet-2016-p2-q140",
@@ -6261,9 +6539,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "modern-physics",
-      "unitName": "Modern Physics & Optics",
-      "topic": "Ray Optics, Wave Optics & Dual Nature",
+      "chapterSlug": "atoms-and-nuclei",
+      "unitName": "Atoms and Nuclei",
+      "topic": "Hydrogen Spectrum - Orbital Transitions",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -6298,7 +6576,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Hydrogen Spectrum - Orbital Transitions",
+      "conceptSlug": "atoms-and-nuclei"
     },
     {
       "id": "neet-2016-p2-q141",
@@ -6306,9 +6586,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "modern-physics",
-      "unitName": "Modern Physics & Optics",
-      "topic": "Ray Optics, Wave Optics & Dual Nature",
+      "chapterSlug": "atoms-and-nuclei",
+      "unitName": "Atoms and Nuclei",
+      "topic": "Radioactive Decay Kinetics & Half-Life",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -6343,7 +6623,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Radioactive Decay Kinetics & Half-Life",
+      "conceptSlug": "atoms-and-nuclei"
     },
     {
       "id": "neet-2016-p2-q142",
@@ -6351,9 +6633,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "modern-physics",
-      "unitName": "Modern Physics & Optics",
-      "topic": "Ray Optics, Wave Optics & Dual Nature",
+      "chapterSlug": "electronic-devices",
+      "unitName": "Electronic Devices",
+      "topic": "Transistor Amplifier in CE Configuration",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -6388,7 +6670,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Transistor Amplifier in CE Configuration",
+      "conceptSlug": "electronic-devices"
     },
     {
       "id": "neet-2016-p2-q143",
@@ -6396,9 +6680,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "modern-physics",
-      "unitName": "Modern Physics & Optics",
-      "topic": "Ray Optics, Wave Optics & Dual Nature",
+      "chapterSlug": "electronic-devices",
+      "unitName": "Electronic Devices",
+      "topic": "Semiconductor Diodes in Circuit",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -6433,7 +6717,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Semiconductor Diodes in Circuit",
+      "conceptSlug": "electronic-devices"
     },
     {
       "id": "neet-2016-p2-q144",
@@ -6441,9 +6727,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "modern-physics",
-      "unitName": "Modern Physics & Optics",
-      "topic": "Ray Optics, Wave Optics & Dual Nature",
+      "chapterSlug": "electronic-devices",
+      "unitName": "Electronic Devices",
+      "topic": "Digital Electronics - Logic Gate Combinations",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -6478,7 +6764,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Digital Electronics - Logic Gate Combinations",
+      "conceptSlug": "electronic-devices"
     },
     {
       "id": "neet-2016-p2-q145",
@@ -6486,9 +6774,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "modern-physics",
-      "unitName": "Modern Physics & Optics",
-      "topic": "Ray Optics, Wave Optics & Dual Nature",
+      "chapterSlug": "physics-and-measurement",
+      "unitName": "Physics and Measurement",
+      "topic": "Dimensional Analysis of Fundamental Constants",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -6523,7 +6811,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Dimensional Analysis of Fundamental Constants",
+      "conceptSlug": "physics-and-measurement"
     },
     {
       "id": "neet-2016-p2-q146",
@@ -6531,9 +6821,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "mechanics",
-      "unitName": "Mechanics & Gravitation",
-      "topic": "Kinematics, Dynamics & Rotational Motion",
+      "chapterSlug": "kinematics",
+      "unitName": "Kinematics",
+      "topic": "Rectilinear Motion & Relative Velocity",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -6568,7 +6858,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Rectilinear Motion & Relative Velocity",
+      "conceptSlug": "kinematics"
     },
     {
       "id": "neet-2016-p2-q147",
@@ -6576,9 +6868,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "mechanics",
-      "unitName": "Mechanics & Gravitation",
-      "topic": "Kinematics, Dynamics & Rotational Motion",
+      "chapterSlug": "kinematics",
+      "unitName": "Kinematics",
+      "topic": "Circular Motion Acceleration Vector Resolution",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -6613,7 +6905,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Circular Motion Acceleration Vector Resolution",
+      "conceptSlug": "kinematics"
     },
     {
       "id": "neet-2016-p2-q148",
@@ -6621,9 +6915,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "mechanics",
-      "unitName": "Mechanics & Gravitation",
-      "topic": "Kinematics, Dynamics & Rotational Motion",
+      "chapterSlug": "laws-of-motion",
+      "unitName": "Laws of Motion",
+      "topic": "Impulse-Momentum Theorem & Elastic Collision",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -6658,7 +6952,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Impulse-Momentum Theorem & Elastic Collision",
+      "conceptSlug": "laws-of-motion"
     },
     {
       "id": "neet-2016-p2-q149",
@@ -6666,9 +6962,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "mechanics",
-      "unitName": "Mechanics & Gravitation",
-      "topic": "Kinematics, Dynamics & Rotational Motion",
+      "chapterSlug": "work-energy-power",
+      "unitName": "Work, Energy, and Power",
+      "topic": "Ballistic Pendulum & Conservation of Momentum",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -6703,7 +6999,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Ballistic Pendulum & Conservation of Momentum",
+      "conceptSlug": "work-energy-power"
     },
     {
       "id": "neet-2016-p2-q150",
@@ -6711,9 +7009,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "mechanics",
-      "unitName": "Mechanics & Gravitation",
-      "topic": "Kinematics, Dynamics & Rotational Motion",
+      "chapterSlug": "work-energy-power",
+      "unitName": "Work, Energy, and Power",
+      "topic": "1D Elastic Collisions of Equal Masses",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -6748,7 +7046,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "1D Elastic Collisions of Equal Masses",
+      "conceptSlug": "work-energy-power"
     },
     {
       "id": "neet-2016-p2-q151",
@@ -6756,9 +7056,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "mechanics",
-      "unitName": "Mechanics & Gravitation",
-      "topic": "Kinematics, Dynamics & Rotational Motion",
+      "chapterSlug": "work-energy-power",
+      "unitName": "Work, Energy, and Power",
+      "topic": "Work Done by Vector Force",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -6793,7 +7093,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Work Done by Vector Force",
+      "conceptSlug": "work-energy-power"
     },
     {
       "id": "neet-2016-p2-q152",
@@ -6801,9 +7103,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "mechanics",
-      "unitName": "Mechanics & Gravitation",
-      "topic": "Kinematics, Dynamics & Rotational Motion",
+      "chapterSlug": "rotational-motion",
+      "unitName": "Rotational Motion",
+      "topic": "Rotational Kinetic Energy & Angular Momentum",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -6838,7 +7140,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Rotational Kinetic Energy & Angular Momentum",
+      "conceptSlug": "rotational-motion"
     },
     {
       "id": "neet-2016-p2-q153",
@@ -6846,9 +7150,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "mechanics",
-      "unitName": "Mechanics & Gravitation",
-      "topic": "Kinematics, Dynamics & Rotational Motion",
+      "chapterSlug": "rotational-motion",
+      "unitName": "Rotational Motion",
+      "topic": "Moments of Inertia & Rotational Kinetic Energies",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -6883,7 +7187,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Moments of Inertia & Rotational Kinetic Energies",
+      "conceptSlug": "rotational-motion"
     },
     {
       "id": "neet-2016-p2-q154",
@@ -6891,9 +7197,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "mechanics",
-      "unitName": "Mechanics & Gravitation",
-      "topic": "Kinematics, Dynamics & Rotational Motion",
+      "chapterSlug": "rotational-motion",
+      "unitName": "Rotational Motion",
+      "topic": "Center of Mass & Moment of Inertia of Two Masses",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -6928,7 +7234,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Center of Mass & Moment of Inertia of Two Masses",
+      "conceptSlug": "rotational-motion"
     },
     {
       "id": "neet-2016-p2-q155",
@@ -6936,9 +7244,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "mechanics",
-      "unitName": "Mechanics & Gravitation",
-      "topic": "Kinematics, Dynamics & Rotational Motion",
+      "chapterSlug": "gravitation",
+      "unitName": "Gravitation",
+      "topic": "Radial Variation of Acceleration Due to Gravity",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -6973,7 +7281,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Radial Variation of Acceleration Due to Gravity",
+      "conceptSlug": "gravitation"
     },
     {
       "id": "neet-2016-p2-q156",
@@ -6981,9 +7291,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "mechanics",
-      "unitName": "Mechanics & Gravitation",
-      "topic": "Kinematics, Dynamics & Rotational Motion",
+      "chapterSlug": "gravitation",
+      "unitName": "Gravitation",
+      "topic": "Orbital Energy of Satellites",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -7018,7 +7328,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Orbital Energy of Satellites",
+      "conceptSlug": "gravitation"
     },
     {
       "id": "neet-2016-p2-q157",
@@ -7026,9 +7338,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "mechanics",
-      "unitName": "Mechanics & Gravitation",
-      "topic": "Kinematics, Dynamics & Rotational Motion",
+      "chapterSlug": "properties-of-solids-and-liquids",
+      "unitName": "Properties of Solids and Liquids",
+      "topic": "Surface Tension Work on Liquid Films",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -7063,7 +7375,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Surface Tension Work on Liquid Films",
+      "conceptSlug": "properties-of-solids-and-liquids"
     },
     {
       "id": "neet-2016-p2-q158",
@@ -7071,9 +7385,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "thermal-physics",
-      "unitName": "Thermal Physics & Waves",
-      "topic": "Heat, Thermodynamics & Wave Motion",
+      "chapterSlug": "properties-of-solids-and-liquids",
+      "unitName": "Properties of Solids and Liquids",
+      "topic": "Capillary Rise & Contact Angle",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -7108,7 +7422,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Capillary Rise & Contact Angle",
+      "conceptSlug": "properties-of-solids-and-liquids"
     },
     {
       "id": "neet-2016-p2-q159",
@@ -7116,9 +7432,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "thermal-physics",
-      "unitName": "Thermal Physics & Waves",
-      "topic": "Heat, Thermodynamics & Wave Motion",
+      "chapterSlug": "thermodynamics",
+      "unitName": "Thermodynamics",
+      "topic": "Calorimetry with Variable Heat Capacity",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -7153,7 +7469,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Calorimetry with Variable Heat Capacity",
+      "conceptSlug": "thermodynamics"
     },
     {
       "id": "neet-2016-p2-q160",
@@ -7161,9 +7479,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "thermal-physics",
-      "unitName": "Thermal Physics & Waves",
-      "topic": "Heat, Thermodynamics & Wave Motion",
+      "chapterSlug": "thermodynamics",
+      "unitName": "Thermodynamics",
+      "topic": "Newton's Law of Cooling",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -7198,7 +7516,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Newton's Law of Cooling",
+      "conceptSlug": "thermodynamics"
     },
     {
       "id": "neet-2016-p2-q161",
@@ -7206,9 +7526,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "thermal-physics",
-      "unitName": "Thermal Physics & Waves",
-      "topic": "Heat, Thermodynamics & Wave Motion",
+      "chapterSlug": "thermodynamics",
+      "unitName": "Thermodynamics",
+      "topic": "Polytropic Gas Process & Molar Heat Capacity",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -7243,7 +7563,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Polytropic Gas Process & Molar Heat Capacity",
+      "conceptSlug": "thermodynamics"
     },
     {
       "id": "neet-2016-p2-q162",
@@ -7251,9 +7573,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "thermal-physics",
-      "unitName": "Thermal Physics & Waves",
-      "topic": "Heat, Thermodynamics & Wave Motion",
+      "chapterSlug": "thermodynamics",
+      "unitName": "Thermodynamics",
+      "topic": "Second Law of Thermodynamics - Refrigerator COP",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -7288,7 +7610,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Second Law of Thermodynamics - Refrigerator COP",
+      "conceptSlug": "thermodynamics"
     },
     {
       "id": "neet-2016-p2-q163",
@@ -7296,9 +7620,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "thermal-physics",
-      "unitName": "Thermal Physics & Waves",
-      "topic": "Heat, Thermodynamics & Wave Motion",
+      "chapterSlug": "kinetic-theory-of-gases",
+      "unitName": "Kinetic Theory of Gases",
+      "topic": "Equation of State & Molecular Density",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -7333,7 +7657,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Equation of State & Molecular Density",
+      "conceptSlug": "kinetic-theory-of-gases"
     },
     {
       "id": "neet-2016-p2-q164",
@@ -7341,9 +7667,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "thermal-physics",
-      "unitName": "Thermal Physics & Waves",
-      "topic": "Heat, Thermodynamics & Wave Motion",
+      "chapterSlug": "oscillations-and-waves",
+      "unitName": "Oscillations and Waves",
+      "topic": "Spring-Mass Oscillator Time Period",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -7378,7 +7704,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Spring-Mass Oscillator Time Period",
+      "conceptSlug": "oscillations-and-waves"
     },
     {
       "id": "neet-2016-p2-q165",
@@ -7386,9 +7714,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "thermal-physics",
-      "unitName": "Thermal Physics & Waves",
-      "topic": "Heat, Thermodynamics & Wave Motion",
+      "chapterSlug": "oscillations-and-waves",
+      "unitName": "Oscillations and Waves",
+      "topic": "Organ Pipe Harmonic Resonance",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -7423,7 +7751,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Organ Pipe Harmonic Resonance",
+      "conceptSlug": "oscillations-and-waves"
     },
     {
       "id": "neet-2016-p2-q166",
@@ -7431,9 +7761,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "thermal-physics",
-      "unitName": "Thermal Physics & Waves",
-      "topic": "Heat, Thermodynamics & Wave Motion",
+      "chapterSlug": "oscillations-and-waves",
+      "unitName": "Oscillations and Waves",
+      "topic": "Superposition of Sound Waves & Beats",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -7468,7 +7798,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Superposition of Sound Waves & Beats",
+      "conceptSlug": "oscillations-and-waves"
     },
     {
       "id": "neet-2016-p2-q167",
@@ -7476,9 +7808,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "electrodynamics",
-      "unitName": "Electrodynamics & Magnetism",
-      "topic": "Current Electricity, Capacitance & Magnetism",
+      "chapterSlug": "electrostatics",
+      "unitName": "Electrostatics",
+      "topic": "Torque on Electric Dipole in Uniform Field",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -7513,7 +7845,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Torque on Electric Dipole in Uniform Field",
+      "conceptSlug": "electrostatics"
     },
     {
       "id": "neet-2016-p2-q168",
@@ -7521,9 +7855,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "electrodynamics",
-      "unitName": "Electrodynamics & Magnetism",
-      "topic": "Current Electricity, Capacitance & Magnetism",
+      "chapterSlug": "electrostatics",
+      "unitName": "Electrostatics",
+      "topic": "Capacitor with Composite Dielectric Slabs",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -7558,7 +7892,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Capacitor with Composite Dielectric Slabs",
+      "conceptSlug": "electrostatics"
     },
     {
       "id": "neet-2016-p2-q169",
@@ -7566,9 +7902,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "electrodynamics",
-      "unitName": "Electrodynamics & Magnetism",
-      "topic": "Current Electricity, Capacitance & Magnetism",
+      "chapterSlug": "current-electricity",
+      "unitName": "Current Electricity",
+      "topic": "Kirchhoff's Voltage Law across Circuit Branches",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -7603,7 +7939,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Kirchhoff's Voltage Law across Circuit Branches",
+      "conceptSlug": "current-electricity"
     },
     {
       "id": "neet-2016-p2-q170",
@@ -7611,9 +7949,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "electrodynamics",
-      "unitName": "Electrodynamics & Magnetism",
-      "topic": "Current Electricity, Capacitance & Magnetism",
+      "chapterSlug": "current-electricity",
+      "unitName": "Current Electricity",
+      "topic": "Electric Power & Series Resistance for Rated Bulb",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -7648,7 +7986,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Electric Power & Series Resistance for Rated Bulb",
+      "conceptSlug": "current-electricity"
     },
     {
       "id": "neet-2016-p2-q171",
@@ -7656,9 +7996,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "electrodynamics",
-      "unitName": "Electrodynamics & Magnetism",
-      "topic": "Current Electricity, Capacitance & Magnetism",
+      "chapterSlug": "magnetic-effects-of-current-and-magnetism",
+      "unitName": "Magnetic Effects of Current and Magnetism",
+      "topic": "Magnetic Field at Centre of Circular Coils",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -7693,7 +8033,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Magnetic Field at Centre of Circular Coils",
+      "conceptSlug": "magnetic-effects-of-current-and-magnetism"
     },
     {
       "id": "neet-2016-p2-q172",
@@ -7701,9 +8043,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "electrodynamics",
-      "unitName": "Electrodynamics & Magnetism",
-      "topic": "Current Electricity, Capacitance & Magnetism",
+      "chapterSlug": "magnetic-effects-of-current-and-magnetism",
+      "unitName": "Magnetic Effects of Current and Magnetism",
+      "topic": "Bar Magnet in Uniform Magnetic Field - Work & Torque",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -7738,7 +8080,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Bar Magnet in Uniform Magnetic Field - Work & Torque",
+      "conceptSlug": "magnetic-effects-of-current-and-magnetism"
     },
     {
       "id": "neet-2016-p2-q173",
@@ -7746,9 +8090,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "electrodynamics",
-      "unitName": "Electrodynamics & Magnetism",
-      "topic": "Current Electricity, Capacitance & Magnetism",
+      "chapterSlug": "magnetic-effects-of-current-and-magnetism",
+      "unitName": "Magnetic Effects of Current and Magnetism",
+      "topic": "Cyclotron Frequency of Electron in Magnetic Field",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -7783,7 +8127,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Cyclotron Frequency of Electron in Magnetic Field",
+      "conceptSlug": "magnetic-effects-of-current-and-magnetism"
     },
     {
       "id": "neet-2016-p2-q174",
@@ -7791,9 +8137,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "electrodynamics",
-      "unitName": "Electrodynamics & Magnetism",
-      "topic": "Current Electricity, Capacitance & Magnetism",
+      "chapterSlug": "electromagnetic-induction-and-ac",
+      "unitName": "Electromagnetic Induction and Alternating Currents",
+      "topic": "LCR Resonance Tuning & Quality Factor",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -7828,7 +8174,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "LCR Resonance Tuning & Quality Factor",
+      "conceptSlug": "electromagnetic-induction-and-ac"
     },
     {
       "id": "neet-2016-p2-q175",
@@ -7836,9 +8184,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "electrodynamics",
-      "unitName": "Electrodynamics & Magnetism",
-      "topic": "Current Electricity, Capacitance & Magnetism",
+      "chapterSlug": "electromagnetic-induction-and-ac",
+      "unitName": "Electromagnetic Induction and Alternating Currents",
+      "topic": "Faraday's Law & Induced EMF in Concentric Loops",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -7873,7 +8221,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Faraday's Law & Induced EMF in Concentric Loops",
+      "conceptSlug": "electromagnetic-induction-and-ac"
     },
     {
       "id": "neet-2016-p2-q176",
@@ -7881,9 +8231,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "electrodynamics",
-      "unitName": "Electrodynamics & Magnetism",
-      "topic": "Current Electricity, Capacitance & Magnetism",
+      "chapterSlug": "electromagnetic-induction-and-ac",
+      "unitName": "Electromagnetic Induction and Alternating Currents",
+      "topic": "Power Factor in Series LCR Circuit",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -7918,7 +8268,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Power Factor in Series LCR Circuit",
+      "conceptSlug": "electromagnetic-induction-and-ac"
     },
     {
       "id": "neet-2016-p2-q177",
@@ -7926,9 +8278,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "electrodynamics",
-      "unitName": "Electrodynamics & Magnetism",
-      "topic": "Current Electricity, Capacitance & Magnetism",
+      "chapterSlug": "electromagnetic-waves",
+      "unitName": "Electromagnetic Waves",
+      "topic": "Displacement Current in Capacitor Circuits",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -7963,7 +8315,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Displacement Current in Capacitor Circuits",
+      "conceptSlug": "electromagnetic-waves"
     },
     {
       "id": "neet-2016-p2-q178",
@@ -7971,9 +8325,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "electrodynamics",
-      "unitName": "Electrodynamics & Magnetism",
-      "topic": "Current Electricity, Capacitance & Magnetism",
+      "chapterSlug": "optics",
+      "unitName": "Optics",
+      "topic": "Lens Maker's Formula & Composite Lens Combinations",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -8008,7 +8362,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Lens Maker's Formula & Composite Lens Combinations",
+      "conceptSlug": "optics"
     },
     {
       "id": "neet-2016-p2-q179",
@@ -8016,9 +8372,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "electrodynamics",
-      "unitName": "Electrodynamics & Magnetism",
-      "topic": "Current Electricity, Capacitance & Magnetism",
+      "chapterSlug": "optics",
+      "unitName": "Optics",
+      "topic": "Refraction at Plane Surfaces & Apparent Depth",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -8053,7 +8409,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Refraction at Plane Surfaces & Apparent Depth",
+      "conceptSlug": "optics"
     },
     {
       "id": "neet-2016-p2-q180",
@@ -8061,9 +8419,9 @@
       "examSlug": "neet",
       "subjectSlug": "physics",
       "subjectName": "Physics",
-      "chapterSlug": "electrodynamics",
-      "unitName": "Electrodynamics & Magnetism",
-      "topic": "Current Electricity, Capacitance & Magnetism",
+      "chapterSlug": "optics",
+      "unitName": "Optics",
+      "topic": "Wave Optics - Two-Source Interference Intensity Contrast",
       "questionType": "single_correct",
       "difficulty": "medium",
       "marks": 4,
@@ -8098,7 +8456,9 @@
       },
       "created_at": "2026-11-24T14:00:00.000Z",
       "updated_at": "2026-11-24T14:00:00.000Z",
-      "created_by": "CBSE / NTA NEET Official Archive"
+      "created_by": "CBSE / NTA NEET Official Archive",
+      "conceptName": "Wave Optics - Two-Source Interference Intensity Contrast",
+      "conceptSlug": "optics"
     }
   ],
   "papers": [
@@ -8348,6 +8708,6 @@
     "mimeType": "video/mp4",
     "sizeBytes": 131776,
     "posterUrl": "/brand/tutorial-poster.jpg",
-    "updated_at": "2026-11-24T14:23:49.812Z"
+    "updated_at": "2026-11-24T14:36:01.472Z"
   }
 }
