@@ -1,0 +1,121 @@
+import { describe, it, expect } from 'vitest';
+import { isChemicalFormula, isChemicalEquation, autoFormatScientificText } from '@/lib/scientific/formulaParser';
+import { normalizeLegacyHindi, splitBilingualText } from '@/lib/scientific/unicodeNormalizer';
+import { validateQuestionIntegrity } from '@/lib/scientific/validation';
+import { getStoredQuestionsServer, getStoredQuestionByIdServer } from '@/lib/server/backendStore';
+
+describe('Universal Scientific Content Architecture', () => {
+  it('correctly detects chemical formulas and rejects ordinary English words', () => {
+    expect(isChemicalFormula('C6H5NO2')).toBe(true);
+    expect(isChemicalFormula('C12H10N2O')).toBe(true);
+    expect(isChemicalFormula('K3[AlF6]')).toBe(true);
+    expect(isChemicalFormula('H2SO4')).toBe(true);
+    expect(isChemicalFormula('sp3')).toBe(true);
+    expect(isChemicalFormula('sp3d2')).toBe(true);
+
+    // Common English words should NOT be recognized as formulas
+    expect(isChemicalFormula('In')).toBe(false);
+    expect(isChemicalFormula('As')).toBe(false);
+    expect(isChemicalFormula('He')).toBe(false);
+    expect(isChemicalFormula('At')).toBe(false);
+    expect(isChemicalFormula('No')).toBe(false);
+    expect(isChemicalFormula('Is')).toBe(false);
+  });
+
+  it('correctly auto-formats prose containing chemical formulas and reactions into KaTeX mhchem', () => {
+    const text = 'Forms a compound with molecular formula C12H10N2O and reacts with Sn/HCl';
+    const formatted = autoFormatScientificText(text);
+    expect(formatted).toContain('$\\ce{C12H10N2O}$');
+
+    const reactionText = 'Consider the reaction : CH3CH2CH2Br + NaCN -> CH3CH2CH2CN + NaBr';
+    const formattedRxn = autoFormatScientificText(reactionText);
+    expect(formattedRxn).toContain('\\ce{CH3CH2CH2Br + NaCN -> CH3CH2CH2CN + NaBr}');
+  });
+
+  it('normalizes legacy Kruti Dev Hindi font encodings into proper UTF-8 Devanagari', () => {
+    const corrupted = 'vfHkfØ;k esa xSI rFha okrkoj.k';
+    const normalized = normalizeLegacyHindi(corrupted);
+    expect(normalized).toContain('अभिक्रिया');
+    expect(normalized).toContain('गैस');
+    expect(normalized).toContain('वातावरण');
+  });
+
+  it('separates bilingual examination text into distinct English and Hindi strings', () => {
+    const raw = `The correct structure of compound A is :
+अभिक्रिया में बनने वाले उत्पाद A की सही संरचना है -`;
+    const { english, hindi } = splitBilingualText(raw);
+    expect(english).toBe('The correct structure of compound A is :');
+    expect(hindi).toContain('अभिक्रिया');
+  });
+
+  it('validates question integrity and flags detached labels or missing diagrams', () => {
+    const corruptedQ = {
+      id: 'test-q1',
+      text: 'Which molecules exhibit tautomerism? O O O Ph Ph I II III',
+      options: [
+        { key: 'A', text: 'Option A' },
+        { key: 'B', text: 'Option B' },
+      ],
+      answerKey: { correctOptions: ['B'] },
+    };
+
+    const res = validateQuestionIntegrity(corruptedQ);
+    expect(res.isValid).toBe(false);
+    expect(res.issues.some((i) => i.includes('Detached atomic'))).toBe(true);
+  });
+
+  it('validates repaired official NEET questions in the backend store', () => {
+    const allQuestions = getStoredQuestionsServer();
+    expect(allQuestions.length).toBe(180);
+
+    // Q1: Diazonium azo coupling
+    const q1 = getStoredQuestionByIdServer('neet-2016-p2-q001');
+    expect(q1).toBeDefined();
+    expect(q1?.text).not.toContain('CONH2 CONH2');
+    expect(q1?.text).toContain('\\ce{C12H10N2O}');
+    expect(q1?.options[0].imageUrl).toBe('/assets/scientific/neet-phase-2/q1_opt_A.png');
+    expect(q1?.options[2].imageUrl).toBe('/assets/scientific/neet-phase-2/q1_opt_C.png');
+
+    // Q3: Selective hydrogenation with reaction diagram and options
+    const q3 = getStoredQuestionByIdServer('neet-2016-p2-q003');
+    expect(q3).toBeDefined();
+    expect(q3?.text).not.toContain('vfHkfØ;k');
+    expect(q3?.imageUrl).toBe('/assets/scientific/neet-phase-2/q3_reaction.png');
+    expect(q3?.options[2].imageUrl).toBe('/assets/scientific/neet-phase-2/q3_opt_C.png');
+
+    // Q4: Tautomerism and Bredt's rule with molecular group
+    const q4 = getStoredQuestionByIdServer('neet-2016-p2-q004');
+    expect(q4).toBeDefined();
+    expect(q4?.text).not.toContain('O O O Ph Ph I II III');
+    expect(q4?.imageUrl).toBe('/assets/scientific/neet-phase-2/q4_molecules.png');
+
+    // Q5: Carboxylic acids strengths with molecular group
+    const q5 = getStoredQuestionByIdServer('neet-2016-p2-q005');
+    expect(q5).toBeDefined();
+    expect(q5?.text).not.toContain('COOH COOH COOH');
+    expect(q5?.imageUrl).toBe('/assets/scientific/neet-phase-2/q5_molecules.png');
+
+    // Q23: Complex fluoride formation
+    const q23 = getStoredQuestionByIdServer('neet-2016-p2-q023');
+    expect(q23).toBeDefined();
+    expect(q23?.text).toContain('\\ce{AlF3}');
+    expect(q23?.options[2].text).toContain('\\ce{K3[AlF6]}');
+
+    // Q39: Nylon 6,6 polymer structures
+    const q39 = getStoredQuestionByIdServer('neet-2016-p2-q039');
+    expect(q39).toBeDefined();
+    expect(q39?.options[0].imageUrl).toBe('/assets/scientific/neet-phase-2/q39_opt_A.png');
+    expect(q39?.options[0].text).not.toBe('C C');
+
+    // Q143: Ideal diodes circuit
+    const q143 = getStoredQuestionByIdServer('neet-2016-p2-q143');
+    expect(q143).toBeDefined();
+    expect(q143?.imageUrl).toBe('/assets/scientific/neet-phase-2/q143_diagram.png');
+
+    // Q168: Capacitor with 4 dielectric slabs
+    const q168 = getStoredQuestionByIdServer('neet-2016-p2-q168');
+    expect(q168).toBeDefined();
+    expect(q168?.imageUrl).toBe('/assets/scientific/neet-phase-2/q168_diagram.png');
+    expect(q168?.options[0].text).toContain('\\frac{1}{k}');
+  });
+});

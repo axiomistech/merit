@@ -233,23 +233,27 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Diazonium Salts & Azo Coupling",
     "conceptSlug": "amines-and-diazonium-salts",
     "difficulty": "medium",
-    "text": "A given nitrogen-containing aromatic compound A reacts with Sn/HCl, followed by HNO2 to give an unstable compound B. B, on treatment with phenol, forms a beautiful coloured compound C with the molecular formula C12H10N2O. The structure of compound A is : CONH2                                                   CONH2",
+    "text": "A given nitrogen-containing aromatic compound A reacts with Sn/HCl, followed by HNO2 to give an unstable compound B. B, on treatment with phenol, forms a beautiful coloured compound C with the molecular formula $\\ce{C12H10N2O}$. The structure of compound A is :",
     "options": [
       {
         "key": "A",
-        "text": "Benzamide (C6H5CONH2)"
+        "text": "Benzamide ($\\ce{C6H5CONH2}$)",
+        "imageUrl": "/assets/scientific/neet-phase-2/q1_opt_A.png"
       },
       {
         "key": "B",
-        "text": "Benzamide (C6H5CONH2)"
+        "text": "Benzamide ($\\ce{C6H5CONH2}$)",
+        "imageUrl": "/assets/scientific/neet-phase-2/q1_opt_B.png"
       },
       {
         "key": "C",
-        "text": "Nitrobenzene (C6H5NO2)"
+        "text": "Nitrobenzene ($\\ce{C6H5NO2}$)",
+        "imageUrl": "/assets/scientific/neet-phase-2/q1_opt_C.png"
       },
       {
         "key": "D",
-        "text": "Benzonitrile (C6H5CN)"
+        "text": "Benzonitrile ($\\ce{C6H5CN}$)",
+        "imageUrl": "/assets/scientific/neet-phase-2/q1_opt_D.png"
       }
     ],
     "marks": 4,
@@ -261,6 +265,43 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "\uf0be\uf0be\uf0be\uf0be      \uf0ae                 \uf0be\uf0be\uf0be   \uf0ae\n             A                                                      B\n\n                                                                          Phenol\n\n\n\n\n                                                                        N=N            OH\n\n                                                                                   C\n\n                                                                        (C12H10N2O)"
+    },
+    "multilingual": {
+      "hi": {
+        "text": "\u090f\u0915 \u0926\u093f\u092f\u093e \u0917\u092f\u093e \u0928\u093e\u0907\u091f\u094d\u0930\u094b\u091c\u0928-\u092f\u0941\u0915\u094d\u0924 \u0910\u0930\u094b\u092e\u0948\u091f\u093f\u0915 \u092f\u094c\u0917\u093f\u0915 A, Sn/HCl \u0924\u0925\u093e \u092c\u093e\u0926 \u092e\u0947\u0902 HNO2 \u0938\u0947 \u0915\u094d\u0930\u093f\u092f\u093e \u0915\u0930\u0915\u0947 \u090f\u0915 \u0905\u0938\u094d\u0925\u093e\u092f\u0940 \u092f\u094c\u0917\u093f\u0915 B \u0926\u0947\u0924\u093e \u0939\u0948\u0964 B \u092b\u093f\u0928\u0949\u0932 \u0915\u0947 \u0938\u093e\u0925 \u0915\u094d\u0930\u093f\u092f\u093e \u0915\u0930\u0915\u0947 \u090f\u0915 \u0938\u0941\u0928\u094d\u0926\u0930 \u0930\u0902\u0917\u0940\u0928 \u092f\u094c\u0917\u093f\u0915 C \u092c\u0928\u093e\u0924\u093e \u0939\u0948, \u091c\u093f\u0938\u0915\u093e \u0905\u0923\u0941-\u0938\u0942\u0924\u094d\u0930 $\\ce{C12H10N2O}$ \u0939\u0948\u0964 \u092f\u094c\u0917\u093f\u0915 A \u0915\u0940 \u0938\u0902\u0930\u091a\u0928\u093e \u0939\u0948 -",
+        "options": [
+          {
+            "key": "A",
+            "text": "Benzamide ($\\ce{C6H5CONH2}$)",
+            "imageUrl": "/assets/scientific/neet-phase-2/q1_opt_A.png"
+          },
+          {
+            "key": "B",
+            "text": "Benzamide ($\\ce{C6H5CONH2}$)",
+            "imageUrl": "/assets/scientific/neet-phase-2/q1_opt_B.png"
+          },
+          {
+            "key": "C",
+            "text": "Nitrobenzene ($\\ce{C6H5NO2}$)",
+            "imageUrl": "/assets/scientific/neet-phase-2/q1_opt_C.png"
+          },
+          {
+            "key": "D",
+            "text": "Benzonitrile ($\\ce{C6H5CN}$)",
+            "imageUrl": "/assets/scientific/neet-phase-2/q1_opt_D.png"
+          }
+        ]
+      }
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 1,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -273,23 +314,23 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "SN2 Substitution & Solvent Effects",
     "conceptSlug": "haloalkanes-and-haloarenes",
     "difficulty": "medium",
-    "text": "Consider the reaction : CH3CH2CH2Br + NaCN \u2014\u2014\u2192 CH3CH2CH2CN + NaBr This reaction will be the fastest in :",
+    "text": "Consider the reaction :\n$$\\ce{CH3CH2CH2Br + NaCN -> CH3CH2CH2CN + NaBr}$$\nThis reaction will be the fastest in :",
     "options": [
       {
         "key": "A",
-        "text": "water"
+        "text": "water (\u091c\u0932)"
       },
       {
         "key": "B",
-        "text": "ethanol"
+        "text": "ethanol (\u090f\u0925\u0947\u0928\u0949\u0932)"
       },
       {
         "key": "C",
-        "text": "methanol"
+        "text": "methanol (\u092e\u0947\u0925\u0947\u0928\u0949\u0932)"
       },
       {
         "key": "D",
-        "text": "N,N'-dimethylformamide (DMF)"
+        "text": "N,N'-dimethylformamide (DMF) (N,N'-\u0921\u093e\u0907\u092e\u0947\u0925\u093f\u0932\u092b\u0949\u0930\u094d\u092e\u092e\u093e\u0907\u0921)"
       }
     ],
     "marks": 4,
@@ -301,6 +342,39 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "(Polar aprotic solvent)\n                          CH3\n               O\n\n\n       CH3\u2014CH2\u2014CH2\u2014Br + NaCN \uf0be\uf0be\n                              \uf0ae CH3\u2014CH2\u2014CH2\u2014CN + NaBr\n       This is a SN2 Reaction for which polar aprotic medium is suitable for faster rate of reaction."
+    },
+    "multilingual": {
+      "hi": {
+        "text": "\u0928\u093f\u092e\u094d\u0928 \u0905\u092d\u093f\u0915\u094d\u0930\u093f\u092f\u093e \u092a\u0930 \u0935\u093f\u091a\u093e\u0930 \u0915\u0940\u091c\u093f\u092f\u0947 -\n$$\\ce{CH3CH2CH2Br + NaCN -> CH3CH2CH2CN + NaBr}$$\n\u092f\u0939 \u0905\u092d\u093f\u0915\u094d\u0930\u093f\u092f\u093e \u0915\u093f\u0938\u092e\u0947\u0902 \u0905\u0924\u093f \u0936\u0940\u0918\u094d\u0930 \u0939\u094b\u0917\u0940?",
+        "options": [
+          {
+            "key": "A",
+            "text": "water (\u091c\u0932)"
+          },
+          {
+            "key": "B",
+            "text": "ethanol (\u090f\u0925\u0947\u0928\u0949\u0932)"
+          },
+          {
+            "key": "C",
+            "text": "methanol (\u092e\u0947\u0925\u0947\u0928\u0949\u0932)"
+          },
+          {
+            "key": "D",
+            "text": "N,N'-dimethylformamide (DMF) (N,N'-\u0921\u093e\u0907\u092e\u0947\u0925\u093f\u0932\u092b\u0949\u0930\u094d\u092e\u092e\u093e\u0907\u0921)"
+          }
+        ]
+      }
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 2,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -313,23 +387,27 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Aldehydes & Ketones - Selective Hydrogenation",
     "conceptSlug": "alcohols-phenols-ethers-carbonyls",
     "difficulty": "medium",
-    "text": "The correct structure of the product A formed in the reaction: vfHkf\u00d8;k O H2 (gas, 1 atmosphere) A Pd / carbon, ethanol is : vfHkf\u00d8;k O H2 (xSl, 1 okrkoj.k) A Pd / dkcZu] ,FksukWyl OH                             OH                        O                OH",
+    "text": "The correct structure of the product A formed in the reaction is :",
     "options": [
       {
         "key": "A",
-        "text": "Cyclohex-2-en-1-ol"
+        "text": "Cyclohex-2-en-1-ol with C2 cation",
+        "imageUrl": "/assets/scientific/neet-phase-2/q3_opt_A.png"
       },
       {
         "key": "B",
-        "text": "Cyclohex-3-en-1-ol"
+        "text": "Cyclohex-3-en-1-ol",
+        "imageUrl": "/assets/scientific/neet-phase-2/q3_opt_B.png"
       },
       {
         "key": "C",
-        "text": "Cyclohexanone"
+        "text": "Cyclohexanone",
+        "imageUrl": "/assets/scientific/neet-phase-2/q3_opt_C.png"
       },
       {
         "key": "D",
-        "text": "Cyclohexen-1-ol"
+        "text": "Cyclohex-2-en-1-ol",
+        "imageUrl": "/assets/scientific/neet-phase-2/q3_opt_D.png"
       }
     ],
     "marks": 4,
@@ -341,6 +419,58 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "\uf0be\uf0be\uf0be\uf0be        \uf0ae\n\n\n       During hydrogenation of \uf061,\uf062 unsaturated carbonyl compound by pd catalyst selective reduction is\n       observed of double bond.\n\n\n\n\n                                                          www.vedantu.com                                2"
+    },
+    "imageUrl": "/assets/scientific/neet-phase-2/q3_reaction.png",
+    "contentBlocks": [
+      {
+        "id": "q3-b1",
+        "type": "text",
+        "order": 1,
+        "rawContent": "The correct structure of the product A formed in the reaction is :"
+      },
+      {
+        "id": "q3-b2",
+        "type": "chemical_reaction",
+        "order": 2,
+        "assetUrl": "/assets/scientific/neet-phase-2/q3_reaction.png"
+      }
+    ],
+    "multilingual": {
+      "hi": {
+        "text": "\u0905\u092d\u093f\u0915\u094d\u0930\u093f\u092f\u093e \u092e\u0947\u0902 \u092c\u0928\u0928\u0947 \u0935\u093e\u0932\u0947 \u0909\u0924\u094d\u092a\u093e\u0926 A \u0915\u0940 \u0938\u0939\u0940 \u0938\u0902\u0930\u091a\u0928\u093e \u0939\u0948 -",
+        "options": [
+          {
+            "key": "A",
+            "text": "Cyclohex-2-en-1-ol with C2 cation",
+            "imageUrl": "/assets/scientific/neet-phase-2/q3_opt_A.png"
+          },
+          {
+            "key": "B",
+            "text": "Cyclohex-3-en-1-ol",
+            "imageUrl": "/assets/scientific/neet-phase-2/q3_opt_B.png"
+          },
+          {
+            "key": "C",
+            "text": "Cyclohexanone",
+            "imageUrl": "/assets/scientific/neet-phase-2/q3_opt_C.png"
+          },
+          {
+            "key": "D",
+            "text": "Cyclohex-2-en-1-ol",
+            "imageUrl": "/assets/scientific/neet-phase-2/q3_opt_D.png"
+          }
+        ]
+      }
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 3,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 2
     }
   },
   {
@@ -353,23 +483,23 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Tautomerism & Bredt's Rule",
     "conceptSlug": "general-organic-chemistry",
     "difficulty": "medium",
-    "text": "Which among the give nmolecules can exhibit tautomerism? O                              O O                                                          Ph Ph I                                    II                               III",
+    "text": "Which among the given molecules can exhibit tautomerism?",
     "options": [
       {
         "key": "A",
-        "text": "Both II and III"
+        "text": "Both II and III (II \u0914\u0930 III \u0926\u094b\u0928\u094b\u0902)"
       },
       {
         "key": "B",
-        "text": "III only"
+        "text": "III only (\u0915\u0947\u0935\u0932 III)"
       },
       {
         "key": "C",
-        "text": "Both I and III"
+        "text": "Both I and III (I \u0914\u0930 III \u0926\u094b\u0928\u094b\u0902)"
       },
       {
         "key": "D",
-        "text": "Both I and II"
+        "text": "Both I and II (I \u0914\u0930 II \u0926\u094b\u0928\u094b\u0902)"
       }
     ],
     "marks": 4,
@@ -381,6 +511,54 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Only III\n       \uf061-H at bridge head carbon never show tautomerism.\n                     O                           OH\n                         \uf0be\uf0be\uf0ae"
+    },
+    "imageUrl": "/assets/scientific/neet-phase-2/q4_molecules.png",
+    "contentBlocks": [
+      {
+        "id": "q4-b1",
+        "type": "text",
+        "order": 1,
+        "rawContent": "Which among the given molecules can exhibit tautomerism?"
+      },
+      {
+        "id": "q4-b2",
+        "type": "molecular_group",
+        "order": 2,
+        "assetUrl": "/assets/scientific/neet-phase-2/q4_molecules.png"
+      }
+    ],
+    "multilingual": {
+      "hi": {
+        "text": "\u0926\u093f\u092f\u0947 \u0917\u092f\u0947 \u0905\u0923\u0941\u0913\u0902 \u092e\u0947\u0902 \u0938\u0947 \u0915\u093f\u0938\u092e\u0947\u0902 \u091a\u0932\u093e\u0935\u092f\u0935\u0924\u093e \u0939\u094b\u0917\u0940?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both II and III (II \u0914\u0930 III \u0926\u094b\u0928\u094b\u0902)"
+          },
+          {
+            "key": "B",
+            "text": "III only (\u0915\u0947\u0935\u0932 III)"
+          },
+          {
+            "key": "C",
+            "text": "Both I and III (I \u0914\u0930 III \u0926\u094b\u0928\u094b\u0902)"
+          },
+          {
+            "key": "D",
+            "text": "Both I and II (I \u0914\u0930 II \u0926\u094b\u0928\u094b\u0902)"
+          }
+        ]
+      }
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 4,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 3
     }
   },
   {
@@ -393,7 +571,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Carboxylic Acids - Acidic Strength",
     "conceptSlug": "alcohols-phenols-ethers-carbonyls",
     "difficulty": "medium",
-    "text": "The correct order of strengths of the carboxylic acids : COOH                                       COOH                             COOH O O I                                      II                                  III",
+    "text": "The correct order of strengths of the carboxylic acids is :",
     "options": [
       {
         "key": "A",
@@ -421,6 +599,54 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "(II > III > I)\n       Acidic strength \uf061 \u2013I, \u2013M effect\n       \u2013I effect depand upon distance so II have stronger \u2013I effect than III."
+    },
+    "imageUrl": "/assets/scientific/neet-phase-2/q5_molecules.png",
+    "contentBlocks": [
+      {
+        "id": "q5-b1",
+        "type": "text",
+        "order": 1,
+        "rawContent": "The correct order of strengths of the carboxylic acids is :"
+      },
+      {
+        "id": "q5-b2",
+        "type": "molecular_group",
+        "order": 2,
+        "assetUrl": "/assets/scientific/neet-phase-2/q5_molecules.png"
+      }
+    ],
+    "multilingual": {
+      "hi": {
+        "text": "\u0915\u093e\u0930\u094d\u092c\u094b\u0915\u094d\u0938\u093f\u0932\u093f\u0915 \u0905\u092e\u094d\u0932 \u0915\u0947 \u0938\u093e\u092e\u0930\u094d\u0925\u094d\u092f \u0915\u093e \u0938\u0939\u0940 \u0915\u094d\u0930\u092e \u0939\u0948 -",
+        "options": [
+          {
+            "key": "A",
+            "text": "II > I > III"
+          },
+          {
+            "key": "B",
+            "text": "I > II > III"
+          },
+          {
+            "key": "C",
+            "text": "II > III > I"
+          },
+          {
+            "key": "D",
+            "text": "III > II > I"
+          }
+        ]
+      }
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 5,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 3
     }
   },
   {
@@ -461,6 +687,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Gaseous Bromine react fastest with alkane by free radical mechanism.\n               Br2\n       C4 H10 \uf0be\uf0be\uf0be  \uf0ae                         C H Br\n                                                4 9\n        Bu tan e                 ( free Radical substitution Re action )\n\n\n\n\n                                                                           www.vedantu.com                                          3"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 6,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -501,6 +737,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Cellulose is example of intramolecular H-bonding"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 7,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -513,7 +759,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Molar Conductivity of Electrolytes",
     "conceptSlug": "redox-reactions-and-electrochemistry",
     "difficulty": "medium",
-    "text": "The molar conductivity of a 0.5 mol/ dm3 solution of AgNO3 with electrolytic conductivity of 5.76 \u00d7 10\u20133 S \u20131 cm at 298 K is 3                                                      \u20133   \u20131",
+    "text": "The molar conductivity of a 0.5 mol/ dm3 solution of AgNO3 with electrolytic conductivity of 5.76 \u00d7 10\u20133 S \u20131 cm at 298 K is 3 \u20133 \u20131",
     "options": [
       {
         "key": "A",
@@ -541,6 +787,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "\u03bb\u00baM =              =\n                      M            0.5\n       = 11.52 S cm2 mol\u20131."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 8,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -581,6 +837,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "PH3                P+     H\n                               2 2\n       Rate = k[PH3].\n       It is independent of the surface coverage because zero order reaction depend on surface area covered\n       by reactant."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 9,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -593,7 +859,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Colloids & Coagulation Values",
     "conceptSlug": "practical-chemistry",
     "difficulty": "medium",
-    "text": "The coagulation values in millimoles per litre of the electrolytes used for the coagulation of As2S3 are given below : I. (NaCl) = 52,                 II. (BaCl2) = 0.69         III. (MgSO4) = 0.22 The correct order of their coagulating power is",
+    "text": "The coagulation values in millimoles per litre of the electrolytes used for the coagulation of As2S3 are given below : I. (NaCl) = 52, II. (BaCl2) = 0.69 III. (MgSO4) = 0.22 The correct order of their coagulating power is",
     "options": [
       {
         "key": "A",
@@ -621,6 +887,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Coagulation power \uf0b5\n                                     Coagulation value\n\n       Higher the coagulation power, lower is coagulation values in millimoles per litre.\n       MgSO4 > BaCl2 > NaCl."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 10,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -661,6 +937,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "At Cathode : 2H2O \uf0be\uf0be\uf0be \uf0ae H2 + 2OH\u2013\n                        2e       \u2013\n       At anode : 2Cl- \uf0be\uf0be\uf0be \uf0ae Cl2 + 2e \u2013\n\n       w   It\n         =\n       E 96500\n\n\n\n\n                                                          www.vedantu.com                                    5\n\f                  3 \uf0b4 t(sec)\n       0.1 \u00d72 =\n                   96500\n       t = 6433 sec\n       t = 107.2 min\n        ~ 110 min\n        \u2013"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 11,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -701,6 +987,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "n=3                  \u03bb=1\n       3p orbital can have only 2 elelctron."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 12,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -713,7 +1009,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Entropy Changes in Isothermal Processes",
     "conceptSlug": "chemical-thermodynamics",
     "difficulty": "medium",
-    "text": "For a sample of perfect gas when its pressure is changed isothermally from pi to pf, the entropy change is given by \uf0e6p \uf0f6                                                 \uf0e6p \uf0f6",
+    "text": "For a sample of perfect gas when its pressure is changed isothermally from pi to pf, the entropy change is given by \uf0e6p \uf0f6 \uf0e6p \uf0f6",
     "options": [
       {
         "key": "A",
@@ -741,6 +1037,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "\uf044Ssys = nR \u03bbn      + nCp\u03bbn 2\n                       P2        T1\n\n       In isothermal process T1 = T2\n                       Pi\n       \uf044Ssys = nR\u03bbn\n                       Pf"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 13,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -781,6 +1087,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Ba(OH)2 \uf0be\uf0ae\uf020Ba+2 + 2OH\u2013\n                            i = 3.\n\n\n\n\n                                                   www.vedantu.com                                               6"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 14,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -821,6 +1137,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "C5H5N + H2O = C5H5N+H + OH\u2013\n       0.1\n\n              Kb   1.7 \uf0b4 10 \u20139\n       \uf061\uf020=\uf020      =             = 1.7 \uf0b4 10\u20138 = 1.3 \uf0b4 10 \u20134\n              c        0.1\n                        \u20134\n       % \uf0b5\uf020= 1.3 \u00d710 \u00d7100\n                   \u20132\n       = 1.3 \u00d710 = 0.013."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 15,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -861,6 +1187,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Ca2+ is surrounded by 8F\u2013\n       F\u2013 is surrounded by 4Ca+2\n\n\n               0"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 16,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -901,6 +1237,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "E\u00b0cell < 0, so it is a non spontaneous process\n       \uf044G\u00b0= \u2013 nFE\u00b0 = +ve, so \uf044G\u00b0 > 0\n       \uf044G\u00b0= \u2013 2.303RT log K\n       So, K < 1"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 17,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -941,6 +1287,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "For ideal solution inter molecular forces are identical so,\n       \uf044H\u00b0mix = O, \uf044Vmix = O \uf044Gmix < O\n       So 1st option is incorrect."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 18,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -981,6 +1337,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "AgCl             Ag+ +       Cl\u2013\n                        S           S + 0.1\n                   Ksp = [Ag ] [Cl\u2013]\n                             +\n\n\n       1.6 \u00d7 10\u201310 = S \u00d7 (S + 0.1)\n                        = S \u00d7 0.1\n                   \u20139\n       1.6 \u00d7 10 = S"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 19,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -1021,6 +1387,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "For         XY2       n=\n                                  M\n                             10\n                   0.1 =\n                           X + 2Y\n                   X + 2Y = 100                .......(1)\n                                  w\n       For         X3Y2      n=\n                                  M\n                                 9\n                   0.05 =\n                             3 X + 2Y\n                   3X + 2Y = 180               .......(2)\n       Form (1) and (2)\n                   2X = 80\n                   X = 40 and 2Y = 100 \u2013 40\n                                        = 60\n                                        = Y = 30"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 20,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -1061,6 +1437,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "=\n       E   96500\n                   6\n             =        = no. of mole e\u2013\n                 9650\n                        6\n       no. of e\u2013 =         \uf0b4 6.02 \uf0b4 10 23\n                      9650\n                                  20\n                    = 3.75 \u00d7 10\n\n\n\n\n                                                            www.vedantu.com                                         9"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 21,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -1073,7 +1459,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Group 13 - Boric Acid Lewis Acidity",
     "conceptSlug": "p-block-elements",
     "difficulty": "medium",
-    "text": "Boric acid is an acid because its molecule",
+    "text": "Boric acid is an acid because its molecule :\n$$\\ce{H3BO3 + H2O <=> B(OH)4- + H+}$$",
     "options": [
       {
         "key": "A",
@@ -1101,6 +1487,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "H3BO3 + H2O            B(OH) 4- + H+\n       H3BO3 is Lewis acid and accept OH\u2013 from H2O and releases H+."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 22,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 10
     }
   },
   {
@@ -1113,23 +1509,23 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Group 13 - Complex Fluoride Formation",
     "conceptSlug": "p-block-elements",
     "difficulty": "medium",
-    "text": "AIF3 is soluble in HF only in presence of KF. It is due to the formation of",
+    "text": "$\\ce{AlF3}$ is soluble in $\\ce{HF}$ only in presence of $\\ce{KF}$. It is due to the formation of :",
     "options": [
       {
         "key": "A",
-        "text": "K [AlF3H]"
+        "text": "$\\ce{K[AlF3H]}$"
       },
       {
         "key": "B",
-        "text": "K3 [AlF3H3]"
+        "text": "$\\ce{K3[AlF3H3]}$"
       },
       {
         "key": "C",
-        "text": "K3 [AlF6]"
+        "text": "$\\ce{K3[AlF6]}$"
       },
       {
         "key": "D",
-        "text": "AlH3"
+        "text": "$\\ce{AlH3}$"
       }
     ],
     "marks": 4,
@@ -1141,6 +1537,39 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "AlF3 + KF \uf0be\uf0be\n                  \uf0be\uf0ae K3[AlF6]\n       (maximum C.N. of Al+3 is six so it form AlF63\u2013)."
+    },
+    "multilingual": {
+      "hi": {
+        "text": "$\\ce{AlF3}$ \u0915\u093e $\\ce{HF}$ \u092e\u0947\u0902 \u0935\u093f\u0932\u0947\u092f \u0915\u0947\u0935\u0932 $\\ce{KF}$ \u0915\u0940 \u0909\u092a\u0938\u094d\u0925\u093f\u0924\u093f \u092e\u0947\u0902 \u0939\u094b\u0924\u093e \u0939\u0948, \u0910\u0938\u093e \u0915\u093f\u0938\u0915\u0947 \u092c\u0928\u0928\u0947 \u0915\u0947 \u0915\u093e\u0930\u0923 \u0939\u094b\u0924\u093e \u0939\u0948\u2013",
+        "options": [
+          {
+            "key": "A",
+            "text": "$\\ce{K[AlF3H]}$"
+          },
+          {
+            "key": "B",
+            "text": "$\\ce{K3[AlF3H3]}$"
+          },
+          {
+            "key": "C",
+            "text": "$\\ce{K3[AlF6]}$"
+          },
+          {
+            "key": "D",
+            "text": "$\\ce{AlH3}$"
+          }
+        ]
+      }
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 23,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 10
     }
   },
   {
@@ -1181,6 +1610,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "E\uf0b0 Zn+2 / Zn = -0.76 V\n\n       E\uf0b0Fe+ 2 / Fe = -0.44 V\n\n       Zn has higher negative SRP (Standard reduction potential) so it work as anode and protect iron to\n       make iron as cathode."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 24,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -1221,6 +1660,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Suspension of slaked lime is called milk of lime."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 25,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -1261,6 +1710,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "O=N=O                    N \uf0ae\uf020O     H             H\n                       \u2013\n             sp          O                      H\n                                sp2              3\n                                                sp\n\n\n\n\n                                                     www.vedantu.com                                   11"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 26,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -1301,6 +1760,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Lewis base \uf0ae\uf020\u03bb.p donar\n                    P\n       PF3\n                F F F"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 27,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -1341,6 +1810,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "iso electronic\uf020\uf0ae\uf020same valence electron.\n       Iso structural \uf0ae\uf020same structure\n               Cl                 S           Both pyramidal but - valence\n       O            O\n                        \u2013 \u2013\n                              O       O\n                                          \u2013   electron are not same\n               O                  O\n               O                  O\n\n               C                  N           Both trigonal planar and\n       \u2013            \u2013\n                    O     \u2013\n                              O       O       isoelectronic\n           O"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 28,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -1381,6 +1860,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "B2H6 boron hydride, it is electron deficient and dimer of BH3.\n       A\u03bb, Cr are having passive nature with HNO3 but Be dissolve in conc. HNO3"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 29,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -1421,6 +1910,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "1st reaction is not a redox reaction as the oxidation number of elements remains unchanged."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 30,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -1461,6 +1960,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "x\n\n\n                    2                        2   2\n               dZ                    dx \u2013y"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 31,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -1501,6 +2010,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "F                  F   Geometry\uf0ae electron pair arrangement\n                     Xe\n           F                  F   space\uf0ae atomic arrangement\n\n\n                                                           3 2\n       Geometry\uf0ae octahedral hybridization \uf0ae\uf020sp d"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 32,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -1541,6 +2060,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Not same shape"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 33,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -1581,6 +2110,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Trans effect : The intensity of trans effect depend on increase in rate of substitution of the trans ligand.\n       F\u2013 < NH3 < Cl\u2013 < Br\u2013 < Ph\u2013 < CH3\u2013 < CN\u2013\n\n\n\n\n                                                         www.vedantu.com                                     14"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 34,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -1621,6 +2160,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Ce is strong oxidising agent and easily convert into Ce+3\n       Eu+2 exist and behave as reducing agent lanthanons are much more reactive than aluminum.\n       Lanthanoids are basic in nature and their acidity is three."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 35,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -1661,6 +2210,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Jahn teller effect : This is geometric distortion occur in unsymmetrical octahedral complexes for\n       example high spin complexes of (high spin)\n       d4                  d7                d8                  d9\n\n\n\n       unsymmetrical       unsymmetrical        Symmetrical           unsymmetrical"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 36,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -1701,6 +2260,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "CH2=CH\u2013Cl,                     Cl,          Br\n\n\n       Not suitable for friedal-craft Reaction in Benzene. Isopropyl chlrodie is suitable.\n                                               CH3         CH3\n                                                 CH\n             CH3\n       CH3\u2013CH\u2013Cl +                     AlCl3\n                                      \uf0be\uf0be \uf0be\uf0ae"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 37,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -1713,23 +2282,27 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Coplanarity & Molecular Geometry",
     "conceptSlug": "general-organic-chemistry",
     "difficulty": "medium",
-    "text": "In which of the following molecules, all atoms are coplanar ?",
+    "text": "In which of the following molecules, all atoms are coplanar?",
     "options": [
       {
         "key": "A",
-        "text": "Bicyclohexyl (non-coplanar)"
+        "text": "Bicyclohexyl",
+        "imageUrl": "/assets/scientific/neet-phase-2/q38_opt_A.png"
       },
       {
         "key": "B",
-        "text": "Biphenyl (all carbon atoms sp2 coplanar)"
+        "text": "Biphenyl",
+        "imageUrl": "/assets/scientific/neet-phase-2/q38_opt_B.png"
       },
       {
         "key": "C",
-        "text": "Cyclohexane (chair conformation)"
+        "text": "Cyclohexane",
+        "imageUrl": "/assets/scientific/neet-phase-2/q38_opt_C.png"
       },
       {
         "key": "D",
-        "text": "2,3-dimethylbut-2-enedinitrile"
+        "text": "$\\ce{(CH3)2C=C(CN)2}$",
+        "imageUrl": "/assets/scientific/neet-phase-2/q38_opt_D.png"
       }
     ],
     "marks": 4,
@@ -1741,6 +2314,43 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Biphenyl\n\n\n\n       All carbon atom is sp2 hybridised and its geometry is trigonal planar."
+    },
+    "multilingual": {
+      "hi": {
+        "text": "\u0928\u093f\u092e\u094d\u0928 \u092e\u0947\u0902 \u0938\u0947 \u0915\u093f\u0938 \u0905\u0923\u0941 \u092e\u0947\u0902 \u0938\u092d\u0940 \u092a\u0930\u092e\u093e\u0923\u0941 \u0938\u092e\u0924\u0932\u0940\u092f \u0939\u0948\u0902?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Bicyclohexyl",
+            "imageUrl": "/assets/scientific/neet-phase-2/q38_opt_A.png"
+          },
+          {
+            "key": "B",
+            "text": "Biphenyl",
+            "imageUrl": "/assets/scientific/neet-phase-2/q38_opt_B.png"
+          },
+          {
+            "key": "C",
+            "text": "Cyclohexane",
+            "imageUrl": "/assets/scientific/neet-phase-2/q38_opt_C.png"
+          },
+          {
+            "key": "D",
+            "text": "$\\ce{(CH3)2C=C(CN)2}$",
+            "imageUrl": "/assets/scientific/neet-phase-2/q38_opt_D.png"
+          }
+        ]
+      }
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 38,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 16
     }
   },
   {
@@ -1753,23 +2363,27 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Polymers - Polyamides (Nylon 6,6)",
     "conceptSlug": "biomolecules",
     "difficulty": "medium",
-    "text": "Which one of the following structures represent nylon 6,6 polymer ? O H2       H                                        H2   H2 C         C        N    ( CH2)6\u2013NH                          C H C H",
+    "text": "Which one of the following structures represents nylon 6,6 polymer?",
     "options": [
       {
         "key": "A",
-        "text": "C         C"
+        "text": "Nylon 6,6 polymer repeating unit",
+        "imageUrl": "/assets/scientific/neet-phase-2/q39_opt_A.png"
       },
       {
         "key": "B",
-        "text": "C    C\n                   H2                              n\n                             O                                              NH2   CH3 66\n\n                                                                                            H2   H2\n                                                                                            C H C H\n              H2   H2                                                     H2   H2              C    C   6\n              C H C H                                                     C H C H"
+        "text": "Polyamide isomer structure B",
+        "imageUrl": "/assets/scientific/neet-phase-2/q39_opt_B.png"
       },
       {
         "key": "C",
-        "text": "C    C"
+        "text": "Polyamide isomer structure C",
+        "imageUrl": "/assets/scientific/neet-phase-2/q39_opt_C.png"
       },
       {
         "key": "D",
-        "text": "C    C           CH3   COOH"
+        "text": "Copolymer structure D",
+        "imageUrl": "/assets/scientific/neet-phase-2/q39_opt_D.png"
       }
     ],
     "marks": 4,
@@ -1781,6 +2395,43 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Nylon-66 \uf0ae adipic acid + Hexamethylenediamine\n       HOOC\u2013(CH2)2\u2013COOH+H2N\u2013(CH2)6\u2013NH2\n\n\n               \u2013C\u2013(CH2\u2013CH2)\u2013C\u2013NH\u2013(CH2)6\u2013NH\u2013\n                                           2\n                                                                              n\n                   O                           O"
+    },
+    "multilingual": {
+      "hi": {
+        "text": "\u0928\u093f\u092e\u094d\u0928 \u092e\u0947\u0902 \u0938\u0947 \u0915\u094c\u0928-\u0938\u0940 \u0938\u0902\u0930\u091a\u0928\u093e \u0928\u093e\u0907\u0932\u0949\u0928 6,6 \u092c\u0939\u0941\u0932\u0915 \u0915\u094b \u092a\u094d\u0930\u0926\u0930\u094d\u0936\u093f\u0924 \u0915\u0930\u0924\u0940 \u0939\u0948?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Nylon 6,6 polymer repeating unit",
+            "imageUrl": "/assets/scientific/neet-phase-2/q39_opt_A.png"
+          },
+          {
+            "key": "B",
+            "text": "Polyamide isomer structure B",
+            "imageUrl": "/assets/scientific/neet-phase-2/q39_opt_B.png"
+          },
+          {
+            "key": "C",
+            "text": "Polyamide isomer structure C",
+            "imageUrl": "/assets/scientific/neet-phase-2/q39_opt_C.png"
+          },
+          {
+            "key": "D",
+            "text": "Copolymer structure D",
+            "imageUrl": "/assets/scientific/neet-phase-2/q39_opt_D.png"
+          }
+        ]
+      }
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 39,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 16
     }
   },
   {
@@ -1793,7 +2444,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Aromatic Heterocycles & Pyrrole Resonance",
     "conceptSlug": "general-organic-chemistry",
     "difficulty": "medium",
-    "text": "In pyrrole 4                   3 5                               2 N 1 H the electron density is maximum on ik;jksy 4                   3 5                               2 N 1 H",
+    "text": "In pyrrole 4 3 5 2 N 1 H the electron density is maximum on ik;jksy 4 3 5 2 N 1 H",
     "options": [
       {
         "key": "A",
@@ -1821,6 +2472,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "5                   2                                 2\n                                               5                      5                   2\n                   N1\n                                                       + N                    +N 1\n                   H                                    H                         H\n\n       Electron density is maximum on-2,4th carbon.\n\n\n\n\n                                                                              www.vedantu.com                                     17"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 40,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -1833,7 +2494,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Alkene Synthesis & Elimination Reactions",
     "conceptSlug": "hydrocarbons",
     "difficulty": "medium",
-    "text": "Which of the following compounds shall not produce propene by reaction with HBr followed by elimination or direct only elimination reaction ? H2                                                          H2 H2C\u2014CH2",
+    "text": "Which of the following compounds shall not produce propene by reaction with HBr followed by elimination or direct only elimination reaction ? H2 H2 H2C\u2014CH2",
     "options": [
       {
         "key": "A",
@@ -1861,6 +2522,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "(i) CH3\u2013CH2\u2013CH2\u2013Br                               CH3\u2013CH=CH2\n                                       elimination\n       (ii)                                             CH3\u2013CH=CH2\n\n\n                                             HBr                         elimination\n       (iii) CH3\u2013CH2\u2013CH2\u2013OH                          CH3\u2013CH2\u2013CH2\u2013Br                      CH3\u2013CH=CH2\n                                HBr\n       (iv) CH2=C=O                      No reaction."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 41,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -1873,7 +2544,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Nitroalkanes & Nitrous Acid Reactivity",
     "conceptSlug": "amines-and-diazonium-salts",
     "difficulty": "medium",
-    "text": "Which one of the following nitro-compounds does not react with nitrous acid CH3 C                                                        H2",
+    "text": "Which one of the following nitro-compounds does not react with nitrous acid CH3 C H2",
     "options": [
       {
         "key": "A",
@@ -1901,6 +2572,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "1\u00b0 nitro compound, 2\u00b0 nitrocompound react with HNO2 acid but 3\u00b0 nitro compound does not react with\n       nitrous acid\n                         CH3                            CH3\n                                      HNO2\n       (i) CH3\u2013C\u2013CH\u2013NO2                        CH3\u2013C\u2013C\u2013NO2\n                 O       1\u00b0 nitro                     O N=O\n\n       (ii) CH3\u2013CH2\u2013CH2\u2013NO2 HO\u2013N=O                      CH3\u2013CH2\u2013C\u2013NO2\n                          1\u00b0 nitro                               N\u2013OH\n\n\n\n\n                                                           www.vedantu.com                                 18\n\f                                        HO\u2013N=O        CH3\u2013CH\u2013C\u2013NO2\n       (iii) CH3\u2013CH\u2013CH2\u2013NO2\n                   CH3     1\u00b0 nitro                             CH3 N\u2013OH\n                   HNO2\n       3\u00b0 nitro            No reaction"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 42,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -1941,6 +2622,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "DNA \u2013 RNA \uf0ae\uf020Protein"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 43,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -1953,7 +2644,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Carbohydrates - D/L Configuration of Aldoses",
     "conceptSlug": "biomolecules",
     "difficulty": "medium",
-    "text": "The correct corresponding order of names of four aldoses with configuration given below CHO                 CHO                  CHO                CHO H          OH       HO          H        HO             H     H        OH H          OH         H          OH      HO             H    HO        H CH2OH                  CH2OH                CH2OH              CH2OH respectively, is",
+    "text": "The correct corresponding order of names of four aldoses with configuration given below CHO CHO CHO CHO H OH HO H HO H H OH H OH H OH HO H HO H CH2OH CH2OH CH2OH CH2OH respectively, is",
     "options": [
       {
         "key": "A",
@@ -1981,6 +2672,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "H            OH (D)            H            OH (D)     (L) HO             H       HO               H (L)\n              CH2OH                          CH2OH                         CH2OH                 CH2OH\n\n           D-erythrose                    D-threose                     L-erythose            L-threose"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 44,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -1993,7 +2694,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Electrophilic Aromatic Alkylation",
     "conceptSlug": "hydrocarbons",
     "difficulty": "medium",
-    "text": "In the given reaction HF +             \u2014\u2014\u2014 0\u00baC \u2192 P the product P is nh x;h vfHkf\u00d8;k HF +             \u2014\u2014\u2014 0\u00baC \u2192 P F",
+    "text": "In the given reaction HF + \u2014\u2014\u2014 0\u00baC \u2192 P the product P is nh x;h vfHkf\u00d8;k HF + \u2014\u2014\u2014 0\u00baC \u2192 P F",
     "options": [
       {
         "key": "A",
@@ -2021,6 +2722,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "+          \uf0be\uf0be\n                           \uf0be\uf0ae                 +        \uf0be\uf0be\uf0ae\n\n       This is a Freidal \u2013 Craft reaction.\n\n\n\n\n                                                      www.vedantu.com                                              20\n\f                                            PART B \u2013 BIOLOGY"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 45,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -2061,6 +2772,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Ligase are the enzymes used to join substrates. Here in case of DNA T4 DNA ligase is used.\n       ykbxst ,sls ,atkbEl gSa] tks v/k%Lrjksa dks tksM+us ds fy, iz;qDr fd;s tkrs gSaA ;gk\u00a1 DNA ds fy, T4 DNA ykbxst\n       iz;qDr fd;k tkrk gSA"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 46,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -2101,6 +2822,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Expression of recombinant DNA is parts of upstream processing.\n       iqu;ksZXkt Mh,u, dh vfHkO;fDr] vuqizokg iz\u00d8e.k dk Hkkx gSA"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 47,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -2141,6 +2872,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Eco RV has restriction sequence \u2013\n       Eco RV fuEu izfrca/ku vuq\u00d8e j[krk gS&\n       5' \u2013 GAT        ATC \u2013 3'\n       3' \u2013 CTA        TAG \u2013 5'\n\n\n\n\n                                                  www.vedantu.com                                              21"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 48,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -2181,6 +2922,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (2) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 49,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -2221,6 +2972,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (4) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 50,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -2261,6 +3022,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (3) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 51,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -2301,6 +3072,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (2) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 52,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -2341,6 +3122,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Parasitism + , \u2013\n       Mutualism + , +\n       Amensalism 0, \u2013\n       Commensalism +, 0\n       ijthfork + , \u2013\n       lgksidkfjrk + , +\n       varjtkrh; ijthfork 0, \u2013\n       lgHkksftrk +, 0"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 53,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -2381,6 +3172,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "(1) Stratification :- Structural component of ecosystem\n       (2) Aerenchyma :- Feature of hydrophytes\n       (3) Age pyramid :- Food chain\n       (4) Parthenium hysterophorus :- Exotic species do not that allow the growth of other plants near it.\n       (1) Lrj.k :- ikfjra=k ds lajpukRed ?kVd\n       (2) Aerenchyma :- Feature of hydrophytes\n       (3) Age pyramid :- Food chain\n       (4) Parthenium hysterophorus :- Exotic species donot that allow the growth of other plants near it.\n\n\n\n\n                                                  www.vedantu.com                                             23"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 54,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -2421,6 +3222,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Red list of red data bood IUCN (New name WCU) involve threatened species of plants & animals"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 55,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -2461,6 +3272,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "In fungi, cell wall is usually composed of Chitin. Cellulosic cell wall is found in oomycetes of\n       phycomycetes in fungi."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 56,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -2501,6 +3322,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Biogas producing, obligate anaerobe, methanogens are type of Archaebacteria.\n\n\n\n\n                                                      www.vedantu.com                                     24"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 57,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -2541,6 +3372,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The wall of diatoms contain cellulose & Silica. It is called frustule. It is non-degrodable. After death it is\n       deposited at the bottom in water & form diatomous earth."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 58,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -2581,6 +3422,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (1) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 59,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -2621,6 +3472,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Presence of thick cuticle, presence of sunken stomata and needle like leaves are xerophytic\n       adaptations of conifers for tolerating extreme environmental conditions.\n\n\n\n\n                                                      www.vedantu.com                                          25"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 60,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -2661,6 +3522,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Algin is obtained from Laminaria & Fucus \u2013Brown algae while Carrageenan from chondrus crispes \u2013\n       Red alage"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 61,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -2701,6 +3572,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "If filaments of Androecium are joined to form more than two groups but their Anthers separate, it is\n       called polyadelphous Eg :- Citrus."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 62,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -2741,6 +3622,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Salvia, Mustard, Radish and turnip have stamens with different lengths in their flowers\n\n\n\n\n                                                      www.vedantu.com                                                  26"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 63,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -2781,6 +3672,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Cassia, Trifolium & Pisum have zygomorphic flowers while Brassica has Actinomorphic flowers (Radial\n       symmerty)"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 64,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -2821,6 +3722,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Free central placentation is found in Dianthus."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 65,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -2861,6 +3772,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Sequence from outside to inside in T.S. of stem is epidermeis, hypodermis, cortex, endodermis, stele\n       (pericycle + vascular tissues + pirh) hence cortex is present between epidermis & stele.\n\n\n\n\n                                                  www.vedantu.com                                     27"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 66,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -2901,6 +3822,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Ballon like parenchymatous ingrowth in vessels called tyloses which inhibits trans portation of water &\n       minerals in xylem"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 67,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -2941,6 +3872,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Ribozyme is non proteinaceous enzyme as it is 23 rRNA acts as a catalyst during protein synthesis."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 68,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -2981,6 +3922,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Animal cells donot contain large central vacuole, their vacuole is poorely developed or absent.\n\n\n\n\n                                                       www.vedantu.com                                   28"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 69,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -3021,6 +3972,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Motility is performed by flagella only in bacterial cells while fibriae provide attachment to base and pili\n       forms conjugation tube during conjugation"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 70,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -3061,6 +4022,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Hydrolylic enzyme containing vesicle is called lysosome."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 71,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -3101,6 +4072,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "DNA Polymerase enzyme is synthesized in G1 phase but activates in 'S' phase hence DNA replication\n       takes place in 'S' phase in the presence of DNA polymerase.\n\n\n\n\n                                                      www.vedantu.com                                     29"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 72,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -3141,6 +4122,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Acetyl CoA is common intermediate of fats, carbonydrates & proteins during aerobic respiration."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 73,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -3181,6 +4172,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Phloem sap is alkaline due to actively pumping of protons from companion cells to the outer cells."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 74,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -3221,6 +4222,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Auxin and cytokinin ratio regulates the growth of root & shoot as low cocentroation of Auxin and\n       cytokinin promotes shoot growth while higher ratio promotes root growth"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 75,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -3261,6 +4272,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Phytochromes are chromoproteins"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 76,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -3301,6 +4322,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Ca promotes the growth of root tip.\n\n\n\n\n                                                    www.vedantu.com                                           31"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 77,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -3341,6 +4372,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Photorospiration differentiat C3 plants from C4 plants due to having high CO2 concentration around\n       RuBP in bundle sheath cells"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 78,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -3381,6 +4422,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Plantlet always arise from nodes of stem or modified stem\n\n\n\n\n                                                     www.vedantu.com                                      32"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 79,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -3421,6 +4472,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "New genetic combination develops after sexual reproduction due to following reasons\n       (1) Crossing over during gamete formation\n       (2) Chance combination of gametic fusion"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 80,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -3433,7 +4494,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Floral Structure & Pistil Fusion",
     "conceptSlug": "reproduction",
     "difficulty": "medium",
-    "text": "Match Column-I with Column-II and select the correct option using the codes given below : Column-I                                     Column-II a. Pistils fused together                    (i) Gametogenesis b. Formation of gametes                      (ii) Pistillate c. Hyphae of higher Ascomycetes              (iii) Syncarpous d. Unisexual female flower                   (iv) Dikaryotic dkWye-I                                      dkWye-II d. ,dfyax eknk iq\"i                          (iv) f}dsU\u00e6dh Codes: a       b           c      d",
+    "text": "Match Column-I with Column-II and select the correct option using the codes given below : Column-I Column-II a. Pistils fused together (i) Gametogenesis b. Formation of gametes (ii) Pistillate c. Hyphae of higher Ascomycetes (iii) Syncarpous d. Unisexual female flower (iv) Dikaryotic dkWye-I dkWye-II d. ,dfyax eknk iq\"i (iv) f}dsU\u00e6dh Codes: a b c d",
     "options": [
       {
         "key": "A",
@@ -3461,6 +4522,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (1) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 81,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -3501,6 +4572,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (4) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 82,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -3541,6 +4622,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (3) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 83,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -3581,6 +4672,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (2) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 84,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -3621,6 +4722,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (3) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 85,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -3661,6 +4772,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (4) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 86,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -3701,6 +4822,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (3) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 87,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -3741,6 +4872,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (4) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 88,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -3781,6 +4922,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (4) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 89,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -3821,6 +4972,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (4) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 90,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -3861,6 +5022,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Genetic material should be stable (chemically) otherwise its expression will change leading to loss in\n\n       several metabolic functions or inconsistency in expression."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 91,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -3901,6 +5072,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The strand of DNA on which RNA Polymerase binds to perform transcription is called template strand.\n\n\n\n\n                                                    www.vedantu.com                                            37"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 92,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -3941,6 +5122,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (3) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 93,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -3981,6 +5172,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "HIV attacks helper T cells and not try to hide from them.\n       HIV lgk;d T dksf'kdkvksa ij vk\u00d8e.k djrk gS rFkk buls Lo;a dks Nqikus dk iz;kl ugha djrk gSA"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 94,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -4021,6 +5222,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (1) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 95,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -4033,7 +5244,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Industrial Microbes & Bioactive Chemicals",
     "conceptSlug": "biology-and-human-welfare",
     "difficulty": "medium",
-    "text": "Match Column-I with Column-II and select the correct option using the codes given below: Column-I                          Column-II a.           Citric acid               (i)     Trichoderma b.           Cyclosporin A             (ii)    Clostridium c.           Statins                   (iii)   Aspergillus d.           Butyric                   (iv)    Monascus dkWye-I                           dkWye-II a.           flfV\u00aad vEy                (i)     V\u00aakbdksMekZ b.           lkbDyksLiksfju A          (ii)    DykWfLV\u00aafM;e c.           LVsfVu                    (iii)   ,sLijftyl d.           C;wfVfjd vEy              (iv)    eksuSLdl dwV : a         b        c      d",
+    "text": "Match Column-I with Column-II and select the correct option using the codes given below: Column-I Column-II a. Citric acid (i) Trichoderma b. Cyclosporin A (ii) Clostridium c. Statins (iii) Aspergillus d. Butyric (iv) Monascus dkWye-I dkWye-II a. flfV\u00aad vEy (i) V\u00aakbdksMekZ b. lkbDyksLiksfju A (ii) DykWfLV\u00aafM;e c. LVsfVu (iii) ,sLijftyl d. C;wfVfjd vEy (iv) eksuSLdl dwV : a b c d",
     "options": [
       {
         "key": "A",
@@ -4061,6 +5272,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (3) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 96,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -4101,6 +5322,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "BOD is measure of Oxygen required by microbes to remove biodegradable chemicals"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 97,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -4141,6 +5372,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (3) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 98,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -4181,6 +5422,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (1) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 99,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -4221,6 +5472,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Lake with large amount of organic waste will increase BOD of water since microbes will use more\n       Dissolved Oxygen to degrade organic matter"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 100,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -4261,6 +5522,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Bioamplification of nondegradable chemicals is seen as we move upwards in trophic level and thus in\n       Sea gull (bird) level of DDT will be maximum.\n\n\n\n\n                                                    www.vedantu.com                                41"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 101,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -4301,6 +5572,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (2) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 102,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -4313,7 +5594,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Taxonomic Hierarchy of Housefly",
     "conceptSlug": "diversity-in-living-world",
     "difficulty": "medium",
-    "text": "Match Column-I with Column-II for housefly classification and select the correct option using the codes given below : Column-I                             Column-II a.       Family                               (i) Diptera b.       Order                                (ii) Arthropoda c.       Clsass                               (iii) Muscidae d.       Phylum                               (iv) Insecta dkWye-I                              dkWye-II Codes dwV : a         b       c        d",
+    "text": "Match Column-I with Column-II for housefly classification and select the correct option using the codes given below : Column-I Column-II a. Family (i) Diptera b. Order (ii) Arthropoda c. Clsass (iii) Muscidae d. Phylum (iv) Insecta dkWye-I dkWye-II Codes dwV : a b c d",
     "options": [
       {
         "key": "A",
@@ -4341,6 +5622,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (2) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 103,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -4381,6 +5672,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (3) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 104,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -4393,7 +5694,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Biological Species Concept & Growth",
     "conceptSlug": "diversity-in-living-world",
     "difficulty": "medium",
-    "text": "Study the four statements (A - D) given below and select the two correct ones out of them : A.       Definition of biological species was given by Ernst Mayr. B.       Photoperiod does not affect reproduction in plants. C.       Binomial nomenclature system was given by R. H. Whittaker. D.       In unicellular organisms, reproduction is synonymous with growth. The two correct statements are",
+    "text": "Study the four statements (A - D) given below and select the two correct ones out of them : A. Definition of biological species was given by Ernst Mayr. B. Photoperiod does not affect reproduction in plants. C. Binomial nomenclature system was given by R. H. Whittaker. D. In unicellular organisms, reproduction is synonymous with growth. The two correct statements are",
     "options": [
       {
         "key": "A",
@@ -4421,6 +5722,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (4) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 105,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -4461,6 +5772,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (2) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 106,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -4501,6 +5822,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (2) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 107,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -4541,6 +5872,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Oxidative phosphorylation occurs when NADH + H or FADH2 are oxidized and their electron enters in\n       ETC creating proton gradient which finally produce ATP in F0-F1 particle."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 108,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -4581,6 +5922,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Ester bonds are formed in nucleic acids and lipids, but not proteins.\n       ,LVj ca/k] U;wfDyd vEyksa o fyfiM~~l esa curs gSa] izksVhuksa esa ughaA"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 109,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -4593,7 +5944,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Enzyme Catalysis & Activation Energy Graph",
     "conceptSlug": "cell-structure-and-function",
     "difficulty": "medium",
-    "text": "Which of the following describes the given graph correctly? B A Potential Substrate Energy Product Reaction",
+    "text": "Which of the following describes the given activation energy graph correctly?",
     "options": [
       {
         "key": "A",
@@ -4621,6 +5972,55 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (3) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "imageUrl": "/assets/scientific/neet-phase-2/q110_diagram.png",
+    "contentBlocks": [
+      {
+        "id": "q110-b1",
+        "type": "text",
+        "order": 1,
+        "rawContent": "Which of the following describes the given activation energy graph correctly?"
+      },
+      {
+        "id": "q110-b2",
+        "type": "scientific_diagram",
+        "order": 2,
+        "assetUrl": "/assets/scientific/neet-phase-2/q110_diagram.png",
+        "accessibilityDescription": "Potential energy vs reaction progress graph with enzyme (A) and without enzyme (B)"
+      }
+    ],
+    "multilingual": {
+      "hi": {
+        "text": "\u0928\u093f\u092e\u094d\u0928 \u092e\u0947\u0902 \u0938\u0947 \u0915\u094c\u0928-\u0938\u093e \u0926\u093f\u092f\u0947 \u0917\u092f\u0947 \u0917\u094d\u0930\u093e\u092b \u0915\u093e \u0938\u0939\u0940 \u0935\u0930\u094d\u0923\u0928 \u0915\u0930\u0924\u093e \u0939\u0948?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Exothermic reaction with energy A in absence of enzyme and B in presence of enzyme"
+          },
+          {
+            "key": "B",
+            "text": "Endothermic reaction with energy A in presence of enzyme and B in absence of enzyme"
+          },
+          {
+            "key": "C",
+            "text": "Exothermic reaction with energy A in presence of enzyme and B in absence of enzyme"
+          },
+          {
+            "key": "D",
+            "text": "Endothermic reaction with energy A in absence of enzyme and B in presence of enzyme."
+          }
+        ]
+      }
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 110,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 45
     }
   },
   {
@@ -4661,6 +6061,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "G2/M check point ensures that DNA Replication is complete and no error is left.\n\n\n\n\n                                                 www.vedantu.com                                              46"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 111,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -4673,7 +6083,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Meiotic Stages - Prophase I Sub-phases",
     "conceptSlug": "cell-structure-and-function",
     "difficulty": "medium",
-    "text": "Match the stages of meiosis in Column-I to their characteristic features in Column-II and select the correct option using the codes given below : Column-I                           Column-II a. Pachytene                 (i)     Pairing of homologous chromosomes b. Metaphase I               (ii)    Terminalization of chiasmata - c. Diakinesis                (iii)   Grossing-over takes place d. Zygotenev                 (iV)    Chromosomes align at equatorial plate Codes: a         b         c       d",
+    "text": "Match the stages of meiosis in Column-I to their characteristic features in Column-II and select the correct option using the codes given below : Column-I Column-II a. Pachytene (i) Pairing of homologous chromosomes b. Metaphase I (ii) Terminalization of chiasmata - c. Diakinesis (iii) Grossing-over takes place d. Zygotenev (iV) Chromosomes align at equatorial plate Codes: a b c d",
     "options": [
       {
         "key": "A",
@@ -4701,6 +6111,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (2) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 112,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -4741,6 +6161,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Pancreatic juice rich in enzymes is secreted under influence of cholecystokinin, while pancreatic juice\n       rich in bicarbonates is secreted under influence of secretin.\n       ,atkbeksa ls izpqj vXuk'k;h jl] dksysfLkLVksdkbfuu ds izHkko esa \u00f2kfor fd;k tkrk gS] tcfd ckbdkcksZusV~l ls izpqj\n       vXuk'k;h jl flf\u00d8Vhu ds izHkko esa \u00f2kfor fd;k tkrk gSA"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 113,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -4781,6 +6211,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "pO2 in Alveoli is 104, while in oxygenated blood, it is 95.\n       dwfidkvksa esa pO2, 104 gksrk gS] tcfd vkWDlhtfur jDr esa ;g 95 gksrk gSA"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 114,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -4821,6 +6261,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Photoreceptors in the human eye are depolarized during darkness and become hyperpolarized in\n       response to the light stimulus."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 115,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -4861,6 +6311,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Graves' disease is caused due to hypersecretion of thyroid gland"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 116,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -4901,6 +6361,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Calcium ion is responsible for unmasking of active sites for myosin for cross-bridge activity during\n       muscle contraction"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 117,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -4941,6 +6411,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Thrombocytes"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 118,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -4981,6 +6461,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Insulin is a peptide hormone which acts mainly on hepatocytes, adipocytes and enhances cellular\n       glucose uptake and utilization."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 119,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -5021,6 +6511,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Osteoporosis, an age related disease of skeletal system , may occur due to decreased level of\n       estrogen"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 120,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -5061,6 +6561,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Blood Plasma\u2013clotting factors =Serum\n\n\n\n\n                                                   www.vedantu.com                                     51"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 121,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -5101,6 +6611,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Lungs do not collapse between breaths and some air always remains in the lungs which can never be\n       expelled because there is a negative intrapleural pressure pulling at the lung walls"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 122,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -5141,6 +6661,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The posterior pituitary gland is not a 'true' endocrine gland because it only stores and releases\n       hormones\n\n\n\n\n                                                      www.vedantu.com                                          52"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 123,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -5181,6 +6711,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The part of nephron involved in active reabsorption of sodium is proximal convoluted tubule"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 124,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -5221,6 +6761,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "LNG-20 is hormone releasing IUD clotting factors"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 125,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -5261,6 +6811,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "No sperm occurs in epididymis"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 126,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -5301,6 +6861,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Embryo with more than 16 blastomeres formed due to in vitro fertilization is transferred into uterus"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 127,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -5341,6 +6911,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct pathway of transport of sperms is\n       Rete testis \uf0ae Efferent ductules \uf0ae Epididymis \uf0ae Vas deferens\n\n\n\n\n                                                     www.vedantu.com                                                 54"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 128,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -5353,7 +6933,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Human Reproductive Anatomy Terminology",
     "conceptSlug": "reproduction",
     "difficulty": "medium",
-    "text": "Match Column-I with Column-II and select the correct option using the codes given below : Column-I                          Column-II a. Mons pubis                     (i) Embryo formation b. Antrum                         (ii) Sperm c. Trophectoderm                  (iii) Female external genitalia d. Nebenkern                      (iv) Graafian follicle Codes: a       b      c       d",
+    "text": "Match Column-I with Column-II and select the correct option using the codes given below : Column-I Column-II a. Mons pubis (i) Embryo formation b. Antrum (ii) Sperm c. Trophectoderm (iii) Female external genitalia d. Nebenkern (iv) Graafian follicle Codes: a b c d",
     "options": [
       {
         "key": "A",
@@ -5381,6 +6961,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Column-I                          Column-II\n         a. Mons pubis                     \u2013Female external genitalia\n         b. Antrum                         \u2013 Graafian follicle\n         c. Trophectoderm                  \u2013 Embryo formation\n         d. Nebenkern                      \u2013 Sperm\n\n\n\n\n                                                      www.vedantu.com                                             55"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 129,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -5421,6 +7011,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Colour blind man                     Normal homozygous women\n                   c\n                  XY                                 XX\n       Genotype of son \u2013 XY- normal vision\n       Son receives Y chromosome from father and X chromosomes from mother"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 130,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -5461,6 +7061,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (2) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 131,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -5501,6 +7111,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Genetic drift operates in small isolated population"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 132,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -5541,6 +7161,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "In Hardy-Weinberg equation, the frequency of heterozygous individual is represented by 2pq"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 133,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -5581,6 +7211,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The chronological order of human evolution from early to the recent is\n       Ramapithecus \uf0ae Australopithecus\uf0ae Homo habilis \uf0ae Homo erectus"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 134,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -5621,6 +7261,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct sequence of events in the origin of life is\n       Synthesis of organic monomers \u2013 Synthesis of organic polymers \u2013 Formation of protobionts\n       \u2013 Formation of DNA-based genetic systems\n\n\n\n\n                                                    www.vedantu.com                               58\n\f                                              PART C \u2013 PHYSICS"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 135,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -5661,6 +7311,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "- =                        \u21d2              - =\n       v u f                                  - 4m \uf0a5 f\n                                                          1    1\n       \u21d2        f = \u2013 4m           \u21d2          power =       =    = \u2013 0.25D\n                                                          f   -4"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 136,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -5701,6 +7361,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Position of Ist minima\n\n             \u03bbD (5 \uf0b4 10-8 )(0.6)\n       y=       =\n              a   0.02 \uf0b4 10-2\n       y = 0.15 cm"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 137,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -5713,7 +7383,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "de-Broglie Wavelength & X-Ray Cutoff",
     "conceptSlug": "dual-nature-of-matter-and-radiation",
     "difficulty": "medium",
-    "text": "Electrons of mass m with de-Broglie wavelength \u03bb fall on the target in an X-ray tube. The cutoff wavelength (\u03bb0) of the emitted X-ray is : 2mc\u03bb 2                      2h                         2m2c 2 \u03bb3",
+    "text": "Electrons of mass m with de-Broglie wavelength \u03bb fall on the target in an X-ray tube. The cutoff wavelength (\u03bb0) of the emitted X-ray is : 2mc\u03bb 2 2h 2m2c 2 \u03bb3",
     "options": [
       {
         "key": "A",
@@ -5741,6 +7411,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "K.E. of electrons =    = \uf0e8 \uf0f8 =\n                           2m    2m   2m \u03bb2\n       So maximum energy of photon will also be this much.\n\n       hc    h2          2mc\u03bb2\n          =       \u21d2\uf020\u03bb0 =\n       \u03bb0   2m \u03bb2          h"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 138,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -5781,6 +7461,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "kmax = h\uf06e \u2013 \uf066\n       2eV = 5eV \u2013 \uf066 \u21d2 \uf066 = 3eV\n       So Vst = 3 volt\n       Vcathode \u2013 Vanode = 3 volt\n       Vanode \u2013 Vcathode = \u2013 3 volt"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 139,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -5793,7 +7483,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Hydrogen Spectrum - Orbital Transitions",
     "conceptSlug": "atoms-and-nuclei",
     "difficulty": "medium",
-    "text": "If an electron in a hydrogen atom jumps from the 3rd orbit to the 2nd orbit, it emits a photon of wavelength \u03bb. When it jumps from the 4th orbit to the 3rd orbit, the corresponding wavelength of the photon will be : gksxkA 20                           16                         9                          20",
+    "text": "If an electron in a hydrogen atom jumps from the 3rd orbit to the 2nd orbit, it emits a photon of wavelength \u03bb. When it jumps from the 4th orbit to the 3rd orbit, the corresponding wavelength of the photon will be : gksxkA 20 16 9 20",
     "options": [
       {
         "key": "A",
@@ -5821,6 +7511,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "= Re \uf0e7 2 \u2013 2 \uf0f7\n       \u03bb      \uf0e82   3 \uf0f8\n\n       1       \uf0e6 1   1 \uf0f6\n          = Re \uf0e7 2 \u2013 2 \uf0f7\n       \u03bb'      \uf0e83   4 \uf0f8\n\n                       20\n       dividing \u03bb' =      \u03bb         \n                        7\n\n\n\n\n                                                    www.vedantu.com                                                 60"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 140,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -5861,6 +7561,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "N1 = 0.6 N0\n       N2 = 0.15 N0\n                  2\n       N2 \uf0e6 1 \uf0f6\n         = \uf0e7 \uf0f7 so two half life period has passed\n       N1 \uf0e8 2 \uf0f8\n       so time taken = 2t1/2 = 2 \u00d7 30 = 60 minutes"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 141,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -5901,6 +7611,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "AV = \uf062\n                Rin\n\n                       2k\u03a9\n       AV = 100 \u00d7                   \u21d2        AV = 200\n                       1k\u03a9\n\n              \uf028 Vout \uf029AC                                   4\n       AV =              = 200      \u21d2        (Vin)AC =        = 200 mV                \n               \uf028 Vm \uf029AC                                   200"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 142,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -5913,7 +7633,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Semiconductor Diodes in Circuit",
     "conceptSlug": "electronic-devices",
     "difficulty": "medium",
-    "text": "The given circuit has two ideal diodes connected as shown in the figure below. The current flowing through the resistance R1 will be : eku gksxkA 2\u03a9 R1 D1                 D2 10 V R2    3\u03a9           R3    2\u03a9",
+    "text": "The given circuit has two ideal diodes connected as shown in the figure below. The current flowing through the resistance $\\text{R}_1$ will be :",
     "options": [
       {
         "key": "A",
@@ -5941,6 +7661,55 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The diode D1 will be be in reverse bias, so it will block the current and diode D1 will be in forward bias,\n       so it will pass the current\n              10\n       i=        = 2.5 A               \n             2+2"
+    },
+    "imageUrl": "/assets/scientific/neet-phase-2/q143_diagram.png",
+    "contentBlocks": [
+      {
+        "id": "q143-b1",
+        "type": "text",
+        "order": 1,
+        "rawContent": "The given circuit has two ideal diodes connected as shown in the figure below. The current flowing through the resistance $\\text{R}_1$ will be :"
+      },
+      {
+        "id": "q143-b2",
+        "type": "scientific_diagram",
+        "order": 2,
+        "assetUrl": "/assets/scientific/neet-phase-2/q143_diagram.png",
+        "accessibilityDescription": "Circuit with 10V battery, R1=2 ohm, Diode D1, R2=3 ohm, Diode D2, R3=2 ohm"
+      }
+    ],
+    "multilingual": {
+      "hi": {
+        "text": "\u0926\u094b \u0906\u0926\u0930\u094d\u0936 \u0921\u093e\u092f\u094b\u0921\u094b\u0902 \u0915\u094b \u092a\u0930\u093f\u092a\u0925 \u092e\u0947\u0902 \u0928\u0940\u091a\u0947 \u0926\u093f\u092f\u0947 \u0906\u0930\u0947\u0916 \u092e\u0947\u0902 \u0926\u0930\u094d\u0936\u093e\u092f\u0947 \u0917\u092f\u0947 \u0905\u0928\u0941\u0938\u093e\u0930 \u091c\u094b\u0921\u093c\u093e \u0917\u092f\u093e \u0939\u0948\u0964 $\\text{R}_1$ \u092a\u094d\u0930\u0924\u093f\u0930\u094b\u0927 \u0938\u0947 \u092a\u094d\u0930\u0935\u093e\u0939\u093f\u0924 \u0927\u093e\u0930\u093e \u0915\u093e \u092e\u093e\u0928 \u0939\u094b\u0917\u093e :",
+        "options": [
+          {
+            "key": "A",
+            "text": "3.13 A"
+          },
+          {
+            "key": "B",
+            "text": "2.5 A"
+          },
+          {
+            "key": "C",
+            "text": "10.0 A"
+          },
+          {
+            "key": "D",
+            "text": "1.43 A"
+          }
+        ]
+      }
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 143,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 61
     }
   },
   {
@@ -5953,7 +7722,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Digital Electronics - Logic Gate Combinations",
     "conceptSlug": "electronic-devices",
     "difficulty": "medium",
-    "text": "What is the output Y in the following circuit, when all the three inputs A, B, C are first 0 and then 1 ? A P B                                                 Q       Y C",
+    "text": "What is the output $\\text{Y}$ in the following circuit, when all the three inputs $\\text{A}, \\text{B}, \\text{C}$ are first 0 and then 1?",
     "options": [
       {
         "key": "A",
@@ -5981,6 +7750,32 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "1                     C 1"
+    },
+    "imageUrl": "/assets/scientific/neet-phase-2/q144_diagram.png",
+    "contentBlocks": [
+      {
+        "id": "q144-b1",
+        "type": "text",
+        "order": 1,
+        "rawContent": "What is the output $\\text{Y}$ in the following circuit, when all the three inputs $\\text{A}, \\text{B}, \\text{C}$ are first 0 and then 1?"
+      },
+      {
+        "id": "q144-b2",
+        "type": "scientific_diagram",
+        "order": 2,
+        "assetUrl": "/assets/scientific/neet-phase-2/q144_diagram.png",
+        "accessibilityDescription": "Logic gates circuit with AND gate P and NAND gate Q"
+      }
+    ],
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 144,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 62
     }
   },
   {
@@ -5993,7 +7788,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Dimensional Analysis of Fundamental Constants",
     "conceptSlug": "physics-and-measurement",
     "difficulty": "medium",
-    "text": "Planck's constant (h), speed of light in vacuum (c) and Newton's gravitational constant (G) are three fundamental constants. Which of the following combinations of these has dimension of length? Gc                           hG                          hG                      hc",
+    "text": "Planck's constant (h), speed of light in vacuum (c) and Newton's gravitational constant (G) are three fundamental constants. Which of the following combinations of these has dimension of length? Gc hG hG hc",
     "options": [
       {
         "key": "A",
@@ -6021,6 +7816,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "L = (h)a (c)b (G)c\n       m0L1T0 = (m1L2T\u20131)9 (L1T\u20131)B (m\u20131C3T\u20132)c\n       a \u2013 c = 0,           2a + b + 3c = 1,               \u2013 a \u2013 b \u2013 2c = 0\n       solving b = \u2013 3/2, a = 1/2, c = 1/2\n\n                 hG\n       L=        3/2\n                            \n             c\n\n\n\n\n                                                           www.vedantu.com                                           62"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 145,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -6033,7 +7838,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Rectilinear Motion & Relative Velocity",
     "conceptSlug": "kinematics",
     "difficulty": "medium",
-    "text": "Two cars P and Q start from a point at the same time in a straight line and their positions are 2                   2 represented by xp(t) = at + bt and xQ (t) = ft \u2013 t . At what time do the cars have the same velocity f\u2013a                       a\u2013f                         a\uf02bf                   a\uf02bf",
+    "text": "Two cars P and Q start from a point at the same time in a straight line and their positions are 2 2 represented by xp(t) = at + bt and xQ (t) = ft \u2013 t . At what time do the cars have the same velocity f\u2013a a\u2013f a\uf02bf a\uf02bf",
     "options": [
       {
         "key": "A",
@@ -6061,6 +7866,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "VP = VQ\n                                                     f \u2013a\n       a + 2bt = f \u2013 2t              \u21d2        t=                \n                                                   2 \uf028 b + 1\uf029\n\n                                          2"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 146,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -6073,7 +7888,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Circular Motion Acceleration Vector Resolution",
     "conceptSlug": "kinematics",
     "difficulty": "medium",
-    "text": "In the given figure, a = 15 m/s represents the total acceleration of a particle moving in the clockwise direction in a circle of radius R = 2.5 m at a given instant of time. The speed of the particle is R    30\u00b0 O     \uf061\uf020",
+    "text": "In the given figure, $a = 15\\text{ m/s}^2$ represents the total acceleration of a particle moving in the clockwise direction in a circle of radius $R = 2.5\\text{ m}$ at a given instant of time. The speed of the particle is :",
     "options": [
       {
         "key": "A",
@@ -6101,6 +7916,32 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "V2\n       ac =\n               r\n\n                        V2\n       15cos30\u00b0 =\n                        2.5\n       V2 = 32.73\n       V = 5.7 m/sec          \n\n\n\n\n                                                        www.vedantu.com                                        63"
+    },
+    "imageUrl": "/assets/scientific/neet-phase-2/q147_diagram.png",
+    "contentBlocks": [
+      {
+        "id": "q147-b1",
+        "type": "text",
+        "order": 1,
+        "rawContent": "In the given figure, $a = 15\\text{ m/s}^2$ represents the total acceleration of a particle moving in the clockwise direction in a circle of radius $R = 2.5\\text{ m}$ at a given instant of time. The speed of the particle is :"
+      },
+      {
+        "id": "q147-b2",
+        "type": "scientific_diagram",
+        "order": 2,
+        "assetUrl": "/assets/scientific/neet-phase-2/q147_diagram.png",
+        "accessibilityDescription": "Circle with particle, radius R=2.5m, angle 30 degrees, acceleration a=15 m/s^2"
+      }
+    ],
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 147,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 63
     }
   },
   {
@@ -6113,23 +7954,23 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Impulse-Momentum Theorem & Elastic Collision",
     "conceptSlug": "laws-of-motion",
     "difficulty": "medium",
-    "text": "A rigid ball of mass m strikes a rigid wall at 60\u00ba and gets reflected without loss of speed as shown in the figure below. The value of impulse imparted by the wall in the ball will be m V 60\u00b0 60\u00b0 V mV                                                                           mV",
+    "text": "A rigid ball of mass $m$ strikes a rigid wall at $60^\\circ$ and gets reflected without loss of speed as shown in the figure below. The value of impulse imparted by the wall in the ball will be :",
     "options": [
       {
         "key": "A",
-        "text": "mV / 3"
+        "text": "$\\frac{mV}{3}$"
       },
       {
         "key": "B",
-        "text": "mV"
+        "text": "$mV$"
       },
       {
         "key": "C",
-        "text": "2mV"
+        "text": "$2mV$"
       },
       {
         "key": "D",
-        "text": "mV / 2"
+        "text": "$\\frac{mV}{2}$"
       }
     ],
     "marks": 4,
@@ -6141,6 +7982,32 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "J = 2mV cos 60 = mV"
+    },
+    "imageUrl": "/assets/scientific/neet-phase-2/q148_diagram.png",
+    "contentBlocks": [
+      {
+        "id": "q148-b1",
+        "type": "text",
+        "order": 1,
+        "rawContent": "A rigid ball of mass $m$ strikes a rigid wall at $60^\\circ$ and gets reflected without loss of speed as shown in the figure below. The value of impulse imparted by the wall in the ball will be :"
+      },
+      {
+        "id": "q148-b2",
+        "type": "scientific_diagram",
+        "order": 2,
+        "assetUrl": "/assets/scientific/neet-phase-2/q148_diagram.png",
+        "accessibilityDescription": "Rigid ball mass m striking wall at 60 degrees with speed V"
+      }
+    ],
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 148,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 64
     }
   },
   {
@@ -6181,6 +8048,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "During the collision, apply moementum conservation\n       (0.01)(400) + 0 = (2)V + (0.01)V'\n       where V =            2gh\n\n       V=       2 \uf0b4 10 \uf0b4 0.1\n\n       V=       2\n       solving V' = 120 m/sec."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 149,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -6221,6 +8098,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Mass of balls are same and the collision is perfectly elastic, so their velocity will be interchanged.\n       So, VA = \u2013 0.3 m/s, VB = 0.5 m/s"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 150,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -6261,6 +8148,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "\uf028          \uf029 \uf028\n       S = rf \u2013 ri = 4\u02c6j + 3k\u02c6 \u2013 \u20132i\u02c6 + 5\u02c6j        \uf029\n       = 2i\u02c6 \u2013 \u02c6j + 3k\u02c6\n       \uf072\n       F = 4i\u02c6 + 3\u02c6j\n           \uf072\uf072\n                    \uf028             \uf029\uf028\n       \uf077 = F.S = 4i\u02c6 + 3\u02c6j . 2i\u02c6 \u2013 \u02c6j + 3k\u02c6   \uf029\n       = 8 \u2013 3 = 5J           \n\n\n\n\n                                                       www.vedantu.com                                          65"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 151,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -6301,6 +8198,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "KEA = KEB\n       1          1\n         I A \uf077A2 = IB \uf077B2           \u21d2        since IB > IA so \uf077B < \uf077A\n       2          2\n       1       1\n         LA\uf077A = LB\uf077B                \u21d2        LB > LA               \n       2       2"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 152,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -6341,6 +8248,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "KE of sphere =            mR2 \uf0f7 \uf0772 = mR \uf077\n                          2 \uf0e7\uf0e8 5     \uf0f8     5\n\n                            1 \uf0e6 mR2 \uf0f6     2    2 2                       KE sphere        1\n       KE of cylinder =        \uf0e7    \uf0f7 (2\uf077) = mR \uf077                  So,                =           \n                            2 \uf0e7\uf0e8 2 \uf0f7\uf0f8                                    KEcylinder       5"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 153,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -6353,7 +8270,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Center of Mass & Moment of Inertia of Two Masses",
     "conceptSlug": "rotational-motion",
     "difficulty": "medium",
-    "text": "A light rod of length l has two masses m1 and m2 attached to its two ends. The moment of inertia of the system about an axis perpendicular to the rod and passing through the centre of mass is : m1m 2 2                        m1m 2 2                              2",
+    "text": "A light rod of length l has two masses m1 and m2 attached to its two ends. The moment of inertia of the system about an axis perpendicular to the rod and passing through the centre of mass is : m1m 2 2 m1m 2 2 2",
     "options": [
       {
         "key": "A",
@@ -6381,6 +8298,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "m1                           m2\n\n                    \u03bb\n\n\n       I = m1r12 + m2r22\n                               2               2\n            \uf0e6 m2       \uf0f6      \uf0e6 m1      \uf0f6\n       = m1 \uf0e7        \u03bb \uf0f7 + m2 \uf0e7        \u03bb\uf0f7\n            \uf0e8 m1 + m2 \uf0f8       \uf0e8 m1 + m2 \uf0f8\n\n           m1m2 \uf028 m1 + m2 \uf029 \u03bb2\n       =                   2\n              \uf028m1 + m2 \uf029\n            m1m2 \u03bb2\n       =                   \n           \uf028m1 + m2 \uf029"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 154,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -6393,7 +8320,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Radial Variation of Acceleration Due to Gravity",
     "conceptSlug": "gravitation",
     "difficulty": "medium",
-    "text": "Starting from the centre of the earth having radius r, the variation of g (acceleration due to gravity) is shown by g                                                          g",
+    "text": "Starting from the centre of the earth having radius r, the variation of g (acceleration due to gravity) is shown by g g",
     "options": [
       {
         "key": "A",
@@ -6421,6 +8348,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "r\n       gin = go           go is 'g' at surface\n                  R\n                \uf0e6 R2 \uf0f6\n       gin = go \uf0e7 2 \uf0f7\n                \uf0e7r \uf0f7\n                \uf0e8    \uf0f8"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 155,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -6433,7 +8370,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Orbital Energy of Satellites",
     "conceptSlug": "gravitation",
     "difficulty": "medium",
-    "text": "A satellite of mass m is orbiting the earth (of radius R) at a height h from its surface. The total energy of the satellite in terms of g0, the value of acceleration due to gravity at the earth's surface, is 2mg0R 2                   mg0R 2                      mg0R 2                 Rmg0R 2",
+    "text": "A satellite of mass m is orbiting the earth (of radius R) at a height h from its surface. The total energy of the satellite in terms of g0, the value of acceleration due to gravity at the earth's surface, is 2mg0R 2 mg0R 2 mg0R 2 Rmg0R 2",
     "options": [
       {
         "key": "A",
@@ -6461,6 +8398,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "TE = -              =-             = \u2013\n                  2(R + h)    2(R + h) R2     2(R + h)"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 156,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -6501,6 +8448,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Increase in surface area = (20 cm2 \u2013 8 cm2) \u00d7 2\n                                     = 12 \u00d7 2 cm2\n                                     = 24 cm2 (film has two surfaces)\n       So work done = T.\uf044S = T \u00d7 24 \u00d7 10\u20134 = 3 \u00d7 10\u2013\u20134\n                                    3       1\n                          so T =      N/ m = Nm -1 = 0.125 N/m\n                                   24       8\n\n\n\n\n                                                    www.vedantu.com                                          68"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 157,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -6513,7 +8470,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Capillary Rise & Contact Angle",
     "conceptSlug": "properties-of-solids-and-liquids",
     "difficulty": "medium",
-    "text": "Three liquids of densities \uf072 1, \uf0722 and \uf0723 (with \uf072 1 > \uf0722 > \uf0723), having the same value of surface tension T, rise to the same height in three identical capillaries. The angles of contact \uf0711, \uf0712 and \uf0713 obey \uf070                                  \uf070",
+    "text": "Three liquids of densities \uf072 1, \uf0722 and \uf0723 (with \uf072 1 > \uf0722 > \uf0723), having the same value of surface tension T, rise to the same height in three identical capillaries. The angles of contact \uf0711, \uf0712 and \uf0713 obey \uf070 \uf070",
     "options": [
       {
         "key": "A",
@@ -6541,6 +8498,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "h=\n               \uf072gr\n\n       cos \uf0711 cos \uf0712 cos \uf0713\n             =      =\n         \uf0721     \uf0722     \uf0723\n\n       cos\uf0711 > cos\uf0712 > cos\uf0713 as \uf0721 > \uf0722 > \uf0723\n       0 \uf0a3 \uf0711 < \uf0712 < \uf0713 < \uf070/2"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 158,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -6581,6 +8548,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Body at 100\u00b0C temperature has greater heat capacity than body at 0\u00b0C so final temperature will be\n       closer to 100\u00b0C. So Tc > 50\u00b0C\n\n\n\n\n                                                     www.vedantu.com                                               69"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 159,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -6593,7 +8570,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Newton's Law of Cooling",
     "conceptSlug": "thermodynamics",
     "difficulty": "medium",
-    "text": "A body cools from a temperature 3T to 2T in 10 minutes. The room temperature is T. Assume that Newton's law of cooling is applicable. The temperature of the body at the end of next 10 minutes will be 7                        3                     4",
+    "text": "A body cools from a temperature 3T to 2T in 10 minutes. The room temperature is T. Assume that Newton's law of cooling is applicable. The temperature of the body at the end of next 10 minutes will be 7 3 4",
     "options": [
       {
         "key": "A",
@@ -6621,6 +8598,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "\uf044T = \uf044T0e\u2013\u03bbt\n                   \u2013\u03bb(10 min)\n        T = 2Te\n                                           2\n                                 \uf0e6 1\uf0f6  T\n        \uf044T' = 2Te\u2013\u03bb(20 min) = 2T \uf0e7 \uf0f7 =\n                                   2\n                                 \uf0e8 \uf0f8   2\n\n                                T   3T\n       So         Tf = T +        =\n                                2    2"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 160,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -6633,7 +8620,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Polytropic Gas Process & Molar Heat Capacity",
     "conceptSlug": "thermodynamics",
     "difficulty": "medium",
-    "text": "One mole of an ideal monatomic gas undergoes a process described by the equation PV3 = constant. The heat capacity of the gas during this process is : 3                        5",
+    "text": "One mole of an ideal monatomic gas undergoes a process described by the equation PV3 = constant. The heat capacity of the gas during this process is : 3 5",
     "options": [
       {
         "key": "A",
@@ -6661,6 +8648,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "PV3 = constant\n       for a polytropic process. PV\uf061 = constant\n                     R    3    R     3R R\n       C = Cv +          = R+      =    - =R\n                    1- \uf061  2   1- 3    2  2"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 161,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -6673,7 +8670,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Second Law of Thermodynamics - Refrigerator COP",
     "conceptSlug": "thermodynamics",
     "difficulty": "medium",
-    "text": "The temperature inside a refrigerator is t2 \u00baC and the room temperature is t1 \u00baC. The amount of heat delivered to the room for each joule of electrical energy consumed ideally will be t1 \uf02b t 2                       t1                    t 1 \uf02b 273             t 2 \uf02b 273",
+    "text": "The temperature inside a refrigerator is t2 \u00baC and the room temperature is t1 \u00baC. The amount of heat delivered to the room for each joule of electrical energy consumed ideally will be t1 \uf02b t 2 t1 t 1 \uf02b 273 t 2 \uf02b 273",
     "options": [
       {
         "key": "A",
@@ -6701,6 +8698,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "=              =             =                                   =\n        W      Qmore \u2013 Qless Tmore \u2013 Tless \uf028 t1 + 273 \uf029 \u2013 \uf028 t 2 + 273 \uf029            t1 \u2013 t 2"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 162,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -6741,6 +8748,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "n=       =         =\n             RT Molar mass RT\n\n                    mass    (Molar mass )P (m.N A )P mP\n       density =          =               =         =\n                   volume        RT          RT       KT"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 163,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -6753,7 +8770,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Spring-Mass Oscillator Time Period",
     "conceptSlug": "oscillations-and-waves",
     "difficulty": "medium",
-    "text": "A body of mass m is attached to the lower end of a spring whose upper end is fixed. The spring has negligible mass. When the mass m is slightly pulled down and released, it oscillates with a time period of 3 s. When the mass m is increased by 1 kg, the time period of oscillations becomes 5 s. The value of m in kg is : 9                        3                         4                           16",
+    "text": "A body of mass m is attached to the lower end of a spring whose upper end is fixed. The spring has negligible mass. When the mass m is slightly pulled down and released, it oscillates with a time period of 3 s. When the mass m is increased by 1 kg, the time period of oscillations becomes 5 s. The value of m in kg is : 9 3 4 16",
     "options": [
       {
         "key": "A",
@@ -6781,6 +8798,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "T = 2\uf070      = 3 sec\n                 k\n\n\n\n                                                                          k\n                m+1\n       T' = 2 \uf070     = 5 sec\n                 k\n                                                                       m\n                                           2\n                           \uf0e6 m \uf0f6 \uf0e63\uf0f6        9\n       dividing & squaring \uf0e7       \uf0f7=\uf0e7 \uf0f7 =\n                           \uf0e8 m + 1    5\n                                   \uf0f8 \uf0e8 \uf0f8   25\n\n                                          9\n       25m = 9m + 9              so m =         kg\n\n\n\n\n                                                     www.vedantu.com                                        71"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 164,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -6821,6 +8848,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Fundamental           I overtone        2 overtone\n\n\n\n\n       3\u03bb\n          = \u03bb0\n        2\n          3\u03bb\n       \u03bb= 0\n            3\n             3V\n       f=\n             2\u03bb 0\n\n\n\n\n       3\u03bb\n          = Lc\n        4\n           4L e\n       \u03bb=\n            3\n          3V      3V 3V\n       f=       =   =\n          4L e    4L 2\u03bb 0\n       \u03bb0 = 2L"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 165,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -6861,6 +8898,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "no. of beats = 1\n       (HCF of beat frequencies )\n\n                                                                                                    5"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 166,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -6901,6 +8948,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "\uf074 = PE sin\uf071\n                                      1\n                  4 = P \u00d7 2 \u00d7 105 \u00d7\n                                      2\n       \u21d2\uf020         P = 4 \u00d7 10\u20135 cm = q \u00d7 2 \u00d7 10\u20132\n                       4 \uf0b4 10-5\n       So         q=             = 2\u00d710\u20133 coulomb\n                       2 \uf0b4 10 -2"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 167,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -6913,23 +8970,23 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Capacitor with Composite Dielectric Slabs",
     "conceptSlug": "electrostatics",
     "difficulty": "medium",
-    "text": "A parallel- plate capacitor of area A, plate separation d and capacitance C is filled with four dielectric materials having dielectric constant k1, k2, k3 and k4 as shown in the figure below. If a single dielectric material is to be used to have the same capacitance C in this capacitor, then its dielectric constant k is given by A/3   A/3    A/3 k1    k2      k3     d/2 d A 1 1   1   1   3",
+    "text": "A parallel-plate capacitor of area $A$, plate separation $d$ and capacitance $C$ is filled with four dielectric materials having dielectric constants $k_1, k_2, k_3$ and $k_4$ as shown in the figure below. If a single dielectric material is to be used to have the same capacitance $C$ in this capacitor, then its dielectric constant $k$ is given by :",
     "options": [
       {
         "key": "A",
-        "text": "=  +   +   +"
+        "text": "$\\frac{1}{k} = \\frac{1}{k_1} + \\frac{1}{k_2} + \\frac{1}{k_3} + \\frac{3}{2k_4}$"
       },
       {
         "key": "B",
-        "text": "k = k1 + k2 + k3 + 3k4\n             k k1 k 2 k 3 2k 4\n\n                 2                                                     2       3         1"
+        "text": "$k = k_1 + k_2 + k_3 + 3k_4$"
       },
       {
         "key": "C",
-        "text": "k =     (k1 + k2 + k3) + 2k4"
+        "text": "$k = \\frac{2}{3}(k_1 + k_2 + k_3) + 2k_4$"
       },
       {
         "key": "D",
-        "text": "=             +"
+        "text": "$\\frac{2}{k} = \\frac{3}{k_1 + k_2 + k_3} + \\frac{1}{k_4}$"
       }
     ],
     "marks": 4,
@@ -6941,6 +8998,32 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "C2    C3\n             k1           k2               k3\n                                                         C1\n\n                                                           C4/3            C4/3   C4/3\n           k4             k4              k4\n\n\n\n\n       1   3   3d      3d       3d \uf0ec 1     1\uf0fc\n         +   =      +         =      \uf0ed + \uf0fd\n       C1 C4 2k1\uf0650 A 2k 4 \uf0650 A 2\uf0650 A \uf0ee k1 k 4 \uf0fe\n\n                  K\uf0650 A 2\uf0650 A \uf0ec k1k 4    k k        kk \uf0fc\n       Ceq =           =      \uf0ed        + 2 4 + 3 4 \uf0fd\n                   d     3d \uf0ee k 2 + k 4 k 2 + k 4 k 3 + k 4 \uf0fe\n\n             2 \uf0ec k1k 4     k k        k k \uf0fc\n       k =     \uf0ed         + 2 4 + 3 4 \uf0fd\n             3 \uf0ee k1 + k 4 k 2 + k 4 k 3 + k 4 \uf0fe\n\n       Alter :\n       Wrong solution seems to be correct as per the options given.\n\n       2A\n           \uf0ce0\n       3 d\n         K1             K2           K3\n\n\n\n                                K4\n\n\n           2A \uf0ce0                                    A \uf0ce0\n       =         (k1 + k2 + k3) = CA            =        k4 = CB\n            3 d                                      d\n        1    1   1\n           =   +\n       Ceq. CA CB\n\n          d     3d                   d\n              =     (k1 + k2 + k3)\n       a\uf0650K eq 2A\uf0650                2A\uf0650k 4\n\n        1   3                      1\n           = \uf028 k1 + k 2 + k 3 \uf029 +\n       k eq 2                     2k 4\n\n\n\n\n                                                         www.vedantu.com                 74"
+    },
+    "imageUrl": "/assets/scientific/neet-phase-2/q168_diagram.png",
+    "contentBlocks": [
+      {
+        "id": "q168-b1",
+        "type": "text",
+        "order": 1,
+        "rawContent": "A parallel-plate capacitor of area $A$, plate separation $d$ and capacitance $C$ is filled with four dielectric materials having dielectric constants $k_1, k_2, k_3$ and $k_4$ as shown in the figure below. If a single dielectric material is to be used to have the same capacitance $C$ in this capacitor, then its dielectric constant $k$ is given by :"
+      },
+      {
+        "id": "q168-b2",
+        "type": "scientific_diagram",
+        "order": 2,
+        "assetUrl": "/assets/scientific/neet-phase-2/q168_diagram.png",
+        "accessibilityDescription": "Capacitor with 4 dielectric slabs: k1, k2, k3 with area A/3 and thickness d/2, and k4 with area A and thickness d/2"
+      }
+    ],
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 168,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 73
     }
   },
   {
@@ -6953,23 +9036,23 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Kirchhoff's Voltage Law across Circuit Branches",
     "conceptSlug": "current-electricity",
     "difficulty": "medium",
-    "text": "The potential difference (VA \u2013 VB) between the points A and B in the given figure is : VA              2\u03a9         +    \u2013         1\u03a9         VB A      \uf049 = 2A                                        B",
+    "text": "The potential difference $(V_A - V_B)$ between the points $A$ and $B$ in the given figure is :",
     "options": [
       {
         "key": "A",
-        "text": "+ 9 V"
+        "text": "$+9\\text{ V}$"
       },
       {
         "key": "B",
-        "text": "\u2013 3V"
+        "text": "$-3\\text{ V}$"
       },
       {
         "key": "C",
-        "text": "+ 3 V"
+        "text": "$+3\\text{ V}$"
       },
       {
         "key": "D",
-        "text": "+ 6 V"
+        "text": "$+6\\text{ V}$"
       }
     ],
     "marks": 4,
@@ -6981,6 +9064,32 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "9V         2A                    5V         2V                           VB\n\n       VA \u2013 VB = 9volt"
+    },
+    "imageUrl": "/assets/scientific/neet-phase-2/q169_diagram.png",
+    "contentBlocks": [
+      {
+        "id": "q169-b1",
+        "type": "text",
+        "order": 1,
+        "rawContent": "The potential difference $(V_A - V_B)$ between the points $A$ and $B$ in the given figure is :"
+      },
+      {
+        "id": "q169-b2",
+        "type": "scientific_diagram",
+        "order": 2,
+        "assetUrl": "/assets/scientific/neet-phase-2/q169_diagram.png",
+        "accessibilityDescription": "Linear circuit branch: Point A, current 2A, 2 ohm resistor, 3V battery, 1 ohm resistor, Point B"
+      }
+    ],
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 169,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 75
     }
   },
   {
@@ -7021,6 +9130,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (4) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 170,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -7061,6 +9180,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "R\n\n                               i\n\n              \uf06d 0i \uf06d 0i(2\uf070) \uf06d 0 \uf070i\n       B=         =        =\n              2R     2(\u03bb)    2\u03bb\n\n                   r\n                           i\n\n              \uf06d 0ni     \uf06d 0ni     n 2 \uf06d 0 \uf070i\n       B\uf0a2 =         =           =            = n2B\n               2r      \uf0e6 \u03bb \uf0f6         2\u03bb\n                      2\uf0e7      \uf0f7\n                       \uf0e8 2n\uf070 \uf0f8"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 171,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -7073,7 +9202,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Bar Magnet in Uniform Magnetic Field - Work & Torque",
     "conceptSlug": "magnetic-effects-of-current-and-magnetism",
     "difficulty": "medium",
-    "text": "A bar magnet is hung by a thin cotton thread in a uniform horizontal magnetic field and is in equilibrium state. The energy required to rotate it by 60\u00ba is W. Now the torque required to keep the magnet in this new position is : 2W                            W                                               3W",
+    "text": "A bar magnet is hung by a thin cotton thread in a uniform horizontal magnetic field and is in equilibrium state. The energy required to rotate it by 60\u00ba is W. Now the torque required to keep the magnet in this new position is : 2W W 3W",
     "options": [
       {
         "key": "A",
@@ -7101,6 +9230,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "W ext = Uf \u2013 Vi\n       = \u2013 MB cos 60\u00b0 \u2013 (\u2013MB)\n       = MB(1 \u2013 cos 60\u00b0) = MB/2 = W\n                                    3\n       r = MB sin 60\u00b0 = MB            = 3W\n                                   2"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 172,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -7141,6 +9280,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "R=\n             qB\n              V qB\n       \uf077=       =\n              R   m\n             \uf077   1 qB 1.76 \uf0b4 1011 \uf0b4 3.57 \uf0b4 10 -2\n       f=      =  .  =                           = 10 9 Hz\n             2\uf070 2\uf070 m          (2 \uf0b4 3.14)\n\n\n\n\n                                                     www.vedantu.com                                         76"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 173,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -7181,6 +9330,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Option with highest quality factor sould be chosen as most appropriate answer.\n             1 L\n       Q=\n             R C"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 174,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -7193,23 +9352,23 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Faraday's Law & Induced EMF in Concentric Loops",
     "conceptSlug": "electromagnetic-induction-and-ac",
     "difficulty": "medium",
-    "text": "A uniform magnetic field is restricted within a region of radius r. The magnetic field changes with time at \uf072 dB a rate    . Loop 1 of radius R > r encloses the region r and loop 2 of radius R is outside the region of dt magnetic field as shown in the figure below. Then the e.m.f. generated is : \uf072 dB dt r R                                      R 1                                      2 \uf072 dB 2",
+    "text": "A uniform magnetic field is restricted within a region of radius $r$. The magnetic field changes with time at a rate $\\frac{d\\vec{B}}{dt}$. Loop 1 of radius $R > r$ encloses the region $r$ and loop 2 of radius $R$ is outside the region of magnetic field as shown in the figure below. Then the e.m.f. generated is :",
     "options": [
       {
         "key": "A",
-        "text": "\u2013     \uf070r in loop 1 and zero in loop 2"
+        "text": "$-\\frac{d\\vec{B}}{dt}\\pi r^2$ in loop 1 and zero in loop 2"
       },
       {
         "key": "B",
-        "text": "zero in loop 1 and zero in loop 2\n              dt\n               \uf072                         \uf072                             \uf072\n             dB 2                      dB 2                           dB 2"
+        "text": "zero in loop 1 and zero in loop 2"
       },
       {
         "key": "C",
-        "text": "\u2013     \uf070r in loop 1 and \u2013        \uf070r in loop 2"
+        "text": "$-\\frac{d\\vec{B}}{dt}\\pi r^2$ in loop 1 and $-\\frac{d\\vec{B}}{dt}\\pi r^2$ in loop 2"
       },
       {
         "key": "D",
-        "text": "\u2013      \uf070R in loop 1 and zero in loop 2"
+        "text": "$-\\frac{d\\vec{B}}{dt}\\pi R^2$ in loop 1 and zero in loop 2"
       }
     ],
     "marks": 4,
@@ -7221,6 +9380,32 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "e= -         = - {\uf070r 2B} = -\uf070r 2    in loop 1 & zero in loop 2.\n                 dt    dt               dt\n\n\n\n\n                                                    www.vedantu.com                                                 77"
+    },
+    "imageUrl": "/assets/scientific/neet-phase-2/q175_diagram.png",
+    "contentBlocks": [
+      {
+        "id": "q175-b1",
+        "type": "text",
+        "order": 1,
+        "rawContent": "A uniform magnetic field is restricted within a region of radius $r$. The magnetic field changes with time at a rate $\\frac{d\\vec{B}}{dt}$. Loop 1 of radius $R > r$ encloses the region $r$ and loop 2 of radius $R$ is outside the region of magnetic field as shown in the figure below. Then the e.m.f. generated is :"
+      },
+      {
+        "id": "q175-b2",
+        "type": "scientific_diagram",
+        "order": 2,
+        "assetUrl": "/assets/scientific/neet-phase-2/q175_diagram.png",
+        "accessibilityDescription": "Loop 1 enclosing magnetic field region r, and Loop 2 outside region r"
+      }
+    ],
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 175,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 77
     }
   },
   {
@@ -7261,6 +9446,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "Power factor =       =   =                         =       = 0.8\n                           z iz            2\n                                       (80) + (60 )   2       100"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 176,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -7301,6 +9496,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "z=       R 2 + X 2c = (100 )2 + (100 )2 = 100 2\n                 v max 220 2\n       imax =         =       = 2.2\n                   z    100 2"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 177,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -7313,7 +9518,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Lens Maker's Formula & Composite Lens Combinations",
     "conceptSlug": "optics",
     "difficulty": "medium",
-    "text": "Two identical glass (\uf06dg = 3/2) equiconvex lenses of focal length f each are kept in contact. The space between that two lenses in filled with water (\uf06dw = 4/3). The focal length of the combination is 3f                         f                                                      4f",
+    "text": "Two identical glass (\uf06dg = 3/2) equiconvex lenses of focal length f each are kept in contact. The space between that two lenses in filled with water (\uf06dw = 4/3). The focal length of the combination is 3f f 4f",
     "options": [
       {
         "key": "A",
@@ -7341,6 +9546,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "R             R R      R\n                     1 \uf0e63    \uf0f62 1\n                      = \uf0e7 - 1\uf0f7 =\n                     f \uf0e82 \uf0f8R R\n                     1 \uf0e64     \uf0f6\uf0ec 2 \uf0fc       2\n                       = \uf0e7 - 1\uf0f7 \uf0ed - \uf0fd = -\n                     f' \uf0e8 3   \uf0f8\uf0ee R \uf0fe      3R\n                      1 1 2 1 3-2+3 4\n       So               = -  + =    =\n                     feq f 3f f  3f   3f\n                3f\n       f eq =\n                4\n\n\n\n\n                                                          www.vedantu.com                                          78"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 178,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -7381,6 +9596,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "x\n\n                            \u03bb\uf020\n\n       x (\u03bb - x)\n         +       =3+5\n       \uf06d    \uf06d\n       \u03bb\n         =8\n       \uf06d\n                     3\n       \u03bb=8\u00d7            = 12 cm\n                     2"
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 179,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   },
   {
@@ -7393,7 +9618,7 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     "conceptName": "Wave Optics - Two-Source Interference Intensity Contrast",
     "conceptSlug": "optics",
     "difficulty": "medium",
-    "text": "The interference pattern is obtained with two coherent light sources of intensity ratio n. In the \uf049    \u2013\uf049 interference pattern, the ratio max min will be \uf049max \uf02b \uf049min \uf049max \u2013 \uf049min \uf049max \uf02b \uf049min 2 n                               n                  2 n                          n",
+    "text": "The interference pattern is obtained with two coherent light sources of intensity ratio n. In the \uf049 \u2013\uf049 interference pattern, the ratio max min will be \uf049max \uf02b \uf049min \uf049max \u2013 \uf049min \uf049max \uf02b \uf049min 2 n n 2 n n",
     "options": [
       {
         "key": "A",
@@ -7421,6 +9646,16 @@ export const NEET_PHASE_2_QUESTIONS: QuestionData[] = [
     },
     "explanation": {
       "text": "The correct option is (3) per the official NEET Phase-2 (Code: BB-QQ-XX) answer key."
+    },
+    "verificationStatus": "published",
+    "sourceMetadata": {
+      "examName": "NEET (UG)",
+      "examYear": 2016,
+      "examSession": "Phase-2",
+      "paperCode": "BB-QQ-XX",
+      "originalQuestionNumber": 180,
+      "sourceDocName": "NEET_2016_Question_Paper_with_Answers_-_Phase-II_Code_XX_-_Free_Download.pdf",
+      "pageNumber": 1
     }
   }
 ];

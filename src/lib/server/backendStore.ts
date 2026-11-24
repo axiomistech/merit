@@ -1,6 +1,12 @@
 import fs from 'fs';
 import path from 'path';
 import { TutorialVideoConfig } from '@/types/admin';
+import {
+  ScientificContentBlock,
+  ScientificOption,
+  QuestionSourceMetadata,
+  QuestionVerificationStatus,
+} from '@/types/scientific';
 
 export const DEFAULT_TUTORIAL_VIDEO: TutorialVideoConfig = {
   id: 'vid_default_walkthrough',
@@ -54,7 +60,18 @@ export interface StoredQuestion {
   status: 'draft' | 'pending_review' | 'approved' | 'published' | 'archived';
   text: string;
   imageUrl?: string;
-  options: { key: string; text: string; imageUrl?: string }[];
+  options: { key: string; text: string; imageUrl?: string; latex?: string; mhchem?: string }[];
+  contentBlocks?: ScientificContentBlock[];
+  scientificOptions?: ScientificOption[];
+  sourceMetadata?: QuestionSourceMetadata;
+  verificationStatus?: QuestionVerificationStatus;
+  multilingual?: {
+    hi?: {
+      text: string;
+      contentBlocks?: ScientificContentBlock[];
+      options?: { key: string; text: string; imageUrl?: string }[];
+    };
+  };
   answerKey: {
     correctOptions?: string[];
     numericalValue?: number;

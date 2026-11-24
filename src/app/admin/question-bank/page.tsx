@@ -52,7 +52,8 @@ export default function AdminQuestionBankPage() {
     marks: number;
     negativeMarks: number;
     status: AdminQuestionRecord['status'];
-    options: { key: string; text: string }[];
+    imageUrl?: string;
+    options: { key: string; text: string; imageUrl?: string }[];
     correctOption: string;
     explanationText: string;
   }>({
@@ -66,11 +67,12 @@ export default function AdminQuestionBankPage() {
     marks: 4,
     negativeMarks: -1,
     status: 'published',
+    imageUrl: '',
     options: [
-      { key: 'A', text: '' },
-      { key: 'B', text: '' },
-      { key: 'C', text: '' },
-      { key: 'D', text: '' },
+      { key: 'A', text: '', imageUrl: '' },
+      { key: 'B', text: '', imageUrl: '' },
+      { key: 'C', text: '', imageUrl: '' },
+      { key: 'D', text: '', imageUrl: '' },
     ],
     correctOption: 'B',
     explanationText: '',
@@ -410,9 +412,34 @@ export default function AdminQuestionBankPage() {
             ) : (
               <form onSubmit={handleSaveQuestion} className="space-y-4 text-xs">
                 <div>
-                  <label className="block text-[#66727D] font-medium">
-                    Question Statement (Supports KaTeX equations: e.g. $F = ma$)
-                  </label>
+                  <div className="flex items-center justify-between">
+                    <label className="block text-[#66727D] font-medium">
+                      Question Statement (Supports KaTeX equations & mhchem: e.g. {'$\\ce{C6H5NO2}$'}, $F = ma$)
+                    </label>
+                    <div className="flex items-center gap-1.5 text-[11px]">
+                      <button
+                        type="button"
+                        onClick={() => setFormData({ ...formData, text: formData.text + ' $\\ce{H2SO4}$' })}
+                        className="px-2 py-0.5 rounded border border-[#DCE2E6] bg-white text-[#20252B] hover:bg-[#F1F3F4]"
+                      >
+                        + Formula
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setFormData({ ...formData, text: formData.text + ' $\\ce{A + B -> C}$' })}
+                        className="px-2 py-0.5 rounded border border-[#DCE2E6] bg-white text-[#20252B] hover:bg-[#F1F3F4]"
+                      >
+                        + Reaction
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setFormData({ ...formData, text: formData.text + ' $\\frac{a}{b}$' })}
+                        className="px-2 py-0.5 rounded border border-[#DCE2E6] bg-white text-[#20252B] hover:bg-[#F1F3F4]"
+                      >
+                        + Fraction
+                      </button>
+                    </div>
+                  </div>
                   <textarea
                     rows={3}
                     required
@@ -421,6 +448,18 @@ export default function AdminQuestionBankPage() {
                     placeholder="Enter question statement with standard markdown or LaTeX math..."
                     className="mt-1 w-full rounded-xl border border-[#DCE2E6] bg-white p-2.5 text-xs text-[#20252B] focus:border-[#20252B] focus:outline-none"
                   />
+                  <div className="mt-2">
+                    <label className="block text-[#66727D] font-medium text-[11px]">
+                      Diagram / Image Asset URL (Optional)
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.imageUrl || ''}
+                      onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
+                      placeholder="/assets/scientific/... or https://..."
+                      className="mt-0.5 w-full rounded-xl border border-[#DCE2E6] bg-white p-2 text-xs text-[#20252B] focus:border-[#20252B] focus:outline-none"
+                    />
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-3 gap-3">

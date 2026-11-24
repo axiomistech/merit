@@ -522,7 +522,7 @@ export default function ExamResultPage() {
                     </div>
 
                     <div className="text-sm font-medium text-[#20252B] leading-relaxed">
-                      <MathText text={q.text} />
+                      <MathText text={q.text} imageUrl={q.imageUrl} />
                     </div>
 
                     {/* Options list */}
@@ -548,17 +548,17 @@ export default function ExamResultPage() {
                               className={cn(
                                 'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg font-mono text-xs font-bold',
                                 isKeyCorrect
-                                  ? 'bg-[#20252B] text-white'
-                                  : isSelectedByStudent
-                                  ? 'bg-[#E4002B] text-white'
-                                  : 'bg-[#F1F3F4] text-[#66727D]'
-                              )}
-                            >
-                              {optKey}
-                            </span>
-                            <span className="flex-1">
-                              <MathText text={opt.text} />
-                            </span>
+                                ? 'bg-[#20252B] text-white'
+                                : isSelectedByStudent
+                                ? 'bg-[#E4002B] text-white'
+                                : 'bg-[#F1F3F4] text-[#66727D]'
+                            )}
+                          >
+                            {optKey}
+                          </span>
+                          <span className="flex-1">
+                            <MathText text={opt.text} imageUrl={opt.imageUrl} />
+                          </span>
                             {isKeyCorrect && (
                               <CheckCircle2 className="h-4 w-4 text-[#20252B] shrink-0" />
                             )}

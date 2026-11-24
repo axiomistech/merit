@@ -1,57 +1,31 @@
 'use client';
 
-import React, { useMemo } from 'react';
-import katex from 'katex';
-import 'katex/dist/katex.min.css';
+import React from 'react';
+import { ScientificContentRenderer } from '@/components/scientific/ScientificContentRenderer';
 
 interface MathTextProps {
   content?: string;
   text?: string;
+  imageUrl?: string;
   className?: string;
+  isDarkMode?: boolean;
 }
 
-export function MathText({ content, text, className = '' }: MathTextProps) {
-  const renderedContent = useMemo(() => {
-    const rawContent = content ?? text ?? '';
-    if (!rawContent) return '';
-
-    // Regex to split on $$...$$ (display math) and $...$ (inline math)
-    const regex = /(\$\$[\s\S]*?\$\$|\$[^\$\n]+?\$)/g;
-    const parts = rawContent.split(regex);
-
-    return parts.map((part, index) => {
-      if (part.startsWith('$$') && part.endsWith('$$')) {
-        const math = part.slice(2, -2);
-        try {
-          const html = katex.renderToString(math, { displayMode: true, throwOnError: false });
-          return (
-            <span
-              key={index}
-              className="my-2 block overflow-x-auto text-center"
-              dangerouslySetInnerHTML={{ __html: html }}
-            />
-          );
-        } catch {
-          return <span key={index}>{part}</span>;
-        }
-      } else if (part.startsWith('$') && part.endsWith('$')) {
-        const math = part.slice(1, -1);
-        try {
-          const html = katex.renderToString(math, { displayMode: false, throwOnError: false });
-          return (
-            <span
-              key={index}
-              className="inline-block px-0.5"
-              dangerouslySetInnerHTML={{ __html: html }}
-            />
-          );
-        } catch {
-          return <span key={index}>{part}</span>;
-        }
-      }
-      return <span key={index}>{part}</span>;
-    });
-  }, [content]);
-
-  return <div className={`leading-relaxed ${className}`}>{renderedContent}</div>;
+/**
+ * Universal Scientific MathText Component
+ * Backward-compatible drop-in replacement that uses the centralized ScientificContentRenderer
+ * with KaTeX and mhchem extensions for chemical formulas, molecular structures, and mathematical typesetting.
+ */
+export function MathText({ content, text, imageUrl, className = '', isDarkMode = false }: MathTextProps) {
+  return (
+    <ScientificContentRenderer
+      content={content}
+      text={text}
+      imageUrl={imageUrl}
+      className={className}
+      isDarkMode={isDarkMode}
+    />
+  );
 }
+
+export default MathText;

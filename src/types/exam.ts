@@ -1,9 +1,18 @@
 import { QuestionType, DifficultyLevel } from './database';
+import {
+  ScientificContentBlock,
+  ScientificOption,
+  QuestionSourceMetadata,
+  QuestionVerificationStatus,
+} from './scientific';
 
 export interface ExamOption {
   key: string; // 'A', 'B', 'C', 'D'
   text: string;
   imageUrl?: string;
+  latex?: string;
+  mhchem?: string;
+  contentBlocks?: ScientificContentBlock[];
 }
 
 export interface QuestionData {
@@ -19,6 +28,17 @@ export interface QuestionData {
   text: string;
   imageUrl?: string;
   options: ExamOption[];
+  contentBlocks?: ScientificContentBlock[];
+  scientificOptions?: ScientificOption[];
+  sourceMetadata?: QuestionSourceMetadata;
+  verificationStatus?: QuestionVerificationStatus;
+  multilingual?: {
+    hi?: {
+      text: string;
+      contentBlocks?: ScientificContentBlock[];
+      options?: ExamOption[];
+    };
+  };
   marks: number;
   negativeMarks: number;
   // Answer keys are stripped during active examination and only populated on result review

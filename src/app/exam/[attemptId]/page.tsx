@@ -29,6 +29,7 @@ import {
 } from '@/types/exam';
 import { evaluateAttempt } from '@/lib/scoring/engine';
 import { MathText } from '@/components/ui/MathText';
+import { ScientificContentRenderer } from '@/components/scientific/ScientificContentRenderer';
 import { LiveOMRSheet } from '@/components/omr/LiveOMRSheet';
 import { generateOmrPdf } from '@/lib/omr/pdfGenerator';
 import { VirtualNumericKeypad } from '@/components/exam/VirtualNumericKeypad';
@@ -856,9 +857,25 @@ export default function ExamExecutionPage() {
                     {currentQ.subjectName} • {currentQ.conceptName}
                   </div>
                 )}
-                <div className={cn('font-medium', questionTextClass)}>
-                  <MathText content={currentQ?.text || ''} />
-                </div>
+                {(() => {
+                  const isHindi = selectedLanguage.toLowerCase().includes('hindi');
+                  const activeQuestionText = (isHindi && currentQ?.multilingual?.hi?.text)
+                    ? currentQ.multilingual.hi.text
+                    : (currentQ?.text || '');
+                  const activeContentBlocks = (isHindi && currentQ?.multilingual?.hi?.contentBlocks)
+                    ? currentQ.multilingual.hi.contentBlocks
+                    : currentQ?.contentBlocks;
+                  return (
+                    <div className={cn('font-medium', questionTextClass)}>
+                      <ScientificContentRenderer
+                        contentBlocks={activeContentBlocks}
+                        text={activeQuestionText}
+                        imageUrl={currentQ?.imageUrl}
+                        isDarkMode={isDarkMode}
+                      />
+                    </div>
+                  );
+                })()}
               </div>
 
               {/* Answer Input Area: MCQs vs Numerical Section B */}
@@ -892,39 +909,53 @@ export default function ExamExecutionPage() {
               ) : (
                 /* SECTION A: Standard MCQs */
                 <div className="space-y-3">
-                  {currentQ?.options.map((opt) => {
-                    const isSelected = currentAnswer?.selectedOptions?.includes(opt.key);
-                    return (
-                      <div
-                        key={opt.key}
-                        onClick={() => handleSelectOption(opt.key)}
-                        className={cn(
-                          'flex items-center gap-4 rounded-xl border p-4 cursor-pointer transition-all shadow-sm',
-                          isSelected
-                            ? isDarkMode
-                              ? 'border-[#9CC6E0] bg-[#9CC6E0]/20 text-white ring-1 ring-[#9CC6E0]'
-                              : 'border-[#9CC6E0] bg-[#9CC6E0]/20 text-[#20252B]'
-                            : isDarkMode
-                            ? 'border-gray-800 bg-[#161B22] text-gray-200 hover:border-gray-700'
-                            : 'border-[#DCE2E6] bg-white text-[#20252B] hover:border-[#9CC6E0]/60'
-                        )}
-                      >
-                        <span
+                  {(() => {
+                    const isHindi = selectedLanguage.toLowerCase().includes('hindi');
+                    const activeOptions = (isHindi && currentQ?.multilingual?.hi?.options)
+                      ? currentQ.multilingual.hi.options
+                      : currentQ?.options || [];
+                    return activeOptions.map((opt) => {
+                      const isSelected = currentAnswer?.selectedOptions?.includes(opt.key);
+                      return (
+                        <div
+                          key={opt.key}
+                          onClick={() => handleSelectOption(opt.key)}
                           className={cn(
-                            'flex h-7 w-7 shrink-0 items-center justify-center rounded-full border font-semibold text-xs transition-colors',
+                            'flex items-center gap-4 rounded-xl border p-4 cursor-pointer transition-all shadow-sm',
                             isSelected
-                              ? 'border-[#9CC6E0] bg-[#9CC6E0] text-[#20252B]'
+                              ? isDarkMode
+                                ? 'border-[#9CC6E0] bg-[#9CC6E0]/20 text-white ring-1 ring-[#9CC6E0]'
+                                : 'border-[#9CC6E0] bg-[#9CC6E0]/20 text-[#20252B]'
                               : isDarkMode
-                              ? 'border-gray-700 bg-gray-800 text-gray-300'
-                              : 'border-[#DCE2E6] bg-[#F1F3F4] text-[#66727D]'
+                              ? 'border-gray-800 bg-[#161B22] text-gray-200 hover:border-gray-700'
+                              : 'border-[#DCE2E6] bg-white text-[#20252B] hover:border-[#9CC6E0]/60'
                           )}
                         >
-                          {opt.key}
-                        </span>
-                        <MathText content={opt.text} className={optionTextClass} />
-                      </div>
-                    );
-                  })}
+                          <span
+                            className={cn(
+                              'flex h-7 w-7 shrink-0 items-center justify-center rounded-full border font-semibold text-xs transition-colors',
+                              isSelected
+                                ? 'border-[#9CC6E0] bg-[#9CC6E0] text-[#20252B]'
+                                : isDarkMode
+                                ? 'border-gray-700 bg-gray-800 text-gray-300'
+                                : 'border-[#DCE2E6] bg-[#F1F3F4] text-[#66727D]'
+                            )}
+                          >
+                            {opt.key}
+                          </span>
+                          <div className="flex-1">
+                            <ScientificContentRenderer
+                              contentBlocks={opt.contentBlocks}
+                              text={opt.text}
+                              imageUrl={opt.imageUrl}
+                              isDarkMode={isDarkMode}
+                              className={optionTextClass}
+                            />
+                          </div>
+                        </div>
+                      );
+                    });
+                  })()}
                 </div>
               )}
             </div>
