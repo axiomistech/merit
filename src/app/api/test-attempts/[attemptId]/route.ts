@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import { getAttemptsStore } from '@/lib/server/backendStore';
+import { getAttemptsStore, saveAttemptsStore } from '@/lib/server/backendStore';
+import { SAMPLE_JEE_MAIN_PAPER, SAMPLE_JEE_MAIN_QUESTIONS } from '@/data/otherExamsData';
 
 export async function GET(
   req: Request,
@@ -8,7 +9,29 @@ export async function GET(
   try {
     const { attemptId } = await params;
     const store = getAttemptsStore();
-    const attempt = store[attemptId];
+    let attempt = store[attemptId];
+
+    // Demo / Direct Simulator initialization for JEE Main
+    if (!attempt && (attemptId.includes('jee') || attemptId.includes('demo'))) {
+      const now = new Date();
+      const deadline = new Date(now.getTime() + SAMPLE_JEE_MAIN_PAPER.durationMinutes * 60 * 1000);
+      attempt = {
+        id: attemptId,
+        paperName: SAMPLE_JEE_MAIN_PAPER.name,
+        paperSlug: SAMPLE_JEE_MAIN_PAPER.slug,
+        status: 'active',
+        started_at: now.toISOString(),
+        deadline_at: deadline.toISOString(),
+        paperSnapshot: {
+          durationMinutes: SAMPLE_JEE_MAIN_PAPER.durationMinutes,
+          maxMarks: SAMPLE_JEE_MAIN_PAPER.totalMarks,
+        },
+        questionsSnapshot: SAMPLE_JEE_MAIN_QUESTIONS,
+        responses: {},
+      };
+      store[attemptId] = attempt;
+      saveAttemptsStore();
+    }
 
     if (!attempt) {
       return NextResponse.json(

@@ -68,7 +68,41 @@ export interface ExamPaperConfig {
     questionIndices: number[]; // 1-based question numbers
     isOptional?: boolean;
     maxQuestionsToAttempt?: number;
+    subSections?: {
+      id: string;
+      name: string; // e.g. "Section A (MCQ)", "Section B (NVQ)"
+      questionIndices: number[];
+      isMandatory: boolean;
+      questionType: QuestionType;
+    }[];
   }[];
+}
+
+export interface CbtAccessibilitySettings {
+  theme: 'light' | 'dark';
+  fontSize: 'normal' | 'large' | 'xlarge';
+  cursorTrail: boolean;
+  cursorSize: 'default' | 'large';
+  screenMagnifier: boolean;
+}
+
+export interface NtaCandidateShiftScore {
+  candidateId: string;
+  name: string;
+  totalRawScore: number;
+  mathScore: number;
+  physicsScore: number;
+  chemScore: number;
+  totalCorrect: number;
+  totalIncorrect: number;
+  mathCorrect: number;
+  mathIncorrect: number;
+  physicsCorrect: number;
+  physicsIncorrect: number;
+  chemCorrect: number;
+  chemIncorrect: number;
+  percentile?: number;
+  rank?: number;
 }
 
 export interface ExamAttemptEvaluation {

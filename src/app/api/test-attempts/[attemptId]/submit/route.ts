@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getAttemptsStore, saveAttemptsStore } from '@/lib/server/backendStore';
 import { evaluateAttempt } from '@/lib/scoring/engine';
+import { SAMPLE_JEE_MAIN_PAPER, SAMPLE_JEE_MAIN_QUESTIONS } from '@/data/otherExamsData';
 
 export async function POST(
   req: Request,
@@ -12,7 +13,26 @@ export async function POST(
     const clientAnswers = body.answers;
 
     const store = getAttemptsStore();
-    const attempt = store[attemptId];
+    let attempt = store[attemptId];
+
+    if (!attempt && (attemptId.includes('jee') || attemptId.includes('demo'))) {
+      const now = new Date();
+      attempt = {
+        id: attemptId,
+        paperName: SAMPLE_JEE_MAIN_PAPER.name,
+        paperSlug: SAMPLE_JEE_MAIN_PAPER.slug,
+        status: 'active',
+        started_at: new Date(now.getTime() - 1000 * 60 * 30).toISOString(),
+        deadline_at: new Date(now.getTime() + 1000 * 60 * 150).toISOString(),
+        paperSnapshot: {
+          durationMinutes: SAMPLE_JEE_MAIN_PAPER.durationMinutes,
+          maxMarks: SAMPLE_JEE_MAIN_PAPER.totalMarks,
+        },
+        questionsSnapshot: SAMPLE_JEE_MAIN_QUESTIONS,
+        responses: {},
+      };
+      store[attemptId] = attempt;
+    }
 
     if (!attempt) {
       return NextResponse.json(

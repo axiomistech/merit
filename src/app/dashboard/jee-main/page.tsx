@@ -94,9 +94,9 @@ export default function StudentJeeMainDashboardPage() {
             </p>
           </div>
           <div className="rounded-xl bg-[#F1F3F4] p-4">
-            <div className="font-bold text-[#20252B]">Section B: Numerical Value</div>
+            <div className="font-bold text-[#20252B]">Section B: Numerical Value (NVQ)</div>
             <p className="mt-1 text-[11px] leading-relaxed">
-              10 Questions provided, candidates attempt any 5. Answers rounded to nearest integer with tolerance verification.
+              05 Questions per subject — all 5 are mandatory. Answers entered via on-screen virtual keypad and rounded to nearest integer. +4 for correct, -1 for incorrect.
             </p>
           </div>
           <div className="rounded-xl bg-[#F1F3F4] p-4">

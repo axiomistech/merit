@@ -1,4 +1,4 @@
-import { QuestionData, AnswerState, ExamAttemptEvaluation } from '@/types/exam';
+import { QuestionData, AnswerState, ExamAttemptEvaluation, NtaCandidateShiftScore } from '@/types/exam';
 
 export interface ScoringQuestionRule {
   questionVersionId: string;
@@ -20,6 +20,63 @@ export interface EvaluateAttemptInput {
   questions: ScoringQuestionRule[];
   answers: Record<string, AnswerState>; // keyed by questionVersionId
   durationSeconds: number;
+}
+
+/**
+ * Normalization procedure based on PERCENTILE SCORE (NTA Information Bulletin Appendix IV).
+ * Percentile = 100 * (Number of candidates with raw score <= candidate's score) / (Total candidates in shift)
+ * Rounded to 7 decimal places to avoid bunching and ties.
+ */
+export function calculateNtaPercentile(
+  candidateScore: number,
+  allShiftScores: number[]
+): number {
+  if (!allShiftScores || allShiftScores.length === 0) return 100.0;
+  const countLessOrEqual = allShiftScores.filter((s) => s <= candidateScore).length;
+  const rawPercentile = (100 * countLessOrEqual) / allShiftScores.length;
+  // Return fixed to 7 decimal places as per NTA Appendix IV
+  return Math.round(rawPercentile * 10000000) / 10000000;
+}
+
+/**
+ * Official NTA 8-Stage Tie-Breaking Algorithm (Information Bulletin Chapter 3, Page 18).
+ * Returns negative if candidate A ranks higher, positive if candidate B ranks higher, 0 if equal.
+ */
+export function resolveNtaTieBreak(
+  a: NtaCandidateShiftScore,
+  b: NtaCandidateShiftScore
+): number {
+  // 1. Higher NTA score in Mathematics
+  if (b.mathScore !== a.mathScore) return b.mathScore - a.mathScore;
+
+  // 2. Higher NTA score in Physics
+  if (b.physicsScore !== a.physicsScore) return b.physicsScore - a.physicsScore;
+
+  // 3. Higher NTA score in Chemistry
+  if (b.chemScore !== a.chemScore) return b.chemScore - a.chemScore;
+
+  // 4. Lower ratio of incorrect answers to correct answers across all subjects
+  const ratioAOverall = a.totalCorrect > 0 ? a.totalIncorrect / a.totalCorrect : a.totalIncorrect > 0 ? 9999 : 0;
+  const ratioBOverall = b.totalCorrect > 0 ? b.totalIncorrect / b.totalCorrect : b.totalIncorrect > 0 ? 9999 : 0;
+  if (ratioAOverall !== ratioBOverall) return ratioAOverall - ratioBOverall;
+
+  // 5. Lower ratio in Mathematics
+  const ratioAMath = a.mathCorrect > 0 ? a.mathIncorrect / a.mathCorrect : a.mathIncorrect > 0 ? 9999 : 0;
+  const ratioBMath = b.mathCorrect > 0 ? b.mathIncorrect / b.mathCorrect : b.mathIncorrect > 0 ? 9999 : 0;
+  if (ratioAMath !== ratioBMath) return ratioAMath - ratioBMath;
+
+  // 6. Lower ratio in Physics
+  const ratioAPhys = a.physicsCorrect > 0 ? a.physicsIncorrect / a.physicsCorrect : a.physicsIncorrect > 0 ? 9999 : 0;
+  const ratioBPhys = b.physicsCorrect > 0 ? b.physicsIncorrect / b.physicsCorrect : b.physicsIncorrect > 0 ? 9999 : 0;
+  if (ratioAPhys !== ratioBPhys) return ratioAPhys - ratioBPhys;
+
+  // 7. Lower ratio in Chemistry
+  const ratioAChem = a.chemCorrect > 0 ? a.chemIncorrect / a.chemCorrect : a.chemIncorrect > 0 ? 9999 : 0;
+  const ratioBChem = b.chemCorrect > 0 ? b.chemIncorrect / b.chemCorrect : b.chemIncorrect > 0 ? 9999 : 0;
+  if (ratioAChem !== ratioBChem) return ratioAChem - ratioBChem;
+
+  // 8. If tie persists, candidates are assigned the same rank
+  return 0;
 }
 
 export function evaluateAttempt(input: EvaluateAttemptInput): ExamAttemptEvaluation {
@@ -137,17 +194,29 @@ export function evaluateAttempt(input: EvaluateAttemptInput): ExamAttemptEvaluat
         const target = q.numericalValue;
         const tol = q.numericalTolerance ?? 0;
 
-        if (val !== undefined && target !== undefined && Math.abs(val - target) <= tol) {
-          result = 'correct';
-          marksEarned = q.marks;
-          correctCount++;
-          subjectMap[q.subjectSlug].correct++;
-          conceptMap[conceptKey].correct++;
+        if (val === undefined || val === null || isNaN(val)) {
+          result = 'unattempted';
+          marksEarned = 0;
+          unattemptedCount++;
+          subjectMap[q.subjectSlug].unattempted++;
         } else {
-          result = 'incorrect';
-          marksEarned = -Math.abs(q.negativeMarks);
-          incorrectCount++;
-          subjectMap[q.subjectSlug].incorrect++;
+          // NTA Rule: For Section B, answers should be rounded off to nearest integer
+          const isMatch =
+            (target !== undefined && Math.abs(val - target) <= tol) ||
+            (target !== undefined && Math.round(val) === Math.round(target));
+
+          if (isMatch) {
+            result = 'correct';
+            marksEarned = q.marks;
+            correctCount++;
+            subjectMap[q.subjectSlug].correct++;
+            conceptMap[conceptKey].correct++;
+          } else {
+            result = 'incorrect';
+            marksEarned = -Math.abs(q.negativeMarks);
+            incorrectCount++;
+            subjectMap[q.subjectSlug].incorrect++;
+          }
         }
       } else {
         // Default MCQ fallback
