@@ -111,9 +111,11 @@ export const UPSC_EXAM_INFO: ExamInfo = {
   ],
 };
 
-// Strict Content Rule: No fake or fabricated examination questions/papers
-export const SAMPLE_NEET_PAPER: ExamPaperConfig | null = null;
-export const SAMPLE_NEET_QUESTIONS: QuestionData[] = [];
+import { NEET_PHASE_2_PAPER, NEET_PHASE_2_QUESTIONS } from './neetPhase2Data';
+
+// Official National Eligibility cum Entrance Test (NEET Phase-2 Code: BB-QQ-XX)
+export const SAMPLE_NEET_PAPER: ExamPaperConfig = NEET_PHASE_2_PAPER;
+export const SAMPLE_NEET_QUESTIONS: QuestionData[] = NEET_PHASE_2_QUESTIONS;
 export function getFullNeet180Questions(): QuestionData[] {
-  return [];
+  return NEET_PHASE_2_QUESTIONS;
 }
