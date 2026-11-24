@@ -32,9 +32,15 @@ export function validateQuestionIntegrity(q: QuestionToValidate): QuestionValida
   const options = q.options || [];
 
   // 1. Check for detached labels in question text
-  if (/\b(O\s+O\s+O\s+Ph|COOH\s+COOH\s+COOH|CONH2\s+CONH2)\b/.test(text)) {
-    issues.push('Detached atomic/functional labels found in question statement');
+  if (/\b(O\s+O\s+O\s+Ph|COOH\s+COOH\s+COOH|CONH2\s+CONH2)\b/.test(text) || /\s+7\s+3\s+4\s*$/.test(text) || /\bt[12]\s*≡\s*t[12]/.test(text)) {
+    issues.push('Detached atomic/functional labels or leaked option fragments found in question statement');
     status = 'scientific_content_incomplete';
+  }
+
+  // 1b. Check for mangled symbol font glyphs or repeated equivalence signs
+  if (/[≡]\s*[≡]|[\uf070\uf071\uf0a3\uf0b3]/.test(text) || options.some(o => /[≡]\s*[≡]|[\uf070\uf071\uf0a3\uf0b3]/.test(o.text))) {
+    issues.push('Corrupted Symbol font glyphs or repeated equivalence characters detected');
+    status = 'encoding_error';
   }
 
   // 2. Check for missing diagrams when diagrams/circuits/graphs/molecules are referenced
@@ -73,6 +79,12 @@ export function validateQuestionIntegrity(q: QuestionToValidate): QuestionValida
     status = 'scientific_content_incomplete';
   }
 
+  // 5b. Check for degenerate identical single-letter options (e.g. four options with just 'T' or 'λ')
+  if (options.length >= 2 && options.every(o => o.text.trim().length <= 2 && o.text.trim() === options[0].text.trim() && !o.imageUrl)) {
+    issues.push('Degenerate identical single-variable answer options detected indicating lost fractions/coefficients');
+    status = 'scientific_content_incomplete';
+  }
+
   // 6. Check for valid answer key
   if (!q.answerKey?.correctOptions || q.answerKey.correctOptions.length === 0) {
     issues.push('Missing or empty answer key mapping');
@@ -94,6 +106,8 @@ export function validateQuestionIntegrity(q: QuestionToValidate): QuestionValida
     autoRepairable: issues.every((i) =>
       i.includes('Detached atomic') ||
       i.includes('Corrupted legacy') ||
+      i.includes('Corrupted Symbol font') ||
+      i.includes('Degenerate identical') ||
       i.includes('without differentiating graphical assets')
     ),
   };

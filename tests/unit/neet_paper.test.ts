@@ -82,7 +82,7 @@ describe('Official NEET Phase-2 (Code: BB-QQ-XX) Paper & Questions', () => {
     // Q180: Interference pattern ratio 2√n / (n+1) (C)
     const q180 = SAMPLE_NEET_QUESTIONS[179];
     expect(q180.answerKey?.correctOptions).toEqual(['C']);
-    expect(q180.options[2].text).toContain('2√n');
+    expect(q180.options[2].text).toMatch(/2(?:√|\\sqrt\{?)n/);
   });
 
   it('validates persistent database storage in backendStore for the paper and questions', () => {

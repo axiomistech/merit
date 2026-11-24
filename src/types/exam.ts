@@ -20,8 +20,13 @@ export interface QuestionData {
   versionId: string;
   displayNumber: number;
   questionType: QuestionType;
+  examSlug?: string;
   subjectName: string;
   subjectSlug: string;
+  chapterSlug?: string;
+  unitName?: string;
+  topic?: string;
+  status?: string;
   conceptName?: string;
   conceptSlug?: string;
   difficulty: DifficultyLevel;
@@ -41,6 +46,9 @@ export interface QuestionData {
   };
   marks: number;
   negativeMarks: number;
+  created_at?: string;
+  updated_at?: string;
+  created_by?: string;
   // Answer keys are stripped during active examination and only populated on result review
   answerKey?: {
     correctOptions?: string[];

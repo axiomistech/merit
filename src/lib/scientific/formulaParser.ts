@@ -4,6 +4,8 @@
  * and transforms them into KaTeX / mhchem syntax for upright scientific typesetting.
  */
 
+import { normalizeSymbolFontGlyphs, normalizeVariableSubscripts, parseAlgebraicFraction } from './mathNormalizer';
+
 // Common English words or acronyms that look like chemical formulas (e.g. In, As, He, At, No, Am, Be)
 const NON_FORMULA_WORDS = new Set([
   'IN', 'AS', 'HE', 'AT', 'NO', 'AM', 'BE', 'SO', 'IF', 'OR', 'AN', 'IS', 'IT', 'BY', 'TO', 'ON', 'OF', 'ME'
@@ -100,6 +102,17 @@ export function autoFormatScientificText(text: string): string {
   sanitized = sanitized.replace(/___MATH_BLOCK___(\d+)___/g, (_, index) => {
     return mathSegments[parseInt(index, 10)] || '';
   });
+
+  // Apply symbol glyph normalization and variable subscripts outside math
+  sanitized = normalizeSymbolFontGlyphs(sanitized);
+
+  // If the entire text is a standalone plain-text algebraic fraction like (t1 + t2)/(t1 + 273) or P / (kT), wrap in math
+  if (!sanitized.startsWith('$') && sanitized.includes('/') && !sanitized.includes('://')) {
+    const parsed = parseAlgebraicFraction(sanitized);
+    if (parsed.includes('\\frac')) {
+      return `$${parsed}$`;
+    }
+  }
 
   return sanitized;
 }

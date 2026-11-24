@@ -33,7 +33,13 @@ export function MathRenderer({
   const html = useMemo(() => {
     if (!expression) return '';
     try {
-      return katex.renderToString(expression, {
+      // If the expression contains a fraction and is in inline mode, use \\displaystyle for readable vertical fractions
+      let expr = expression;
+      if (!displayMode && (expr.includes('\\frac') || expr.includes('\\dfrac')) && !expr.includes('\\displaystyle')) {
+        expr = `\\displaystyle ${expr}`;
+      }
+
+      return katex.renderToString(expr, {
         displayMode,
         throwOnError: false,
         output: 'htmlAndMathml',

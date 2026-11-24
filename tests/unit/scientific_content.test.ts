@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { isChemicalFormula, isChemicalEquation, autoFormatScientificText } from '@/lib/scientific/formulaParser';
 import { normalizeLegacyHindi, splitBilingualText } from '@/lib/scientific/unicodeNormalizer';
+import { normalizeSymbolFontGlyphs, normalizeVariableSubscripts, parseAlgebraicFraction, decontaminateStatement } from '@/lib/scientific/mathNormalizer';
 import { validateQuestionIntegrity } from '@/lib/scientific/validation';
 import { getStoredQuestionsServer, getStoredQuestionByIdServer } from '@/lib/server/backendStore';
 
@@ -117,5 +118,99 @@ describe('Universal Scientific Content Architecture', () => {
     expect(q168).toBeDefined();
     expect(q168?.imageUrl).toBe('/assets/scientific/neet-phase-2/q168_diagram.png');
     expect(q168?.options[0].text).toContain('\\frac{1}{k}');
+
+    // Q158: Capillary rise densities and contact angles
+    const q158 = getStoredQuestionByIdServer('neet-2016-p2-q158');
+    expect(q158).toBeDefined();
+    expect(q158?.text).not.toContain('≡ 1');
+    expect(q158?.text).toContain('\\rho_1');
+    expect(q158?.text).toContain('\\theta_1');
+    expect(q158?.options[2].text).toBe('$0 \\le \\theta_1 < \\theta_2 < \\theta_3 < \\frac{\\pi}{2}$');
+    expect(q158?.imageUrl).toBe('/assets/scientific/neet-phase-2/q158_options.png');
+
+    // Q160: Newton law of cooling temperatures and fractions
+    const q160 = getStoredQuestionByIdServer('neet-2016-p2-q160');
+    expect(q160).toBeDefined();
+    expect(q160?.text).not.toContain('7 3 4');
+    expect(q160?.options[0].text).toBe('$T$');
+    expect(q160?.options[1].text).toBe('$\\frac{7}{4}T$');
+    expect(q160?.options[2].text).toBe('$\\frac{3}{2}T$');
+    expect(q160?.options[3].text).toBe('$\\frac{4}{3}T$');
+
+    // Q162: Refrigerator coefficient of performance
+    const q162 = getStoredQuestionByIdServer('neet-2016-p2-q162');
+    expect(q162).toBeDefined();
+    expect(q162?.text).not.toContain('t1 ≡ t2');
+    expect(q162?.text).toContain('$t_2\\,^\\circ\\mathrm{C}$');
+    expect(q162?.text).toContain('$t_1\\,^\\circ\\mathrm{C}$');
+    expect(q162?.options[2].text).toBe('$\\frac{t_1 + 273}{t_1 - t_2}$');
+
+    // Q138: de-Broglie and cutoff wavelength
+    const q138 = getStoredQuestionByIdServer('neet-2016-p2-q138');
+    expect(q138).toBeDefined();
+    expect(q138?.options[1].text).toBe('$\\lambda_0 = \\frac{2mc\\lambda^2}{h}$');
+
+    // Q140: Hydrogen atom transitions
+    const q140 = getStoredQuestionByIdServer('neet-2016-p2-q140');
+    expect(q140).toBeDefined();
+    expect(q140?.options[3].text).toBe('$\\frac{20}{7}\\lambda$');
+  });
+
+  it('recovers Symbol font PUA characters and legacy Greek glyphs into standard LaTeX', () => {
+    const raw = '\uf070 > \uf0711 > \uf0712 > \uf0713 \uf0b3 0';
+    const normalized = normalizeSymbolFontGlyphs(raw);
+    expect(normalized).toBe('\\pi > \\theta1 > \\theta2 > \\theta3 \\ge 0');
+
+    const rawGlyphs = ' 1 > 2 > 3 and 1, 2, 3 and ';
+    const normGlyphs = normalizeSymbolFontGlyphs(rawGlyphs);
+    expect(normGlyphs).toContain('\\rho');
+    expect(normGlyphs).toContain('\\theta');
+    expect(normGlyphs).toContain('\\lambda');
+  });
+
+  it('normalizes variable subscripts in physical equations and temperatures', () => {
+    expect(normalizeVariableSubscripts('t1 °C and t2 ºC')).toBe('$t_1\\,^\\circ\\mathrm{C}$ and $t_2\\,^\\circ\\mathrm{C}$');
+    expect(normalizeVariableSubscripts('m1 and m2 attached to rod')).toBe('m_1 and m_2 attached to rod');
+    expect(normalizeVariableSubscripts('\\theta1, \\theta2, \\theta3')).toBe('\\theta_1, \\theta_2, \\theta_3');
+    expect(normalizeVariableSubscripts('\\rho1, \\rho2, \\rho3')).toBe('\\rho_1, \\rho_2, \\rho_3');
+  });
+
+  it('converts plain-text algebraic fractions into proper LaTeX \\frac expressions', () => {
+    expect(parseAlgebraicFraction('(t1 + 273) / (t1 - t2)')).toBe('\\frac{t_1 + 273}{t_1 - t_2}');
+    expect(parseAlgebraicFraction('(a - f) / (1 + b)')).toBe('\\frac{a - f}{1 + b}');
+    expect(parseAlgebraicFraction('P / (kT)')).toBe('\\frac{P}{kT}');
+    expect(parseAlgebraicFraction('7/4 T')).toBe('\\frac{7}{4} T');
+    expect(parseAlgebraicFraction('9/16 kg')).toBe('\\frac{9}{16}\\,\\mathrm{kg}');
+    expect(parseAlgebraicFraction('2√n / (n + 1)²')).toBe('\\frac{2\\sqrt{n}}{(n + 1)^2}');
+  });
+
+  it('decontaminates question statements from trailing leaked fragments', () => {
+    const rawQ162 = 'The temperature inside a refrigerator is t2 °C and the room temperature is t1 °C. The amount of heat delivered to the room for each joule of electrical energy consumed ideally will be t1 ≡ t2 t1 t1 ≡ 273 t2 ≡ 273';
+    expect(decontaminateStatement(rawQ162)).toBe('The temperature inside a refrigerator is t2 °C and the room temperature is t1 °C. The amount of heat delivered to the room for each joule of electrical energy consumed ideally will be :');
+
+    const rawQ160 = 'The temperature of the body at the end of next 10 minutes will be 7 3 4';
+    expect(decontaminateStatement(rawQ160)).toBe('The temperature of the body at the end of next 10 minutes will be :');
+
+    const rawQ158 = 'The angles of contact obey ≡ ≡';
+    expect(decontaminateStatement(rawQ158)).toBe('The angles of contact obey :');
+  });
+
+  it('validation engine flags repeated equivalence signs, leaked option fragments, and degenerate options', () => {
+    const qCorrupted = {
+      id: 'bad-q',
+      text: 'Capillary rise angles obey ≡ ≡',
+      options: [
+        { key: 'A', text: 'T' },
+        { key: 'B', text: 'T' },
+        { key: 'C', text: 'T' },
+        { key: 'D', text: 'T' },
+      ],
+      answerKey: { correctOptions: ['C'] },
+    };
+
+    const res = validateQuestionIntegrity(qCorrupted);
+    expect(res.isValid).toBe(false);
+    expect(res.issues.some((i) => i.includes('repeated equivalence'))).toBe(true);
+    expect(res.issues.some((i) => i.includes('Degenerate identical'))).toBe(true);
   });
 });
