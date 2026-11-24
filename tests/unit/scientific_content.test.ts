@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { isChemicalFormula, isChemicalEquation, autoFormatScientificText } from '@/lib/scientific/formulaParser';
 import { normalizeLegacyHindi, splitBilingualText } from '@/lib/scientific/unicodeNormalizer';
 import { normalizeSymbolFontGlyphs, normalizeVariableSubscripts, parseAlgebraicFraction, decontaminateStatement } from '@/lib/scientific/mathNormalizer';
+import { processScientificQuestion } from '@/lib/scientific/ingestionPipeline';
 import { validateQuestionIntegrity } from '@/lib/scientific/validation';
 import { getStoredQuestionsServer, getStoredQuestionByIdServer } from '@/lib/server/backendStore';
 
@@ -212,5 +213,28 @@ describe('Universal Scientific Content Architecture', () => {
     expect(res.isValid).toBe(false);
     expect(res.issues.some((i) => i.includes('repeated equivalence'))).toBe(true);
     expect(res.issues.some((i) => i.includes('Degenerate identical'))).toBe(true);
+  });
+
+  it('runs the full progressive scientific ingestion pipeline end-to-end on unformatted raw questions', () => {
+    const rawInput = {
+      id: 'pipeline-test-q1',
+      displayNumber: 162,
+      rawText: 'The temperature inside a refrigerator is t2 °C and the room temperature is t1 °C. The amount of heat delivered to the room for each joule of electrical energy consumed ideally will be t1 ≡ t2 t1 t1 ≡ 273 t2 ≡ 273',
+      rawOptions: [
+        { key: 'A', text: '(t1 + t2) / (t1 + 273)' },
+        { key: 'B', text: 't1 / (t1 - t2)' },
+        { key: 'C', text: '(t1 + 273) / (t1 - t2)' },
+        { key: 'D', text: '(t2 + 273) / (t1 - t2)' },
+      ],
+      correctOption: 'C',
+    };
+
+    const processed = processScientificQuestion(rawInput);
+    expect(processed.text).not.toContain('t1 ≡ t2');
+    expect(processed.text).toContain('$t_2\\,^\\circ\\mathrm{C}$');
+    expect(processed.text).toContain('$t_1\\,^\\circ\\mathrm{C}$');
+    expect(processed.options[2].text).toBe('$\\frac{t_1 + 273}{t_1 - t_2}$');
+    expect(processed.verificationStatus).toBe('published');
+    expect(processed.validationResult.isValid).toBe(true);
   });
 });
