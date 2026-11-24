@@ -1,14 +1,135 @@
 import { NextResponse } from 'next/server';
 import { EXAMINATIONS } from '@/data/seedData';
+import {
+  JEE_MAIN_MATHEMATICS_SYLLABUS,
+  JEE_MAIN_PHYSICS_SYLLABUS,
+  JEE_MAIN_CHEMISTRY_SYLLABUS,
+  JEE_MAIN_PAPER_2A_SYLLABUS,
+  JEE_MAIN_PAPER_2B_SYLLABUS,
+} from '@/data/jeeMainSyllabusData';
 
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
-    const examSlug = searchParams.get('exam') || 'neet';
+    const examSlug = searchParams.get('exam') || 'jee-main';
+
+    if (examSlug === 'jee-main' || examSlug === 'jee') {
+      const tree = {
+        exam: {
+          id: 'exam_jee-main',
+          slug: 'jee-main',
+          name: 'Joint Entrance Examination (Main) - 2027',
+          description: 'Official NTA Curriculum covering Paper 1 (B.E./B.Tech.), Paper 2A (B.Arch.), and Paper 2B (B.Planning).',
+        },
+        subjects: [
+          {
+            id: 'sub_physics',
+            slug: 'physics',
+            name: 'Physics',
+            displayOrder: 1,
+            totalUnits: JEE_MAIN_PHYSICS_SYLLABUS.totalUnits,
+            units: JEE_MAIN_PHYSICS_SYLLABUS.units.map((u) => ({
+              id: u.id,
+              name: `Unit ${u.unitNumber}: ${u.name}`,
+              unitNumber: u.unitNumber,
+              slug: u.slug,
+              description: u.description,
+              weightagePercent: u.weightagePercent,
+              displayOrder: u.unitNumber,
+              chapters: [
+                {
+                  id: `chap_${u.slug}`,
+                  slug: u.slug,
+                  name: u.name,
+                  weightagePercent: u.weightagePercent,
+                  topics: u.topics.map((t) => ({
+                    id: t.id,
+                    name: t.name,
+                    details: t.details,
+                    questionsCount: Math.floor(Math.random() * 25) + 20,
+                  })),
+                },
+              ],
+            })),
+          },
+          {
+            id: 'sub_chemistry',
+            slug: 'chemistry',
+            name: 'Chemistry',
+            displayOrder: 2,
+            totalUnits: JEE_MAIN_CHEMISTRY_SYLLABUS.totalUnits,
+            units: JEE_MAIN_CHEMISTRY_SYLLABUS.units.map((u) => ({
+              id: u.id,
+              name: `Unit ${u.unitNumber}: ${u.name}`,
+              unitNumber: u.unitNumber,
+              slug: u.slug,
+              category: u.category,
+              description: u.description,
+              weightagePercent: u.weightagePercent,
+              displayOrder: u.unitNumber,
+              chapters: [
+                {
+                  id: `chap_${u.slug}`,
+                  slug: u.slug,
+                  name: u.name,
+                  category: u.category,
+                  weightagePercent: u.weightagePercent,
+                  topics: u.topics.map((t) => ({
+                    id: t.id,
+                    name: t.name,
+                    details: t.details,
+                    questionsCount: Math.floor(Math.random() * 25) + 20,
+                  })),
+                },
+              ],
+            })),
+          },
+          {
+            id: 'sub_mathematics',
+            slug: 'mathematics',
+            name: 'Mathematics',
+            displayOrder: 3,
+            totalUnits: JEE_MAIN_MATHEMATICS_SYLLABUS.totalUnits,
+            units: JEE_MAIN_MATHEMATICS_SYLLABUS.units.map((u) => ({
+              id: u.id,
+              name: `Unit ${u.unitNumber}: ${u.name}`,
+              unitNumber: u.unitNumber,
+              slug: u.slug,
+              description: u.description,
+              weightagePercent: u.weightagePercent,
+              displayOrder: u.unitNumber,
+              chapters: [
+                {
+                  id: `chap_${u.slug}`,
+                  slug: u.slug,
+                  name: u.name,
+                  weightagePercent: u.weightagePercent,
+                  topics: u.topics.map((t) => ({
+                    id: t.id,
+                    name: t.name,
+                    details: t.details,
+                    questionsCount: Math.floor(Math.random() * 25) + 20,
+                  })),
+                },
+              ],
+            })),
+          },
+        ],
+        paper2Modules: {
+          paper2A_BArch: JEE_MAIN_PAPER_2A_SYLLABUS,
+          paper2B_BPlanning: JEE_MAIN_PAPER_2B_SYLLABUS,
+        },
+      };
+
+      return NextResponse.json({
+        success: true,
+        data: tree,
+      });
+    }
 
     const exam = EXAMINATIONS.find((e) => e.slug === examSlug) || EXAMINATIONS[0];
 
-    // Build hierarchical tree
+    // Build default hierarchical tree for other exams
     const tree = {
       exam: {
         id: `exam_${exam.slug}`,
@@ -35,17 +156,6 @@ export async function GET(req: Request) {
                   { id: `top_1`, name: "Newton's First & Second Laws", questionsCount: 45 },
                   { id: `top_2`, name: 'Static & Kinetic Friction', questionsCount: 38 },
                   { id: `top_3`, name: 'Circular Motion Dynamics', questionsCount: 32 },
-                ],
-              },
-              {
-                id: `chap_${sub.slug}_2`,
-                slug: sub.slug === 'physics' ? 'work-energy-power' : sub.slug === 'chemistry' ? 'thermodynamics' : 'genetics',
-                name: sub.slug === 'physics' ? 'Work, Energy and Power' : sub.slug === 'chemistry' ? 'Thermodynamics' : 'Principles of Inheritance',
-                weightagePercent: 10,
-                topics: [
-                  { id: `top_4`, name: 'Work-Energy Theorem', questionsCount: 42 },
-                  { id: `top_5`, name: 'Conservation of Energy', questionsCount: 36 },
-                  { id: `top_6`, name: 'Collisions in One & Two Dimensions', questionsCount: 29 },
                 ],
               },
             ],

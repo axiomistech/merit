@@ -10,25 +10,40 @@ export default function StudentJeeMainDashboardPage() {
     {
       name: 'Physics',
       slug: 'physics',
+      totalUnits: '20 Units',
       totalQ: 25,
       sections: '20 Single-Correct MCQs + 5 Numerical Value Questions',
-      topics: ['Mechanics & Rotational Motion', 'Electrodynamics & Optics', 'Thermodynamics & Modern Physics'],
+      topics: [
+        'Units 1-6: Classical Mechanics, Momentum & Rotational Motion',
+        'Units 11-16: Electrostatics, Current, Magnetism & Optics',
+        'Unit 20: 18 Practical Lab Experimental Skills (Vernier, Metre Bridge, etc.)',
+      ],
       mastery: 72,
     },
     {
       name: 'Chemistry',
       slug: 'chemistry',
+      totalUnits: '20 Units',
       totalQ: 25,
       sections: '20 Single-Correct MCQs + 5 Numerical Value Questions',
-      topics: ['Physical Chemistry & Thermodynamics', 'Organic Reaction Mechanisms', 'Inorganic & Coordination Chemistry'],
+      topics: [
+        'Units 1-8: Physical Chemistry (Equilibrium, Kinetics, Thermodynamics)',
+        'Units 9-12: Inorganic (Periodicity, p-block, d/f-block, Coordination)',
+        'Units 13-20: Organic (GOC, Oxygen/Nitrogen, Practical Analysis)',
+      ],
       mastery: 80,
     },
     {
       name: 'Mathematics',
       slug: 'mathematics',
+      totalUnits: '14 Units',
       totalQ: 25,
       sections: '20 Single-Correct MCQs + 5 Numerical Value Questions',
-      topics: ['Calculus & Differential Equations', 'Coordinate Geometry & Vectors', 'Algebra, Matrices & Probability'],
+      topics: [
+        'Units 1-6: Sets, Relations, Complex Numbers, Matrices & Series',
+        'Units 7-9: Differential & Integral Calculus (10 Standard Forms)',
+        'Units 10-13: Conic Sections, 3D Geometry, Vectors & Probability',
+      ],
       mastery: 68,
     },
   ];

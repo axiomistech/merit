@@ -16,6 +16,13 @@ import {
 import { logAdminAction } from '@/lib/admin/auth';
 import { getStoredQuestions } from '@/lib/admin/store';
 import { toast } from 'sonner';
+import {
+  JEE_MAIN_MATHEMATICS_SYLLABUS,
+  JEE_MAIN_PHYSICS_SYLLABUS,
+  JEE_MAIN_CHEMISTRY_SYLLABUS,
+  JEE_MAIN_PAPER_2A_SYLLABUS,
+  JEE_MAIN_PAPER_2B_SYLLABUS,
+} from '@/data/jeeMainSyllabusData';
 
 interface SyllabusNode {
   id: string;
@@ -23,6 +30,113 @@ interface SyllabusNode {
   nodeType: 'subject' | 'unit' | 'chapter' | 'topic';
   questionCount: number;
   children?: SyllabusNode[];
+}
+
+function buildJeeMainNodes(): SyllabusNode[] {
+  return [
+    {
+      id: 'sub_jm_phy',
+      name: 'Physics (Paper 1)',
+      nodeType: 'subject',
+      questionCount: 0,
+      children: JEE_MAIN_PHYSICS_SYLLABUS.units.map((u) => ({
+        id: `jm_phy_u${u.unitNumber}`,
+        name: `Unit ${u.unitNumber}: ${u.name}`,
+        nodeType: 'unit',
+        questionCount: 0,
+        children: u.topics.map((t) => ({
+          id: `top_${t.id}`,
+          name: t.name + (t.details ? ` (${t.details})` : ''),
+          nodeType: 'topic',
+          questionCount: 0,
+        })),
+      })),
+    },
+    {
+      id: 'sub_jm_chem',
+      name: 'Chemistry (Paper 1)',
+      nodeType: 'subject',
+      questionCount: 0,
+      children: JEE_MAIN_CHEMISTRY_SYLLABUS.units.map((u) => ({
+        id: `jm_chem_u${u.unitNumber}`,
+        name: `Unit ${u.unitNumber} [${u.category}]: ${u.name}`,
+        nodeType: 'unit',
+        questionCount: 0,
+        children: u.topics.map((t) => ({
+          id: `top_${t.id}`,
+          name: t.name + (t.details ? ` (${t.details})` : ''),
+          nodeType: 'topic',
+          questionCount: 0,
+        })),
+      })),
+    },
+    {
+      id: 'sub_jm_math',
+      name: 'Mathematics (Paper 1, 2A & 2B)',
+      nodeType: 'subject',
+      questionCount: 0,
+      children: JEE_MAIN_MATHEMATICS_SYLLABUS.units.map((u) => ({
+        id: `jm_math_u${u.unitNumber}`,
+        name: `Unit ${u.unitNumber}: ${u.name}`,
+        nodeType: 'unit',
+        questionCount: 0,
+        children: u.topics.map((t) => ({
+          id: `top_${t.id}`,
+          name: t.name + (t.details ? ` (${t.details})` : ''),
+          nodeType: 'topic',
+          questionCount: 0,
+        })),
+      })),
+    },
+    {
+      id: 'sub_jm_p2a',
+      name: 'Paper 2A (B.Arch) — Aptitude & Drawing',
+      nodeType: 'subject',
+      questionCount: 0,
+      children: JEE_MAIN_PAPER_2A_SYLLABUS.map((mod) => ({
+        id: `jm_p2a_${mod.id}`,
+        name: `${mod.partNumber}: ${mod.title}`,
+        nodeType: 'unit',
+        questionCount: 0,
+        children: mod.units.map((u) => ({
+          id: `jm_p2a_${mod.id}_u${u.unitNumber}`,
+          name: `Unit ${u.unitNumber}: ${u.title}`,
+          nodeType: 'chapter',
+          questionCount: 0,
+          children: u.details.map((d, dIdx) => ({
+            id: `top_p2a_${mod.id}_${u.unitNumber}_${dIdx}`,
+            name: d,
+            nodeType: 'topic',
+            questionCount: 0,
+          })),
+        })),
+      })),
+    },
+    {
+      id: 'sub_jm_p2b',
+      name: 'Paper 2B (B.Planning) — Planning Test',
+      nodeType: 'subject',
+      questionCount: 0,
+      children: JEE_MAIN_PAPER_2B_SYLLABUS.map((mod) => ({
+        id: `jm_p2b_${mod.id}`,
+        name: `${mod.partNumber}: ${mod.title}`,
+        nodeType: 'unit',
+        questionCount: 0,
+        children: mod.units.map((u) => ({
+          id: `jm_p2b_${mod.id}_u${u.unitNumber}`,
+          name: `Unit ${u.unitNumber}: ${u.title}`,
+          nodeType: 'chapter',
+          questionCount: 0,
+          children: u.details.map((d, dIdx) => ({
+            id: `top_p2b_${mod.id}_${u.unitNumber}_${dIdx}`,
+            name: d,
+            nodeType: 'topic',
+            questionCount: 0,
+          })),
+        })),
+      })),
+    },
+  ];
 }
 
 export default function AdminSyllabusPage() {
@@ -125,6 +239,7 @@ export default function AdminSyllabusPage() {
         ],
       },
     ],
+    'jee-main': buildJeeMainNodes(),
   });
 
   // Calculate actual question count dynamically
