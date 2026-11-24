@@ -19,10 +19,58 @@ export default function StudentNeetDashboardPage() {
   const [selectedSubject, setSelectedSubject] = useState('physics');
 
   const subjects = [
-    { slug: 'physics', name: 'Physics', chapters: ['Electrostatics & Gauss Law', 'Current Electricity', 'Ray Optics', 'Thermodynamics', 'Photoelectric Effect'], totalQuestions: 45 },
-    { slug: 'chemistry', name: 'Chemistry', chapters: ['Chemical Bonding & Hybridization', 'Equilibrium', 'Coordination Compounds', 'Aldehydes & Ketones', 'Electrochemistry'], totalQuestions: 45 },
-    { slug: 'botany', name: 'Botany', chapters: ['Photosynthesis C4 Pathway', 'Cell Division (Meiosis)', 'Plant Hormones', 'Mendelian Genetics', 'Ecosystem Energy Flow'], totalQuestions: 45 },
-    { slug: 'zoology', name: 'Zoology', chapters: ['Human Circulatory System', 'Endocrine Feedback & LH Surge', 'Renal Countercurrent Mechanism', 'Homologous Organs', 'Immunology & IgA'], totalQuestions: 45 },
+    {
+      slug: 'physics',
+      name: 'Physics',
+      totalUnits: '20 Units',
+      totalQuestions: 45,
+      chapters: [
+        'Unit 20: 18 Practical Laboratory Experiments (Vernier, Metre Bridge, Parallax, etc.)',
+        'Units 11-12: Electrostatics, Capacitors & Current Electricity',
+        'Units 15-16: Optics (Ray & Wave) and Electromagnetic Waves',
+        'Units 3-5: Laws of Motion, Work-Energy & Rotational Dynamics',
+        'Units 7-9: Fluid Mechanics, Thermodynamics & Kinetic Theory',
+      ],
+    },
+    {
+      slug: 'chemistry',
+      name: 'Chemistry',
+      totalUnits: '20 Units',
+      totalQuestions: 45,
+      chapters: [
+        'Unit 20: Principles Related to Practical Chemistry (Salt Analysis, Titrimetry)',
+        'Units 3, 11, 12: Chemical Bonding, d/f-Block Elements & Coordination Chemistry',
+        'Units 14, 17, 18: GOC, Aldehydes, Ketones, Carboxylic Acids & Amines',
+        'Units 4-6: Thermodynamics, Chemical/Ionic Equilibrium & Solutions',
+        'Units 1, 7, 8: Mole Concept, Electrochemistry & Chemical Kinetics',
+      ],
+    },
+    {
+      slug: 'botany',
+      name: 'Botany',
+      totalUnits: 'Plant Sciences',
+      totalQuestions: 45,
+      chapters: [
+        'Unit 2: 5 Plant Families (Malvaceae, Cruciferae, Leguminosae, Compositae, Gramineae)',
+        'Unit 4: Photosynthesis (C3/C4, Photorespiration) & Cellular Respiration',
+        'Unit 3: Cell Biology, Biomolecules & Cell Division (Mitosis, Meiosis)',
+        'Unit 6: Sexual Reproduction in Flowering Plants (Double Fertilization, Apomixis)',
+        'Unit 10: Ecology, Ecosystem Productivity & Biodiversity Conservation',
+      ],
+    },
+    {
+      slug: 'zoology',
+      name: 'Zoology',
+      totalUnits: 'Animal Sciences',
+      totalQuestions: 45,
+      chapters: [
+        'Unit 2: Morphology & Complete Anatomy of Frog (Rana tigrina)',
+        'Unit 5: Human Physiology (Circulation, Excretion, Neural, Endocrine & Disorders)',
+        'Unit 6: Human Reproduction, Gametogenesis & Reproductive Health (IVF/ZIFT)',
+        'Unit 7: Mendelian Genetics, Molecular Basis (DNA, Lac Operon) & Evolution',
+        'Units 8-9: Diseases (Dengue, Chikungunya, Malaria) & Recombinant Biotechnology',
+      ],
+    },
   ];
 
   const currentSubject = subjects.find((s) => s.slug === selectedSubject) || subjects[0];

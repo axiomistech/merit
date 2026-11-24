@@ -23,6 +23,11 @@ import {
   JEE_MAIN_PAPER_2A_SYLLABUS,
   JEE_MAIN_PAPER_2B_SYLLABUS,
 } from '@/data/jeeMainSyllabusData';
+import {
+  NEET_PHYSICS_SYLLABUS,
+  NEET_CHEMISTRY_SYLLABUS,
+  NEET_BIOLOGY_SYLLABUS,
+} from '@/data/neetSyllabusData';
 
 interface SyllabusNode {
   id: string;
@@ -30,6 +35,65 @@ interface SyllabusNode {
   nodeType: 'subject' | 'unit' | 'chapter' | 'topic';
   questionCount: number;
   children?: SyllabusNode[];
+}
+
+function buildNeetNodes(): SyllabusNode[] {
+  return [
+    {
+      id: 'sub_neet_phy',
+      name: 'Physics (20 Units)',
+      nodeType: 'subject',
+      questionCount: 0,
+      children: NEET_PHYSICS_SYLLABUS.units.map((u) => ({
+        id: `neet_phy_u${u.unitNumber}`,
+        name: `Unit ${u.unitNumber}: ${u.name}`,
+        nodeType: 'unit',
+        questionCount: 0,
+        children: u.topics.map((t) => ({
+          id: `top_${t.id}`,
+          name: t.name + (t.details ? ` (${t.details})` : ''),
+          nodeType: 'topic',
+          questionCount: 0,
+        })),
+      })),
+    },
+    {
+      id: 'sub_neet_chem',
+      name: 'Chemistry (20 Units)',
+      nodeType: 'subject',
+      questionCount: 0,
+      children: NEET_CHEMISTRY_SYLLABUS.units.map((u) => ({
+        id: `neet_chem_u${u.unitNumber}`,
+        name: `Unit ${u.unitNumber} [${u.category}]: ${u.name}`,
+        nodeType: 'unit',
+        questionCount: 0,
+        children: u.topics.map((t) => ({
+          id: `top_${t.id}`,
+          name: t.name + (t.details ? ` (${t.details})` : ''),
+          nodeType: 'topic',
+          questionCount: 0,
+        })),
+      })),
+    },
+    {
+      id: 'sub_neet_bio',
+      name: 'Biology (10 Units: Botany & Zoology)',
+      nodeType: 'subject',
+      questionCount: 0,
+      children: NEET_BIOLOGY_SYLLABUS.units.map((u) => ({
+        id: `neet_bio_u${u.unitNumber}`,
+        name: `Unit ${u.unitNumber}: ${u.name}`,
+        nodeType: 'unit',
+        questionCount: 0,
+        children: u.topics.map((t) => ({
+          id: `top_${t.id}`,
+          name: t.name + (t.details ? ` (${t.details})` : ''),
+          nodeType: 'topic',
+          questionCount: 0,
+        })),
+      })),
+    },
+  ];
 }
 
 function buildJeeMainNodes(): SyllabusNode[] {
@@ -155,91 +219,10 @@ export default function AdminSyllabusPage() {
   }, []);
 
   const [syllabusData, setSyllabusData] = useState<Record<string, SyllabusNode[]>>({
-    neet: [
-      {
-        id: 'sub_phy',
-        name: 'Physics',
-        nodeType: 'subject',
-        questionCount: 0,
-        children: [
-          {
-            id: 'unit_mech',
-            name: 'Unit I: Mechanics',
-            nodeType: 'unit',
-            questionCount: 0,
-            children: [
-              {
-                id: 'chap_lom',
-                name: 'Laws of Motion & Friction',
-                nodeType: 'chapter',
-                questionCount: 0,
-                children: [
-                  { id: 'top_newton', name: 'Newton\'s First & Second Laws', nodeType: 'topic', questionCount: 0 },
-                  { id: 'top_friction', name: 'Static & Kinetic Friction Coefficient', nodeType: 'topic', questionCount: 0 },
-                  { id: 'top_circular', name: 'Circular Motion & Banking of Roads', nodeType: 'topic', questionCount: 0 },
-                ],
-              },
-              {
-                id: 'chap_wep',
-                name: 'Work, Energy & Power',
-                nodeType: 'chapter',
-                questionCount: 0,
-                children: [
-                  { id: 'top_we_thm', name: 'Work-Energy Theorem', nodeType: 'topic', questionCount: 0 },
-                  { id: 'top_collisions', name: 'Elastic & Inelastic Collisions in 1D/2D', nodeType: 'topic', questionCount: 0 },
-                ],
-              },
-            ],
-          },
-          {
-            id: 'unit_elec',
-            name: 'Unit II: Electricity & Magnetism',
-            nodeType: 'unit',
-            questionCount: 0,
-            children: [
-              { id: 'chap_electro', name: 'Electrostatics & Gauss Law', nodeType: 'chapter', questionCount: 0 },
-              { id: 'chap_current', name: 'Current Electricity & Kirchhoff\'s Laws', nodeType: 'chapter', questionCount: 0 },
-            ],
-          },
-        ],
-      },
-      {
-        id: 'sub_chem',
-        name: 'Chemistry',
-        nodeType: 'subject',
-        questionCount: 0,
-        children: [
-          {
-            id: 'unit_phys_chem',
-            name: 'Unit I: Physical Chemistry',
-            nodeType: 'unit',
-            questionCount: 0,
-            children: [
-              { id: 'chap_thermo', name: 'Chemical Thermodynamics', nodeType: 'chapter', questionCount: 0 },
-              { id: 'chap_equil', name: 'Ionic & Chemical Equilibrium', nodeType: 'chapter', questionCount: 0 },
-            ],
-          },
-        ],
-      },
-      {
-        id: 'sub_bio',
-        name: 'Biology (Botany & Zoology)',
-        nodeType: 'subject',
-        questionCount: 0,
-        children: [
-          {
-            id: 'unit_plant_phys',
-            name: 'Unit I: Plant Physiology',
-            nodeType: 'unit',
-            questionCount: 0,
-            children: [
-              { id: 'chap_photo', name: 'Photosynthesis in Higher Plants (C3/C4)', nodeType: 'chapter', questionCount: 0 },
-            ],
-          },
-        ],
-      },
-    ],
+    neet: buildNeetNodes(),
     'jee-main': buildJeeMainNodes(),
+    'jee-advanced': buildJeeMainNodes(),
+    gate: buildJeeMainNodes().slice(0, 2),
   });
 
   // Calculate actual question count dynamically

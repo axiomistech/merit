@@ -7,12 +7,140 @@ import {
   JEE_MAIN_PAPER_2A_SYLLABUS,
   JEE_MAIN_PAPER_2B_SYLLABUS,
 } from '@/data/jeeMainSyllabusData';
+import {
+  NEET_PHYSICS_SYLLABUS,
+  NEET_CHEMISTRY_SYLLABUS,
+  NEET_BIOLOGY_SYLLABUS,
+  NEET_SYLLABUS_OVERVIEW,
+} from '@/data/neetSyllabusData';
 
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
     const examSlug = searchParams.get('exam') || 'jee-main';
 
+    // 1. NEET (UG) Master Hierarchy (50 Units)
+    if (examSlug === 'neet') {
+      const tree = {
+        exam: {
+          id: 'exam_neet',
+          slug: 'neet',
+          name: NEET_SYLLABUS_OVERVIEW.examName,
+          governingBody: NEET_SYLLABUS_OVERVIEW.governingBody,
+          academicSession: NEET_SYLLABUS_OVERVIEW.academicSession,
+          totalUnits: NEET_SYLLABUS_OVERVIEW.totalUnits,
+          description: 'Official NMC/NTA Curriculum covering 50 units across Physics, Chemistry, and Biology (Botany & Zoology).',
+          blueprint: NEET_SYLLABUS_OVERVIEW,
+        },
+        subjects: [
+          {
+            id: 'sub_neet_physics',
+            slug: 'physics',
+            name: 'Physics',
+            displayOrder: 1,
+            totalUnits: NEET_PHYSICS_SYLLABUS.totalUnits,
+            units: NEET_PHYSICS_SYLLABUS.units.map((u) => ({
+              id: u.id,
+              name: `Unit ${u.unitNumber}: ${u.name}`,
+              unitNumber: u.unitNumber,
+              slug: u.slug,
+              description: u.description,
+              weightagePercent: u.weightagePercent,
+              displayOrder: u.unitNumber,
+              chapters: [
+                {
+                  id: `chap_${u.slug}`,
+                  slug: u.slug,
+                  name: u.name,
+                  weightagePercent: u.weightagePercent,
+                  topics: u.topics.map((t) => ({
+                    id: t.id,
+                    name: t.name,
+                    details: t.details,
+                    isHighYield: t.isHighYield,
+                    questionsCount: Math.floor(Math.random() * 25) + 30,
+                  })),
+                },
+              ],
+            })),
+          },
+          {
+            id: 'sub_neet_chemistry',
+            slug: 'chemistry',
+            name: 'Chemistry',
+            displayOrder: 2,
+            totalUnits: NEET_CHEMISTRY_SYLLABUS.totalUnits,
+            units: NEET_CHEMISTRY_SYLLABUS.units.map((u) => ({
+              id: u.id,
+              name: `Unit ${u.unitNumber}: ${u.name}`,
+              unitNumber: u.unitNumber,
+              slug: u.slug,
+              category: u.category,
+              description: u.description,
+              weightagePercent: u.weightagePercent,
+              displayOrder: u.unitNumber,
+              chapters: [
+                {
+                  id: `chap_${u.slug}`,
+                  slug: u.slug,
+                  name: u.name,
+                  category: u.category,
+                  weightagePercent: u.weightagePercent,
+                  topics: u.topics.map((t) => ({
+                    id: t.id,
+                    name: t.name,
+                    details: t.details,
+                    isHighYield: t.isHighYield,
+                    questionsCount: Math.floor(Math.random() * 25) + 30,
+                  })),
+                },
+              ],
+            })),
+          },
+          {
+            id: 'sub_neet_biology',
+            slug: 'biology',
+            name: 'Biology',
+            displayOrder: 3,
+            totalUnits: NEET_BIOLOGY_SYLLABUS.totalUnits,
+            units: NEET_BIOLOGY_SYLLABUS.units.map((u) => ({
+              id: u.id,
+              name: `Unit ${u.unitNumber}: ${u.name}`,
+              unitNumber: u.unitNumber,
+              slug: u.slug,
+              category: u.category,
+              description: u.description,
+              weightagePercent: u.weightagePercent,
+              displayOrder: u.unitNumber,
+              chapters: [
+                {
+                  id: `chap_${u.slug}`,
+                  slug: u.slug,
+                  name: u.name,
+                  category: u.category,
+                  weightagePercent: u.weightagePercent,
+                  topics: u.topics.map((t) => ({
+                    id: t.id,
+                    name: t.name,
+                    details: t.details,
+                    isHighYield: t.isHighYield,
+                    questionsCount: Math.floor(Math.random() * 30) + 40,
+                  })),
+                },
+              ],
+            })),
+          },
+        ],
+        strategicInsights: NEET_SYLLABUS_OVERVIEW.strategicInsights,
+      };
+
+      return NextResponse.json({
+        success: true,
+        data: tree,
+      });
+    }
+
+    // 2. JEE Main Master Hierarchy (54 Units)
     if (examSlug === 'jee-main' || examSlug === 'jee') {
       const tree = {
         exam: {
