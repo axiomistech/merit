@@ -28,6 +28,11 @@ import {
   NEET_CHEMISTRY_SYLLABUS,
   NEET_BIOLOGY_SYLLABUS,
 } from '@/data/neetSyllabusData';
+import {
+  JEE_ADVANCED_CHEMISTRY_SYLLABUS,
+  JEE_ADVANCED_MATHEMATICS_SYLLABUS,
+  JEE_ADVANCED_PHYSICS_SYLLABUS,
+} from '@/data/jeeAdvancedSyllabusData';
 
 interface SyllabusNode {
   id: string;
@@ -203,6 +208,65 @@ function buildJeeMainNodes(): SyllabusNode[] {
   ];
 }
 
+function buildJeeAdvancedNodes(): SyllabusNode[] {
+  return [
+    {
+      id: 'sub_ja_chem',
+      name: 'Chemistry (34 Units: Physical, Inorganic, Organic)',
+      nodeType: 'subject',
+      questionCount: 0,
+      children: JEE_ADVANCED_CHEMISTRY_SYLLABUS.units.map((u) => ({
+        id: `ja_chem_u${u.unitNumber}`,
+        name: `Unit ${u.unitNumber} [${u.category}]: ${u.name}${u.isRetainedInAdvancedOnly ? ' ★ Retained' : ''}`,
+        nodeType: 'unit',
+        questionCount: 0,
+        children: u.topics.map((t) => ({
+          id: `top_${t.id}`,
+          name: t.name + (t.details ? ` (${t.details})` : ''),
+          nodeType: 'topic',
+          questionCount: 0,
+        })),
+      })),
+    },
+    {
+      id: 'sub_ja_math',
+      name: 'Mathematics (9 Disciplines)',
+      nodeType: 'subject',
+      questionCount: 0,
+      children: JEE_ADVANCED_MATHEMATICS_SYLLABUS.units.map((u) => ({
+        id: `ja_math_u${u.unitNumber}`,
+        name: `Unit ${u.unitNumber} [${u.category}]: ${u.name}`,
+        nodeType: 'unit',
+        questionCount: 0,
+        children: u.topics.map((t) => ({
+          id: `top_${t.id}`,
+          name: t.name + (t.details ? ` (${t.details})` : ''),
+          nodeType: 'topic',
+          questionCount: 0,
+        })),
+      })),
+    },
+    {
+      id: 'sub_ja_phy',
+      name: 'Physics (7 Comprehensive Domains)',
+      nodeType: 'subject',
+      questionCount: 0,
+      children: JEE_ADVANCED_PHYSICS_SYLLABUS.units.map((u) => ({
+        id: `ja_phy_u${u.unitNumber}`,
+        name: `Domain ${u.unitNumber} [${u.category}]: ${u.name}`,
+        nodeType: 'unit',
+        questionCount: 0,
+        children: u.topics.map((t) => ({
+          id: `top_${t.id}`,
+          name: t.name + (t.details ? ` (${t.details})` : ''),
+          nodeType: 'topic',
+          questionCount: 0,
+        })),
+      })),
+    },
+  ];
+}
+
 export default function AdminSyllabusPage() {
   const [selectedExam, setSelectedExam] = useState<'neet' | 'jee-main' | 'jee-advanced' | 'gate'>('neet');
   const [expandedNodes, setExpandedNodes] = useState<Record<string, boolean>>({
@@ -221,7 +285,7 @@ export default function AdminSyllabusPage() {
   const [syllabusData, setSyllabusData] = useState<Record<string, SyllabusNode[]>>({
     neet: buildNeetNodes(),
     'jee-main': buildJeeMainNodes(),
-    'jee-advanced': buildJeeMainNodes(),
+    'jee-advanced': buildJeeAdvancedNodes(),
     gate: buildJeeMainNodes().slice(0, 2),
   });
 

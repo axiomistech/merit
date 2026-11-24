@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle2, Shield, Layers, Award, Terminal } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Shield, Layers, Award, Terminal, BookOpen, Sparkles } from 'lucide-react';
+import { JeeAdvancedSyllabusExplorer } from '@/components/syllabus/JeeAdvancedSyllabusExplorer';
 
 export const metadata = {
   title: 'MERITWISE JEE Advanced — Multi-Correct & Partial Marking Architecture',
@@ -52,11 +53,17 @@ export default function JeeAdvancedLandingPage() {
               >
                 Enter JEE Advanced Portal
               </Link>
+              <a
+                href="#syllabus"
+                className="rounded-xl border border-[#20252B]/20 bg-white/80 backdrop-blur-sm px-6 py-3.5 text-sm font-semibold text-[#20252B] hover:bg-white transition-all shadow-sm"
+              >
+                Official 2026-27 Syllabus ↓
+              </a>
               <Link
                 href="/pricing"
-                className="rounded-xl border border-[#20252B]/20 bg-white/80 backdrop-blur-sm px-8 py-3.5 text-sm font-semibold text-[#20252B] hover:bg-white transition-all shadow-sm"
+                className="rounded-xl border border-[#20252B]/20 bg-white/60 backdrop-blur-sm px-6 py-3.5 text-sm font-semibold text-[#20252B] hover:bg-white transition-all shadow-sm"
               >
-                Advanced Paper Packs
+                Paper Packs
               </Link>
             </div>
           </div>
@@ -131,6 +138,11 @@ export default function JeeAdvancedLandingPage() {
               Every solution includes verified mathematical derivations, free-body diagrams, and alternative shortcut verification methods.
             </p>
           </div>
+        </section>
+
+        {/* Official Interactive JEE Advanced Syllabus Explorer */}
+        <section id="syllabus" className="pt-4">
+          <JeeAdvancedSyllabusExplorer />
         </section>
 
         {/* CTA Banner */}

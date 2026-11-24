@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, Layers, Shield, CheckCircle2, AlertTriangle, Sparkles, BookOpen } from 'lucide-react';
+import { JeeAdvancedSyllabusExplorer } from '@/components/syllabus/JeeAdvancedSyllabusExplorer';
 
 export default function StudentJeeAdvancedDashboardPage() {
   const paperTypes = [
@@ -125,6 +126,19 @@ export default function StudentJeeAdvancedDashboardPage() {
             </Link>
           </div>
         ))}
+      </div>
+
+      {/* Official Syllabus Section */}
+      <div className="pt-6 border-t border-[#DCE2E6]">
+        <div className="mb-4">
+          <h2 className="text-xl font-bold font-sans text-[#20252B]">
+            Official IIT JEE (Advanced) Syllabus Explorer
+          </h2>
+          <p className="text-xs text-[#66727D]">
+            Track every unit and check the 14 classical topics retained exclusively in JEE Advanced.
+          </p>
+        </div>
+        <JeeAdvancedSyllabusExplorer />
       </div>
     </div>
   );

@@ -13,6 +13,13 @@ import {
   NEET_BIOLOGY_SYLLABUS,
   NEET_SYLLABUS_OVERVIEW,
 } from '@/data/neetSyllabusData';
+import {
+  JEE_ADVANCED_PHYSICS_SYLLABUS,
+  JEE_ADVANCED_CHEMISTRY_SYLLABUS,
+  JEE_ADVANCED_MATHEMATICS_SYLLABUS,
+  JEE_ADVANCED_EXCLUSIVE_TOPICS,
+  JEE_ADVANCED_SYLLABUS_OVERVIEW,
+} from '@/data/jeeAdvancedSyllabusData';
 
 export async function GET(req: Request) {
   try {
@@ -140,7 +147,136 @@ export async function GET(req: Request) {
       });
     }
 
-    // 2. JEE Main Master Hierarchy (54 Units)
+    // 2. JEE (Advanced) Master Hierarchy (50 Units / Non-Rationalized Scope)
+    if (examSlug === 'jee-advanced' || examSlug === 'jee-adv') {
+      const tree = {
+        exam: {
+          id: 'exam_jee-advanced',
+          slug: 'jee-advanced',
+          name: JEE_ADVANCED_SYLLABUS_OVERVIEW.examName,
+          governingBody: JEE_ADVANCED_SYLLABUS_OVERVIEW.governingBody,
+          academicSession: JEE_ADVANCED_SYLLABUS_OVERVIEW.academicSession,
+          totalUnits: JEE_ADVANCED_SYLLABUS_OVERVIEW.totalUnits,
+          description: 'Official IIT Joint Admission Board (JAB) Curriculum covering Physics (7 Domains), Chemistry (34 Units), and Mathematics (9 Disciplines).',
+          blueprint: JEE_ADVANCED_SYLLABUS_OVERVIEW,
+          exclusiveTopics: JEE_ADVANCED_EXCLUSIVE_TOPICS,
+        },
+        subjects: [
+          {
+            id: 'sub_ja_chemistry',
+            slug: 'chemistry',
+            name: 'Chemistry',
+            displayOrder: 1,
+            totalUnits: JEE_ADVANCED_CHEMISTRY_SYLLABUS.totalUnits,
+            units: JEE_ADVANCED_CHEMISTRY_SYLLABUS.units.map((u) => ({
+              id: u.id,
+              name: `Unit ${u.unitNumber}: ${u.name}`,
+              unitNumber: u.unitNumber,
+              slug: u.slug,
+              category: u.category,
+              description: u.description,
+              weightagePercent: u.weightagePercent,
+              isRetainedInAdvancedOnly: u.isRetainedInAdvancedOnly,
+              displayOrder: u.unitNumber,
+              chapters: [
+                {
+                  id: `chap_${u.slug}`,
+                  slug: u.slug,
+                  name: u.name,
+                  category: u.category,
+                  weightagePercent: u.weightagePercent,
+                  topics: u.topics.map((t) => ({
+                    id: t.id,
+                    name: t.name,
+                    details: t.details,
+                    isHighYield: t.isHighYield,
+                    isRetainedInAdvancedOnly: t.isRetainedInAdvancedOnly,
+                    questionsCount: Math.floor(Math.random() * 25) + 30,
+                  })),
+                },
+              ],
+            })),
+          },
+          {
+            id: 'sub_ja_mathematics',
+            slug: 'mathematics',
+            name: 'Mathematics',
+            displayOrder: 2,
+            totalUnits: JEE_ADVANCED_MATHEMATICS_SYLLABUS.totalUnits,
+            units: JEE_ADVANCED_MATHEMATICS_SYLLABUS.units.map((u) => ({
+              id: u.id,
+              name: `Unit ${u.unitNumber}: ${u.name}`,
+              unitNumber: u.unitNumber,
+              slug: u.slug,
+              category: u.category,
+              description: u.description,
+              weightagePercent: u.weightagePercent,
+              displayOrder: u.unitNumber,
+              chapters: [
+                {
+                  id: `chap_${u.slug}`,
+                  slug: u.slug,
+                  name: u.name,
+                  category: u.category,
+                  weightagePercent: u.weightagePercent,
+                  topics: u.topics.map((t) => ({
+                    id: t.id,
+                    name: t.name,
+                    details: t.details,
+                    isHighYield: t.isHighYield,
+                    isRetainedInAdvancedOnly: t.isRetainedInAdvancedOnly,
+                    questionsCount: Math.floor(Math.random() * 25) + 30,
+                  })),
+                },
+              ],
+            })),
+          },
+          {
+            id: 'sub_ja_physics',
+            slug: 'physics',
+            name: 'Physics',
+            displayOrder: 3,
+            totalUnits: JEE_ADVANCED_PHYSICS_SYLLABUS.totalUnits,
+            units: JEE_ADVANCED_PHYSICS_SYLLABUS.units.map((u) => ({
+              id: u.id,
+              name: `Domain ${u.unitNumber}: ${u.name}`,
+              unitNumber: u.unitNumber,
+              slug: u.slug,
+              category: u.category,
+              description: u.description,
+              weightagePercent: u.weightagePercent,
+              displayOrder: u.unitNumber,
+              chapters: [
+                {
+                  id: `chap_${u.slug}`,
+                  slug: u.slug,
+                  name: u.name,
+                  category: u.category,
+                  weightagePercent: u.weightagePercent,
+                  topics: u.topics.map((t) => ({
+                    id: t.id,
+                    name: t.name,
+                    details: t.details,
+                    isHighYield: t.isHighYield,
+                    isRetainedInAdvancedOnly: t.isRetainedInAdvancedOnly,
+                    questionsCount: Math.floor(Math.random() * 25) + 30,
+                  })),
+                },
+              ],
+            })),
+          },
+        ],
+        exclusiveTopics: JEE_ADVANCED_EXCLUSIVE_TOPICS,
+        strategicInsights: JEE_ADVANCED_SYLLABUS_OVERVIEW.strategicInsights,
+      };
+
+      return NextResponse.json({
+        success: true,
+        data: tree,
+      });
+    }
+
+    // 3. JEE Main Master Hierarchy (54 Units)
     if (examSlug === 'jee-main' || examSlug === 'jee') {
       const tree = {
         exam: {
