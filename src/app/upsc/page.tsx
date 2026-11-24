@@ -1,7 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, FileText, CheckCircle2, Compass, BookOpen } from 'lucide-react';
+import { ArrowRight, FileText, CheckCircle2, Compass, BookOpen, Sparkles, Scale, Landmark, Award } from 'lucide-react';
 import { ExamSwitcher } from '@/components/exams/ExamSwitcher';
+import { UpscSyllabusExplorer } from '@/components/syllabus/UpscSyllabusExplorer';
 
 export const metadata = {
   title: 'MERITWISE UPSC — Civil Services Examination Practice',
@@ -40,10 +41,16 @@ export default function UpscLandingPage() {
                 Start Practice ↗
               </Link>
               <a
-                href="#blueprint"
+                href="#syllabus"
                 className="btn-merit-secondary h-12 px-7 text-sm font-semibold inline-flex items-center gap-1.5"
               >
-                View Blueprint
+                Official 2026-27 Syllabus ↓
+              </a>
+              <a
+                href="#blueprint"
+                className="rounded-full border border-[#DCE2E6] bg-white px-6 py-3 text-sm font-semibold text-[#52525B] hover:bg-[#F4F4F0] hover:text-[#121316] transition-colors"
+              >
+                Exam Blueprint
               </a>
             </div>
           </div>
@@ -63,9 +70,9 @@ export default function UpscLandingPage() {
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { label: 'General Studies I', value: '100 Questions', detail: '200 Marks • -0.66 Negative Marking' },
-              { label: 'CSAT (Paper II)', value: '80 Questions', detail: '200 Marks • -0.83 Negative Marking' },
-              { label: 'Paper Duration', value: '120 Minutes', detail: '2 Hours per session' },
-              { label: 'Evaluation Format', value: 'Objective Paper', detail: 'Instant diagnostic accuracy analysis' },
+              { label: 'CSAT (Paper II)', value: '80 Questions', detail: '200 Marks • -0.83 Negative Marking (33% Pass)' },
+              { label: 'Mains Written', value: '1750 Marks', detail: 'Essay + 4 GS Papers + 2 Optionals' },
+              { label: 'Personality Test', value: '275 Marks', detail: '2025 Total Merit Score for Ranking' },
             ].map((stat, idx) => (
               <div key={idx} className="merit-card p-6 space-y-2">
                 <div className="text-xs font-semibold text-[#71717A]">{stat.label}</div>
@@ -75,6 +82,30 @@ export default function UpscLandingPage() {
             ))}
           </div>
         </section>
+
+        {/* Official Interactive UPSC CSE Syllabus Explorer */}
+        <section id="syllabus" className="pt-4">
+          <UpscSyllabusExplorer />
+        </section>
+
+        {/* Callout Banner */}
+        <div className="merit-card rounded-[28px] p-8 text-center sm:p-12 space-y-4">
+          <h2 className="text-2xl sm:text-3xl font-bold font-sans text-[#121316]">
+            Start Preparing with Analytical Rigor
+          </h2>
+          <p className="mx-auto max-w-xl text-sm text-[#52525B]">
+            Calibrate your Prelims negative marking accuracy, practice official-pattern CSAT reading passages, and draft Mains answers in our dedicated studio.
+          </p>
+          <div className="pt-2">
+            <Link
+              href="/signup"
+              className="btn-merit-primary inline-flex items-center gap-2 h-12 px-8 text-sm font-bold uppercase tracking-wider"
+            >
+              <span>Create Free Account</span>
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );

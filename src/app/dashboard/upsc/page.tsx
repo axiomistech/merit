@@ -2,11 +2,12 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowRight, FileText, CheckCircle2, Clock, Sparkles } from 'lucide-react';
+import { ArrowRight, FileText, CheckCircle2, Clock, Sparkles, BookOpen } from 'lucide-react';
 import { toast } from 'sonner';
+import { UpscSyllabusExplorer } from '@/components/syllabus/UpscSyllabusExplorer';
 
 export default function StudentUpscDashboardPage() {
-  const [activeTab, setActiveTab] = useState<'prelims' | 'mains'>('mains');
+  const [activeTab, setActiveTab] = useState<'prelims' | 'mains' | 'syllabus'>('mains');
 
   // Mains Answer Writing Studio State
   const samplePrompt = {
@@ -66,7 +67,7 @@ export default function StudentUpscDashboardPage() {
           </h1>
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setActiveTab('mains')}
             className={`rounded-xl px-4 py-2 text-xs font-bold transition-all ${
@@ -86,6 +87,16 @@ export default function StudentUpscDashboardPage() {
             }`}
           >
             Prelims GS & CSAT Tests
+          </button>
+          <button
+            onClick={() => setActiveTab('syllabus')}
+            className={`rounded-xl px-4 py-2 text-xs font-bold transition-all ${
+              activeTab === 'syllabus'
+                ? 'bg-[#9CC6E0] text-[#20252B] shadow-soft'
+                : 'bg-white text-[#66727D] border border-[#DCE2E6]'
+            }`}
+          >
+            Official Syllabus Explorer
           </button>
         </div>
       </div>
@@ -186,7 +197,7 @@ export default function StudentUpscDashboardPage() {
             </div>
           </div>
         </div>
-      ) : (
+      ) : activeTab === 'prelims' ? (
         <div className="rounded-2xl border border-[#DCE2E6] bg-white p-8 shadow-soft">
           <h3 className="text-base font-bold text-[#20252B]">UPSC Prelims General Studies Tests</h3>
           <p className="mt-2 text-xs text-[#66727D]">
@@ -200,6 +211,10 @@ export default function StudentUpscDashboardPage() {
               Start Prelims Paper 01
             </Link>
           </div>
+        </div>
+      ) : (
+        <div className="space-y-4">
+          <UpscSyllabusExplorer />
         </div>
       )}
     </div>

@@ -89,6 +89,28 @@ export const EXAMINATIONS: ExamInfo[] = [
   },
 ];
 
+export const UPSC_EXAM_INFO: ExamInfo = {
+  id: 'exam-upsc',
+  slug: 'upsc',
+  name: 'UPSC Civil Services (CSE)',
+  shortName: 'UPSC CSE',
+  tagline: 'Comprehensive Civil Services Prelims, CSAT, and Mains descriptive answer studio.',
+  description:
+    'Engineered for UPSC Civil Services Examination aspirants covering Prelims GS-I (100 MCQs, -0.66 negative marking), CSAT Paper II (80 MCQs, -0.83 negative marking, 33% qualifying), and Mains GS I to IV with analytical rubrics.',
+  category: 'civil_services',
+  accentColor: '#8C6D3B',
+  subjects: [
+    { id: 'sub-upsc-polity', slug: 'polity', name: 'Indian Polity & Governance', chaptersCount: 6, questionCount: 0 },
+    { id: 'sub-upsc-history', slug: 'history', name: 'History of India & Art & Culture', chaptersCount: 5, questionCount: 0 },
+    { id: 'sub-upsc-geography', slug: 'geography', name: 'Indian & World Geography', chaptersCount: 4, questionCount: 0 },
+    { id: 'sub-upsc-economy', slug: 'economy', name: 'Economic & Social Development', chaptersCount: 5, questionCount: 0 },
+    { id: 'sub-upsc-environment', slug: 'environment', name: 'Environmental Ecology & Climate Change', chaptersCount: 4, questionCount: 0 },
+    { id: 'sub-upsc-science', slug: 'science', name: 'General Science & Technology', chaptersCount: 3, questionCount: 0 },
+    { id: 'sub-upsc-csat', slug: 'csat', name: 'CSAT (Paper II Aptitude & Comprehension)', chaptersCount: 7, questionCount: 0 },
+    { id: 'sub-upsc-ethics', slug: 'ethics', name: 'Ethics, Integrity & Aptitude (GS-IV)', chaptersCount: 8, questionCount: 0 },
+  ],
+};
+
 // Strict Content Rule: No fake or fabricated examination questions/papers
 export const SAMPLE_NEET_PAPER: ExamPaperConfig | null = null;
 export const SAMPLE_NEET_QUESTIONS: QuestionData[] = [];

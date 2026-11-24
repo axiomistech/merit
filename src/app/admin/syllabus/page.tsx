@@ -33,6 +33,11 @@ import {
   JEE_ADVANCED_MATHEMATICS_SYLLABUS,
   JEE_ADVANCED_PHYSICS_SYLLABUS,
 } from '@/data/jeeAdvancedSyllabusData';
+import {
+  UPSC_PRELIMS_GS1_SYLLABUS,
+  UPSC_PRELIMS_CSAT_SYLLABUS,
+  UPSC_MAINS_GS_PAPERS,
+} from '@/data/upscSyllabusData';
 
 interface SyllabusNode {
   id: string;
@@ -267,8 +272,67 @@ function buildJeeAdvancedNodes(): SyllabusNode[] {
   ];
 }
 
+function buildUpscNodes(): SyllabusNode[] {
+  return [
+    {
+      id: 'sub_upsc_gs1',
+      name: 'Prelims Paper I: General Studies (7 Subjects)',
+      nodeType: 'subject',
+      questionCount: 0,
+      children: UPSC_PRELIMS_GS1_SYLLABUS.units.map((u) => ({
+        id: `upsc_gs1_u${u.unitNumber}`,
+        name: `Unit ${u.unitNumber} [${u.category}]: ${u.name}`,
+        nodeType: 'unit',
+        questionCount: 0,
+        children: u.topics.map((t) => ({
+          id: `top_${t.id}`,
+          name: t.name + (t.details ? ` (${t.details})` : ''),
+          nodeType: 'topic',
+          questionCount: 0,
+        })),
+      })),
+    },
+    {
+      id: 'sub_upsc_csat',
+      name: 'Prelims Paper II: CSAT (Qualifying 33%)',
+      nodeType: 'subject',
+      questionCount: 0,
+      children: UPSC_PRELIMS_CSAT_SYLLABUS.units.map((u) => ({
+        id: `upsc_csat_u${u.unitNumber}`,
+        name: `Unit ${u.unitNumber} [${u.category}]: ${u.name}`,
+        nodeType: 'unit',
+        questionCount: 0,
+        children: u.topics.map((t) => ({
+          id: `top_${t.id}`,
+          name: t.name + (t.details ? ` (${t.details})` : ''),
+          nodeType: 'topic',
+          questionCount: 0,
+        })),
+      })),
+    },
+    ...UPSC_MAINS_GS_PAPERS.map((p) => ({
+      id: `sub_mains_${p.paperCode.toLowerCase()}`,
+      name: `Mains ${p.paperCode}: ${p.paperTitle} (250 Marks)`,
+      nodeType: 'subject' as const,
+      questionCount: 0,
+      children: p.modules.map((m) => ({
+        id: `mains_${p.paperCode.toLowerCase()}_m${m.moduleNumber}`,
+        name: `Point ${m.moduleNumber}: ${m.title}`,
+        nodeType: 'unit' as const,
+        questionCount: 0,
+        children: m.keyThemes.map((theme, idx) => ({
+          id: `theme_${p.paperCode.toLowerCase()}_${m.moduleNumber}_${idx}`,
+          name: theme,
+          nodeType: 'topic' as const,
+          questionCount: 0,
+        })),
+      })),
+    })),
+  ];
+}
+
 export default function AdminSyllabusPage() {
-  const [selectedExam, setSelectedExam] = useState<'neet' | 'jee-main' | 'jee-advanced' | 'gate'>('neet');
+  const [selectedExam, setSelectedExam] = useState<'neet' | 'jee-main' | 'jee-advanced' | 'gate' | 'upsc'>('neet');
   const [expandedNodes, setExpandedNodes] = useState<Record<string, boolean>>({
     'sub_phy': true,
     'unit_mech': true,
@@ -287,6 +351,7 @@ export default function AdminSyllabusPage() {
     'jee-main': buildJeeMainNodes(),
     'jee-advanced': buildJeeAdvancedNodes(),
     gate: buildJeeMainNodes().slice(0, 2),
+    upsc: buildUpscNodes(),
   });
 
   // Calculate actual question count dynamically
@@ -413,6 +478,7 @@ export default function AdminSyllabusPage() {
             { id: 'jee-main', label: 'JEE Main' },
             { id: 'jee-advanced', label: 'JEE Advanced' },
             { id: 'gate', label: 'GATE' },
+            { id: 'upsc', label: 'UPSC CSE' },
           ].map((ex) => (
             <button
               key={ex.id}

@@ -20,13 +20,112 @@ import {
   JEE_ADVANCED_EXCLUSIVE_TOPICS,
   JEE_ADVANCED_SYLLABUS_OVERVIEW,
 } from '@/data/jeeAdvancedSyllabusData';
+import {
+  UPSC_PRELIMS_GS1_SYLLABUS,
+  UPSC_PRELIMS_CSAT_SYLLABUS,
+  UPSC_MAINS_GS_PAPERS,
+  UPSC_MAINS_OPTIONALS,
+  UPSC_SYLLABUS_OVERVIEW,
+} from '@/data/upscSyllabusData';
 
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
     const examSlug = searchParams.get('exam') || 'jee-main';
 
-    // 1. NEET (UG) Master Hierarchy (50 Units)
+    // 1. UPSC Civil Services Examination (CSE) Master Hierarchy
+    if (examSlug === 'upsc' || examSlug === 'upsc-cse') {
+      const tree = {
+        exam: {
+          id: 'exam_upsc',
+          slug: 'upsc',
+          name: UPSC_SYLLABUS_OVERVIEW.examName,
+          governingBody: UPSC_SYLLABUS_OVERVIEW.governingBody,
+          academicSession: UPSC_SYLLABUS_OVERVIEW.academicSession,
+          totalMeritMarks: UPSC_SYLLABUS_OVERVIEW.totalMeritMarks,
+          description: 'Official UPSC Civil Services Examination curriculum covering Prelims (GS-I & CSAT), Mains (GS I to IV with 60 modules), and Optionals.',
+          blueprint: UPSC_SYLLABUS_OVERVIEW,
+        },
+        subjects: [
+          {
+            id: 'sub_upsc_gs1',
+            slug: 'general-studies-1',
+            name: 'Prelims Paper I: General Studies',
+            displayOrder: 1,
+            totalUnits: UPSC_PRELIMS_GS1_SYLLABUS.totalUnits,
+            units: UPSC_PRELIMS_GS1_SYLLABUS.units.map((u) => ({
+              id: u.id,
+              name: `Unit ${u.unitNumber}: ${u.name}`,
+              unitNumber: u.unitNumber,
+              slug: u.slug,
+              category: u.category,
+              description: u.description,
+              weightagePercent: u.weightagePercent,
+              displayOrder: u.unitNumber,
+              chapters: [
+                {
+                  id: `chap_${u.slug}`,
+                  slug: u.slug,
+                  name: u.name,
+                  category: u.category,
+                  weightagePercent: u.weightagePercent,
+                  topics: u.topics.map((t) => ({
+                    id: t.id,
+                    name: t.name,
+                    details: t.details,
+                    isHighYield: t.isHighYield,
+                    questionsCount: Math.floor(Math.random() * 25) + 30,
+                  })),
+                },
+              ],
+            })),
+          },
+          {
+            id: 'sub_upsc_csat',
+            slug: 'csat',
+            name: 'Prelims Paper II: CSAT',
+            displayOrder: 2,
+            totalUnits: UPSC_PRELIMS_CSAT_SYLLABUS.totalUnits,
+            units: UPSC_PRELIMS_CSAT_SYLLABUS.units.map((u) => ({
+              id: u.id,
+              name: `Unit ${u.unitNumber}: ${u.name}`,
+              unitNumber: u.unitNumber,
+              slug: u.slug,
+              category: u.category,
+              description: u.description,
+              weightagePercent: u.weightagePercent,
+              displayOrder: u.unitNumber,
+              chapters: [
+                {
+                  id: `chap_${u.slug}`,
+                  slug: u.slug,
+                  name: u.name,
+                  category: u.category,
+                  weightagePercent: u.weightagePercent,
+                  topics: u.topics.map((t) => ({
+                    id: t.id,
+                    name: t.name,
+                    details: t.details,
+                    isHighYield: t.isHighYield,
+                    questionsCount: Math.floor(Math.random() * 25) + 20,
+                  })),
+                },
+              ],
+            })),
+          },
+        ],
+        mainsPapers: UPSC_MAINS_GS_PAPERS,
+        optionals: UPSC_MAINS_OPTIONALS,
+        strategicInsights: UPSC_SYLLABUS_OVERVIEW.strategicInsights,
+      };
+
+      return NextResponse.json({
+        success: true,
+        data: tree,
+      });
+    }
+
+    // 2. NEET (UG) Master Hierarchy (50 Units)
     if (examSlug === 'neet') {
       const tree = {
         exam: {
