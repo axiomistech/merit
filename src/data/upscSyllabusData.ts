@@ -863,6 +863,83 @@ export const UPSC_MAINS_OPTIONALS: UpscOptionalSubject[] = [
 // ============================================================================
 // 5. MASTER BLUEPRINT & STRATEGIC ARCHITECTURE
 // ============================================================================
+export interface UpscPrelimsPaperPattern {
+  paperName: string;
+  duration: string;
+  totalMarks: number;
+  questionCount: number;
+  marksPerQuestion: number;
+  negativeMarking: string;
+  negativeDeduction: number;
+  isQualifying: boolean;
+  qualifyingPercentage?: number;
+  qualifyingMarks?: number;
+}
+
+export interface UpscMainsPaperPattern {
+  paperCode: string;
+  paperName: string;
+  marks: number;
+  isQualifying: boolean;
+  countingForMerit: boolean;
+  duration: string;
+}
+
+export const UPSC_EXAM_PATTERN = {
+  prelims: {
+    totalMarks: 400,
+    papers: [
+      {
+        paperName: 'Paper I - General Studies',
+        duration: '2 Hours (120 Mins)',
+        totalMarks: 200,
+        questionCount: 100,
+        marksPerQuestion: 2.0,
+        negativeMarking: '1/3rd (0.66 marks)',
+        negativeDeduction: 0.66,
+        isQualifying: false,
+      },
+      {
+        paperName: 'Paper II - CSAT',
+        duration: '2 Hours (120 Mins)',
+        totalMarks: 200,
+        questionCount: 80,
+        marksPerQuestion: 2.5,
+        negativeMarking: '1/3rd (0.83 marks)',
+        negativeDeduction: 0.83,
+        isQualifying: true,
+        qualifyingPercentage: 33,
+        qualifyingMarks: 66,
+      },
+    ] as UpscPrelimsPaperPattern[],
+    notes: [
+      'Note 1: Paper-II of the Civil Services (Preliminary) Examination will be a qualifying paper with minimum qualifying marks fixed at 33%.',
+      'Note 2: The questions will be of multiple choice, objective type.',
+      'Note 3: It is mandatory for the candidate to appear in both the Papers of Civil Services (Prelim) Examination for the purpose of evaluation.',
+    ],
+  },
+  mains: {
+    qualifyingPapers: [
+      { paperCode: 'Paper A', paperName: 'Indian Language (Qualifying Paper A)', marks: 300, isQualifying: true, countingForMerit: false, duration: '3 Hours' },
+      { paperCode: 'Paper B', paperName: 'English (Qualifying Paper B)', marks: 300, isQualifying: true, countingForMerit: false, duration: '3 Hours' },
+    ] as UpscMainsPaperPattern[],
+    meritPapers: [
+      { paperCode: 'Paper I', paperName: 'Essay', marks: 250, isQualifying: false, countingForMerit: true, duration: '3 Hours' },
+      { paperCode: 'Paper II', paperName: 'GS Paper I (Heritage, Culture, History, Geography & Society)', marks: 250, isQualifying: false, countingForMerit: true, duration: '3 Hours' },
+      { paperCode: 'Paper III', paperName: 'GS Paper II (Governance, Constitution, Polity, Social Justice & IR)', marks: 250, isQualifying: false, countingForMerit: true, duration: '3 Hours' },
+      { paperCode: 'Paper IV', paperName: 'GS Paper III (Technology, Economic Development, Environment, Security, Disaster Mgmt)', marks: 250, isQualifying: false, countingForMerit: true, duration: '3 Hours' },
+      { paperCode: 'Paper V', paperName: 'GS Paper IV (Ethics, Integrity and Aptitude)', marks: 250, isQualifying: false, countingForMerit: true, duration: '3 Hours' },
+      { paperCode: 'Paper VI', paperName: 'Optional Paper I', marks: 250, isQualifying: false, countingForMerit: true, duration: '3 Hours' },
+      { paperCode: 'Paper VII', paperName: 'Optional Paper II', marks: 250, isQualifying: false, countingForMerit: true, duration: '3 Hours' },
+    ] as UpscMainsPaperPattern[],
+    subtotalWritten: 1750,
+    interviewMarks: 275,
+    grandTotal: 2025,
+    philosophy:
+      'The main Examination is intended to assess the overall intellectual traits and depth of understanding of candidates rather than merely the range of their information and memory. The nature and standard of questions in General Studies papers will be such that a well-educated person will be able to answer them without any specialized study.',
+  },
+};
+
 export const UPSC_SYLLABUS_OVERVIEW = {
   examName: 'Civil Services Examination (CSE)',
   governingBody: 'Union Public Service Commission (UPSC)',

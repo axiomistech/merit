@@ -5,6 +5,7 @@ import {
   UPSC_MAINS_GS_PAPERS,
   UPSC_MAINS_OPTIONALS,
   UPSC_SYLLABUS_OVERVIEW,
+  UPSC_EXAM_PATTERN,
 } from '@/data/upscSyllabusData';
 import { GET as getSyllabusRoute } from '@/app/api/syllabus/route';
 
@@ -82,5 +83,48 @@ describe('UPSC Civil Services Examination Official Syllabus Integrity', () => {
     expect(json.data.subjects.length).toBe(2);
     expect(json.data.mainsPapers.length).toBe(4);
     expect(json.data.optionals.length).toBeGreaterThanOrEqual(10);
+  });
+
+  it('validates UPSC CSE Prelims & Mains Exam Pattern Matrix with exact statutory notes', () => {
+    const prelims = UPSC_EXAM_PATTERN.prelims;
+    expect(prelims.totalMarks).toBe(400);
+    expect(prelims.papers.length).toBe(2);
+
+    // Paper I
+    const gs1 = prelims.papers[0];
+    expect(gs1.questionCount).toBe(100);
+    expect(gs1.totalMarks).toBe(200);
+    expect(gs1.marksPerQuestion).toBe(2.0);
+    expect(gs1.negativeDeduction).toBe(0.66);
+    expect(gs1.isQualifying).toBe(false);
+
+    // Paper II (CSAT)
+    const csat = prelims.papers[1];
+    expect(csat.questionCount).toBe(80);
+    expect(csat.totalMarks).toBe(200);
+    expect(csat.marksPerQuestion).toBe(2.5);
+    expect(csat.negativeDeduction).toBe(0.83);
+    expect(csat.isQualifying).toBe(true);
+    expect(csat.qualifyingPercentage).toBe(33);
+    expect(csat.qualifyingMarks).toBe(66);
+
+    // Statutory Notes
+    expect(prelims.notes.length).toBe(3);
+    expect(prelims.notes[0]).toContain('minimum qualifying marks fixed at 33%');
+    expect(prelims.notes[1]).toContain('multiple choice, objective type');
+    expect(prelims.notes[2]).toContain('mandatory for the candidate to appear in both the Papers');
+
+    // Mains
+    const mains = UPSC_EXAM_PATTERN.mains;
+    expect(mains.qualifyingPapers.length).toBe(2);
+    expect(mains.qualifyingPapers[0].marks).toBe(300);
+    expect(mains.qualifyingPapers[1].marks).toBe(300);
+
+    expect(mains.meritPapers.length).toBe(7);
+    const sumMeritMarks = mains.meritPapers.reduce((sum, p) => sum + p.marks, 0);
+    expect(sumMeritMarks).toBe(1750);
+    expect(mains.subtotalWritten).toBe(1750);
+    expect(mains.interviewMarks).toBe(275);
+    expect(mains.grandTotal).toBe(2025);
   });
 });
